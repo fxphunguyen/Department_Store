@@ -71,4 +71,9 @@ public class CustomerServiceImpl implements CustomerService {
  public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
   return customerRepository.findCustomerByDeleted(deleted);
  }
+
+ @Override
+ public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
+  return null;
+ }
 }
