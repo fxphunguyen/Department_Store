@@ -10,6 +10,4 @@ public class DepartmentStoreApplication {
         SpringApplication.run(DepartmentStoreApplication.class, args);
     }
 
-
 }
-
