@@ -17,6 +17,14 @@ import java.util.Set;
 @Entity
 @Table(name = "products")
 public class Product {
+<<<<<<< HEAD
+=======
+
+    public Product(Integer categoryId, Integer brandId) {
+        setCategoryId(categoryId);
+        setBrandId(brandId);
+    }
+>>>>>>> huy_dev
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -65,10 +73,17 @@ public class Product {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+<<<<<<< HEAD
+=======
+    @Column(name = "category_id", insertable = false, updatable = false)
+    private Integer categoryId;
+
+>>>>>>> huy_dev
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "brand_id", nullable = false)
     private Brand brand;
 
+<<<<<<< HEAD
     @Column(name = "deleted", nullable = false)
     private Boolean deleted;
 
@@ -76,4 +91,12 @@ public class Product {
     public Product(Integer id) {
         this.id = id;
     }
+=======
+    @Column(name = "brand_id",insertable = false, updatable = false)
+    private Integer brandId;
+
+    @Column(name = "deleted", nullable = false)
+    private Boolean deleted;
+
+>>>>>>> huy_dev
 }

@@ -48,6 +48,7 @@ public class Customer {
     @Column(name = "update_at", nullable = false, length = 50)
     private String updateAt;
 
+<<<<<<< HEAD
     @Column(name = "deleted", nullable = false)
     private Boolean deleted;
 
@@ -56,4 +57,15 @@ public class Customer {
     private LocationRegion locationRegion;
 
 
+=======
+    @Column(name = "location_region_id", insertable = false,updatable = false)
+    private Integer locationRegionId;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "location_region_id", nullable = false)
+    private LocationRegion locationRegion;
+
+    @Column(name = "deleted", nullable = false)
+    private Boolean deleted;
+>>>>>>> huy_dev
 }

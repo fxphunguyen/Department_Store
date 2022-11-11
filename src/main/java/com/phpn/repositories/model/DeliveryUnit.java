@@ -6,6 +6,11 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+<<<<<<< HEAD
+=======
+import java.util.LinkedHashSet;
+import java.util.Set;
+>>>>>>> huy_dev
 
 @Data
 @NoArgsConstructor
@@ -36,7 +41,11 @@ public class DeliveryUnit {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employer_id", nullable = false)
+<<<<<<< HEAD
     private Employee employee;
+=======
+    private Employer employer;
+>>>>>>> huy_dev
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "partner_type_id", nullable = false)

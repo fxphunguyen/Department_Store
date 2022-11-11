@@ -24,5 +24,11 @@ public class Category {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
+<<<<<<< HEAD
 
+=======
+    public  Category(Integer id){
+        this.id= id;
+    }
+>>>>>>> huy_dev
 }

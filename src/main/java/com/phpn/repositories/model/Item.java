@@ -1,20 +1,33 @@
 package com.phpn.repositories.model;
 
+<<<<<<< HEAD
 import lombok.*;
+=======
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+>>>>>>> huy_dev
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+<<<<<<< HEAD
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+=======
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+>>>>>>> huy_dev
 @Accessors(chain = true)
 @Entity
 @Table(name = "items")
 public class Item {
+<<<<<<< HEAD
 
     public Item(Integer productId, Integer orderId, Integer employeeId, Integer supplierId) {
         setProductId(productId);
@@ -23,6 +36,8 @@ public class Item {
         setSupplierId(supplierId);
     }
 
+=======
+>>>>>>> huy_dev
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -49,12 +64,16 @@ public class Item {
     @Column(name = "update_at", length = 20)
     private String updateAt;
 
+<<<<<<< HEAD
     @Column(name = "product_id", nullable = false, insertable = false, updatable = false)
     private Integer productId;
+=======
+>>>>>>> huy_dev
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
 
+<<<<<<< HEAD
     @Column(name = "supplier_id", nullable = false, insertable = false, updatable = false)
     private Integer supplierId;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -63,15 +82,31 @@ public class Item {
 
     @Column(name = "order_id", nullable = false, insertable = false, updatable = false)
     private Integer orderId;
+=======
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Supplier supplier;
+
+>>>>>>> huy_dev
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
 
+<<<<<<< HEAD
     @Column(name = "employee_id", nullable = false, insertable = false, updatable = false)
     private Integer employeeId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
     private Employee employee;
+=======
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employer_id")
+    private Employer employer;
+>>>>>>> huy_dev
 
     @Column(name = "sold")
     private Integer sold;
@@ -82,6 +117,7 @@ public class Item {
     @Column(name = "defective")
     private Integer defective;
 
+<<<<<<< HEAD
     public Item setProductId(Integer productId) {
         this.product = new Product(this.productId = productId);
         return this;
@@ -101,4 +137,7 @@ public class Item {
         this.supplier = new Supplier(this.supplierId = supplierId);
         return this;
     }
+=======
+
+>>>>>>> huy_dev
 }

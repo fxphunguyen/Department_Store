@@ -7,6 +7,11 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+<<<<<<< HEAD
+=======
+import java.util.LinkedHashSet;
+import java.util.Set;
+>>>>>>> huy_dev
 
 @Data
 @NoArgsConstructor
@@ -38,7 +43,11 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
+<<<<<<< HEAD
     private Employee employee;
+=======
+    private Employer employee;
+>>>>>>> huy_dev
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_status_id", nullable = false)
@@ -56,7 +65,14 @@ public class Order {
     @JoinColumn(name = "payment_id", nullable = false)
     private Payment payment;
 
+<<<<<<< HEAD
     public Order(Integer id) {
         this.id = id;
     }
+=======
+    @Column(name = "payment_id", insertable = false, updatable = false )
+    private Integer paymentId;
+
+
+>>>>>>> huy_dev
 }

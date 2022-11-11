@@ -24,8 +24,16 @@ public class Brand {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
+<<<<<<< HEAD
 
     public Brand(Integer id) {
         this.id = id;
     }
+=======
+    public  Brand(Integer id){
+        this.id= id;
+    }
+
+
+>>>>>>> huy_dev
 }
