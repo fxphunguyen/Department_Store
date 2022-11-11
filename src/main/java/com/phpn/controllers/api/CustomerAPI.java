@@ -15,21 +15,4 @@ import java.util.List;
 @RequestMapping("/api/customers")
 public class CustomerAPI {
 
-    @Autowired
-    private CustomerService customerService;
-    @Autowired
-    private CustomerMapper customerMapper;
-
-    @GetMapping("/list_customer")
-    public ResponseEntity<?> showListCustomer(boolean deleted) {
-        List<CustomerResult> customers = customerService.findAllCustomerResultByDeleted(deleted);
-        return new ResponseEntity<>(customers, HttpStatus.OK);
-    }
-
-    @GetMapping("/show_customer")
-    public ResponseEntity<?> findNameAndPhoneDeletedFalse(boolean deleted) {
-        List<CustomerResult> customerResults = customerService.findCustomerByDeleted(deleted);
-        return new ResponseEntity<>(customerResults, HttpStatus.OK);
-    }
-
 }
