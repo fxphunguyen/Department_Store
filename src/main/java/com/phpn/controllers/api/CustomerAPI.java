@@ -4,16 +4,10 @@ import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.customer.CustomerMapper;
 
-
 import com.phpn.mappers.localtionRegion.LocaltionRegionMapper;
 
-
-import com.phpn.mappers.localtionRegion.LocaltionRegionMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.model.Customer;
-
-import com.phpn.repositories.model.LocationRegion;
-
 import com.phpn.services.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +21,6 @@ import java.util.List;
 @RequestMapping("/api/customers")
 public class CustomerAPI {
 
-<<<<<<< HEAD
     @Autowired
     private LocaltionRegionMapper LocaltionRegionMapper;
 
@@ -88,6 +81,4 @@ public class CustomerAPI {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-=======
->>>>>>> phu_dev
 }

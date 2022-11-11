@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
     @RequestMapping("/customer")
 public class CustomerController {
 
+
+
     @GetMapping("")
     public  String showListCustomerPage(){
         return  "/admin/customer/list_customer";

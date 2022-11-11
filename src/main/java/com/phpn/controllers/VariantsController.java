@@ -11,7 +11,7 @@ public class VariantsController {
    @GetMapping("/variants")
     public ModelAndView showVariants(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/admin/variants/variants");
+        modelAndView.setViewName("/admin/variants");
         return modelAndView;
     }
 }
