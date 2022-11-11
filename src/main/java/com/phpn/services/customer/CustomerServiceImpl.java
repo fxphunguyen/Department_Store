@@ -67,5 +67,8 @@ public class CustomerServiceImpl implements CustomerService {
   return customerMapper.toDTO(customerRepository.save(customerMapper.toModel(customerCreate)));
  }
 
-
+ @Override
+ public List<CustomerResult> findCustomerByDeleted(boolean deleted) {
+  return null;
+ }
 }

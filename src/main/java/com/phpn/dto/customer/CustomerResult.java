@@ -38,6 +38,14 @@ public class CustomerResult {
     private String districtName;
 
     private String provinceName;
+
+    private Boolean deleted;
+
+    public CustomerResult(String name, String phone, Boolean deleted) {
+        this.name = name;
+        this.phone = phone;
+        this.deleted = deleted;
+    }
 //
 //    private String totalSpending;
 }

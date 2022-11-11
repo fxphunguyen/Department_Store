@@ -26,8 +26,23 @@ public interface CustomerRepository extends JpaRepository<Customer , Long> {
         "l.wardName, " +
         "l.districtName, " +
         "l.provinceName ) " +
-            " FROM Customer as c , LocationRegion as l  WHERE c.locationRegionId = l.id  AND c.deleted= false ")
+        " FROM Customer as c , LocationRegion as l  WHERE c.locationRegionId = l.id  AND c.deleted= false ")
 List<CustomerResult> findAllCustomer();
+
+
+
+    @Query("SELECT c " +
+            "FROM Customer c " +
+            "WHERE c.deleted = :deleted ")
+    List<Customer> findAllCustomerResultByDeleted(boolean deleted);
+
+    @Query("SELECT NEW com.phpn.dto.customer.CustomerResult ( " +
+            "c.name, " +
+            "c.phone, " +
+            "c.deleted ) " +
+            "FROM Customer c " +
+            "WHERE c.deleted = :deleted ")
+    List<CustomerResult> findCustomerByDeleted(boolean deleted);
 
 
 }
