@@ -67,7 +67,6 @@
     right: 0;
     bottom: 0;
     margin: 0;
-    padding: 0;
     position: absolute;
     border-style: solid;
     border-width: 1px;
@@ -333,6 +332,15 @@
     flex-wrap: wrap;
     list-style: none;
     align-items: center;
+}
+
+.jss409 {
+    height: auto;
+    padding-top: 15px;
+}
+
+.sb-avatar__text {
+    margin-left: -8px;
 }
 
 
