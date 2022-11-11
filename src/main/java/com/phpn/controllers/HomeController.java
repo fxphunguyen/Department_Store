@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/admin")
 public class HomeController {
 
-    @GetMapping("/dashboard")
+    @GetMapping("/home")
     public ModelAndView showHomePage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/admin/dashboard");
