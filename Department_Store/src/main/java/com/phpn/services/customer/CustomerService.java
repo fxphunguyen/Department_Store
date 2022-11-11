@@ -18,9 +18,10 @@ import java.util.stream.Collectors;
 public interface CustomerService {
     List<CustomerResult> findAllCustomer();
 
-    void  deleteCustomer (Integer id);
+    void  deleteCustomer (Long id);
     ResponseEntity<?> createCustomer(Customer customer);
     List<CustomerResult> findById(Integer id);
     CustomerResult createCustomerResult( CustomerCreate customerCreate);
 
+    CustomerResult create(CustomerCreate customerCreate);
 }

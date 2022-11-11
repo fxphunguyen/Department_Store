@@ -40,5 +40,5 @@ public class CustomerCreate {
 
     private  String provinceName;
 
-    private String totalSpending;
+//    private String totalSpending;
 }

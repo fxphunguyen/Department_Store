@@ -39,8 +39,8 @@ public class CustomerServiceImpl implements CustomerService {
  }
 
  @Override
- public void deleteCustomer(Integer id) {
-   customerRepository.deleteById(Long.valueOf(id));
+ public void deleteCustomer(Long id) {
+   customerRepository.deleteById(id);
  }
 
 
@@ -62,8 +62,10 @@ public class CustomerServiceImpl implements CustomerService {
   return null;
  }
 
-
-
+ @Override
+ public CustomerResult create(CustomerCreate customerCreate) {
+  return customerMapper.toDTO(customerRepository.save(customerMapper.toModel(customerCreate)));
+ }
 
 
 }
