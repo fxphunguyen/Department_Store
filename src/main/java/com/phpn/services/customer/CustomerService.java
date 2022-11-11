@@ -18,11 +18,6 @@ public interface CustomerService {
     List<CustomerResult> findById(Integer id);
 
 
-//    CustomerResult createCustomerResult( CustomerCreate customerCreate);
-
-//    CustomerResult createCustomerResult(CustomerCreate customerCreate);
-
-
     CustomerResult create(CustomerCreate customerCreate);
 
     List<CustomerResult> findCustomerByDeleted(boolean deleted);
