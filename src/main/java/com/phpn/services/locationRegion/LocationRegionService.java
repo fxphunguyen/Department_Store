@@ -10,7 +10,4 @@ import java.util.List;
 public interface LocationRegionService {
     List<LocationRegionResult> findAllLocaRegion();
 
-
-
-
 }

@@ -1,5 +1,8 @@
 package com.phpn.services.customer;
 
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.customer.CustomerMapper;
@@ -13,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -31,10 +33,15 @@ public class CustomerServiceImpl implements CustomerService {
 
 
  @Override
+ public void deleteCustomer(Long id) {
+   customerRepository.deleteById(id);
+ }
+
+
+ @Override
  public void deleteCustomer(Integer id) {
 
  }
-
 
  @Override
  public ResponseEntity<?> createCustomer(Customer customer) {
@@ -53,7 +60,6 @@ public class CustomerServiceImpl implements CustomerService {
   return null;
  }
 
-
  @Override
  public CustomerResult create(CustomerCreate customerCreate) {
   return customerMapper.toDTO(customerRepository.save(customerMapper.toModel(customerCreate)));
@@ -66,10 +72,6 @@ public class CustomerServiceImpl implements CustomerService {
 
  @Override
  public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
-  return customerRepository.findAllCustomerResultByDeleted(deleted)
-          .stream()
-          .map(customerMapper :: toDTO)
-          .collect(Collectors.toList());
+  return customerRepository.findCustomerByDeleted(deleted);
  }
-
 }
