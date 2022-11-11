@@ -53,7 +53,7 @@ public class CustomerAPI {
 }
 
     @PostMapping("/delete/{id}")
-    public void deleteCustomerById(@PathVariable Long id) {
+    public void deleteCustomerById(@PathVariable Integer id) {
         customerService.deleteCustomer(id);
     }
 
