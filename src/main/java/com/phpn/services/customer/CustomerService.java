@@ -11,11 +11,17 @@ public interface CustomerService {
 
     void  deleteCustomer (Integer id);
 
+    void deleteCustomer(Long id);
+
     ResponseEntity<?> createCustomer(Customer customer);
 
     List<CustomerResult> findById(Integer id);
 
-    CustomerResult createCustomerResult( CustomerCreate customerCreate);
+
+//    CustomerResult createCustomerResult( CustomerCreate customerCreate);
+
+//    CustomerResult createCustomerResult(CustomerCreate customerCreate);
+
 
     CustomerResult create(CustomerCreate customerCreate);
 

@@ -36,6 +36,11 @@ public class CustomerServiceImpl implements CustomerService {
  }
 
  @Override
+ public void deleteCustomer(Long id) {
+
+ }
+
+ @Override
  public ResponseEntity<?> createCustomer(Customer customer) {
    customerRepository.save(customer);
   return new ResponseEntity<>(HttpStatus.OK);
@@ -47,10 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
 
  }
 
- @Override
- public CustomerResult createCustomerResult(CustomerCreate customerCreate) {
-  return null;
- }
+
 
  @Override
  public CustomerResult create(CustomerCreate customerCreate) {
