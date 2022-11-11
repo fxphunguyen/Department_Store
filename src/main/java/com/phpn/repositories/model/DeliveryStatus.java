@@ -25,4 +25,9 @@ public class DeliveryStatus {
     private String name;
 
 
+<<<<<<< HEAD
+=======
+    public DeliveryStatus(Integer integer) {
+    }
+>>>>>>> ngoc_dev
 }

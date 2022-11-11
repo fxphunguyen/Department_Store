@@ -1,30 +1,21 @@
 package com.phpn.repositories.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.LinkedHashSet;
-import java.util.Set;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.experimental.Accessors;
 
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-@Entity
 @Table(name = "products")
 public class Product {
-<<<<<<< HEAD
-=======
 
-    public Product(Integer categoryId, Integer brandId) {
-        setCategoryId(categoryId);
-        setBrandId(brandId);
-    }
->>>>>>> huy_dev
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -73,30 +64,33 @@ public class Product {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-<<<<<<< HEAD
-=======
+
     @Column(name = "category_id", insertable = false, updatable = false)
     private Integer categoryId;
 
->>>>>>> huy_dev
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "brand_id", nullable = false)
     private Brand brand;
 
-<<<<<<< HEAD
-    @Column(name = "deleted", nullable = false)
-    private Boolean deleted;
-
-
-    public Product(Integer id) {
-        this.id = id;
-    }
-=======
-    @Column(name = "brand_id",insertable = false, updatable = false)
+    @Column(name = "brand_id", insertable = false, updatable = false)
     private Integer brandId;
 
-    @Column(name = "deleted", nullable = false)
-    private Boolean deleted;
+    @Column(name = "deleted", nullable = false, columnDefinition = "boolean default false")
+    private Boolean deleted = false;
 
->>>>>>> huy_dev
+    public Product(Integer categoryId, Integer brandId) {
+        setCategoryId(categoryId);
+        setBrandId(brandId);
+    }
+
+    public Product setCategoryId(Integer categoryId) {
+        this.category = new Category(this.categoryId = categoryId);
+        return this;
+    }
+
+    public Product setBrandId(Integer brandId) {
+        this.brand = new Brand(this.brandId = brandId);
+        return this;
+    }
+
 }

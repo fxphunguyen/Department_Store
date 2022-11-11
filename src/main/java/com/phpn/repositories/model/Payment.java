@@ -1,5 +1,6 @@
 package com.phpn.repositories.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.Set;
 @Entity
 @Table(name = "payments")
 public class Payment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -23,4 +25,9 @@ public class Payment {
 
     @Column(name = "name", nullable = false, length = 50)
     private String name;
+
+    public Payment(Integer id) {
+        this.id = id;
+    }
+
 }

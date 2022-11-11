@@ -1,21 +1,19 @@
 package com.phpn.repositories.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
 @Entity
 @Table(name = "location_regions")
 public class LocationRegion {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -42,6 +40,9 @@ public class LocationRegion {
     @Column(name = "ward_name", nullable = false, length = 50)
     private String wardName;
 
+    public LocationRegion(Integer id) {
+        this.id = id;
+    }
 
 
 }

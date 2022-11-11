@@ -1,21 +1,21 @@
 package com.phpn.repositories.model;
 
-import lombok.AllArgsConstructor;
+import javax.persistence.*;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
-import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-@Entity
 @Table(name = "brands")
 public class Brand {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -24,16 +24,9 @@ public class Brand {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-<<<<<<< HEAD
 
-    public Brand(Integer id) {
-        this.id = id;
-    }
-=======
     public  Brand(Integer id){
         this.id= id;
     }
 
-
->>>>>>> huy_dev
 }

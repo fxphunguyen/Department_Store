@@ -1,8 +1,5 @@
 package com.phpn.dto.customer;
 
-<<<<<<< HEAD
-public class CustomerParam {
-=======
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -47,5 +44,4 @@ public class CustomerParam {
 
     private String totalSpending;
 
->>>>>>> huy_dev
 }

@@ -43,7 +43,11 @@ public class Employee {
     private String gender;
 
 
+<<<<<<< HEAD
     public Employee(Integer id) {
         this.id = id;
+=======
+    public Employee(Integer integer) {
+>>>>>>> ngoc_dev
     }
 }

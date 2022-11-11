@@ -1,9 +1,5 @@
 package com.phpn.dto.customer;
 
-<<<<<<< HEAD
-public class CustomerResult {
-=======
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +19,7 @@ public class CustomerResult {
 
     private String phone;
 
-    private  String customerGroup;
+    private String customerGroup;
 
     private String email;
 
@@ -35,14 +31,14 @@ public class CustomerResult {
 
     private String updateAt;
 
-    private  String address;
+    private String address;
 
-    private  String wardName;
+    private String wardName;
 
-    private  String districtName;
+    private String districtName;
 
-    private  String provinceName;
+    private String provinceName;
 //
 //    private String totalSpending;
->>>>>>> huy_dev
 }
+

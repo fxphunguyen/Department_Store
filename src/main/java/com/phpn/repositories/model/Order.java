@@ -1,19 +1,15 @@
 package com.phpn.repositories.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-<<<<<<< HEAD
-=======
-import java.util.LinkedHashSet;
-import java.util.Set;
->>>>>>> huy_dev
 
-@Data
+
+
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
@@ -43,36 +39,27 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
-<<<<<<< HEAD
+
     private Employee employee;
-=======
-    private Employer employee;
->>>>>>> huy_dev
+
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_status_id", nullable = false)
     private OrderStatus orderStatus;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "location_region_id", nullable = false)
-    private LocationRegion locationRegion;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "delivery_id", nullable = false)
-    private DeliveryUnit delivery;
+    @Column(name = "order_status_id", insertable = false, updatable = false)
+    private Integer orderStatusId;
+
+    @Column(name = "location_region_id", insertable = false, updatable = false)
+    private Integer locationRegionId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "payment_id", nullable = false)
     private Payment payment;
 
-<<<<<<< HEAD
     public Order(Integer id) {
         this.id = id;
     }
-=======
-    @Column(name = "payment_id", insertable = false, updatable = false )
-    private Integer paymentId;
 
-
->>>>>>> huy_dev
 }

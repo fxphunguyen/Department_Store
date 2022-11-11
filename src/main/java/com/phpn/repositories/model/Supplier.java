@@ -1,31 +1,19 @@
 package com.phpn.repositories.model;
 
-<<<<<<< HEAD
+import javax.persistence.*;
+
 import lombok.*;
 import lombok.experimental.Accessors;
 
-import javax.persistence.*;
-
 @Getter
 @Setter
-=======
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
-
-import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
-@Data
->>>>>>> huy_dev
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-@Entity
 @Table(name = "suppliers")
 public class Supplier {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -51,21 +39,31 @@ public class Supplier {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
-<<<<<<< HEAD
     private Employee employee;
-=======
-    private Employer employee;
 
->>>>>>> huy_dev
+    @Column(name = "employee_id", insertable = false, updatable = false)
+    private Integer employeeId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "location_region_id", nullable = false)
     private LocationRegion locationRegion;
-<<<<<<< HEAD
 
-    public Supplier(Integer id) {
-        this.id = id;
+    @Column(name = "location_region_id", insertable = false, updatable = false)
+    private Integer locationRegionId;
+
+    public Supplier(Integer employeeId, Integer locationRegionId) {
+        setEmployeeId(employeeId);
+        setLocationRegionId(locationRegionId);
     }
-=======
->>>>>>> huy_dev
+
+    public Supplier setEmployeeId(Integer employeeId) {
+        this.employee = new Employee(this.employeeId = employeeId);
+        return this;
+    }
+
+    public Supplier setLocationRegionId(Integer locationRegionId) {
+        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+        return this;
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.phpn.repositories.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.Set;
 @Entity
 @Table(name = "order_status")
 public class OrderStatus {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

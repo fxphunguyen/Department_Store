@@ -6,16 +6,15 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-@Entity
 @Table(name = "categories")
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -24,11 +23,7 @@ public class Category {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-<<<<<<< HEAD
-
-=======
-    public  Category(Integer id){
-        this.id= id;
+    public Category(Integer id) {
+        this.id = id;
     }
->>>>>>> huy_dev
 }
