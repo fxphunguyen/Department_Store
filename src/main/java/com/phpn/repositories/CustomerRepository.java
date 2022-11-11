@@ -11,8 +11,7 @@ import java.util.List;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer , Long> {
-<<<<<<< HEAD
-=======
+
 
     @Query("SELECT c " +
             "FROM Customer c " +
@@ -27,6 +26,5 @@ public interface CustomerRepository extends JpaRepository<Customer , Long> {
             "WHERE c.deleted = :deleted ")
     List<CustomerResult> findCustomerByDeleted(boolean deleted);
 
->>>>>>> 9120c2af7e0c652f7a1143329c5de45d202f1f34
 
 }

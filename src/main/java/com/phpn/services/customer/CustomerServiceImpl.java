@@ -3,14 +3,25 @@ package com.phpn.services.customer;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import com.phpn.dto.customer.CustomerCreate;
+import com.phpn.dto.customer.CustomerResult;
+import com.phpn.mappers.customer.CustomerMapper;
+import com.phpn.repositories.CustomerRepository;
+import com.phpn.repositories.LocationRegionRepository;
+import com.phpn.repositories.model.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
 
 
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
 
-<<<<<<< HEAD
-=======
  @Autowired
  LocationRegionRepository locationRegionRepository;
 
@@ -27,6 +38,10 @@ public class CustomerServiceImpl implements CustomerService {
  }
 
 
+ @Override
+ public void deleteCustomer(Integer id) {
+
+ }
 
  @Override
  public ResponseEntity<?> createCustomer(Customer customer) {
@@ -52,12 +67,11 @@ public class CustomerServiceImpl implements CustomerService {
 
  @Override
  public List<CustomerResult> findCustomerByDeleted(boolean deleted) {
-  return null;
+  return customerRepository.findCustomerByDeleted(deleted);
  }
 
  @Override
  public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
-  return null;
+  return customerRepository.findCustomerByDeleted(deleted);
  }
->>>>>>> 9120c2af7e0c652f7a1143329c5de45d202f1f34
 }
