@@ -1,9 +1,5 @@
 package com.phpn.dto.product;
 
-<<<<<<< HEAD
-public class ProductResult {
-}
-=======
 import java.math.BigDecimal;
 
 import lombok.Getter;
@@ -38,4 +34,3 @@ public class ProductResult {
     private Boolean deleted;
 
 }
->>>>>>> ngoc_dev

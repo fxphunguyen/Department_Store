@@ -1,15 +1,14 @@
 package com.phpn.repositories.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
@@ -24,10 +23,8 @@ public class DeliveryStatus {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
+    public DeliveryStatus(Integer id) {
+        this.id = id;
 
-<<<<<<< HEAD
-=======
-    public DeliveryStatus(Integer integer) {
     }
->>>>>>> ngoc_dev
 }
