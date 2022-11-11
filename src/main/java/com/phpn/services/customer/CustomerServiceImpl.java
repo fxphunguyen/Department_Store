@@ -6,7 +6,6 @@ import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
-import com.phpn.services.locationRegion.LocationRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,20 +29,16 @@ public class CustomerServiceImpl implements CustomerService {
  @Autowired
  CustomerRepository customerRepository;
 
+
  @Override
- public List<CustomerResult> findAllCustomer() {
-  return customerRepository.findAllCustomer();
-//          .stream()
-//          .map(CustomerResult ->  customerMapper.toDTO(CustomerResult))
-//          .collect(Collectors.toList());
+ public void deleteCustomer(Integer id) {
+
  }
 
  @Override
  public void deleteCustomer(Long id) {
-   customerRepository.deleteById(id);
+
  }
-
-
 
  @Override
  public ResponseEntity<?> createCustomer(Customer customer) {
@@ -57,10 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
 
  }
 
- @Override
- public CustomerResult createCustomerResult(CustomerCreate customerCreate) {
-  return null;
- }
+
 
  @Override
  public CustomerResult create(CustomerCreate customerCreate) {
@@ -69,11 +61,15 @@ public class CustomerServiceImpl implements CustomerService {
 
  @Override
  public List<CustomerResult> findCustomerByDeleted(boolean deleted) {
-  return null;
+  return customerRepository.findCustomerByDeleted(deleted);
  }
 
  @Override
  public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
-  return null;
+  return customerRepository.findAllCustomerResultByDeleted(deleted)
+          .stream()
+          .map(customerMapper :: toDTO)
+          .collect(Collectors.toList());
  }
+
 }
