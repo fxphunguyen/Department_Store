@@ -6,7 +6,6 @@ import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
-import com.phpn.services.locationRegion.LocationRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -37,6 +35,10 @@ public class CustomerServiceImpl implements CustomerService {
  }
 
 
+ @Override
+ public void deleteCustomer(Integer id) {
+
+ }
 
  @Override
  public ResponseEntity<?> createCustomer(Customer customer) {
@@ -62,11 +64,11 @@ public class CustomerServiceImpl implements CustomerService {
 
  @Override
  public List<CustomerResult> findCustomerByDeleted(boolean deleted) {
-  return null;
+  return customerRepository.findCustomerByDeleted(deleted);
  }
 
  @Override
  public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
-  return null;
+  return customerRepository.findCustomerByDeleted(deleted);
  }
 }
