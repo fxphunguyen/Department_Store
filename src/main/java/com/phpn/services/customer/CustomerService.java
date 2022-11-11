@@ -11,13 +11,17 @@ public interface CustomerService {
 
     void  deleteCustomer (Integer id);
 
-    void deleteCustomer(Long id);
-
     ResponseEntity<?> createCustomer(Customer customer);
 
     List<CustomerResult> findById(Integer id);
 
 
+<<<<<<< HEAD
+=======
+    CustomerResult createCustomerResult(CustomerCreate customerCreate);
+
+
+>>>>>>> phuoc_dev
     CustomerResult create(CustomerCreate customerCreate);
 
     List<CustomerResult> findCustomerByDeleted(boolean deleted);

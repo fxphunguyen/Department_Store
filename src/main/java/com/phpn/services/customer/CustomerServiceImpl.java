@@ -35,10 +35,6 @@ public class CustomerServiceImpl implements CustomerService {
 
  }
 
- @Override
- public void deleteCustomer(Long id) {
-
- }
 
  @Override
  public ResponseEntity<?> createCustomer(Customer customer) {
@@ -52,6 +48,10 @@ public class CustomerServiceImpl implements CustomerService {
 
  }
 
+ @Override
+ public CustomerResult createCustomerResult(CustomerCreate customerCreate) {
+  return null;
+ }
 
 
  @Override
