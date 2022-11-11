@@ -29,8 +29,6 @@ public interface CustomerRepository extends JpaRepository<Customer , Long> {
         " FROM Customer as c , LocationRegion as l  WHERE c.locationRegionId = l.id  AND c.deleted= false ")
 List<CustomerResult> findAllCustomer();
 
-
-
     @Query("SELECT c " +
             "FROM Customer c " +
             "WHERE c.deleted = :deleted ")
