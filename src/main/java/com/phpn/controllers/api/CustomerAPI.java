@@ -4,10 +4,16 @@ import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.customer.CustomerMapper;
 
+
+import com.phpn.mappers.localtionRegion.LocaltionRegionMapper;
+
+
 import com.phpn.mappers.localtionRegion.LocaltionRegionMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.model.Customer;
+
 import com.phpn.repositories.model.LocationRegion;
+
 import com.phpn.services.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,8 +53,8 @@ public class CustomerAPI {
     }
 
       @GetMapping("/customer_list")
-        public ResponseEntity<?> showListCustomerByDelete() {
-    List<CustomerResult> customers = customerService.findAllCustomer();
+        public ResponseEntity<?> showListCustomerByDelete(boolean deleted) {
+    List<CustomerResult> customers = customerService.findAllCustomerResultByDeleted(deleted);
     return new ResponseEntity<>(customers, HttpStatus.OK);
 }
 
