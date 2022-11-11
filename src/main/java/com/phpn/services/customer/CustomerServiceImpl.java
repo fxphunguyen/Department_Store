@@ -30,13 +30,6 @@ public class CustomerServiceImpl implements CustomerService {
  @Autowired
  CustomerRepository customerRepository;
 
- @Override
- public List<CustomerResult> findAllCustomer() {
-  return customerRepository.findAllCustomer();
-//          .stream()
-//          .map(CustomerResult ->  customerMapper.toDTO(CustomerResult))
-//          .collect(Collectors.toList());
- }
 
  @Override
  public void deleteCustomer(Long id) {
@@ -69,6 +62,11 @@ public class CustomerServiceImpl implements CustomerService {
 
  @Override
  public List<CustomerResult> findCustomerByDeleted(boolean deleted) {
+  return null;
+ }
+
+ @Override
+ public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
   return null;
  }
 }

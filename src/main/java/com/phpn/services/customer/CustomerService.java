@@ -8,8 +8,6 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface CustomerService {
-    List<CustomerResult> findAllCustomer();
-
     void  deleteCustomer (Long id);
     ResponseEntity<?> createCustomer(Customer customer);
     List<CustomerResult> findById(Integer id);
