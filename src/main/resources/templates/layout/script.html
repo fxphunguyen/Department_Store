@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" class="sapo-menu-expand sapo-menu-toggle-active" lang="vi-VN">
 <th:block th:fragment="script">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66880228-3"></script>
+    <script>
+        var CKEDITOR_BASEPATH = '/v2/lib/ckeditor/';
+        var S_LANG = 'vi-VN';
+        var S_LANG_RES = 'https://sapo.dktcdn.net/sapo-frontend-x/d9ad77d.i18n_vi-VN.json';
+    </script>
     <script src="https://sapo.dktcdn.net/sapo-frontend-x/a23a716.client.bundle.js"></script>
     <script src="https://sapo.dktcdn.net/fe-cdn-production/lib/upload-files/jquery.multifile.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66880228-3"></script>
 </th:block>
 </html>

@@ -4,6 +4,10 @@
     background-color: #fff;
 }
 
+.MuiTypography-h3 {
+    font-size: 20px !important;
+}
+
 .MuiPaper-rounded {
     border-radius: 3px;
 }

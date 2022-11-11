@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -27,12 +28,6 @@ public class CustomerServiceImpl implements CustomerService {
 
  @Autowired
  CustomerRepository customerRepository;
-
-
- @Override
- public void deleteCustomer(Long id) {
-   customerRepository.deleteById(id);
- }
 
 
  @Override
@@ -69,6 +64,10 @@ public class CustomerServiceImpl implements CustomerService {
 
  @Override
  public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
-  return customerRepository.findCustomerByDeleted(deleted);
+  return customerRepository.findAllCustomerResultByDeleted(deleted)
+          .stream()
+          .map(customerMapper :: toDTO)
+          .collect(Collectors.toList());
  }
+
 }
