@@ -1,0 +1,42 @@
+# Maven Project
+mvnw
+mvnw.cmd
+.mvn/wrapper/maven-wrapper.jar
+target/
+
+# Gradle Project
+gradlew
+gradlew.bat
+gradle/wrapper/gradle-wrapper.jar
+build/
+.gradle/
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+
+# IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+out/
+.idea/
+
+# NetBeans
+dist/
+nbbuild/
+nbdist/
+nbproject/
+.nb-gradle/
+
+# Visual Studio Code
+.vscode/
+
+# Mac OS
+.DS_Store
