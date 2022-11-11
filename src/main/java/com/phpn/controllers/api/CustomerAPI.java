@@ -27,6 +27,7 @@ import java.util.List;
 @RequestMapping("/api/customers")
 public class CustomerAPI {
 
+<<<<<<< HEAD
     @Autowired
     private LocaltionRegionMapper LocaltionRegionMapper;
 
@@ -87,4 +88,6 @@ public class CustomerAPI {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+=======
+>>>>>>> phu_dev
 }
