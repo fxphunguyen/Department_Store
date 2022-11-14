@@ -25,6 +25,7 @@ public interface CustomerService {
 
     List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted);
 
+    List<CustomerResult> findAll();
 
 
 

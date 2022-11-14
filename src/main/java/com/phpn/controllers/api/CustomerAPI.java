@@ -48,7 +48,7 @@ public class CustomerAPI {
 
       @GetMapping("/customer_list")
         public ResponseEntity<?> showListCustomerByDelete(boolean deleted) {
-    List<CustomerResult> customers = customerService.findAllCustomerResultByDeleted(deleted);
+    List<CustomerResult> customers = customerService.findAll();
     return new ResponseEntity<>(customers, HttpStatus.OK);
 }
 

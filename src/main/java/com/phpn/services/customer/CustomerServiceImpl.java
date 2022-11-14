@@ -20,56 +20,63 @@ import java.util.stream.Collectors;
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
 
- @Autowired
- LocationRegionRepository locationRegionRepository;
+    @Autowired
+    LocationRegionRepository locationRegionRepository;
 
- @Autowired
- CustomerMapper customerMapper;
+    @Autowired
+    CustomerMapper customerMapper;
 
- @Autowired
- CustomerRepository customerRepository;
-
-
- @Override
- public void deleteCustomer(Integer id) {
-
- }
+    @Autowired
+    CustomerRepository customerRepository;
 
 
- @Override
- public ResponseEntity<?> createCustomer(Customer customer) {
-   customerRepository.save(customer);
-  return new ResponseEntity<>(HttpStatus.OK);
- }
+    @Override
+    public void deleteCustomer(Integer id) {
 
- @Override
- public List<CustomerResult> findById(Integer id) {
-  return  null;
+    }
 
- }
+    @Override
+    public ResponseEntity<?> createCustomer(Customer customer) {
+        customerRepository.save(customer);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
- @Override
- public CustomerResult createCustomerResult(CustomerCreate customerCreate) {
-  return null;
- }
+    @Override
+    public List<CustomerResult> findById(Integer id) {
+        return null;
+
+    }
+
+    @Override
+    public CustomerResult createCustomerResult(CustomerCreate customerCreate) {
+        return null;
+    }
 
 
- @Override
- public CustomerResult create(CustomerCreate customerCreate) {
-  return customerMapper.toDTO(customerRepository.save(customerMapper.toModel(customerCreate)));
- }
+    @Override
+    public CustomerResult create(CustomerCreate customerCreate) {
+        return customerMapper.toDTO(customerRepository.save(customerMapper.toModel(customerCreate)));
+    }
 
- @Override
- public List<CustomerResult> findCustomerByDeleted(boolean deleted) {
-  return customerRepository.findCustomerByDeleted(deleted);
- }
+    @Override
+    public List<CustomerResult> findCustomerByDeleted(boolean deleted) {
+        return customerRepository.findCustomerByDeleted(deleted);
+    }
 
- @Override
- public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
-  return customerRepository.findAllCustomerResultByDeleted(deleted)
-          .stream()
-          .map(customerMapper :: toDTO)
-          .collect(Collectors.toList());
- }
+    @Override
+    public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
+        return customerRepository.findAllCustomerResultByDeleted(deleted)
+                .stream()
+                .map(customerMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CustomerResult> findAll() {
+        return customerRepository.findAll()
+                .stream()
+                .map(customer -> customerMapper.toDTO(customer))
+                .collect(Collectors.toList());
+    }
 
 }
