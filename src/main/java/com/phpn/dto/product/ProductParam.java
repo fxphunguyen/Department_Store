@@ -19,8 +19,6 @@ public class ProductParam {
     private String title;
     private String image;
     private String status;
-    private String createAt;
-    private String updateAt;
     private String description;
     private String unit;
     private String sku;
