@@ -56,6 +56,13 @@ public class Customer {
     @JoinColumn(name = "location_region_id", nullable = false)
     private LocationRegion locationRegion;
 
+    @Column(name = "employee-id", insertable = false,updatable = false)
+    private Integer employeeId;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "employee-id", nullable = false)
+    private Employee employee;
+
     @Column(name = "deleted", nullable = false)
     private Boolean deleted;
 
