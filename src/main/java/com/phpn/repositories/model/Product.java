@@ -63,15 +63,12 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
-
-
     @Column(name = "category_id", insertable = false, updatable = false)
     private Integer categoryId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "brand_id", nullable = false)
     private Brand brand;
-
     @Column(name = "brand_id", insertable = false, updatable = false)
     private Integer brandId;
 
