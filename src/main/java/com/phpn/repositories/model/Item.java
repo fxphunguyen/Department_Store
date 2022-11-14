@@ -27,7 +27,7 @@ public class Item {
     @Column(name = "mrp")
     private Float mrp;
 
-    @Column(name = "discounts")
+    @Column(name = "discounts", nullable = false)
     private Float discount;
 
     @Column(name = "price", precision = 10, scale = 2)
@@ -71,7 +71,7 @@ public class Item {
     private Integer orderId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employer_id")
+    @JoinColumn(name = "employer_id", nullable = false)
     private Employee employee;
 
     @Column(name = "employer_id", insertable = false, updatable = false)
