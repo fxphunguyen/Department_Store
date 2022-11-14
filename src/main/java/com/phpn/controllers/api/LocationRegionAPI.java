@@ -36,11 +36,11 @@ public class LocationRegionAPI {
 
     }
 
-
-    @GetMapping("/{id}")
-    public LocationRegionResult findLocationRegionByID(@PathVariable Integer id){
-        LocationRegionResult locationRegion = locationRegionService.findById( id);
-       return locationRegion;
-    }
+//
+//    @GetMapping("/{id}")
+//    public LocationRegionResult findLocationRegionByID(@PathVariable Integer id){
+//        LocationRegionResult locationRegion = locationRegionService.findById( id);
+//       return locationRegion;
+//    }
 
 }
