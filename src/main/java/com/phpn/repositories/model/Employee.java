@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Setter
 @Getter
@@ -37,12 +38,19 @@ public class Employee {
     @JoinColumn(name = "location_region_id", nullable = false)
     private LocationRegion locationRegion;
 
+    @Column(name = "location_region_id", insertable = false, updatable = false)
+    private Integer locationRegionId;
+
     @Lob
     @Column(name = "gender")
     private String gender;
 
+    public Employee(Integer locationRegionId) {
+        setLocationRegionId(locationRegionId);
+    }
 
-    public Employee(Integer id) {
-        this.id = id;
+    public Employee setLocationRegionId(Integer locationRegionId){
+        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+        return this;
     }
 }
