@@ -18,42 +18,24 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/locationRegion")
 public class LocationRegionAPI {
-<<<<<<< HEAD
     @Autowired
     LocationRegionService locationRegionService;
 
     @Autowired
     LocationRegionRepository locationRegionRepository;
 
-=======
-
-
-
-    @Autowired
-    LocationRegionService locationRegionService;
-
-
-    @Autowired
-    LocationRegionRepository locationRegionRepository;
-
-
->>>>>>> e60c454bfdf40ca37588191641277538e395640e
     @GetMapping()
     public ResponseEntity<?> findAllLocationReggion(){
         List<LocationRegion>locationRegions =locationRegionRepository.findAll();
    return  new ResponseEntity<>(locationRegions , HttpStatus.OK);
 
     }
-
-<<<<<<< HEAD
-=======
-        LocationRegionResult locationRegion = locationRegionService.findById( id);
 //
 //    @GetMapping("/{id}")
 //    public LocationRegionResult findLocationRegionByID(@PathVariable Integer id){
 //        LocationRegionResult locationRegion = locationRegionService.findById( id);
 //       return locationRegion;
 //    }
->>>>>>> e60c454bfdf40ca37588191641277538e395640e
+
 
 }
