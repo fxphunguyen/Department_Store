@@ -2,6 +2,8 @@ package com.phpn.services.product;
 
 import java.util.List;
 
+import com.phpn.dto.product.ProductCreateParam;
+import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.mappers.ProductMapper;
 import com.phpn.repositories.model.Product;
@@ -32,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product create(Product product) {
+    public Product create(ProductCreateParam productCreateParam) {
         return null;
     }
 
