@@ -27,7 +27,7 @@ public class Item {
     @Column(name = "mrp")
     private Float mrp;
 
-    @Column(name = "discounts")
+    @Column(name = "discounts", nullable = false)
     private Float discount;
 
     @Column(name = "price", precision = 10, scale = 2)

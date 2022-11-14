@@ -45,8 +45,6 @@ public class ProductMapper {
         .setTitle(productParam.getTitle())
         .setImage(productParam.getImage())
         .setStatus(productParam.getStatus())
-        .setCreateAt(productParam.getCreateAt())
-        .setUpdateAt(productParam.getUpdateAt())
         .setDescription(productParam.getDescription())
         .setUnit(productParam.getUnit())
         .setSku(productParam.getSku())

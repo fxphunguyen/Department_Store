@@ -31,7 +31,11 @@ public class LocationRegionAPI {
    return  new ResponseEntity<>(locationRegions , HttpStatus.OK);
 
     }
-//
+
+
+
+//        LocationRegionResult locationRegion = locationRegionService.findById( id);
+
 //    @GetMapping("/{id}")
 //    public LocationRegionResult findLocationRegionByID(@PathVariable Integer id){
 //        LocationRegionResult locationRegion = locationRegionService.findById( id);
