@@ -1,7 +1,5 @@
 package com.phpn.controllers.api;
 
-
-import com.phpn.dto.localtionRegion.LocationRegionResult;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.LocationRegion;
 import com.phpn.services.locationRegion.LocationRegionService;
