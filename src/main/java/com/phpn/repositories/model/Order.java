@@ -37,9 +37,11 @@ public class Order {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
+    @Column(name = "customer_id", insertable = false, updatable = false)
+    private Integer customerId;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
-
     private Employee employee;
 
 
@@ -61,5 +63,4 @@ public class Order {
     public Order(Integer id) {
         this.id = id;
     }
-
 }

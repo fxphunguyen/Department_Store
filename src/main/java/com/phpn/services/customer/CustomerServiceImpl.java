@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -42,14 +43,17 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<CustomerResult> findById(Integer id) {
-        return null;
-
+    public CustomerResult findById(Integer id) {
+        Optional<Customer> customerOptional = customerRepository.findById(id);
+//if (customerOptional.isPresent()){
+//    throw  new RuntimeException("Không tìm thấy địa chỉ id" + id);
+//}
+        return customerMapper.toDTO(customerOptional.get());
     }
 
     @Override
     public CustomerResult createCustomerResult(CustomerCreate customerCreate) {
-        return null;
+        return customerMapper.toDTO(customerRepository.save(customerMapper.toModel(customerCreate)));
     }
 
 
@@ -77,6 +81,11 @@ public class CustomerServiceImpl implements CustomerService {
                 .stream()
                 .map(customer -> customerMapper.toDTO(customer))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public CustomerResult update(CustomerResult customerResult) {
+        return customerMapper.toDTO(customerRepository.save(customerMapper.toModel(customerResult)));
     }
 
 }

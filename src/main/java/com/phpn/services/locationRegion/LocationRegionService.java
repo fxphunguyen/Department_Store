@@ -1,15 +1,18 @@
 package com.phpn.services.locationRegion;
 
+import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.localtionRegion.LocationRegionResult;
+import com.phpn.dto.localtionRegion.LocationRegionCreate;
 import com.phpn.repositories.model.LocationRegion;
-import org.springframework.http.ResponseEntity;
-
-import java.util.List;
-import java.util.Optional;
 
 public interface LocationRegionService {
+
+
+
     LocationRegionResult findById(Integer id);
 
+    LocationRegion save(LocationRegion locationRegion);
 
+    LocationRegionCreate create(LocationRegionCreate locationRegionCreate);
 
 }
