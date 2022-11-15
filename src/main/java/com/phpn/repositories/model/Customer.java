@@ -69,10 +69,7 @@ public class Customer {
     @Column(name = "employee_id", insertable = false,updatable = false)
     private Integer employeeId;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> huy_dev
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
