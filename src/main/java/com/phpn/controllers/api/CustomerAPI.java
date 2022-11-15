@@ -4,8 +4,8 @@ import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.customer.CustomerMapper;
 
-import com.phpn.mappers.localtionRegion.LocaltionRegionMapper;
 
+import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.LocationRegion;
@@ -23,7 +23,7 @@ import java.util.List;
 public class CustomerAPI {
 
     @Autowired
-    private LocaltionRegionMapper localtionRegionMapper;
+    private LocationRegionMapper locationRegionMapper;
 
 
     @Autowired
@@ -58,21 +58,21 @@ public class CustomerAPI {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findByIdItem(@PathVariable Integer id) {
+    public ResponseEntity<?> findById(@PathVariable Integer id) {
         CustomerResult itemResult = customerService.findById(id);
         return new ResponseEntity<>(itemResult, HttpStatus.OK);
     }
 
     @PostMapping("/delete/{id}")
     public void deleteCustomerById(@PathVariable Integer id) {
-        customerService.deleteCustomer(id);
+        customerService.deleteStatusCustomer(id);
     }
 
     @PostMapping("/create")
     public ResponseEntity<?> createCustomer(@RequestBody CustomerCreate customerCreate) {
         customerCreate.getLocationReionCreate().setId(0);
-        LocationRegion locationRegion = locationRegionService.save(localtionRegionMapper.toModel(customerCreate));
-        customerCreate.setLocationReionCreate(localtionRegionMapper.toModel(locationRegion));
+        LocationRegion locationRegion = locationRegionService.save(locationRegionMapper.toModel(customerCreate));
+        customerCreate.setLocationReionCreate(locationRegionMapper.toModel(locationRegion));
         Customer customer = customerRepository.save(customerMapper.toModel(customerCreate));
         return new ResponseEntity<>(customer, HttpStatus.OK);
 

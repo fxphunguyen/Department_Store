@@ -1,7 +1,7 @@
 package com.phpn.dto.customer;
 
 
-import com.phpn.dto.localtionRegion.LocationRegionCreate;
+import com.phpn.dto.locationRegion.LocationRegionCreate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -3,7 +3,8 @@ package com.phpn.mappers.customer;
 
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
-import com.phpn.mappers.localtionRegion.LocaltionRegionMapper;
+
+import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,7 @@ public class CustomerMapper {
 
 
     @Autowired
-    LocaltionRegionMapper localtionRegionMapper;
+    LocationRegionMapper locationRegionMapper;
 
     public CustomerResult toDTO(Customer customer) {
         return new CustomerResult()
@@ -46,7 +47,7 @@ public class CustomerMapper {
                 .setCreateAt(customerCreate.getCreateAt())
                 .setUpdateAt(customerCreate.getUpdateAt())
 //                .setDeleted(customerCreate.())
-                .setLocationRegion(localtionRegionMapper.toModel(customerCreate));
+                .setLocationRegion(locationRegionMapper.toModel(customerCreate));
 
     }
 

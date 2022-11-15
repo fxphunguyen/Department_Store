@@ -2,9 +2,9 @@ package com.phpn.services.locationRegion;
 
 
 
-import com.phpn.dto.localtionRegion.LocationRegionResult;
+import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.exceptions.NotFoundException;
-import com.phpn.mappers.localtionRegion.LocaltionRegionMapper;
+import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.LocationRegion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.Optional;
 public class LocationRegionServiceImpl implements LocationRegionService{
 
     @Autowired
-    LocaltionRegionMapper localtionRegionMapper;
+    LocationRegionMapper locationRegionMapper;
 
     @Autowired
     LocationRegionRepository locationRegionRepository;
@@ -27,7 +27,7 @@ public class LocationRegionServiceImpl implements LocationRegionService{
         if (locationRegionOptional.isPresent()){
             throw new NotFoundException("Không tìm thấy id phù  hợp" + id);
         }
-        return localtionRegionMapper.toDTO(locationRegionOptional.get());
+        return locationRegionMapper.toDTO(locationRegionOptional.get());
     }
 
     @Override

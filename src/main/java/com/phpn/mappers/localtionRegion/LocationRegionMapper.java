@@ -2,15 +2,13 @@ package com.phpn.mappers.localtionRegion;
 
 
 import com.phpn.dto.customer.CustomerCreate;
-import com.phpn.dto.customer.CustomerResult;
-import com.phpn.dto.localtionRegion.LocationRegionCreate;
-import com.phpn.dto.localtionRegion.LocationRegionResult;
-import com.phpn.repositories.model.Customer;
+import com.phpn.dto.locationRegion.LocationRegionCreate;
+import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.repositories.model.LocationRegion;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LocaltionRegionMapper {
+public class LocationRegionMapper {
 
     public LocationRegionResult toDTO(LocationRegion locationRegion) {
         return new LocationRegionResult()

@@ -25,15 +25,23 @@ public class CustomerServiceImpl implements CustomerService {
     LocationRegionRepository locationRegionRepository;
 
     @Autowired
-    CustomerMapper customerMapper;
+    private  CustomerMapper customerMapper;
 
     @Autowired
-    CustomerRepository customerRepository;
+    private  CustomerRepository customerRepository;
+
+
 
 
     @Override
     public void deleteCustomer(Integer id) {
+        customerRepository.deleteById(id);
+    }
 
+    @Override
+    public void deleteStatusCustomer(Integer id) {
+        Customer customer = customerRepository.findById(id).get();;
+        customer.setDeleted(true);
     }
 
     @Override
@@ -45,9 +53,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerResult findById(Integer id) {
         Optional<Customer> customerOptional = customerRepository.findById(id);
-//if (customerOptional.isPresent()){
-//    throw  new RuntimeException("Không tìm thấy địa chỉ id" + id);
-//}
         return customerMapper.toDTO(customerOptional.get());
     }
 

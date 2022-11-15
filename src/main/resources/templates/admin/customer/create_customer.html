@@ -186,18 +186,11 @@
                                                     <div class="MuiBox-root jss20603 jss21087">
                                                         <div class="MuiBox-root jss20604 jss21097">
                                                             <p class="MuiTypography-root MuiTypography-body1"
-                                                               style="color: rgb(70, 81, 95);">Khu
-                                                                vực</p>
+                                                               style="color: rgb(70, 81, 95);">Tỉnh - Thành Phố </p>
                                                         </div>
-                                                        <div class="MuiBox-root jss20605 jss21096" tabindex="0">
-                                                            <p
-                                                                    class="MuiTypography-root label-select MuiTypography-body1 MuiTypography-colorTextPrimary">
-                                                                Chọn Tỉnh/Thành phố - Quận/Huyện</p>
-                                                            <svg class="MuiSvgIcon-root arrow-icon"
-                                                                 focusable="false" viewBox="0 0 24 24"
-                                                                 aria-hidden="true">
-                                                                <path d="M7 10l5 5 5-5z"></path>
-                                                            </svg>
+                                                        <div tabindex="0">
+                                                            <select class="jss87874" name="province" id="province" ></select>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -206,20 +199,24 @@
                                                         <div class="MuiBox-root jss20622 jss21112">
                                                             <p class="MuiTypography-root MuiTypography-body1"
                                                                style="color: rgb(70, 81, 95);">
-                                                                Phường xã</p>
+                                                            Huyện </p>
                                                         </div>
-                                                        <div class="MuiBox-root jss20623 jss21111" tabindex="0">
-                                                            <p
-                                                                    class="MuiTypography-root label-select MuiTypography-body1 MuiTypography-colorTextPrimary">
-                                                                Chọn Phường/Xã</p>
-                                                            <svg class="MuiSvgIcon-root" focusable="false"
-                                                                 viewBox="0 0 24 24"
-                                                                 aria-hidden="true">
-                                                                <path d="M7 10l5 5 5-5z"></path>
-                                                            </svg>
-                                                        </div>
+                                                        <select  name="district" id="district" class="jss87874 "></select>
                                                     </div>
                                                 </div>
+                                                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
+                                                    <div class="MuiBox-root jss20621 jss21102">
+                                                        <div class="MuiBox-root jss20622 jss21112">
+                                                            <p class="MuiTypography-root MuiTypography-body1"
+                                                               style="color: rgb(70, 81, 95);">
+                                                                Xã </p>
+                                                        </div>
+                                                        <select name="ward" id="ward" class="form-select"></select>
+                                                    </div>
+                                                </div>
+
+
+
                                             </div>
                                         </div>
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
@@ -2076,6 +2073,7 @@
     }
 
     function getAllDistrictsByProvinceId(provinceId) {
+        $("#district").append("");
         return $.ajax({
             headers: {
                 "accept": "application/json",
