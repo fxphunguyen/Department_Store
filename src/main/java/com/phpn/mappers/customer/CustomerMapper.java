@@ -3,12 +3,18 @@ package com.phpn.mappers.customer;
 
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
+import com.phpn.mappers.localtionRegion.LocaltionRegionMapper;
 import com.phpn.repositories.model.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
 @Component
 public class CustomerMapper {
+
+
+    @Autowired
+    LocaltionRegionMapper localtionRegionMapper;
 
     public CustomerResult toDTO(Customer customer) {
         return new CustomerResult()
@@ -22,12 +28,14 @@ public class CustomerMapper {
                 .setStatus(customer.getStatus())
                 .setCreateAt(customer.getCreateAt())
                 .setUpdateAt(customer.getUpdateAt())
-                .setAddress(customer.getUpdateAt());
+                .setEmployeeId(customer.getEmployeeId())
+                .setLocationRegionId(customer.getLocationRegionId());
+
     }
+
     public Customer toModel(CustomerCreate customerCreate) {
-//        return new Customer(customerCreate.getId(),customerCreate.)
         return new Customer()
-                .setId(customerCreate.getId())
+                .setEmployeeId(2)
                 .setCustomerCode(customerCreate.getCustomerCode())
                 .setName(customerCreate.getName())
                 .setPhone(customerCreate.getPhone())
@@ -36,8 +44,28 @@ public class CustomerMapper {
                 .setBirthday(customerCreate.getBirthday())
                 .setStatus(customerCreate.getStatus())
                 .setCreateAt(customerCreate.getCreateAt())
-                .setUpdateAt(customerCreate.getUpdateAt());
+                .setUpdateAt(customerCreate.getUpdateAt())
+//                .setDeleted(customerCreate.())
+                .setLocationRegion(localtionRegionMapper.toModel(customerCreate));
+
     }
 
+<<<<<<< HEAD
+=======
+    public Customer toModel(CustomerResult customerResult) {
+        return new Customer(customerResult.getLocationRegionId(), customerResult.getLocationRegionId())
+                .setId(customerResult.getId())
+                .setCustomerCode(customerResult.getCustomerCode())
+                .setName(customerResult.getName())
+                .setPhone(customerResult.getPhone())
+                .setCustomerGroup(customerResult.getCustomerGroup())
+                .setEmail(customerResult.getEmail())
+                .setBirthday(customerResult.getBirthday())
+                .setStatus(customerResult.getStatus())
+                .setCreateAt(customerResult.getCreateAt())
+                .setUpdateAt(customerResult.getUpdateAt())
+                .setDeleted(customerResult.getDeleted());
+    }
+>>>>>>> huy_dev
 
 }

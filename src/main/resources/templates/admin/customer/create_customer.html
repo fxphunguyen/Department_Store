@@ -1,17 +1,16 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" lang="vi-VN" class="sapo-menu-expand sapo-menu-toggle-active">
 <head>
-    <th:block th:replace="/admin/customer/layout/header.html"/>
+    <th:block th:replace="/layout/header.html"/>
     <title>Danh sách khách hàng</title>
     <link rel="stylesheet" href="/assets/admin/css/customer/customer_create.css"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body data-new-gr-c-s-check-loaded="14.1085.0" cz-shortcut-listen="true">
 <div id="root" style="overflow: auto;">
-<<<<<<< HEAD
-    <th:block th:replace="/admin/customer/layout/menu.html"/>
-=======
-    <th:block th:replace="/admin/customer/layout/col_left.html"/>
->>>>>>> ngoc_dev
+    <th:block th:replace="/layout/menu.html"/>
+
     <div class="col-right  MuiBox-root jss64 jss40">
         <div class="MuiBox-root jss20292 jss20288 ">
             <div class="MuiBox-root jss20293 jss20291">
@@ -2035,85 +2034,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
-                            <div class="MuiPaper-root jss20448 MuiPaper-elevation1 MuiPaper-rounded"
-                                 style="box-shadow: rgba(168, 168, 168, 0.25) 0px 2px 4px; height: 100%;">
-                                <div class="MuiBox-root jss20747 jss20449 borderBottom">
-                                    <div class="MuiBox-root jss21169">
-                                        <h6 class="MuiTypography-root MuiTypography-h6" style="margin-left: 24px;">Cài
-                                            đặt nâng cao</h6>
-                                        <button class="MuiButtonBase-root MuiIconButton-root" tabindex="0" type="button"
-                                                title="Thiết lập các thông số tự động dùng trong các giao dịch"
-                                                style="padding: 0px; margin-left: 6px;"><span
-                                                class="MuiIconButton-label"><svg
-                                                class="MuiSvgIcon-root MuiSvgIcon-colorPrimary" focusable="false"
-                                                viewBox="0 0 12 12"
-                                                aria-hidden="true" style="width: 12px; height: 12px; cursor: pointer;">
-                            <path d="M5.4 3V4.2H6.6V3H5.4Z" fill="currenColor"></path>
-                            <path d="M5.4 6.6V9H7.2V7.8H6.6V5.4H4.8V6.6H5.4Z" fill="currenColor"></path>
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M6 0C2.688 0 0 2.688 0 6C0 9.312 2.688 12 6 12C9.312 12 12 9.312 12 6C12 2.688 9.312 0 6 0ZM1.2 6C1.2 8.646 3.354 10.8 6 10.8C8.646 10.8 10.8 8.646 10.8 6C10.8 3.354 8.646 1.2 6 1.2C3.354 1.2 1.2 3.354 1.2 6Z"
-                                  fill="currenColor"></path>
-                          </svg></span><span class="MuiTouchRipple-root"></span></button>
-                                    </div>
-                                </div>
-                                <div class="MuiBox-root jss20754" style="padding: 16px 24px 24px;">
-                                    <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2">
-                                        <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
-                                            <fieldset class="MuiFormControl-root jss20755">
-                                                <legend class="MuiFormLabel-root jss20756"
-                                                        style="font-weight: 500; padding-bottom: 12px;">
-                                                    Áp dụng ưu đãi
-                                                </legend>
-                                                <div class="MuiFormGroup-root" role="radiogroup"
-                                                     id="9bdac726-df29-448b-aaff-ec9d60761954">
-                                                    <label class="MuiFormControlLabel-root"><span
-                                                            class="MuiButtonBase-root MuiIconButton-root jss20772 MuiRadio-root MuiRadio-colorPrimary jss20766 jss20773 Mui-checked MuiIconButton-colorPrimary"
-                                                            aria-disabled="false"><span
-                                                            class="MuiIconButton-label"><input class="jss20775"
-                                                                                               type="radio"
-                                                                                               value="group" checked=""
-                                                                                               name="mui-radiogroup-41956">
-                                  <div class="jss20776 jss20778"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-                                                                      focusable="false" viewBox="0 0 24 24"
-                                                                      aria-hidden="true">
-                                      <path
-                                              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z">
-                                      </path>
-                                    </svg><svg class="MuiSvgIcon-root jss20777 MuiSvgIcon-fontSizeSmall"
-                                               focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                                      <path
-                                              d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z">
-                                      </path>
-                                    </svg></div>
-                                </span><span class="MuiTouchRipple-root"></span></span><span
-                                                            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1">Theo nhóm
-                                khách hàng</span></label><label class="MuiFormControlLabel-root"><span
-                                                        class="MuiButtonBase-root MuiIconButton-root jss20772 MuiRadio-root MuiRadio-colorPrimary jss20766 MuiIconButton-colorPrimary"
-                                                        aria-disabled="false"><span class="MuiIconButton-label"><input
-                                                        class="jss20775"
-                                                        type="radio" value="customer" name="mui-radiogroup-41956">
-                                  <div class="jss20776"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-                                                             focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                                      <path
-                                              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z">
-                                      </path>
-                                    </svg><svg class="MuiSvgIcon-root jss20777 MuiSvgIcon-fontSizeSmall"
-                                               focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                                      <path
-                                              d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z">
-                                      </path>
-                                    </svg></div>
-                                </span><span class="MuiTouchRipple-root"></span></span><span
-                                                        class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1">Theo khách
-                                hàng</span></label>
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -2124,5 +2045,87 @@
 </div>
 </div>
 </body>
+<th:block th:replace="/layout/script :: script" />
+<script>
+    Page();
+    hj('trigger', 'split_test_b');
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
 
+<script>
+
+    function getAllProvinces() {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "https://vapi.vnappmob.com/api/province/"
+        })
+            .done((data) => {
+                $.each(data.results, (i, item) => {
+                    let str = `<option value="${item.province_id}">${item.province_name}</option>`;
+                    $("#province").append(str);
+                });
+            })
+            .fail((jqXHR) => {
+
+            })
+    }
+
+    function getAllDistrictsByProvinceId(provinceId) {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "https://vapi.vnappmob.com/api/province/district/" + provinceId
+        })
+            .done((data) => {
+                $.each(data.results, (i, item) => {
+                    let str = `<option value="${item.district_id}">${item.district_name}</option>`;
+                    $("#district").append(str);
+                });
+            })
+            .fail((jqXHR) => {
+
+            })
+    }
+
+    function getAllWardsByDistrictId(districtId) {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "https://vapi.vnappmob.com/api/province/ward/" + districtId
+        })
+            .done((data) => {
+                $.each(data.results, (i, item) => {
+                    let str = `<option value="${item.ward_id}">${item.ward_name}</option>`;
+                    $("#ward").append(str);
+                });
+            })
+            .fail((jqXHR) => {
+
+            })
+    }
+
+    getAllProvinces().then(() => {
+        let provinceId = $("#province").val();
+
+        getAllDistrictsByProvinceId(provinceId).then(() => {
+
+            let districtId = $("#district").val();
+
+            getAllWardsByDistrictId(districtId);
+        });
+    });
+
+
+</script>
 </html>

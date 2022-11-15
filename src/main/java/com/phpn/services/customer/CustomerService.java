@@ -13,7 +13,7 @@ public interface CustomerService {
 
     ResponseEntity<?> createCustomer(Customer customer);
 
-    List<CustomerResult> findById(Integer id);
+    CustomerResult findById(Integer id);
 
 
     CustomerResult createCustomerResult(CustomerCreate customerCreate);
@@ -25,8 +25,8 @@ public interface CustomerService {
 
     List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted);
 
+    List<CustomerResult> findAll();
 
 
-
-
+    CustomerResult update(CustomerResult customerResult);
 }

@@ -31,14 +31,9 @@ public class CustomerResult {
 
     private String updateAt;
 
-    private String address;
+    private Integer locationRegionId;
 
-    private String wardName;
-
-    private String districtName;
-
-    private String provinceName;
-
+    private Integer employeeId;
     private Boolean deleted;
 
     public CustomerResult(String name, String phone, Boolean deleted) {

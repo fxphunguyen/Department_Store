@@ -44,5 +44,4 @@ public class LocationRegion {
         this.id = id;
     }
 
-
 }

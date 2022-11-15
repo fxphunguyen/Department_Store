@@ -1,13 +1,12 @@
 package com.phpn.repositories.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -16,6 +15,16 @@ import java.util.Set;
 @Entity
 @Table(name = "customers")
 public class Customer {
+
+    public  Customer(Integer id){
+        this.id = id;
+    }
+
+    public Customer(Integer employeeId , Integer locationRegionId){
+        this.employee = new Employee(this.employeeId = employeeId);
+        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -52,6 +61,7 @@ public class Customer {
     @Column(name = "location_region_id", insertable = false,updatable = false)
     private Integer locationRegionId;
 
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "location_region_id", nullable = false)
     private LocationRegion locationRegion;
@@ -59,11 +69,15 @@ public class Customer {
     @Column(name = "employee_id", insertable = false,updatable = false)
     private Integer employeeId;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> huy_dev
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
     @Column(name = "deleted", nullable = false)
-    private Boolean deleted;
+    private Boolean deleted = false;
 
 }

@@ -8,13 +8,14 @@ import com.phpn.mappers.localtionRegion.LocaltionRegionMapper;
 
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.model.Customer;
+import com.phpn.repositories.model.LocationRegion;
 import com.phpn.services.customer.CustomerService;
+import com.phpn.services.locationRegion.LocationRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Instant;
 import java.util.List;
 
 @RestController
@@ -22,7 +23,11 @@ import java.util.List;
 public class CustomerAPI {
 
     @Autowired
-    private LocaltionRegionMapper LocaltionRegionMapper;
+    private LocaltionRegionMapper localtionRegionMapper;
+
+
+    @Autowired
+    private LocationRegionService locationRegionService;
 
     @Autowired
     private CustomerService customerService;
@@ -46,11 +51,17 @@ public class CustomerAPI {
         return new ResponseEntity<>(customerResults, HttpStatus.OK);
     }
 
-      @GetMapping("/customer_list")
-        public ResponseEntity<?> showListCustomerByDelete(boolean deleted) {
-    List<CustomerResult> customers = customerService.findAllCustomerResultByDeleted(deleted);
-    return new ResponseEntity<>(customers, HttpStatus.OK);
-}
+    @GetMapping("/customer_list")
+    public ResponseEntity<?> showListCustomerByDelete(boolean deleted) {
+        List<Customer> customers = customerRepository.findAll();
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findByIdItem(@PathVariable Integer id) {
+        CustomerResult itemResult = customerService.findById(id);
+        return new ResponseEntity<>(itemResult, HttpStatus.OK);
+    }
 
     @PostMapping("/delete/{id}")
     public void deleteCustomerById(@PathVariable Integer id) {
@@ -58,27 +69,23 @@ public class CustomerAPI {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createCustomer(@RequestBody CustomerCreate[] customerCreates) {
-        CustomerCreate customerCreate = new CustomerCreate();
-        Customer customer = new Customer();
-        for (CustomerCreate iteam : customerCreates) {
-            customerCreate.setId(iteam.getId());
-            customerCreate.setCustomerCode(iteam.getCustomerCode());
-            customerCreate.setName(iteam.getName());
-            customerCreate.setPhone(iteam.getPhone());
-            customerCreate.setCustomerGroup(iteam.getCustomerGroup());
-            customerCreate.setEmail(iteam.getEmail());
-            customerCreate.setBirthday(iteam.getBirthday());
-            customerCreate.setStatus(iteam.getStatus());
-            customerCreate.setCreateAt(String.valueOf(Instant.now()));
-//
-////            customer.getLocationRegion().setId()
-//
-//            customerService.create(customerCreate);
-        }
+    public ResponseEntity<?> createCustomer(@RequestBody CustomerCreate customerCreate) {
+        customerCreate.getLocationReionCreate().setId(0);
+        LocationRegion locationRegion = locationRegionService.save(localtionRegionMapper.toModel(customerCreate));
+        customerCreate.setLocationReionCreate(localtionRegionMapper.toModel(locationRegion));
+        System.out.println(customerCreate);
+        Customer customer = customerRepository.save(customerMapper.toModel(customerCreate));
+        return new ResponseEntity<>(customer, HttpStatus.OK);
 
-
-        return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping("/update/{id}")
+    public ResponseEntity<?> updateCustomer(@RequestBody CustomerResult customerResult, @PathVariable Integer id) {
+        customerResult.setId(id);
+        customerService.update(customerResult);
+        return new ResponseEntity<>(customerResult, HttpStatus.OK);
+
+    }
+
 
 }
