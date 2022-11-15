@@ -35,6 +35,8 @@ public class ProductMapper {
                 .setImportPrice(product.getImportPrice())
                 .setWholesalePrice(product.getWholesalePrice())
                 .setRetailPrice(product.getRetailPrice())
-                .setQuantity(product.getQuantity());
+                .setQuantity(product.getQuantity())
+                .setCreateAt(product.getCreateAt())
+                .setUpdateAt(product.getUpdateAt());
     }
 }

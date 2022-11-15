@@ -8,7 +8,10 @@ import com.phpn.repositories.model.Product;
 
 public interface ProductService {
 
-    List<?> findAll();
+    List<ProductResult> findAll();
+
+    List<ProductResult> findAllProductByDeleted(boolean deleted);
+
 
     Product findById(Integer id);
 
