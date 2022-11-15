@@ -24,12 +24,12 @@ public class ProductController {
     }
 
     // Nhà cung cấp
-    @GetMapping("/suppliers")
-    public ModelAndView showSupplierPage() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/product/suppliers");
-        return modelAndView;
-    }
+//    @GetMapping("/suppliers")
+//    public ModelAndView showSupplierPage() {
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.setViewName("/admin/suppliers/suppliers");
+//        return modelAndView;
+//    }
 
     // Chuyển hàng
     @GetMapping("/stock_transfers")
