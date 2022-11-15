@@ -1,6 +1,7 @@
 package com.phpn.mappers.item;
 
 import com.phpn.dto.item.ItemParam;
+import com.phpn.dto.item.ItemRResult;
 import com.phpn.dto.item.ItemResult;
 import com.phpn.repositories.model.Item;
 import org.springframework.stereotype.Component;
@@ -31,6 +32,13 @@ public class ItemMapper {
                 .setQuantity(item.getQuantity())
                 .setPrice(item.getPrice())
                 .setSku(item.getSku())
+                .setDiscount(item.getDiscount());
+    }
+    public ItemRResult toRDTO(Item item) {
+        return (ItemRResult) new ItemRResult()
+                .setId(item.getId())
+                .setQuantity(item.getQuantity())
+                .setPrice(item.getPrice())
                 .setDiscount(item.getDiscount());
     }
 }

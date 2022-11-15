@@ -55,8 +55,8 @@ public class Order {
     private Integer locationRegionId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "payment_id", nullable = false)
-    private Payment payment;
+    @JoinColumn(name = "payment_method_id", nullable = false)
+    private PaymentMethod paymentMethod;
 
     public Order(Integer id) {
         this.id = id;

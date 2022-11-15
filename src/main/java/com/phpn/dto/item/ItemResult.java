@@ -21,8 +21,6 @@ public class ItemResult {
 
     private Integer employeeId;
 
-    private EmployeeResult employee;
-
     private Integer supplierId;
 
     private Integer orderId;
@@ -34,4 +32,6 @@ public class ItemResult {
     private String sku;
 
     private Float discount;
+
+
 }

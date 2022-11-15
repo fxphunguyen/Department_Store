@@ -40,9 +40,6 @@ public class OrderItem {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    @Column(name = "sku", length = 45)
-    private String sku;
-
     @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
 

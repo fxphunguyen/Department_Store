@@ -1,5 +1,6 @@
 package com.phpn.services.item;
 
+import com.phpn.dto.item.ItemRResult;
 import com.phpn.dto.item.ItemResult;
 import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.mappers.item.ItemMapper;
@@ -25,12 +26,12 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     @Transactional
-    public List<ItemResult> findAll() {
+    public List<ItemRResult> findAll() {
         return itemRepository.findAll()
                 .stream()
                 .map(item -> {
-                    ItemResult result = itemMapper.toDTO(item);
-                    result.setEmployee(employeeMapper.toDTO(item.getEmployee()));
+                    ItemRResult result = itemMapper.toRDTO(item);
+                    result.setEmployee(employeeMapper.toRDTO(item.getEmployee()));
                     return result;
                 })
                 .collect(Collectors.toList());

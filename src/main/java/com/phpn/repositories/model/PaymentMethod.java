@@ -7,26 +7,24 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
 @Entity
-@Table(name = "payments")
-public class Payment {
+@Table(name = "payment_methods")
+public class PaymentMethod {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "name", nullable = false, length = 50)
-    private String name;
+    @Column(name = "title", nullable = false, length = 50)
+    private String title;
 
-    public Payment(Integer id) {
+    public PaymentMethod(Integer id) {
         this.id = id;
     }
 

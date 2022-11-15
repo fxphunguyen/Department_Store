@@ -2,6 +2,7 @@ package com.phpn.mappers.employee;
 
 
 import com.phpn.dto.employee.EmployeeParam;
+import com.phpn.dto.employee.EmployeeRResult;
 import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.repositories.model.Employee;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,12 @@ public class EmployeeMapper {
                 .setBirthday(employee.getBirthday())
                 .setLocationRegionId(employee.getLocationRegionId())
                 .setGender(employee.getGender());
+    }
+
+    public EmployeeRResult toRDTO(Employee employee) {
+        return new EmployeeRResult()
+                .setId(employee.getId())
+                .setName(employee.getName());
     }
 
     public Employee toModel(EmployeeParam employeeParam) {
