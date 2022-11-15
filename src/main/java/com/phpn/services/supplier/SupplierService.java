@@ -1,14 +1,12 @@
 package com.phpn.services.supplier;
 
 import java.util.List;
+import com.phpn.repositories.model.Supplier;
 
-public interface SupplierService<$> {
+public interface SupplierService {
 
-    List<$> findAll();
+    List<Supplier> findAll();
 
-    $ findById(Integer id);
-    $ create($ supplier);
-    $ update($ supplier);
-    $ deleteById(Integer id);
+    Supplier findById(Integer id);
 
 }

@@ -1,7 +1,7 @@
 package com.phpn.controllers.api;
 
 import com.phpn.repositories.model.Supplier;
-import com.phpn.services.suppliers.SupplierService;
+import com.phpn.services.supplier.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +22,6 @@ public class SupplierAPI {
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
         return new ResponseEntity<>(supplierService.findById(id), HttpStatus.OK);
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody Supplier supplier) {
-        return new ResponseEntity<>(supplierService.create(supplier), HttpStatus.OK);
     }
 
 }
