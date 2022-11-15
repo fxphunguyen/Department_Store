@@ -34,7 +34,6 @@ public class CustomerResult {
     private Integer locationRegionId;
 
     private Integer employeeId;
-
     private Boolean deleted;
 
     public CustomerResult(String name, String phone, Boolean deleted) {

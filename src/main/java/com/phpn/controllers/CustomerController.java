@@ -14,7 +14,6 @@ public class CustomerController {
         return  "/admin/customer/list_customer";
     }
 
-
     @GetMapping("/customer_group")
     public String showCustomerGroupPage(){
         return  "/admin/customer/customer_group";
