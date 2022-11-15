@@ -73,7 +73,6 @@ public class CustomerAPI {
         customerCreate.getLocationReionCreate().setId(0);
         LocationRegion locationRegion = locationRegionService.save(localtionRegionMapper.toModel(customerCreate));
         customerCreate.setLocationReionCreate(localtionRegionMapper.toModel(locationRegion));
-        System.out.println(customerCreate);
         Customer customer = customerRepository.save(customerMapper.toModel(customerCreate));
         return new ResponseEntity<>(customer, HttpStatus.OK);
 

@@ -69,7 +69,6 @@ public class Customer {
     @Column(name = "employee_id", insertable = false,updatable = false)
     private Integer employeeId;
 
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;

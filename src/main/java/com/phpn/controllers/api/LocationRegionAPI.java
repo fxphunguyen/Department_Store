@@ -1,5 +1,7 @@
 package com.phpn.controllers.api;
 
+
+
 import com.phpn.dto.localtionRegion.LocationRegionResult;
 
 import com.phpn.repositories.LocationRegionRepository;
@@ -10,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,18 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
+
+
 @RestController
 @RequestMapping("/api/locationRegion")
 public class LocationRegionAPI {
 
 
+
     @Autowired
     LocationRegionService locationRegionService;
 
-
     @Autowired
     LocationRegionRepository locationRegionRepository;
-
 
     @GetMapping()
     public ResponseEntity<?> findAllLocationReggion(){
@@ -36,7 +41,6 @@ public class LocationRegionAPI {
    return  new ResponseEntity<>(locationRegions , HttpStatus.OK);
 
     }
-
 
 
     @GetMapping("/{id}")

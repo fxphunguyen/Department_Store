@@ -1,8 +1,7 @@
 package com.phpn.services.locationRegion;
 
 
-import com.phpn.dto.customer.CustomerCreate;
-import com.phpn.dto.localtionRegion.LocationRegionCreate;
+
 import com.phpn.dto.localtionRegion.LocationRegionResult;
 import com.phpn.exceptions.NotFoundException;
 import com.phpn.mappers.localtionRegion.LocaltionRegionMapper;
@@ -36,9 +35,4 @@ public class LocationRegionServiceImpl implements LocationRegionService{
         return locationRegionRepository.save(locationRegion);
     }
 
-    @Override
-    public LocationRegionCreate create(LocationRegionCreate locationRegionCreate) {
-//        return locationRegionRepository.save(localtionRegionMapper.toModel(locationRegionCreate))
-    return null;
-    }
 }

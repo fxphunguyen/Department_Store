@@ -50,6 +50,7 @@ public class CustomerMapper {
 
     }
 
+
     public Customer toModel(CustomerResult customerResult) {
         return new Customer(customerResult.getLocationRegionId(), customerResult.getLocationRegionId())
                 .setId(customerResult.getId())
@@ -64,6 +65,5 @@ public class CustomerMapper {
                 .setUpdateAt(customerResult.getUpdateAt())
                 .setDeleted(customerResult.getDeleted());
     }
-
 
 }

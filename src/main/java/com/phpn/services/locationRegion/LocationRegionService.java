@@ -13,6 +13,6 @@ public interface LocationRegionService {
 
     LocationRegion save(LocationRegion locationRegion);
 
-    LocationRegionCreate create(LocationRegionCreate locationRegionCreate);
+
 
 }
