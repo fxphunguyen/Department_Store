@@ -27,4 +27,7 @@ public class OrderStatus {
     private String name;
 
 
+    public OrderStatus(Integer id) {
+        this.id = id;
+    }
 }
