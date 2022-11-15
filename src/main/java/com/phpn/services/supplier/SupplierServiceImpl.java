@@ -1,4 +1,4 @@
-package com.phpn.services.suppliers;
+package com.phpn.services.supplier;
 
 import java.util.List;
 
@@ -24,11 +24,6 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public Supplier findById(Integer id) {
         return supplierRepository.findById(id).get();
-    }
-
-    @Override
-    public Supplier create(Supplier supplier) {
-        return supplierRepository.save(supplier);
     }
 
 }
