@@ -1,5 +1,7 @@
 package com.phpn.dto.item;
 
+import com.phpn.dto.employee.EmployeeResult;
+import com.phpn.repositories.model.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,8 @@ public class ItemResult {
     private Integer productId;
 
     private Integer employeeId;
+
+    private EmployeeResult employee;
 
     private Integer supplierId;
 
