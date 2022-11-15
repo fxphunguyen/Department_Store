@@ -6,8 +6,6 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-
-
 @Setter
 @Getter
 @NoArgsConstructor
