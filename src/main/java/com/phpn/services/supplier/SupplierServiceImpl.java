@@ -2,30 +2,28 @@ package com.phpn.services.supplier;
 
 import java.util.List;
 
+import com.phpn.repositories.model.Supplier;
+import com.phpn.repositories.SupplierRepository;
+
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@Transactional
 public class SupplierServiceImpl implements SupplierService {
 
+    @Autowired
+    private SupplierRepository supplierRepository;
+
     @Override
-    public List findAll() {
-        return null;
+    public List<Supplier> findAll() {
+        return supplierRepository.findAll();
     }
 
     @Override
-    public Object findById(Integer id) {
-        return null;
+    public Supplier findById(Integer id) {
+        return supplierRepository.findById(id).get();
     }
 
-    @Override
-    public Object create(Object supplier) {
-        return null;
-    }
-
-    @Override
-    public Object update(Object supplier) {
-        return null;
-    }
-
-    @Override
-    public Object deleteById(Integer id) {
-        return null;
-    }
 }
