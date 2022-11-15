@@ -12,6 +12,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
 import java.time.Instant;
 
@@ -32,13 +33,22 @@ public class OrderItem {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @Column(name = "product_id")
+    private Integer productId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
 
+    @Column(name = "item_id")
+    private Integer itemId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
+
+    @Column(name = "order_id")
+    private Integer orderId;
 
     @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
@@ -61,4 +71,24 @@ public class OrderItem {
     @Column(name = "tax")
     private Float tax;
 
+    public OrderItem(Integer productId, Integer itemId, Integer orderId) {
+        setProductId(productId);
+        setItemId(itemId);
+        setOrderId(orderId);
+    }
+
+    public OrderItem setProductId(Integer productId) {
+        this.product = new Product(this.productId = productId);
+        return this;
+    }
+
+    public OrderItem setItemId(Integer itemId) {
+        this.item = new Item(this.itemId = itemId);
+        return this;
+    }
+
+    public OrderItem setOrderId(Integer orderId) {
+        this.order = new Order(this.orderId = orderId);
+        return this;
+    }
 }

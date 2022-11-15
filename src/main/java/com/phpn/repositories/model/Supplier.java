@@ -56,6 +56,10 @@ public class Supplier {
         setLocationRegionId(locationRegionId);
     }
 
+    public Supplier(Integer id) {
+        this.id = id;
+    }
+
     public Supplier setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
         return this;
