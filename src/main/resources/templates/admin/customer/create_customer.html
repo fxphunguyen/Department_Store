@@ -5,7 +5,8 @@
     <title>Danh sách khách hàng</title>
     <link rel="stylesheet" href="/assets/admin/css/customer/customer_create.css"/>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body data-new-gr-c-s-check-loaded="14.1085.0" cz-shortcut-listen="true">
 <div id="root" style="overflow: auto;">
@@ -189,7 +190,8 @@
                                                                style="color: rgb(70, 81, 95);">Tỉnh - Thành Phố </p>
                                                         </div>
                                                         <div tabindex="0">
-                                                            <select class="jss87874" name="province" id="province" ></select>
+                                                            <select class="jss87874" name="province"
+                                                                    id="province"></select>
 
                                                         </div>
                                                     </div>
@@ -199,9 +201,10 @@
                                                         <div class="MuiBox-root jss20622 jss21112">
                                                             <p class="MuiTypography-root MuiTypography-body1"
                                                                style="color: rgb(70, 81, 95);">
-                                                            Huyện </p>
+                                                                Huyện </p>
                                                         </div>
-                                                        <select  name="district" id="district" class="jss87874 "></select>
+                                                        <select name="district" id="district"
+                                                                class="jss87874 "></select>
                                                     </div>
                                                 </div>
                                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
@@ -214,7 +217,6 @@
                                                         <select name="ward" id="ward" class="form-select"></select>
                                                     </div>
                                                 </div>
-
 
 
                                             </div>
@@ -2042,17 +2044,334 @@
 </div>
 </div>
 </body>
-<th:block th:replace="/layout/script :: script" />
+<th:block th:replace="/layout/script :: script"/>
 <script>
     Page();
-    hj('trigger', 'split_test_b');
+
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+    class App {
 
-    function getAllProvinces() {
+        static DOMAIN_API = "http://localhost:9092";
+
+        static BASE_URL_CUSTOMER = this.DOMAIN_API + "/api/customers";
+        static BASE_URL_AUTH = this.DOMAIN_API + "/api/auth"
+
+        static BASE_URL_PROVINCE = "https://vapi.vnappmob.com/api/province/"
+
+        static AlertMessageEn = class {
+            static SUCCESS_CREATED = "Successful data generation !";
+            static SUCCESS_UPDATED = "Data update successful !";
+            static SUCCESS_DEPOSIT = "Deposit transaction successful !";
+            static SUCCESS_WITHDRAW = "Withdrawal transaction successful !";
+            static SUCCESS_TRANSFER = "Transfer transaction successful !";
+            static SUCCESS_DEACTIVATE = "Deactivate the customer successfully !";
+
+            static ERROR_400 = "The operation failed, please check the data again.";
+            static ERROR_401 = "Unauthorized - Your access token has expired or is not valid.";
+            static ERROR_403 = "Forbidden - You are not authorized to access this resource.";
+            static ERROR_404 = "Not Found - The resource has been removed or does not exist";
+            static ERROR_500 = "Internal Server Error - The server system is having problems or cannot be accessed.";
+
+            static ERROR_LOADING_PROVINCE = "Loading list of provinces - cities failed !";
+            static ERROR_LOADING_DISTRICT = "Loading list of district - ward failed !"
+            static ERROR_LOADING_WARD = "Loading list of wards - communes - towns failed !";
+        }
+
+        static AlertMessageVi = class {
+            static SUCCESS_CREATED = "Tạo dữ liệu thành công !";
+            static SUCCESS_UPDATED = "Cập nhật dữ liệu thành công !";
+            static SUCCESS_DEPOSIT = "Giao dịch gửi tiền thành công !";
+            static SUCCESS_WITHDRAW = "Giao dịch rút tiền thành công !";
+            static SUCCESS_TRANSFER = "Giao dịch chuyển khoản thành công !";
+            static SUCCESS_DEACTIVATE = "Hủy kích hoạt khách hàng thành công !";
+
+            static ERROR_400 = "Thao tác không thành công, vui lòng kiểm tra lại dữ liệu.";
+            static ERROR_401 = "Unauthorized - Access Token của bạn hết hạn hoặc không hợp lệ.";
+            static ERROR_403 = "Forbidden - Bạn không được quyền truy cập tài nguyên này.";
+            static ERROR_404 = "Not Found - Tài nguyên này đã bị xóa hoặc không tồn tại";
+            static ERROR_500 = "Internal Server Error - Hệ thống Server đang có vấn đề hoặc không truy cập được.";
+
+            static ERROR_LOADING_PROVINCE = "Tải danh sách tỉnh - thành phố không thành công !";
+            static ERROR_LOADING_DISTRICT = "Tải danh sách quận - phường - huyện không thành công !";
+            static ERROR_LOADING_WARD = "Tải danh sách phường - xã - thị trấn không thành công !";
+        }
+
+        static SweetAlert = class {
+
+            static showAlertSuccess(t) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: t,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+
+            static showAlertError(t) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: t,
+                    showConfirmButton: true
+                })
+            }
+
+            static showSuspendedConfirmDialog() {
+                return Swal.fire({
+                    icon: 'warning',
+                    text: 'Are you sure to suspend the selected customer ?',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, please suspend this client !',
+                    cancelButtonText: 'Cancel',
+                })
+            }
+        }
+
+        static IziToast = class {
+            static showSuccessAlert(m) {
+                iziToast.success({
+                    title: 'OK',
+                    position: 'topRight',
+                    timeout: 2500,
+                    message: m
+                });
+            }
+
+            static showErrorAlert(m) {
+                iziToast.error({
+                    title: 'Error',
+                    position: 'topRight',
+                    timeout: 2500,
+                    message: m
+                });
+            }
+        }
+
+        static renderRowCustomer(customer, locationRegion) {
+            let str = `
+            <tr id="tr_${customer.id}">
+                <td>
+                    <span class="select-tab unselected"></span>
+                </td>
+                <td>${customer.id}</td>
+                <td>${customer.fullName}</td>
+                <td>${customer.email}</td>
+                <td class="text-center">${customer.phone}</td>
+                <td class="text-end num-space">${customer.balance}</td>
+                <td>${locationRegion.provinceName}</td>
+                <td>${locationRegion.districtName}</td>
+                <td>${locationRegion.wardName}</td>
+                <td>${locationRegion.address}</td>
+            </tr>
+        `;
+
+            return str;
+        }
+
+        static renderFooterButton() {
+            let str = `
+            <button class="btn btn-secondary update">
+                <i class="fas fa-pencil-alt"></i>
+                Update
+            </button>
+            <button class="btn btn-danger delete">
+                <i class="fas fa-trash-alt"></i>
+                Delete
+            </button>
+        `;
+
+            return str;
+        }
+
+
+        static renderRowTransferHistory(obj) {
+            let str = `
+            <tr id="tr_${obj.id}">
+                <td>${obj.id}</td>
+                <td>${obj.createdAt}</td>
+                <td>${obj.senderId}</td>
+                <td>${obj.senderName}</td>
+                <td>${obj.recipientId}</td>
+                <td>${obj.recipientName}</td>
+                <td class="text-end num-space">${obj.transferAmount}</td>
+                <td class="text-end num-space">${obj.fees}</td>
+                <td class="text-end num-space">${obj.feesAmount}</td>
+            </tr>
+        `;
+
+            return str;
+        }
+    }
+
+
+
+    class LocationRegion {
+        constructor(id, provinceId, provinceName, districtId, districtName, wardId, wardName, address) {
+            this.id = id;
+            this.provinceId = provinceId;
+            this.provinceName = provinceName;
+            this.districtId = districtId;
+            this.districtName = districtName;
+            this.wardId = wardId;
+            this.wardName = wardName;
+            this.address = address;
+        }
+    }
+
+
+    class Customer {
+        constructor(id, fullName, email, phone, balance, locationRegion) {
+            this.id = id;
+            this.fullName = fullName;
+            this.email = email;
+            this.phone = phone;
+            this.balance = balance;
+            this.locationRegion = locationRegion;
+        }
+    }
+
+    class Sender extends Customer {
+        constructor() {
+            super();
+        }
+    }
+
+    class Recipient extends Customer {
+        constructor() {
+            super();
+        }
+    }
+
+    class Withdraw {
+        constructor(id, customerId, transactionAmount) {
+            this.id = id;
+            this.customerId =customerId;
+            this.transactionAmount = transactionAmount;
+        }
+    }
+
+    class Deposit {
+        constructor(id, customerId, transactionAmount) {
+            this.id = id;
+            this.customerId =customerId;
+            this.transactionAmount = transactionAmount;
+        }
+    }
+
+    class Transfer {
+        constructor(id, senderId, recipientId, transferAmount) {
+            this.id = id;
+            this.senderId = senderId;
+            this.recipientId = recipientId;
+            this.transferAmount = transferAmount;
+        }
+    }
+</script>
+<script>
+    let page = {
+        urls: {
+            getAllProvinces: App.BASE_URL_PROVINCE,
+            getAllDistrictsByProvinceId: App.BASE_URL_PROVINCE + "district/",
+            getAllWardsByDistrictId: App.BASE_URL_PROVINCE + "ward/",
+            getAllCustomers: App.BASE_URL_CUSTOMER,
+            getCustomerById: App.BASE_URL_CUSTOMER,
+            getAllRecipients: App.BASE_URL_CUSTOMER + "/get-all-recipients-without-sender/",
+            createCustomer: App.BASE_URL_CUSTOMER + "/create",
+            deposit: App.BASE_URL_CUSTOMER + "/deposit",
+            withdraw: App.BASE_URL_CUSTOMER + "/withdraw",
+            transfer: App.BASE_URL_CUSTOMER + "/transfer",
+            delete: App.BASE_URL_CUSTOMER + "/delete/"
+        },
+        elements: {},
+        loadData: {},
+        commands: {},
+        dialogs: {
+            elements: {},
+            loadData: {},
+            commands: {},
+        },
+        initializeEventControl: {}
+    }
+
+    let locationRegion = new LocationRegion();
+    let customer = new Customer();
+    let sender = new Sender();
+    let recipient = new Recipient();
+    let deposit = new Deposit();
+    let withdraw = new Withdraw();
+    let transfer = new Transfer();
+
+    page.dialogs.elements.wrapper = $("section .wrapper");
+    page.dialogs.elements.productName = $("#productName");
+    page.dialogs.elements.description = $("#description");
+    page.dialogs.elements.imageFile = $("#imageFile");
+    page.dialogs.elements.wrapperContent = $("section .wrapper .content");
+    page.dialogs.elements.imagePreview = $("section .image-preview canvas");
+    page.dialogs.elements.canvas = $("#canvas");
+    page.dialogs.elements.context = page.dialogs.elements.canvas[0].getContext('2d');
+    page.dialogs.elements.imagePreview.css("display", "none");
+    page.dialogs.elements.divImagePreview = $("div.image-preview, div.file-name");
+    page.dialogs.elements.btnClearImagePreview = $(".clear-image-preview i");
+
+
+    page.elements.footer = $("#footer");
+    page.elements.currentRow = $("#currentRow");
+
+    page.elements.tbCustomer = $("#tbCustomer tbody");
+    page.elements.modalCreate = $("#modalCreate");
+    page.elements.modalUpdate = $("#modalUpdate");
+    page.elements.modalDeposit = $("#modalDeposit");
+
+    page.dialogs.elements.frmCreate = $("#frmCreate");
+    page.dialogs.elements.fullNameCre = $("#fullNameCre");
+    page.dialogs.elements.emailCre = $("#emailCre");
+    page.dialogs.elements.phoneCre = $("#phoneCre");
+    page.dialogs.elements.provinceCre = $(".province");
+    page.dialogs.elements.districtCre = $(".district");
+    page.dialogs.elements.wardCre = $(".ward");
+    page.dialogs.elements.addressCre = $("#addressCre");
+    page.dialogs.elements.btnCreate = $("#btnCreate");
+
+    page.dialogs.elements.frmUpdate = $("#frmUpdate");
+    page.dialogs.elements.fullNameUp = $("#fullNameUp");
+    page.dialogs.elements.emailUp = $("#emailUp");
+    page.dialogs.elements.phoneUp = $("#phoneUp");
+    page.dialogs.elements.provinceUp = $("#provinceIdUp");
+    page.dialogs.elements.districtUp = $("#districtIdUp");
+    page.dialogs.elements.wardUp = $("#wardIdUp");
+    page.dialogs.elements.addressUp = $("#addressUp");
+    page.dialogs.elements.btnUpdate = $("#btnUpdate");
+
+    page.dialogs.elements.modalWithdraw = $("#modalWithdraw");
+    page.dialogs.elements.frmWithdraw = $("#frmWithdraw");
+    page.dialogs.elements.customerIdWd = $("#customerIdWd");
+    page.dialogs.elements.fullNameWd = $("#fullNameWd");
+    page.dialogs.elements.balanceWd = $("#balanceWd");
+    page.dialogs.elements.transactionAmountWd = $("#transactionAmountWd");
+    page.dialogs.elements.btnWithdraw = $("#btnWithdraw");
+
+    page.dialogs.elements.modalTransfer = $("#modalTransfer");
+    page.dialogs.elements.frmTransfer = $("#frmTransfer");
+    page.dialogs.elements.senderIdTrf = $("#senderIdTrf");
+    page.dialogs.elements.fullNameTrf = $("#fullNameTrf");
+    page.dialogs.elements.emailTrf = $("#emailTrf");
+    page.dialogs.elements.balanceTrf = $("#balanceTrf");
+    page.dialogs.elements.transferAmountTrf = $("#transferAmountTrf");
+    page.dialogs.elements.transactionAmountTrf = $("#transactionAmountTrf");
+    page.dialogs.elements.btnTransfer = $("#btnTransfer");
+    page.dialogs.elements.recipientIdTrf = $("#recipientIdTrf");
+    page.dialogs.elements.modalTransferError = $("#modalTransfer .modal-body .modal-alert-danger");
+
+
+
+
+    page.commands.getAllProvinces = () => {
         return $.ajax({
             headers: {
                 "accept": "application/json",
@@ -2062,68 +2381,854 @@
             url: "https://vapi.vnappmob.com/api/province/"
         })
             .done((data) => {
-                $.each(data.results, (i, item) => {
+                let results = data.results;
+
+                results.map(item => {
                     let str = `<option value="${item.province_id}">${item.province_name}</option>`;
-                    $("#province").append(str);
-                });
-            })
-            .fail((jqXHR) => {
+                    page.dialogs.elements.provinceCre.append(str);
+                })
 
+            })
+            .fail((xqXHR) => {
+                App.SweetAlert.showAlertError("Không thể tải dữ liệu Tỉnh/Thành phố");
             })
     }
 
-    function getAllDistrictsByProvinceId(provinceId) {
-        $("#district").append("");
+    page.commands.getAllDistrictsByProvinceId = (provinceId) => {
         return $.ajax({
             headers: {
                 "accept": "application/json",
                 "content-type": "application/json"
             },
             type: "GET",
-            url: "https://vapi.vnappmob.com/api/province/district/" + provinceId
+            url: page.urls.getAllDistrictsByProvinceId + provinceId
         })
             .done((data) => {
-                $.each(data.results, (i, item) => {
+
+                page.dialogs.elements.districtCre.empty();
+
+                let results = data.results;
+
+                results.map(item => {
                     let str = `<option value="${item.district_id}">${item.district_name}</option>`;
-                    $("#district").append(str);
-                });
+                    page.dialogs.elements.districtCre.append(str);
+                    page.dialogs.elements.districtUp.append(str);
+                })
             })
-            .fail((jqXHR) => {
-
+            .fail((xqXHR) => {
+                App.SweetAlert.showAlertError("Không thể tải dữ liệu Thành phố/Quận/Huyện");
             })
     }
 
-    function getAllWardsByDistrictId(districtId) {
+    page.commands.getAllWardsByDistrictId = (districtId) => {
         return $.ajax({
             headers: {
                 "accept": "application/json",
                 "content-type": "application/json"
             },
             type: "GET",
-            url: "https://vapi.vnappmob.com/api/province/ward/" + districtId
+            url: page.urls.getAllWardsByDistrictId + districtId
         })
             .done((data) => {
-                $.each(data.results, (i, item) => {
-                    let str = `<option value="${item.ward_id}">${item.ward_name}</option>`;
-                    $("#ward").append(str);
-                });
-            })
-            .fail((jqXHR) => {
+                page.dialogs.elements.wardCre.empty();
+                page.dialogs.elements.wardUp.empty();
 
+                let results = data.results;
+
+                results.map(item => {
+                    let str = `<option value="${item.ward_id}">${item.ward_name}</option>`;
+                    page.dialogs.elements.wardCre.append(str);
+                })
+            })
+            .fail((xqXHR) => {
+                App.SweetAlert.showAlertError("Không thể tải dữ liệu Phường/Xã/Thị trấn");
             })
     }
 
-    getAllProvinces().then(() => {
-        let provinceId = $("#province").val();
+    page.commands.getCustomerById = (customerId) => {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: page.urls.getCustomerById + "/" + customerId
+        })
+            .done((data) => {
+                customer = data;
+                locationRegion = customer.locationRegion;
+            })
+            .fail((jqXHR) => {
+                console.log("jqXHR ======");
+                console.log(jqXHR);
+            });
+    }
 
-        getAllDistrictsByProvinceId(provinceId).then(() => {
+    page.commands.getAllRecipients = (senderId) => {
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: page.urls.getAllRecipients + "/" + senderId
+        })
+            .done((data) => {
+                page.dialogs.elements.recipientIdTrf.empty();
 
-            let districtId = $("#district").val();
+                data.map(item => {
+                    let str = `<option value="${item.id}">(${item.id}) - ${item.fullName}</option>`;
+                    page.dialogs.elements.recipientIdTrf.append(str);
+                })
+            })
+            .fail((jqXHR) => {
+                console.log("getAllRecipients error ======");
+                console.log(jqXHR);
+            });
+    }
 
-            getAllWardsByDistrictId(districtId);
+
+    $("#btnShowCreateModal").on("click", () => {
+        $("#modalCreate").modal("show");
+    });
+
+    $("#btnCreate").on("click", () => {
+        $("#frmCreate").trigger("submit");
+    })
+
+    $("#btnDeposit").on("click", () => {
+        $("#frmDeposit").trigger("submit");
+    })
+
+    page.dialogs.elements.btnWithdraw.on("click", () => {
+        page.dialogs.elements.frmWithdraw.trigger("submit");
+    })
+
+    page.dialogs.elements.btnTransfer.on("click", () => {
+        page.dialogs.elements.frmTransfer.trigger("submit");
+    })
+
+    page.dialogs.commands.provinceChange = () => {
+        // page.elements.loader.removeClass("hide");
+
+        return $.ajax({
+            type: "GET",
+            url: page.urls.getAllDistrictsByProvinceId + locationRegion.provinceId
+        }).done((data) => {
+            page.dialogs.elements.districtCre.empty();
+            page.dialogs.elements.districtUp.empty();
+
+            let results = data.results;
+
+            results.map(item => {
+                let str = `<option value="${item.district_id}">${item.district_name}</option>`;
+                page.dialogs.elements.districtCre.append(str);
+                page.dialogs.elements.districtUp.append(str);
+            })
+
+        }).fail(function () {
+            App.SweetAlert.showErrorAlert(App.AlertMessageEn.ERROR_LOADING_DISTRICT);
+        }).always(function () {
+            page.elements.loader.addClass("hide");
+        });
+    }
+
+    page.dialogs.commands.districtChange = () => {
+        // page.elements.loader.removeClass("hide");
+
+        $.ajax({
+            type: "GET",
+            url: page.urls.getAllWardsByDistrictId + locationRegion.districtId
+        }).done((data) => {
+            page.dialogs.elements.wardCre.empty();
+            page.dialogs.elements.wardUp.empty();
+
+            let results = data.results;
+
+            results.map(item => {
+                let str = `<option value="${item.ward_id}">${item.ward_name}</option>`;
+                page.dialogs.elements.wardCre.append(str);
+                page.dialogs.elements.wardUp.append(str);
+            })
+
+        }).fail(function () {
+            App.SweetAlert.showErrorAlert(App.AlertMessageEn.ERROR_LOADING_WARD);
+        }).always(function () {
+            page.elements.loader.addClass("hide");
+        });
+    }
+
+    page.dialogs.elements.provinceCre.on("change", function () {
+        let provinceId = $(this).val();
+
+        page.commands.getAllDistrictsByProvinceId(provinceId).then(() => {
+            let districtId = page.dialogs.elements.districtCre.val();
+
+            page.commands.getAllWardsByDistrictId(districtId);
         });
     });
 
+    page.dialogs.elements.provinceUp.on("change", function () {
+        locationRegion.provinceId = page.dialogs.elements.provinceUp.val();
+
+        page.dialogs.commands.provinceChange().then(() => {
+            locationRegion.districtId = page.dialogs.elements.districtUp.val();
+
+            page.dialogs.elements.districtUp.prop("selectedIndex", 0).val();
+
+            page.dialogs.commands.districtChange().then(() => {
+                page.dialogs.elements.wardUp.prop("selectedIndex", 0).val();
+            });
+        });
+    });
+
+    page.dialogs.elements.districtCre.on("change", function () {
+        let districtId = $(this).val();
+
+        page.commands.getAllWardsByDistrictId(districtId);
+    })
+
+    page.dialogs.elements.districtUp.on("change", function () {
+        locationRegion.districtId = $(this).val();
+
+        page.dialogs.commands.districtChange().then(() => {
+            page.dialogs.elements.wardUp.prop("selectedIndex", 0).val();
+        });
+    })
+
+
+    page.dialogs.commands.assignDataModalUpdate = () => {
+        page.dialogs.elements.fullNameUp.val(customer.fullName);
+        page.dialogs.elements.emailUp.val(customer.email);
+        page.dialogs.elements.phoneUp.val(customer.phone);
+
+        page.dialogs.elements.provinceUp.val(locationRegion.provinceId);
+
+        page.dialogs.elements.districtUp.empty();
+
+        page.commands.getAllDistrictsByProvinceId(locationRegion.provinceId).then(function () {
+            page.dialogs.elements.districtUp.val(locationRegion.districtId);
+
+            page.dialogs.elements.wardUp.empty();
+
+            page.commands.getAllWardsByDistrictId(locationRegion.districtId).then(function () {
+                page.dialogs.elements.wardUp.val(locationRegion.wardId);
+            });
+        });
+
+        page.dialogs.elements.addressUp.val(locationRegion.address);
+
+    }
+
+
+    page.commands.handleOpenModalUpdate = () => {
+        page.elements.footer.find(".update").on("click", () => {
+
+            let customerId = page.elements.currentRow.val();
+
+            page.commands.getCustomerById(customerId).then(() => {
+                page.dialogs.commands.assignDataModalUpdate();
+                page.elements.modalUpdate.modal("show");
+            })
+                .catch(() => {
+                    App.IziToast.showErrorAlert("Customer ID not valid");
+                })
+        });
+    }
+
+    page.commands.handleOpenModalDeposit = () => {
+        $(".deposit").on("click", function () {
+            let customerId = $(this).data("id");
+
+            page.commands.getCustomerById(customerId).then(() => {
+                $("#customerIdDep").val(customer.id);
+                $("#fullNameDep").val(customer.fullName);
+                $("#balanceDep").val(customer.balance);
+
+                $("#modalDeposit").modal("show");
+            })
+                .catch(() => {
+                    console.log("get deposit fail");
+                    App.SweetAlert.showAlertError(App.AlertMessageVi.ERROR_404);
+                });
+        });
+    }
+
+    page.commands.handleOpenModalWithdraw = () => {
+        $(".withdraw").on("click", function () {
+            let customerId = $(this).data("id");
+
+            page.commands.getCustomerById(customerId).then(() => {
+                page.dialogs.elements.customerIdWd.val(customer.id);
+                page.dialogs.elements.fullNameWd.val(customer.fullName);
+                page.dialogs.elements.balanceWd.val(customer.balance);
+
+                page.dialogs.elements.modalWithdraw.modal("show");
+            })
+                .catch(() => {
+                    App.SweetAlert.showAlertError(App.AlertMessageVi.ERROR_404);
+                });
+        });
+    }
+
+    page.commands.handleOpenModalTransfer = () => {
+        $(".transfer").on("click", function () {
+            let senderId = $(this).data("id");
+
+            page.commands.getCustomerById(senderId).then(() => {
+                page.commands.getAllRecipients(senderId);
+                page.dialogs.elements.senderIdTrf.val(customer.id);
+                page.dialogs.elements.fullNameTrf.val(customer.fullName);
+                page.dialogs.elements.emailTrf.val(customer.email);
+                page.dialogs.elements.balanceTrf.val(customer.balance);
+
+                page.dialogs.elements.modalTransfer.modal("show");
+            })
+                .catch(() => {
+                    App.SweetAlert.showAlertError(App.AlertMessageVi.ERROR_404);
+                });
+        });
+    }
+
+    page.commands.handleOpenConfirmDelete = () => {
+        page.elements.footer.find(".delete").on("click", () => {
+
+            let customerId = page.elements.currentRow.val();
+
+            App.SweetAlert.showSuspendedConfirmDialog()
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        page.dialogs.commands.deactivateCustomer(customerId);
+                    }
+                });
+        });
+    }
+
+    page.dialogs.commands.deactivateCustomer = (customerId) => {
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "DELETE",
+            url: page.urls.delete + customerId
+        })
+            .done(() => {
+                App.SweetAlert.showAlertSuccess(App.AlertMessageVi.SUCCESS_DEACTIVATE);
+                $("#tr_" + customerId).remove();
+            })
+            .fail((jqXHR) => {
+                console.log("jqXHR deactivateCustomer ======");
+                console.log(jqXHR);
+
+                if (jqXHR.status === 401) {
+                    App.IziToast.showErrorAlert(App.AlertMessageVi.ERROR_401);
+                }
+
+                if (jqXHR.status === 403) {
+                    App.IziToast.showErrorAlert(App.AlertMessageVi.ERROR_403);
+                }
+                else {
+                    App.IziToast.showErrorAlert("Xóa thất bại");
+                }
+            });
+    }
+
+    page.commands.handleCloseModalWithdraw = () => {
+        page.dialogs.elements.modalWithdraw.on("hidden.bs.modal", () => {
+            page.dialogs.elements.frmWithdraw[0].reset();
+            page.dialogs.elements.frmWithdraw.validate().resetForm();
+        })
+    }
+
+    page.commands.handleCloseModalTransfer = () => {
+        page.dialogs.elements.modalTransfer.on("hidden.bs.modal", () => {
+            page.dialogs.elements.frmTransfer[0].reset();
+            page.dialogs.elements.frmTransfer.validate().resetForm();
+            page.dialogs.elements.modalTransferError.removeClass("show").addClass("hide");
+        })
+    }
+
+    page.commands.handleDeleteCustomer = () => {
+        $("#tbCustomer tbody .delete").on("click", function () {
+            let customerId = $(this).data("id");
+
+            App.SweetAlert.showSuspendedConfirmDialog()
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        page.commands.suspendedCustomer(customerId);
+                    }
+                });
+        })
+    }
+
+    page.commands.removeEventOpenModal = () => {
+        $(".deposit").off();
+        $(".withdraw").off();
+        $(".transfer").off();
+    }
+
+    page.commands.handleChangeTransferAmountTrf = () => {
+        page.dialogs.elements.transferAmountTrf.on("input", function () {
+            let transferAmount = +$(this).val();
+            let fees = 10;
+            let feesAmount = transferAmount * fees / 100;
+            let transactionAmount = transferAmount + feesAmount;
+
+            page.dialogs.elements.transactionAmountTrf.val(transactionAmount);
+        })
+    }
+
+    page.commands.createCustomer = () => {
+
+        locationRegion.id = 0;
+        locationRegion.provinceId = page.dialogs.elements.provinceCre.val();
+        locationRegion.provinceName = page.dialogs.elements.provinceCre.find("option:selected").text();
+        locationRegion.districtId = page.dialogs.elements.districtCre.val();
+        locationRegion.districtName = page.dialogs.elements.districtCre.find("option:selected").text();
+        locationRegion.wardId = page.dialogs.elements.wardCre.val();
+        locationRegion.wardName = page.dialogs.elements.wardCre.find("option:selected").text();
+        locationRegion.address = page.dialogs.elements.addressCre.val();
+
+        customer.id = 0;
+        customer.fullName = page.dialogs.elements.fullNameCre.val();
+        customer.email = page.dialogs.elements.emailCre.val();
+        customer.phone = page.dialogs.elements.phoneCre.val();
+        customer.balance = 0;
+        customer.locationRegion = locationRegion;
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "POST",
+            url: page.urls.createCustomer,
+            data: JSON.stringify(customer)
+        })
+            .done((data) => {
+                customer = data;
+                locationRegion = customer.locationRegion;
+                page.elements.tbCustomer.prepend(App.renderRowCustomer(customer, locationRegion));
+
+                page.commands.removeEventOpenModal();
+                page.commands.handleOpenModalDeposit();
+                page.commands.handleOpenModalWithdraw();
+                page.commands.handleOpenModalTransfer();
+                page.commands.handleDeleteCustomer();
+
+                page.commands.initTooltip();
+                page.elements.modalCreate.modal("hide");
+
+                App.SweetAlert.showAlertSuccess(App.AlertMessageVi.SUCCESS_CREATED);
+
+            })
+            .fail((jqXHR) => {
+                App.SweetAlert.showAlertError(App.AlertMessageVi.ERROR_400);
+            })
+    }
+
+
+    page.commands.createCustomerWithAvatar = () => {
+        locationRegion.id = 0;
+        locationRegion.provinceId = page.dialogs.elements.provinceCre.val();
+        locationRegion.provinceName = page.dialogs.elements.provinceCre.find("option:selected").text();
+        locationRegion.districtId = page.dialogs.elements.districtCre.val();
+        locationRegion.districtName = page.dialogs.elements.districtCre.find("option:selected").text();
+        locationRegion.wardId = page.dialogs.elements.wardCre.val();
+        locationRegion.wardName = page.dialogs.elements.wardCre.find("option:selected").text();
+        locationRegion.address = page.dialogs.elements.addressCre.val();
+
+        let formData = new FormData();
+        formData.append("fullName", page.dialogs.elements.fullNameCre.val().toString());
+        formData.append("email", page.dialogs.elements.emailCre.val().toString());
+        formData.append("phone", page.dialogs.elements.phoneCre.val().toString());
+        formData.append("file", page.dialogs.elements.imageFile[0].files[0]);
+
+        formData.append("provinceId", page.dialogs.elements.provinceCre.val().toString());
+        formData.append("provinceName", page.dialogs.elements.provinceCre.find("option:selected").text());
+        formData.append("districtId", page.dialogs.elements.districtCre.val().toString());
+        formData.append("districtName", page.dialogs.elements.districtCre.find("option:selected").text());
+        formData.append("wardId", page.dialogs.elements.wardCre.val().toString());
+        formData.append("wardName", page.dialogs.elements.wardCre.find("option:selected").text());
+        formData.append("address", page.dialogs.elements.addressCre.val().toString());
+
+        $.ajax({
+            type: "POST",
+            contentType: false,
+            cache: false,
+            processData: false,
+            url: page.urls.createCustomer,
+            data: formData
+        }).done((data) => {
+            console.log(data)
+            // product = data;
+            //
+            // page.commands.addRow();
+            //
+            App.IziToast.showSuccessAlert(App.AlertMessageVi.SUCCESS_CREATED);
+            //
+            // page.dialogs.elements.modalCreateProduct.modal('hide');
+            //
+            // page.commands.handleImagePopup();
+
+        }).fail((err) => {
+            console.log(err)
+            App.IziToast.showErrorAlert(App.AlertMessageVi.ERROR_400);
+        }).always(function () {
+            // page.element.loader.addClass("hide");
+            // page.element.btnSave.prop('disabled', false);
+        });
+    }
+
+    function doDeposit() {
+
+        deposit.customerId = $("#customerIdDep").val();
+        deposit.transactionAmount = $("#transactionAmountDep").val();
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "POST",
+            url: page.urls.deposit,
+            data: JSON.stringify(deposit)
+        })
+            .done((data) => {
+                let currentRow = $("#tr_" + data.id);
+
+                currentRow.replaceWith(App.renderRowCustomer(data));
+
+                page.commands.removeEventOpenModal();
+                page.commands.handleOpenModalDeposit();
+                page.commands.handleOpenModalWithdraw();
+                page.commands.handleOpenModalTransfer();
+                page.commands.handleDeleteCustomer();
+
+                $("#modalDeposit").modal("hide");
+            })
+            .fail((jqXHR) => {
+                App.SweetAlert.showAlertError(App.AlertMessageVi.ERROR_400);
+            })
+    }
+
+    page.dialogs.commands.withdraw = () => {
+        withdraw.id = 0;
+        withdraw.customerId = page.dialogs.elements.customerIdWd.val();
+        withdraw.transactionAmount = page.dialogs.elements.transactionAmountWd.val();
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "POST",
+            url: page.urls.withdraw,
+            data: JSON.stringify(withdraw)
+        })
+            .done((data) => {
+                let currentRow = $("#tr_" + data.id);
+
+                currentRow.replaceWith(App.renderRowCustomer(data));
+
+                page.commands.removeEventOpenModal();
+                page.commands.handleOpenModalDeposit();
+                page.commands.handleOpenModalWithdraw();
+                page.commands.handleOpenModalTransfer();
+                page.commands.handleDeleteCustomer();
+
+                page.dialogs.elements.modalWithdraw.modal("hide");
+                App.SweetAlert.showAlertSuccess(App.AlertMessageVi.SUCCESS_WITHDRAW);
+            })
+            .fail((jqXHR) => {
+                App.SweetAlert.showAlertError(App.AlertMessageVi.ERROR_400);
+            })
+    }
+
+    page.dialogs.commands.transfer = () => {
+        transfer.id = 0;
+        transfer.senderId = page.dialogs.elements.senderIdTrf.val();
+        transfer.recipientId = page.dialogs.elements.recipientIdTrf.val();
+        transfer.transferAmount = page.dialogs.elements.transferAmountTrf.val();
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "POST",
+            url: page.urls.transfer,
+            data: JSON.stringify(transfer)
+        })
+            .done((data) => {
+
+                sender = data.sender;
+                recipient = data.recipient;
+
+                page.dialogs.elements.balanceTrf.val(sender.balance);
+
+                let senderCurrentRow = $("#tr_" + sender.id);
+                senderCurrentRow.replaceWith(App.renderRowCustomer(sender));
+
+                let recipientCurrentRow = $("#tr_" + recipient.id);
+                recipientCurrentRow.replaceWith(App.renderRowCustomer(recipient));
+
+                page.commands.removeEventOpenModal();
+                page.commands.handleOpenModalDeposit();
+                page.commands.handleOpenModalWithdraw();
+                page.commands.handleOpenModalTransfer();
+                page.commands.handleDeleteCustomer();
+
+                // page.dialogs.elements.modalTransfer.modal("hide");
+                App.SweetAlert.showAlertSuccess(App.AlertMessageVi.SUCCESS_TRANSFER);
+            })
+            .fail((jqXHR) => {
+                $("#modalTransfer .modal-body .modal-alert-danger").empty();
+
+                let str = "";
+
+                let message = jqXHR.responseJSON.message;
+
+                if (message) {
+                    str += `<label id="messageTrf-error" class="error" for="messageTrf">${message}</label>`;
+                }
+                else {
+                    let errors = jqXHR.responseJSON;
+
+                    $.each(errors, (key, value) => {
+                        str += `<label id="${key}Trf-error" class="error" for="${key}Trf">${value}</label>`;
+                    })
+                }
+
+                $("#modalTransfer .modal-body .modal-alert-danger").append(str).removeClass("hide").addClass("show");
+            })
+    }
+
+    page.commands.suspendedCustomer = (customerId) => {
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "DELETE",
+            url: page.urls.delete + customerId
+        })
+            .done(() => {
+                $("#tr_" + customerId).remove();
+                App.SweetAlert.showAlertSuccess(App.AlertMessageVi.SUCCESS_DEACTIVATE);
+            })
+            .fail((jqXHR) => {
+                App.SweetAlert.showAlertError(App.AlertMessageVi.ERROR_400);
+            })
+    }
+
+    page.dialogs.elements.frmCreate.validate({
+        rules: {
+            fullNameCre: {
+                required: true,
+                minlength: 5,
+                maxlength: 35
+            }
+        },
+        messages: {
+            fullNameCre: {
+                required: "Vui lòng nhập tên đầy đủ",
+                minlength: "Họ tên tối thiểu 5 ký tự",
+                maxlength: "Họ tên tối đa 35 ký tự"
+            }
+        },
+        submitHandler: function () {
+            // page.commands.createCustomer();
+            page.commands.createCustomerWithAvatar();
+        }
+    })
+
+    $("#frmDeposit").validate({
+        rules: {
+            transactionAmountDep: {
+                required: true,
+                min: 500,
+                max: 1000000
+            }
+        },
+        messages: {
+            transactionAmountDep: {
+                required: "Vui lòng nhập số tiền giao dịch đầy đủ",
+                min: "Số tiền giao dịch tối thiểu là {0}",
+                max: "Số tiền giao dịch tối đa là {0}"
+            }
+        },
+        submitHandler: function () {
+            doDeposit();
+        }
+    })
+
+    page.dialogs.elements.frmWithdraw.validate({
+        rules: {
+            transactionAmountWd: {
+                required: true,
+                min: 500,
+                max: 1000000
+            }
+        },
+        messages: {
+            transactionAmountWd: {
+                required: "Vui lòng nhập số tiền giao dịch đầy đủ",
+                min: "Số tiền giao dịch tối thiểu là {0}",
+                max: "Số tiền giao dịch tối đa là {0}"
+            }
+        },
+        errorLabelContainer: "#modalWithdraw .modal-alert-danger",
+        errorPlacement: function (error, element) {
+            error.appendTo("#modalWithdraw .modal-alert-danger");
+        },
+        showErrors: function(errorMap, errorList) {
+            if (this.numberOfInvalids() > 0) {
+                $("#modalWithdraw .modal-alert-danger").removeClass("hide").addClass("show");
+            } else {
+                $("#modalWithdraw .modal-alert-danger").removeClass("show").addClass("hide").empty();
+                $("#frmWithdraw input.error").removeClass("error");
+            }
+            this.defaultShowErrors();
+        },
+        submitHandler: function () {
+            page.dialogs.commands.withdraw();
+        }
+    });
+
+    page.dialogs.elements.frmTransfer.validate({
+        onkeyup: function(element) { $(element).valid() },
+        onclick: false,
+        onfocusout: false,
+        rules: {
+            transferAmountTrf: {
+                required: true,
+                min: 500,
+                max: 1000000
+            }
+        },
+        messages: {
+            transferAmountTrf: {
+                required: "Vui lòng nhập số tiền giao dịch đầy đủ",
+                min: "Số tiền giao dịch tối thiểu là {0}",
+                max: "Số tiền giao dịch tối đa là {0}"
+            }
+        },
+        errorLabelContainer: "#modalTransfer .modal-alert-danger",
+        errorPlacement: function (error, element) {
+            error.appendTo("#modalTransfer .modal-alert-danger");
+        },
+        showErrors: function(errorMap, errorList) {
+            if (this.numberOfInvalids() > 0) {
+                $("#modalTransfer .modal-alert-danger").removeClass("hide").addClass("show");
+            } else {
+                $("#modalTransfer .modal-alert-danger").removeClass("show").addClass("hide").empty();
+                $("#frmTransfer input.error").removeClass("error");
+            }
+            this.defaultShowErrors();
+        },
+        submitHandler: function () {
+            page.dialogs.commands.transfer();
+        }
+    });
+
+    page.commands.initTooltip = () => {
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    }
+
+    page.commands.handleShowFooterButton = () => {
+        $("#tbCustomer tbody tr").on("click", function () {
+            let customerId = $(this).attr("id").replace("tr_", "");
+
+            page.elements.currentRow.val(customerId);
+
+            $("#tbCustomer tbody tr td .select-tab").removeClass("selected").addClass("unselected");
+
+            $(this).find("td .select-tab").removeClass("unselected").addClass("selected");
+
+            page.elements.footer.empty();
+            page.elements.footer.append(App.renderFooterButton());
+
+            page.commands.handleOpenModalUpdate();
+
+            page.commands.handleOpenConfirmDelete();
+        })
+    }
+
+    page.dialogs.commands.loadImageToCanvas = (imageFile) => {
+        page.dialogs.elements.imagePreview.css("display", "");
+        page.dialogs.elements.wrapper.addClass("active");
+        page.dialogs.elements.wrapperContent.css("opacity", 0);
+
+        let imageObj = new Image();
+
+        imageObj.onload = function () {
+            page.dialogs.elements.context.canvas.width = imageObj.width;
+            page.dialogs.elements.context.canvas.height = imageObj.height;
+            page.dialogs.elements.context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height);
+        };
+
+        imageObj.src = URL.createObjectURL(imageFile)
+    }
+
+    page.dialogs.commands.changeImagePreview = () => {
+        let imageFile = page.dialogs.elements.imageFile[0].files[0];
+
+        if (imageFile) {
+            let reader = new FileReader();
+
+            reader.readAsDataURL(imageFile);
+
+            reader.onload = function(e){
+                if (e.target.readyState === FileReader.DONE) {
+                    page.dialogs.commands.loadImageToCanvas(imageFile);
+                }
+            }
+        } else {
+            page.dialogs.elements.clearImagePreview();
+        }
+    }
+
+    page.initializeEventControl = () => {
+
+        page.commands.handleCloseModalWithdraw();
+
+        page.commands.handleCloseModalTransfer();
+
+        page.commands.handleChangeTransferAmountTrf();
+
+        page.dialogs.elements.divImagePreview.on("click", function () {
+            page.dialogs.elements.imageFile.trigger("click");
+        });
+
+        page.dialogs.elements.imageFile.on("change", function () {
+            page.dialogs.commands.changeImagePreview();
+        });
+    }
+
+    page.loadData = () => {
+
+
+        page.commands.getAllProvinces().then(() => {
+            let provinceId = page.dialogs.elements.provinceCre.val();
+            console.log(provinceId)
+            page.commands.getAllDistrictsByProvinceId(provinceId).then(() => {
+                let districtId = page.dialogs.elements.districtCre.val();
+                console.log(districtId)
+                page.commands.getAllWardsByDistrictId(districtId);
+            });
+        })
+
+    }
+
+    $(() => {
+        page.loadData();
+
+        page.initializeEventControl();
+    })
 
 </script>
+
 </html>

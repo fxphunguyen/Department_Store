@@ -9,6 +9,8 @@ import com.phpn.repositories.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static com.phpn.repositories.model.CustomerGroup.VIP;
+
 
 @Component
 public class CustomerMapper {
@@ -46,7 +48,6 @@ public class CustomerMapper {
                 .setStatus(customerCreate.getStatus())
                 .setCreateAt(customerCreate.getCreateAt())
                 .setUpdateAt(customerCreate.getUpdateAt())
-//                .setDeleted(customerCreate.())
                 .setLocationRegion(locationRegionMapper.toModel(customerCreate));
 
     }
