@@ -30,28 +30,28 @@ public class PurchaseOrder {
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
-    @Column(name = "supplier_id")
+    @Column(name = "supplier_id", insertable = false, updatable = false)
     private Integer supplierId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @Column(name = "product_id")
+    @Column(name = "product_id", insertable = false, updatable = false)
     private Integer productId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @Column(name = "employee_id")
+    @Column(name = "employee_id", insertable = false, updatable = false)
     private Integer employeeId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "payment_method_id")
     private PaymentMethod paymentMethod;
 
-    @Column(name = "payment_method_id")
+    @Column(name = "payment_method_id", insertable = false, updatable = false)
     private Integer paymentMethodId;
 
     @Size(max = 45)
@@ -63,6 +63,10 @@ public class PurchaseOrder {
         setEmployeeId(employeeId);
         setProductId(productId);
         setPaymentMethodId(paymentMethodId);
+    }
+
+    public PurchaseOrder(Integer id) {
+        this.id = id;
     }
 
     public PurchaseOrder setSupplierId(Integer supplierId) {

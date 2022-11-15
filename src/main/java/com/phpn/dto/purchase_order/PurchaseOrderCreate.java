@@ -21,5 +21,7 @@ public class PurchaseOrderCreate {
 
     private Integer productId;
 
-    private Integer paymentId;
+    private Integer employeeId;
+
+    private Integer paymentMethodId;
 }

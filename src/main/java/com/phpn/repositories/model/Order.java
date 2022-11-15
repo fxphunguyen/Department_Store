@@ -65,7 +65,7 @@ public class Order {
     @JoinColumn(name = "payment_method_id", nullable = false)
     private PaymentMethod paymentMethod;
 
-    @Column(name = "payment_method_id", nullable = false)
+    @Column(name = "payment_method_id",insertable = false, updatable = false)
     private Integer paymentMethod_id;
 
     public Order(Integer id) {

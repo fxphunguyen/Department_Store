@@ -21,6 +21,10 @@ public class PurchaseOrderParam {
 
     private Integer productId;
 
-    private Integer paymentId;
+    private Integer employeeId;
+
+    private Integer paymentMethodId;
+
+    private String status;
 
 }

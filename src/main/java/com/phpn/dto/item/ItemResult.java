@@ -1,7 +1,5 @@
 package com.phpn.dto.item;
 
-import com.phpn.dto.employee.EmployeeResult;
-import com.phpn.repositories.model.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +21,7 @@ public class ItemResult {
 
     private Integer supplierId;
 
-    private Integer orderId;
+    private Integer purchaseOrderId;
 
     private Integer quantity;
 
