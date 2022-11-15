@@ -1,6 +1,7 @@
 package com.phpn.dto.customer;
 
 
+import com.phpn.dto.localtionRegion.LocationRegionCreate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,13 +33,12 @@ public class CustomerCreate {
 
     private String updateAt;
 
-    private  String address;
+    private Integer employeeId = 2;
 
-    private  String wardName;
+    private  Integer locationRegionID;
 
-    private  String districtName;
+  private LocationRegionCreate locationReionCreate;
 
-    private  String provinceName;
 
-//    private String totalSpending;
+
 }

@@ -7,11 +7,8 @@
 </head>
 <body data-new-gr-c-s-check-loaded="14.1085.0" cz-shortcut-listen="true">
 <div id="root" style="overflow: auto;">
-<<<<<<< HEAD
-    <th:block th:replace="/admin/customer/layout/menu.html"/>
-=======
-    <th:block th:replace="/admin/customer/layout/col_left.html"/>
->>>>>>> ngoc_dev
+    <th:block th:replace="/layout/menu.html"/>
+
     <div class="col-right  MuiBox-root jss64 jss40">
         <div class="MuiBox-root jss20292 jss20288 ">
             <div class="MuiBox-root jss20293 jss20291">
@@ -2124,5 +2121,9 @@
 </div>
 </div>
 </body>
-
+<th:block th:replace="/layout/script :: script" />
+<script>
+    Page();
+    hj('trigger', 'split_test_b');
+</script>
 </html>

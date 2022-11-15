@@ -6,21 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Accessors(chain = true)
-public class LocationRegionParam {
-
+public class LocationRegionCreate {
     private Integer Id;
 
-    private String name;
+    private String address;
 
     private  Integer wardId;
 
     private String wardName;
 
-    private Integer districId;
+    private Integer districtId;
 
     private String districtName;
 

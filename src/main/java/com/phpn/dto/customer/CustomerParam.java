@@ -22,7 +22,7 @@ public class CustomerParam {
 
     private String phone;
 
-    private  String customerGroup;
+    private String customerGroup;
 
     private String email;
 
@@ -34,14 +34,9 @@ public class CustomerParam {
 
     private String updateAt;
 
-    private  String address;
+    private Integer employeeId;
 
-    private  String wardName;
+    private Integer locationRegionId;
 
-    private  String districtName;
-
-    private  String provinceName;
-
-    private String totalSpending;
 
 }
