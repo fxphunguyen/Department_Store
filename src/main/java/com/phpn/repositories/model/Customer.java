@@ -25,6 +25,16 @@ public class Customer {
         this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
     }
 
+    public Customer setEmployeeId(Integer employeeId) {
+        this.employee = new Employee(this.employeeId = employeeId);
+        return this;
+    }
+
+    public Customer setLocationRegionId(Integer locationRegionId) {
+        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+        return this;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -76,5 +86,6 @@ public class Customer {
 
     @Column(name = "deleted", nullable = false)
     private Boolean deleted = false;
+
 
 }

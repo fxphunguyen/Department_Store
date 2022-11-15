@@ -12,9 +12,18 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @Accessors(chain = true)
 public class PurchaseOrderResult {
-    private String sku;
+
+    private Integer id;
+
+    private String purchaseCode;
 
     private Integer supplierId;
+
+    private Integer productId;
+
+    private Integer employeeId;
+
+    private Integer paymentMethodId;
 
     private String status;
 

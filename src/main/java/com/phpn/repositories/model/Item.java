@@ -49,12 +49,6 @@ public class Item {
     @Column(name = "product_id", insertable = false, updatable = false)
     private Integer productId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "brand_id")
-    private Brand brand;
-
-    @Column(name = "brand_id", insertable = false, updatable = false)
-    private Integer brandId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_Id")
@@ -64,11 +58,11 @@ public class Item {
     private Integer supplierId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @JoinColumn(name = "purchase_order_id")
+    private PurchaseOrder purchaseOrder;
 
-    @Column(name = "order_id", insertable = false, updatable = false)
-    private Integer orderId;
+    @Column(name = "purchase_order_id", insertable = false, updatable = false)
+    private Integer purchaseOrderId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
@@ -85,5 +79,36 @@ public class Item {
 
     @Column(name = "defective")
     private Integer defective;
+
+    public Item (Integer productId, Integer supplierId, Integer orderId, Integer employeeId){
+        setProductId(productId);
+        setSupplierId(supplierId);
+        setOrderId(orderId);
+        setEmployeeId(employeeId);
+    }
+
+    public Item(Integer id) {
+        this.id = id;
+    }
+
+    public Item setProductId(Integer productId) {
+        this.product = new Product(this.productId = productId);
+        return this;
+    }
+
+    public Item setSupplierId(Integer supplierId) {
+        this.supplier = new Supplier(this.supplierId = supplierId);
+        return this;
+    }
+
+    public Item setOrderId(Integer purchaseOrderId) {
+        this.purchaseOrder = new PurchaseOrder(this.purchaseOrderId = purchaseOrderId);
+        return this;
+    }
+
+    public Item setEmployeeId(Integer employeeId) {
+        this.employee = new Employee(this.employeeId = employeeId);
+        return this;
+    }
 
 }
