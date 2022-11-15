@@ -1,7 +1,6 @@
 package com.phpn.repositories.model;
 
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,21 +30,59 @@ public class PurchaseOrder {
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
+    @Column(name = "supplier_id")
+    private Integer supplierId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
+
+    @Column(name = "product_id")
+    private Integer productId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
+    @Column(name = "employee_id")
+    private Integer employeeId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "payment_method_id")
     private PaymentMethod paymentMethod;
+
+    @Column(name = "payment_method_id")
+    private Integer paymentMethodId;
 
     @Size(max = 45)
     @Column(name = "status", length = 45)
     private String status;
 
+    public PurchaseOrder(Integer supplierId, Integer productId, Integer employeeId, Integer paymentMethodId) {
+        setSupplierId(supplierId);
+        setEmployeeId(employeeId);
+        setProductId(productId);
+        setPaymentMethodId(paymentMethodId);
+    }
+
+    public PurchaseOrder setSupplierId(Integer supplierId) {
+        this.supplier = new Supplier(this.supplierId = supplierId);
+        return this;
+    }
+
+    public PurchaseOrder setEmployeeId(Integer employeeId) {
+        this.employee = new Employee(this.employeeId = employeeId);
+        return this;
+    }
+
+    public PurchaseOrder setProductId(Integer productId) {
+        this.product = new Product(this.productId = productId);
+        return this;
+    }
+
+    public PurchaseOrder setPaymentMethodId(Integer paymentMethodId) {
+        this.paymentMethod = new PaymentMethod(this.paymentMethodId = paymentMethodId);
+        return this;
+    }
 
 }

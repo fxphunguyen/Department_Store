@@ -56,7 +56,6 @@ public class Supplier {
         setLocationRegionId(locationRegionId);
     }
 
-
     public Supplier(Integer id) {
         this.id = id;
     }
