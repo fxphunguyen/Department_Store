@@ -13,7 +13,10 @@ import java.util.List;
 @EnableJpaRepositories
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-    @Override
     List<Product> findAll();
+
+
+    List<Product> findAllProductByDeleted(boolean deleted);
+
 
 }

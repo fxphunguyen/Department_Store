@@ -1,6 +1,7 @@
 package com.phpn.services.product;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.phpn.dto.product.ProductCreateParam;
 import com.phpn.dto.product.ProductParam;
@@ -24,8 +25,19 @@ public class ProductServiceImpl implements ProductService {
      ProductRepository productRepository;
 
     @Override
-    public List<?> findAll() {
-        return productRepository.findAll();
+    public List<ProductResult> findAll() {
+        return productRepository.findAll()
+                .stream()
+                .map(productMapper :: toDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProductResult> findAllProductByDeleted(boolean deleted) {
+        return productRepository.findAllProductByDeleted(deleted)
+                .stream()
+                .map(productMapper :: toDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
