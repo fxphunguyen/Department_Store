@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/customers")
+    @RequestMapping("/api/customers")
 public class CustomerAPI {
 
     @Autowired
@@ -52,7 +52,7 @@ public class CustomerAPI {
     }
 
     @GetMapping("/customer_list")
-    public ResponseEntity<?> showListCustomerByDelete(boolean deleted) {
+    public ResponseEntity<?> showListCustomerByDelete() {
         List<Customer> customers = customerRepository.findAll();
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
@@ -85,6 +85,7 @@ public class CustomerAPI {
         return new ResponseEntity<>(customerResult, HttpStatus.OK);
 
     }
+
 
 
 }

@@ -1,12 +1,8 @@
 package com.phpn.repositories.model;
 
 
-import com.phpn.repositories.model.Item;
-import com.phpn.repositories.model.Order;
-import com.phpn.repositories.model.Product;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -18,6 +14,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
+@Getter
 @Entity
 @Table(name = "order_item")
 @Accessors(chain = true)
@@ -32,13 +29,22 @@ public class OrderItem {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @Column(name = "product_id", insertable = false, updatable = false)
+    private Integer productId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
 
+    @Column(name = "item_id",  insertable = false, updatable = false)
+    private Integer itemId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
+
+    @Column(name = "order_id", insertable = false, updatable = false)
+    private Integer orderId;
 
     @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
@@ -61,4 +67,24 @@ public class OrderItem {
     @Column(name = "tax")
     private Float tax;
 
+    public OrderItem(Integer productId, Integer itemId, Integer orderId) {
+        setProductId(productId);
+        setItemId(itemId);
+        setOrderId(orderId);
+    }
+
+    public OrderItem setProductId(Integer productId) {
+        this.product = new Product(this.productId = productId);
+        return this;
+    }
+
+    public OrderItem setItemId(Integer itemId) {
+        this.item = new Item(this.itemId = itemId);
+        return this;
+    }
+
+    public OrderItem setOrderId(Integer orderId) {
+        this.order = new Order(this.orderId = orderId);
+        return this;
+    }
 }

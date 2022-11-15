@@ -18,6 +18,6 @@ public class ItemRResult extends ItemResult {
 
     private Integer supplierId;
 
-    private Integer orderId;
+    private Integer purchaseOrderId;
 
 }

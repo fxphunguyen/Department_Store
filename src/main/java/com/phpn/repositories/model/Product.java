@@ -80,6 +80,10 @@ public class Product {
         setBrandId(brandId);
     }
 
+    public Product(Integer id) {
+        this.id = id;
+    }
+
     public Product setCategoryId(Integer categoryId) {
         this.category = new Category(this.categoryId = categoryId);
         return this;
