@@ -58,11 +58,11 @@ public class Item {
     private Integer supplierId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @JoinColumn(name = "purchase_order_id")
+    private PurchaseOrder purchaseOrder;
 
-    @Column(name = "order_id", insertable = false, updatable = false)
-    private Integer orderId;
+    @Column(name = "purchase_order_id", insertable = false, updatable = false)
+    private Integer purchaseOrderId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
@@ -101,8 +101,8 @@ public class Item {
         return this;
     }
 
-    public Item setOrderId(Integer orderId) {
-        this.order = new Order(this.orderId = orderId);
+    public Item setOrderId(Integer purchaseOrderId) {
+        this.purchaseOrder = new PurchaseOrder(this.purchaseOrderId = purchaseOrderId);
         return this;
     }
 

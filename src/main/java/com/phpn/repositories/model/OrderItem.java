@@ -1,24 +1,20 @@
 package com.phpn.repositories.model;
 
 
-import com.phpn.repositories.model.Item;
-import com.phpn.repositories.model.Order;
-import com.phpn.repositories.model.Product;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
 import java.time.Instant;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
+@Getter
 @Entity
 @Table(name = "order_item")
 @Accessors(chain = true)

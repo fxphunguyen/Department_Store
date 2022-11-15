@@ -65,6 +65,10 @@ public class PurchaseOrder {
         setPaymentMethodId(paymentMethodId);
     }
 
+    public PurchaseOrder(Integer id) {
+        this.id = id;
+    }
+
     public PurchaseOrder setSupplierId(Integer supplierId) {
         this.supplier = new Supplier(this.supplierId = supplierId);
         return this;
