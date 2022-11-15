@@ -144,7 +144,7 @@
                                             <div class="MuiBox-root jss18179 jss18148">
                                                 <div class="MuiBox-root jss18180 jss18149">
                                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">
-                                                        Bán bởi</p><span class="jss18152">:</span>
+                                                        Bán bởi</p><span class="jss18152">${employee.name}</span>
                                                 </div>
                                                 <div class="MuiBox-root jss18181 jss18151">
                                                     <div class="MuiBox-root jss18197 jss18688">
@@ -1158,6 +1158,7 @@
                                                                            id="buttonF3"
                                                                            placeholder="Tìm theo tên, mã SKU, hoặc quét mã Barcode...(F3)"
                                                                            type="text"
+                                                                           onclick="showListProducts()"
                                                                            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
                                                                            value="">
                                                                     <fieldset aria-hidden="true"
@@ -1866,6 +1867,31 @@
         </div>
     </div>
 </div>
+<div class="MuiPaper-root jss1062 MuiPaper-elevation3 MuiPaper-rounded d-none searchProduct"
+     data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom" style="width: 905px; position: absolute; inset: 0px auto auto 0px; transform: translate(100px, 184px); z-index: 999;">
+    <div class="MuiBox-root jss3933 jss1010 jss1263" wrapper-suggest="e161f822-1e4f-4674-a5bb-c11c22ace43f">
+        <div class="MuiBox-root jss3934" tabindex="0">
+            <button class="MuiButtonBase-root MuiButton-root jss3935 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth" tabindex="0" type="button" key-event="true" data-id="-1">
+            <span class="MuiButton-label">
+               <span class="MuiButton-startIcon MuiButton-iconSizeMedium">
+                  <svg class="MuiSvgIcon-root icon MuiSvgIcon-colorPrimary" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                     <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                  </svg>
+               </span>
+               <h6 class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary">Thêm mới sản phẩm</h6>
+            </span>
+                <span class="MuiTouchRipple-root"></span>
+            </button>
+        </div>
+        <div class="infinite-scroll-component__outerdiv">
+            <div class="infinite-scroll-component InfiniteScroll-ListItem contentProduct"
+                 style="height: auto; overflow: auto; max-height: 300px;">
+
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 <th:block th:replace="/layout/script :: script"/>
 <script>
