@@ -102,9 +102,6 @@ function handleCloseListProducts() {
         $(".searchProduct").addClass('d-none');
     })
 }
-
-
-
 $( document ).ready(function() {
     $("#order-collapse").removeClass("show");
     $("#shipping-collapse").removeClass("show");
@@ -113,26 +110,8 @@ $( document ).ready(function() {
     $("#report-collapse").removeClass("show");
 });
 
-
-// function showListEmployees() {
-//     $.ajax({
-//         type: "GET",
-//         contentType: 'application/json',
-//         url: `${location.origin}/api/employees/show_list`
-//     })
-//         .done((data) => {
-//             $(".searchEmployee").removeClass('d-none');
-//             $(".contentEmployee div").remove();
-//             $.each(data, (i, product) => {
-//                 let result = `
-//
-//                     `;
-//                 $(".contentProduct").append(result)
-//             })
-//
-//             handleCloseListProducts();
-//         })
-//         .fail((jqXHR) => {
-//             console.log(jqXHR);
-//         })
-// }
+const handelModalCreateCustomer = () => {
+    $("#create_customer").on("click", () => {
+        $("#modal_create_customer").modal("show");
+    })
+}

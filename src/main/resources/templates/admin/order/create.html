@@ -1853,7 +1853,7 @@
     <div class="MuiBox-root jss4970 jss2932" wrapper-suggest="c05f1dc8-07da-4f36-a8b6-dedaa35f3535">
         <div class="MuiBox-root jss4971" tabindex="0">
             <button class="MuiButtonBase-root MuiButton-root jss4972 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"
-                    tabindex="0" type="button" key-event="true" data-id="-1"><span class="MuiButton-label"><span
+                    id="create_customer" tabindex="0" type="button" key-event="true" data-id="-1"><span class="MuiButton-label"><span
                     class="MuiButton-startIcon MuiButton-iconSizeMedium"><svg
                     class="MuiSvgIcon-root icon MuiSvgIcon-colorPrimary" focusable="false" viewBox="0 0 24 24"
                     aria-hidden="true"><path
@@ -1896,6 +1896,8 @@
 
 </body>
 <th:block th:replace="/layout/script :: script"/>
+<th:block th:replace="/admin/order/modal_create_customer::modal_create_customer"/>
+
 <script>
     Page();
     hj('trigger', 'split_test_b');
