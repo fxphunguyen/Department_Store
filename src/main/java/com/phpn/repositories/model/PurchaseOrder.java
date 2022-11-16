@@ -56,15 +56,16 @@ public class PurchaseOrder {
     @JoinColumn(name = "purchase_order_item_id")
     private PurchaseOrderItem purchaseOrderItem;
 
-    @Column(name = "purchase_order_item_id")
+    @Column(name = "purchase_order_item_id", insertable = false, updatable = false)
     private Integer purchaseOrderItemId;
 
     @Column(name = "create_at", nullable = false, length = 50)
     private String createAt;
-
+    
     @Enumerated(EnumType.STRING)
     @Column(name = "pays")
     private PurchaseOrderPays pays;
+
 
     @Column(name = "total", nullable = false, precision = 10, scale = 2)
     private BigDecimal total;
