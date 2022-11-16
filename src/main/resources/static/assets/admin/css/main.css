@@ -18428,7 +18428,12 @@ table.sapo-table-line-item tbody tr:last-child {
 .sapo-menu-list-item
   .sapo-menu-list-item-link--primary:not(.collapsed)
   .sapo-menu-list-item-next-icon {
-  transform: rotate(90deg);
+  /*transform: rotate(90deg);*/
+    transition: transform 0.2s linear;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    transition-property: transform;
 }
 .sapo-menu-list-item
   .sapo-menu-list-item-link--primary
