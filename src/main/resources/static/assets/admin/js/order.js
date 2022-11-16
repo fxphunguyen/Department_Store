@@ -1,8 +1,10 @@
 function showListCustomer() {
     $.ajax({
-        type: "GET", contentType: 'application/json', url: `${location.origin}/api/customers/list_customer`
+        type: "GET", contentType: 'application/json',
+        url: `${location.origin}/api/customers/list_customer`
     })
         .done((data) => {
+            console.log(data)
             $(".searchCustomer").removeClass('d-none');
             $(".contentCustomer div").remove();
             $.each(data, (i, customer) => {
@@ -42,7 +44,6 @@ function handleCloseListCustomers() {
     })
 }
 
-
 function showListProducts() {
     $.ajax({
         type: "GET",
@@ -50,12 +51,12 @@ function showListProducts() {
         url: `${location.origin}/api/products/show_list`
     })
         .done((data) => {
+            console.log(data, "p")
             $(".searchProduct").removeClass('d-none');
             $(".contentProduct div").remove();
             $.each(data, (i, product) => {
-                let result = `
-                    
-                <div class="MuiBox-root jss3941 InfiniteScroll-MenuItem focus-key-event" key-event="true"
+                let result = `             
+                    <div class="MuiBox-root jss3941 InfiniteScroll-MenuItem focus-key-event" key-event="true"
                     onclick="showProductInfo(${product.id})" data-id="${product.id}" tabindex="0">
                     <li class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root jss1259 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button" tabindex="-1" role="menuitem" aria-disabled="false">
                         <img class="jss1260" src="${product.image}">
@@ -101,3 +102,37 @@ function handleCloseListProducts() {
         $(".searchProduct").addClass('d-none');
     })
 }
+
+
+
+$( document ).ready(function() {
+    $("#order-collapse").removeClass("show");
+    $("#shipping-collapse").removeClass("show");
+    $("#purchase_order-collapse").removeClass("show");
+    $("#partner-collapse").removeClass("show");
+    $("#report-collapse").removeClass("show");
+});
+
+
+// function showListEmployees() {
+//     $.ajax({
+//         type: "GET",
+//         contentType: 'application/json',
+//         url: `${location.origin}/api/employees/show_list`
+//     })
+//         .done((data) => {
+//             $(".searchEmployee").removeClass('d-none');
+//             $(".contentEmployee div").remove();
+//             $.each(data, (i, product) => {
+//                 let result = `
+//
+//                     `;
+//                 $(".contentProduct").append(result)
+//             })
+//
+//             handleCloseListProducts();
+//         })
+//         .fail((jqXHR) => {
+//             console.log(jqXHR);
+//         })
+// }
