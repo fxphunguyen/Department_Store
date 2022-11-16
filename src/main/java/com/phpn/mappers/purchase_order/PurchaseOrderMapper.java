@@ -15,7 +15,7 @@ public class PurchaseOrderMapper {
                 .setProductId(purchaseOrderParam.getProductId())
                 .setEmployeeId(purchaseOrderParam.getEmployeeId())
                 .setSupplierId(purchaseOrderParam.getSupplierId())
-                .setPaymentMethodId(purchaseOrderParam.getPaymentId())
+                .setPaymentMethodId(purchaseOrderParam.getPaymentMethodId())
                 .setStatus(purchaseOrderParam.getStatus());
     }
 
