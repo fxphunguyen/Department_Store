@@ -5,9 +5,9 @@ import javax.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
 
+@Entity
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
@@ -15,8 +15,8 @@ import lombok.experimental.Accessors;
 public class Supplier {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "supplier_code", nullable = false, length = 50)
@@ -56,12 +56,14 @@ public class Supplier {
         setLocationRegionId(locationRegionId);
     }
 
-    public void setEmployeeId(Integer employeeId) {
+    public Supplier setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
+        return this;
     }
 
-    public void setLocationRegionId(Integer locationRegionId) {
+    public Supplier setLocationRegionId(Integer locationRegionId) {
         this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+        return this;
     }
 
 }
