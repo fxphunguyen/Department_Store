@@ -1,5 +1,7 @@
 package com.phpn.dto.purchase_order;
 
+import com.phpn.repositories.model.PurchaseOrderPays;
+import com.phpn.repositories.model.PurchaseOrderStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -25,6 +27,10 @@ public class PurchaseOrderParam {
 
     private Integer paymentMethodId;
 
-    private String status;
+    private PurchaseOrderStatus status;
+
+    private PurchaseOrderPays pays;
+
+    
 
 }

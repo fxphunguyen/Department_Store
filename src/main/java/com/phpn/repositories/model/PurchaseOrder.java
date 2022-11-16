@@ -48,9 +48,9 @@ public class PurchaseOrder {
     @Column(name = "payment_method_id", insertable = false, updatable = false)
     private Integer paymentMethodId;
 
-    @Size(max = 45)
-    @Column(name = "status", length = 45)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private PurchaseOrderStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "purchase_order_item_id")
@@ -62,9 +62,9 @@ public class PurchaseOrder {
     @Column(name = "create_at", nullable = false, length = 50)
     private String createAt;
 
-    @Lob
-    @Column(name = "gender")
-    private String pays;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "pays")
+    private PurchaseOrderPays pays;
 
     @Column(name = "total", nullable = false, precision = 10, scale = 2)
     private BigDecimal total;
