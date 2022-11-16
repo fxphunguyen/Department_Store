@@ -18428,7 +18428,12 @@ table.sapo-table-line-item tbody tr:last-child {
 .sapo-menu-list-item
   .sapo-menu-list-item-link--primary:not(.collapsed)
   .sapo-menu-list-item-next-icon {
-  transform: rotate(90deg);
+  /*transform: rotate(90deg);*/
+    transition: transform 0.2s linear;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    transition-property: transform;
 }
 .sapo-menu-list-item
   .sapo-menu-list-item-link--primary
@@ -23344,7 +23349,7 @@ tr[class^="item-combo-"] .line-item-name {
 }
 .header_dashboard .wrap-noti .uibar {
   width: calc(100% - 110px);
-  -webkit-width: calc(100% -110px);
+  -webkit-width: calc(100% - 110px);
   -moz-width: calc(100% - 110px);
   -o-width: calc(100% - 110px);
   -os-width: calc(100% - 110px);
@@ -23354,7 +23359,7 @@ tr[class^="item-combo-"] .line-item-name {
 @media (min-width: 992px) and (max-width: 1139px) {
   .header_dashboard .wrap-noti .uibar {
     width: calc(100% - 55px);
-    -webkit-width: calc(100% 55px);
+    -webkit-width: calc(100% - 55px);
     -moz-width: calc(100% - 55px);
     -o-width: calc(100% - 55px);
     -os-width: calc(100% - 55px);
