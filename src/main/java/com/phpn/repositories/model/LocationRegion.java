@@ -1,22 +1,22 @@
 package com.phpn.repositories.model;
 
+import javax.persistence.*;
+
 import lombok.*;
 import lombok.experimental.Accessors;
 
-import javax.persistence.*;
-
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-@Entity
 @Table(name = "location_regions")
 public class LocationRegion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "address", nullable = false, length = 50)

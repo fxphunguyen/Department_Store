@@ -1,22 +1,22 @@
 package com.phpn.repositories.model;
 
+import javax.persistence.*;
+
 import lombok.*;
 import lombok.experimental.Accessors;
 
-import javax.persistence.*;
-import java.sql.Date;
-
+@Entity
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-@Entity
 @Table(name = "employees")
 public class Employee {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "name", nullable = false, length = 50)
@@ -49,8 +49,9 @@ public class Employee {
         setLocationRegionId(locationRegionId);
     }
 
-    public Employee setLocationRegionId(Integer locationRegionId){
+    public Employee setLocationRegionId(Integer locationRegionId) {
         this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
         return this;
     }
+
 }
