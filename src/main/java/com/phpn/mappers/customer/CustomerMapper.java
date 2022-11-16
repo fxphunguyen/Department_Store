@@ -3,10 +3,14 @@ package com.phpn.mappers.customer;
 
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
-import com.phpn.mappers.localtionRegion.LocaltionRegionMapper;
+
+import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.model.Customer;
+import com.phpn.repositories.model.CustomerGender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import static com.phpn.repositories.model.CustomerGroup.VIP;
 
 
 @Component
@@ -14,7 +18,7 @@ public class CustomerMapper {
 
 
     @Autowired
-    LocaltionRegionMapper localtionRegionMapper;
+    LocationRegionMapper locationRegionMapper;
 
     public CustomerResult toDTO(Customer customer) {
         return new CustomerResult()
@@ -23,6 +27,7 @@ public class CustomerMapper {
                 .setName(customer.getName())
                 .setPhone(customer.getPhone())
                 .setCustomerGroup(customer.getCustomerGroup())
+                .setCustomerGender(customer.getCustomerGender())
                 .setEmail(customer.getEmail())
                 .setBirthday(customer.getBirthday())
                 .setStatus(customer.getStatus())
@@ -45,8 +50,7 @@ public class CustomerMapper {
                 .setStatus(customerCreate.getStatus())
                 .setCreateAt(customerCreate.getCreateAt())
                 .setUpdateAt(customerCreate.getUpdateAt())
-//                .setDeleted(customerCreate.())
-                .setLocationRegion(localtionRegionMapper.toModel(customerCreate));
+                .setLocationRegion(locationRegionMapper.toModel(customerCreate));
 
     }
 
@@ -58,6 +62,7 @@ public class CustomerMapper {
                 .setName(customerResult.getName())
                 .setPhone(customerResult.getPhone())
                 .setCustomerGroup(customerResult.getCustomerGroup())
+                .setCustomerGender(customerResult.getCustomerGender())
                 .setEmail(customerResult.getEmail())
                 .setBirthday(customerResult.getBirthday())
                 .setStatus(customerResult.getStatus())

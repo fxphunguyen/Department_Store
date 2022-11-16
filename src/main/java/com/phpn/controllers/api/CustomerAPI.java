@@ -4,10 +4,12 @@ import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.customer.CustomerMapper;
 
-import com.phpn.mappers.localtionRegion.LocaltionRegionMapper;
 
+import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.model.Customer;
+import com.phpn.repositories.model.CustomerGender;
+import com.phpn.repositories.model.CustomerGroup;
 import com.phpn.repositories.model.LocationRegion;
 import com.phpn.services.customer.CustomerService;
 import com.phpn.services.locationRegion.LocationRegionService;
@@ -23,7 +25,7 @@ import java.util.List;
 public class CustomerAPI {
 
     @Autowired
-    private LocaltionRegionMapper localtionRegionMapper;
+    private LocationRegionMapper locationRegionMapper;
 
 
     @Autowired
@@ -58,21 +60,23 @@ public class CustomerAPI {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findByIdItem(@PathVariable Integer id) {
+    public ResponseEntity<?> findById(@PathVariable Integer id) {
         CustomerResult itemResult = customerService.findById(id);
+//        CustomerGender[] customerGender = CustomerGender.values();
+//        System.out.println(customerGender);
         return new ResponseEntity<>(itemResult, HttpStatus.OK);
     }
 
     @PostMapping("/delete/{id}")
     public void deleteCustomerById(@PathVariable Integer id) {
-        customerService.deleteCustomer(id);
+        customerService.deleteStatusCustomer(id);
     }
 
     @PostMapping("/create")
     public ResponseEntity<?> createCustomer(@RequestBody CustomerCreate customerCreate) {
         customerCreate.getLocationReionCreate().setId(0);
-        LocationRegion locationRegion = locationRegionService.save(localtionRegionMapper.toModel(customerCreate));
-        customerCreate.setLocationReionCreate(localtionRegionMapper.toModel(locationRegion));
+        LocationRegion locationRegion = locationRegionService.save(locationRegionMapper.toModel(customerCreate));
+        customerCreate.setLocationReionCreate(locationRegionMapper.toModel(locationRegion));
         Customer customer = customerRepository.save(customerMapper.toModel(customerCreate));
         return new ResponseEntity<>(customer, HttpStatus.OK);
 
@@ -85,7 +89,17 @@ public class CustomerAPI {
         return new ResponseEntity<>(customerResult, HttpStatus.OK);
 
     }
+    @GetMapping("/customerGender")
+    public CustomerGender[] findAllByCustomerGender() {
+        CustomerGender[] customerGender = CustomerGender.values();
+        System.out.println(customerGender);
+        return customerGender;
+    }
 
-
-
+    @GetMapping("/customerGroup")
+    public CustomerGroup[] findAllByCustomerGroup() {
+        CustomerGroup[] customerGroups = CustomerGroup.values();
+        System.out.println(customerGroups);
+        return customerGroups;
+    }
 }

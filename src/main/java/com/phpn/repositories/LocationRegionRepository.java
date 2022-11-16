@@ -1,5 +1,6 @@
 package com.phpn.repositories;
 
+
 import com.phpn.repositories.model.LocationRegion;
 
 import org.springframework.stereotype.Repository;
