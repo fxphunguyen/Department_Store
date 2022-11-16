@@ -23,8 +23,6 @@ public class PurchaseOrderResult {
 
     private Integer supplierId;
 
-    private Integer purchaseOrderItemId;
-
     private Integer employeeId;
 
     private Integer paymentMethodId;
