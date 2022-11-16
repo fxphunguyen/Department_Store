@@ -18,10 +18,12 @@ public class ItemAPI {
     @Autowired
     ItemService itemService;
 
+
     @GetMapping("/variants")
     public ResponseEntity<?> findAll() {
         List<ItemRResult> itemResults = itemService.findAll();
 
         return new ResponseEntity<>(itemResults, HttpStatus.OK);
     }
+
 }

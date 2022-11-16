@@ -1,4 +1,4 @@
-package com.phpn.dto.localtionRegion;
+package com.phpn.dto.locationRegion;
 
 
 import lombok.AllArgsConstructor;

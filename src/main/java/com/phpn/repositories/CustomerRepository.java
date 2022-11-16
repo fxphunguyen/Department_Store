@@ -3,6 +3,8 @@ package com.phpn.repositories;
 
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.repositories.model.Customer;
+import com.phpn.repositories.model.CustomerGender;
+import com.phpn.repositories.model.CustomerGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -44,5 +46,5 @@ public interface CustomerRepository extends JpaRepository<Customer , Integer> {
             "WHERE c.deleted = :deleted ")
     List<CustomerResult> findCustomerByDeleted(boolean deleted);
 
-
+    List<Customer> findAllByCustomerGender(CustomerGender customerGender);
 }

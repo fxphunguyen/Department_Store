@@ -1,4 +1,4 @@
-package com.phpn.dto.localtionRegion;
+package com.phpn.dto.locationRegion;
 
 
 import lombok.AllArgsConstructor;
@@ -10,20 +10,25 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @Data
 @Accessors(chain = true)
-public class LocationRegionCreate {
+public class LocationRegionResult {
+
+
     private Integer Id;
 
     private String address;
 
     private  Integer wardId;
 
+
     private String wardName;
 
-    private Integer districtId;
+
+    private Integer districId;
 
     private String districtName;
 
     private Integer provinceId;
 
     private  String provinceName;
+
 }

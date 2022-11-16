@@ -2,7 +2,7 @@ package com.phpn.controllers.api;
 
 
 
-import com.phpn.dto.localtionRegion.LocationRegionResult;
+import com.phpn.dto.locationRegion.LocationRegionResult;
 
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.LocationRegion;

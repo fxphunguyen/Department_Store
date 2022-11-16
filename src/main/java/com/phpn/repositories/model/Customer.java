@@ -48,8 +48,9 @@ public class Customer {
     @Column(name = "phone", nullable = false, length = 50)
     private String phone;
 
-    @Column(name = "customer_group", nullable = false, length = 50)
-    private String customerGroup;
+    @Column(name = "customer_group", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private CustomerGroup customerGroup;
 
     @Column(name = "email", nullable = false, length = 50)
     private String email;
@@ -57,8 +58,12 @@ public class Customer {
     @Column(name = "birthday", nullable = false, length = 50)
     private String birthday;
 
-    @Column(name = "status", nullable = false, length = 50)
+    @Column(name = "status", nullable = false)
     private String status;
+
+    @Column(name = "gender", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private CustomerGender customerGender;
 
     @Column(name = "create_at", nullable = false, length = 50)
     private String createAt;

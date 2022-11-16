@@ -16,18 +16,20 @@ public class PurchaseOrderMapper {
                 .setEmployeeId(purchaseOrderParam.getEmployeeId())
                 .setSupplierId(purchaseOrderParam.getSupplierId())
                 .setPaymentMethodId(purchaseOrderParam.getPaymentMethodId())
-                .setStatus(purchaseOrderParam.getStatus());
+                .setStatus(purchaseOrderParam.getStatus())
+                .setPays(purchaseOrderParam.getPays());
     }
 
     public PurchaseOrderResult toDTO(PurchaseOrder purchaseOrder) {
         return new PurchaseOrderResult()
                 .setId(purchaseOrder.getId())
                 .setPurchaseCode(purchaseOrder.getPurchaseOrderCode())
-                .setPurchaseOrderItemId(purchaseOrder.getPurchaseOrderItemId())
                 .setEmployeeId(purchaseOrder.getEmployeeId())
                 .setSupplierId(purchaseOrder.getSupplierId())
                 .setPaymentMethodId(purchaseOrder.getPaymentMethodId())
-                .setStatus(purchaseOrder.getStatus());
+                .setPays(purchaseOrder.getPays())
+                .setStatus(purchaseOrder.getStatus())
+                .setGrandTotal(purchaseOrder.getGrandTotal());
     }
 
 }

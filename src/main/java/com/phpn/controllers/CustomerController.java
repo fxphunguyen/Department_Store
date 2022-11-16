@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-    @RequestMapping("/customer")
+    @RequestMapping("/admin/customers")
 public class CustomerController {
 
     @GetMapping("")
@@ -19,7 +19,7 @@ public class CustomerController {
         return  "/admin/customer/customer_group";
     }
 
-    @GetMapping("/create_customer")
+    @GetMapping("/create")
     public String showCustomerCreatePage(){
         return  "/admin/customer/create_customer";
     }
