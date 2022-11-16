@@ -56,14 +56,14 @@ public class PurchaseOrder {
     @JoinColumn(name = "purchase_order_item_id")
     private PurchaseOrderItem purchaseOrderItem;
 
-    @Column(name = "purchase_order_item_id")
+    @Column(name = "purchase_order_item_id", insertable = false, updatable = false)
     private Integer purchaseOrderItemId;
 
     @Column(name = "create_at", nullable = false, length = 50)
     private String createAt;
 
     @Lob
-    @Column(name = "gender")
+    @Column(name = "pays")
     private String pays;
 
     @Column(name = "total", nullable = false, precision = 10, scale = 2)

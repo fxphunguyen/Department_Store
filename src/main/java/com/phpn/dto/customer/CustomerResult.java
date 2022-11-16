@@ -1,5 +1,6 @@
 package com.phpn.dto.customer;
 
+import com.phpn.repositories.model.CustomerGender;
 import com.phpn.repositories.model.CustomerGroup;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,6 +34,8 @@ public class CustomerResult {
     private String updateAt;
 
     private Integer locationRegionId;
+
+    private CustomerGender customerGender;
 
     private Integer employeeId;
     private Boolean deleted;

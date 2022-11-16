@@ -1,6 +1,7 @@
 package com.phpn.dto.customer;
 
 
+import com.phpn.repositories.model.CustomerGender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,6 +36,9 @@ public class CustomerParam {
     private String updateAt;
 
     private Integer employeeId;
+
+    private CustomerGender customerGender;
+
 
     private Integer locationRegionId;
 

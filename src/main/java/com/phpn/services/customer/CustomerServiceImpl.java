@@ -6,6 +6,7 @@ import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
+import com.phpn.repositories.model.CustomerGender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -91,6 +92,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerResult update(CustomerResult customerResult) {
         return customerMapper.toDTO(customerRepository.save(customerMapper.toModel(customerResult)));
+    }
+
+    @Override
+
+    public CustomerGender[] findAllByCustomerGender() {
+      CustomerGender[] customerGender = CustomerGender.values();
+            return customerGender;
     }
 
 }

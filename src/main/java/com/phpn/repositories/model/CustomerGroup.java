@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum CustomerGroup {
-    VIP("NAM"), LE("NU");
+    VIP("VIP"), LE("LE"), CHAN("CHAN");
 
     private final String value;
 

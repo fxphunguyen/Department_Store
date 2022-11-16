@@ -8,6 +8,8 @@ import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.model.Customer;
+import com.phpn.repositories.model.CustomerGender;
+import com.phpn.repositories.model.CustomerGroup;
 import com.phpn.repositories.model.LocationRegion;
 import com.phpn.services.customer.CustomerService;
 import com.phpn.services.locationRegion.LocationRegionService;
@@ -60,6 +62,8 @@ public class CustomerAPI {
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
         CustomerResult itemResult = customerService.findById(id);
+//        CustomerGender[] customerGender = CustomerGender.values();
+//        System.out.println(customerGender);
         return new ResponseEntity<>(itemResult, HttpStatus.OK);
     }
 
@@ -85,7 +89,17 @@ public class CustomerAPI {
         return new ResponseEntity<>(customerResult, HttpStatus.OK);
 
     }
+    @GetMapping("/customerGender")
+    public CustomerGender[] findAllByCustomerGender() {
+        CustomerGender[] customerGender = CustomerGender.values();
+        System.out.println(customerGender);
+        return customerGender;
+    }
 
-
-
+    @GetMapping("/customerGroup")
+    public CustomerGroup[] findAllByCustomerGroup() {
+        CustomerGroup[] customerGroups = CustomerGroup.values();
+        System.out.println(customerGroups);
+        return customerGroups;
+    }
 }
