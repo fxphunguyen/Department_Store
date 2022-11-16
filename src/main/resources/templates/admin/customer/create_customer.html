@@ -1,6 +1,17 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" lang="vi-VN" class="sapo-menu-expand sapo-menu-toggle-active">
 <head>
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+
     <th:block th:replace="/layout/header.html"/>
     <title>Danh sách khách hàng</title>
     <link rel="stylesheet" href="/assets/admin/css/customer/customer_create.css"/>
@@ -111,15 +122,9 @@
                                                                style="color: rgb(70, 81, 95);">Nhóm
                                                                 khách hàng</p>
                                                         </div>
-                                                        <div class="MuiBox-root jss20576 jss21261" tabindex="0">
-                                                            <p
-                                                                    class="MuiTypography-root label-select MuiTypography-body1 MuiTypography-colorTextPrimary">
-                                                                Chọn nhóm khách hàng</p>
-                                                            <svg class="MuiSvgIcon-root" focusable="false"
-                                                                 viewBox="0 0 24 24" aria-hidden="true">
-                                                                <path d="M7 10l5 5 5-5z"></path>
-                                                            </svg>
-                                                        </div>
+                                                        <select className="jss87874" class="form-select"
+                                                                name="selectCustomerGroup"
+                                                                id="selectCustomerGroup"></select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -262,13 +267,19 @@
                                             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
                                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
                                                     <div width="100%" class="sc-himrzO gTRFtW"><label
-                                                            for="Sapo-TextField-7f179b7c-a31b-41f9-bc1e-b85639188fa9"
+
                                                             class="sc-evZas diplSI">Ngày
                                                         sinh</label>
-                                                        <div class="sc-jIZahH hISLMV Sapo-InputRoot"><input
-                                                                id="Sapo-TextField-7f179b7c-a31b-41f9-bc1e-b85639188fa9"
-                                                                placeholder="Chọn ngày sinh"
-                                                                type="text" class="sc-ikZpkk cMqFIB" value="">
+                                                        <div class="sc-jIZahH hISLMV Sapo-InputRoot">
+
+                                                            <form autocomplete="off">
+                                                                <div class="input-group input-daterange">
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="Leaving Date" readonly></div>
+
+                                                            </form>
+
+
                                                             <fieldset class="sc-iIPllB iUBRZb"></fieldset>
                                                             <div class="sc-gicCDI sc-bZkfAO bqqjdk nysSE">
                                                                 <svg viewBox="0 0 24 25" fill="none"
@@ -1739,14 +1750,12 @@
                                                                     data-shrink="true">Giới tính</label></div>
                                                             <div
                                                                     class="MuiInputBase-root MuiOutlinedInput-root jss20633 MuiInputBase-fullWidth MuiInputBase-formControl">
-                                                                <div
-                                                                        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu jss20634 MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
-                                                                        tabindex="0" role="button"
-                                                                        aria-haspopup="listbox"
-                                                                        aria-labelledby="mui-component-select-gender"
-                                                                        id="mui-component-select-gender">
-                                                                    Khác
-                                                                </div>
+
+                                                                <select class="jss87874 form-select"
+                                                                        name="selectCustomerGender"
+                                                                        id="selectCustomerGender"></select>
+
+
                                                                 <input name="gender" type="hidden" value="other">
                                                                 <svg
                                                                         class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
@@ -1941,15 +1950,12 @@
                                                        style="color: rgb(70, 81, 95);">Nhân
                                                         viên phụ trách</p>
                                                 </div>
-                                                <div class="MuiBox-root jss20700 jss21148" tabindex="0">
-                                                    <p
-                                                            class="MuiTypography-root label-select MuiTypography-body1 MuiTypography-colorTextPrimary">
-                                                        Phú Nguyễn</p>
-                                                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
-                                                         aria-hidden="true">
-                                                        <path d="M7 10l5 5 5-5z"></path>
-                                                    </svg>
-                                                </div>
+
+
+                                                <select name="selectEmployee" id="selectEmployee" class="form-select"
+                                                        style="height:40px;"></select>
+
+
                                             </div>
                                         </div>
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
@@ -2210,7 +2216,6 @@
     }
 
 
-
     class LocationRegion {
         constructor(id, provinceId, provinceName, districtId, districtName, wardId, wardName, address) {
             this.id = id;
@@ -2251,7 +2256,7 @@
     class Withdraw {
         constructor(id, customerId, transactionAmount) {
             this.id = id;
-            this.customerId =customerId;
+            this.customerId = customerId;
             this.transactionAmount = transactionAmount;
         }
     }
@@ -2259,7 +2264,7 @@
     class Deposit {
         constructor(id, customerId, transactionAmount) {
             this.id = id;
-            this.customerId =customerId;
+            this.customerId = customerId;
             this.transactionAmount = transactionAmount;
         }
     }
@@ -2297,6 +2302,7 @@
     }
 
     function getAllDistrictsByProvinceId(provinceId) {
+        $("#district").empty()
         return $.ajax({
             headers: {
                 "accept": "application/json",
@@ -2317,6 +2323,7 @@
     }
 
     function getAllWardsByDistrictId(districtId) {
+        $("#ward").empty()
         return $.ajax({
             headers: {
                 "accept": "application/json",
@@ -2326,6 +2333,7 @@
             url: "https://vapi.vnappmob.com/api/province/ward/" + districtId
         })
             .done((data) => {
+                console.log("districtId", districtId)
                 $.each(data.results, (i, item) => {
                     let str = `<option value="${item.ward_id}">${item.ward_name}</option>`;
                     $("#ward").append(str);
@@ -2346,34 +2354,109 @@
             getAllWardsByDistrictId(districtId);
         });
     });
+    $("#province").on('change', () => {
+        let provinceId = $("#province").val();
+        getAllDistrictsByProvinceId(provinceId).done(()=>{
+            let districtId = $("#district").val();
+            getAllWardsByDistrictId(districtId);
+        })
+
+        $("#district").on('change', () => {
+            let districtId = $("#district").val();
+            getAllWardsByDistrictId(districtId);
+        })
+    });
 
 
+    function getAllEmployeeSelect() {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/employees/show_list"
+        })
+            .done((data) => {
+                console.log(data)
+                $.each(data, (i, item) => {
+                    let str = `<option value="${item.id}">${item.name}</option>`;
+                    $("#selectEmployee").append(str);
+                });
+            })
+            .fail((jqXHR) => {
 
+            })
+    }
 
+    function getAllCustomerGroup() {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/customers/customerGroup"
+        })
+            .done((data) => {
+                console.log(data)
+                $.each(data, (i, item) => {
+                    console.log(item)
+                    let str = `<option value="${item}">${item}</option>`;
+                    $("#selectCustomerGroup").append(str);
+                });
+            })
+            .fail((jqXHR) => {
 
-     function getAllEmployeeSelect(){
-         return $.ajax({
-             headers: {
-                 "accept": "application/json",
-                 "content-type": "application/json"
-             },
-             type: "GET",
-             url: "https://vapi.vnappmob.com/api/province/ward/" + districtId
-         })
-             .done((data) => {
-                 $.each(data, (i, item) => {
-                     let str = `<option value="${item.ward_id}">${item.ward_name}</option>`;
-                     $("#ward").append(str);
-                 });
-             })
-             .fail((jqXHR) => {
+            })
+    }
 
-             })
-     }
+    function getAllCustomerGender() {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/customers/customerGender"
+        })
+            .done((data) => {
+                console.log(data)
+                $.each(data, (i, item) => {
+                    console.log(item)
+                    let str = `<option value="${item}">${item}</option>`;
+                    $("#selectCustomerGender").append(str);
+                });
+            })
+            .fail((jqXHR) => {
+
+            })
+    }
+
+    getAllCustomerGender();
+    getAllCustomerGroup();
+
     getAllEmployeeSelect();
+    // <select className="jss87874" name="province"
+    //         id="province"></select>
 
 
+    // <form autocomplete="off">
+    //     <div class="input-group input-daterange">
+    //         <input type="text" class="form-control"   placeholder="Leaving Date" readonly> </div>
+    // </div>
+    // </form>
 
 </script>
+<script>
+    $(document).ready(function () {
 
+        $('.input-daterange').datepicker({
+            format: 'dd-mm-yyyy',
+            todayHighlight: true,
+            startDate: '0d'
+        });
+
+    });
+</script>
 </html>

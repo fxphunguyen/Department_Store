@@ -16,8 +16,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
             "FROM Employee e ")
     List<Employee> findAll();
 
-    @Query(" SELECT e " +
-            "FROM Employee e ")
-    List<EmployeeRResult> findAllBySelect();
 }
 
