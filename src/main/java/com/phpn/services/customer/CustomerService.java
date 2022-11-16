@@ -3,6 +3,7 @@ package com.phpn.services.customer;
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.repositories.model.Customer;
+import com.phpn.repositories.model.CustomerGender;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -31,4 +32,7 @@ public interface CustomerService {
 
 
     CustomerResult update(CustomerResult customerResult);
+
+
+     CustomerGender[] findAllByCustomerGender();
 }

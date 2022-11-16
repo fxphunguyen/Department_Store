@@ -19,7 +19,7 @@ public class PurchaseOrderResult {
 
     private Integer supplierId;
 
-    private Integer productId;
+    private Integer purchaseOrderItemId;
 
     private Integer employeeId;
 

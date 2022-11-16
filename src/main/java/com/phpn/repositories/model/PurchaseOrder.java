@@ -9,6 +9,7 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -34,13 +35,6 @@ public class PurchaseOrder {
     private Integer supplierId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-    @Column(name = "product_id", insertable = false, updatable = false)
-    private Integer productId;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
@@ -58,10 +52,33 @@ public class PurchaseOrder {
     @Column(name = "status", length = 45)
     private String status;
 
-    public PurchaseOrder(Integer supplierId, Integer productId, Integer employeeId, Integer paymentMethodId) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "purchase_order_item_id")
+    private PurchaseOrderItem purchaseOrderItem;
+
+    @Column(name = "purchase_order_item_id", insertable = false, updatable = false)
+    private Integer purchaseOrderItemId;
+
+    @Column(name = "create_at", nullable = false, length = 50)
+    private String createAt;
+
+    @Lob
+    @Column(name = "pays")
+    private String pays;
+
+    @Column(name = "total", nullable = false, precision = 10, scale = 2)
+    private BigDecimal total;
+
+    @Column(name = "grand_total", nullable = false, precision = 10, scale = 2)
+    private BigDecimal grandTotal;
+
+    @Column(name = "discount", precision = 10, scale = 2)
+    private Float discount;
+
+    public PurchaseOrder(Integer supplierId, Integer purchaseOrderItemId, Integer employeeId, Integer paymentMethodId) {
         setSupplierId(supplierId);
         setEmployeeId(employeeId);
-        setProductId(productId);
+        setPurchaseOrderItemId(purchaseOrderItemId);
         setPaymentMethodId(paymentMethodId);
     }
 
@@ -74,13 +91,13 @@ public class PurchaseOrder {
         return this;
     }
 
-    public PurchaseOrder setEmployeeId(Integer employeeId) {
-        this.employee = new Employee(this.employeeId = employeeId);
+    public PurchaseOrder setPurchaseOrderItemId(Integer purchaseOrderItemId) {
+        this.purchaseOrderItem = new PurchaseOrderItem(this.purchaseOrderItemId = purchaseOrderItemId);
         return this;
     }
 
-    public PurchaseOrder setProductId(Integer productId) {
-        this.product = new Product(this.productId = productId);
+    public PurchaseOrder setEmployeeId(Integer employeeId) {
+        this.employee = new Employee(this.employeeId = employeeId);
         return this;
     }
 

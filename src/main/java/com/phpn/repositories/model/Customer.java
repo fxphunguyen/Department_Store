@@ -1,6 +1,5 @@
 package com.phpn.repositories.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -61,6 +60,10 @@ public class Customer {
 
     @Column(name = "status", nullable = false)
     private String status;
+
+    @Column(name = "gender", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private CustomerGender customerGender;
 
     @Column(name = "create_at", nullable = false, length = 50)
     private String createAt;

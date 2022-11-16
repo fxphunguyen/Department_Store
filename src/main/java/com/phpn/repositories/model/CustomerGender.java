@@ -18,10 +18,10 @@ public enum CustomerGender {
     }
 
     @JsonCreator
-    public static CustomerGender parseOrderGender(String value) {
+    public static CustomerGender parseCustomerGender(String value) {
         CustomerGender[] values = values();
-        for (CustomerGender customerStatus : values) {
-            if (customerStatus.value.equals(value)) return customerStatus;
+        for (CustomerGender customerGender : values) {
+            if (customerGender.value.equals(value)) return customerGender;
         }
         throw new IllegalArgumentException(value + "invalid");
     }
