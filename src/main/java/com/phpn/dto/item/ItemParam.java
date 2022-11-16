@@ -21,7 +21,7 @@ public class ItemParam {
 
     private Integer supplierId;
 
-    private Integer orderId;
+    private Integer purchaseOrderId;
 
     private Integer quantity;
 

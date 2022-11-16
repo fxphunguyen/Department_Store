@@ -1,13 +1,13 @@
 package com.phpn.repositories;
 
-import com.phpn.repositories.model.Item;
+import com.phpn.repositories.model.PurchaseOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface ItemRepository extends JpaRepository<Item, Integer> {
+public interface PurchaseOrderRepository extends JpaRepository<PurchaseOrder, Integer> {
 
-    List<Item> findAllByProductIdOrderByCreateAt(Integer productId);
+    List<PurchaseOrder> findAll();
 }

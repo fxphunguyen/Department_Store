@@ -1,6 +1,5 @@
 package com.phpn.repositories.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +22,16 @@ public class Customer {
     public Customer(Integer employeeId , Integer locationRegionId){
         this.employee = new Employee(this.employeeId = employeeId);
         this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+    }
+
+    public Customer setEmployeeId(Integer employeeId) {
+        this.employee = new Employee(this.employeeId = employeeId);
+        return this;
+    }
+
+    public Customer setLocationRegionId(Integer locationRegionId) {
+        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+        return this;
     }
 
     @Id
@@ -75,5 +84,6 @@ public class Customer {
 
     @Column(name = "deleted", nullable = false)
     private Boolean deleted = false;
+
 
 }

@@ -1,14 +1,22 @@
 package com.phpn.repositories.model;
 
-import com.phpn.repositories.model.Employee;
-import com.phpn.repositories.model.PaymentMethod;
-import com.phpn.repositories.model.Product;
-import com.phpn.repositories.model.Supplier;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
 @Table(name = "purchase_order")
 public class PurchaseOrder {
     @Id
@@ -23,76 +31,79 @@ public class PurchaseOrder {
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @Column(name = "supplier_id", insertable = false, updatable = false)
+    private Integer supplierId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
+    @Column(name = "employee_id", insertable = false, updatable = false)
+    private Integer employeeId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "payment_method_id")
     private PaymentMethod paymentMethod;
+
+    @Column(name = "payment_method_id", insertable = false, updatable = false)
+    private Integer paymentMethodId;
 
     @Size(max = 45)
     @Column(name = "status", length = 45)
     private String status;
 
-    public Integer getId() {
-        return id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "purchase_order_item_id")
+    private PurchaseOrderItem purchaseOrderItem;
+
+    @Column(name = "purchase_order_item_id", insertable = false, updatable = false)
+    private Integer purchaseOrderItemId;
+
+    @Column(name = "create_at", nullable = false, length = 50)
+    private String createAt;
+
+    @Lob
+    @Column(name = "pays")
+    private String pays;
+
+    @Column(name = "total", nullable = false, precision = 10, scale = 2)
+    private BigDecimal total;
+
+    @Column(name = "grand_total", nullable = false, precision = 10, scale = 2)
+    private BigDecimal grandTotal;
+
+    @Column(name = "discount", precision = 10, scale = 2)
+    private Float discount;
+
+    public PurchaseOrder(Integer supplierId, Integer purchaseOrderItemId, Integer employeeId, Integer paymentMethodId) {
+        setSupplierId(supplierId);
+        setEmployeeId(employeeId);
+        setPurchaseOrderItemId(purchaseOrderItemId);
+        setPaymentMethodId(paymentMethodId);
     }
 
-    public void setId(Integer id) {
+    public PurchaseOrder(Integer id) {
         this.id = id;
     }
 
-    public String getPurchaseOrderCode() {
-        return purchaseOrderCode;
+    public PurchaseOrder setSupplierId(Integer supplierId) {
+        this.supplier = new Supplier(this.supplierId = supplierId);
+        return this;
     }
 
-    public void setPurchaseOrderCode(String purchaseOrderCode) {
-        this.purchaseOrderCode = purchaseOrderCode;
+    public PurchaseOrder setPurchaseOrderItemId(Integer purchaseOrderItemId) {
+        this.purchaseOrderItem = new PurchaseOrderItem(this.purchaseOrderItemId = purchaseOrderItemId);
+        return this;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public PurchaseOrder setEmployeeId(Integer employeeId) {
+        this.employee = new Employee(this.employeeId = employeeId);
+        return this;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public PaymentMethod getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public PurchaseOrder setPaymentMethodId(Integer paymentMethodId) {
+        this.paymentMethod = new PaymentMethod(this.paymentMethodId = paymentMethodId);
+        return this;
     }
 
 }

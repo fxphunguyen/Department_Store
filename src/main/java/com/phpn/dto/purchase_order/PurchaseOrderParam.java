@@ -19,8 +19,12 @@ public class PurchaseOrderParam {
 
     private Integer supplierId;
 
-    private Integer productId;
+    private Integer purchaseOrderItemId;
 
-    private Integer paymentId;
+    private Integer employeeId;
+
+    private Integer paymentMethodId;
+
+    private String status;
 
 }

@@ -20,7 +20,7 @@ public class OrderController {
     @GetMapping("/orders/create")
     public ModelAndView showCreateOrderPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/admin/order/create1");
+        modelAndView.setViewName("/admin/order/create");
         return modelAndView;
     }
 
