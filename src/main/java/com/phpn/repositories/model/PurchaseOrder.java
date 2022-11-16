@@ -66,13 +66,6 @@ public class PurchaseOrder {
     @Column(name = "pays")
     private PurchaseOrderPays pays;
 
-<<<<<<< HEAD
-    @Lob
-    @Column(name = "pays")
-    private String pays;
-=======
->>>>>>> main
-
     @Column(name = "total", nullable = false, precision = 10, scale = 2)
     private BigDecimal total;
 
