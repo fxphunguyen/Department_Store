@@ -12,10 +12,10 @@ public class PurchaseOrderMapper {
         return new PurchaseOrder()
                 .setId(purchaseOrderParam.getId())
                 .setPurchaseOrderCode(purchaseOrderParam.getPurchaseCode())
-                .setProductId(purchaseOrderParam.getProductId())
+                .setPurchaseOrderItemId(purchaseOrderParam.getPurchaseOrderItemId())
                 .setEmployeeId(purchaseOrderParam.getEmployeeId())
                 .setSupplierId(purchaseOrderParam.getSupplierId())
-                .setPaymentMethodId(purchaseOrderParam.getPaymentId())
+                .setPaymentMethodId(purchaseOrderParam.getPaymentMethodId())
                 .setStatus(purchaseOrderParam.getStatus());
     }
 
@@ -23,7 +23,7 @@ public class PurchaseOrderMapper {
         return new PurchaseOrderResult()
                 .setId(purchaseOrder.getId())
                 .setPurchaseCode(purchaseOrder.getPurchaseOrderCode())
-                .setProductId(purchaseOrder.getProductId())
+                .setPurchaseOrderItemId(purchaseOrder.getPurchaseOrderItemId())
                 .setEmployeeId(purchaseOrder.getEmployeeId())
                 .setSupplierId(purchaseOrder.getSupplierId())
                 .setPaymentMethodId(purchaseOrder.getPaymentMethodId())
