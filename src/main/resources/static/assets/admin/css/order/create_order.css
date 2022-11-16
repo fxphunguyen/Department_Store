@@ -2311,16 +2311,16 @@
     visibility: hidden;
     z-index: 999;
 }
- .jss1258 {
-     opacity: 1 !important;
-     padding: 5px 8px !important;
-     z-index: 2000 !important;
-     font-size: 12px !important;
-     max-width: 220px;
-     box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
-     font-weight: 400;
-     overflow-wrap: break-word;
- }
+ /*.jss1258 {*/
+ /*    opacity: 1 !important;*/
+ /*    padding: 5px 8px !important;*/
+ /*    z-index: 2000 !important;*/
+ /*    font-size: 12px !important;*/
+ /*    max-width: 220px;*/
+ /*    box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);*/
+ /*    font-weight: 400;*/
+ /*    overflow-wrap: break-word;*/
+ /*}*/
 .jss1173 {
     border: 1px solid #E8EAEB;
     display: flex;
@@ -2561,7 +2561,134 @@ MuiGrid-spacing-xs-3 > .MuiGrid-item {
     border: 1px solid rgb(0, 136, 255);
     background: rgb(255, 255, 255);
 }
+.jss7202 .InfiniteScroll-ListItem>.InfiniteScroll-MenuItem.focus-key-event {
+    background-color: #F2F9FF;
+}
+.MuiPaper-elevation3 {
+    box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+}
 
+ .MuiPaper-rounded {
+     border-radius: 3px;
+ }
+.MuiMenuItem-root:hover {
+    color: #0088FF;
+    background-color: #E6F4FF;
+}
+.MuiButton-root:hover {
+    color: #0088FF;
+    background-color: #E6F4FF;
+}
+
+.jss2932 .InfiniteScroll-BoxCreate {
+    padding: 0 28px;
+    position: relative;
+    min-height: 50px;
+    justify-content: flex-start;
+}
+
+jss8611 {
+    display: flex;
+    /*padding: 0 16px;*/
+    font-size: 14px;
+    box-shadow: none;
+    /*min-height: 36px;*/
+    align-items: center;
+    font-weight: 500;
+    border-radius: 3px;
+    text-transform: none;
+    /*justify-content: center;*/
+}
+.jss4971 {
+    border : 1px solid rgba(192,192,192,0.1);
+}
+.jss4978 {
+    border : 1px solid rgba(192,192,192,0.1);
+
+}
+.jss1062 {
+    width: 718px !important;
+    position: absolute !important;
+    inset: 0px auto auto 0px !important;
+    transform: translate(278px, 270px) !important;
+    z-index: 999 !important ;
+}
+
+.jss1010 {
+    display: flex;
+    flex-direction: column;
+}
+.jss1010 .InfiniteScroll-BoxCreate {
+    padding: 0 28px;
+    position: relative;
+    min-height: 50px;
+    justify-content: flex-start;
+}
+ .jss3935 {
+     display: flex;
+     /*padding: 0 16px;*/
+     font-size: 14px;
+     box-shadow: none;
+     /*min-height: 36px;*/
+     align-items: center;
+     font-weight: 500;
+     border-radius: 3px;
+     text-transform: none;
+     /*justify-content: center;*/
+ }
+
+.jss1010 .InfiniteScroll-ListItem>.InfiniteScroll-MenuItem.focus-key-event {
+    background-color: #F2F9FF;
+}
+ .jss1010 .InfiniteScroll-ListItem>.InfiniteScroll-MenuItem {
+     border-radius: 0;
+ }
+
+.jss1259 {
+    margin: 0;
+    display: flex;
+    padding: 10px 24px
+    px
+    10px;
+    position: relative;
+    align-items: flex-start;
+    border-radius: 0;
+}
+/*@media (min-width: 600px)*/
+.MuiMenuItem-root {
+    min-height: auto;
+}
+.jss1260 {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    object-fit: contain;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 16px;
+    border-radius: 8px;
+    justify-content: center;
+    background-color: transparent;
+}
+.jss3946 {
+     width: calc(100% - 70px);
+     display: flex;
+ }
+.jss3947 {
+    width: calc(100% - 330px);
+}
+.jss1258 {
+    /*width: 100%;*/
+    display: block;
+    overflow: hidden;
+    line-height: 16px;
+    text-overflow: ellipsis;
+    margin-left: 10px;
+}
+.jss3953 {
+    min-width: 330px;
+    text-align: right;
+}
 /*#menu_order {*/
 /*    fill: #fff !important;*/
 /*    color: #fff !important;*/
