@@ -46,5 +46,4 @@ public interface CustomerRepository extends JpaRepository<Customer , Integer> {
             "WHERE c.deleted = :deleted ")
     List<CustomerResult> findCustomerByDeleted(boolean deleted);
 
-    List<Customer> findAllByCustomerGender(CustomerGender customerGender);
 }

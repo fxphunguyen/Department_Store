@@ -1,6 +1,9 @@
 package com.phpn.controllers.api;
 
+import com.phpn.dto.employee.EmployeeRResult;
 import com.phpn.dto.employee.EmployeeResult;
+import com.phpn.repositories.EmployeeRepository;
+import com.phpn.repositories.model.Employee;
 import com.phpn.services.employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +26,6 @@ public class EmployeeAPI {
         List<EmployeeResult> employeeResults = employeeService.findAll();
         return new ResponseEntity<>(employeeResults, HttpStatus.OK);
     }
-
 
 
 }
