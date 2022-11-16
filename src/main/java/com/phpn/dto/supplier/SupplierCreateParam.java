@@ -1,5 +1,6 @@
 package com.phpn.dto.supplier;
 
+import com.phpn.repositories.model.SupplierStatus;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -14,7 +15,7 @@ public class SupplierCreateParam {
     private String name;
     private String email;
     private String phone;
-    private String status;
+    private SupplierStatus status;
     private String description;
     private Integer employeeId;
     private Integer locationRegionId;

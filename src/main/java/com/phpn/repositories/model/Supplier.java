@@ -5,9 +5,9 @@ import javax.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
 
+@Entity
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
@@ -15,8 +15,8 @@ import lombok.experimental.Accessors;
 public class Supplier {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "supplier_code", nullable = false, length = 50)
@@ -31,8 +31,9 @@ public class Supplier {
     @Column(name = "phone", nullable = false, length = 50)
     private String phone;
 
-    @Column(name = "status", nullable = false, length = 50)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private SupplierStatus status;
 
     @Column(name = "description", nullable = false, length = 200)
     private String description;
@@ -51,22 +52,29 @@ public class Supplier {
     @Column(name = "location_region_id", insertable = false, updatable = false)
     private Integer locationRegionId;
 
-    public Supplier(Integer employeeId, Integer locationRegionId) {
-        setEmployeeId(employeeId);
-        setLocationRegionId(locationRegionId);
-    }
+    @Column(name = "create_at", nullable = false)
+    private Integer createAt;
+
+    @Column(name = "update_at", nullable = false)
+    private Integer updateAt;
 
     public Supplier(Integer id) {
         this.id = id;
     }
 
-    public void setEmployeeId(Integer employeeId) {
-
-        this.employee = new Employee(this.employeeId = employeeId);
+    public Supplier(Integer employeeId, Integer locationRegionId) {
+        setEmployeeId(employeeId);
+        setLocationRegionId(locationRegionId);
     }
 
-    public void setLocationRegionId(Integer locationRegionId) {
+    public Supplier setEmployeeId(Integer employeeId) {
+        this.employee = new Employee(this.employeeId = employeeId);
+        return this;
+    }
+
+    public Supplier setLocationRegionId(Integer locationRegionId) {
         this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+        return this;
     }
 
 }
