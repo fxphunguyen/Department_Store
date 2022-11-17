@@ -4,7 +4,7 @@ function showListCustomer() {
         url: `${location.origin}/api/customers/list_customer`
     })
         .done((data) => {
-            console.log(data)
+            // console.log(data)
             $(".searchCustomer").removeClass('d-none');
             $(".contentCustomer div").remove();
             $.each(data, (i, customer) => {
@@ -51,7 +51,6 @@ function showListProducts() {
         url: `${location.origin}/api/products/show_list`
     })
         .done((data) => {
-            console.log(data, "p")
             $(".searchProduct").removeClass('d-none');
             $(".contentProduct div").remove();
             $.each(data, (i, product) => {
@@ -102,7 +101,8 @@ function handleCloseListProducts() {
         $(".searchProduct").addClass('d-none');
     })
 }
-$( document ).ready(function() {
+
+$(document).ready(function () {
     $("#order-collapse").removeClass("show");
     $("#shipping-collapse").removeClass("show");
     $("#purchase_order-collapse").removeClass("show");
@@ -112,6 +112,109 @@ $( document ).ready(function() {
 
 const handelModalCreateCustomer = () => {
     $("#create_customer").on("click", () => {
-        $("#modal_create_customer").modal("show");
+        $("#create_customer_order").modal("show");
     })
 }
+handelModalCreateCustomer();
+
+function getAllProvinces() {
+    return $.ajax({
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        type: "GET",
+        url: "https://vapi.vnappmob.com/api/province/"
+    })
+        .done((data) => {
+            $.each(data.results, (i, item) => {
+                let str = `<option value="${item.province_id}">${item.province_name}</option>`;
+                $("#province").append(str);
+            });
+
+        })
+        .fail((jqXHR) => {
+
+        })
+}
+
+function getAllDistrictsByProvinceId(provinceId) {
+    $("#district").empty();
+    return $.ajax({
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        type: "GET",
+        url: "https://vapi.vnappmob.com/api/province/district/" + provinceId
+    })
+        .done((data) => {
+                if (data.results.length === 0) {
+                    let str = `<option value="0">Chọn Quận/Huyện</option>`;
+                    $("#district").append(str);
+                } else {
+                    $.each(data.results, (i, item) => {
+                        let str = ` <option value="${item.district_id}">${item.district_name}</option>`;
+                        $("#district").append(str);
+                    })
+
+                    }
+                })
+        .fail((jqXHR) => {
+        })
+}
+function getAllWardsByDistrictId(districtId) {
+    $("#ward").empty();
+    return $.ajax({
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        type: "GET",
+        url: "https://vapi.vnappmob.com/api/province/ward/" + districtId
+    })
+        .done((data) => {
+            console.log("districtId", districtId)
+            if (data.results.length === 0) {
+                let str = `<option value="0">Chọn Phường/Xã</option>`;
+                $("#ward").append(str);
+            } else {
+                $.each(data.results, (i, item) => {
+                    let str = `<option value="${item.ward_id}">${item.ward_name}</option>
+                                `;
+                    $("#ward").append(str);
+                });
+            }
+        })
+        .fail((jqXHR) => {
+
+        })
+}
+
+getAllProvinces().then(() => {
+    let provinceId = $("#province").val();
+
+    getAllDistrictsByProvinceId(provinceId).then(() => {
+
+        let districtId = $("#district").val();
+
+        getAllWardsByDistrictId(districtId);
+    });
+});
+$("#province").on('change', () => {
+    let provinceId = $("#province").val();
+    getAllDistrictsByProvinceId(provinceId).done(()=>{
+        let districtId = $("#district").val();
+        getAllWardsByDistrictId(districtId);
+    })
+
+    $("#district").on('change', () => {
+        let districtId = $("#district").val();
+        getAllWardsByDistrictId(districtId);
+    })
+});
+
+
+
+
+
