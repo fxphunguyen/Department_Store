@@ -118,4 +118,9 @@ public class CustomerServiceImpl implements CustomerService {
             return customerGender;
     }
 
+    @Override
+    public List<CustomerResult> findAllCustomerByDelete(boolean deleted) {
+        return null;
+    }
+
 }

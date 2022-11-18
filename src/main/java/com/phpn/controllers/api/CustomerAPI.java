@@ -47,15 +47,10 @@ public class CustomerAPI {
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 
-    @GetMapping("/show_customer")
-    public ResponseEntity<?> findNameAndPhoneDeletedFalse(boolean deleted) {
-        List<CustomerResult> customerResults = customerService.findCustomerByDeleted(deleted);
-        return new ResponseEntity<>(customerResults, HttpStatus.OK);
-    }
 
     @GetMapping("/customer_list")
-    public ResponseEntity<?> showListCustomerByDelete() {
-        List<Customer> customers = customerRepository.findAll();
+    public ResponseEntity<?> showListCustomerByDelete(boolean deleted) {
+        List<CustomerResult> customers = customerService.findAllCustomerByDelete(deleted);
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 

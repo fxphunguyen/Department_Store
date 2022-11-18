@@ -39,7 +39,7 @@ public class CustomerMapper {
                 .setCreateAt(customer.getCreateAt())
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
-                .setLocationRegionId(customer.getLocationRegionId());
+                .setLocationRegion(customer.getLocationRegion());
 
     }
 
@@ -53,7 +53,7 @@ public class CustomerMapper {
                 .setEmail(customerCreate.getEmail())
                 .setBirthday(customerCreate.getBirthday())
                 .setStatus(customerCreate.getStatus())
-                .setCreateAt(customerCreate.getCreateAt())
+                .setCreateAt(java.time.LocalDateTime.now().toString())
                 .setUpdateAt(customerCreate.getUpdateAt())
                 .setCustomerGender(customerCreate.getCustomerGender())
                 .setLocationRegionId(customerCreate.getLocationRegionID());

@@ -35,4 +35,6 @@ public interface CustomerService {
 
 
      CustomerGender[] findAllByCustomerGender();
+
+    List<CustomerResult> findAllCustomerByDelete(boolean deleted);
 }

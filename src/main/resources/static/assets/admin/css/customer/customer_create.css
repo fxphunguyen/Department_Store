@@ -8635,3 +8635,7 @@ html {
 .sapo-menu-list-item-label{
     text-decoration: none
 }
+
+#SapoNavScroll{
+    margin-left: -33px;
+}
