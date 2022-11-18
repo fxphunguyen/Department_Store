@@ -2,15 +2,14 @@ package com.phpn.controllers.api;
 
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
-import com.phpn.mappers.customer.CustomerMapper;
 
 
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
+import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.CustomerGender;
 import com.phpn.repositories.model.CustomerGroup;
-import com.phpn.repositories.model.LocationRegion;
 import com.phpn.services.customer.CustomerService;
 import com.phpn.services.locationRegion.LocationRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +31,15 @@ public class CustomerAPI {
     private LocationRegionService locationRegionService;
 
     @Autowired
+    private LocationRegionRepository locationRegionRepository;
+
+    @Autowired
     private CustomerService customerService;
 
 
     @Autowired
     CustomerRepository customerRepository;
 
-    @Autowired
-    private CustomerMapper customerMapper;
 
     @GetMapping("/list_customer")
     public ResponseEntity<?> showListCustomer(boolean deleted) {
@@ -62,8 +62,6 @@ public class CustomerAPI {
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
         CustomerResult itemResult = customerService.findById(id);
-//        CustomerGender[] customerGender = CustomerGender.values();
-//        System.out.println(customerGender);
         return new ResponseEntity<>(itemResult, HttpStatus.OK);
     }
 
@@ -74,10 +72,9 @@ public class CustomerAPI {
 
     @PostMapping("/create")
     public ResponseEntity<?> createCustomer(@RequestBody CustomerCreate customerCreate) {
-        customerCreate.getLocationReionCreate().setId(0);
-        LocationRegion locationRegion = locationRegionService.save(locationRegionMapper.toModel(customerCreate));
-        customerCreate.setLocationReionCreate(locationRegionMapper.toModel(locationRegion));
-        Customer customer = customerRepository.save(customerMapper.toModel(customerCreate));
+        System.out.println(customerCreate.getStatus());
+        System.out.println(customerCreate.getCustomerGender());
+        Customer customer = customerService.create(customerCreate);
         return new ResponseEntity<>(customer, HttpStatus.OK);
 
     }
@@ -89,17 +86,19 @@ public class CustomerAPI {
         return new ResponseEntity<>(customerResult, HttpStatus.OK);
 
     }
-    @GetMapping("/customerGender")
-    public CustomerGender[] findAllByCustomerGender() {
-        CustomerGender[] customerGender = CustomerGender.values();
-        System.out.println(customerGender);
-        return customerGender;
-    }
 
     @GetMapping("/customerGroup")
     public CustomerGroup[] findAllByCustomerGroup() {
         CustomerGroup[] customerGroups = CustomerGroup.values();
+
         System.out.println(customerGroups);
         return customerGroups;
     }
+
+    @GetMapping("/customerGender")
+    public CustomerGender[] findAllByCustomerGender() {
+        CustomerGender[] customerGender = CustomerGender.values();
+        return customerGender;
+    }
+
 }

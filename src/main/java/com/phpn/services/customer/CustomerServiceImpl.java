@@ -3,16 +3,19 @@ package com.phpn.services.customer;
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.customer.CustomerMapper;
+import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.CustomerGender;
+import com.phpn.repositories.model.LocationRegion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -21,6 +24,9 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
+
+    @Autowired
+    LocationRegionMapper locationRegionMapper;
 
     @Autowired
     LocationRegionRepository locationRegionRepository;
@@ -64,8 +70,19 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     @Override
-    public CustomerResult create(CustomerCreate customerCreate) {
-        return customerMapper.toDTO(customerRepository.save(customerMapper.toModel(customerCreate)));
+    public Customer create(CustomerCreate customerCreate) {
+
+//        customerCreate.getCustomerGender() = customerGender
+
+
+//        customerCreate.setCreateAt(Instant.now().toString());
+        System.out.println(customerCreate.getCustomerGender());
+        System.out.println(customerCreate.getCustomerGroup());
+        LocationRegion locationRegion = locationRegionMapper.toModel(customerCreate);
+        locationRegionRepository.save(locationRegion);
+        LocationRegion idLocationRegionCr = locationRegionRepository.findMaxIdCustomer();
+        customerCreate.setLocationRegionID(idLocationRegionCr.getId());
+        return   customerRepository.save(customerMapper.toModel(customerCreate));
     }
 
     @Override
