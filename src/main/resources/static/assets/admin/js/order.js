@@ -33,9 +33,11 @@ function showListCustomer() {
         })
 }
 
-function showCustomerInfo(idCustomer) {
-    alert(idCustomer)
-}
+// function showCustomerInfo(idCustomer) {
+//     $(".customer_info").removeClass("show").addClass("hide");
+//     $(".customer_info_detail").remove("hide").addClass("show");
+// }
+// showProductInfo();
 
 function handleCloseListCustomers() {
     $(document).on("click", () => {
@@ -91,31 +93,12 @@ function showListProducts() {
         })
 }
 
-function showProductInfo(produtId) {
-    alert(produtId);
-}
-
 function handleCloseListProducts() {
     $(document).on("click", () => {
         // $(".contentCustomer div").empty();
         $(".searchProduct").addClass('d-none');
     })
 }
-
-$(document).ready(function () {
-    $("#order-collapse").removeClass("show");
-    $("#shipping-collapse").removeClass("show");
-    $("#purchase_order-collapse").removeClass("show");
-    $("#partner-collapse").removeClass("show");
-    $("#report-collapse").removeClass("show");
-});
-
-const handelModalCreateCustomer = () => {
-    $("#create_customer").on("click", () => {
-        $("#create_customer_order").modal("show");
-    })
-}
-handelModalCreateCustomer();
 
 function getAllProvinces() {
     return $.ajax({
@@ -127,11 +110,11 @@ function getAllProvinces() {
         url: "https://vapi.vnappmob.com/api/province/"
     })
         .done((data) => {
+            console.log(data)
             $.each(data.results, (i, item) => {
                 let str = `<option value="${item.province_id}">${item.province_name}</option>`;
                 $("#province").append(str);
             });
-
         })
         .fail((jqXHR) => {
 
@@ -149,6 +132,7 @@ function getAllDistrictsByProvinceId(provinceId) {
         url: "https://vapi.vnappmob.com/api/province/district/" + provinceId
     })
         .done((data) => {
+            console.log(data);
                 if (data.results.length === 0) {
                     let str = `<option value="0">Chọn Quận/Huyện</option>`;
                     $("#district").append(str);
@@ -187,10 +171,8 @@ function getAllWardsByDistrictId(districtId) {
             }
         })
         .fail((jqXHR) => {
-
         })
 }
-
 getAllProvinces().then(() => {
     let provinceId = $("#province").val();
 
@@ -213,6 +195,34 @@ $("#province").on('change', () => {
         getAllWardsByDistrictId(districtId);
     })
 });
+
+function getAllEmployeeSelect() {
+    return $.ajax({
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        type: "GET",
+        url: "http://localhost:8080/api/employees/show_list"
+    })
+        .done((data) => {
+            console.log(data)
+            if (data.length === 0) {
+                let str=`<option value="0">Chọn nhân viên</option>`;
+                $("#selectEmployee").append(str);
+            } else {
+                $.each(data, (i, item) => {
+                    let str = `<option value="${item.id}">${item.name}</option>`;
+                    $("#selectEmployee").append(str);
+                });
+            }
+
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR)
+        })
+}
+getAllEmployeeSelect();
 
 
 

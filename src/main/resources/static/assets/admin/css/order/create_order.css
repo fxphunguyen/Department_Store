@@ -962,9 +962,9 @@
     border-bottom-color: #7A8086;
 }
 
-/*.jss18517 .MuiOutlinedInput-root {*/
-/*    height: 40px;*/
-/*}*/
+.jss18517 .MuiOutlinedInput-root {
+    height: 40px;
+}
 
 .jss18517 .MuiFormHelperText-root {
     font-size: 12px;
@@ -2155,7 +2155,7 @@
 }
 
 .jss991 .MuiOutlinedInput-root {
-    height: 36px;
+    height: 31px;
 }
 
 .MuiInputAdornment-positionStart {
@@ -2687,7 +2687,7 @@ jss8611 {
     width: 718px !important;
     position: absolute !important;
     inset: 0px auto auto 0px !important;
-    transform: translate(278px, 270px) !important;
+    transform: translate(278px, 466px) !important;
     z-index: 999 !important;
 }
 
@@ -3436,4 +3436,64 @@ select#ward   {
 select#district   {
     border:0px;
     outline:0px;
+}
+.jss2984 {
+    width: 718px;
+    position: absolute !important;
+    inset: 0px auto auto 0px;
+    transform: translate(278px, 150px) !important;
+    z-index: 999;
+
+}
+.jss990 {
+    padding: 5px 0px;
+}
+.jss1136  {
+    padding: 10px 41px;
+}
+.jss5553 {
+    width: 100%;
+    border: 1px solid #D3D5D7;
+    cursor: pointer;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-color: #D3D5D7;
+    border-radius: 3px;
+    justify-content: space-between;
+    background-color: #fff;
+    position: relative;
+    top: 4px;
+}
+.jss5553 svg {
+    color: #A3A8AF;
+    margin-right: -6px;
+}
+.jss1316 {
+    top: 0;
+    color: #46515F;
+    display: flex;
+    align-items: center;
+}
+.jss1316.MuiInputLabel-shrink {
+    font-size: 14px;
+    transform: none;
+    line-height: 17px;
+}
+.modal-body {
+    padding: 2rem;
+    max-height: calc(101vh - 102px);
+    overflow-y: hidden;
+    margin-left: 4px;
+    margin-top: -16px;
+    overflow-x: hidden;
+}
+.modal-content {
+    width: 95%;
+}
+.jss5553 path {
+    color: black;
+}
+.employee {
+    width: 100%;
 }
