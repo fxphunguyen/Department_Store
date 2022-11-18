@@ -1679,7 +1679,8 @@
                                                                     data-shrink="true" for="genderCreate">Giới
                                                                 tính</label></div>
                                                             <div class="MuiInputBase-root MuiOutlinedInput-root jss20633 MuiInputBase-fullWidth MuiInputBase-formControl">
-                                                                <select class="jss87874 form-select" name="genderCreate" id="genderCreate"></select>
+                                                                <select class="jss87874 form-select" name="genderCreate"
+                                                                        id="genderCreate"></select>
 
                                                                 <input name="gender" type="hidden" value="other">
                                                                 <svg
@@ -1795,14 +1796,10 @@
                                                            style="color: rgb(70, 81, 95);" for="employeeNameCreate">Nhân
                                                         viên phụ trách</label>
                                                 </div>
-<<<<<<< HEAD
-                                                <select name="selectEmployee" id="selectEmployee" class="form-select"
-=======
-
 
                                                 <select name="employeeNameCreate" id="employeeNameCreate"
                                                         class="form-select"
->>>>>>> huy_dev
+
                                                         style="height:40px;"></select>
                                             </div>
                                         </div>
@@ -2069,8 +2066,6 @@
 
 
     $('#btnCreateCustomer').on('click', () => {
-        alert(" ok nef")
-        console.log("ok")
         customer.id = null;
         customer.name = $('#nameCreate').val();
         customer.customerCode = $('#codeCreate').val();
@@ -2080,7 +2075,7 @@
         customer.birthday = $('#birthdayCreate').val();
         customer.status = $('#statusCreate').val
         customer.gender = $('#genderCreate :selected').val();
-        customer.createAt = "2022-10-22 00:00:00";
+        customer.createAt = $('#birthdayCreate').val();
         customer.updateAt = null;
         locationRegionCreate.address = $('#addressCreate').val();
         locationRegionCreate.address = $('#addressCreate').text();
@@ -2088,7 +2083,7 @@
         locationRegionCreate.provinceName = $('#provinceNameCreate :selected').text();
         locationRegionCreate.districtId = $('#districtNameCreate').val();
         locationRegionCreate.districtName = $('#districtNameCreate :selected').text();
-        locationRegionCreate.wardId = $('#districtNameCreate').val();
+        locationRegionCreate.wardId = $('#wardNameCreate').val();
         locationRegionCreate.wardName = $('#wardNameCreate :selected').text();
         customer.employeeId = $('#employeeNameCreate').val();
         customer.locationRegionCreate = locationRegionCreate;
@@ -2110,8 +2105,6 @@
 
             })
     });
-
-
 
 
     getAllCustomerGender();

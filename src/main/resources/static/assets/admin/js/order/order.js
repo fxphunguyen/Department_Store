@@ -1,3 +1,7 @@
+
+let customer = new Customer()
+let locationRegionCreate = new LocationRegionCreate();
+
 function showListCustomer() {
     $.ajax({
         type: "GET", contentType: 'application/json',
@@ -223,6 +227,63 @@ function getAllEmployeeSelect() {
         })
 }
 getAllEmployeeSelect();
+
+
+$('#btnCreateCustomer').on('click', () => {
+    customer.id = null;
+    customer.name = $('#nameCreate').val();
+    customer.customerCode = $('#codeCreate').val();
+    // customer.customerGroup = $('#customerGroupCreate :selected').val();
+    customer.phone = $('#phoneCreate').val();
+    customer.email = $('#emailCreate').val();
+    // customer.birthday = $('#birthdayCreate').val();
+    // customer.status = $('#statusCreate').val
+    // customer.gender = $('#genderCreate :selected').val();
+    // customer.createAt = $('#birthdayCreate').val();
+    // customer.updateAt = null;
+    locationRegionCreate.address = $('#addressCreate').val();
+    locationRegionCreate.provinceId = $('#province').val();
+    locationRegionCreate.provinceName = $('#province :selected').text();
+    locationRegionCreate.districtId = $('#district').val();
+    locationRegionCreate.districtName = $('#district :selected').text();
+    locationRegionCreate.wardId = $('#ward').val();
+    locationRegionCreate.wardName = $('#ward :selected').text();
+    customer.employeeId = $('#selectEmployee').val();
+    customer.locationRegionCreate = locationRegionCreate;
+    console.log(customer)
+    $.ajax({
+        "headers": {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        "type": "POST",
+        "url": "http://localhost:8080/api/customers/create",
+        "data": JSON.stringify(customer)
+    })
+        .done((data) => {
+            removeEventModal();
+            $("#create_order_customer").modal("hide");
+            App.IziToast.showSuccessAlert("Thêm khách hàng thành công!");
+             $('#nameCreate').val("");
+             $('#codeCreate').val("");
+             $('#phoneCreate').val("");
+             $('#emailCreate').val("");
+            $('#addressCreate').val("");
+            $('#province').val("0").change();
+            $('#district').val("0").change();
+            $('#ward').val("0").change();
+            $('#selectEmployee').val("0").change();
+
+
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR)
+        })
+});
+function removeEventModal() {
+    $("#btnCreateCustomer").off("click");
+
+}
 
 
 
