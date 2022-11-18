@@ -12,15 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/purchases")
+@RequestMapping("/api/admin/purchases")
 public class PurchaseOrderAPI {
 
     @Autowired
     private PurchaseOrderService purchaseOrderService;
 
-    @GetMapping("/list_purchase")
+    @GetMapping("")
     public ResponseEntity<?> showListPurchase() {
         List<PurchaseOrderResult> purchaseOrderResults = purchaseOrderService.findAll();
         return new ResponseEntity<>(purchaseOrderResults, HttpStatus.OK);
     }
+
+
 }
