@@ -35,8 +35,7 @@ public class ProductMapper {
         .setImportPrice(product.getImportPrice())
         .setWholesalePrice(product.getWholesalePrice())
         .setCategoryId(product.getCategoryId())
-        .setBrandId(product.getBrandId())
-        .setDeleted(product.getDeleted());
+        .setBrandId(product.getBrandId());
     }
 
     public Product toModel(ProductParam productParam) {
@@ -75,8 +74,7 @@ public class ProductMapper {
         .setImportPrice(productResult.getImportPrice())
         .setWholesalePrice(productResult.getWholesalePrice())
         .setCategoryId(productResult.getCategoryId())
-        .setBrandId(productResult.getBrandId())
-        .setDeleted(productResult.getDeleted());
+        .setBrandId(productResult.getBrandId());
     }
 
     public Product toModel(ProductCreateParam productCreateParam) {
@@ -111,8 +109,7 @@ public class ProductMapper {
         .setImportPrice(productUpdateParam.getImportPrice())
         .setWholesalePrice(productUpdateParam.getWholesalePrice())
         .setCategoryId(productUpdateParam.getCategoryId())
-        .setBrandId(productUpdateParam.getBrandId())
-        .setDeleted(productUpdateParam.getDeleted());
+        .setBrandId(productUpdateParam.getBrandId());
     }
 
     public ProductCreateParam toProductCreateParamDTO(Product product) {
@@ -147,8 +144,7 @@ public class ProductMapper {
                 .setImportPrice(product.getImportPrice())
                 .setWholesalePrice(product.getWholesalePrice())
                 .setCategoryId(product.getCategoryId())
-                .setBrandId(product.getBrandId())
-                .setDeleted(product.getDeleted());
+                .setBrandId(product.getBrandId());
     }
 
 }

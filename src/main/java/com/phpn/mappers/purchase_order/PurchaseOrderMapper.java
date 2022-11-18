@@ -22,11 +22,9 @@ public class PurchaseOrderMapper {
 
     public PurchaseOrderResult toDTO(PurchaseOrder purchaseOrder) {
         return new PurchaseOrderResult()
-                .setId(purchaseOrder.getId())
-                .setPurchaseCode(purchaseOrder.getPurchaseOrderCode())
+                .setPurchaseOrderCode(purchaseOrder.getPurchaseOrderCode())
                 .setEmployeeId(purchaseOrder.getEmployeeId())
                 .setSupplierId(purchaseOrder.getSupplierId())
-                .setPaymentMethodId(purchaseOrder.getPaymentMethodId())
                 .setPays(purchaseOrder.getPays())
                 .setStatus(purchaseOrder.getStatus())
                 .setGrandTotal(purchaseOrder.getGrandTotal());

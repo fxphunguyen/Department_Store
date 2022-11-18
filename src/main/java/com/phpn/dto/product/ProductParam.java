@@ -2,6 +2,7 @@ package com.phpn.dto.product;
 
 import java.math.BigDecimal;
 
+import com.phpn.repositories.model.ProductStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ public class ProductParam {
     private Integer id;
     private String title;
     private String image;
-    private String status;
+    private ProductStatus status;
     private String description;
     private String unit;
     private String sku;

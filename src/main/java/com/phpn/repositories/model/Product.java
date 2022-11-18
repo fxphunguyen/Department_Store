@@ -27,8 +27,9 @@ public class Product {
     @Column(name = "image", nullable = false, length = 50)
     private String image;
 
-    @Column(name = "status", nullable = false, length = 50)
-    private String status;
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private ProductStatus status;
 
     @Column(name = "create_at", nullable = false, length = 50)
     private String createAt;
