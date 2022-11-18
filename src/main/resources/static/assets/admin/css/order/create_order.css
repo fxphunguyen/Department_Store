@@ -32,7 +32,7 @@
     visibility: hidden;
 }
 
-.jss18129>span {
+.jss18129 > span {
     display: inline-block;
     padding-left: 5px;
     padding-right: 5px;
@@ -258,15 +258,15 @@
     justify-content: flex-start;
 }
 
-.jss18079 .InfiniteScroll-ListItem>.InfiniteScroll-MenuItem {
+.jss18079 .InfiniteScroll-ListItem > .InfiniteScroll-MenuItem {
     border-radius: 0;
 }
 
-.jss18079 .InfiniteScroll-ListItem>.InfiniteScroll-MenuItem.focus-key-event {
+.jss18079 .InfiniteScroll-ListItem > .InfiniteScroll-MenuItem.focus-key-event {
     background-color: #F2F9FF;
 }
 
-.jss18079 .InfiniteScroll-ListItem>.InfiniteScroll-MenuItem.MuiMenuItem-root {
+.jss18079 .InfiniteScroll-ListItem > .InfiniteScroll-MenuItem.MuiMenuItem-root {
     border-bottom: 1px solid;
     border-bottom-color: #E8EAEB;
 }
@@ -425,7 +425,7 @@
     background-color: #E8EAEB;
 }
 
-.jss18041>.icon {
+.jss18041 > .icon {
     color: #4BA7F3;
     font-size: 32px;
     margin-right: 10px;
@@ -599,7 +599,7 @@
     background-color: #D9EDFF;
 }
 
-.jss18362>.MuiChip-label {
+.jss18362 > .MuiChip-label {
     white-space: normal;
 }
 
@@ -731,7 +731,7 @@
     border-width: 1px 0;
 }
 
-.jss18264>*:not(:first-child) {
+.jss18264 > *:not(:first-child) {
     margin-left: 12px;
 }
 
@@ -794,7 +794,7 @@
     padding-right: 16px;
 }
 
-.jss18346 .MuiTableBody-root>.MuiTableRow-root:first-child .MuiTableCell-root {
+.jss18346 .MuiTableBody-root > .MuiTableRow-root:first-child .MuiTableCell-root {
     border-top: unset;
 }
 
@@ -811,7 +811,7 @@
     justify-content: center;
 }
 
-.jss18347>.btnCreateProduct {
+.jss18347 > .btnCreateProduct {
     color: #0088FF;
     border: 1px solid #0088FF;
     margin-top: 16px;
@@ -893,7 +893,7 @@
     background-color: rgba(0, 0, 0, 0.15);
 }
 
-.MuiToggleButton-root.Mui-selected+.MuiToggleButton-root.Mui-selected {
+.MuiToggleButton-root.Mui-selected + .MuiToggleButton-root.Mui-selected {
     border-left: 0;
     margin-left: 0;
 }
@@ -932,13 +932,13 @@
     background-color: #A3A8AF;
 }
 
-.jss18515>.MuiFormLabel-root {
+.jss18515 > .MuiFormLabel-root {
     height: 17px;
     line-height: 17px;
     margin-bottom: 7px;
 }
 
-.jss18515>.MuiFormLabel-root:not(.Mui-disabled) {
+.jss18515 > .MuiFormLabel-root:not(.Mui-disabled) {
     color: #0F1824;
 }
 
@@ -962,9 +962,9 @@
     border-bottom-color: #7A8086;
 }
 
-/*.jss18517 .MuiOutlinedInput-root {*/
-/*    height: 40px;*/
-/*}*/
+.jss18517 .MuiOutlinedInput-root {
+    height: 40px;
+}
 
 .jss18517 .MuiFormHelperText-root {
     font-size: 12px;
@@ -1090,21 +1090,21 @@
     width: 100%;
 }
 
-.jss18326>.SI-root {
+.jss18326 > .SI-root {
     flex: 1;
     display: flex;
 }
 
-.jss18326>.SI-root .MuiOutlinedInput-notchedOutline {
+.jss18326 > .SI-root .MuiOutlinedInput-notchedOutline {
     border-radius: 3px 0 0 3px;
 }
 
-.jss18326>.SI-root>:first-child {
+.jss18326 > .SI-root > :first-child {
     z-index: 2;
     margin-right: -1px;
 }
 
-.jss18326>.SI-root>:last-child {
+.jss18326 > .SI-root > :last-child {
     border: 1px solid #D3D5D7;
     padding: 0 20px;
     white-space: nowrap;
@@ -1168,7 +1168,7 @@
     z-index: 1004;
 }
 
-.jss18332>.InfiniteScroll-BoxCreate {
+.jss18332 > .InfiniteScroll-BoxCreate {
     padding: 0 42px;
 }
 
@@ -1390,10 +1390,6 @@
 }
 
 
-
-
-
-
 .jss17712 {
     width: 100%;
 }
@@ -1484,16 +1480,16 @@
     vertical-align: middle;
 }
 
-.cKOfva> :first-child {
+.cKOfva > :first-child {
     border-right: 1px solid rgb(51, 160, 255);
 }
 
-.cKOfva> :first-child {
+.cKOfva > :first-child {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
 
-.cKOfva>* {
+.cKOfva > * {
     position: relative;
     border-radius: 0px;
 }
@@ -1523,13 +1519,13 @@
     border: none;
 }
 
-.cKOfva> :last-child {
+.cKOfva > :last-child {
     border-right-width: 1px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
 
-.cKOfva>* {
+.cKOfva > * {
     position: relative;
     border-radius: 0px;
 }
@@ -2046,11 +2042,12 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-.jss1996   {
+.jss1996 {
     border: 1px solid #ccc;
     height: auto;
 }
-.jss18336    {
+
+.jss18336 {
     border: 1px solid #ccc;
     height: 36px;
 }
@@ -2065,9 +2062,9 @@
     justify-content: space-between;
 }
 
- .jss1177 {
-     height: 48px;
- }
+.jss1177 {
+    height: 48px;
+}
 
 .jss3505 {
     margin-left: 16px;
@@ -2078,6 +2075,7 @@
     align-items: center;
     margin-right: 16px;
 }
+
 .MuiFormControlLabel-root {
     cursor: pointer;
     display: inline-flex;
@@ -2087,12 +2085,14 @@
     vertical-align: middle;
     -webkit-tap-highlight-color: transparent;
 }
+
 .jss1186 {
-     width: 24px;
-     height: 24px;
-     padding: 5px;
-     margin-right: 4px;
- }
+    width: 24px;
+    height: 24px;
+    padding: 5px;
+    margin-right: 4px;
+}
+
 .jss1199 {
     top: 0;
     left: 0;
@@ -2105,75 +2105,92 @@
     z-index: 1;
     position: absolute;
 }
+
 .jss1188 {
     box-shadow: inset 0 0 0 1.5px rgb(0 136 255);
 }
- .jss1187 {
-     width: 14px;
-     height: 14px;
-     box-shadow: inset 0 0 0 1.5px rgb(0 0 0 / 26%);
-     border-radius: 3px;
-     background-color: transparent;
-     background-image: none;
- }
+
+.jss1187 {
+    width: 14px;
+    height: 14px;
+    box-shadow: inset 0 0 0 1.5px rgb(0 0 0 / 26%);
+    border-radius: 3px;
+    background-color: transparent;
+    background-image: none;
+}
+
 .jss1235 {
     display: flex;
     padding: 0px 16px 16px;
 }
+
 .jss1236 {
     width: 100%;
 }
-.jss1236>.SI-root {
+
+.jss1236 > .SI-root {
     flex: 1;
     display: flex;
 }
- .jss988 {
-     width: 100%;
- }
 
-.jss1236>.SI-root>:first-child {
+.jss988 {
+    width: 100%;
+}
+
+.jss1236 > .SI-root > :first-child {
     z-index: 2;
     margin-right: -1px;
 }
- .jss988 .SearchBox {
-     flex: 1 1;
- }
- .MuiPaper-elevation1 {
-     box-shadow: none;
- }
- .MuiPaper-rounded {
-     border-radius: 3px;
- }
-.jss991 .MuiOutlinedInput-root {
-    height: 36px;
+
+.jss988 .SearchBox {
+    flex: 1 1;
 }
+
+.MuiPaper-elevation1 {
+    box-shadow: none;
+}
+
+.MuiPaper-rounded {
+    border-radius: 3px;
+}
+
+.jss991 .MuiOutlinedInput-root {
+    height: 31px;
+}
+
 .MuiInputAdornment-positionStart {
     margin-right: 8px;
 }
- .MuiInputAdornment-root {
-     height: 0.01em;
-     display: flex;
-     max-height: 2em;
-     align-items: center;
-     white-space: nowrap;
- }
+
+.MuiInputAdornment-root {
+    height: 0.01em;
+    display: flex;
+    max-height: 2em;
+    align-items: center;
+    white-space: nowrap;
+}
+
 .jss991 .MuiOutlinedInput-input {
     color: #0F1824;
     padding: 9.5px 14px 9.5px 0;
 }
-.jss1236>.SI-root .MuiOutlinedInput-notchedOutline {
+
+.jss1236 > .SI-root .MuiOutlinedInput-notchedOutline {
     border-radius: 3px 0 0 3px;
 }
- .MuiTextField-root .MuiOutlinedInput-notchedOutline {
-     border-color: #D3D5D7;
- }
+
+.MuiTextField-root .MuiOutlinedInput-notchedOutline {
+    border-color: #D3D5D7;
+}
+
 .jss1038 {
     padding: 0;
     text-align: left;
     transition: width 150ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
     line-height: 11px;
 }
-.jss1236>.SI-root>:last-child {
+
+.jss1236 > .SI-root > :last-child {
     border: 1px solid #D3D5D7;
     padding: 0 20px;
     white-space: nowrap;
@@ -2181,55 +2198,62 @@
     background-color: transparent;
 }
 
- .TJspa {
-     display: inline-flex;
-     -webkit-box-pack: center;
-     justify-content: center;
-     flex: 0 0 auto;
-     -webkit-box-align: center;
-     align-items: center;
-     outline: 0px;
-     border-radius: 3px;
-     cursor: pointer;
-     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-     font-weight: 500;
-     font-size: 1rem;
-     line-height: 1.42857rem;
-     margin: 0px;
-     overflow: hidden;
-     position: relative;
-     height: 2.57143rem;
-     padding: 0px 1.14286rem;
-     min-width: 4.57143rem;
-     color: rgb(0, 136, 255);
-     border: 1px solid rgb(0, 136, 255);
-     background: rgb(255, 255, 255);
- }
-.jss1174>*:not(:first-child) {
+.TJspa {
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: 0px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.42857rem;
+    margin: 0px;
+    overflow: hidden;
+    position: relative;
+    height: 2.57143rem;
+    padding: 0px 1.14286rem;
+    min-width: 4.57143rem;
+    color: rgb(0, 136, 255);
+    border: 1px solid rgb(0, 136, 255);
+    background: rgb(255, 255, 255);
+}
+
+.jss1174 > *:not(:first-child) {
     margin-left: 12px;
 }
+
 .jss1134 {
     max-width: 100%;
     align-self: center;
 }
+
 .jss1135 {
     overflow: hidden;
     font-size: 14px;
     box-sizing: border-box;
 }
+
 .jss1136 {
     line-height: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .jss1247 {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .MuiSelect-iconOutlined {
     right: 7px;
 }
+
 .jss1037 {
     top: -5px;
     left: 0;
@@ -2244,33 +2268,40 @@
     border-radius: inherit;
     pointer-events: none;
 }
+
 .jss1135 .MuiOutlinedInput-notchedOutline {
     top: -5px;
     border-color: #D3D5D7;
 }
+
 .jss1038 {
     padding: 0;
     text-align: left;
     transition: width 150ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
     line-height: 11px;
 }
-.jss1174>*:not(:first-child) {
+
+.jss1174 > *:not(:first-child) {
     margin-left: 12px;
 }
+
 .jss1134 {
     max-width: 100%;
     align-self: center;
 }
+
 .jss1135 {
     overflow: hidden;
     font-size: 14px;
     box-sizing: border-box;
 }
+
 .jss1136 {
     line-height: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .jss1037 {
     top: -5px;
     left: 0;
@@ -2283,19 +2314,22 @@
     border-radius: inherit;
     pointer-events: none;
 }
+
 .jss1038 {
     padding: 0;
     text-align: left;
     transition: width 150ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
     line-height: 11px;
 }
+
 .jss1256 {
     max-height: 600px;
 }
+
 .MuiTableContainer-root {
-     width: 100%;
-     overflow-x: auto;
- }
+    width: 100%;
+    overflow-x: auto;
+}
 
 .__react_component_tooltip {
     border-radius: 3px;
@@ -2311,16 +2345,17 @@
     visibility: hidden;
     z-index: 999;
 }
- /*.jss1258 {*/
- /*    opacity: 1 !important;*/
- /*    padding: 5px 8px !important;*/
- /*    z-index: 2000 !important;*/
- /*    font-size: 12px !important;*/
- /*    max-width: 220px;*/
- /*    box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);*/
- /*    font-weight: 400;*/
- /*    overflow-wrap: break-word;*/
- /*}*/
+
+/*.jss1258 {*/
+/*    opacity: 1 !important;*/
+/*    padding: 5px 8px !important;*/
+/*    z-index: 2000 !important;*/
+/*    font-size: 12px !important;*/
+/*    max-width: 220px;*/
+/*    box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);*/
+/*    font-weight: 400;*/
+/*    overflow-wrap: break-word;*/
+/*}*/
 .jss1173 {
     border: 1px solid #E8EAEB;
     display: flex;
@@ -2329,31 +2364,38 @@
     align-items: center;
     border-width: 1px 0;
 }
+
 .MuiButton-textSizeSmall {
     padding: 4px 5px;
     font-size: 0.8125rem;
 }
 
- .MuiButton-textPrimary {
-     color: #0088FF;
- }
+.MuiButton-textPrimary {
+    color: #0088FF;
+}
+
 .MuiButton-textSizeSmall {
     padding: 4px 5px;
     font-size: 0.8125rem;
 }
- .MuiButton-textPrimary {
-     color: #0088FF;
- }
+
+.MuiButton-textPrimary {
+    color: #0088FF;
+}
+
 .jss1264 {
     display: flex;
     padding: 16px;
 }
+
 .jss1265 {
     width: 360px;
 }
+
 .fwfdJg {
     width: 100%;
 }
+
 .ftuIiY {
     display: inline-flex;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -2365,6 +2407,7 @@
     margin: 0px 0px 0.285714rem;
     color: rgb(70, 81, 95);
 }
+
 .jZnASB {
     height: 1.42857rem;
     width: 1.42857rem;
@@ -2374,6 +2417,7 @@
     cursor: pointer;
     margin-left: 4px;
 }
+
 .hQKpMP {
     position: relative;
     min-height: 5.14286rem;
@@ -2384,6 +2428,7 @@
     align-items: baseline;
     flex-wrap: wrap;
 }
+
 .fCFLbv {
     pointer-events: none;
     position: absolute;
@@ -2396,6 +2441,7 @@
     overflow: hidden;
     box-sizing: border-box;
 }
+
 .dHhPjI {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-weight: 400;
@@ -2405,23 +2451,28 @@
     padding: 0.285714rem 0.857143rem 0px;
     color: rgb(116, 124, 135);
 }
+
 .jss1266 {
     position: relative;
 }
+
 .jss1268.MuiInputLabel-shrink {
     font-size: 14px;
     transform: none;
     line-height: 17px;
 }
- .jss1268 {
-     color: #46515F;
-     display: flex;
-     align-items: center;
-     margin-bottom: 8px;
- }
- .MuiInputLabel-animated {
-     transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
- }
+
+.jss1268 {
+    color: #46515F;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.MuiInputLabel-animated {
+    transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+}
+
 .jss1267 {
     color: #0F1824;
     width: 100%;
@@ -2429,31 +2480,37 @@
     resize: none;
     padding: 10px;
     font-size: 14px;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     border-color: #D3D5D7;
     border-radius: 3px;
 }
+
 .jss1274 {
     width: 420px;
     margin-left: auto;
 }
+
 .jss1275 {
     height: 30px;
     padding: 1px 0 1px 16px;
     align-items: flex-end;
 }
+
 .jss1275 .MuiListItemText-root {
     margin: 0;
 }
+
 .jss1280 {
     width: calc(100% - 16px);
     margin: 12px 0px 5px 16px;
     display: block;
     border-bottom: 1px dashed #E8EAEB;
 }
+
 .jss1286 {
     padding: 0 0 0 16px;
 }
+
 .jss1287 {
     height: 30px;
     align-items: flex-end;
@@ -2462,9 +2519,11 @@
     padding-right: 0;
     padding-bottom: 1px;
 }
+
 .jss1287 .MuiListItemText-root {
     margin: 0;
 }
+
 .jocTuY {
     display: inline-flex;
     -webkit-box-pack: center;
@@ -2489,10 +2548,12 @@
     background: transparent;
     padding: 0px;
 }
+
 .jocTuY svg {
     height: 1.42857rem;
     width: 1.42857rem;
 }
+
 .fCIlZX {
     display: flex;
     -webkit-box-pack: center;
@@ -2504,31 +2565,39 @@
     font-size: inherit;
     font-weight: inherit;
 }
+
 .jss1275 .MuiListItemText-root {
     margin: 0;
 }
+
 MuiGrid-spacing-xs-3 > .MuiGrid-item {
     padding: 12px;
 }
+
 .jss18417 {
     display: flex;
     box-shadow: 0px 2px 4px rgb(168 168 168 / 25%);
     flex-direction: column;
 }
+
 .MuiPaper-elevation1 {
     box-shadow: none;
 }
- .MuiPaper-rounded {
-     border-radius: 3px;
- }
+
+.MuiPaper-rounded {
+    border-radius: 3px;
+}
+
 .MuiToggleButtonGroup-root {
     display: inline-flex;
     border-radius: 4px;
     background-color: #fff;
 }
+
 .MuiTypography-colorTextPrimary {
     color: #0F1824;
 }
+
 .jss1257 {
     width: 100%;
     height: 236px;
@@ -2537,6 +2606,7 @@ MuiGrid-spacing-xs-3 > .MuiGrid-item {
     align-items: center;
     justify-content: center;
 }
+
 .cJBxnp {
     display: inline-flex;
     -webkit-box-pack: center;
@@ -2561,20 +2631,24 @@ MuiGrid-spacing-xs-3 > .MuiGrid-item {
     border: 1px solid rgb(0, 136, 255);
     background: rgb(255, 255, 255);
 }
-.jss7202 .InfiniteScroll-ListItem>.InfiniteScroll-MenuItem.focus-key-event {
+
+.jss7202 .InfiniteScroll-ListItem > .InfiniteScroll-MenuItem.focus-key-event {
     background-color: #F2F9FF;
 }
+
 .MuiPaper-elevation3 {
     box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
 }
 
- .MuiPaper-rounded {
-     border-radius: 3px;
- }
+.MuiPaper-rounded {
+    border-radius: 3px;
+}
+
 .MuiMenuItem-root:hover {
     color: #0088FF;
     background-color: #E6F4FF;
 }
+
 .MuiButton-root:hover {
     color: #0088FF;
     background-color: #E6F4FF;
@@ -2599,65 +2673,71 @@ jss8611 {
     text-transform: none;
     /*justify-content: center;*/
 }
+
 .jss4971 {
-    border : 1px solid rgba(192,192,192,0.1);
+    border: 1px solid rgba(192, 192, 192, 0.1);
 }
+
 .jss4978 {
-    border : 1px solid rgba(192,192,192,0.1);
+    border: 1px solid rgba(192, 192, 192, 0.1);
 
 }
+
 .jss1062 {
     width: 718px !important;
     position: absolute !important;
     inset: 0px auto auto 0px !important;
-    transform: translate(278px, 270px) !important;
-    z-index: 999 !important ;
+    transform: translate(278px, 466px) !important;
+    z-index: 999 !important;
 }
 
 .jss1010 {
     display: flex;
     flex-direction: column;
 }
+
 .jss1010 .InfiniteScroll-BoxCreate {
     padding: 0 28px;
     position: relative;
     min-height: 50px;
     justify-content: flex-start;
 }
- .jss3935 {
-     display: flex;
-     /*padding: 0 16px;*/
-     font-size: 14px;
-     box-shadow: none;
-     /*min-height: 36px;*/
-     align-items: center;
-     font-weight: 500;
-     border-radius: 3px;
-     text-transform: none;
-     /*justify-content: center;*/
- }
 
-.jss1010 .InfiniteScroll-ListItem>.InfiniteScroll-MenuItem.focus-key-event {
+.jss3935 {
+    display: flex;
+    /*padding: 0 16px;*/
+    font-size: 14px;
+    box-shadow: none;
+    /*min-height: 36px;*/
+    align-items: center;
+    font-weight: 500;
+    border-radius: 3px;
+    text-transform: none;
+    /*justify-content: center;*/
+}
+
+.jss1010 .InfiniteScroll-ListItem > .InfiniteScroll-MenuItem.focus-key-event {
     background-color: #F2F9FF;
 }
- .jss1010 .InfiniteScroll-ListItem>.InfiniteScroll-MenuItem {
-     border-radius: 0;
- }
+
+.jss1010 .InfiniteScroll-ListItem > .InfiniteScroll-MenuItem {
+    border-radius: 0;
+}
 
 .jss1259 {
     margin: 0;
     display: flex;
-    padding: 10px 24px
-    px
-    10px;
+    padding: 10px 24px;
     position: relative;
     align-items: flex-start;
     border-radius: 0;
 }
+
 /*@media (min-width: 600px)*/
 .MuiMenuItem-root {
     min-height: auto;
 }
+
 .jss1260 {
     width: 52px;
     height: 52px;
@@ -2670,13 +2750,16 @@ jss8611 {
     justify-content: center;
     background-color: transparent;
 }
+
 .jss3946 {
-     width: calc(100% - 70px);
-     display: flex;
- }
+    width: calc(100% - 70px);
+    display: flex;
+}
+
 .jss3947 {
     width: calc(100% - 330px);
 }
+
 .jss1258 {
     /*width: 100%;*/
     display: block;
@@ -2685,18 +2768,22 @@ jss8611 {
     text-overflow: ellipsis;
     margin-left: 10px;
 }
+
 .jss3953 {
     min-width: 330px;
     text-align: right;
 }
+
 #menu-order {
     fill: #fff;
     color: #fff;
     background: #0088FF;
 }
+
 #menu-shipping {
     background: #182539 !important;
 }
+
 #create_order {
     color: #0088FF !important;
 }
@@ -2706,7 +2793,707 @@ jss8611 {
     transition: transform .2s linear;
     margin-right: 4px;
 }
-.sapo-active-sub-menu.open >.sapo-menu-list-item-next-icon {
-     color: #fff;
-     transform: rotate(90deg);
- }
+
+.sapo-active-sub-menu.open > .sapo-menu-list-item-next-icon {
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+.kvosyW {
+    position: fixed;
+    z-index: 1300;
+    inset: 0px;
+}
+
+/*17/11/2022*/
+.jYPJCi {
+    inset: 0px;
+    display: flex;
+    z-index: -1;
+    position: fixed;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    opacity: 1;
+}
+
+.kDodZD {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    margin-top: 3.57143rem;
+    outline: 0px;
+    opacity: 1;
+}
+
+.cFtstx {
+    width: 50rem;
+}
+
+.iZrCvq {
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(168 168 168 / 25%) 0px 0.571429rem 1.14286rem;
+    border-radius: 3px;
+}
+
+.fxfTbA {
+    position: relative;
+    padding: 0px 1.71429rem;
+    display: flex;
+    box-sizing: border-box;
+    height: 3.71429rem;
+    -webkit-box-align: center;
+    align-items: center;
+    border-bottom: 1px solid rgb(211, 213, 215);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 500;
+    font-size: 1.42857rem;
+    line-height: 2rem;
+    margin: 0px;
+}
+
+.khZpKA {
+    position: absolute;
+    padding: 0px;
+    top: 1rem;
+    right: 1.71429rem;
+    color: rgb(163, 168, 175);
+}
+
+.fLouEB {
+    display: inline-flex;
+    flex: 0 0 auto;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    /*position: relative;*/
+    height: 1.71429rem;
+    width: 1.71429rem;
+    /*padding: 0.428571rem;*/
+    /*color: rgb(0, 136, 255);*/
+    background: transparent;
+}
+
+.bPLSPb {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.42857rem;
+    margin: 0px;
+    padding: 1.14286rem 1.71429rem 0px;
+    box-sizing: border-box;
+    max-height: calc(100vh - 14.2857rem);
+    overflow: auto;
+}
+
+.MuiGrid-spacing-xs-3 {
+    width: calc(100% + 24px);
+    margin: -12px;
+}
+
+.MuiGrid-container {
+    /*width: 100%;*/
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.MuiGrid-spacing-xs-3 > .MuiGrid-item {
+    padding: 12px;
+}
+
+.MuiGrid-grid-xs-6 {
+    flex-grow: 0;
+    max-width: 50%;
+    flex-basis: 50%;
+}
+
+.MuiGrid-grid-xs-4 {
+    flex-grow: 0;
+    max-width: 33.33%;
+    flex-basis: 33.33%;
+}
+
+.MuiGrid-spacing-xs-6 > .MuiGrid-item {
+    padding: 12px;
+}
+
+.MuiGrid-item {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.fl {
+    float: left;
+}
+
+.gKHUxf {
+    width: 100%;
+}
+
+.ftuIiY {
+    display: inline-flex;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.42857rem;
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px 0px 0.285714rem;
+    color: rgb(70, 81, 95);
+}
+
+.eHshpr {
+    color: rgb(255, 77, 77);
+}
+
+.PBwdZ {
+    position: relative;
+    height: 2.85714rem;
+}
+
+.iRSKAB {
+    background: rgb(255, 255, 255);
+    box-sizing: border-box;
+    padding: 0.714286rem 0.857143rem;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 3px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.42857rem;
+    margin: 0px;
+    color: rgb(15, 24, 36);
+}
+
+.fCFLbv {
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 3px;
+    border: 1px solid rgb(211, 213, 215);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.PBwdZ {
+    position: relative;
+    height: 2.85714rem;
+}
+
+.iRSKAB {
+    background: rgb(255, 255, 255);
+    box-sizing: border-box;
+    padding: 0.714286rem 0.857143rem;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 3px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.42857rem;
+    margin: 0px;
+    color: rgb(15, 24, 36);
+}
+
+.fCFLbv {
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 3px;
+    border: 1px solid rgb(211, 213, 215);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.jss1318 {
+    align-self: center;
+    padding-top: 24px !important;
+}
+
+.jss1319.MuiInputLabel-shrink {
+    font-size: 14px;
+    transform: none;
+    line-height: 17px;
+}
+
+.jss1319 {
+    top: 0;
+    color: #46515F;
+    display: flex;
+    align-items: center;
+}
+
+.MuiInputLabel-animated {
+    transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+}
+
+.MuiInputLabel-shrink {
+    transform: translate(0, 1.5px) scale(0.75);
+    transform-origin: top left;
+}
+
+.MuiInputLabel-formControl {
+    /*top: 0;*/
+    left: 0;
+    position: absolute;
+    /*transform: translate(0, 24px) scale(1);*/
+}
+
+.MuiInputLabel-root {
+    display: block;
+    /*transform-origin: top left;*/
+}
+
+.MuiFormLabel-root {
+    color: rgba(0, 0, 0, 0.54);
+    padding: 0;
+    font-size: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 400;
+    line-height: 1;
+}
+
+.jss1321 {
+    height: auto;
+}
+
+.jss1320 {
+    height: 40px;
+}
+
+.MuiFormControl-fullWidth {
+    width: 100%;
+}
+
+.MuiFormControl-root {
+    border: 0;
+    margin: 0;
+    display: inline-flex;
+    padding: 0;
+    position: relative;
+    min-width: 0;
+    flex-direction: column;
+    vertical-align: top;
+}
+
+.jss1320 .MuiInputBase-root {
+    height: 100%;
+}
+
+.jss1320 .MuiOutlinedInput-multiline {
+    color: #0F1824;
+    padding: 0;
+}
+
+.jss1320 .MuiOutlinedInput-multiline textarea {
+    padding: 11px 12px;
+}
+
+.jss3891 {
+    width: 100%;
+}
+
+.jss4846 {
+    color: #46515F;
+    display: flex;
+    font-size: 14px;
+    margin-top: 0;
+    line-height: 20px;
+    margin-bottom: 4px;
+}
+
+.jss3892 {
+    width: auto;
+}
+
+.jss4845 {
+    width: 100%;
+    border: 1px solid #D3D5D7;
+    cursor: pointer;
+    height: 40px;
+    display: flex;
+    padding: 0 12px;
+    align-items: center;
+    border-color: #D3D5D7;
+    border-radius: 3px;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.jss4845 .label-select {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.jss4845 svg {
+    color: #A3A8AF;
+    margin-right: -6px;
+}
+
+.jss5333 {
+    width: 100%;
+}
+
+.jss5402 {
+    color: #46515F;
+    display: flex;
+    font-size: 14px;
+    margin-top: 0;
+    line-height: 20px;
+    margin-bottom: 4px;
+}
+
+.jss5401 {
+    width: 100%;
+    border: 1px solid #D3D5D7;
+    cursor: pointer;
+    height: 40px;
+    display: flex;
+    padding: 0 12px;
+    align-items: center;
+    /*border-color: #D3D5D7;*/
+    border-radius: 3px;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.jss5401 .label-select {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.jss5401 svg {
+    color: #A3A8AF;
+    margin-right: -6px;
+}
+
+.jss5351 {
+    width: 100%;
+}
+
+.jss5462 {
+    color: #46515F;
+    display: flex;
+    font-size: 14px;
+    margin-top: 0;
+    line-height: 17px;
+    margin-bottom: 4px;
+}
+
+.jss5352 {
+    width: auto;
+}
+
+.jss5461 {
+    width: 100%;
+    border: 1px solid #D3D5D7;
+    cursor: pointer;
+    height: 40px;
+    display: flex;
+    padding: 0 12px;
+    align-items: center;
+    border-color: #D3D5D7;
+    border-radius: 3px;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.jss5461 .label-select {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.jss5461 svg {
+    color: #A3A8AF;
+    margin-right: -6px;
+}
+
+.jss5369 {
+    width: 100%;
+}
+
+.jss5432 {
+    color: #46515F;
+    display: flex;
+    font-size: 14px;
+    margin-top: 0;
+    line-height: 17px;
+    margin-bottom: 4px;
+}
+
+.jss5370 {
+    width: auto;
+}
+
+.jss5431 {
+    width: 100%;
+    border: 1px solid #D3D5D7;
+    cursor: pointer;
+    height: 40px;
+    display: flex;
+    padding: 0 12px;
+    align-items: center;
+    border-color: #D3D5D7;
+    border-radius: 3px;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.jss5431 .label-select {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.jss5431 svg {
+    color: #A3A8AF;
+    margin-right: -6px;
+}
+
+.dhBFCq {
+    background: rgb(255, 255, 255);
+    box-sizing: border-box;
+    padding: 0.714286rem 2.85714rem 0.714286rem 0.857143rem;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 3px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.42857rem;
+    margin: 0px;
+    color: rgb(15, 24, 36);
+}
+
+.ddyIwL {
+    right: 0.857143rem;
+}
+
+.gbUzqE {
+    transform: translate(0px, -50%);
+    position: absolute;
+    top: 50%;
+    color: rgb(163, 168, 175);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.ifKctM {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 8000;
+    border: 1px solid rgb(211, 213, 215);
+    box-shadow: rgb(168 168 168 / 25%) 0px 0.571429rem 1.14286rem;
+    border-radius: 3px;
+    background: rgb(255, 255, 255);
+    box-sizing: border-box;
+    width: 22.2857rem;
+}
+
+.fafnya {
+    border-bottom: 1px solid rgb(243, 244, 245);
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.dfwoVs {
+    height: 3.42857rem;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.hpbanr {
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+    flex-direction: column;
+    width: 8.28571rem;
+}
+
+.gZlWEy {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.42857rem;
+    margin: 0px;
+    display: block;
+    padding: 0.571429rem 2.57143rem 0.571429rem 0.857143rem;
+    height: 2.85714rem;
+    border: 1px solid rgb(211, 213, 215);
+    border-radius: 3px;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    color: rgb(15, 24, 36);
+}
+
+.cGcePZ > button {
+    margin-left: 1.14286rem;
+}
+
+.cGcePZ {
+    position: relative;
+    box-sizing: border-box;
+    padding: 1.71429rem;
+    display: flex;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.hFJmrT {
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: 0px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.42857rem;
+    margin: 0px;
+    overflow: hidden;
+    position: relative;
+    height: 2.57143rem;
+    padding: 0px 1.14286rem;
+    min-width: 4.57143rem;
+    color: rgb(255, 255, 255);
+    background: rgb(0, 136, 255);
+    border: none;
+}
+
+.bPLSPb::-webkit-scrollbar {
+    width: 0.428571rem;
+    height: 0.571429rem;
+    background-color: rgb(243, 244, 245);
+}
+
+.bPLSPb::-webkit-scrollbar-thumb {
+    border-radius: 0.428571rem;
+    background-color: rgb(163, 168, 175);
+}
+
+.jss87874 {
+    /*border: hidden;*/
+    width: 100%;
+}
+
+select#province  {
+    border:0px;
+    outline:0px;
+}
+
+select#ward   {
+    border:0px;
+    outline:0px;
+}
+
+select#district   {
+    border:0px;
+    outline:0px;
+}
+.jss2984 {
+    width: 718px;
+    position: absolute !important;
+    inset: 0px auto auto 0px;
+    transform: translate(278px, 150px) !important;
+    z-index: 999;
+
+}
+.jss990 {
+    padding: 5px 0px;
+}
+.jss1136  {
+    padding: 10px 41px;
+}
+.jss5553 {
+    width: 100%;
+    border: 1px solid #D3D5D7;
+    cursor: pointer;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-color: #D3D5D7;
+    border-radius: 3px;
+    justify-content: space-between;
+    background-color: #fff;
+    position: relative;
+    top: 4px;
+}
+.jss5553 svg {
+    color: #A3A8AF;
+    margin-right: -6px;
+}
+.jss1316 {
+    top: 0;
+    color: #46515F;
+    display: flex;
+    align-items: center;
+}
+.jss1316.MuiInputLabel-shrink {
+    font-size: 14px;
+    transform: none;
+    line-height: 17px;
+}
+.modal-body {
+    padding: 2rem;
+    max-height: calc(101vh - 102px);
+    overflow-y: hidden;
+    margin-left: 4px;
+    margin-top: -16px;
+    overflow-x: hidden;
+}
+.modal-content {
+    width: 95%;
+}
+.jss5553 path {
+    color: black;
+}
+.employee {
+    width: 100%;
+}

@@ -31,8 +31,8 @@ public class Supplier {
     @Column(name = "phone", nullable = false, length = 50)
     private String phone;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
     private SupplierStatus status;
 
     @Column(name = "description", nullable = false, length = 200)
@@ -53,10 +53,10 @@ public class Supplier {
     private Integer locationRegionId;
 
     @Column(name = "create_at", nullable = false)
-    private Integer createAt;
+    private String createAt;
 
     @Column(name = "update_at", nullable = false)
-    private Integer updateAt;
+    private String updateAt;
 
     public Supplier(Integer id) {
         this.id = id;

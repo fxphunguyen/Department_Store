@@ -19,11 +19,9 @@ public class PurchaseOrderResult {
 
     private Integer id;
 
-    private String purchaseCode;
+    private String purchaseOrderCode;
 
     private Integer supplierId;
-
-    private Integer purchaseOrderItemId;
 
     private Integer employeeId;
 
