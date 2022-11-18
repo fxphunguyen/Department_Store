@@ -37,11 +37,13 @@ public class CustomerCreate {
 
     private String updateAt;
 
-    private Integer employeeId = 2;
+    private Integer employeeId;
 
     private  Integer locationRegionID;
 
-  private LocationRegionCreate locationReionCreate;
+  private LocationRegionCreate locationRegionCreate;
+
+  private  boolean deleted;
 
 
 

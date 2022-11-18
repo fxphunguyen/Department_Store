@@ -24,6 +24,7 @@ public class Customer {
         this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
     }
 
+
     public Customer setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
         return this;
@@ -73,7 +74,7 @@ public class Customer {
 
 
     @Column(name = "location_region_id", insertable = false,updatable = false)
-    private Integer locationRegionId;
+    private Integer locationRegionId = 2;
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

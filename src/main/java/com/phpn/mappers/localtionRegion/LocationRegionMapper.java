@@ -23,14 +23,14 @@ public class LocationRegionMapper {
         }
         public LocationRegion toModel(CustomerCreate customerCreate){
             return new LocationRegion()
-                    .setId(customerCreate.getId())
-                    .setAddress(customerCreate.getLocationReionCreate().getAddress())
-                    .setWardId(customerCreate.getLocationReionCreate().getWardId())
-                    .setWardName(customerCreate.getLocationReionCreate().getWardName())
-                    .setDistrictId(customerCreate.getLocationReionCreate().getDistrictId())
-                    .setDistrictName(customerCreate.getLocationReionCreate().getDistrictName())
-                    .setProvinceId(customerCreate.getLocationReionCreate().getProvinceId())
-                    .setProvinceName(customerCreate.getLocationReionCreate().getProvinceName());
+                    .setId(0)
+                    .setAddress(customerCreate.getLocationRegionCreate().getAddress())
+                    .setWardId(customerCreate.getLocationRegionCreate().getWardId())
+                    .setWardName(customerCreate.getLocationRegionCreate().getWardName())
+                    .setDistrictId(customerCreate.getLocationRegionCreate().getDistrictId())
+                    .setDistrictName(customerCreate.getLocationRegionCreate().getDistrictName())
+                    .setProvinceId(customerCreate.getLocationRegionCreate().getProvinceId())
+                    .setProvinceName(customerCreate.getLocationRegionCreate().getProvinceName());
         }
     public LocationRegionCreate toModel(LocationRegion locationRegion) {
         return new LocationRegionCreate()
