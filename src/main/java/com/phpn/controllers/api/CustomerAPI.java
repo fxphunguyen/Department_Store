@@ -4,34 +4,30 @@ import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
 
 
-import com.phpn.mappers.localtionRegion.LocationRegionMapper;
+import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.CustomerGender;
 import com.phpn.repositories.model.CustomerGroup;
 import com.phpn.services.customer.CustomerService;
-import com.phpn.services.locationRegion.LocationRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
     @RequestMapping("/api/customers")
 public class CustomerAPI {
 
     @Autowired
-    private LocationRegionMapper locationRegionMapper;
-
-
-    @Autowired
-    private LocationRegionService locationRegionService;
-
-    @Autowired
     private LocationRegionRepository locationRegionRepository;
+
+    @Autowired
+    private CustomerMapper customerMapper;
 
     @Autowired
     private CustomerService customerService;
@@ -39,6 +35,15 @@ public class CustomerAPI {
 
     @Autowired
     CustomerRepository customerRepository;
+
+    @GetMapping("/list_customerAll")
+    public ResponseEntity<?> showListCustomerAll() {
+        List<CustomerResult> customers = customerRepository.findAll()
+                .stream()
+                .map(customer -> customerMapper.toDTOCustomerEdit(customer))
+                .collect(Collectors.toList());;
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
 
 
     @GetMapping("/list_customer")
@@ -60,6 +65,7 @@ public class CustomerAPI {
         return new ResponseEntity<>(itemResult, HttpStatus.OK);
     }
 
+
     @PostMapping("/delete/{id}")
     public void deleteCustomerById(@PathVariable Integer id) {
         customerService.deleteStatusCustomer(id);
@@ -74,8 +80,11 @@ public class CustomerAPI {
 
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateCustomer(@RequestBody CustomerResult customerResult, @PathVariable Integer id) {
+        System.out.println(customerResult);
+        System.out.println(customerResult.getLocationRegion().getWardName());
+        System.out.println(id);
         customerResult.setId(id);
         customerService.update(customerResult);
         return new ResponseEntity<>(customerResult, HttpStatus.OK);

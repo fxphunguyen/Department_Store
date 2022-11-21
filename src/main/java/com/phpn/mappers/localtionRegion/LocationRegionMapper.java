@@ -2,6 +2,7 @@ package com.phpn.mappers.localtionRegion;
 
 
 import com.phpn.dto.customer.CustomerCreate;
+import com.phpn.dto.customer.CustomerResult;
 import com.phpn.dto.locationRegion.LocationRegionCreate;
 import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.repositories.model.LocationRegion;
@@ -32,6 +33,18 @@ public class LocationRegionMapper {
                     .setProvinceId(customerCreate.getLocationRegionCreate().getProvinceId())
                     .setProvinceName(customerCreate.getLocationRegionCreate().getProvinceName());
         }
+
+    public LocationRegion toModel(CustomerResult customerResult){
+        return new LocationRegion()
+                .setId(customerResult.getLocationRegionId())
+                .setAddress(customerResult.getLocationRegion().getAddress())
+                .setWardId(customerResult.getLocationRegion().getWardId())
+                .setWardName(customerResult.getLocationRegion().getWardName())
+                .setDistrictId(customerResult.getLocationRegion().getDistrictId())
+                .setDistrictName(customerResult.getLocationRegion().getDistrictName())
+                .setProvinceId(customerResult.getLocationRegion().getProvinceId())
+                .setProvinceName(customerResult.getLocationRegion().getProvinceName());
+    }
     public LocationRegionCreate toModel(LocationRegion locationRegion) {
         return new LocationRegionCreate()
                 .setId(locationRegion.getId())

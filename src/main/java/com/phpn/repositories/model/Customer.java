@@ -34,6 +34,10 @@ public class Customer {
         this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
         return this;
     }
+    public Customer setLocationRegionAll(Integer locationRegionId) {
+        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+        return this;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

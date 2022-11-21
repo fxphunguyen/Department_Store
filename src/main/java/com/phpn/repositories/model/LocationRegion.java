@@ -42,6 +42,12 @@ public class LocationRegion {
 
     public LocationRegion(Integer id) {
         this.id = id;
+        this.address  = getAddress();
+        this.wardId = getWardId();
+        this.wardName = getWardName();
+        this.provinceId = getProvinceId();
+
+
     }
 
 }
