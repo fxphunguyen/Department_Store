@@ -1,4 +1,4 @@
-package com.phpn.services.supplier;
+package com.phpn.services.suppliers;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.phpn.mappers.SupplierMapper;
-import com.phpn.dto.supplier.SupplierResult;
+import com.phpn.dto.suppliers.SupplierResult;
 import com.phpn.exceptions.NotFoundException;
 import com.phpn.repositories.model.Supplier;
 import com.phpn.repositories.SupplierRepository;

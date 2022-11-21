@@ -1,17 +1,30 @@
 package com.phpn.repositories.model;
 
-import javax.persistence.*;
-
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Accessors(chain = true)
 @Table(name = "suppliers")
+@Accessors(chain = true)
 public class Supplier {
 
     @Id
@@ -63,18 +76,8 @@ public class Supplier {
     }
 
     public Supplier(Integer employeeId, Integer locationRegionId) {
-        setEmployeeId(employeeId);
-        setLocationRegionId(locationRegionId);
-    }
-
-    public Supplier setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
-        return this;
-    }
-
-    public Supplier setLocationRegionId(Integer locationRegionId) {
         this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
-        return this;
     }
 
 }

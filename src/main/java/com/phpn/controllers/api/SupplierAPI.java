@@ -1,6 +1,6 @@
 package com.phpn.controllers.api;
 
-import com.phpn.services.supplier.SupplierService;
+import com.phpn.services.suppliers.SupplierService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class SupplierAPI {
         return new ResponseEntity<>(supplierService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/histories")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
         return new ResponseEntity<>(supplierService.findById(id), HttpStatus.OK);
     }

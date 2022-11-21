@@ -1,7 +1,7 @@
-package com.phpn.services.supplier;
+package com.phpn.services.suppliers;
 
 import java.util.List;
-import com.phpn.dto.supplier.SupplierResult;
+import com.phpn.dto.suppliers.SupplierResult;
 
 public interface SupplierService {
 
