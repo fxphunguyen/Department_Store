@@ -11,13 +11,13 @@ class LocationRegionCreate {
 }
 
 class Customer {
-    constructor(id, name, phone,createAt, updateAt, employeeId, deleted, locationRegionCreate) {
+    constructor(id, customerCode,  name, phone,  email,createAt, updateAt, employeeId, deleted, locationRegionCreate) {
         this.id = id;
-        // this.customerCode = customerCode;
+        this.customerCode = customerCode;
         this.name = name;
         this.phone = phone;
         // this.customerGroup = customerGroup;
-        // this.email = email;
+        this.email = email;
         // this.birthday = birthday;
         // this.status = status;
         this.createAt = createAt;

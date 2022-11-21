@@ -38,5 +38,6 @@ public class ProductMapper {
                 .setQuantity(product.getQuantity())
                 .setCreateAt(product.getCreateAt())
                 .setUpdateAt(product.getUpdateAt());
+
     }
 }
