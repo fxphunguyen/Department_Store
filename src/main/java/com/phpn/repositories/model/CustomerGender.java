@@ -3,11 +3,15 @@ package com.phpn.repositories.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+import java.util.List;
+
 public enum CustomerGender {
 
-    NAM("NAM"), NU("NU");
+    NAM("Nam"), NU("Nữ"),KHAC("Khác");
 
     private final String value;
+
+
 
     CustomerGender(String value) {
         this.value = value;
@@ -25,4 +29,15 @@ public enum CustomerGender {
         }
         throw new IllegalArgumentException(value + "invalid");
     }
+
+
+    @JsonCreator
+    public static List<CustomerGender> parseLickCustomerGender(String value) {
+
+        for (CustomerGender customerGender : CustomerGender.values()) {
+
+        }
+        throw new IllegalArgumentException(value + "invalid");
+    }
+
 }

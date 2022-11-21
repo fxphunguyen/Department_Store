@@ -11,5 +11,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface SupplierRepository extends JpaRepository<Supplier, Integer> {
 
+    @Override
+    List<Supplier> findAll();
+
+    @Override
+    Optional<Supplier> findById(Integer id);
 
 }

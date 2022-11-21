@@ -52,7 +52,7 @@
                             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
                                 <div class="MuiGrid-root MuiGrid-item" style="flex: 1 0 0px;">
                                     <div class="MuiPaper-root  jss18028 MuiPaper-elevation1 MuiPaper-rounded">
-                                        <div class="MuiBox-root jss18075">
+                                        <div class="MuiBox-root jss18075 customer-info">
                                             <div class="MuiBox-root jss18076 create-order-step2 jss18040">
                                                 <div class="MuiBox-root jss18077">
                                                     <h6 class="MuiTypography-root MuiTypography-h6">Thông tin khách
@@ -1852,14 +1852,17 @@
      style="width: 718px; position: absolute; inset: 0px auto auto 0px; transform: translate(278px, 169px); z-index: 999;">
     <div class="MuiBox-root jss4970 jss2932" wrapper-suggest="c05f1dc8-07da-4f36-a8b6-dedaa35f3535">
         <div class="MuiBox-root jss4971" tabindex="0">
-            <button class="MuiButtonBase-root MuiButton-root jss4972 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"
-                    id="create_customer" tabindex="0" type="button" key-event="true" data-id="-1"><span class="MuiButton-label"><span
+            <button data-bs-toggle="modal" data-bs-target="#create_order_customer" class="MuiButtonBase-root MuiButton-root jss4972 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"
+                    tabindex="0" type="button" key-event="true" data-id="-1">
+                <span class="MuiButton-label"><span
                     class="MuiButton-startIcon MuiButton-iconSizeMedium"><svg
                     class="MuiSvgIcon-root icon MuiSvgIcon-colorPrimary" focusable="false" viewBox="0 0 24 24"
                     aria-hidden="true"><path
                     d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg></span><h6
                     class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary">Thêm mới khách hàng</h6></span><span
-                    class="MuiTouchRipple-root"></span></button>
+                    class="MuiTouchRipple-root"></span>
+            </button>
+
         </div>
         <div class="infinite-scroll-component__outerdiv">
             <div class="infinite-scroll-component InfiniteScroll-ListItem contentCustomer"
@@ -1893,14 +1896,15 @@
         </div>
     </div>
 </div>
-
 </body>
-<th:block th:replace="/layout/script :: script"/>
 <th:block th:replace="/admin/order/modal_create_customer::modal_create_customer"/>
+<th:block th:replace="/admin/order/modal_info_customer::modal_info_customer"/>
+<th:block th:replace="/layout/script :: script"/>
 
 <script>
     Page();
     hj('trigger', 'split_test_b');
 </script>
-<script type="text/javascript" src="/static/assets/admin/js/order.js"></script>
+<script type="text/javascript" src="/static/assets/admin/js/order/app.js"></script>
+<script type="text/javascript" src="/static/assets/admin/js/order/order.js"></script>
 </html>

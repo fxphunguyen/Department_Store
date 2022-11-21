@@ -5,17 +5,10 @@ import com.phpn.dto.employee.EmployeeParam;
 import com.phpn.dto.employee.EmployeeRResult;
 import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.repositories.model.Employee;
-import com.phpn.repositories.model.Supplier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EmployeeMapper {
-
-    public  Employee toDTO(Supplier supplier) {
-        return new Employee()
-                .setId(supplier.getEmployee().getId())
-                .setName(supplier.getEmployee().getName());
-    }
 
     public EmployeeResult toDTO(Employee employee) {
         return new EmployeeResult()

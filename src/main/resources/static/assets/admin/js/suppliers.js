@@ -16,6 +16,7 @@
                     <td class="select bulk-action">
                         <div class="next-input-wrapper">
                             <input type="checkbox" class="bulk-action-item next-checkbox" value="${item.id}"/>
+                            
                             <span class="next-checkbox--styled">
                                 <svg class="next-icon next-icon--size-10 checkmark">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-checkmark-thick"></use>
@@ -45,7 +46,7 @@
                     </td>
 
                     <td>
-                        <span title="${item.employee.name}">${item.employee.name}</span>
+                        <span title="${item.employeeId}">${item.employeeId}</span>
                     </td>
 
                     <td>

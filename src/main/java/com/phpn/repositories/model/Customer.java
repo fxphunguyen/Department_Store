@@ -20,10 +20,15 @@ public class Customer {
     }
 
     public Customer(Integer employeeId , Integer locationRegionId){
-
+        this.employee = new Employee(this.employeeId = employeeId);
+        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
     }
 
 
+    public Customer setEmployeeId(Integer employeeId) {
+        this.employee = new Employee(this.employeeId = employeeId);
+        return this;
+    }
 
     public Customer setLocationRegionId(Integer locationRegionId) {
         this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
@@ -69,7 +74,7 @@ public class Customer {
 
 
     @Column(name = "location_region_id", insertable = false,updatable = false)
-    private Integer locationRegionId;
+    private Integer locationRegionId = 2;
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

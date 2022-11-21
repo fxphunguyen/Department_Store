@@ -5,8 +5,10 @@ import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
 
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
+import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.CustomerGender;
+import com.phpn.repositories.model.LocationRegion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +21,9 @@ public class CustomerMapper {
 
     @Autowired
     LocationRegionMapper locationRegionMapper;
+
+    @Autowired
+    CustomerRepository customerRepository;
 
     public CustomerResult toDTO(Customer customer) {
         return new CustomerResult()
@@ -39,8 +44,8 @@ public class CustomerMapper {
     }
 
     public Customer toModel(CustomerCreate customerCreate) {
-        return new Customer()
-                .setEmployeeId(2)
+        return new Customer(customerCreate.getEmployeeId(), customerCreate.getLocationRegionID())
+                .setEmployeeId(customerCreate.getEmployeeId())
                 .setCustomerCode(customerCreate.getCustomerCode())
                 .setName(customerCreate.getName())
                 .setPhone(customerCreate.getPhone())
@@ -50,8 +55,25 @@ public class CustomerMapper {
                 .setStatus(customerCreate.getStatus())
                 .setCreateAt(customerCreate.getCreateAt())
                 .setUpdateAt(customerCreate.getUpdateAt())
-                .setLocationRegion(locationRegionMapper.toModel(customerCreate));
+                .setCustomerGender(customerCreate.getCustomerGender())
+                .setLocationRegionId(customerCreate.getLocationRegionID());
+    }
 
+    public Customer toCustomer(LocationRegion locationRegion, CustomerCreate customerCreate) {
+        return new Customer()
+                .setId(customerCreate.getId())
+                .setCustomerCode(customerCreate.getCustomerCode())
+                .setName(customerCreate.getName())
+                .setPhone(customerCreate.getPhone())
+                .setCustomerGroup(customerCreate.getCustomerGroup())
+                .setCustomerGender(customerCreate.getCustomerGender())
+                .setEmail(customerCreate.getEmail())
+                .setBirthday(customerCreate.getBirthday())
+                .setStatus(customerCreate.getStatus())
+                .setCreateAt(customerCreate.getCreateAt())
+                .setUpdateAt(customerCreate.getUpdateAt())
+                .setLocationRegion(locationRegion)
+                .setDeleted(customerCreate.isDeleted());
     }
 
 

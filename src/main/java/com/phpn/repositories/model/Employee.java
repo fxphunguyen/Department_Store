@@ -45,8 +45,8 @@ public class Employee {
     @Column(name = "gender")
     private String gender;
 
-    public Employee(Integer locationRegionId) {
-        setLocationRegionId(locationRegionId);
+    public Employee(Integer id) {
+       this.id = id;
     }
 
     public Employee setLocationRegionId(Integer locationRegionId) {

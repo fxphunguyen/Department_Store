@@ -1,7 +1,5 @@
 package com.phpn.dto.supplier;
 
-import com.phpn.repositories.model.Employee;
-import com.phpn.repositories.model.LocationRegion;
 import com.phpn.repositories.model.SupplierStatus;
 
 import lombok.*;
@@ -21,13 +19,7 @@ public class SupplierResult {
     private String phone;
     private SupplierStatus status;
     private String description;
-    private Employee employee;
     private Integer employeeId;
-    private LocationRegion locationRegion;
     private Integer locationRegionId;
-    private String createAt;
-    private String updateAt;
-
-    private String employeeName;
 
 }
