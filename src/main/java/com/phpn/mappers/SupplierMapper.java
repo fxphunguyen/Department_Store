@@ -1,5 +1,8 @@
 package com.phpn.mappers;
 
+import com.phpn.mappers.employee.EmployeeMapper;
+import com.phpn.repositories.model.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.phpn.dto.supplier.SupplierParam;
@@ -11,7 +14,13 @@ import com.phpn.repositories.model.Supplier;
 @Component
 public class SupplierMapper {
 
+    @Autowired
+    EmployeeMapper employeeMapper;
+
+
+
     public SupplierResult toDTO(Supplier supplier) {
+//        System.out.println(supplier);
         return new SupplierResult()
         .setId(supplier.getId())
         .setSupplierCode(supplier.getSupplierCode())
@@ -20,11 +29,14 @@ public class SupplierMapper {
         .setPhone(supplier.getPhone())
         .setStatus(supplier.getStatus())
         .setDescription(supplier.getDescription())
-        .setEmployeeId(supplier.getEmployeeId())
-        .setLocationRegionId(supplier.getLocationRegionId());
+        .setEmployee(supplier.setEmployeeId(supplier.getEmployeeId()).getEmployee())
+//        .setLocationRegion(supplier.getLocationRegion())
+        .setEmployeeName(supplier.setEmployeeId(supplier.getEmployeeId()).getEmployee().getName())
+        .setUpdateAt(supplier.getUpdateAt());
     }
 
     public Supplier toModel(SupplierResult supplierResult) {
+        System.out.println(supplierResult);
         return new Supplier(supplierResult.getEmployeeId(), supplierResult.getLocationRegionId())
         .setId(supplierResult.getId())
         .setSupplierCode(supplierResult.getSupplierCode())
@@ -33,8 +45,8 @@ public class SupplierMapper {
         .setPhone(supplierResult.getPhone())
         .setStatus(supplierResult.getStatus())
         .setDescription(supplierResult.getDescription())
-        .setEmployeeId(supplierResult.getEmployeeId())
-        .setLocationRegionId(supplierResult.getLocationRegionId());
+        .setEmployee(supplierResult.getEmployee())
+        .setLocationRegion(supplierResult.getLocationRegion());
     }
 
     public Supplier toModel(SupplierParam supplierParam) {

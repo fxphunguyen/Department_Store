@@ -23,7 +23,7 @@ public class LocationRegionResult {
     private String wardName;
 
 
-    private Integer districId;
+    private Integer districtId;
 
     private String districtName;
 

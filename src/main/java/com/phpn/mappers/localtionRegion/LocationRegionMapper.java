@@ -5,10 +5,24 @@ import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.locationRegion.LocationRegionCreate;
 import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.repositories.model.LocationRegion;
+import com.phpn.repositories.model.Supplier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class LocationRegionMapper {
+
+    public LocationRegion toDTO(Supplier supplier) {
+        return new LocationRegion()
+                .setId(supplier.getLocationRegion().getId())
+                .setAddress(supplier.getLocationRegion().getAddress())
+                .setWardId(supplier.getLocationRegion().getWardId())
+                .setWardName(supplier.getLocationRegion().getWardName())
+                .setDistrictId(supplier.getLocationRegion().getId())
+                .setDistrictName(supplier.getLocationRegion().getDistrictName())
+                .setProvinceId(supplier.getLocationRegion().getProvinceId())
+                .setProvinceName(supplier.getLocationRegion().getProvinceName());
+    }
+
 
     public LocationRegionResult toDTO(LocationRegion locationRegion) {
         return new LocationRegionResult()
@@ -16,7 +30,7 @@ public class LocationRegionMapper {
                 .setAddress(locationRegion.getAddress())
                 .setWardId(locationRegion.getWardId())
                 .setWardName(locationRegion.getWardName())
-                .setDistricId(locationRegion.getId())
+                .setDistrictId(locationRegion.getId())
                 .setDistrictName(locationRegion.getDistrictName())
                 .setProvinceId(locationRegion.getProvinceId())
                 .setProvinceName(locationRegion.getProvinceName());

@@ -26,11 +26,18 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public List<SupplierResult> findAll() {
+        System.out.println(supplierRepository
+                .findAll()
+                .stream()
+                .map(supplier -> supplierMapper.toDTO(supplier))
+                .collect(Collectors.toList())
+        );
         return supplierRepository
         .findAll()
         .stream()
         .map(supplier -> supplierMapper.toDTO(supplier))
         .collect(Collectors.toList());
+
     }
 
     @Override

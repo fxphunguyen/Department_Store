@@ -1,5 +1,6 @@
 package com.phpn.controllers.api;
 
+import com.phpn.repositories.SupplierRepository;
 import com.phpn.services.supplier.SupplierService;
 
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,9 @@ public class SupplierAPI {
 
     @Autowired
     private SupplierService supplierService;
+
+    @Autowired
+    private SupplierRepository supplierRepository;
 
     @GetMapping
     public ResponseEntity<?> findAll() {
