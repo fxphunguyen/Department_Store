@@ -79,7 +79,7 @@ public class CustomerAPI {
 
     }
 
-    @PostMapping("/update/{id}")
+    @PatchMapping("/update/{id}")
     public ResponseEntity<?> updateCustomer(@RequestBody CustomerResult customerResult, @PathVariable Integer id) {
         customerResult.setId(id);
         customerService.update(customerResult);

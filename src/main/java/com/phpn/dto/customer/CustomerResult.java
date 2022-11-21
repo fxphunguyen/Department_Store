@@ -1,5 +1,6 @@
 package com.phpn.dto.customer;
 
+import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.repositories.model.CustomerGender;
 import com.phpn.repositories.model.CustomerGroup;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,8 @@ public class CustomerResult {
 
     private Integer locationRegionId;
 
+    private LocationRegionResult locationRegionResult;
+
     private CustomerGender customerGender;
 
     private Integer employeeId;
@@ -45,7 +48,6 @@ public class CustomerResult {
         this.phone = phone;
         this.deleted = deleted;
     }
-//
-//    private String totalSpending;
+
 }
 
