@@ -17,8 +17,18 @@ class Employee {
     }
 }
 
+class EmployeeResult {
+    contructor(id, birthday, email, gender, name) {
+        this.id = id;
+        this.birthday = birthday;
+        this.email = email;
+        this.gender = gender;
+        this.name = name;
+    }
+}
+
 class Customer {
-    constructor(id, customerCode,  name, phone,  email,createAt, updateAt, employee, deleted, locationRegionCreate) {
+    constructor(id, customerCode,  name, phone,  email,createAt, updateAt, employeeId, deleted, locationRegionCreate) {
         this.id = id;
         this.customerCode = customerCode;
         this.name = name;
@@ -29,7 +39,7 @@ class Customer {
         // this.status = status;
         this.createAt = createAt;
         this.updateAt = updateAt;
-        this.employee = employee;
+        this.employeeId = employeeId;
         this.deleted = deleted;
         this.locationRegionCreate = locationRegionCreate;
     }
