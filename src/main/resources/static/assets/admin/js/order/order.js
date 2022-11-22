@@ -11,19 +11,19 @@ let customers = [];
 
 let employees = [];
 
-function showListCustomer   () {
-        $.ajax({
-            type: "GET", contentType: 'application/json',
-            url: `${location.origin}/api/customers/list_customer`
-        })
-            .done((data) => {
-                customers = data;
-                // customer.locationRegionCreate = locationRegionCreate;
-                // console.log(data)
-                $(".searchCustomer").removeClass('d-none');
-                $(".contentCustomer div").remove();
-                $.each(data, (i, customer) => {
-                    let result = `
+function showListCustomer() {
+    $.ajax({
+        type: "GET", contentType: 'application/json',
+        url: `${location.origin}/api/customers/list_customer`
+    })
+        .done((data) => {
+            customers = data;
+            // customer.locationRegionCreate = locationRegionCreate;
+            // console.log(data)
+            $(".searchCustomer").removeClass('d-none');
+            $(".contentCustomer div").remove();
+            $.each(data, (i, customer) => {
+                let result = `
                 <div class="MuiBox-root jss4978 InfiniteScroll-MenuItem focus-key-event showInfo" key-event="true" onclick="showCustomerInfo(${customer.id})"
                      data-id="${customer.id}" tabindex="0">
                     <li class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root jss2894 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
@@ -38,15 +38,15 @@ function showListCustomer   () {
                     </li>
                 </div>
                 `;
-                    $(".contentCustomer").append(result)
-                })
-                handleCloseListCustomers();
+                $(".contentCustomer").append(result)
             })
-            .fail((jqXHR) => {
-                console.log(jqXHR);
-            })
+            handleCloseListCustomers();
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR);
+        })
 }
-showListCustomer();
+
 
 $("#myInput").on("input", function () {
     // console.log($(this).val());
@@ -256,7 +256,6 @@ function showCustomerInfo(idCustomer) {
 }
 
 
-
 function handleCloseListCustomers() {
     $(document).on("click", () => {
         $(".searchCustomer").addClass('d-none');
@@ -339,7 +338,7 @@ function getAllProvinces() {
         })
 }
 
-    function getAllDistrictsByProvinceId(provinceId) {
+function getAllDistrictsByProvinceId(provinceId) {
     $("#district").empty();
     return $.ajax({
         headers: {
@@ -435,6 +434,7 @@ function getEmployeeById(id) {
         .done((data) => {
             // $('#selectEmployee').html('');
             // $('#selectEmployeeUpdate').html('');
+            employee = data;
             employees = data;
             if (data.length === 0) {
                 let str = `<option value="0">Chọn nhân viên</option>`;
@@ -451,6 +451,7 @@ function getEmployeeById(id) {
             console.log(jqXHR)
         })
 }
+
 getAllEmployeeSelect();
 
 $('#btnCreateCustomer').on('click', () => {
@@ -510,7 +511,7 @@ $('#btnCreateCustomer').on('click', () => {
         })
 });
 
-function handleRemove(){
+function handleRemove() {
     let str = `<div class="MuiPaper-root  jss18028 MuiPaper-elevation1 MuiPaper-rounded">
                                         <div class="MuiBox-root jss18075 customer-info">
                                             <div class="MuiBox-root jss18076 create-order-step2 jss18040">
@@ -559,6 +560,7 @@ function handleRemove(){
     $("#show_customer_info").html(str);
     $("#MuiBox-list-customer").removeClass("hide");
 }
+
 function getCustomerById(id) {
     return $.ajax({
         headers: {
@@ -580,36 +582,37 @@ function getCustomerById(id) {
 }
 
 
-
 function editCustomer() {
-    let id =  $("#idCustomer").val();
+    let id = $("#idCustomer").val();
     console.log(id);
-        getCustomerById(id).then( ()  => {
+    getCustomerById(id).then(() => {
 
 
-            $('#idCustomer').val(customer.id);
-            $("#nameUpdate").val(customer.name)
-            $('#phoneUpdate').val(customer.phone);
-            $('#addressUpdate').val(locationRegionCreate.address);
-            $('#provinceUpdate').val(locationRegionCreate.provinceId);
+        $('#idCustomer').val(customer.id);
+        $("#nameUpdate").val(customer.name)
+        $('#phoneUpdate').val(customer.phone);
+        $('#addressUpdate').val(locationRegionCreate.address);
+        $('#provinceUpdate').val(locationRegionCreate.provinceId);
 
-            getAllDistrictsByProvinceId(locationRegionCreate.provinceId).then(()=>{
-                $("#districtUpdate").val(locationRegionCreate.districtId);
+        getAllDistrictsByProvinceId(locationRegionCreate.provinceId).then(() => {
+            $("#districtUpdate").val(locationRegionCreate.districtId);
 
-                console.log(locationRegionCreate.districtId);
+            console.log(locationRegionCreate.districtId);
 
-                getAllWardsByDistrictId(locationRegionCreate.districtId).then(()=>{
-                    $("#wardUpdate").val(locationRegionCreate.wardId);
-                })
+            getAllWardsByDistrictId(locationRegionCreate.districtId).then(() => {
+                $("#wardUpdate").val(locationRegionCreate.wardId);
             })
-            getAllEmployeeSelect().then(() => {
-                $("#selectEmployeeUpdate").val(employee.id);
-            })
-
-            $("#update_order_customer").modal("show");
-
-            // $("#modalCreateProduct .modal-alert-danger").removeClass('show').addClass('hide');
         })
+        // getAllEmployeeSelect().then(() => {
+        //     $("#selectEmployeeUpdate").val(employee.id);
+        //     console.log("aaaaa")
+        //     console.log(employee.id);
+        // })
+
+        $("#update_order_customer").modal("show");
+
+        // $("#modalCreateProduct .modal-alert-danger").removeClass('show').addClass('hide');
+    })
 }
 
 // $('#btnUpdateCustomer').on('click', (customerId) => {
