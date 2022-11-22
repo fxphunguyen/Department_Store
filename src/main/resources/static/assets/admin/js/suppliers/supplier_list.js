@@ -39,7 +39,7 @@
                     </td>
 
                     <td>
-                        <span class="${item.supplierStatus === "Đang giao dịch" ? "text-success" : "text-danger"}" title="${item.supplierStatus}">${item.supplierStatus}</span>
+                        <span class="${item.supplierStatus === 'Đang giao dịch' ? 'text-success' : 'text-danger'}" title="${item.supplierStatus}">${item.supplierStatus}</span>
                     </td>
 
                     <td>

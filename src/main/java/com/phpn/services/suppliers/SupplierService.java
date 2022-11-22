@@ -9,4 +9,6 @@ public interface SupplierService {
 
     SupplierResult findById(Integer id);
 
+    void deleteById(Integer id);
+
 }
