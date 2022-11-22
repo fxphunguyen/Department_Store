@@ -47,7 +47,7 @@ public class CustomerMapper {
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
                 .setLocationRegionId(customer.getLocationRegionId())
-//                .setLocationRegion(locationRegionRepository.findById(customer.getLocationRegionId()).get())
+                .setLocationRegion(locationRegionRepository.findById(customer.getLocationRegionId()).get())
                 .setEmployeeRResult(employeeMapper.toRDTO(customer.getEmployee()));
     }
 

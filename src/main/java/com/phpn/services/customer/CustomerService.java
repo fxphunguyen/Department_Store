@@ -14,8 +14,6 @@ public interface CustomerService {
 
     void  deleteStatusCustomer(Integer id);
 
-    ResponseEntity<?> createCustomer(Customer customer);
-
     CustomerResult findById(Integer id);
 
 

@@ -11,6 +11,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.util.Optional;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -53,6 +55,8 @@ public class CustomerResult {
         this.phone = phone;
         this.deleted = deleted;
     }
+
+
 //
 //    private String totalSpending;
 }

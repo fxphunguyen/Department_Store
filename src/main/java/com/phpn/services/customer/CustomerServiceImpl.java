@@ -53,11 +53,6 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setDeleted(true);
     }
 
-    @Override
-    public ResponseEntity<?> createCustomer(Customer customer) {
-        customerRepository.save(customer);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 
     @Override
     public CustomerResult findById(Integer id) {
