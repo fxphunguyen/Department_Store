@@ -39,7 +39,7 @@ public class CustomerCreate {
 
     private Integer employeeId;
 
-    private  Integer locationRegionID;
+    private  Integer locationRegionId;
 
   private LocationRegionCreate locationRegionCreate;
 

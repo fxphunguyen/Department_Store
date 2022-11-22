@@ -11,6 +11,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class LocationRegionCreate {
+
     private Integer Id;
 
     private String address;

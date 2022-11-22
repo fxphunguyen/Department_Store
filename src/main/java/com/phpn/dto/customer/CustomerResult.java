@@ -1,5 +1,6 @@
 package com.phpn.dto.customer;
 
+
 import com.phpn.dto.employee.EmployeeRResult;
 import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.locationRegion.LocationRegionResult;
@@ -50,8 +51,6 @@ public class CustomerResult {
 
     private EmployeeResult employeeResult;
     private Boolean deleted;
-
-//    private LocationRegion locationRegion;
 
     public CustomerResult(String name, String phone, Boolean deleted) {
         this.name = name;

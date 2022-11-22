@@ -30,6 +30,8 @@ public class CustomerMapper {
 
 
 
+
+
     public CustomerResult toDTO(Customer customer) {
         return new CustomerResult()
                 .setId(customer.getId())
@@ -63,7 +65,24 @@ public class CustomerMapper {
                 .setCreateAt(java.time.LocalDateTime.now().toString())
                 .setUpdateAt(customerCreate.getUpdateAt())
                 .setCustomerGender(customerCreate.getCustomerGender())
-                .setLocationRegionId(customerCreate.getLocationRegionID());
+                .setLocationRegionId(customerCreate.getLocationRegionId());
+    }
+
+    public Customer toCustomer( CustomerCreate customerCreate) {
+        return new Customer()
+                .setId(customerCreate.getId())
+                .setCustomerCode(customerCreate.getCustomerCode())
+                .setName(customerCreate.getName())
+                .setPhone(customerCreate.getPhone())
+                .setCustomerGroup(customerCreate.getCustomerGroup())
+                .setCustomerGender(customerCreate.getCustomerGender())
+                .setEmail(customerCreate.getEmail())
+                .setBirthday(customerCreate.getBirthday())
+                .setStatus(customerCreate.getStatus())
+                .setCreateAt(customerCreate.getCreateAt())
+                .setUpdateAt(customerCreate.getUpdateAt())
+                .setLocationRegionId(customerCreate.getLocationRegionId())
+                .setLocationRegion(locationRegionMapper.toModel(customerCreate.getLocationRegionCreate()));
     }
 
     public Customer toCustomer(CustomerResult customerResult ,Customer customer) {
@@ -80,9 +99,29 @@ public class CustomerMapper {
                 .setUpdateAt(customerResult.getUpdateAt())
                 .setUpdateAt(java.time.LocalDateTime.now().toString())
                 .setDeleted(true);
-//                .setLocationRegion(locationRegionMapper.toLocationRegion(customerResult));
+
     }
 
+
+
+
+//    public Customer toModel(CustomerResult customerResult) {
+//        return new Customer()
+//                .setId(customerResult.getId())
+//                .setCustomerCode(customerResult.getCustomerCode())
+//                .setName(customerResult.getName())
+//                .setPhone(customerResult.getPhone())
+//                .setCustomerGroup(customerResult.getCustomerGroup())
+//                .setCustomerGender(customerResult.getCustomerGender())
+//                .setEmail(customerResult.getEmail())
+//                .setBirthday(customerResult.getBirthday())
+//                .setStatus(customerResult.getStatus())
+//                .setCreateAt(customerResult.getCreateAt())
+//                .setUpdateAt(customerResult.getUpdateAt())
+//                .setEmployeeId(customerResult.getEmployeeId())
+//                .setLocationRegionId(customerResult.getLocationRegionId())
+//                .setLocationRegion(locationRegionMapper.toModel(customerResult.getLocationRegionResult().));
+//    }
 
 
     public CustomerResult toDTOCustomerEdit(Customer customer) {

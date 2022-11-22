@@ -19,8 +19,8 @@ public class Customer {
     }
 
     public Customer(Integer employeeId , Integer locationRegionId){
-        this.employee = new Employee(this.employeeId = employeeId);
-        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+       setEmployeeId(employeeId);
+       setLocationRegionId(locationRegionId);
     }
 
     @Id
