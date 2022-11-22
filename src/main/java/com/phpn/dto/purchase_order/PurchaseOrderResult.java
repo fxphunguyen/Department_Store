@@ -1,9 +1,7 @@
 package com.phpn.dto.purchase_order;
 
-import com.phpn.dto.employee.EmployeeResult;
-import com.phpn.dto.supplier.SupplierResult;
-import com.phpn.mappers.SupplierMapper;
-import com.phpn.mappers.employee.EmployeeMapper;
+import com.phpn.dto.employee.EmployeeResult;;
+import com.phpn.dto.suppliers.SupplierResult;
 import com.phpn.repositories.model.PurchaseOrderPays;
 import com.phpn.repositories.model.PurchaseOrderStatus;
 import lombok.Getter;
