@@ -1,5 +1,9 @@
 package com.phpn.dto.purchase_order;
 
+import com.phpn.dto.employee.EmployeeResult;
+import com.phpn.dto.supplier.SupplierResult;
+import com.phpn.mappers.SupplierMapper;
+import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.repositories.model.PurchaseOrderPays;
 import com.phpn.repositories.model.PurchaseOrderStatus;
 import lombok.Getter;
@@ -21,9 +25,13 @@ public class PurchaseOrderResult {
 
     private String purchaseOrderCode;
 
+    private SupplierResult supplierResult;
+
     private Integer supplierId;
 
     private Integer employeeId;
+
+    private EmployeeResult employeeResult;
 
     private Integer paymentMethodId;
 
