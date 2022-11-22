@@ -19,9 +19,7 @@ public class LocationRegionResult {
 
     private  Integer wardId;
 
-
     private String wardName;
-
 
     private Integer districtId;
 

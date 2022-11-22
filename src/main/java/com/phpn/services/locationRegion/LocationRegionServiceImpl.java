@@ -41,4 +41,8 @@ public class LocationRegionServiceImpl implements LocationRegionService {
         return locationRegion;
     }
 
+    @Override
+    public LocationRegion findByIdCreate(Integer id) {
+        return locationRegionRepository.findById(id).get();
+    }
 }

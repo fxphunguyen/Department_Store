@@ -20,6 +20,7 @@ public class CustomerMapper {
 
     @Autowired
     private EmployeeMapper employeeMapper;
+
     @Autowired
     private LocationRegionMapper locationRegionMapper;
 
@@ -49,13 +50,12 @@ public class CustomerMapper {
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
                 .setLocationRegionId(customer.getLocationRegionId())
-
-//                .setLocationRegion(locationRegionRepository.findById(customer.getLocationRegionId()).get())
+                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()))
                 .setEmployeeRResult(employeeMapper.toRDTO(customer.getEmployee()));
     }
 
     public Customer toModel(CustomerCreate customerCreate) {
-        return new Customer(customerCreate.getEmployeeId(), customerCreate.getLocationRegionId())
+        return new Customer()
                 .setEmployeeId(customerCreate.getEmployeeId())
                 .setCustomerCode(customerCreate.getCustomerCode())
                 .setName(customerCreate.getName())

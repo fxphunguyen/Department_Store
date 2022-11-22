@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/employees")
@@ -32,12 +33,15 @@ public class EmployeeAPI {
         List<EmployeeResult> employeeResults = employeeService.findAll();
         return new ResponseEntity<>(employeeResults, HttpStatus.OK);
     }
+//    @GetMapping("/{id}")
+//    public  ResponseEntity<?> findByIdEmployee(@PathVariable Integer id){
+//        Employee employee = employeeRepository.findById(id).();
+//        return new ResponseEntity<>(employee, HttpStatus.OK);
+//    }
     @GetMapping("/{id}")
-    public  ResponseEntity<?> findByIdEmployee(@PathVariable Integer id){
-        Employee employee = employeeRepository.findById(id).get();
-        return new ResponseEntity<>(employee, HttpStatus.OK);
+    public  ResponseEntity<?> findEmployeeById(@PathVariable Integer id){
+       Optional<Employee> employeeResult = employeeRepository.findEmployeeById(id);
+        return new ResponseEntity<>(employeeResult, HttpStatus.OK);
     }
-
-
 
 }

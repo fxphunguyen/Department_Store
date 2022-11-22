@@ -15,5 +15,5 @@ public interface LocationRegionService {
 
     LocationRegion update(CustomerResult customerResult);
 
-
+    LocationRegion findByIdCreate(Integer id);
 }
