@@ -73,9 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer create(CustomerCreate customerCreate) {
-        System.out.println(customerCreate.getCustomerGender());
-        System.out.println(customerCreate.getCustomerGroup());
-        LocationRegion locationRegion = locationRegionMapper.toModel(customerCreate);
+        LocationRegion locationRegion = locationRegionMapper.toModel(customerCreate.getLocationRegionCreate());
         locationRegionRepository.save(locationRegion);
         LocationRegion idLocationRegionCr = locationRegionRepository.findMaxIdCustomer();
         customerCreate.setLocationRegionID(idLocationRegionCr.getId());

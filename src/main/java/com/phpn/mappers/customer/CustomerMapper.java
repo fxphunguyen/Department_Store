@@ -4,8 +4,10 @@ package com.phpn.mappers.customer;
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
 
+import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
+import com.phpn.repositories.EmployeeRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
 import javafx.scene.Node;
@@ -17,13 +19,18 @@ public class CustomerMapper {
 
 
     @Autowired
-    LocationRegionMapper locationRegionMapper;
+    private EmployeeMapper employeeMapper;
+    @Autowired
+    private LocationRegionMapper locationRegionMapper;
 
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
-    LocationRegionRepository locationRegionRepository;
+    private LocationRegionRepository locationRegionRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     public CustomerResult toDTO(Customer customer) {
         return new CustomerResult()
@@ -40,7 +47,8 @@ public class CustomerMapper {
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
                 .setLocationRegionId(customer.getLocationRegionId())
-                .setLocationRegion(locationRegionRepository.findById(customer.getLocationRegionId()).get());
+//                .setLocationRegion(locationRegionRepository.findById(customer.getLocationRegionId()).get())
+                .setEmployeeRResult(employeeMapper.toRDTO(customer.getEmployee()));
     }
 
     public Customer toModel(CustomerCreate customerCreate) {

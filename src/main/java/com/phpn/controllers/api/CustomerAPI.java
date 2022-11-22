@@ -38,7 +38,8 @@ public class CustomerAPI {
 
     @GetMapping("/list_customerAll")
     public ResponseEntity<?> showListCustomerAll() {
-        List<CustomerResult> customers = customerRepository.findAll()
+        List<CustomerResult> customers = customerRepository
+                .findAll()
                 .stream()
                 .map(customer -> customerMapper.toDTO(customer))
                 .collect(Collectors.toList());;

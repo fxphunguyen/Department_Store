@@ -1,7 +1,10 @@
 package com.phpn.dto.customer;
 
+import com.phpn.dto.employee.EmployeeRResult;
+import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.repositories.model.CustomerGender;
 import com.phpn.repositories.model.CustomerGroup;
+import com.phpn.repositories.model.Employee;
 import com.phpn.repositories.model.LocationRegion;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,6 +42,8 @@ public class CustomerResult {
     private CustomerGender customerGender;
 
     private Integer employeeId;
+
+    private EmployeeRResult employeeRResult;
     private Boolean deleted;
 
     private LocationRegion locationRegion;
