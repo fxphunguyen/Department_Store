@@ -29,15 +29,4 @@ public enum CustomerGender {
         }
         throw new IllegalArgumentException(value + "invalid");
     }
-
-
-    @JsonCreator
-    public static List<CustomerGender> parseLickCustomerGender(String value) {
-
-        for (CustomerGender customerGender : CustomerGender.values()) {
-
-        }
-        throw new IllegalArgumentException(value + "invalid");
-    }
-
 }

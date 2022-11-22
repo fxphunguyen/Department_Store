@@ -31,8 +31,10 @@ public interface CustomerService {
     List<CustomerResult> findAll();
 
 
-    CustomerResult update(CustomerResult customerResult);
+    Customer update(CustomerResult customerResult);
 
 
      CustomerGender[] findAllByCustomerGender();
+
+    List<CustomerResult> findAllCustomerByDelete(boolean deleted);
 }

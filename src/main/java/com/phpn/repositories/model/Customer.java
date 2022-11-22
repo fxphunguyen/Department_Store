@@ -34,6 +34,10 @@ public class Customer {
         this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
         return this;
     }
+    public Customer setLocationRegionAll(Integer locationRegionId) {
+        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+        return this;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -74,7 +78,7 @@ public class Customer {
 
 
     @Column(name = "location_region_id", insertable = false,updatable = false)
-    private Integer locationRegionId = 2;
+    private Integer locationRegionId ;
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

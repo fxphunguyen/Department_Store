@@ -4,26 +4,33 @@ package com.phpn.mappers.customer;
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerResult;
 
+import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
+import com.phpn.repositories.EmployeeRepository;
+import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
-import com.phpn.repositories.model.CustomerGender;
-import com.phpn.repositories.model.LocationRegion;
+import javafx.scene.Node;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import static com.phpn.repositories.model.CustomerGroup.VIP;
-
 
 @Component
 public class CustomerMapper {
 
 
     @Autowired
-    LocationRegionMapper locationRegionMapper;
+    private EmployeeMapper employeeMapper;
+    @Autowired
+    private LocationRegionMapper locationRegionMapper;
 
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private LocationRegionRepository locationRegionRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
 
 
@@ -42,8 +49,9 @@ public class CustomerMapper {
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
                 .setLocationRegionId(customer.getLocationRegionId())
-                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()));
 
+//                .setLocationRegion(locationRegionRepository.findById(customer.getLocationRegionId()).get())
+                .setEmployeeRResult(employeeMapper.toRDTO(customer.getEmployee()));
     }
 
     public Customer toModel(CustomerCreate customerCreate) {
@@ -56,7 +64,7 @@ public class CustomerMapper {
                 .setEmail(customerCreate.getEmail())
                 .setBirthday(customerCreate.getBirthday())
                 .setStatus(customerCreate.getStatus())
-                .setCreateAt(customerCreate.getCreateAt())
+                .setCreateAt(java.time.LocalDateTime.now().toString())
                 .setUpdateAt(customerCreate.getUpdateAt())
                 .setCustomerGender(customerCreate.getCustomerGender())
                 .setLocationRegionId(customerCreate.getLocationRegionId());
@@ -76,8 +84,25 @@ public class CustomerMapper {
                 .setCreateAt(customerCreate.getCreateAt())
                 .setUpdateAt(customerCreate.getUpdateAt())
                 .setLocationRegionId(customerCreate.getLocationRegionId())
-                .setLocationRegion(locationRegionMapper.toModel(customerCreate.getLocationRegionCreate()))
-                .setDeleted(customerCreate.isDeleted());
+                .setLocationRegion(locationRegionMapper.toModel(customerCreate.getLocationRegionCreate()));
+    }
+
+    public Customer toCustomer(CustomerResult customerResult) {
+        Customer customer = customerRepository.findById(customerResult.getId()).get();
+        return customer
+                .setId(customerResult.getId())
+                .setCustomerCode(customerResult.getCustomerCode())
+                .setName(customerResult.getName())
+                .setPhone(customerResult.getPhone())
+                .setCustomerGroup(customerResult.getCustomerGroup())
+                .setCustomerGender(customerResult.getCustomerGender())
+                .setEmail(customerResult.getEmail())
+                .setBirthday(customerResult.getBirthday())
+                .setStatus(customerResult.getStatus())
+                .setUpdateAt(customerResult.getUpdateAt())
+                .setUpdateAt(java.time.LocalDateTime.now().toString())
+                .setDeleted(true);
+
     }
 
 
@@ -94,7 +119,26 @@ public class CustomerMapper {
                 .setStatus(customerResult.getStatus())
                 .setCreateAt(customerResult.getCreateAt())
                 .setUpdateAt(customerResult.getUpdateAt())
-                .setDeleted(customerResult.getDeleted());
+                .setEmployeeId(customerResult.getEmployeeId())
+                .setLocationRegionId(customerResult.getLocationRegionId())
+                .setLocationRegion(locationRegionMapper.toModel(customerResult.getLocationRegion()));
+    }
+
+    public CustomerResult toDTOCustomerEdit(Customer customer) {
+        return new CustomerResult()
+                .setId(customer.getId())
+                .setCustomerCode(customer.getCustomerCode())
+                .setName(customer.getName())
+                .setPhone(customer.getPhone())
+                .setCustomerGroup(customer.getCustomerGroup())
+                .setCustomerGender(customer.getCustomerGender())
+                .setEmail(customer.getEmail())
+                .setBirthday(customer.getBirthday())
+                .setStatus(customer.getStatus())
+                .setCreateAt(customer.getCreateAt())
+                .setUpdateAt(customer.getUpdateAt())
+                .setEmployeeId(customer.getEmployeeId())
+                .setDeleted(customer.getDeleted());
     }
 
 }
