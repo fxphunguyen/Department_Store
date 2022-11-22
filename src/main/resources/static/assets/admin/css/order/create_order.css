@@ -166,7 +166,7 @@
 }
 
 .jss18158 {
-    height: 245px;
+    height: 283px;
     /* display: flex; */
 }
 
@@ -2236,13 +2236,27 @@
     overflow: hidden;
     font-size: 14px;
     box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+.jss1135 svg {
+    position: absolute;
+    top: 7px
 }
 
 .jss1136 {
     line-height: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    border: 1px solid #cccccc;
+    padding: 53px !important;
 }
+.jss1136 svg {
+    margin-right: 66px!important;
+    color: rgb(163, 168, 175);
+    font-size: 24px;
+}
+.jss1996 {
+    margin-left: -42px;
+}
+
 
 .jss1247 {
     display: flex;
@@ -3496,4 +3510,129 @@ select#district   {
 }
 .employee {
     width: 100%;
+}
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+.jss938 {
+    height: 100%;
+    padding: 16px 16px 0;
+    box-shadow: 0px 2px 4px rgb(168 168 168 / 25%);
+}
+.jss985 {
+    height: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.jss939 {
+    height: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.jss3889 {
+    display: flex;
+    margin-top: 8px;
+    align-items: center;
+}
+.jss948 {
+    height: 20px;
+    margin-left: 8px;
+}
+.jss942
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.jss952 {
+    margin: 0 -24px;
+    padding: 0 24px;
+    overflow: hidden;
+}
+.jss3897 {
+    width: 100%;
+    display: inline-flex;
+    margin-top: 16px;
+}
+.jss944 {
+    flex: 1;
+    margin-right: 16px;
+}
+.jss3899 {
+    display: flex;
+    margin-bottom: 8px;
+}
+.jss941 {
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+}
+.MuiButton-text {
+    padding: 6px 8px;
+}
+.jss947 {
+    border: 1px dashed;
+    border-color: #A3A8AF;
+    border-radius: 5px;
+}
+ .jss945 {
+     width: 284px;
+ }
+.jss3902 {
+    padding: 6px 0;
+}
+.js947 .MuiListItemText-root {
+    margin: 0;
+}
+.jss3903 {
+    font-size: 13px;
+}
+.jss945 .MuiListItemText-root {
+    margin: 0;
+}
+.jss3910 {
+    font-size: 13px;
+    font-weight: 500;
+}
+.jss4275 {
+    width: 100%;
+    display: flex;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    justify-content: center;
+}
+.jss4277 {
+    display: flex;
+    margin-bottom: 8px;
+}
+.jss4280 {
+    display: flex;
+    margin-bottom: 8px;
+}
+.jss1315 {
+    align-self: center;
+}
+.jss1317{
+    height: 40px;
+}
+.jss1317 .MuiInputBase-root {
+    height: 100%;
+}
+.jss1317 input {
+    color: #0F1824;
+    height: 40px;
+    padding: 0 12px;
+}
+.jss3913 {
+    width: 100%;
+    display: flex;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    justify-content: center;
 }

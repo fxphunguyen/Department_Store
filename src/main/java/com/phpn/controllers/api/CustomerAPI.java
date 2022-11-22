@@ -81,6 +81,7 @@ public class CustomerAPI {
 
     }
 
+
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCustomer(@RequestBody CustomerResult customerResult, @PathVariable Integer id) {
         customerResult.setId(id);

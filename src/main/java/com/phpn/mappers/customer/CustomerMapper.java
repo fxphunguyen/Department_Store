@@ -49,6 +49,8 @@ public class CustomerMapper {
                 .setLocationRegionId(customer.getLocationRegionId())
                 .setLocationRegion(locationRegionRepository.findById(customer.getLocationRegionId()).get())
                 .setEmployeeRResult(employeeMapper.toRDTO(customer.getEmployee()));
+//                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()));
+
     }
 
     public Customer toModel(CustomerCreate customerCreate) {

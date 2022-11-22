@@ -50,7 +50,7 @@
                     <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
                             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
-                                <div class="MuiGrid-root MuiGrid-item" style="flex: 1 0 0px;">
+                                <div class="MuiGrid-root MuiGrid-item show" id="show_customer_info" style="flex: 1 0 0px;">
                                     <div class="MuiPaper-root  jss18028 MuiPaper-elevation1 MuiPaper-rounded">
                                         <div class="MuiBox-root jss18075 customer-info">
                                             <div class="MuiBox-root jss18076 create-order-step2 jss18040">
@@ -59,8 +59,8 @@
                                                         hàng</h6>
                                                 </div>
                                                 <div class="jss18078 SI-root">
-                                                    <form class="MuiPaper-root jss18080 SearchBox MuiPaper-elevation1 MuiPaper-rounded">
-                                                        <div class="MuiFormControl-root MuiTextField-root jss18081 MuiFormControl-fullWidth">
+                                                    <form autocomplete="off" class="MuiPaper-root jss18080 SearchBox MuiPaper-elevation1 MuiPaper-rounded">
+                                                        <div class="MuiFormControl-root MuiTextField-root jss18081 MuiFormControl-fullWidth autocomplete">
                                                             <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart">
                                                                 <div class="MuiInputAdornment-root MuiInputAdornment-positionStart">
                                                                     <svg class="MuiSvgIcon-root" focusable="false"
@@ -71,7 +71,8 @@
                                                                     </svg>
                                                                 </div>
                                                                 <input aria-invalid="false"
-                                                                       autocomplete="off" id="buttonF4"
+                                                                       id="myInput"
+                                                                       name="myInput"
                                                                        placeholder="Tìm theo tên, SĐT, mã khách hàng ... (F4)"
                                                                        type="text"
                                                                        onclick="showListCustomer()"
@@ -96,8 +97,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="MuiGrid-root create-order-step3 MuiGrid-item" style="width: 305px;">
-                                    <div class="MuiPaper-root jss18045 MuiPaper-elevation1 MuiPaper-rounded contebt"
+                                <div class="MuiGrid-root create-order-step3 MuiGrid-item content" style="width: 305px;">
+                                    <div class="MuiPaper-root jss18045 MuiPaper-elevation1 MuiPaper-rounded"
                                          style="box-shadow: rgba(168, 168, 168, 0.25) 0px 2px 4px;">
                                         <div class="MuiBox-root jss18138 jss18046">
                                             <div class="MuiBox-root jss20091">
@@ -1183,7 +1184,7 @@
                                                     <div class="MuiFormControl-root jss1134"
                                                          style="width: 112px; height: 36px;">
                                                         <div class="MuiInputBase-root MuiOutlinedInput-root jss1135 MuiInputBase-formControl">
-                                                            <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu jss1136 MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+                                                            <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu jss1136 MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input "
                                                                  tabindex="0" role="button" aria-haspopup="listbox">
                                                                 <div class="MuiBox-root jss1247"
                                                                      style="color: rgb(15, 24, 36);">
@@ -1226,7 +1227,7 @@
                                                     <div class="MuiFormControl-root jss1134"
                                                          style="width: 160px; height: 36px; font-size: 1rem;">
                                                         <div class="MuiInputBase-root MuiOutlinedInput-root jss1135 MuiInputBase-formControl">
-                                                            <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu jss1136 MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+                                                            <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu jss1136 MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input jss1996"
                                                                  tabindex="0" role="button" aria-haspopup="listbox">Giá
                                                                 bán lẻ
                                                             </div>
@@ -1898,7 +1899,7 @@
 </div>
 </body>
 <th:block th:replace="/admin/order/modal_create_customer::modal_create_customer"/>
-<th:block th:replace="/admin/order/modal_info_customer::modal_info_customer"/>
+<th:block th:replace="/admin/order/modal_update_customer::modal_update_customer"/>
 <th:block th:replace="/layout/script :: script"/>
 
 <script>

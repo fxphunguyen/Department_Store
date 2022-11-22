@@ -1,8 +1,11 @@
-package com.phpn.dto.supplier;
+package com.phpn.dto.suppliers;
 
 import com.phpn.repositories.model.SupplierStatus;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 @Getter
@@ -10,16 +13,17 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class SupplierResult {
+public class SupplierUpdateParam {
 
-    private Integer id;
     private String supplierCode;
     private String name;
     private String email;
     private String phone;
-    private SupplierStatus status;
+    private SupplierStatus supplierStatus;
     private String description;
     private Integer employeeId;
     private Integer locationRegionId;
+    private String createAt;
+    private String updateAt;
 
 }
