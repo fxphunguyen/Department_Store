@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.phpn.repositories.model.Supplier;
+import com.phpn.repositories.SupplierRepository;
 import com.phpn.mappers.SupplierMapper;
 import com.phpn.exceptions.NotFoundException;
 import com.phpn.dto.suppliers.SupplierResult;
-import com.phpn.repositories.model.Supplier;
-import com.phpn.repositories.SupplierRepository;
 
 @Service
 @Transactional
@@ -30,6 +30,9 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     @Transactional(readOnly = true)
     public List<SupplierResult> findAll() {
+        if (supplierRepository.findAll().size() == 0) {
+        }
+
         return supplierRepository
         .findAll()
         .stream()
