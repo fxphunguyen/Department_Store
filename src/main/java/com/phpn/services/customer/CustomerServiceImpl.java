@@ -81,7 +81,8 @@ public class CustomerServiceImpl implements CustomerService {
         LocationRegion locationRegion = locationRegionMapper.toModel(customerCreate);
         locationRegionRepository.save(locationRegion);
         LocationRegion idLocationRegionCr = locationRegionRepository.findMaxIdCustomer();
-        customerCreate.setLocationRegionID(idLocationRegionCr.getId());
+        customerCreate.setLocationRegionId(idLocationRegionCr.getId());
+
         return   customerRepository.save(customerMapper.toModel(customerCreate));
     }
 

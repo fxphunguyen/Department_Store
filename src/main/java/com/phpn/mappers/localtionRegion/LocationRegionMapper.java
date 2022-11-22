@@ -16,25 +16,27 @@ public class LocationRegionMapper {
                 .setAddress(locationRegion.getAddress())
                 .setWardId(locationRegion.getWardId())
                 .setWardName(locationRegion.getWardName())
-                .setDistricId(locationRegion.getId())
+                .setDistrictId(locationRegion.getDistrictId())
                 .setDistrictName(locationRegion.getDistrictName())
                 .setProvinceId(locationRegion.getProvinceId())
                 .setProvinceName(locationRegion.getProvinceName());
         }
-        public LocationRegion toModel(CustomerCreate customerCreate){
-            return new LocationRegion()
-                    .setId(0)
-                    .setAddress(customerCreate.getLocationRegionCreate().getAddress())
-                    .setWardId(customerCreate.getLocationRegionCreate().getWardId())
-                    .setWardName(customerCreate.getLocationRegionCreate().getWardName())
-                    .setDistrictId(customerCreate.getLocationRegionCreate().getDistrictId())
-                    .setDistrictName(customerCreate.getLocationRegionCreate().getDistrictName())
-                    .setProvinceId(customerCreate.getLocationRegionCreate().getProvinceId())
-                    .setProvinceName(customerCreate.getLocationRegionCreate().getProvinceName());
-        }
+
+    public LocationRegion toModel(LocationRegionCreate locationRegionCreate){
+        return new LocationRegion()
+                .setId(0)
+                .setAddress(locationRegionCreate.getAddress())
+                .setWardId(locationRegionCreate.getWardId())
+                .setWardName(locationRegionCreate.getWardName())
+                .setDistrictId(locationRegionCreate.getDistrictId())
+                .setDistrictName(locationRegionCreate.getDistrictName())
+                .setProvinceId(locationRegionCreate.getProvinceId())
+                .setProvinceName(locationRegionCreate.getProvinceName());
+    }
+
     public LocationRegionCreate toModel(LocationRegion locationRegion) {
         return new LocationRegionCreate()
-                .setId(locationRegion.getId())
+                .setId(0)
                 .setAddress(locationRegion.getAddress())
                 .setWardId(locationRegion.getWardId())
                 .setWardName(locationRegion.getWardName())

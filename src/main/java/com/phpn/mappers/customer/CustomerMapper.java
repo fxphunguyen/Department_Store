@@ -25,6 +25,8 @@ public class CustomerMapper {
     @Autowired
     CustomerRepository customerRepository;
 
+
+
     public CustomerResult toDTO(Customer customer) {
         return new CustomerResult()
                 .setId(customer.getId())
@@ -45,7 +47,7 @@ public class CustomerMapper {
     }
 
     public Customer toModel(CustomerCreate customerCreate) {
-        return new Customer(customerCreate.getEmployeeId(), customerCreate.getLocationRegionID())
+        return new Customer(customerCreate.getEmployeeId(), customerCreate.getLocationRegionId())
                 .setEmployeeId(customerCreate.getEmployeeId())
                 .setCustomerCode(customerCreate.getCustomerCode())
                 .setName(customerCreate.getName())
@@ -57,10 +59,10 @@ public class CustomerMapper {
                 .setCreateAt(customerCreate.getCreateAt())
                 .setUpdateAt(customerCreate.getUpdateAt())
                 .setCustomerGender(customerCreate.getCustomerGender())
-                .setLocationRegionId(customerCreate.getLocationRegionID());
+                .setLocationRegionId(customerCreate.getLocationRegionId());
     }
 
-    public Customer toCustomer(LocationRegion locationRegion, CustomerCreate customerCreate) {
+    public Customer toCustomer( CustomerCreate customerCreate) {
         return new Customer()
                 .setId(customerCreate.getId())
                 .setCustomerCode(customerCreate.getCustomerCode())
@@ -73,7 +75,8 @@ public class CustomerMapper {
                 .setStatus(customerCreate.getStatus())
                 .setCreateAt(customerCreate.getCreateAt())
                 .setUpdateAt(customerCreate.getUpdateAt())
-                .setLocationRegion(locationRegion)
+                .setLocationRegionId(customerCreate.getLocationRegionId())
+                .setLocationRegion(locationRegionMapper.toModel(customerCreate.getLocationRegionCreate()))
                 .setDeleted(customerCreate.isDeleted());
     }
 
