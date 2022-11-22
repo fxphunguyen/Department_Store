@@ -14,6 +14,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.util.Optional;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -48,10 +50,8 @@ public class CustomerResult {
 
     private Integer employeeId;
 
-    private EmployeeRResult employeeRResult;
+    private EmployeeResult employeeResult;
     private Boolean deleted;
-
-    private LocationRegion locationRegion;
 
     public CustomerResult(String name, String phone, Boolean deleted) {
         this.name = name;

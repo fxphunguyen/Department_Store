@@ -1,6 +1,5 @@
 package com.phpn.mappers;
 
-import org.jetbrains.annotations.NotNull;
 
 import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
@@ -23,7 +22,7 @@ public class SupplierMapper {
     @Autowired
     private LocationRegionMapper locationRegionMapper;
 
-    public SupplierResult toDTO(@NotNull Supplier supplier) {
+    public SupplierResult toDTO( Supplier supplier) {
         return new SupplierResult()
         .setId(supplier.getId())
         .setSupplierCode(supplier.getSupplierCode())
@@ -40,7 +39,7 @@ public class SupplierMapper {
         .setUpdateAt(supplier.getUpdateAt());
     }
 
-    public Supplier toModel(@NotNull SupplierResult supplierResult) {
+    public Supplier toModel( SupplierResult supplierResult) {
         return new Supplier(supplierResult.getEmployeeId(), supplierResult.getLocationRegionId())
         .setId(supplierResult.getId())
         .setSupplierCode(supplierResult.getSupplierCode())
@@ -55,7 +54,7 @@ public class SupplierMapper {
         .setUpdateAt(supplierResult.getUpdateAt());
     }
 
-    public Supplier toModel(@NotNull SupplierParam supplierParam) {
+    public Supplier toModel( SupplierParam supplierParam) {
         return new Supplier(supplierParam.getEmployeeId(), supplierParam.getLocationRegionId())
         .setId(supplierParam.getId())
         .setSupplierCode(supplierParam.getSupplierCode())
@@ -70,7 +69,7 @@ public class SupplierMapper {
         .setUpdateAt(supplierParam.getUpdateAt());
     }
 
-    public Supplier toModel(@NotNull SupplierCreateParam supplierCreateParam) {
+    public Supplier toModel( SupplierCreateParam supplierCreateParam) {
         return new Supplier(supplierCreateParam.getEmployeeId(), supplierCreateParam.getLocationRegionId())
         .setSupplierCode(supplierCreateParam.getSupplierCode())
         .setName(supplierCreateParam.getName())
@@ -84,7 +83,7 @@ public class SupplierMapper {
         .setUpdateAt(supplierCreateParam.getUpdateAt());
     }
 
-    public Supplier toModel(@NotNull SupplierUpdateParam supplierUpdateParam) {
+    public Supplier toModel( SupplierUpdateParam supplierUpdateParam) {
         return new Supplier(supplierUpdateParam.getEmployeeId(), supplierUpdateParam.getLocationRegionId())
         .setSupplierCode(supplierUpdateParam.getSupplierCode())
         .setName(supplierUpdateParam.getName())

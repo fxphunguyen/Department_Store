@@ -13,7 +13,7 @@ public interface LocationRegionService {
     LocationRegion save(LocationRegion locationRegion);
 
 
-    LocationRegion update(CustomerResult customerResult);
+    LocationRegion update(LocationRegionResult locationRegionResult);
 
     LocationRegion findByIdCreate(Integer id);
 }

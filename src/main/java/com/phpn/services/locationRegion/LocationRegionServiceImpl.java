@@ -36,9 +36,12 @@ public class LocationRegionServiceImpl implements LocationRegionService {
     }
 
     @Override
-    public LocationRegion update(CustomerResult customerResult) {
-        LocationRegion locationRegion = locationRegionMapper.toLocationRegion(customerResult);
-        return locationRegion;
+    public LocationRegion update(LocationRegionResult locationRegionResult) {
+        System.out.println(locationRegionResult.getId());
+        LocationRegion newLocationRegion = locationRegionRepository.findById(locationRegionResult.getId()).get();
+        System.out.println(newLocationRegion);
+        return locationRegionMapper.toLocationRegion( locationRegionResult, newLocationRegion);
+
     }
 
     @Override
