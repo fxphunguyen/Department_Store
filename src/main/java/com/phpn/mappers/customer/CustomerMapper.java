@@ -8,6 +8,7 @@ import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
+import javafx.scene.Node;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -58,22 +59,22 @@ public class CustomerMapper {
                 .setLocationRegionId(customerCreate.getLocationRegionID());
     }
 
-//    public Customer toCustomer(LocationRegion locationRegion, CustomerCreate customerCreate) {
-//        return new Customer()
-//                .setId(customerCreate.getId())
-//                .setCustomerCode(customerCreate.getCustomerCode())
-//                .setName(customerCreate.getName())
-//                .setPhone(customerCreate.getPhone())
-//                .setCustomerGroup(customerCreate.getCustomerGroup())
-//                .setCustomerGender(customerCreate.getCustomerGender())
-//                .setEmail(customerCreate.getEmail())
-//                .setBirthday(customerCreate.getBirthday())
-//                .setStatus(customerCreate.getStatus())
-//                .setCreateAt(customerCreate.getCreateAt())
-//                .setUpdateAt(customerCreate.getUpdateAt())
-//                .setLocationRegion(locationRegion)
-//                .setDeleted(customerCreate.isDeleted());
-//    }
+    public Customer toCustomer(CustomerResult customerResult) {
+        Customer customer = customerRepository.findById(customerResult.getId()).get();
+        return customer
+                .setId(customerResult.getId())
+                .setCustomerCode(customerResult.getCustomerCode())
+                .setName(customerResult.getName())
+                .setPhone(customerResult.getPhone())
+                .setCustomerGroup(customerResult.getCustomerGroup())
+                .setCustomerGender(customerResult.getCustomerGender())
+                .setEmail(customerResult.getEmail())
+                .setBirthday(customerResult.getBirthday())
+                .setStatus(customerResult.getStatus())
+                .setUpdateAt(customerResult.getUpdateAt())
+                .setUpdateAt(java.time.LocalDateTime.now().toString())
+                .setDeleted(true);
+    }
 
 
     public Customer toModel(CustomerResult customerResult) {
@@ -110,4 +111,5 @@ public class CustomerMapper {
                 .setEmployeeId(customer.getEmployeeId())
                 .setDeleted(customer.getDeleted());
     }
+
 }

@@ -40,7 +40,7 @@ public class CustomerAPI {
     public ResponseEntity<?> showListCustomerAll() {
         List<CustomerResult> customers = customerRepository.findAll()
                 .stream()
-                .map(customer -> customerMapper.toDTOCustomerEdit(customer))
+                .map(customer -> customerMapper.toDTO(customer))
                 .collect(Collectors.toList());;
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
@@ -82,9 +82,6 @@ public class CustomerAPI {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCustomer(@RequestBody CustomerResult customerResult, @PathVariable Integer id) {
-        System.out.println(customerResult);
-        System.out.println(customerResult.getLocationRegion().getWardName());
-        System.out.println(id);
         customerResult.setId(id);
         customerService.update(customerResult);
         return new ResponseEntity<>(customerResult, HttpStatus.OK);
@@ -94,7 +91,6 @@ public class CustomerAPI {
     @GetMapping("/customerGroup")
     public CustomerGroup[] findAllByCustomerGroup() {
         CustomerGroup[] customerGroups = CustomerGroup.values();
-
         System.out.println(customerGroups);
         return customerGroups;
     }

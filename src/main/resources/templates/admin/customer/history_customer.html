@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="vi-VN" class="sapo-menu-expand sapo-menu-toggle-active">
 <head>
     <th:block th:replace="/layout/header.html"/>
-    <title>Danh sách khách hàng</title>
+    <title>Lịch sử khách hàng</title>
     <link rel="stylesheet" href="/assets/admin/css/customer/edit.css"/>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1085.0" cz-shortcut-listen="true">
@@ -77,8 +77,7 @@
                                                 <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
                                                     Nhân viên phụ trách
                                                 </h6>
-                                                <h6 class="MuiTypography-root jss4532 jss4534 jss4542 MuiTypography-subtitle1">
-                                                    Tags</h6>
+
                                             </div>
                                         </div>
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
@@ -96,8 +95,8 @@
                                                     itemid="display-email"
                                                     title="ziqej@mailinator.com">: ziqej@mailinator.com</h6>
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                    title="PhuPhoMai"
-                                                    itemid="display-account-name">: PhuPhoMai</h6><span>---</span>
+                                                    itemid="display-email"
+                                                    title="ziqej@mailinator.com">Phu cute</h6>
                                             </div>
                                         </div>
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
@@ -106,12 +105,12 @@
                                                     Nhóm khách hàng</h6>
                                                 <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
                                                     Mã khách hàng</h6>
-                                                <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
-                                                    Mã số thuế</h6>
-                                                <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
-                                                    Website</h6>
+
+
                                                 <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
                                                     Mô tả</h6>
+                                                <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
+                                                    Tags</h6>
                                             </div>
                                         </div>
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
@@ -124,18 +123,14 @@
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                     itemid="display-code"
                                                     title="Et ullamco voluptate">: Et ullamco voluptate</h6>
-                                                <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                    itemid="display-tax-number"
-                                                    title="897">: 897</h6>
-                                                <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                    itemid="display-website"
-                                                    title="https://www.qojahuc.tv">: <a class="jss4533"
-                                                                                        href="https://phuphomaique.mysapogo.com/admin/customers/181966855/https://www.qojahuc.tv"
-                                                                                        style="padding-left: 0px;">https://www.qojahuc.tv</a>
-                                                </h6>
+
+
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                     itemid="display-description"
                                                     title="Et aperiam consectet">: Et aperiam consectet</h6>
+                                                <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
+                                                    itemid="display-tax-number"
+                                                    title="897">: ---</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -607,5 +602,14 @@
 <script>
     Page();
     hj('trigger', 'split_test_b');
+</script>
+
+<script>
+
+
+    function getAllCustomerHistory() {
+
+
+    }
 </script>
 </html>

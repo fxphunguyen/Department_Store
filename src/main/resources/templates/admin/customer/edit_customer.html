@@ -662,9 +662,9 @@
             <div style="display:none">
                 <input  th:field="*{customer.id}" class="customerIdEdit">
             </div>
-            <div style="display:none">
-                <input   class="customerIdEditlocationRegionId"><th:block th:text="${customer.locationRegionId}"></th:block>
-            </div>
+<!--            <div style="display:none">-->
+<!--                <input   class="customerIdEditlocationRegionId"><th:block th:text="${customer.locationRegionId}"></th:block>-->
+<!--            </div>-->
         </div>
         <form action="https://depament-stor.mysapogo.com/admin/customers/create#"></form>
         <form action="https://depament-stor.mysapogo.com/admin/customers/create#"></form>
@@ -702,7 +702,7 @@
     class Customer {
         constructor(id, customerCode, name, phone,customerRegionId,  customerGroup, email, birthday, status, createAt, updateAt, employeeId, deleted, locationRegion) {
             this.id = id;
-            this.locationRegionID = locationRegionId;
+            this.customerRegionId = customerRegionId;
             this.customerCode = customerCode;
             this.name = name;
             this.phone = phone;
@@ -966,10 +966,10 @@
         locationRegion.wardId = $('#wardNameCreate').val();
         locationRegion.wardName = $('#wardNameCreate :selected').text();
         customer.employeeId = $('#employeeNameCreate').val();
-        customer.locationRegionID = $('.customerIdEditlocationRegionId').val;
+        customer.customerRegionId = $('.customerIdEditlocationRegionId').val;
         customer.locationRegion = locationRegion;
         console.log(customer.locationRegion)
-        console.log(customer.locationRegionID)
+        console.log(customer.customerRegionId)
         customer.id=$('.customerIdEdit').val()
         let ids = customer.id;
         console.log(customer);
@@ -984,7 +984,7 @@
             "data": JSON.stringify(customer)
         })
             .done((data) => {
-                console.log(": Tạo sản phẩm thành công")
+                console.log(": Edit sản phẩm thành công")
                 $('#nameCreate').empty();
                 $('#codeCreate').empty();
                 $('#customerGroupCreate').empty();

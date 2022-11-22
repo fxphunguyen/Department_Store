@@ -5267,3 +5267,13 @@ label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:focus::-m
     margin: 0px;
     color: rgb(228, 156, 6);
 }
+.MuiTypography-body1 {
+    font-size: 16px;
+}
+.MuiTableRow-root {
+    font-size: 16px;
+}
+
+html {
+    font-size: 16px;
+}
