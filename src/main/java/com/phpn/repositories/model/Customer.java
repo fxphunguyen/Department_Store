@@ -1,18 +1,17 @@
 package com.phpn.repositories.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
-@Data
+@Entity
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Accessors(chain = true)
-@Entity
 @Table(name = "customers")
+@Accessors(chain = true)
 public class Customer {
 
     public  Customer(Integer id){
@@ -22,21 +21,6 @@ public class Customer {
     public Customer(Integer employeeId , Integer locationRegionId){
         this.employee = new Employee(this.employeeId = employeeId);
         this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
-    }
-
-
-    public Customer setEmployeeId(Integer employeeId) {
-        this.employee = new Employee(this.employeeId = employeeId);
-        return this;
-    }
-
-    public Customer setLocationRegionId(Integer locationRegionId) {
-        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
-        return this;
-    }
-    public Customer setLocationRegionAll(Integer locationRegionId) {
-        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
-        return this;
     }
 
     @Id

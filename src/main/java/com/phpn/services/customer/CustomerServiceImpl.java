@@ -10,12 +10,13 @@ import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.CustomerGender;
 import com.phpn.repositories.model.LocationRegion;
 import com.phpn.services.locationRegion.LocationRegionService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
@@ -38,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
 
     @Autowired
-    LocationRegionService locationRegionService;
+    private LocationRegionService locationRegionService;
 
 
     @Override
@@ -98,17 +100,23 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer update(CustomerResult customerResult) {
-        Customer customer = customerMapper.toCustomer(customerResult);
+        Customer customer = customerRepository.findById(customerResult.getId()).get();
+        System.out.println("---------------------- cútomer id");
+        customerMapper.toCustomer(customerResult , customer);
         System.out.println(customer.getLocationRegion().getId());
-        LocationRegion locationRegion = locationRegionRepository.findById(customer.getLocationRegion().getId()).get();
-        locationRegion.setAddress(customerResult.getLocationRegion().getAddress());
-        locationRegion.setWardId(customerResult.getLocationRegion().getWardId());
-        locationRegion.setWardId(customerResult.getLocationRegion().getWardId());
-        locationRegion.setWardName(customerResult.getLocationRegion().getWardName());
-        locationRegion.setDistrictId(customerResult.getLocationRegion().getDistrictId());
-        locationRegion.setDistrictName(customerResult.getLocationRegion().getDistrictName());
-        locationRegion.setProvinceId(customerResult.getLocationRegion().getProvinceId());
-        locationRegion.setProvinceName(customerResult.getLocationRegion().getProvinceName());
+
+//
+//        LocationRegion locationRegion = locationRegionRepository.findById(customer.getLocationRegion().getId()).get();
+//        locationRegionMapper.toLocationRegion(customerResult.getLocationRegionResult(), locationRegion);
+
+//        locationRegion.setAddress(customerResult.getLocationRegionResult().getAddress());
+//        locationRegion.setWardId(customerResult.getLocationRegionResult().getWardId());
+//        locationRegion.setWardId(customerResult.getLocationRegionResult().getWardId());
+//        locationRegion.setWardName(customerResult.getLocationRegionResult().getWardName());
+//        locationRegion.setDistrictId(customerResult.getLocationRegionResult().getDistrictId());
+//        locationRegion.setDistrictName(customerResult.getLocationRegionResult().getDistrictName());
+//        locationRegion.setProvinceId(customerResult.getLocationRegionResult().getProvinceId());
+//        locationRegion.setProvinceName(customerResult.getLocationRegionResult().getProvinceName());
         return customer;
     }
 

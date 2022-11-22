@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface EmployeeService {
     List<EmployeeResult> findAll();
+
+    EmployeeResult  findById(Integer id);
+
 }

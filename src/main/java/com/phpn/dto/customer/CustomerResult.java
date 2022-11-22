@@ -1,6 +1,7 @@
 package com.phpn.dto.customer;
 
 import com.phpn.dto.employee.EmployeeRResult;
+import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.repositories.model.CustomerGender;
 import com.phpn.repositories.model.CustomerGroup;
@@ -47,10 +48,10 @@ public class CustomerResult {
 
     private Integer employeeId;
 
-    private EmployeeRResult employeeRResult;
+    private EmployeeResult employeeResult;
     private Boolean deleted;
 
-    private LocationRegion locationRegion;
+//    private LocationRegion locationRegion;
 
     public CustomerResult(String name, String phone, Boolean deleted) {
         this.name = name;

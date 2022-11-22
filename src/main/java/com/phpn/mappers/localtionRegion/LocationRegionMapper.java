@@ -45,13 +45,13 @@ public class LocationRegionMapper {
     public LocationRegion toModel(CustomerResult customerResult) {
         return new LocationRegion()
                 .setId(customerResult.getLocationRegionId())
-                .setAddress(customerResult.getLocationRegion().getAddress())
-                .setWardId(customerResult.getLocationRegion().getWardId())
-                .setWardName(customerResult.getLocationRegion().getWardName())
-                .setDistrictId(customerResult.getLocationRegion().getDistrictId())
-                .setDistrictName(customerResult.getLocationRegion().getDistrictName())
-                .setProvinceId(customerResult.getLocationRegion().getProvinceId())
-                .setProvinceName(customerResult.getLocationRegion().getProvinceName());
+                .setAddress(customerResult.getLocationRegionResult().getAddress())
+                .setWardId(customerResult.getLocationRegionResult().getWardId())
+                .setWardName(customerResult.getLocationRegionResult().getWardName())
+                .setDistrictId(customerResult.getLocationRegionResult().getDistrictId())
+                .setDistrictName(customerResult.getLocationRegionResult().getDistrictName())
+                .setProvinceId(customerResult.getLocationRegionResult().getProvinceId())
+                .setProvinceName(customerResult.getLocationRegionResult().getProvinceName());
     }
 
     public LocationRegionCreate toModel(LocationRegion locationRegion) {
@@ -66,17 +66,16 @@ public class LocationRegionMapper {
                 .setProvinceName(locationRegion.getProvinceName());
     }
 
-    public LocationRegion toLocationRegion(CustomerResult customerResult) {
-        LocationRegion locationRegion = locationRegionRepository.findById(customerResult.getLocationRegionId()).get();
+    public LocationRegion toLocationRegion(LocationRegionResult locationRegionResult,LocationRegion locationRegion) {
         return locationRegion
-                .setAddress(customerResult.getLocationRegion().getAddress())
-                .setWardId(customerResult.getLocationRegion().getWardId())
-                .setWardId(customerResult.getLocationRegion().getWardId())
-                .setWardName(customerResult.getLocationRegion().getWardName())
-                .setDistrictId(customerResult.getLocationRegion().getDistrictId())
-                .setDistrictName(customerResult.getLocationRegion().getDistrictName())
-                .setProvinceId(customerResult.getLocationRegion().getProvinceId())
-                .setProvinceName(customerResult.getLocationRegion().getProvinceName());
+                .setAddress(locationRegionResult.getAddress())
+                .setWardId(locationRegionResult.getWardId())
+                .setWardId(locationRegionResult.getWardId())
+                .setWardName(locationRegionResult.getWardName())
+                .setDistrictId(locationRegionResult.getDistrictId())
+                .setDistrictName(locationRegionResult.getDistrictName())
+                .setProvinceId(locationRegionResult.getProvinceId())
+                .setProvinceName(locationRegionResult.getProvinceName());
     }
 }
 
