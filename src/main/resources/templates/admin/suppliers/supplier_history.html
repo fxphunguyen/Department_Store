@@ -27,7 +27,6 @@
                             </a>
                         </div>
                     </div>
-
                     <div class="w-50 right detail-supplier">
                         <div class="header-fr help-dropdown" style="position: relative; margin-left: 10px; height:36px;">
                             <a href="#" class="btn sapo-btn-blank btn-help" style="align-items: center;">
@@ -35,9 +34,7 @@
                                 <span>Trợ giúp</span>
                             </a>
                         </div>
-
                         <a href="#" class="btn sapo-btn-default right" style="border-radius: 3px 0 0 3px;" data-toggle="dropdown">Tạo phiếu thu/chi</a>
-
                         <ul class="dropdown-menu newscroll" style="font-size:13px">
                             <li>
                                 <a href="#">Tạo phiếu thu</a>
@@ -47,7 +44,6 @@
                             </li>
                         </ul>
                     </div>
-
                     <div class="ui-title-bar__main-group">
                         <div class="ui-title-bar__heading-group">
                             <div class="ui-title-bar__title">
@@ -57,7 +53,6 @@
                     </div>
                 </div>
             </header>
-
             <div class="detail-supplier-container container mt-0">
                 <div class="page-info page-info-order-detail w100">
                     <div class="page-info-title">
@@ -83,7 +78,6 @@
                             </ul>
                         </div>
                     </div>
-
                     <div class="page-info-body" id="supplier-info">
                         <div class="page-info-body--sub flex pb-0">
                             <div class="col-4 p-0">
@@ -94,7 +88,6 @@
                                     </label>
                                     <div class="content text-overflow-hiden div-pd-r-10">---</div>
                                 </div>
-
                                 <div class="line-info flex">
                                     <label>
                                         Mã
@@ -102,20 +95,17 @@
                                     </label>
                                     <div class="content" th:title="*{supplierCode}" th:text="*{supplierCode}"></div>
                                 </div>
-
                                 <div class="line-info flex">
                                     <label>Số điện thoại
                                         <span class="right">:</span>
                                     </label>
                                     <div class="content text-overflow-hiden div-pd-r-10" th:title="*{phone}" th:text="*{phone}"></div>
                                 </div>
-
                                 <div class="line-info flex">
                                     <label>Nợ hiện tại<span class="right">:</span></label>
                                     <div class="content">---</div>
                                 </div>
                             </div>
-
                             <div class="col-4 p-0">
                                 <div class="line-info flex">
                                     <label>Mã số thuế
@@ -123,7 +113,6 @@
                                     </label>
                                     <div class="content text-overflow-hiden div-pd-r-10">---</div>
                                 </div>
-
                                 <div class="line-info flex">
                                     <label>
                                         Website
@@ -131,7 +120,6 @@
                                     </label>
                                     <a class="content text-overflow-hiden div-pd-r-10">---</a>
                                 </div>
-
                                 <div class="line-info flex">
                                     <label>
                                         Mô tả
@@ -139,7 +127,6 @@
                                     </label>
                                     <div class="content text-overflow-hiden div-pd-r-10" th:title="*{description}" th:text="*{description}"></div>
                                 </div>
-
                                 <div class="line-info flex">
                                     <label>
                                         Email
@@ -148,7 +135,6 @@
                                     <div class="content text-overflow-hiden div-pd-r-10" th:title="*{email}" th:text="*{email}"></div>
                                 </div>
                             </div>
-
                             <div class="col-4 p-0">
                                 <div class="line-info flex">
                                     <label>
@@ -159,7 +145,6 @@
                                         <span th:title="*{employeeResult.name}" th:text="*{employeeResult.name}"></span>
                                     </div>
                                 </div>
-
                                 <div class="line-info flex">
                                     <label>
                                         Giá mặc định
@@ -169,7 +154,6 @@
                                         <span>---</span>
                                     </div>
                                 </div>
-
                                 <div class="line-info flex">
                                     <label>
                                         Hình thức thanh toán
@@ -183,7 +167,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="gird-layout gird-layout--full-width" style="padding: 0; width: 100%;">
                     <section class="grid-card">
                         <div id="addresses" class="tab-list-content">
@@ -201,21 +184,17 @@
                                                             <th style="width: 400px;">Tỉnh thành phố</th>
                                                         </tr>
                                                     </thead>
-
                                                     <tbody>
                                                         <tr>
                                                             <td>
                                                                 <span th:title="*{locationRegionResult.address}" th:text="*{locationRegionResult.address}"></span>
                                                             </td>
-
                                                             <td>
                                                                 <span th:title="*{locationRegionResult.wardName}" th:text="*{locationRegionResult.wardName}"></span>
                                                             </td>
-
                                                             <td>
                                                                 <span th:title="*{locationRegionResult.districtName}" th:text="*{locationRegionResult.districtName}"></span>
                                                             </td>
-
                                                             <td>
                                                                 <span th:title="*{locationRegionResult.provinceName}" th:text="*{locationRegionResult.provinceName}"></span>
                                                             </td>

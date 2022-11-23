@@ -36,12 +36,8 @@ public class SupplierAPI {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> save(@RequestBody SupplierCreate supplierCreate) {
-        supplierCreate.setId(0);
-        supplierCreate.setEmployeeId(2);
-        System.out.println(supplierCreate);
-        Supplier supplier = supplierService.save(supplierCreate);
-        return new ResponseEntity<>(supplier,HttpStatus.OK);
+    public ResponseEntity<Supplier> save(@RequestBody SupplierCreate supplierCreate) {
+        return new ResponseEntity<>(supplierService.save(supplierCreate), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}/delete")

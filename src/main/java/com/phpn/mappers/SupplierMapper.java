@@ -72,7 +72,6 @@ public class SupplierMapper {
 
     public Supplier toModel(@NotNull SupplierCreate supplierCreate) {
         return new Supplier(supplierCreate.getEmployeeId(), supplierCreate.getLocationRegionId())
-        .setId(supplierCreate.getId())
         .setSupplierCode(supplierCreate.getSupplierCode())
         .setName(supplierCreate.getName())
         .setEmail(supplierCreate.getEmail())
@@ -82,7 +81,7 @@ public class SupplierMapper {
         .setEmployeeId(supplierCreate.getEmployeeId())
         .setLocationRegionId(supplierCreate.getLocationRegionId())
         .setCreateAt(LocalDateTime.now().toString())
-        .setUpdateAt(supplierCreate.getCreateAt());
+        .setUpdateAt(LocalDateTime.now().toString());
     }
 
     public Supplier toModel(@NotNull SupplierUpdate supplierUpdate) {

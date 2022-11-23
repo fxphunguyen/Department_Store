@@ -15,7 +15,6 @@ import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.SupplierRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Supplier;
-import com.phpn.repositories.model.LocationRegion;
 import com.phpn.exceptions.NotFoundException;
 
 @Service
@@ -56,14 +55,9 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public Supplier save(SupplierCreate supplierCreate) { // CURRENT NOT WORKING !!!
-        LocationRegion locationRegion = locationRegionMapper.toModel(supplierCreate.getLocationRegionCreate());
-        System.out.println(locationRegion);
-        locationRegionRepository.save(locationRegion);
-        LocationRegion idLocationRegionCr = locationRegionRepository.findMaxIdCustomer();
-        System.out.println(locationRegion.getId());
-        supplierCreate.setLocationRegionId(idLocationRegionCr.getId());
-        return   supplierRepository.save(supplierMapper.toModel(supplierCreate));
+    public Supplier save(SupplierCreate supplierCreate) {
+        locationRegionRepository.save(locationRegionMapper.toModel(supplierCreate.getLocationRegionCreate()));
+        return supplierRepository.save(supplierMapper.toModel(supplierCreate));
     }
 
     @Override
