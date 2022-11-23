@@ -4,9 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.phpn.dto.product.ProductCreateParam;
-import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
-import com.phpn.mappers.ProductMapper;
+import com.phpn.mappers.product.ProductMapper;
 import com.phpn.repositories.model.Product;
 import com.phpn.repositories.ProductRepository;
 
@@ -19,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-     ProductMapper productMapper;
+    ProductMapper productMapper;
 
     @Autowired
      ProductRepository productRepository;
