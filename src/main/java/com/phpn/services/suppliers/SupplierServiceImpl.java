@@ -1,7 +1,5 @@
 package com.phpn.services.suppliers;
 
-import lombok.RequiredArgsConstructor;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,7 +20,6 @@ import com.phpn.exceptions.NotFoundException;
 
 @Service
 @Transactional
-@RequiredArgsConstructor
 public class SupplierServiceImpl implements SupplierService {
 
     @Autowired
@@ -40,11 +37,14 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     @Transactional(readOnly = true)
     public List<SupplierResult> findAll() {
-        return supplierRepository
+        List<SupplierResult> supplierResults = supplierRepository
         .findAll()
         .stream()
         .map(supplier -> supplierMapper.toDTO(supplier))
         .collect(Collectors.toList());
+
+        if (supplierResults.isEmpty()) throw new NotFoundException("Not found supplier data or is empty!");
+        return supplierResults;
     }
 
     @Override
@@ -56,13 +56,7 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public void deleteById(Integer id) {
-        findById(id);
-        supplierRepository.deleteById(id);
-    }
-
-    @Override
-    public Supplier save(SupplierCreate supplierCreate) {
+    public Supplier save(SupplierCreate supplierCreate) { // CURRENT NOT WORKING !!!
         LocationRegion locationRegion = locationRegionMapper.toModel(supplierCreate.getLocationRegionCreate());
         System.out.println(locationRegion);
         locationRegionRepository.save(locationRegion);
@@ -70,6 +64,12 @@ public class SupplierServiceImpl implements SupplierService {
         System.out.println(locationRegion.getId());
         supplierCreate.setLocationRegionId(idLocationRegionCr.getId());
         return   supplierRepository.save(supplierMapper.toModel(supplierCreate));
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        findById(id);
+        supplierRepository.deleteById(id);
     }
 
 }

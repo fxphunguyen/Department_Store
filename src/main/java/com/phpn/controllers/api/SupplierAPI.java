@@ -1,7 +1,6 @@
 package com.phpn.controllers.api;
 
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 
 import com.phpn.dto.suppliers.SupplierResult;
 import com.phpn.dto.suppliers.SupplierCreate;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/admin/suppliers")
 public class SupplierAPI {
 
