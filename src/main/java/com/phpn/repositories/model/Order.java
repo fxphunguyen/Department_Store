@@ -43,6 +43,9 @@ public class Order {
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
+    @Column(name = "employee_id", insertable = false, updatable = false)
+    private Integer employeeId;
+
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_status_id", nullable = false)
@@ -53,29 +56,30 @@ public class Order {
     private Integer orderStatusId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "location_region_id", nullable = false)
-    private LocationRegion locationRegion;
-
-    @Column(name = "location_region_id", insertable = false, updatable = false)
-    private Integer locationRegionId;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "payment_method_id", nullable = false)
     private PaymentMethod paymentMethod;
 
+    @Column(name = "tax", precision = 10, scale = 2)
+    private BigDecimal tax;
 
     @Column(name = "payment_method_id", insertable = false, updatable = false)
-    private Integer paymentMethod_id;
+    private Integer paymentMethodId;
+
+    @Column(name = "grand_total", nullable = false, precision = 10, scale = 2)
+    private BigDecimal grandTotal;
+
+    @Column(name = "discount", precision = 10, scale = 2)
+    private BigDecimal discount;
 
     public Order(Integer id) {
         this.id = id;
     }
 
-    public Order(Integer customerId, Integer orderStatusId, Integer locationRegionId, Integer paymentMethod_id) {
+    public Order(Integer customerId, Integer employeeId, Integer orderStatusId, Integer paymentMethodId) {
         setCustomerId(customerId);
+        setEmployeeId(employeeId);
         setOrderStatusId(orderStatusId);
-        setLocationRegionId(locationRegionId);
-        setPaymentMethod_id(paymentMethod_id);
+        setPaymentMethodId(paymentMethodId);
     }
 
     public Order setCustomerId(Integer customerId) {
@@ -88,8 +92,9 @@ public class Order {
         return this;
     }
 
-    public Order setLocationRegionId(Integer locationRegionId) {
-        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+
+    public Order setEmployeeId(Integer employeeId) {
+        this.employee = new Employee(this.employeeId = employeeId);
         return this;
     }
 }

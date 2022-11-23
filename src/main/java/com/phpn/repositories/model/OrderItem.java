@@ -49,9 +49,6 @@ public class OrderItem {
     @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
 
-    @Column(name = "discount", precision = 10, scale = 2)
-    private BigDecimal discount;
-
     @Column(name = "quantity")
     private Integer quantity;
 
@@ -61,11 +58,9 @@ public class OrderItem {
     @Column(name = "update_at")
     private Instant updateAt;
 
-    @Column(name = "grand_total", precision = 10, scale = 2)
-    private BigDecimal grandTotal;
+    @Column(name = "total", precision = 10, scale = 2)
+    private BigDecimal total;
 
-    @Column(name = "tax")
-    private Float tax;
 
     public OrderItem(Integer productId, Integer itemId, Integer orderId) {
         setProductId(productId);

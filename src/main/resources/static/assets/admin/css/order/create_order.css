@@ -3640,3 +3640,19 @@ select#district   {
     margin-bottom: 8px;
     justify-content: center;
 }
+#dropdownMenuLink{
+    height: 36px;
+    width: 100%;
+    color: #7a6c6c;
+    font-size: 15px;
+    padding-top: 7px;
+    padding-right: 60px;
+
+}
+.btn-primary:hover {
+    background: #FFFFFF !important;
+    border-color: #0a58ca !important;
+}
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgb(231, 238, 238) !important;
+}
