@@ -1,6 +1,6 @@
 let customer = new Customer()
 let locationRegionCreate = new LocationRegionCreate();
-let employee = new Employee();
+let employeeResult = new EmployeeResult();
 
 function removeEventModal() {
     $("#btnCreateCustomer").off("click");
@@ -100,7 +100,7 @@ function showCustomerInfo(idCustomer) {
             return false;
         }
     })
-    console.log(result);
+    // console.log(result);
     let str = `<div class="MuiPaper-root  jss938 MuiPaper-elevation1 MuiPaper-rounded" id="closed_customer_info">
         <div class="MuiBox-root jss985">
             <div class="MuiBox-root jss3887 jss939">
@@ -432,27 +432,26 @@ function getEmployeeById(id) {
         url: `${location.origin}/api/employees/` + id
     })
         .done((data) => {
-            // $('#selectEmployee').html('');
-            // $('#selectEmployeeUpdate').html('');
-            employee = data;
-            employees = data;
+            console.log("phuoc");
+            console.log(data)
+            employeeResult = data;
             if (data.length === 0) {
                 let str = `<option value="0">Chọn nhân viên</option>`;
                 $("#selectEmployee").append(str);
+                $("#selectEmployeeUpdate").append(str);
             } else {
                 $.each(data, (i, item) => {
                     let str = `<option value="${item.id}">${item.name}</option>`;
                     $("#selectEmployee").append(str);
+                    $("#selectEmployeeUpdate").append(str);
                 });
             }
-
         })
         .fail((jqXHR) => {
             console.log(jqXHR)
         })
 }
 
-getAllEmployeeSelect();
 
 $('#btnCreateCustomer').on('click', () => {
     customer.id = null;
@@ -486,7 +485,7 @@ $('#btnCreateCustomer').on('click', () => {
             "content-type": "application/json"
         },
         "type": "POST",
-        "url": "http://localhost:8080/api/customers/create",
+        "url": `${location.origin}/api/customers/create`,
         "data": JSON.stringify(customer)
     })
         .done((data) => {
@@ -568,7 +567,7 @@ function getCustomerById(id) {
             "content-type": "application/json"
         },
         type: "GET",
-        url: "http://localhost:8080/api/customers/" + id
+        url: `${location.origin}/api/customers/` + id
     })
         .done((data) => {
             customer = data;
@@ -581,13 +580,35 @@ function getCustomerById(id) {
         })
 }
 
+function getAllEmployees() {
+    return $.ajax({
+        headers: {
+            accept: "application/json",
+            "content-type": "application/json"
+        },
+        type: "GET",
+        url: `${location.origin}/api/employees/show_list/`
+    })
+        .done((data) => {
+            employeeResult = data;
+            console.log("phuocccc")
+            console.log(employeeResult)
+            $.each(data, (i, item) => {
+                let str = `<option value="${item.id}">${item.name}</option>`;
+                $("#selectEmployee").append(str);
+                $("#selectEmployeeUpdate").append(str);
+            })
+
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR);
+        })
+}
 
 function editCustomer() {
     let id = $("#idCustomer").val();
     console.log(id);
     getCustomerById(id).then(() => {
-
-
         $('#idCustomer').val(customer.id);
         $("#nameUpdate").val(customer.name)
         $('#phoneUpdate').val(customer.phone);
@@ -596,24 +617,18 @@ function editCustomer() {
 
         getAllDistrictsByProvinceId(locationRegionCreate.provinceId).then(() => {
             $("#districtUpdate").val(locationRegionCreate.districtId);
-
-            console.log(locationRegionCreate.districtId);
-
             getAllWardsByDistrictId(locationRegionCreate.districtId).then(() => {
                 $("#wardUpdate").val(locationRegionCreate.wardId);
             })
         })
-        // getAllEmployeeSelect().then(() => {
-        //     $("#selectEmployeeUpdate").val(employee.id);
-        //     console.log("aaaaa")
-        //     console.log(employee.id);
-        // })
+             $("#selectEmployee").val(employeeResult.id);
 
         $("#update_order_customer").modal("show");
 
         // $("#modalCreateProduct .modal-alert-danger").removeClass('show').addClass('hide');
     })
 }
+// getAllEmployees();
 
 // $('#btnUpdateCustomer').on('click', (customerId) => {
 //

@@ -28,11 +28,11 @@ import javax.persistence.GenerationType;
 public class Supplier {
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "supplier_code", nullable = false, length = 50)
+    @Column(name = "supplier_code", unique = true, nullable = false, length = 50)
     private String supplierCode;
 
     @Column(name = "name", nullable = false, length = 50)
@@ -55,14 +55,14 @@ public class Supplier {
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
-    @Column(name = "employee_id", insertable = false, updatable = false)
+    @Column(name = "employee_id", updatable = false, insertable = false)
     private Integer employeeId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "location_region_id", nullable = false)
     private LocationRegion locationRegion;
 
-    @Column(name = "location_region_id", insertable = false, updatable = false)
+    @Column(name = "location_region_id", updatable = false, insertable = false)
     private Integer locationRegionId;
 
     @Column(name = "create_at", nullable = false)
@@ -76,8 +76,18 @@ public class Supplier {
     }
 
     public Supplier(Integer employeeId, Integer locationRegionId) {
+        setEmployeeId(employeeId);
+        setLocationRegionId(locationRegionId);
+    }
+
+    public Supplier setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
+        return this;
+    }
+
+    public Supplier setLocationRegionId(Integer locationRegionId) {
         this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
+        return this;
     }
 
 }

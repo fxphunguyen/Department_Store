@@ -25,8 +25,8 @@ public class SupplierResult {
     private SupplierStatus supplierStatus;
     private String description;
     private Integer employeeId;
-    private Integer locationRegionId;
     private EmployeeResult employeeResult;
+    private Integer locationRegionId;
     private LocationRegionResult locationRegionResult;
     private String createAt;
     private String updateAt;

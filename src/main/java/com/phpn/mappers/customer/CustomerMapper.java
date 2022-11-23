@@ -10,7 +10,6 @@ import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.EmployeeRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
-import javafx.scene.Node;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
