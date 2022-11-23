@@ -6,7 +6,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum PurchaseOrderPays {
 
     PAYS("Đã thanh toán"),
-    UNPAID("Chưa thanh toán");
+    UNPAID("Chưa thanh toán"),
+    PARTIAL_PAYMENT("Thanh toán một phần");
 
     private final String value;
 

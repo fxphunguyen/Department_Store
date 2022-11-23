@@ -31,7 +31,9 @@ public class PurchaseOrderImpl implements PurchaseOrderService {
     }
 
     @Override
+    @Transactional
     public PurchaseOrder create(PurchaseOrderCreate purchaseOrderCreate) {
+
         return null;
     }
 }
