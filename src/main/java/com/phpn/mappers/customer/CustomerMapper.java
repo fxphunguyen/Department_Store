@@ -26,12 +26,6 @@ public class CustomerMapper {
     @Autowired
     private LocationRegionMapper locationRegionMapper;
 
-    @Autowired
-    private CustomerRepository customerRepository;
-
-
-
-
 
     public CustomerResult toDTO(Customer customer) {
         return new CustomerResult()

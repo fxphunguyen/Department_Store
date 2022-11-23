@@ -1226,23 +1226,15 @@
                                                 <div class="MuiBox-root jss1250">
                                                     <div class="MuiFormControl-root jss1134"
                                                          style="width: 160px; height: 36px; font-size: 1rem;">
-                                                        <div class="MuiInputBase-root MuiOutlinedInput-root jss1135 MuiInputBase-formControl">
-                                                            <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu jss1136 MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input jss1996"
-                                                                 tabindex="0" role="button" aria-haspopup="listbox">Giá
-                                                                bán lẻ
-                                                            </div>
-                                                            <input type="hidden" value="1952178">
-                                                            <svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
-                                                                 focusable="false" viewBox="0 0 24 24"
-                                                                 aria-hidden="true">
-                                                                <path d="M7 10l5 5 5-5z"></path>
-                                                            </svg>
-                                                            <fieldset aria-hidden="true"
-                                                                      class="jss1037 MuiOutlinedInput-notchedOutline"
-                                                                      style="padding-left: 8px;">
-                                                                <legend class="jss1038" style="width: 0.01px;"><span>&ZeroWidthSpace;</span>
-                                                                </legend>
-                                                            </fieldset>
+                                                        <div class="dropdown price_dropdown">
+                                                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                Giá bán lẻ
+                                                            </a>
+                                                            <svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"></path></svg>
+                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                <li><a class="dropdown-item" href="#">Giá bán lẻ</a></li>
+                                                                <li><a class="dropdown-item" href="#">Giá bán buôn</a></li>
+                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1902,10 +1894,6 @@
 <th:block th:replace="/admin/order/modal_update_customer::modal_update_customer"/>
 <th:block th:replace="/layout/script :: script"/>
 
-<script>
-    Page();
-    hj('trigger', 'split_test_b');
-</script>
 <script type="text/javascript" src="/static/assets/admin/js/order/app.js"></script>
 <script type="text/javascript" src="/static/assets/admin/js/order/order.js"></script>
 </html>

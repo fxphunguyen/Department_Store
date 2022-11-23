@@ -3,7 +3,9 @@ package com.phpn.mappers.product;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.repositories.model.Product;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ProductMapper {
 
     public Product toModel(ProductParam productParam) {
