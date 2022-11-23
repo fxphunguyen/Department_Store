@@ -15,6 +15,21 @@ public class ProductController {
     @Autowired
     private ProductServiceImpl productService;
 
+    @GetMapping("/products")
+    public ModelAndView showProductListPage() {
+        return new ModelAndView("/admin/product/product_list");
+    }
+
+    @GetMapping("/products/create")
+    public ModelAndView showProductCreatePage() {
+        return new ModelAndView("/admin/product/product_create");
+    }
+
+    @GetMapping("/products/detail")
+    public ModelAndView showProductDetailPage() {
+        return new ModelAndView("/admin/product/product_detail");
+    }
+
     //    Điều chỉnh giá vốn
     @GetMapping("/price_adjustments")
     public ModelAndView showPriceAdjustmentsPage() {

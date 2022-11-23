@@ -27,7 +27,7 @@ public enum SupplierStatus {
         for (SupplierStatus supplierStatus : values) {
             if (supplierStatus.value.equals(value)) return supplierStatus;
         }
-        throw new IllegalArgumentException(value + " is invalid!");
+        throw new IllegalArgumentException("The supplier status [" + value + "] is invalid!");
     }
 
 }
