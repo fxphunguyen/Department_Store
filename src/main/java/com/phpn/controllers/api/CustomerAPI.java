@@ -90,7 +90,7 @@ public class CustomerAPI {
 
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateCustomer(@RequestBody CustomerResult customerResult, @PathVariable Integer id) {
+    public ResponseEntity<?> updateCustomer(@RequestBody CustomerResult customerResult) {
 
         CustomerResult customerResult1 = customerService.findById(customerResult.getId());
 

@@ -1,4 +1,4 @@
-package com.phpn.mappers;
+package com.phpn.mappers.brand;
 
 import org.springframework.stereotype.Component;
 
