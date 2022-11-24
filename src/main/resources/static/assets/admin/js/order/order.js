@@ -36,8 +36,10 @@ function showListCustomer() {
                 </div>
                 `;
                 $(".contentCustomer").append(result)
+
             })
             handleCloseListCustomers();
+
         })
         .fail((jqXHR) => {
             console.log(jqXHR);
@@ -92,7 +94,7 @@ function showCustomerInfo(idCustomer) {
 
     customers.forEach((item) => {
         result = item;
-        if (item.id == idCustomer) {
+        if (item.id === idCustomer) {
             return false;
         }
     })
@@ -462,7 +464,6 @@ function getEmployeeById(id) {
 
 function doCreateCustomer() {
     $('#btnCreateCustomer').on('click', () => {
-        customer.id = null;
         customer.name = $('#nameCreate').val();
         customer.customerCode = $('#codeCreate').val();
         customer.phone = $('#phoneCreate').val();
@@ -491,6 +492,7 @@ function doCreateCustomer() {
                 removeEventModal();
                 $("#create_order_customer").modal("hide");
                 App.IziToast.showSuccessAlert("Thêm khách hàng thành công!");
+                showCustomerInfo(customer.id);
                 $('#nameCreate').val("");
                 $('#codeCreate').val("");
                 $('#phoneCreate').val("");

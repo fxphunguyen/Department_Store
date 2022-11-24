@@ -6,9 +6,13 @@ import com.phpn.dto.product.ProductResult;
 import com.phpn.mappers.CategoryMapper;
 import com.phpn.mappers.brand.BrandMapper;
 import com.phpn.repositories.model.Product;
+<<<<<<< HEAD
 import org.springframework.stereotype.Component;
 
 
+=======
+
+>>>>>>> main
 import org.springframework.beans.factory.annotation.Autowired;
 
 
