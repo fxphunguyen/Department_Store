@@ -25,30 +25,7 @@
                                 </svg>
                                 <span class="ui-breadcrumb__item" style="position: relative; top: 7px;">Danh sách nhà cung cấp</span>
                             </a>
-                        </div>
-                    </div>
-                    <div class="w-50 right detail-supplier">
-                        <div class="header-fr help-dropdown" style="position: relative; margin-left: 10px; height:36px;">
-                            <a href="#" class="btn sapo-btn-blank btn-help" style="align-items: center;">
-                                <img src="../../../static/assets/admin/images/icons8-help-20.png" style="padding-right: 5px;" alt="icons8-help-20.png"/>
-                                <span>Trợ giúp</span>
-                            </a>
-                        </div>
-                        <a href="#" class="btn sapo-btn-default right" style="border-radius: 3px 0 0 3px;" data-toggle="dropdown">Tạo phiếu thu/chi</a>
-                        <ul class="dropdown-menu newscroll" style="font-size:13px">
-                            <li>
-                                <a href="#">Tạo phiếu thu</a>
-                            </li>
-                            <li>
-                                <a href="#">Tạo phiếu chi</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="ui-title-bar__main-group">
-                        <div class="ui-title-bar__heading-group">
-                            <div class="ui-title-bar__title">
-                                <h1 class="text-overflow-hiden" th:title="*{name}" th:text="*{name}"></h1>
-                            </div>
+                            <h1 class="text-overflow-hiden text-dark mt-3" th:title="*{name}" th:text="*{name}"></h1>
                         </div>
                     </div>
                 </div>
@@ -73,7 +50,7 @@
                                     <a th:href="@{'/admin/suppliers/' + *{id} + '/histories'}">Cập nhật thông tin</a>
                                 </li>
                                 <li>
-                                    <a href="#">Xoá nhà cung cấp</a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">Xoá nhà cung cấp</a>
                                 </li>
                             </ul>
                         </div>
@@ -81,13 +58,6 @@
                     <div class="page-info-body" id="supplier-info">
                         <div class="page-info-body--sub flex pb-0">
                             <div class="col-4 p-0">
-                                <div class="line-info flex">
-                                    <label>
-                                        Nhóm nhà cung cấp
-                                        <span class="right">:</span>
-                                    </label>
-                                    <div class="content text-overflow-hiden div-pd-r-10">---</div>
-                                </div>
                                 <div class="line-info flex">
                                     <label>
                                         Mã
@@ -101,25 +71,8 @@
                                     </label>
                                     <div class="content text-overflow-hiden div-pd-r-10" th:title="*{phone}" th:text="*{phone}"></div>
                                 </div>
-                                <div class="line-info flex">
-                                    <label>Nợ hiện tại<span class="right">:</span></label>
-                                    <div class="content">---</div>
-                                </div>
                             </div>
                             <div class="col-4 p-0">
-                                <div class="line-info flex">
-                                    <label>Mã số thuế
-                                        <span class="right">:</span>
-                                    </label>
-                                    <div class="content text-overflow-hiden div-pd-r-10">---</div>
-                                </div>
-                                <div class="line-info flex">
-                                    <label>
-                                        Website
-                                        <span class="right">:</span>
-                                    </label>
-                                    <a class="content text-overflow-hiden div-pd-r-10">---</a>
-                                </div>
                                 <div class="line-info flex">
                                     <label>
                                         Mô tả
@@ -147,67 +100,72 @@
                                 </div>
                                 <div class="line-info flex">
                                     <label>
-                                        Giá mặc định
-                                        <span class="right">:</span>
-                                    </label>
-                                    <div class="content text-overflow-hiden div-pd-r-10">
-                                        <span>---</span>
-                                    </div>
-                                </div>
-                                <div class="line-info flex">
-                                    <label>
                                         Hình thức thanh toán
                                         <span class="right">:</span>
                                     </label>
                                     <div class="content text-overflow-hiden div-pd-r-10">
-                                        <span>---</span>
+                                        <span th:title="*{paymentMethodResult.title}" th:text="*{paymentMethodResult.title}"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gird-layout gird-layout--full-width" style="padding: 0; width: 100%;">
-                    <section class="grid-card">
-                        <div id="addresses" class="tab-list-content">
-                            <div id="resultFilter">
-                                <div class="orders">
-                                    <div class="ui-type-container clearfix">
-                                        <div class="table-wrapper table-wrapper--has-drill-down" style="opacity:1">
-                                            <div id="sapo-table_wrapper" class="dataTables_wrapper no-footer ps" style="overflow-x: auto;">
-                                                <table class="sapo-table bulk-action-context dataTable no-footer" id="sapo-table" role="grid">
-                                                    <thead class="thead">
-                                                        <tr class="tr" role="row">
-                                                            <th style="width: 400px;">Địa chỉ</th>
-                                                            <th style="width: 400px;">Phường xã</th>
-                                                            <th style="width: 400px;">Quận huyện</th>
-                                                            <th style="width: 400px;">Tỉnh thành phố</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <span th:title="*{locationRegionResult.address}" th:text="*{locationRegionResult.address}"></span>
-                                                            </td>
-                                                            <td>
-                                                                <span th:title="*{locationRegionResult.wardName}" th:text="*{locationRegionResult.wardName}"></span>
-                                                            </td>
-                                                            <td>
-                                                                <span th:title="*{locationRegionResult.districtName}" th:text="*{locationRegionResult.districtName}"></span>
-                                                            </td>
-                                                            <td>
-                                                                <span th:title="*{locationRegionResult.provinceName}" th:text="*{locationRegionResult.provinceName}"></span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                <div class="page-info page-info-order-detail w100">
+                    <div class="page-info-title">
+                        <span>Thông tin địa chỉ</span>
+                    </div>
+                    <div class="page-info-body">
+                        <div class="page-info-body--sub flex pb-0">
+                            <div class="col-4 p-0">
+                                <div class="line-info flex">
+                                    <label>
+                                        Tỉnh thành phố
+                                        <span class="right">:</span>
+                                    </label>
+                                    <div class="content" th:title="*{locationRegionResult.provinceName}" th:text="*{locationRegionResult.provinceName}"></div>
+                                </div>
+                            </div>
+                            <div class="col-4 p-0">
+                                <div class="line-info flex">
+                                    <label>
+                                        Quận huyện
+                                        <span class="right">:</span>
+                                    </label>
+                                    <div class="content text-overflow-hiden div-pd-r-10" th:title="*{locationRegionResult.districtName}" th:text="*{locationRegionResult.districtName}"></div>
+                                </div>
+                            </div>
+                            <div class="col-4 p-0">
+                                <div class="line-info flex">
+                                    <label>
+                                        Phường xã
+                                        <span class="right">:</span>
+                                    </label>
+                                    <div class="content text-overflow-hiden div-pd-r-10">
+                                        <span th:title="*{locationRegionResult.wardName}" th:text="*{locationRegionResult.wardName}"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" style="font-size: 16px;" id="exampleModalLabel">Xoá nhà cung cấp</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <th:block th:text="'Bạn có chắc chắn muốn xoá nhà cung cấp ' + *{name} + '?'"/>
+                    <p>Thao tác này không thể khôi phục</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" th:class="btn">Xoá</button>
                 </div>
             </div>
         </div>
@@ -215,7 +173,6 @@
 </div>
 
 <th:block th:replace="/layout/script :: script"/>
-<script src="../../../static/assets/admin/js/suppliers/supplier_history.js"></script>
 
 </body>
 

@@ -1,5 +1,7 @@
 package com.phpn.services.suppliers;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -8,13 +10,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.phpn.dto.suppliers.SupplierCreate;
-import com.phpn.dto.suppliers.SupplierResult;
 import com.phpn.mappers.SupplierMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.SupplierRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Supplier;
+import com.phpn.dto.suppliers.SupplierResult;
+import com.phpn.dto.suppliers.SupplierCreate;
 import com.phpn.exceptions.NotFoundException;
 
 @Service
@@ -36,14 +38,14 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     @Transactional(readOnly = true)
     public List<SupplierResult> findAll() {
-        List<SupplierResult> supplierResults = supplierRepository
+        List<SupplierResult> supplierResultList = supplierRepository
         .findAll()
         .stream()
         .map(supplier -> supplierMapper.toDTO(supplier))
         .collect(Collectors.toList());
 
-        if (supplierResults.isEmpty()) throw new NotFoundException("Not found supplier data or is empty!");
-        return supplierResults;
+        if (supplierResultList.isEmpty()) throw new NotFoundException("Not found supplier data or is empty!");
+        return supplierResultList;
     }
 
     @Override
@@ -55,7 +57,7 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public Supplier save(SupplierCreate supplierCreate) {
+    public Supplier save(@NotNull SupplierCreate supplierCreate) {
         locationRegionRepository.save(locationRegionMapper.toModel(supplierCreate.getLocationRegionCreate()));
         return supplierRepository.save(supplierMapper.toModel(supplierCreate));
     }

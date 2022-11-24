@@ -23,6 +23,7 @@ public class SupplierCreate {
     private SupplierStatus supplierStatus;
     private String description;
     private Integer employeeId;
+    private Integer paymentMethodId;
     private Integer locationRegionId;
     private LocationRegionCreate locationRegionCreate;
 
