@@ -50,7 +50,7 @@
                                     <a th:href="@{'/admin/suppliers/' + *{id} + '/histories'}">Cập nhật thông tin</a>
                                 </li>
                                 <li>
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">Xoá nhà cung cấp</a>
+                                    <a data-bs-toggle="modal" data-bs-target="#supplier-delete-modal">Xoá nhà cung cấp</a>
                                 </li>
                             </ul>
                         </div>
@@ -152,20 +152,23 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="supplier-delete-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title" style="font-size: 16px;" id="exampleModalLabel">Xoá nhà cung cấp</h1>
+                    <span class="ui-dialog-title">Xóa nhà cung cấp</span>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <th:block th:text="'Bạn có chắc chắn muốn xoá nhà cung cấp ' + *{name} + '?'"/>
-                    <p>Thao tác này không thể khôi phục</p>
+                <div class="modal-body pull-center">
+                    <p>
+                        Bạn có chắc chắn muốn xóa nhà cung cấp
+                        <span style="font-weight: 500;" th:text="*{name}"></span>?
+                    </p>
+                    <p>Thao tác này không thể khôi phục.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" th:class="btn">Xoá</button>
+                    <button type="button" class="btn sapo-btn-red right">Xóa</button>
+                    <button type="button" class="btn sapo-btn-blank right mr-3" data-bs-dismiss="modal">Thoát</button>
                 </div>
             </div>
         </div>
