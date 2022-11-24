@@ -3,13 +3,8 @@ package com.phpn.services.product;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-<<<<<<< HEAD
-import com.phpn.dto.product.ProductCreateParam;
-=======
 import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
->>>>>>> huy_dev
 import com.phpn.dto.product.ProductResult;
 import com.phpn.mappers.product.ProductMapper;
 import com.phpn.repositories.model.Product;
