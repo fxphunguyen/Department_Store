@@ -1,6 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" lang="vi-VN" class="sapo-menu-expand sapo-menu-toggle-active">
 <head>
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
@@ -9,10 +10,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+
     <th:block th:replace="/layout/header.html"/>
     <title>Danh sách khách hàng</title>
     <link rel="stylesheet" href="/assets/admin/css/customer/customer_create.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body data-new-gr-c-s-check-loaded="14.1085.0" cz-shortcut-listen="true">
 <div id="root" style="overflow: auto;">
@@ -189,34 +194,18 @@
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
                                             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
                                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
-                                                    <div width="100%" class="sc-himrzO gTRFtW"><label
-
-                                                            class="sc-evZas diplSI" for="birthdayCreate">Ngày
-                                                        sinh</label>
+                                                    <div width="100%" class="sc-himrzO gTRFtW">
+                                                        <label
+                                                                class="sc-evZas diplSI" for="birthdayCreate">Ngày
+                                                            sinh</label>
                                                         <div class="sc-jIZahH hISLMV Sapo-InputRoot">
-
-                                                            <form autocomplete="off">
-                                                                <div class="input-group input-daterange">
-                                                                    <input type="text" id="birthdayCreate"
-                                                                           name="birthdayCreate" class="form-control"
-                                                                           placeholder="Leaving Date" readonly></div>
-
-                                                            </form>
-
+                                                            <div class="input-group input-daterange">
+                                                                <input type="date" id="birthdayCreate"
+                                                                       class="birthdayCreate form-control" style="height: 41px;" ></div>
 
                                                             <fieldset class="sc-iIPllB iUBRZb"></fieldset>
                                                             <div class="sc-gicCDI sc-bZkfAO bqqjdk nysSE">
-                                                                <svg viewBox="0 0 24 25" fill="none"
-                                                                     xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                     height="24" font-size="24"
-                                                                     color="#A3A8AF">
-                                                                    <path
-                                                                            d="M7 12.5h2v2H7v-2ZM7 16.5h2v2H7v-2ZM13 12.5h-2v2h2v-2ZM11 16.5h2v2h-2v-2ZM17 12.5h-2v2h2v-2ZM15 16.5h2v2h-2v-2Z"
-                                                                            fill="#A3A8AF"></path>
-                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                          d="M19 22.5H5c-1.103 0-2-.897-2-2v-14c0-1.103.897-2 2-2h2v-2h2v2h6v-2h2v2h2c1.103 0 2 .897 2 2v14c0 1.103-.897 2-2 2Zm0-14v-2H5v2h14Zm0 2 .001 10H5v-10h14Z"
-                                                                          fill="#A3A8AF"></path>
-                                                                </svg>
+
                                                             </div>
                                                         </div>
                                                     </div>
