@@ -3437,22 +3437,36 @@ jss8611 {
 }
 
 .jss87874 {
-    /*border: hidden;*/
+    border: hidden;
     width: 100%;
 }
 
 select#province  {
-    border:0px;
+    border:none;
     outline:0px;
 }
 
 select#ward   {
-    border:0px;
+    border:none;
     outline:0px;
 }
 
 select#district   {
-    border:0px;
+    border:none;
+    outline:0px;
+}
+select#provinceUpdate  {
+    border:none;
+    outline:0px;
+}
+
+select#wardUpdate   {
+    border:none;
+    outline:0px;
+}
+
+select#districtUpdate   {
+    border:none;
     outline:0px;
 }
 .jss2984 {
@@ -3656,3 +3670,6 @@ select#district   {
 .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem rgb(231, 238, 238) !important;
 }
+
+
+
