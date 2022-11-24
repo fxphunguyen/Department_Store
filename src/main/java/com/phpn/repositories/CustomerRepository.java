@@ -36,15 +36,15 @@ public interface CustomerRepository extends JpaRepository<Customer , Integer> {
             "WHERE c.deleted = :deleted ")
     List<Customer> findAllCustomerResultByDeleted(boolean deleted);
 
-    @Query("SELECT NEW com.phpn.dto.customer.CustomerOrderResult ( " +
-            "c.name, " +
-            "c.phone, " +
-            "c.customerCode, " +
-            "c.locationRegionId, " +
-            "c.employeeId) " +
-            "FROM Customer c " +
-            "WHERE c.id = :id")
-    Optional<Customer> findCustomerById(Integer id);
+//    @Query("SELECT NEW com.phpn.dto.customer.CustomerOrderResult ( " +
+//            "c.name, " +
+//            "c.phone, " +
+//            "c.customerCode, " +
+//            "c.locationRegionId, " +
+//            "c.employeeId) " +
+//            "FROM Customer c " +
+//            "WHERE c.id = :id")
+//    Optional<Customer> findCustomerById(Integer id);
 
 }
 

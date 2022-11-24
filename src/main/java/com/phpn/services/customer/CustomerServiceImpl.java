@@ -61,10 +61,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<CustomerOrderResult> findCustomerById(Integer id) {
-        Optional<Customer> optionalCustomer = customerRepository.findCustomerById(id);
-        return Optional.ofNullable(customerMapper.toOrderDTO(optionalCustomer.get()));
+    public CustomerOrderResult findByIdCustomerOrder(Integer id) {
+        Optional<Customer> customerOptional = customerRepository.findById(id);
+        return customerMapper.toDTOCustomerOrder(customerOptional.get());
     }
+
+
 
     @Override
     public CustomerResult createCustomerResult(CustomerCreate customerCreate) {
@@ -81,7 +83,6 @@ public class CustomerServiceImpl implements CustomerService {
 
         return   customerRepository.save(customerMapper.toModel(customerCreate));
     }
-
     @Override
     public List<CustomerResult> findCustomerByDeleted(boolean deleted) {
         return null;
@@ -106,22 +107,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer update(CustomerResult customerResult) {
         Customer customer = customerRepository.findById(customerResult.getId()).get();
-        System.out.println("---------------------- cútomer id");
         customerMapper.toCustomer(customerResult , customer);
-        System.out.println(customer.getLocationRegion().getId());
-
-//
-//        LocationRegion locationRegion = locationRegionRepository.findById(customer.getLocationRegion().getId()).get();
-//        locationRegionMapper.toLocationRegion(customerResult.getLocationRegionResult(), locationRegion);
-
-//        locationRegion.setAddress(customerResult.getLocationRegionResult().getAddress());
-//        locationRegion.setWardId(customerResult.getLocationRegionResult().getWardId());
-//        locationRegion.setWardId(customerResult.getLocationRegionResult().getWardId());
-//        locationRegion.setWardName(customerResult.getLocationRegionResult().getWardName());
-//        locationRegion.setDistrictId(customerResult.getLocationRegionResult().getDistrictId());
-//        locationRegion.setDistrictName(customerResult.getLocationRegionResult().getDistrictName());
-//        locationRegion.setProvinceId(customerResult.getLocationRegionResult().getProvinceId());
-//        locationRegion.setProvinceName(customerResult.getLocationRegionResult().getProvinceName());
         return customer;
     }
 
@@ -136,5 +122,14 @@ public class CustomerServiceImpl implements CustomerService {
     public List<CustomerResult> findAllCustomerByDelete(boolean deleted) {
         return null;
     }
+
+    @Override
+    public Customer updateCustomerOrder(CustomerOrderResult customerOrderResult) {
+        Customer customer = customerRepository.findById(customerOrderResult.getId()).get();
+        customerMapper.toOrderDTO(customerOrderResult , customer);
+        return customer;
+    }
+
+
 
 }

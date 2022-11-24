@@ -4,6 +4,7 @@ import com.phpn.dto.customer.CustomerParam;
 import com.phpn.dto.employee.EmployeeParam;
 import com.phpn.dto.orderItem.OrderItemParam;
 import com.phpn.dto.payment_methods.PaymentMethodParam;
+import com.phpn.repositories.model.Item;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,13 +21,11 @@ public class OrderParam {
 
     private Integer id;
 
-    private EmployeeParam employeeParam;
+    private Integer employeeId;
 
-    private CustomerParam customerParam;
+    private Integer customerId;
 
-    private PaymentMethodParam paymentMethodParam;
-
-    private Integer orderStatusId;
+    private Integer paymentMethodId;
 
     private BigDecimal tax;
 

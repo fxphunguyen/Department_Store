@@ -4,6 +4,7 @@ let employeeResult = new EmployeeResult();
 
 function removeEventModal() {
     $("#btnCreateCustomer").off("click");
+
 }
 
 let customers = [];
@@ -38,6 +39,7 @@ function showListCustomer() {
                 $(".contentCustomer").append(result)
             })
             handleCloseListCustomers();
+            searchCustomer();
 
 
         })
@@ -46,7 +48,7 @@ function showListCustomer() {
         })
 }
 
-$(() => {
+const searchCustomer = () => {
     $("#myInput").on("input", function () {
         // console.log($(this).val());
         // console.log(customers)
@@ -83,26 +85,16 @@ $(() => {
         handleCloseListCustomers();
     })
 
-})
-
+}
 
 
 function showCustomerInfo(idCustomer) {
-    // console.log(idCustomer);
+    console.log(idCustomer);
     // handleCloseListCustomers();
-
     $("#MuiBox-list-customer").addClass("hide");
 
     $("#idCustomer").val(idCustomer);
-    let result = {};
-
-    customers.forEach((item) => {
-        result = item;
-        if (item.id === idCustomer) {
-            return false;
-        }
-    })
-    // console.log(result);
+    let result = customer = customers.find(({id}) => id === idCustomer);
     let str = `<div class="MuiPaper-root  jss938 MuiPaper-elevation1 MuiPaper-rounded" id="closed_customer_info">
         <div class="MuiBox-root jss985">
             <div class="MuiBox-root jss3887 jss939">
@@ -348,6 +340,7 @@ function getAllProvinces() {
 
 function getAllDistrictsByProvinceId(provinceId) {
     $("#district").empty();
+    $("#districtUpdate").empty();
     return $.ajax({
         headers: {
             "accept": "application/json",
@@ -376,6 +369,7 @@ function getAllDistrictsByProvinceId(provinceId) {
 
 function getAllWardsByDistrictId(districtId) {
     $("#ward").empty();
+    $('#wardUpdate').empty();
     return $.ajax({
         headers: {
             "accept": "application/json",
@@ -498,6 +492,7 @@ function doCreateCustomer() {
                 handleCloseListCustomers();
                 $("#create_order_customer").modal("hide");
                 App.IziToast.showSuccessAlert("Thêm khách hàng thành công!");
+                searchCustomer();
                 $('#nameCreate').val("");
                 $('#codeCreate').val("");
                 $('#phoneCreate').val("");
@@ -565,8 +560,8 @@ function handleRemove() {
                                         </div>
                                     </div>`;
     $("#show_customer_info").html(str);
+    searchCustomer();
     $("#MuiBox-list-customer").removeClass("hide");
-    addEvent();
 
 }
 
@@ -614,31 +609,49 @@ function getAllEmployees() {
 
 function editCustomer() {
     let id = $("#idCustomer").val();
-    console.log(id);
-    getCustomerById(id).then(() => {
-        $('#idCustomerUpdate').val(customer.id);
-        $("#nameUpdate").val(customer.name)
-        $('#phoneUpdate').val(customer.phone);
-        $('#addressUpdate').val(customer.locationRegionResult.address);
-        $('#provinceUpdate').val(customer.locationRegionResult.provinceId);
-        console.log("provin", customer.locationRegionResult.provinceId)
-        getAllDistrictsByProvinceId(customer.locationRegionResult.provinceId).then(() => {
-            $("#districtUpdate").val(customer.locationRegionResult.districtId);
-            console.log("districtId", customer.locationRegionResult.districtId)
-            getAllWardsByDistrictId(customer.locationRegionResult.districtId).then(() => {
-                $("#wardUpdate").val(customer.locationRegionResult.wardId);
-                console.log("wardId", customer.locationRegionResult.wardId)
+    console.log(customer);
+    $('#idCustomerUpdate').val(customer.id);
+    $("#nameUpdate").val(customer.name)
+    $('#phoneUpdate').val(customer.phone);
+    $('#addressUpdate').val(customer.locationRegionResult.address);
+    $('#provinceUpdate').val(customer.locationRegionResult.provinceId);
+    console.log("provin", customer.locationRegionResult.provinceId)
+    getAllDistrictsByProvinceId(customer.locationRegionResult.provinceId).then(() => {
+        $("#districtUpdate").val(customer.locationRegionResult.districtId);
+        console.log("districtId", customer.locationRegionResult.districtId)
+        getAllWardsByDistrictId(customer.locationRegionResult.districtId).then(() => {
+            $("#wardUpdate").val(customer.locationRegionResult.wardId);
+            console.log("wardId", customer.locationRegionResult.wardId)
 
-            })
         })
-        console.log(customer)
-        $("#codeUpdate").val(customer.customerCode);
-        $("#selectEmployeeUpdate").val(customer.employeeId);
-
-        $("#update_order_customer").modal("show");
-
-        // $("#modalCreateProduct .modal-alert-danger").removeClass('show').addClass('hide');
     })
+    console.log(customer)
+    $("#codeUpdate").val(customer.customerCode);
+    $("#selectEmployeeUpdate").val(customer.employeeId);
+
+    $("#update_order_customer").modal("show");
+    console.log(id);
+    // getCustomerById(id).then(() => {
+    //     $("#nameUpdate").val(customer.name)
+    //     $('#phoneUpdate').val(customer.phone);
+    //     // $('#addressUpdate').val(customer.locationRegionResult.address);
+    //     // $('#provinceUpdate').val(customer.locationRegionResult.provinceId);
+    //     // console.log("provin", customer.locationRegionResult.provinceId)
+    //     // getAllDistrictsByProvinceId(customer.locationRegionResult.provinceId).then(() => {
+    //     //     $("#districtUpdate").val(customer.locationRegionResult.districtId);
+    //     //     console.log("districtId", customer.locationRegionResult.districtId)
+    //     //     getAllWardsByDistrictId(customer.locationRegionResult.districtId).then(() => {
+    //     //         $("#wardUpdate").val(customer.locationRegionResult.wardId);
+    //     //         console.log("wardId", customer.locationRegionResult.wardId)
+    //     //
+    //     //     })
+    //     // })
+    //     console.log(customer)
+    //     $("#codeUpdate").val(customer.customerCode);
+    //     $("#selectEmployeeUpdate").val(customer.employeeId);
+    //
+    //     // $("#modalCreateProduct .modal-alert-danger").removeClass('show').addClass('hide');
+    // })
 }
 
 getAllEmployees();

@@ -39,14 +39,14 @@ public class CustomerMapper {
                 .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()))
                 .setEmployeeResult(employeeMapper.toDTO(customer.getEmployee()));
     }
-    public CustomerOrderResult toOrderDTO(Customer customer) {
-        return new CustomerOrderResult()
+    public Customer toOrderDTO(CustomerOrderResult customerOrderResult , Customer customer) {
+        return  customer
                 .setId(customer.getId())
-                .setCustomerCode(customer.getCustomerCode())
-                .setName(customer.getName())
-                .setPhone(customer.getPhone())
-                .setEmployeeId(customer.getEmployeeId())
-                .setLocationRegionId(customer.getLocationRegionId());
+                .setCustomerCode(customerOrderResult.getCustomerCode())
+                .setName(customerOrderResult.getName())
+                .setPhone(customerOrderResult.getPhone())
+                .setUpdateAt(java.time.LocalDateTime.now().toString())
+                .setEmployeeId(customerOrderResult.getEmployeeId());
     }
 
     public Customer toModel(CustomerCreate customerCreate) {
@@ -100,42 +100,14 @@ public class CustomerMapper {
     }
 
 
-
-
-//    public Customer toModel(CustomerResult customerResult) {
-//        return new Customer()
-//                .setId(customerResult.getId())
-//                .setCustomerCode(customerResult.getCustomerCode())
-//                .setName(customerResult.getName())
-//                .setPhone(customerResult.getPhone())
-//                .setCustomerGroup(customerResult.getCustomerGroup())
-//                .setCustomerGender(customerResult.getCustomerGender())
-//                .setEmail(customerResult.getEmail())
-//                .setBirthday(customerResult.getBirthday())
-//                .setStatus(customerResult.getStatus())
-//                .setCreateAt(customerResult.getCreateAt())
-//                .setUpdateAt(customerResult.getUpdateAt())
-//                .setEmployeeId(customerResult.getEmployeeId())
-//                .setLocationRegionId(customerResult.getLocationRegionId())
-//                .setLocationRegion(locationRegionMapper.toModel(customerResult.getLocationRegionResult().));
-//    }
-
-
-    public CustomerResult toDTOCustomerEdit(Customer customer) {
-        return new CustomerResult()
+    public CustomerOrderResult toDTOCustomerOrder(Customer customer) {
+        return new CustomerOrderResult()
                 .setId(customer.getId())
                 .setCustomerCode(customer.getCustomerCode())
                 .setName(customer.getName())
                 .setPhone(customer.getPhone())
-                .setCustomerGroup(customer.getCustomerGroup())
-                .setCustomerGender(customer.getCustomerGender())
-                .setEmail(customer.getEmail())
-                .setBirthday(customer.getBirthday())
-                .setStatus(customer.getStatus())
-                .setCreateAt(customer.getCreateAt())
-                .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
-                .setDeleted(customer.getDeleted());
+                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()));
     }
 
 

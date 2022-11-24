@@ -18,12 +18,10 @@ public interface CustomerService {
 
     CustomerResult findById(Integer id);
 
-    Optional<CustomerOrderResult> findCustomerById(Integer id);
-
+    CustomerOrderResult findByIdCustomerOrder(Integer id);
 
 
     CustomerResult createCustomerResult(CustomerCreate customerCreate);
-
 
     Customer create(CustomerCreate customerCreate);
 
@@ -40,4 +38,6 @@ public interface CustomerService {
      CustomerGender[] findAllByCustomerGender();
 
     List<CustomerResult> findAllCustomerByDelete(boolean deleted);
+
+    Customer  updateCustomerOrder(CustomerOrderResult customerOrderResult);
 }

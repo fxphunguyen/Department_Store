@@ -21,10 +21,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-    @RequestMapping("/api/customers")
+@RequestMapping("/api/customers")
 public class CustomerAPI {
 
     @Autowired
@@ -52,7 +53,8 @@ public class CustomerAPI {
                 .findAll()
                 .stream()
                 .map(customer -> customerMapper.toDTO(customer))
-                .collect(Collectors.toList());;
+                .collect(Collectors.toList());
+        ;
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 
@@ -95,18 +97,29 @@ public class CustomerAPI {
 
         CustomerResult customerResult1 = customerService.findById(customerResult.getId());
 
-        if (customerResult1 == null){
+        if (customerResult1 == null) {
             System.out.println("Không tìm thấy địa chỉ ad phù hợp");
         }
         customerService.update(customerResult);
 
-        customerResult.getLocationRegionResult().setId(customerResult1.getLocationRegionId()) ;
+        customerResult.getLocationRegionResult().setId(customerResult1.getLocationRegionId());
 
-        if ((customerResult.getLocationRegionResult()) == null){
+        if ((customerResult.getLocationRegionResult()) == null) {
             System.out.println("Dữ liệu ở location bị null");
         }
         locationRegionService.update(customerResult.getLocationRegionResult());
         return new ResponseEntity<>(customerResult, HttpStatus.OK);
+    }
+
+    @PutMapping("/updateCustomerOrder/{id}")
+    public ResponseEntity<?> updateCustomerOrder(@RequestBody CustomerOrderResult customerOrderResult, @PathVariable Integer id) {
+
+
+        CustomerOrderResult customerOrderResult1 = customerService.findByIdCustomerOrder(customerOrderResult.getId());
+        customerService.updateCustomerOrder(customerOrderResult);
+        customerOrderResult.getLocationRegionResult().setId(customerOrderResult1.getLocationRegionId());
+        locationRegionService.update(customerOrderResult.getLocationRegionResult());
+        return new ResponseEntity<>(customerOrderResult, HttpStatus.OK);
     }
 
     @GetMapping("/customerGroup")
