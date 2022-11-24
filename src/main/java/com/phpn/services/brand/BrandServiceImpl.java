@@ -1,6 +1,6 @@
 package com.phpn.services.brand;
 
-import com.phpn.mappers.BrandMapper;
+import com.phpn.mappers.brand.BrandMapper;
 import com.phpn.repositories.BrandRepository;
 
 import org.springframework.stereotype.Service;

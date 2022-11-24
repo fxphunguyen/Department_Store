@@ -37,7 +37,7 @@ public class LocationRegionAPI {
 
     @GetMapping()
     public ResponseEntity<?> findAllLocationReggion(){
-        List<LocationRegion>locationRegions =locationRegionRepository.findAll();
+        List<LocationRegion>locationRegions = locationRegionRepository.findAll();
    return  new ResponseEntity<>(locationRegions , HttpStatus.OK);
 
     }

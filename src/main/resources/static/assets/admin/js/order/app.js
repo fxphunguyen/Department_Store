@@ -1,4 +1,4 @@
-class LocationRegionResult {
+class LocationRegionCreate{
     constructor(id,address, wardId, wardName, districtId, districtName, provinceId, provinceName) {
         this.id = id;
         this.address = address;
@@ -10,9 +10,25 @@ class LocationRegionResult {
         this.provinceName = provinceName;
     }
 }
+class Employee {
+    contructor(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+class EmployeeResult {
+    contructor(id, birthday, email, gender, name) {
+        this.id = id;
+        this.birthday = birthday;
+        this.email = email;
+        this.gender = gender;
+        this.name = name;
+    }
+}
 
 class Customer {
-    constructor(id, customerCode,  name, phone,  email,createAt, updateAt, employeeId, deleted, locationRegionResult) {
+    constructor(id, customerCode,  name, phone,  email,createAt, updateAt, employeeId, deleted, locationRegionCreate) {
         this.id = id;
         this.customerCode = customerCode;
         this.name = name;
@@ -25,7 +41,7 @@ class Customer {
         this.updateAt = updateAt;
         this.employeeId = employeeId;
         this.deleted = deleted;
-        this.locationRegionResult = locationRegionResult;
+        this.locationRegionCreate = locationRegionCreate;
     }
 }
 class App {

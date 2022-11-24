@@ -15,27 +15,34 @@ public class ProductController {
     @Autowired
     private ProductServiceImpl productService;
 
+    @GetMapping("/products")
+    public ModelAndView showProductListPage() {
+        return new ModelAndView("/admin/product/product_list");
+    }
+
+    @GetMapping("/products/create")
+    public ModelAndView showProductCreatePage() {
+        return new ModelAndView("/admin/product/product_create");
+    }
+
+    @GetMapping("/products/detail")
+    public ModelAndView showProductDetailPage() {
+        return new ModelAndView("/admin/product/product_detail");
+    }
+
     //    Điều chỉnh giá vốn
     @GetMapping("/price_adjustments")
     public ModelAndView showPriceAdjustmentsPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/product/price_adjustments");
+        modelAndView.setViewName("/admin/product/price_adjustments");
         return modelAndView;
     }
-
-    // Nhà cung cấp
-//    @GetMapping("/suppliers")
-//    public ModelAndView showSupplierPage() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("/admin/suppliers/suppliers");
-//        return modelAndView;
-//    }
 
     // Chuyển hàng
     @GetMapping("/stock_transfers")
     public ModelAndView showStockTransferPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/product/stock_transfers");
+        modelAndView.setViewName("/admin/product/stock_transfers");
         return modelAndView;
     }
 
@@ -44,17 +51,10 @@ public class ProductController {
     @GetMapping("/inventory_management")
     public ModelAndView showInventoryManagementPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/product/inventory_management");
+        modelAndView.setViewName("/admin/product/inventory_management");
         return modelAndView;
     }
 
-//    // Kiểm hàng
-//    @GetMapping("/stock_adjustments")
-//    public ModelAndView showStockAdjustmentPage() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("/product/stock_adjustments");
-//        return modelAndView;
-//    }
 
 }
 

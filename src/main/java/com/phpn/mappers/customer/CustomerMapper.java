@@ -10,9 +10,10 @@ import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.EmployeeRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
-import javafx.scene.Node;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 public class CustomerMapper {
@@ -20,17 +21,14 @@ public class CustomerMapper {
 
     @Autowired
     private EmployeeMapper employeeMapper;
+
     @Autowired
     private LocationRegionMapper locationRegionMapper;
 
     @Autowired
     private CustomerRepository customerRepository;
 
-    @Autowired
-    private LocationRegionRepository locationRegionRepository;
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
 
 
 
@@ -49,13 +47,12 @@ public class CustomerMapper {
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
                 .setLocationRegionId(customer.getLocationRegionId())
-
-//                .setLocationRegion(locationRegionRepository.findById(customer.getLocationRegionId()).get())
-                .setEmployeeRResult(employeeMapper.toRDTO(customer.getEmployee()));
+                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()))
+                .setEmployeeResult(employeeMapper.toDTO(customer.getEmployee()));
     }
 
     public Customer toModel(CustomerCreate customerCreate) {
-        return new Customer(customerCreate.getEmployeeId(), customerCreate.getLocationRegionId())
+        return new Customer()
                 .setEmployeeId(customerCreate.getEmployeeId())
                 .setCustomerCode(customerCreate.getCustomerCode())
                 .setName(customerCreate.getName())
@@ -87,8 +84,7 @@ public class CustomerMapper {
                 .setLocationRegion(locationRegionMapper.toModel(customerCreate.getLocationRegionCreate()));
     }
 
-    public Customer toCustomer(CustomerResult customerResult) {
-        Customer customer = customerRepository.findById(customerResult.getId()).get();
+    public Customer toCustomer(CustomerResult customerResult ,Customer customer) {
         return customer
                 .setId(customerResult.getId())
                 .setCustomerCode(customerResult.getCustomerCode())
@@ -106,23 +102,26 @@ public class CustomerMapper {
     }
 
 
-    public Customer toModel(CustomerResult customerResult) {
-        return new Customer(customerResult.getLocationRegionId(), customerResult.getLocationRegionId())
-                .setId(customerResult.getId())
-                .setCustomerCode(customerResult.getCustomerCode())
-                .setName(customerResult.getName())
-                .setPhone(customerResult.getPhone())
-                .setCustomerGroup(customerResult.getCustomerGroup())
-                .setCustomerGender(customerResult.getCustomerGender())
-                .setEmail(customerResult.getEmail())
-                .setBirthday(customerResult.getBirthday())
-                .setStatus(customerResult.getStatus())
-                .setCreateAt(customerResult.getCreateAt())
-                .setUpdateAt(customerResult.getUpdateAt())
-                .setEmployeeId(customerResult.getEmployeeId())
-                .setLocationRegionId(customerResult.getLocationRegionId())
-                .setLocationRegion(locationRegionMapper.toModel(customerResult.getLocationRegion()));
-    }
+
+
+//    public Customer toModel(CustomerResult customerResult) {
+//        return new Customer()
+//                .setId(customerResult.getId())
+//                .setCustomerCode(customerResult.getCustomerCode())
+//                .setName(customerResult.getName())
+//                .setPhone(customerResult.getPhone())
+//                .setCustomerGroup(customerResult.getCustomerGroup())
+//                .setCustomerGender(customerResult.getCustomerGender())
+//                .setEmail(customerResult.getEmail())
+//                .setBirthday(customerResult.getBirthday())
+//                .setStatus(customerResult.getStatus())
+//                .setCreateAt(customerResult.getCreateAt())
+//                .setUpdateAt(customerResult.getUpdateAt())
+//                .setEmployeeId(customerResult.getEmployeeId())
+//                .setLocationRegionId(customerResult.getLocationRegionId())
+//                .setLocationRegion(locationRegionMapper.toModel(customerResult.getLocationRegionResult().));
+//    }
+
 
     public CustomerResult toDTOCustomerEdit(Customer customer) {
         return new CustomerResult()
@@ -140,5 +139,6 @@ public class CustomerMapper {
                 .setEmployeeId(customer.getEmployeeId())
                 .setDeleted(customer.getDeleted());
     }
+
 
 }

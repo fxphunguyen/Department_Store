@@ -9,12 +9,14 @@ import com.phpn.services.employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/employees")
@@ -32,12 +34,11 @@ public class EmployeeAPI {
         List<EmployeeResult> employeeResults = employeeService.findAll();
         return new ResponseEntity<>(employeeResults, HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
     public  ResponseEntity<?> findByIdEmployee(@PathVariable Integer id){
-        Employee employee = employeeRepository.findById(id).get();
-        return new ResponseEntity<>(employee, HttpStatus.OK);
+        EmployeeResult employeeResult = employeeService.findById(id);
+        return new ResponseEntity<>(employeeResult, HttpStatus.OK);
     }
-
-
 
 }

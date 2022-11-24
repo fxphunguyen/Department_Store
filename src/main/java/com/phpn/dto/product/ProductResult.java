@@ -2,6 +2,8 @@ package com.phpn.dto.product;
 
 import java.math.BigDecimal;
 
+import com.phpn.dto.brand.BrandResult;
+import com.phpn.dto.category.CategoryResult;
 import com.phpn.repositories.model.ProductStatus;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,5 +34,7 @@ public class ProductResult {
     private BigDecimal wholesalePrice;
     private Integer categoryId;
     private Integer brandId;
+    private CategoryResult categoryResult;
+    private BrandResult brandResult;
 
 }

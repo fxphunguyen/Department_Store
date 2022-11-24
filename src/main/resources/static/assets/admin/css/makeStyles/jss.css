@@ -3611,6 +3611,15 @@
   justify-content: space-between;
 }
 
-/* .jss412 {
-  margin-top: -10px;
-} */
+.sapo-menu-title-sales-channels{
+  text-decoration: none;
+}
+.sapo-menu-list-item-link{
+  text-decoration: none;
+}
+/*.sapo-menu-list{*/
+/*}*/
+.sapo-menu-list--primary{
+    margin-left: -28px;
+
+}

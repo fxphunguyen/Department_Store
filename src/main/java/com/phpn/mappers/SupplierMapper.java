@@ -1,17 +1,17 @@
 package com.phpn.mappers;
 
+import java.time.LocalDateTime;
 import org.jetbrains.annotations.NotNull;
-
-import com.phpn.mappers.employee.EmployeeMapper;
-import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.phpn.mappers.employee.EmployeeMapper;
+import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.dto.suppliers.SupplierParam;
 import com.phpn.dto.suppliers.SupplierResult;
-import com.phpn.dto.suppliers.SupplierCreateParam;
-import com.phpn.dto.suppliers.SupplierUpdateParam;
+import com.phpn.dto.suppliers.SupplierCreate;
+import com.phpn.dto.suppliers.SupplierUpdate;
 import com.phpn.repositories.model.Supplier;
 
 @Component
@@ -33,8 +33,8 @@ public class SupplierMapper {
         .setSupplierStatus(supplier.getStatus())
         .setDescription(supplier.getDescription())
         .setEmployeeId(supplier.getEmployeeId())
-        .setLocationRegionId(supplier.getLocationRegionId())
         .setEmployeeResult(employeeMapper.toDTO(supplier.getEmployee()))
+        .setLocationRegionId(supplier.getLocationRegionId())
         .setLocationRegionResult(locationRegionMapper.toDTO(supplier.getLocationRegion()))
         .setCreateAt(supplier.getCreateAt())
         .setUpdateAt(supplier.getUpdateAt());
@@ -70,32 +70,34 @@ public class SupplierMapper {
         .setUpdateAt(supplierParam.getUpdateAt());
     }
 
-    public Supplier toModel(@NotNull SupplierCreateParam supplierCreateParam) {
-        return new Supplier(supplierCreateParam.getEmployeeId(), supplierCreateParam.getLocationRegionId())
-        .setSupplierCode(supplierCreateParam.getSupplierCode())
-        .setName(supplierCreateParam.getName())
-        .setEmail(supplierCreateParam.getEmail())
-        .setPhone(supplierCreateParam.getPhone())
-        .setStatus(supplierCreateParam.getSupplierStatus())
-        .setDescription(supplierCreateParam.getDescription())
-        .setEmployeeId(supplierCreateParam.getEmployeeId())
-        .setLocationRegionId(supplierCreateParam.getLocationRegionId())
-        .setCreateAt(supplierCreateParam.getCreateAt())
-        .setUpdateAt(supplierCreateParam.getUpdateAt());
+    public Supplier toModel(@NotNull SupplierCreate supplierCreate) {
+        return new Supplier(supplierCreate.getEmployeeId(), supplierCreate.getLocationRegionId())
+        .setId(supplierCreate.getId())
+        .setSupplierCode(supplierCreate.getSupplierCode())
+        .setName(supplierCreate.getName())
+        .setEmail(supplierCreate.getEmail())
+        .setPhone(supplierCreate.getPhone())
+        .setStatus(supplierCreate.getSupplierStatus())
+        .setDescription(supplierCreate.getDescription())
+        .setEmployeeId(supplierCreate.getEmployeeId())
+        .setLocationRegionId(supplierCreate.getLocationRegionId())
+        .setCreateAt(LocalDateTime.now().toString())
+        .setUpdateAt(supplierCreate.getCreateAt());
     }
 
-    public Supplier toModel(@NotNull SupplierUpdateParam supplierUpdateParam) {
-        return new Supplier(supplierUpdateParam.getEmployeeId(), supplierUpdateParam.getLocationRegionId())
-        .setSupplierCode(supplierUpdateParam.getSupplierCode())
-        .setName(supplierUpdateParam.getName())
-        .setEmail(supplierUpdateParam.getEmail())
-        .setPhone(supplierUpdateParam.getPhone())
-        .setStatus(supplierUpdateParam.getSupplierStatus())
-        .setDescription(supplierUpdateParam.getDescription())
-        .setEmployeeId(supplierUpdateParam.getEmployeeId())
-        .setLocationRegionId(supplierUpdateParam.getLocationRegionId())
-        .setCreateAt(supplierUpdateParam.getCreateAt())
-        .setUpdateAt(supplierUpdateParam.getUpdateAt());
+    public Supplier toModel(@NotNull SupplierUpdate supplierUpdate) {
+        return new Supplier(supplierUpdate.getEmployeeId(), supplierUpdate.getLocationRegionId())
+        .setId(supplierUpdate.getId())
+        .setSupplierCode(supplierUpdate.getSupplierCode())
+        .setName(supplierUpdate.getName())
+        .setEmail(supplierUpdate.getEmail())
+        .setPhone(supplierUpdate.getPhone())
+        .setStatus(supplierUpdate.getSupplierStatus())
+        .setDescription(supplierUpdate.getDescription())
+        .setEmployeeId(supplierUpdate.getEmployeeId())
+        .setLocationRegionId(supplierUpdate.getLocationRegionId())
+        .setCreateAt(supplierUpdate.getCreateAt())
+        .setUpdateAt(LocalDateTime.now().toString());
     }
 
 }

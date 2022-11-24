@@ -5,15 +5,18 @@ import com.phpn.dto.customer.CustomerResult;
 
 
 import com.phpn.mappers.customer.CustomerMapper;
+import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.CustomerGender;
 import com.phpn.repositories.model.CustomerGroup;
 import com.phpn.services.customer.CustomerService;
+import com.phpn.services.locationRegion.LocationRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,16 +30,22 @@ public class CustomerAPI {
     private LocationRegionRepository locationRegionRepository;
 
     @Autowired
+    private LocationRegionMapper locationRegionMapper;
+
+    @Autowired
+    private LocationRegionService locationRegionService;
+
+    @Autowired
     private CustomerMapper customerMapper;
 
     @Autowired
     private CustomerService customerService;
 
-
     @Autowired
     CustomerRepository customerRepository;
 
     @GetMapping("/list_customerAll")
+    @Transactional(readOnly = true)
     public ResponseEntity<?> showListCustomerAll() {
         List<CustomerResult> customers = customerRepository
                 .findAll()
@@ -62,8 +71,8 @@ public class CustomerAPI {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
-        CustomerResult itemResult = customerService.findById(id);
-        return new ResponseEntity<>(itemResult, HttpStatus.OK);
+        CustomerResult customerResult = customerService.findById(id);
+        return new ResponseEntity<>(customerResult, HttpStatus.OK);
     }
 
 
@@ -74,20 +83,29 @@ public class CustomerAPI {
 
     @PostMapping("/create")
     public ResponseEntity<?> createCustomer(@RequestBody CustomerCreate customerCreate) {
-        System.out.println(customerCreate.getStatus());
-        System.out.println(customerCreate.getCustomerGender());
         Customer customer = customerService.create(customerCreate);
         return new ResponseEntity<>(customer, HttpStatus.OK);
 
     }
 
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateCustomer(@RequestBody CustomerResult customerResult, @PathVariable Integer id) {
-        customerResult.setId(id);
-        customerService.update(customerResult);
-        return new ResponseEntity<>(customerResult, HttpStatus.OK);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateCustomer(@RequestBody CustomerResult customerResult) {
 
+        CustomerResult customerResult1 = customerService.findById(customerResult.getId());
+
+        if (customerResult1 == null){
+            System.out.println("Không tìm thấy địa chỉ ad phù hợp");
+        }
+        customerService.update(customerResult);
+
+        customerResult.getLocationRegionResult().setId(customerResult1.getLocationRegionId()) ;
+
+        if ((customerResult.getLocationRegionResult()) == null){
+            System.out.println("Dữ liệu ở location biij null");
+        }
+        locationRegionService.update(customerResult.getLocationRegionResult());
+        return new ResponseEntity<>(customerResult, HttpStatus.OK);
     }
 
     @GetMapping("/customerGroup")

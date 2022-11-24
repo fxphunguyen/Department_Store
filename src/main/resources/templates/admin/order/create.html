@@ -75,6 +75,7 @@
                                                                        name="myInput"
                                                                        placeholder="Tìm theo tên, SĐT, mã khách hàng ... (F4)"
                                                                        type="text"
+                                                                       onclick="showListCustomer()"
                                                                        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
                                                                        value="">
                                                                 <fieldset aria-hidden="true"
@@ -1846,7 +1847,7 @@
     </div>
     <div class="modal-backdrop fade in" id="sapo-modal-backdrop"></div>
 </div>
-<div class="MuiPaper-root jss2984 MuiPaper-elevation3 MuiPaper-rounded d-none searchCustomer"
+<div id="MuiBox-list-customer" class="MuiPaper-root jss2984 MuiPaper-elevation3 MuiPaper-rounded d-none searchCustomer"
      data-popper-reference-hidden="false"
      data-popper-escaped="false" data-popper-placement="bottom"
      style="width: 718px; position: absolute; inset: 0px auto auto 0px; transform: translate(278px, 169px); z-index: 999;">
