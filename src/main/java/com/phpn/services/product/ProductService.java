@@ -1,9 +1,8 @@
 package com.phpn.services.product;
 
 import java.util.List;
-import java.util.Optional;
 
-import com.phpn.dto.product.ProductCreateParam;
+import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.repositories.model.Product;
@@ -20,4 +19,5 @@ public interface ProductService {
     ProductResult findByIdProduct(Integer id);
     Product create(ProductParam productParam);
 
+    Product createProduct(ProductCreate productCreate);
 }

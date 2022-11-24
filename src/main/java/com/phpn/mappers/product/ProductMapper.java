@@ -1,11 +1,11 @@
 package com.phpn.mappers.product;
 
+import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.mappers.CategoryMapper;
 import com.phpn.mappers.brand.BrandMapper;
 import com.phpn.repositories.model.Product;
-import com.phpn.repositories.model.ProductStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -62,4 +62,27 @@ public class ProductMapper {
 
 
     }
+
+
+    public Product toProduct(ProductCreate productCreate) {
+        return new Product()
+                .setId(productCreate.getId())
+                .setTitle(productCreate.getTitle())
+                .setImage(productCreate.getImage())
+                .setStatus(productCreate.getStatus())
+                .setCreateAt(java.time.LocalDateTime.now().toString())
+                .setUpdateAt(null)
+                .setDescription(productCreate.getDescription())
+                .setUnit(productCreate.getUnit())
+                .setSku(productCreate.getSku())
+                .setBarCode(productCreate.getBarCode())
+                .setImportPrice(productCreate.getImportPrice())
+                .setRetailPrice(productCreate.getRetailPrice())
+                .setWholesalePrice(productCreate.getWholesalePrice())
+                .setQuantity(productCreate.getQuantity())
+                .setBrandId(productCreate.getBrandId())
+                .setCategoryId(productCreate.getCategoryId())
+                .setDeleted(true);
+    }
+
 }

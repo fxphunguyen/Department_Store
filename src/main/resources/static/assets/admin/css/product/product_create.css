@@ -7752,3 +7752,16 @@ label+.MuiInput-formControl {
     border-radius: 50%;
     justify-content: center;
 }
+.MuiTypography-root{
+    font-size: 14px;
+}
+#root, body, html {
+    font-size: 14px;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+
+.jss2236 {
+    text-align: end;
+}

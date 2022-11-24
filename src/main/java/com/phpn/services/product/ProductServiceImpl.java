@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.phpn.dto.product.ProductCreateParam;
+import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.mappers.product.ProductMapper;
@@ -57,8 +57,27 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Product create(ProductParam productParam) {
         return productRepository.save(productMapper.toModel(productParam));
+    }
+
+
+    @Override
+    public Product createProduct(ProductCreate productCreate) {
+//
+//        String fileType = productCreate.getFile().getContentType();
+//
+//        assert fileType != null;
+//
+//        fileType = fileType.substring(0, 5);
+//
+//        productCreate.setFileType(fileType);
+//
+//        Product product = productRepository.save(productMapper.toProduct(productCreate));
+//
+//        return product;
+        return  null;
     }
 
 }
