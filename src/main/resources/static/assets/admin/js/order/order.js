@@ -94,7 +94,7 @@ function showCustomerInfo(idCustomer) {
 
     customers.forEach((item) => {
         result = item;
-        if (item.id == idCustomer) {
+        if (item.id === idCustomer) {
             return false;
         }
     })
