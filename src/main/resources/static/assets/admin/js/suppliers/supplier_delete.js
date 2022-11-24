@@ -17,6 +17,5 @@ const deleteById = (supplierId) => {
 }
 
 $("#btn-supplier-delete").on("click", () => {
-    console.log("Delete supplier successfully!");
     deleteById($("#btn-supplier-delete").val());
 });
