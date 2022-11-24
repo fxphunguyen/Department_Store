@@ -21,8 +21,7 @@ public class ProductMapper {
     @Autowired
     CategoryMapper categoryMapper;
     public Product toModel(ProductParam productParam) {
-        return new Product()
-                .setId(productParam.getId())
+        return new Product(productParam.getCategoryId(),productParam.getBrandId())
                 .setTitle(productParam.getTitle())
                 .setImage(productParam.getImage())
                 .setStatus(productParam.getStatus())

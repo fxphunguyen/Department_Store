@@ -370,3 +370,8 @@ input:disabled ~ .jss4798 {
     padding: 5px;
     margin-right: 4px;
 }
+
+
+.MuiTypography-root {
+    font-size: 14px;
+}
