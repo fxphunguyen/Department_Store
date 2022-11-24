@@ -13,7 +13,11 @@ import java.util.Date;
 @AllArgsConstructor
 @Accessors(chain = true)
 @Entity
+<<<<<<< HEAD
 @Table(name = "payments")
+=======
+@Table(name = "payment")
+>>>>>>> phu_dev
 public class Payment {
 
     @Id

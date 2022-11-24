@@ -6,10 +6,13 @@ import java.util.stream.Collectors;
 
 <<<<<<< HEAD
 import com.phpn.dto.product.ProductCreateParam;
+<<<<<<< HEAD
 =======
 import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 >>>>>>> huy_dev
+=======
+>>>>>>> phu_dev
 import com.phpn.dto.product.ProductResult;
 import com.phpn.mappers.product.ProductMapper;
 import com.phpn.repositories.model.Product;
