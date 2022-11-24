@@ -14,6 +14,7 @@ import java.util.Date;
 @Accessors(chain = true)
 @Entity
 @Table(name = "payments")
+
 public class Payment {
 
     @Id
