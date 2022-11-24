@@ -1,33 +1,51 @@
 package com.phpn.mappers.product;
 
+import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
+import com.phpn.mappers.CategoryMapper;
+import com.phpn.mappers.brand.BrandMapper;
 import com.phpn.repositories.model.Product;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class ProductMapper {
 
+
+    @Autowired
+    BrandMapper brandMapper;
+
+    @Autowired
+    CategoryMapper categoryMapper;
     public Product toModel(ProductParam productParam) {
         return new Product()
                 .setId(productParam.getId())
                 .setTitle(productParam.getTitle())
-                .setBarCode(productParam.getBarCode())
-                .setSku(productParam.getSku())
-                .setBrandId(productParam.getBrandId())
-                .setCategoryId(productParam.getCategoryId())
                 .setImage(productParam.getImage())
+                .setStatus(productParam.getStatus())
+                .setCreateAt(java.time.LocalDateTime.now().toString())
+                .setUpdateAt(null)
                 .setDescription(productParam.getDescription())
+                .setUnit(productParam.getUnit())
+                .setSku(productParam.getSku())
+                .setBarCode(productParam.getBarCode())
                 .setImportPrice(productParam.getImportPrice())
                 .setRetailPrice(productParam.getRetailPrice())
                 .setWholesalePrice(productParam.getWholesalePrice())
-                .setQuantity(productParam.getQuantity());
+                .setQuantity(productParam.getQuantity())
+                .setBrandId(productParam.getBrandId())
+                .setCategoryId(productParam.getCategoryId())
+                .setDeleted(true);
     }
 
     public ProductResult toDTO(Product product) {
         return new ProductResult()
                 .setId(product.getId())
                 .setTitle(product.getTitle())
+                .setStatus(product.getStatus())
                 .setBarCode(product.getBarCode())
                 .setSku(product.getSku())
                 .setBrandId(product.getBrandId())
@@ -39,7 +57,33 @@ public class ProductMapper {
                 .setRetailPrice(product.getRetailPrice())
                 .setQuantity(product.getQuantity())
                 .setCreateAt(product.getCreateAt())
-                .setUpdateAt(product.getUpdateAt());
+                .setUpdateAt(product.getUpdateAt())
+                .setBrandResult(brandMapper.toDTO(product.getBrand()))
+                .setCategoryResult(categoryMapper.toDTO(product.getCategory()));
+
 
     }
+
+
+    public Product toProduct(ProductCreate productCreate) {
+        return new Product()
+                .setId(productCreate.getId())
+                .setTitle(productCreate.getTitle())
+                .setImage(productCreate.getImage())
+                .setStatus(productCreate.getStatus())
+                .setCreateAt(java.time.LocalDateTime.now().toString())
+                .setUpdateAt(null)
+                .setDescription(productCreate.getDescription())
+                .setUnit(productCreate.getUnit())
+                .setSku(productCreate.getSku())
+                .setBarCode(productCreate.getBarCode())
+                .setImportPrice(productCreate.getImportPrice())
+                .setRetailPrice(productCreate.getRetailPrice())
+                .setWholesalePrice(productCreate.getWholesalePrice())
+                .setQuantity(productCreate.getQuantity())
+                .setBrandId(productCreate.getBrandId())
+                .setCategoryId(productCreate.getCategoryId())
+                .setDeleted(true);
+    }
+
 }

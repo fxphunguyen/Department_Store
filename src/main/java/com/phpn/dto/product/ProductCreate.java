@@ -1,23 +1,19 @@
 package com.phpn.dto.product;
 
-import java.math.BigDecimal;
-
 import com.phpn.dto.brand.BrandResult;
 import com.phpn.dto.category.CategoryResult;
 import com.phpn.repositories.model.ProductStatus;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.web.multipart.MultipartFile;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+
+@Data
 @Accessors(chain = true)
-public class ProductResult {
-
+public class ProductCreate implements Serializable {
     private Integer id;
     private String title;
     private String image;
@@ -36,5 +32,17 @@ public class ProductResult {
     private Integer brandId;
     private CategoryResult categoryResult;
     private BrandResult brandResult;
+    private String fileName;
 
+    private String fileFolder;
+
+    private String fileUrl;
+
+    private String cloudId;
+
+    private String fileProductId;
+
+    private MultipartFile file;
+
+    private String fileType;
 }

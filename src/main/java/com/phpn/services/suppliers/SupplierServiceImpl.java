@@ -10,11 +10,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.phpn.repositories.model.Supplier;
-import com.phpn.repositories.SupplierRepository;
-import com.phpn.mappers.SupplierMapper;
-import com.phpn.exceptions.NotFoundException;
+import com.phpn.dto.suppliers.SupplierCreate;
 import com.phpn.dto.suppliers.SupplierResult;
+import com.phpn.mappers.SupplierMapper;
+import com.phpn.mappers.localtionRegion.LocationRegionMapper;
+import com.phpn.repositories.SupplierRepository;
+import com.phpn.repositories.LocationRegionRepository;
+import com.phpn.repositories.model.Supplier;
+import com.phpn.repositories.model.LocationRegion;
+import com.phpn.exceptions.NotFoundException;
 
 @Service
 @Transactional
@@ -27,12 +31,15 @@ public class SupplierServiceImpl implements SupplierService {
     @Autowired
     private SupplierRepository supplierRepository;
 
+    @Autowired
+    private LocationRegionMapper locationRegionMapper;
+
+    @Autowired
+    private LocationRegionRepository locationRegionRepository;
+
     @Override
     @Transactional(readOnly = true)
     public List<SupplierResult> findAll() {
-        if (supplierRepository.findAll().size() == 0) {
-        }
-
         return supplierRepository
         .findAll()
         .stream()
@@ -52,6 +59,17 @@ public class SupplierServiceImpl implements SupplierService {
     public void deleteById(Integer id) {
         findById(id);
         supplierRepository.deleteById(id);
+    }
+
+    @Override
+    public Supplier save(SupplierCreate supplierCreate) {
+        LocationRegion locationRegion = locationRegionMapper.toModel(supplierCreate.getLocationRegionCreate());
+        System.out.println(locationRegion);
+        locationRegionRepository.save(locationRegion);
+        LocationRegion idLocationRegionCr = locationRegionRepository.findMaxIdCustomer();
+        System.out.println(locationRegion.getId());
+        supplierCreate.setLocationRegionId(idLocationRegionCr.getId());
+        return   supplierRepository.save(supplierMapper.toModel(supplierCreate));
     }
 
 }

@@ -1,6 +1,7 @@
 package com.phpn.dto.suppliers;
 
 import com.phpn.repositories.model.SupplierStatus;
+import com.phpn.dto.locationRegion.LocationRegionCreate;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,8 +14,9 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class SupplierUpdateParam {
+public class SupplierCreate {
 
+    private Integer id;
     private String supplierCode;
     private String name;
     private String email;
@@ -23,6 +25,7 @@ public class SupplierUpdateParam {
     private String description;
     private Integer employeeId;
     private Integer locationRegionId;
+    private LocationRegionCreate locationRegionCreate;
     private String createAt;
     private String updateAt;
 

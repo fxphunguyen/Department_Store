@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-/*!
- * Datepicker for Bootstrap v1.8.0 (https://github.com/uxsolutions/bootstrap-datepicker)
- *
- * Licensed under the Apache License v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
- */
 
 .mdl-js {
     font-size: 14px;
@@ -17843,10 +17838,13 @@ table.sapo-table-line-item tbody tr:last-child {
   font-size: 14px;
   color: #fff;
 }
+
+
+/*Định kiểu tác nhân người dùng*/
 .sapo-active-sub-menu {
   fill: #fff !important;
   color: #fff !important;
-  background: #08f !important;
+  background: #182537!important;
 }
 .sapo-active-sub-menu .sapo-menu-list-item-icon,
 .sapo-active-sub-menu .sapo-menu-list-item-next-icon {
@@ -52708,4 +52706,10 @@ tr[id^="orderLineItems-show-packize-"] td {
   background: #fff;
   box-shadow: 0 0 3px #3d3d3d;
   border-radius: 3px;
+}
+#SalesChannels{
+    text-decoration: none;
+}
+.sapo-menu-list-item-link--secondary-active {
+    color: #f2f4f6 !important;
 }

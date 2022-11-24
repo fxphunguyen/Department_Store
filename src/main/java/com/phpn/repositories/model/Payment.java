@@ -13,7 +13,8 @@ import java.util.Date;
 @AllArgsConstructor
 @Accessors(chain = true)
 @Entity
-@Table(name = "payment")
+@Table(name = "payments")
+
 public class Payment {
 
     @Id
