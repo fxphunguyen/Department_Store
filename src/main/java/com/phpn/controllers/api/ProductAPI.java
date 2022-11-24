@@ -28,7 +28,7 @@ public class ProductAPI {
 
     @GetMapping("")
     @Transactional(readOnly = true)
-    public ResponseEntity<?> showAllProduct(boolean delete){
+    public ResponseEntity<?> showAllProduct(){
         List<ProductResult> productResults = productService.showAllProduct();
         return  new ResponseEntity<>(productResults, HttpStatus.OK);
     }

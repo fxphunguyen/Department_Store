@@ -25,7 +25,7 @@ public class ProductController {
         return new ModelAndView("/admin/product/product_create");
     }
 
-    @GetMapping("/products/detail")
+    @GetMapping("/products/edit")
     public ModelAndView showProductDetailPage() {
         return new ModelAndView("/admin/product/product_detail");
     }
