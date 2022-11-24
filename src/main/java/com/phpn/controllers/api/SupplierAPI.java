@@ -1,7 +1,6 @@
 package com.phpn.controllers.api;
 
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 
 import com.phpn.dto.suppliers.SupplierResult;
 import com.phpn.dto.suppliers.SupplierCreate;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/admin/suppliers")
 public class SupplierAPI {
 
@@ -38,12 +36,8 @@ public class SupplierAPI {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> save(@RequestBody SupplierCreate supplierCreate) {
-        supplierCreate.setId(0);
-        supplierCreate.setEmployeeId(2);
-        System.out.println(supplierCreate);
-        Supplier supplier = supplierService.save(supplierCreate);
-        return new ResponseEntity<>(supplier,HttpStatus.OK);
+    public ResponseEntity<Supplier> save(@RequestBody SupplierCreate supplierCreate) {
+        return new ResponseEntity<>(supplierService.save(supplierCreate), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}/delete")

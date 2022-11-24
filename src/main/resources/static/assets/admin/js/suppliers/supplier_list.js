@@ -21,35 +21,27 @@
                             </span>
                         </div>
                     </td>
-
                     <td>
                         <a style="text-decoration: underline;" href="/admin/suppliers/${item.id}/histories" title="${item.supplierCode}">${item.supplierCode}</a>
                     </td>
-
                     <td>
                         <span title="${item.name}">${item.name}</span>
                     </td>
-
                     <td>
                         <span title="${item.email}">${item.email}</span>
                     </td>
-
                     <td>
                         <span title="${item.phone}">${item.phone}</span>
                     </td>
-
                     <td>
                         <span class="${item.supplierStatus === 'Đang giao dịch' ? 'text-success' : 'text-danger'}" title="${item.supplierStatus}">${item.supplierStatus}</span>
                     </td>
-
                     <td>
                         <span title="${item.employeeResult.name}">${item.employeeResult.name}</span>
                     </td>
-
                     <td>
                         <span title="${item.createAt}">${item.createAt}</span>
                     </td>
-
                     <td>
                         <span title="${item.updateAt}">${item.updateAt}</span>
                     </td>
