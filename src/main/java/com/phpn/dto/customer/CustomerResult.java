@@ -51,13 +51,9 @@ public class CustomerResult {
     private Integer employeeId;
 
     private EmployeeResult employeeResult;
+
     private Boolean deleted;
 
-    public CustomerResult(String name, String phone, Boolean deleted) {
-        this.name = name;
-        this.phone = phone;
-        this.deleted = deleted;
-    }
 
 }
 
