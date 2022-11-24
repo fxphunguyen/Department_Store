@@ -1,6 +1,7 @@
 package com.phpn.controllers.api;
 
 import com.phpn.dto.customer.CustomerCreate;
+import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.dto.customer.CustomerResult;
 
 
@@ -102,7 +103,7 @@ public class CustomerAPI {
         customerResult.getLocationRegionResult().setId(customerResult1.getLocationRegionId()) ;
 
         if ((customerResult.getLocationRegionResult()) == null){
-            System.out.println("Dữ liệu ở location biij null");
+            System.out.println("Dữ liệu ở location bị null");
         }
         locationRegionService.update(customerResult.getLocationRegionResult());
         return new ResponseEntity<>(customerResult, HttpStatus.OK);
