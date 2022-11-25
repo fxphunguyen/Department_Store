@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1.0"/>
+
+    <title>Sapo - Đăng nhập</title>
+
+    <link rel="icon" type="image/x-icon" href="../../../static/assets/admin/images/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="https://sapo.dktcdn.net/sso-service/c54c3caa-style.css"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"/>
+</head>
+
+<body style="overflow: unset;">
+    <div class="login-style sapo-sso">
+        <div class="container form">
+            <div class="header">
+                <img class="sapo-logo" src="../../../static/assets/admin/images/sapo-logo.svg" alt="sapo-logo.svg"/>
+                <div class="title mt-3">
+                    <h1 class="h4">Đăng nhập vào cửa hàng của bạn</h1>
+                </div>
+            </div>
+            <form class="mt-4" method="post" action="/login">
+                <div class="form-login-info">
+                    <div class="form-group">
+                        <input class="form-input" id="username" title="Nhập email/số điện thoại đăng nhập" placeholder="Nhập email/số điện thoại đăng nhập" autocomplete="off" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-input" id="password" title="Nhập mật khẩu đăng nhập" placeholder="Nhập mật khẩu đăng nhập" autocomplete="off" required/>
+                        <a class="input-inline-button" onclick="Components.Common.toggleShowPassword(this)">
+                            <img class="icon-eye" src="../../../static/assets/admin/images/eye.svg" title="Ẩn mật khẩu" alt="eye.svg"/>
+                            <img class="icon-eye-slash" src="../../../static/assets/admin/images/eye-slash.svg" title="Hiện mật khẩu" alt="eye-slash.svg"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <button type="submit" class="btn-login">Đăng nhập</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://sapo.dktcdn.net/sso-service/c54c3caa-client.bundle.js"></script>
+</body>
+
+</html>
