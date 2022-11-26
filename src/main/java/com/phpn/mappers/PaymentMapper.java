@@ -4,7 +4,7 @@ import com.phpn.dto.payment.PaymentParam;
 import com.phpn.dto.payment.PaymentResult;
 import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.mappers.purchase_order.PurchaseOrderMapper;
-import com.phpn.repositories.model.Payment;
+import com.phpn.repositories.model.PaymentPurchase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ public class PaymentMapper {
     @Autowired
     private EmployeeMapper employeeMapper;
 
-    public PaymentResult toDTO(Payment payment) {
+    public PaymentResult toDTO(PaymentPurchase payment) {
         return new  PaymentResult()
                 .setId(payment.getId())
                 .setPaid(payment.getPaid())
@@ -27,8 +27,8 @@ public class PaymentMapper {
                 .setPurchaseOrderResult(purchaseOrderMapper.toDTO(payment.getPurchaseOrder()));
     }
 
-    public Payment toModel(PaymentParam paymentParam) {
-        return new Payment()
+    public PaymentPurchase toModel(PaymentParam paymentParam) {
+        return new PaymentPurchase()
                 .setId(paymentParam.getId())
                 .setPaid(paymentParam.getPaid())
                 .setCreateAt(paymentParam.getCreateAt())

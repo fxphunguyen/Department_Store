@@ -2,26 +2,20 @@ let customer = new Customer()
 let locationRegionCreate = new LocationRegionCreate();
 let employeeResult = new EmployeeResult();
 
-function removeEventModal() {
-    $("#btnCreateCustomer").off("click");
 
-}
-
-let customers = [];
+let customers;
 
 let employees = [];
 
 function showListCustomer() {
-    $.ajax({
-        type: "GET", contentType: 'application/json',
-        url: `${location.origin}/api/customers/list_customer`
-    })
-        .done((data) => {
-            customers = data;
-            $(".searchCustomer").removeClass('d-none');
-            $(".contentCustomer div").remove();
-            $.each(data, (i, customer) => {
-                let result = `
+    console.log(" showListCustomer()");
+
+    function show(data) {
+
+        $(".searchCustomer").removeClass('d-none');
+        $(".contentCustomer div").remove();
+        $.each(data, (i, customer) => {
+            let result = `
                 <div class="MuiBox-root jss4978 InfiniteScroll-MenuItem focus-key-event showInfo" onclick="showCustomerInfo(${customer.id})"
                      data-id="${customer.id}" tabindex="0">
                     <li class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root jss2894 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
@@ -36,22 +30,63 @@ function showListCustomer() {
                     </li>
                 </div>
                 `;
-                $(".contentCustomer").append(result)
-            })
-            handleCloseListCustomers();
-            searchCustomer();
+            $(".contentCustomer").append(result)
+        })
+        console.log(" show(data) ");
+        // searchCustomer();
+    }
 
-
+    if (customers !== undefined && customers.length > 0) {
+        setTimeout(()=>{
+            show(customers);
+        },100)
+        return;
+    }
+    $.ajax({
+        type: "GET", contentType: 'application/json',
+        url: `${location.origin}/api/customers/list_customer`
+    })
+        .done((data) => {
+            customers = data;
+            show(data);
         })
         .fail((jqXHR) => {
-            console.log(jqXHR);
-        })
+            console.log(jqXHR)
+                })
 }
 
+// const doNotSearch = () => {
+//     $(".searchCustomer").removeClass('d-none');
+//     $(".contentCustomer div").remove();
+//     let str = `
+//                 <div class="MuiPaper-root jss4291 MuiPaper-elevation1 MuiPaper-rounded"
+//                   style="padding: 48px 0px 84px;" >
+//                   <svg
+//                     viewBox="0 0 24 24"
+//                     fill="none"
+//                     xmlns="http://www.w3.org/2000/svg"
+//                     class="jss4292"
+//                   >
+//                     <path
+//                       fill-rule="evenodd"
+//                       clip-rule="evenodd"
+//                       d="M14.891 13.477a6.002 6.002 0 0 0-9.134-7.72 6 6 0 0 0 7.72 9.134l5.715 5.716 1.415-1.415-5.716-5.715Zm-2.063-6.305a4 4 0 1 1-5.656 5.656 4 4 0 0 1 5.656-5.656Z"
+//                       fill="currentColor"
+//                     ></path>
+//                   </svg>
+//                   <p class="jss4293">Không tìm thấy khách hàng phù hợp với kết quả tìm kiếm</p>
+//                   <span class="jss4294">
+//                     Thử thay đổi từ khóa tìm kiếm hoặc thêm mới khách hàng
+//                   </span>
+//                 </div>
+//                    `;
+//     $(".contentCustomer").html(str);
+// }
+// doNotSearch();
+
 const searchCustomer = () => {
+    console.log("searchCustomer");
     $("#myInput").on("input", function () {
-        // console.log($(this).val());
-        // console.log(customers)
         let search = $(this).val();
         let results = [];
         customers.forEach((item) => {
@@ -59,7 +94,6 @@ const searchCustomer = () => {
                 results.push(item);
             }
         })
-
         $(".searchCustomer").removeClass('d-none');
         $(".contentCustomer div").remove();
         $.each(results, (i, customer) => {
@@ -79,18 +113,13 @@ const searchCustomer = () => {
                 </div>
                 `;
             $(".contentCustomer").append(result);
-
         })
-
-        handleCloseListCustomers();
     })
-
 }
 
 
 function showCustomerInfo(idCustomer) {
     console.log(idCustomer);
-    // handleCloseListCustomers();
     $("#MuiBox-list-customer").addClass("hide");
 
     $("#idCustomer").val(idCustomer);
@@ -253,7 +282,6 @@ function showCustomerInfo(idCustomer) {
 function handleCloseListCustomers() {
     $(document).on("click", () => {
         $(".searchCustomer").addClass('d-none');
-
     })
 }
 
@@ -351,6 +379,7 @@ function getAllDistrictsByProvinceId(provinceId) {
     })
         .done((data) => {
             if (data.results.length === 0) {
+                console.log(data.results.length)
                 let str = `<option value="0">Chọn Quận/Huyện</option>`;
                 $("#district").append(str);
             } else {
@@ -488,8 +517,6 @@ function doCreateCustomer() {
             .done((data) => {
                 customer = data;
                 customer.locationRegionCreate = locationRegionCreate;
-                removeEventModal();
-                handleCloseListCustomers();
                 $("#create_order_customer").modal("hide");
                 App.IziToast.showSuccessAlert("Thêm khách hàng thành công!");
                 searchCustomer();
@@ -509,59 +536,59 @@ function doCreateCustomer() {
     });
 
 }
-
 doCreateCustomer();
+
 
 
 function handleRemove() {
     let str = `<div class="MuiPaper-root  jss18028 MuiPaper-elevation1 MuiPaper-rounded">
-                                        <div class="MuiBox-root jss18075 customer-info">
-                                            <div class="MuiBox-root jss18076 create-order-step2 jss18040">
-                                                <div class="MuiBox-root jss18077">
-                                                    <h6 class="MuiTypography-root MuiTypography-h6">Thông tin khách
-                                                        hàng</h6>
-                                                </div>
-                                                <div class="jss18078 SI-root">
-                                                    <form autocomplete="off" class="MuiPaper-root jss18080 SearchBox MuiPaper-elevation1 MuiPaper-rounded">
-                                                        <div class="MuiFormControl-root MuiTextField-root jss18081 MuiFormControl-fullWidth autocomplete">
-                                                            <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart">
-                                                                <div class="MuiInputAdornment-root MuiInputAdornment-positionStart">
-                                                                    <svg class="MuiSvgIcon-root" focusable="false"
-                                                                         viewBox="0 0 24 24" color="#A3A8AF"
-                                                                         aria-hidden="true"
-                                                                         style="width: 24px; height: 24px;">
-                                                                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
-                                                                    </svg>
-                                                                </div>
-                                                                <input aria-invalid="false"
-                                                                       id="myInput"
-                                                                       name="myInput"
-                                                                       placeholder="Tìm theo tên, SĐT, mã khách hàng ... (F4)"
-                                                                       type="text"
-                                                                       onclick="showListCustomer()"
-                                                                       class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
-                                                                       value="">
-                                                                <fieldset aria-hidden="true"
-                                                                          class="jss18127 MuiOutlinedInput-notchedOutline"
-                                                                          style="padding-left: 8px;">
-                                                                    <legend class="jss18128" style="width: 0.01px;">
-                                                                        <span>​</span></legend>
-                                                                </fieldset>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="MuiBox-root jss18132 jss18039">
-                                                    <p class="MuiTypography-root MuiTypography-body1"
-                                                       style="color: rgb(163, 168, 175); margin-top: 16px;">
-                                                        Chưa có thông tin khách hàng</p>
-                                                </div>
-                                            </div>
+                <div class="MuiBox-root jss18075 customer-info">
+                    <div class="MuiBox-root jss18076 create-order-step2 jss18040">
+                        <div class="MuiBox-root jss18077">
+                            <h6 class="MuiTypography-root MuiTypography-h6">Thông tin khách
+                                hàng</h6>
+                        </div>
+                        <div class="jss18078 SI-root">
+                            <form autocomplete="off" class="MuiPaper-root jss18080 SearchBox MuiPaper-elevation1 MuiPaper-rounded">
+                                <div class="MuiFormControl-root MuiTextField-root jss18081 MuiFormControl-fullWidth autocomplete">
+                                    <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart">
+                                        <div class="MuiInputAdornment-root MuiInputAdornment-positionStart">
+                                            <svg class="MuiSvgIcon-root" focusable="false"
+                                                 viewBox="0 0 24 24" color="#A3A8AF"
+                                                 aria-hidden="true"
+                                                 style="width: 24px; height: 24px;">
+                                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                                            </svg>
                                         </div>
-                                    </div>`;
+                                        <input aria-invalid="false"
+                                               id="myInput"
+                                               name="myInput"
+                                               placeholder="Tìm theo tên, SĐT, mã khách hàng ... (F4)"
+                                               type="text"
+                                               onclick="showListCustomer()"
+                                               class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                                               value="">
+                                        <fieldset aria-hidden="true"
+                                                  class="jss18127 MuiOutlinedInput-notchedOutline"
+                                                  style="padding-left: 8px;">
+                                            <legend class="jss18128" style="width: 0.01px;">
+                                                <span>​</span></legend>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="MuiBox-root jss18132 jss18039">
+                            <p class="MuiTypography-root MuiTypography-body1"
+                               style="color: rgb(163, 168, 175); margin-top: 16px;">
+                                Chưa có thông tin khách hàng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
     $("#show_customer_info").html(str);
-    searchCustomer();
     $("#MuiBox-list-customer").removeClass("hide");
+    // searchCustomer();
 
 }
 
@@ -593,8 +620,6 @@ function getAllEmployees() {
     })
         .done((data) => {
             employeeResult = data;
-            console.log("phuocccc")
-            console.log(employeeResult)
             $.each(data, (i, item) => {
                 let str = `<option value="${item.id}">${item.name}</option>`;
                 $("#selectEmployee").append(str);
@@ -654,7 +679,6 @@ function editCustomer() {
     // })
 }
 
-getAllEmployees();
 //
 // function doUpdateCustomer() {
 //     $('#btnUpdateCustomer').on('click', (idCustomer ) => {
@@ -696,9 +720,11 @@ getAllEmployees();
 // doUpdateCustomer();
 
 
-
-
-
+$(() => {
+    getAllEmployees();
+    searchCustomer();
+    handleCloseListCustomers()
+})
 
 
 
