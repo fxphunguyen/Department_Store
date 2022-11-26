@@ -26,6 +26,6 @@ public enum TypeTax {
         for (TypeTax typeTax : values) {
             if (typeTax.value.equals(value)) return typeTax;
         }
-        throw new IllegalArgumentException("The supplier status [" + value + "] is invalid!");
+        throw new IllegalArgumentException("Tax type [" + value + "] is invalid!");
     }
 }
