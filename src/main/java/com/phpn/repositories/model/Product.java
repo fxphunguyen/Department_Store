@@ -1,17 +1,21 @@
 package com.phpn.repositories.model;
 
-import javax.persistence.*;
-import java.math.BigDecimal;
-
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
-@Data
-@Entity
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Objects;
+import java.util.Set;
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
+@Entity
 @Accessors(chain = true)
 @Table(name = "products")
 public class Product {
@@ -49,9 +53,6 @@ public class Product {
     @Column(name = "bar_code", nullable = false, length = 50)
     private String barCode;
 
-    @Column(name = "quantity", nullable = false)
-    private Integer quantity;
-
     @Column(name = "retail_price", nullable = false, precision = 10, scale = 2)
     private BigDecimal retailPrice;
 
@@ -76,6 +77,12 @@ public class Product {
     @Column(name = "deleted", nullable = false, columnDefinition = "boolean default false")
     private Boolean deleted = false;
 
+    @Column(name = "apply_tax", nullable = false, columnDefinition = "boolean default false")
+    private Boolean applyTax = false;
+
+    @OneToMany
+    private Set<Tax> taxs;
+
     public Product(Integer categoryId, Integer brandId) {
         setCategoryId(categoryId);
         setBrandId(brandId);
@@ -95,4 +102,16 @@ public class Product {
         return this;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

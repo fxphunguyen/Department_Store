@@ -11,18 +11,14 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Data
 @Accessors(chain = true)
-public class OrderItemParam {
+public class OrderItemExport {
 
     private Integer id;
 
-    private Integer orderId;
-
-    private Integer itemId;
+    private BigDecimal price;
 
     private Integer quantity;
 
     private Integer productId;
-
-    private BigDecimal price;
 
 }

@@ -2702,8 +2702,9 @@ jss8611 {
 }
 
 .jss1062 {
-    width: 718px !important;
+    width: 726px !important;
     position: absolute !important;
+    margin-top: 32px;
     inset: 0px auto auto 0px !important;
     transform: translate(278px, 466px) !important;
     z-index: 999 !important;

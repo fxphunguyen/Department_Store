@@ -33,7 +33,7 @@ public class Order {
     private BigDecimal total;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "customer_id", nullable = false)
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @Column(name = "customer_id", insertable = false, updatable = false)
@@ -95,6 +95,10 @@ public class Order {
 
     public Order setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
+        return this;
+    }
+    public Order setPaymentMethodId(Integer paymentMethodId) {
+        this.paymentMethod = new PaymentMethod(this.paymentMethodId = paymentMethodId);
         return this;
     }
 }
