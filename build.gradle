@@ -26,6 +26,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.jetbrains:annotations:23.0.0'
 //    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+   // implementation group: 'com.vladmihalcea', name: 'hibernate-types-52', version: '2.16.2'
+
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.mysql:mysql-connector-j'

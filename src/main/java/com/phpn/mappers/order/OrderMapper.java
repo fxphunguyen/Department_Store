@@ -43,8 +43,10 @@ public class OrderMapper {
                 .setDiscount(orderParam.getDiscount())
                 .setDescription(orderParam.getDescription())
                 .setCreateAt(orderParam.getCreateAt())
-                .setTotal(orderParam.getTotal())
-                .setGrandTotal(orderParam.getGrandTotal());
+                .setCustomerId(orderParam.getCustomerId())
+                .setPaymentMethodId(orderParam.getPaymentMethodId())
+                .setEmployeeId(orderParam.getEmployeeId())
+                .setOrderStatusId(orderParam.getOrderStatusId());
 
     }
 }

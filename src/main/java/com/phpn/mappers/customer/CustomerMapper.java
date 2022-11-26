@@ -35,9 +35,9 @@ public class CustomerMapper {
                 .setCreateAt(customer.getCreateAt())
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
-                .setLocationRegionId(customer.getLocationRegionId())
-                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()))
-                .setEmployeeResult(employeeMapper.toDTO(customer.getEmployee()));
+                .setLocationRegionId(customer.getLocationRegionId());
+//                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()))
+//                .setEmployeeResult(employeeMapper.toDTO(customer.getEmployee()));
     }
     public Customer toOrderDTO(CustomerOrderResult customerOrderResult , Customer customer) {
         return  customer

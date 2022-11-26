@@ -32,7 +32,7 @@ public class PaymentMethodServiceImpl implements PaymentMethodService {
         .map(paymentMethod -> paymentMethodMapper.toDTO(paymentMethod))
         .collect(Collectors.toList());
 
-        if (paymentMethodResultList.isEmpty()) throw new NotFoundException("Not found payment method data or is empty!");
+        if (paymentMethodResultList.isEmpty()) throw new  NotFoundException("Not found payment method data or is empty!");
         return paymentMethodResultList;
     }
 
