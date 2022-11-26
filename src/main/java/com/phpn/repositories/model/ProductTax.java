@@ -15,7 +15,7 @@ import java.util.Objects;
 @Getter
 @Entity
 @Accessors(chain = true)
-@Table(name = "product_tax")
+@Table(name = "products_taxs")
 public class ProductTax {
     @EmbeddedId
     private ProductTaxId id;
@@ -23,7 +23,10 @@ public class ProductTax {
     private Integer productId;
     @Column(name = "tax_id", insertable = false, updatable = false)
     private Integer taxId;
-    
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type_tax")
+    private TypeTax typeTax;
 
     @Override
     public boolean equals(Object o) {
