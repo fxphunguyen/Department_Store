@@ -28,7 +28,6 @@ public class OrderMapper {
                 .setStatus(order.getOrderStatus().getName())
                 .setId(order.getId())
                 .setGrandTotal(order.getGrandTotal())
-                .setTax(order.getTax())
                 .setDescription(order.getDescription())
                 .setDiscount(order.getDiscount())
                 .setTotal(order.getTotal())
@@ -39,7 +38,6 @@ public class OrderMapper {
     public Order toModel(OrderParam orderParam) {
         return new Order()
                 .setId(orderParam.getId())
-                .setTax(orderParam.getTax())
                 .setDiscount(orderParam.getDiscount())
                 .setDescription(orderParam.getDescription())
                 .setCreateAt(orderParam.getCreateAt())

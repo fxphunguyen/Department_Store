@@ -59,8 +59,8 @@ public class Order {
     @JoinColumn(name = "payment_method_id", nullable = false)
     private PaymentMethod paymentMethod;
 
-    @Column(name = "tax", precision = 10, scale = 2)
-    private BigDecimal tax;
+//    @Column(name = "tax", precision = 10, scale = 2)
+//    private BigDecimal tax;
 
     @Column(name = "payment_method_id", insertable = false, updatable = false)
     private Integer paymentMethodId;

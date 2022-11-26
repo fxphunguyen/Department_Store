@@ -4,7 +4,7 @@ import com.phpn.dto.customer.CustomerResult;
 import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.orderItem.OrderItemResult;
 import com.phpn.dto.payment_methods.PaymentMethodResult;
-import com.phpn.repositories.model.TypeTax;
+import com.phpn.repositories.model.TaxType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,7 +29,7 @@ public class OrderResult {
 
     private String status;
 
-    private BigDecimal tax;
+//    private BigDecimal tax;
 
     private BigDecimal discount;
 
@@ -40,8 +40,6 @@ public class OrderResult {
     private BigDecimal total;
 
     private BigDecimal grandTotal;
-
-    private TypeTax typeTax;
 
     List<OrderItemResult> orderItems;
 

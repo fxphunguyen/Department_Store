@@ -3,7 +3,6 @@ package com.phpn.services.order;
 import com.phpn.dto.order.OrderParam;
 import com.phpn.dto.order.OrderResult;
 import com.phpn.dto.orderItem.OrderItemExport;
-import com.phpn.dto.orderItem.OrderItemParam;
 import com.phpn.dto.orderItem.OrderItemResult;
 import com.phpn.exceptions.NotEnoughQuantityException;
 import com.phpn.exceptions.NotFoundException;
@@ -16,16 +15,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.zip.DataFormatException;
 
 
 @Service
 public class OrderServiceImpl implements OrderService {
+
 
     @Autowired
     private OrderRepository orderRepository;
@@ -55,6 +53,9 @@ public class OrderServiceImpl implements OrderService {
     private CustomerRepository customerRepository;
 
 
+    @Autowired
+    private ProductTaxRepository productTaxRepository;
+
     @Override
     @Transactional
     public List<OrderResult> findAll() {
@@ -77,39 +78,42 @@ public class OrderServiceImpl implements OrderService {
         order.setTotal(new BigDecimal(0));
         order.setOrderCode("SF001");
         order = orderRepository.save(order);
-        BigDecimal tax;
-        BigDecimal total = BigDecimal.valueOf(0);
+        BigDecimal subTotal = BigDecimal.valueOf(0);
         BigDecimal grandTotal = BigDecimal.valueOf(0);
-        for (OrderItemExport itemExport : orderParam.getOrderItems()) {
-            if (!productRepository.existsById(itemExport.getProductId())) {
-                throw new NotFoundException("Không tìm thấy Id sản phẩm " + itemExport.getProductId());
+        for (OrderItemExport orderItemExport : orderParam.getOrderItems()) {
+
+            Optional<Product> pOptional = productRepository.findById(orderItemExport.getProductId());
+
+            if (!pOptional.isPresent()) {
+                throw new NotFoundException("Không tìm thấy Id sản phẩm " + orderItemExport.getProductId());
             }
             //lấy toàn bộ item theo productId
-            List<Item> items = itemRepository.findAllByProductIdAndAvailableGreaterThanOrderByCreateAt(itemExport.getProductId(), 0);
+            List<Item> items = itemRepository.findAllByProductIdAndAvailableGreaterThanOrderByCreateAt(orderItemExport.getProductId(), 0);
             int totalAvailable = items.stream().mapToInt(Item::getAvailable).sum();
-            if (totalAvailable < itemExport.getQuantity()) {
+            if (totalAvailable < orderItemExport.getQuantity()) {
                 throw new NotEnoughQuantityException("Không đủ số lượng cho đơn hàng, vui lòng kiểm tra lại !");
             }
-            int productId = itemExport.getProductId();
+            Product product = pOptional.get();
+            Integer productId = product.getId();
+            BigDecimal retailPrice = product.getRetailPrice();
 
-            Optional<Product> productOptional = productRepository.findById(productId);
+            int quantityCustomerOrder = orderItemExport.getQuantity();
+            BigDecimal orderItemTotal = retailPrice.multiply(new BigDecimal(quantityCustomerOrder));
 
-            BigDecimal retailPrice = (productOptional.get().getRetailPrice());
+            OrderItem orderItem = new OrderItem();
+            if (product.getApplyTax()) {
+                List<ProductTax> productTaxList = productTaxRepository.findAllByProductIdAndTaxType(productId, TaxType.OUT);
+                float taxTotal = (float) productTaxList.stream()
+                        .mapToDouble(productTax -> productTax.getId().getTax().getTax()).sum();
+                orderItem.setTax(taxTotal);
+                orderItemTotal = orderItemTotal.multiply(BigDecimal.valueOf(taxTotal / 100));
+            }
 
-            int quantityCustomerOrder = itemExport.getQuantity();
-            System.out.println(quantityCustomerOrder);
+            if (orderItem.getDiscount() != null) {
+                orderItemTotal = orderItemTotal.subtract(orderParam.getDiscount());
+            }
 
-            BigDecimal totalOrderItem = retailPrice.multiply(new BigDecimal(quantityCustomerOrder));
-
-            total = total.add(retailPrice.multiply(new BigDecimal(quantityCustomerOrder)));
-            order.setTotal(total);
-
-            tax = total.multiply(new BigDecimal(0.1));
-            order.setTax(tax);
-
-            grandTotal = total.add(tax);
-            order.setGrandTotal(grandTotal);
-
+            subTotal = subTotal.add(orderItemTotal);
 
             for (Item item : items) {
                 if (quantityCustomerOrder == 0) {
@@ -131,16 +135,24 @@ public class OrderServiceImpl implements OrderService {
                     item.setSold(itemSold);
                     quantityCustomerOrder = 0;
                 }
-                OrderItem orderItem = new OrderItem();
+
                 orderItem.setQuantity(orderItemSold);
                 orderItem.setPrice(retailPrice);
                 orderItem.setProductId(productId);
                 orderItem.setItemId(item.getId());
                 orderItem.setOrderId(order.getId());
 
+
                 orderItemRepository.save(orderItem);
             }
         }
+       // order.setSubTotal(total);
+        //cong them phi giao hang
+        BigDecimal total = subTotal.add(BigDecimal.valueOf(0));
+        order.setTotal(total);
+
+        //tru ma giam gia
+        order.setGrandTotal(grandTotal);
         return orderMapper.toDTO(order);
 
 

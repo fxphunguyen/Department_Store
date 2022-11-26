@@ -21,4 +21,5 @@ public class OrderItemExport {
 
     private Integer productId;
 
+    private BigDecimal discount;
 }
