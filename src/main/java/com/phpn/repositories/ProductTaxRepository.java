@@ -1,10 +1,13 @@
 package com.phpn.repositories;
 
-import com.phpn.repositories.model.Tax;
+import com.phpn.repositories.model.ProductTax;
+import com.phpn.repositories.model.TaxType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface TaxRepository extends JpaRepository<Integer, Tax> {
+import java.util.List;
 
+@Repository
+public interface ProductTaxRepository extends JpaRepository<Integer, ProductTax> {
+    List<ProductTax> findAllByTaxType(TaxType taxType);
 }

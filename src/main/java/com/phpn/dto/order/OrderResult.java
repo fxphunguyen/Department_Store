@@ -4,6 +4,7 @@ import com.phpn.dto.customer.CustomerResult;
 import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.orderItem.OrderItemResult;
 import com.phpn.dto.payment_methods.PaymentMethodResult;
+import com.phpn.repositories.model.TypeTax;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,6 +40,8 @@ public class OrderResult {
     private BigDecimal total;
 
     private BigDecimal grandTotal;
+
+    private TypeTax typeTax;
 
     List<OrderItemResult> orderItems;
 
