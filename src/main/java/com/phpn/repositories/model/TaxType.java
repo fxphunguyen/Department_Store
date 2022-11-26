@@ -4,14 +4,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.jetbrains.annotations.NotNull;
 
-public enum TypeTax {
+public enum TaxType {
 
     IN("TAX_IN"),
     OUT("TAX_OUT");
 
     private final String value;
 
-    TypeTax(String value) {
+    TaxType(String value) {
         this.value = value;
     }
 
@@ -21,9 +21,9 @@ public enum TypeTax {
     }
 
     @JsonCreator
-    public static @NotNull TypeTax parseTypeTax(String value) {
-        TypeTax[] values = values();
-        for (TypeTax typeTax : values) {
+    public static @NotNull TaxType parseTypeTax(String value) {
+        TaxType[] values = values();
+        for (TaxType typeTax : values) {
             if (typeTax.value.equals(value)) return typeTax;
         }
         throw new IllegalArgumentException("Tax type [" + value + "] is invalid!");

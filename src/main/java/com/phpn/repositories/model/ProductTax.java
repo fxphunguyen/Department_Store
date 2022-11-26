@@ -23,13 +23,10 @@ public class ProductTax {
     private Integer productId;
     @Column(name = "tax_id", insertable = false, updatable = false)
     private Integer taxId;
-<<<<<<< HEAD
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type_tax")
-    private TypeTax typeTax;
-=======
->>>>>>> edbaac6350babd0e8a883b0475745bb7e21da4a0
+    @Column(name = "tax_type")
+    private TaxType taxType;
 
     @Override
     public boolean equals(Object o) {
