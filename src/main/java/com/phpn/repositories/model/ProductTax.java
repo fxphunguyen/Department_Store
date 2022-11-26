@@ -23,7 +23,6 @@ public class ProductTax {
     private Integer productId;
     @Column(name = "tax_id", insertable = false, updatable = false)
     private Integer taxId;
-    
 
     @Override
     public boolean equals(Object o) {
