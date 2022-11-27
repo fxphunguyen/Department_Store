@@ -9,9 +9,7 @@ import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.LocationRegionRepository;
-import com.phpn.repositories.model.Customer;
-import com.phpn.repositories.model.CustomerGender;
-import com.phpn.repositories.model.CustomerGroup;
+import com.phpn.repositories.model.*;
 import com.phpn.services.customer.CustomerService;
 import com.phpn.services.locationRegion.LocationRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,11 +47,7 @@ public class CustomerAPI {
     @GetMapping("/list_customerAll")
     @Transactional(readOnly = true)
     public ResponseEntity<?> showListCustomerAll() {
-        List<CustomerResult> customers = customerRepository
-                .findAll()
-                .stream()
-                .map(customer -> customerMapper.toDTO(customer))
-                .collect(Collectors.toList());
+        List<CustomerResult> customers = customerRepository.findAll().stream().map(customer -> customerMapper.toDTO(customer)).collect(Collectors.toList());
         ;
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
@@ -135,4 +129,28 @@ public class CustomerAPI {
         return customerGender;
     }
 
+
+//    @GetMapping("/showAllCustomerMixInfo")
+//    public ResponseEntity<?> showAllCustomerMixInfo() {
+//        List<ICustomer> iCustomers = customerRepository.getAllCustomerMixInfo();
+//        List<ICustomerImpl> iCustomerImpls = iCustomers.stream().map(iCustomer -> {
+//            ICustomerImpl iCustomerImpl = new ICustomerImpl();
+//            iCustomerImpl.setFromICustomer(iCustomer);
+//            return iCustomerImpl;
+//        }).collect(Collectors.toList());
+//        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
+//    }
+//
+//
+
+    @GetMapping("/showAllCustomerMixInfo")
+    public ResponseEntity<?> showAllCustomerMixInfo() {
+        List<ICustomer> iCustomers = customerRepository.getAllCustomerMixInfo();
+        List<ICustomerImpl> iCustomerImpls = iCustomers.stream().map(iCustomer -> {
+            ICustomerImpl iCustomerImpl = new ICustomerImpl();
+            iCustomerImpl.setFromICustomer(iCustomer);
+            return iCustomerImpl;
+        }).collect(Collectors.toList());
+        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
+    }
 }
