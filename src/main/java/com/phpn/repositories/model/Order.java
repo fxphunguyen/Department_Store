@@ -68,6 +68,9 @@ public class Order {
     @Column(name = "grand_total", nullable = false, precision = 10, scale = 2)
     private BigDecimal grandTotal;
 
+    @Column(name = "sub_total", nullable = false, precision = 10, scale = 2)
+    private BigDecimal subTotal;
+
     @Column(name = "discount", precision = 10, scale = 2)
     private BigDecimal discount;
 
