@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductTaxRepository extends JpaRepository<ProductTaxId, ProductTax> {
+public interface ProductTaxRepository extends JpaRepository<ProductTax, ProductTaxId> {
     List<ProductTax> findAllByProductIdAndTaxType(Integer productId, TaxType taxType);
 }
