@@ -1,18 +1,32 @@
 "use strict";
 
-const passwordToggleEventHandler = (selectorHide, selectorShow, selectorTarget) => {
-    const $ = (selector) => document.querySelector(selector);
-    const getSelectorHide = $(selectorHide);
-    const getSelectorShow = $(selectorShow);
-    const getSelectorTarget = $(selectorTarget);
+const passwordToggleEventHandler = async (selectorInput, selectorShow, selectorHide) => {
+    try {
+        const $ = async (selector) => await document.querySelector(selector);
 
-    getSelectorHide.addEventListener("click", () => {
-        getSelectorTarget.setAttribute("type", getSelectorTarget.getAttribute("type") === "password" ? "text" : "password");
-        getSelectorHide.classList.add("hidden");
-        getSelectorShow.classList.remove("hidden");
+        const getSelectorInput = await $(selectorInput);
+        const getSelectorShow = await $(selectorShow);
+        const getSelectorHide = await $(selectorHide);
 
-        passwordToggleEventHandler(selectorShow, selectorHide, selectorTarget);
-    });
+        await getSelectorShow.addEventListener("click", async () => {
+            await getSelectorInput.setAttribute("type", getSelectorInput.getAttribute("type") === "password" ? "text" : "password");
+            await getSelectorShow.classList.add("hidden");
+            await getSelectorHide.classList.remove("hidden");
+        });
+
+    } catch (exception) {
+        console.log("An exception occurred: " + exception);
+    }
 }
 
-passwordToggleEventHandler("#icon-eye", "#icon-eye-slash", "#password");
+const passwordToggleEventIntermediary = async (selectorInput, selectorShow, selectorHide) => {
+    try {
+        await passwordToggleEventHandler(selectorInput, selectorShow, selectorHide);
+        await passwordToggleEventHandler(selectorInput, selectorHide, selectorShow);
+
+    } catch (exception) {
+        console.log("An exception occurred: " + exception);
+    }
+}
+
+await passwordToggleEventIntermediary("#login-password", "#login-icon-eye-id", "#login-icon-eye-slash-id");
