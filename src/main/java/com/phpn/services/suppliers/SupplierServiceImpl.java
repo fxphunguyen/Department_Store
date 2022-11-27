@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.phpn.exceptions.NotFoundException;
 import com.phpn.mappers.SupplierMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
+import com.phpn.dto.suppliers.SupplierCreate;
+import com.phpn.dto.suppliers.SupplierResult;
+import com.phpn.repositories.model.Supplier;
 import com.phpn.repositories.SupplierRepository;
 import com.phpn.repositories.LocationRegionRepository;
-import com.phpn.repositories.model.Supplier;
-import com.phpn.dto.suppliers.SupplierResult;
-import com.phpn.dto.suppliers.SupplierCreate;
-import com.phpn.exceptions.NotFoundException;
 
 @Service
 @Transactional
@@ -27,10 +27,10 @@ public class SupplierServiceImpl implements SupplierService {
     private SupplierMapper supplierMapper;
 
     @Autowired
-    private SupplierRepository supplierRepository;
+    private LocationRegionMapper locationRegionMapper;
 
     @Autowired
-    private LocationRegionMapper locationRegionMapper;
+    private SupplierRepository supplierRepository;
 
     @Autowired
     private LocationRegionRepository locationRegionRepository;
