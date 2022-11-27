@@ -2,9 +2,9 @@ package com.phpn.services.suppliers;
 
 import java.util.List;
 
-import com.phpn.dto.suppliers.SupplierResult;
-import com.phpn.dto.suppliers.SupplierCreate;
 import com.phpn.repositories.model.Supplier;
+import com.phpn.dto.suppliers.SupplierCreate;
+import com.phpn.dto.suppliers.SupplierResult;
 
 public interface SupplierService {
 

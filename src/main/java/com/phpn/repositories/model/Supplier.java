@@ -1,10 +1,10 @@
 package com.phpn.repositories.model;
 
+import lombok.experimental.Accessors;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import lombok.experimental.Accessors;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
