@@ -1,6 +1,5 @@
 package com.phpn.controllers.api;
 
-import com.phpn.dto.order.OrderParam;
 import com.phpn.dto.orderItem.OrderItemParam;
 import com.phpn.services.order_item.OrderItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
