@@ -3599,6 +3599,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:focus::-m
 .MuiTableContainer-root {
     width: 100%;
     overflow-x: auto;
+    /*position: absolute;*/
+}
+.mdl-js {
+    overflow-x: hidden;
 }
 
 .MuiTable-root {
