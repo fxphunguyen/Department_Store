@@ -38,7 +38,11 @@ input::-ms-reveal {
     min-width: 100vh;
     min-height: 100vh;
     background: url("../../images/background-bottom-pos-app.svg") no-repeat fixed bottom;
-    background-size: 132%;
+    background-size: 131%;
+}
+
+.register-now {
+    font-size: 15px;
 }
 
 .register-background {

@@ -26,8 +26,6 @@ public class OrderParam {
 
     private Integer customerId;
 
-    private Integer paymentMethodId;
-
     private BigDecimal tax;
 
     private BigDecimal discount;

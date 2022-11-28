@@ -1,32 +1,56 @@
 "use strict";
 
+(async () => {
+    try {
+        const getForm = await document.querySelectorAll(".needs-validation");
+
+        await Array
+        .from(getForm)
+        .forEach((form) => {
+            form.addEventListener("submit", async (event) => {
+                if (!form.checkValidity()) {
+                    await event.preventDefault();
+                    await event.stopPropagation();
+                }
+
+                await form.classList.add("was-validated");
+            }, false);
+        });
+
+    } catch (error) {
+        throw new Error("An error occurred: " + error);
+    }
+})();
+
 const passwordToggleEventHandler = async (selectorInput, selectorShow, selectorHide) => {
     try {
-        const $ = async (selector) => await document.querySelector(selector);
-
         const getSelectorInput = await $(selectorInput);
         const getSelectorShow = await $(selectorShow);
         const getSelectorHide = await $(selectorHide);
 
         await getSelectorShow.addEventListener("click", async () => {
-            await getSelectorInput.setAttribute("type", getSelectorInput.getAttribute("type") === "password" ? "text" : "password");
+            const getInputType = getSelectorInput.getAttribute("type") === "password" ? "text" : "password";
+
+            await getSelectorInput.setAttribute("type", getInputType);
             await getSelectorShow.classList.add("hidden");
             await getSelectorHide.classList.remove("hidden");
         });
 
-    } catch (exception) {
-        console.log("An exception occurred: " + exception);
+    } catch (error) {
+        throw new Error("An error occurred: " + error);
     }
 }
 
 const passwordToggleEventIntermediary = async (selectorInput, selectorShow, selectorHide) => {
     try {
-        await passwordToggleEventHandler(selectorInput, selectorShow, selectorHide);
-        await passwordToggleEventHandler(selectorInput, selectorHide, selectorShow);
+        await Promise.all([
+            passwordToggleEventHandler(selectorInput, selectorShow, selectorHide),
+            passwordToggleEventHandler(selectorInput, selectorHide, selectorShow)
+        ]);
 
-    } catch (exception) {
-        console.log("An exception occurred: " + exception);
+    } catch (error) {
+        throw new Error("An error occurred: " + error);
     }
 }
 
-await passwordToggleEventIntermediary("#login-password", "#login-icon-eye-id", "#login-icon-eye-slash-id");
+passwordToggleEventIntermediary("#login-password", "#login-icon-eye-id", "#login-icon-eye-slash-id");

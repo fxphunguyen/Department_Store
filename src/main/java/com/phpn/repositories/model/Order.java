@@ -1,10 +1,12 @@
 package com.phpn.repositories.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
 
 @Setter
@@ -55,18 +57,11 @@ public class Order {
     @Column(name = "order_status_id", insertable = false, updatable = false)
     private Integer orderStatusId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "payment_method_id", nullable = false)
-    private PaymentMethod paymentMethod;
-
-//    @Column(name = "tax", precision = 10, scale = 2)
-//    private BigDecimal tax;
-
-    @Column(name = "payment_method_id", insertable = false, updatable = false)
-    private Integer paymentMethodId;
-
     @Column(name = "grand_total", nullable = false, precision = 10, scale = 2)
     private BigDecimal grandTotal;
+
+    @Column(name = "sub_total", nullable = false, precision = 10, scale = 2)
+    private BigDecimal subTotal;
 
     @Column(name = "discount", precision = 10, scale = 2)
     private BigDecimal discount;
@@ -75,11 +70,10 @@ public class Order {
         this.id = id;
     }
 
-    public Order(Integer customerId, Integer employeeId, Integer orderStatusId, Integer paymentMethodId) {
+    public Order(Integer customerId, Integer employeeId, Integer orderStatusId) {
         setCustomerId(customerId);
         setEmployeeId(employeeId);
         setOrderStatusId(orderStatusId);
-        setPaymentMethodId(paymentMethodId);
     }
 
     public Order setCustomerId(Integer customerId) {
@@ -92,13 +86,8 @@ public class Order {
         return this;
     }
 
-
     public Order setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
-        return this;
-    }
-    public Order setPaymentMethodId(Integer paymentMethodId) {
-        this.paymentMethod = new PaymentMethod(this.paymentMethodId = paymentMethodId);
         return this;
     }
 }
