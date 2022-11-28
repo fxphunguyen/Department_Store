@@ -4,8 +4,6 @@ import com.phpn.dto.order.OrderParam;
 import com.phpn.dto.order.OrderResult;
 import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.mappers.employee.EmployeeMapper;
-
-import com.phpn.mappers.payment_method.PaymentMethodMapper;
 import com.phpn.repositories.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,15 +14,12 @@ public class OrderMapper {
     EmployeeMapper employeeMapper;
 
     @Autowired
-    private PaymentMethodMapper paymentMethodMapper;
-    @Autowired
     private CustomerMapper customerMapper;
 
     public OrderResult toDTO(Order order) {
         return new OrderResult()
                 .setEmployee(employeeMapper.toDTO(order.getEmployee()))
                 .setCustomer(customerMapper.toDTO(order.getCustomer()))
-                .setPaymentMethod(paymentMethodMapper.toDTO(order.getPaymentMethod()))
                 .setStatus(order.getOrderStatus().getName())
                 .setId(order.getId())
                 .setGrandTotal(order.getGrandTotal())
@@ -42,7 +37,6 @@ public class OrderMapper {
                 .setDescription(orderParam.getDescription())
                 .setCreateAt(orderParam.getCreateAt())
                 .setCustomerId(orderParam.getCustomerId())
-                .setPaymentMethodId(orderParam.getPaymentMethodId())
                 .setEmployeeId(orderParam.getEmployeeId())
                 .setOrderStatusId(orderParam.getOrderStatusId());
 
