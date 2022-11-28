@@ -4,6 +4,7 @@ package com.phpn.dto.customer;
 import com.phpn.dto.locationRegion.LocationRegionCreate;
 import com.phpn.repositories.model.CustomerGender;
 import com.phpn.repositories.model.CustomerGroup;
+import com.phpn.repositories.model.CustomerStatus;
 import com.phpn.repositories.model.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,7 +33,7 @@ public class CustomerCreate {
 
     private CustomerGender customerGender;
 
-    private String status;
+    private CustomerStatus customerStatus;
 
     private String createAt;
 

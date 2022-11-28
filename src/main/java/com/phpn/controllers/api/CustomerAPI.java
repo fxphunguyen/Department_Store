@@ -48,7 +48,6 @@ public class CustomerAPI {
     @Transactional(readOnly = true)
     public ResponseEntity<?> showListCustomerAll() {
         List<CustomerResult> customers = customerRepository.findAll().stream().map(customer -> customerMapper.toDTO(customer)).collect(Collectors.toList());
-        ;
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 
@@ -67,6 +66,7 @@ public class CustomerAPI {
     }
 
     @GetMapping("/{id}")
+
     public ResponseEntity<?> findById(@PathVariable Integer id) {
         CustomerResult customerResult = customerService.findById(id);
         return new ResponseEntity<>(customerResult, HttpStatus.OK);
@@ -145,12 +145,19 @@ public class CustomerAPI {
 
     @GetMapping("/showAllCustomerMixInfo")
     public ResponseEntity<?> showAllCustomerMixInfo() {
-        List<ICustomer> iCustomers = customerRepository.getAllCustomerMixInfo();
-//        List<ICustomerImpl> iCustomerImpls = iCustomers.stream().map(iCustomer -> {
-//            ICustomerImpl iCustomerImpl = new ICustomerImpl();
-//            iCustomerImpl.setFromICustomer(iCustomer);
-//            return iCustomerImpl;
-//        }).collect(Collectors.toList());
+        List<ICustomer> iCustomers = customerService.showAllCustomerMixInfo();
         return new ResponseEntity<>(iCustomers, HttpStatus.OK);
     }
+    @GetMapping("/showAllCustomerMixInfoByStatus")
+    public ResponseEntity<?> showAllCustomerMixInfoByStatus() {
+        List<ICustomer> iCustomers = customerService.showAllCustomerMixInfoByStatus();
+        return new ResponseEntity<>(iCustomers, HttpStatus.OK);
+    }
+    @GetMapping("/customerInfo/{id}")
+    public  ResponseEntity<?> showListCustomerInfo(@PathVariable Integer id){
+        ICustomer iCustomer = customerService.CustomerInfoById(id);
+        return  new ResponseEntity<>(iCustomer, HttpStatus.OK);
+    }
+
+
 }

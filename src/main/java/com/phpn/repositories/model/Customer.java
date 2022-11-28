@@ -62,7 +62,8 @@ public class Customer {
     private String birthday;
 
     @Column(name = "status", nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private CustomerStatus customerStatus;
 
     @Column(name = "gender", nullable = false)
     @Enumerated(EnumType.STRING)

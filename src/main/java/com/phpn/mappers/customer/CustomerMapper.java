@@ -7,6 +7,7 @@ import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.model.Customer;
+import com.phpn.repositories.model.CustomerStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,13 +32,13 @@ public class CustomerMapper {
                 .setCustomerGender(customer.getCustomerGender())
                 .setEmail(customer.getEmail())
                 .setBirthday(customer.getBirthday())
-                .setStatus(customer.getStatus())
+                .setCustomerStatus(customer.getCustomerStatus())
                 .setCreateAt(customer.getCreateAt())
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
+                .setCustomerStatus(customer.getCustomerStatus())
                 .setLocationRegionId(customer.getLocationRegionId());
-//                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()))
-//                .setEmployeeResult(employeeMapper.toDTO(customer.getEmployee()));
+
     }
     public Customer toOrderDTO(CustomerOrderResult customerOrderResult , Customer customer) {
         return  customer
@@ -58,7 +59,7 @@ public class CustomerMapper {
                 .setCustomerGroup(customerCreate.getCustomerGroup())
                 .setEmail(customerCreate.getEmail())
                 .setBirthday(customerCreate.getBirthday())
-                .setStatus(customerCreate.getStatus())
+                .setCustomerStatus(CustomerStatus.AVAILABLE)
                 .setCreateAt(java.time.LocalDateTime.now().toString())
                 .setUpdateAt(customerCreate.getUpdateAt())
                 .setCustomerGender(customerCreate.getCustomerGender())
@@ -75,7 +76,7 @@ public class CustomerMapper {
                 .setCustomerGender(customerCreate.getCustomerGender())
                 .setEmail(customerCreate.getEmail())
                 .setBirthday(customerCreate.getBirthday())
-                .setStatus(customerCreate.getStatus())
+                .setCustomerStatus(customerCreate.getCustomerStatus())
                 .setCreateAt(customerCreate.getCreateAt())
                 .setUpdateAt(customerCreate.getUpdateAt())
                 .setLocationRegionId(customerCreate.getLocationRegionId())
@@ -92,7 +93,7 @@ public class CustomerMapper {
                 .setCustomerGender(customerResult.getCustomerGender())
                 .setEmail(customerResult.getEmail())
                 .setBirthday(customerResult.getBirthday())
-                .setStatus(customerResult.getStatus())
+                .setCustomerStatus(customerResult.getCustomerStatus())
                 .setUpdateAt(customerResult.getUpdateAt())
                 .setUpdateAt(java.time.LocalDateTime.now().toString())
                 .setDeleted(true);

@@ -107,11 +107,12 @@
                     <div class="cTUhMx">
                         <div id="scroller" class="hYUFnd">
                             <div class="ieIWRo">
-                                <button class="dvtKJo">Tất cả khách hàng</button>
-                                <button id="active" class="ceoyok">Đang giao dịch</button>
+                                <button class="dvtKJo btnShowTableCustomer" id="btnShowTableCustomer">Tất cả khách hàng</button>
+                                <button type="button" id="active btnShowTableCustomerByStatus" class="btnShowTableCustomerByStatus ceoyok">Đang giao dịch</button>
                             </div>
                         </div>
                     </div>
+
                     <div class="MuiBox-root jss1158">
                         <div class="elNOYP">
                             <div width="100%" class="gTRFtW dYvjic">
@@ -332,8 +333,8 @@
     hj('trigger', 'split_test_b');
 </script>
 <script>
-    getAllCustomerGroup();
-    function getAllCustomerGroup() {
+    getAllCustomerInfo();
+    function getAllCustomerInfo() {
         return $.ajax({
             headers: {
                 "accept": "application/json",
@@ -343,9 +344,27 @@
             url: "http://localhost:8080/api/customers/showAllCustomerMixInfo"
         })
             .done((data) => {
+
                 console.log(data)
                 $.each(data, (i, item) => {
                     customer = item;
+                    if(customer.status == "AVAILABLE"){
+                        customer.status = customer.status = "Ngừng giao dịch";
+                    }
+                    if(customer.status == "SUCCESS"){
+                        customer.status = "Đang giao dịch"
+                    }
+
+
+                    if (customer.gender == "NU"){
+                        customer.gender = "Nữ"
+                    }
+                    if(customer.gender == "NAM"){
+                        customer.gender = "Nam"
+                    }
+                    if(customer.gender == "KHAC"){
+                        customer.gender = "Khác"
+                    }
                     console.log(customer)
                     let str = `
                          <tr class="MuiTableRow-root jss3687 MuiTableRow-hover" role="checkbox"
@@ -355,71 +374,79 @@
                                         class="MuiTouchRipple-root"></span></span></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary"
-                                       href="/admin/customers/183297272">${customer.customer_CODE}</a></td>
+                                       href="/admin/customers/183297272">${customer.customer_CODE || "---"}</a></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
                                        data-tip="Trúc Nguyễn" currentitem="false"
                                        style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                        ${customer.name}</p></td>
+                                        ${customer.name || "---" }</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
                                        data-tip="0935240482" currentitem="false"
                                        style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                        ${customer.phone}</p></td>
+                                        ${customer.phone || "---"}</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
                                        data-tip="Bán lẻ" currentitem="false"
                                        style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                        ${customer.customer_GROUP}</p></td>
+                                        ${customer.customer_GROUP || "---"}
+                                        </p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       style="padding-right: 6px;">${customer.congno}</p></td>
+                                       style="padding-right: 6px;">
+                                       ${customer.congno != null ? (new Intl.NumberFormat('vi-VN', {
+                                                style: 'currency',
+                                                currency: 'VND'
+                                            }).format(customer.congno)) : "---"}
+                                       </p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
 
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       style="padding-right: 6px;">${customer.chitieu}</p></td>
+                                       style="padding-right: 6px;">${customer.chitieu != null ? (new Intl.NumberFormat('vi-VN', {
+                                        style: 'currency',
+                                        currency: 'VND'
+                                            }).format(customer.chitieu)) : "---"}</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.sl_MH_DAMUA}</p>
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.sl_MH_DAMUA || "---"}</p>
                                 </td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.birthday}</p>
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.birthday || "---"}</p>
                                 </td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
                                        data-tip="" currentitem="false"
-                                       style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">${customer.email}</p>
+                                       style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">${customer.email || "---"}</p>
                                 </td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft"
                                     style="padding: 0px 16px;">
                                     <div class="sc-jSMfEi csJERM"><span
-                                            class="sc-eCYdqJ ccQLIN">${customer.status}</span></div>
+                                            class="sc-eCYdqJ ccQLIN">${customer.status || "---" }</span></div>
                                 </td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="Nguyễn Huy Trúc" currentitem="false">${customer.nv_PHUTRACH}</p></td>
+                                       data-tip="Nguyễn Huy Trúc" currentitem="false">${customer.nv_PHUTRACH || "---"}</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="Quảng Bình" currentitem="false">${customer.address}</p></td>
+                                       data-tip="Quảng Bình" currentitem="false">${customer.address || "---" }</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="" currentitem="false">${customer.gender}</p></td>
+                                       data-tip="" currentitem="false">${customer.gender || "---" }</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="Nữ" currentitem="false">${customer.create_AT}</p></td>
+                                       data-tip="Nữ" currentitem="false">${customer.create_AT!=null ? moment(customer.create_AT).format('DD-MM-yyyy') : "---" }</p></td>
 
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="" currentitem="false">${customer.update_AT || "----"}</p></td>
+                                       data-tip="" currentitem="false">${customer.update_AT!=null ? moment(customer.update_AT).format('DD-MM-yyyy') : "---" }</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-root MuiTypography-body1 MuiTypography-noWrap MuiTypography-colorPrimary"
-                                       data-tip="" target="_blank" href="null" currentitem="false">${customer.ngm_CUOICUNG}</a></td>
+                                   ${customer.ngm_CUOICUNG!=null ? moment( customer.ngm_CUOICUNG).format('DD-MM-yyyy') : "---" }</td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
                                        data-tip="Theo nhóm khách hàng" currentitem="false">
-                                       ${customer.sl_SP_DAMUA}</p></td>
+                                       ${customer.sl_SP_DAMUA || "---"}</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">
-                                        ${customer.sl_SP_HOANTRA}</p></td>                            </tr>
+                                        ${customer.sl_SP_HOANTRA || "---"}</p></td>                            </tr>
                     `;
                     $("#showAllCustomerInfo").append(str);
                 });
@@ -429,6 +456,156 @@
 
             })
     }
+    function getAllCustomerInfoByStatus() {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/customers/showAllCustomerMixInfoByStatus"
+        })
+            .done((data) => {
+
+                console.log(data)
+                $.each(data, (i, item) => {
+                    customer = item;
+                    if(customer.status == "AVAILABLE"){
+                        customer.status = customer.status = "Ngừng giao dịch";
+                    }
+                    if(customer.status == "SUCCESS"){
+                        customer.status = "Đang giao dịch"
+                    }
+                    if (customer.gender == "NU"){
+                        customer.gender = "Nữ"
+                    }
+                    if(customer.gender == "NAM"){
+                        customer.gender = "Nam"
+                    }
+                    if(customer.gender == "KHAC"){
+                        customer.gender = "Khác"
+                    }
+                    console.log(customer)
+                    let str = `
+                         <tr class="MuiTableRow-root jss3687 MuiTableRow-hover" role="checkbox"
+                                aria-checked="false" tabindex="-1">
+                                <td class="MuiTableCell-root MuiTableCell-body jss3690 MuiTableCell-paddingCheckbox"   style="padding-left: 44px;"><span   class="MuiButtonBase-root MuiIconButton-root jss3677 MuiCheckbox-root MuiCheckbox-colorPrimary jss3667 MuiIconButton-colorPrimary"   aria-disabled="false" style="margin: 0px;"><span
+                                        class="MuiIconButton-label"><input class="jss3680" type="checkbox" data-indeterminate="false" value=""><span class="jss3668"                 font-size="small"></span></span><span
+                                        class="MuiTouchRipple-root"></span></span></td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
+                                    <a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary"
+                                       href="/admin/customers/183297272">${customer.customer_CODE || "---"}</a></td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
+                                       data-tip="Trúc Nguyễn" currentitem="false"
+                                       style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+                                        ${customer.name || "---" }</p></td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
+                                       data-tip="0935240482" currentitem="false"
+                                       style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+                                        ${customer.phone || "---"}</p></td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
+                                       data-tip="Bán lẻ" currentitem="false"
+                                       style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+                                        ${customer.customer_GROUP || "---"}
+                                        </p></td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
+                                       style="padding-right: 6px;">
+                                       ${customer.congno != null ? (new Intl.NumberFormat('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }).format(customer.congno)) : "---"}
+                                       </p></td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
+
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
+                                       style="padding-right: 6px;">${customer.chitieu != null ? (new Intl.NumberFormat('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }).format(customer.chitieu)) : "---"}</p></td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.sl_MH_DAMUA || "---"}</p>
+                                </td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.birthday || "---"}</p>
+                                </td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
+                                       data-tip="" currentitem="false"
+                                       style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">${customer.email || "---"}</p>
+                                </td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft"
+                                    style="padding: 0px 16px;">
+                                    <div class="sc-jSMfEi csJERM"><span
+                                            class="sc-eCYdqJ ccQLIN">${customer.status || "---" }</span></div>
+                                </td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
+                                       data-tip="Nguyễn Huy Trúc" currentitem="false">${customer.nv_PHUTRACH || "---"}</p></td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
+                                       data-tip="Quảng Bình" currentitem="false">${customer.address || "---" }</p></td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
+                                       data-tip="" currentitem="false">${customer.gender || "---" }</p></td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
+                                       data-tip="Nữ" currentitem="false">${customer.create_AT!=null ? moment(customer.create_AT).format('DD-MM-yyyy') : "---" }</p></td>
+
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
+                                       data-tip="" currentitem="false">${customer.update_AT!=null ? moment(customer.update_AT).format('DD-MM-yyyy') : "---" }</p></td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
+                                   ${customer.ngm_CUOICUNG!=null ? moment( customer.ngm_CUOICUNG).format('DD-MM-yyyy') : "---" }</td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
+                                       data-tip="Theo nhóm khách hàng" currentitem="false">
+                                       ${customer.sl_SP_DAMUA || "---"}</p></td>
+                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">
+                                        ${customer.sl_SP_HOANTRA || "---"}</p></td>                            </tr>
+                    `;
+                    $("#showAllCustomerInfo").append(str);
+                });
+            })
+            .fail((jqXHR) => {
+                console.log("chương trình show info của bn bị lỗi")
+
+            })
+    }
+    function deleteEventButtonModelShow() {
+        $('.btnShowTableCustomerByStatus').css({
+            'color': 'rgb(116, 124, 135)',
+            'border': 'none'
+        })
+        $('.btnShowTableCustomer').css({
+            'color': 'rgb(116, 124, 135)',
+            'border': 'none'
+        })
+        $('.showAllCustomerInfo').html("");
+    }
+    $('.btnShowTableCustomerByStatus').on('click', () => {
+        deleteEventButtonModelShow();
+        console.log("ok")
+        $('.btnShowTableCustomerByStatus').css({
+            'color': '#1190ff',
+            'border-bottom': '2px solid rgb(0, 136, 255)'
+        })
+        getAllCustomerInfoByStatus();
+    })
+    $('.btnShowTableCustomer').on('click', () => {
+        deleteEventButtonModelShow();
+        console.log("ok")
+        $('.btnShowTableCustomer').css({
+            'color': '#1190ff',
+            'border-bottom': '2px solid rgb(0, 136, 255)'
+        })
+        getAllCustomerInfo();
+    })
+
 </script>
 
 </html>
