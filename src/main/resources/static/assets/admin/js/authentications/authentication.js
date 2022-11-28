@@ -1,7 +1,5 @@
 "use strict";
 
-const $ = (selector) => document.querySelector(selector);
-
 (async () => {
     try {
         const getForm = await document.querySelectorAll(".needs-validation");
