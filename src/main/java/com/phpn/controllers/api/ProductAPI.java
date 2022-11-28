@@ -42,7 +42,7 @@ public class ProductAPI {
     }
 
     @PostMapping("/create")
-    public  ResponseEntity<?> createProduct(@RequestBody ProductParam productParam){
+    public ResponseEntity<?> createProduct(@RequestBody ProductParam productParam){
         Product product = productService.create(productParam);
         return  new ResponseEntity<>(product, HttpStatus.OK);
     }

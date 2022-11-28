@@ -1,8 +1,5 @@
 package com.phpn.repositories;
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/dev_c5
 import com.phpn.repositories.model.Order;
 
 import org.springframework.data.jpa.repository.JpaRepository;
