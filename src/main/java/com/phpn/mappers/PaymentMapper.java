@@ -1,7 +1,7 @@
 package com.phpn.mappers;
 
-import com.phpn.dto.payment.PaymentParam;
-import com.phpn.dto.payment.PaymentResult;
+import com.phpn.dto.paymentPurchase.PaymentPurchaseParam;
+import com.phpn.dto.paymentPurchase.PaymentPurchaseResult;
 import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.mappers.purchase_order.PurchaseOrderMapper;
 import com.phpn.repositories.model.PaymentPurchase;
@@ -17,8 +17,8 @@ public class PaymentMapper {
     @Autowired
     private EmployeeMapper employeeMapper;
 
-    public PaymentResult toDTO(PaymentPurchase payment) {
-        return new  PaymentResult()
+    public PaymentPurchaseResult toDTO(PaymentPurchase payment) {
+        return new PaymentPurchaseResult()
                 .setId(payment.getId())
                 .setPaid(payment.getPaid())
                 .setCreateAt(payment.getCreateAt())
@@ -27,7 +27,7 @@ public class PaymentMapper {
                 .setPurchaseOrderResult(purchaseOrderMapper.toDTO(payment.getPurchaseOrder()));
     }
 
-    public PaymentPurchase toModel(PaymentParam paymentParam) {
+    public PaymentPurchase toModel(PaymentPurchaseParam paymentParam) {
         return new PaymentPurchase()
                 .setId(paymentParam.getId())
                 .setPaid(paymentParam.getPaid())

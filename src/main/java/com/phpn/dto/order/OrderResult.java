@@ -25,11 +25,7 @@ public class OrderResult {
 
     private CustomerResult customer;
 
-    private PaymentMethodResult paymentMethod;
-
     private String status;
-
-//    private BigDecimal tax;
 
     private BigDecimal discount;
 
