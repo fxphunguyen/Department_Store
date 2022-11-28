@@ -9,6 +9,7 @@ import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.CustomerGender;
+import com.phpn.repositories.model.ICustomer;
 import com.phpn.repositories.model.LocationRegion;
 import com.phpn.services.locationRegion.LocationRegionService;
 import lombok.RequiredArgsConstructor;
@@ -53,14 +54,12 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setDeleted(true);
     }
 
-
     @Override
+    @Transactional(readOnly = true)
     public CustomerResult findById(Integer id) {
-        Optional<Customer> customerOptional = customerRepository.findById(id);
-        return customerMapper.toDTO(customerOptional.get());
+        return customerMapper.toDTO(customerRepository.findById(id).get());
     }
 
-    @Override
     public CustomerOrderResult findByIdCustomerOrder(Integer id) {
         Optional<Customer> customerOptional = customerRepository.findById(id);
         return customerMapper.toDTOCustomerOrder(customerOptional.get());
@@ -130,6 +129,19 @@ public class CustomerServiceImpl implements CustomerService {
         return customer;
     }
 
+    @Override
+    public List<ICustomer>  showAllCustomerMixInfoByStatus() {
+        return customerRepository.getAllCustomerMixInfoByStatus();
+    }
 
+    @Override
+    public List<ICustomer> showAllCustomerMixInfo() {
+        return customerRepository.getAllCustomerMixInfo();
+    }
+
+    @Override
+    public ICustomer CustomerInfoById(Integer id) {
+        return customerRepository.getCustomerInfoById(id);
+    }
 
 }
