@@ -1,9 +1,5 @@
 package com.phpn.dto.orderItem;
 
-import com.phpn.dto.item.ItemParam;
-import com.phpn.dto.order.OrderParam;
-import com.phpn.dto.product.ProductParam;
-import com.phpn.repositories.model.Item;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,15 +15,14 @@ public class OrderItemParam {
 
     private Integer id;
 
-    private OrderParam orderParam;
+    private Integer orderId;
 
-    private BigDecimal total;
-
-    private ItemParam itemParam;
+    private Integer itemId;
 
     private Integer quantity;
 
-    private ProductParam productParam;
+    private Integer productId;
 
+    private BigDecimal price;
 
 }

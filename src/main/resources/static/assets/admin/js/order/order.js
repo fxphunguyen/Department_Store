@@ -2,66 +2,103 @@ let customer = new Customer()
 let locationRegionCreate = new LocationRegionCreate();
 let employeeResult = new EmployeeResult();
 
-function removeEventModal() {
-    $("#btnCreateCustomer").off("click");
 
-}
-let customers = [];
+let customers;
 
 let employees = [];
 
 function showListCustomer() {
+    console.log(" showListCustomer()");
+
+    function show(data) {
+
+        $(".searchCustomer").removeClass('d-none');
+        $(".contentCustomer div").remove();
+        $.each(data, (i, customer) => {
+            let result = `
+                <div class="MuiBox-root jss4978 InfiniteScroll-MenuItem focus-key-event showInfo" onclick="showCustomerInfo(${customer.id})"
+                     data-id="${customer.id}" tabindex="0">
+                    <li class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root jss2894 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        tabindex="-1" role="menuitem" aria-disabled="false">
+                        <svg class="MuiSvgIcon-root icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path>
+                        </svg>
+                        <div class="MuiBox-root jss4983"><p
+                                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.name}</p>
+                                <h6 class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-noWrap">${customer.phone}</h6></div>
+                        <span class="MuiTouchRipple-root"></span>
+                    </li>
+                </div>
+                `;
+            $(".contentCustomer").append(result)
+        })
+        console.log(" show(data) ");
+        // searchCustomer();
+    }
+
+    if (customers !== undefined && customers.length > 0) {
+        setTimeout(()=>{
+            show(customers);
+        },100)
+        return;
+    }
     $.ajax({
         type: "GET", contentType: 'application/json',
         url: `${location.origin}/api/customers/list_customer`
     })
         .done((data) => {
             customers = data;
-            $(".searchCustomer").removeClass('d-none');
-            $(".contentCustomer div").remove();
-            $.each(data, (i, customer) => {
-                let result = `
-                <div class="MuiBox-root jss4978 InfiniteScroll-MenuItem focus-key-event showInfo" key-event="true" onclick="showCustomerInfo(${customer.id})"
-                     data-id="${customer.id}" tabindex="0">
-                    <li class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root jss2894 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
-                        tabindex="-1" role="menuitem" aria-disabled="false">
-                        <svg class="MuiSvgIcon-root icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path>
-                        </svg>
-                        <div class="MuiBox-root jss4983"><p
-                                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.name}</p>
-                                <h6 class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-noWrap">${customer.phone}</h6></div>
-                        <span class="MuiTouchRipple-root"></span>
-                    </li>
-                </div>
-                `;
-                $(".contentCustomer").append(result)
-
-            })
-            handleCloseListCustomers();
-
+            show(data);
         })
         .fail((jqXHR) => {
-            console.log(jqXHR);
-        })
+            console.log(jqXHR)
+                })
 }
 
-$("#myInput").on("input", function () {
-    // console.log($(this).val());
-    // console.log(customers)
-    let search = $(this).val();
-    let results = [];
-    customers.forEach((item) => {
-        if (((item.name).toLowerCase()).includes(search.toLowerCase()) || ((item.phone).toLowerCase()).includes(search.toLowerCase())) {
-            results.push(item);
-        }
-    })
+// const doNotSearch = () => {
+//     $(".searchCustomer").removeClass('d-none');
+//     $(".contentCustomer div").remove();
+//     let str = `
+//                 <div class="MuiPaper-root jss4291 MuiPaper-elevation1 MuiPaper-rounded"
+//                   style="padding: 48px 0px 84px;" >
+//                   <svg
+//                     viewBox="0 0 24 24"
+//                     fill="none"
+//                     xmlns="http://www.w3.org/2000/svg"
+//                     class="jss4292"
+//                   >
+//                     <path
+//                       fill-rule="evenodd"
+//                       clip-rule="evenodd"
+//                       d="M14.891 13.477a6.002 6.002 0 0 0-9.134-7.72 6 6 0 0 0 7.72 9.134l5.715 5.716 1.415-1.415-5.716-5.715Zm-2.063-6.305a4 4 0 1 1-5.656 5.656 4 4 0 0 1 5.656-5.656Z"
+//                       fill="currentColor"
+//                     ></path>
+//                   </svg>
+//                   <p class="jss4293">Không tìm thấy khách hàng phù hợp với kết quả tìm kiếm</p>
+//                   <span class="jss4294">
+//                     Thử thay đổi từ khóa tìm kiếm hoặc thêm mới khách hàng
+//                   </span>
+//                 </div>
+//                    `;
+//     $(".contentCustomer").html(str);
+// }
+// doNotSearch();
 
-    $(".searchCustomer").removeClass('d-none');
-    $(".contentCustomer div").remove();
-    $.each(results, (i, customer) => {
-        let result = `
-                <div class="MuiBox-root jss4978 InfiniteScroll-MenuItem focus-key-event showInfo" key-event="true" onclick="showCustomerInfo(${customer.id})"
+const searchCustomer = () => {
+    console.log("searchCustomer");
+    $("#myInput").on("input", function () {
+        let search = $(this).val();
+        let results = [];
+        customers.forEach((item) => {
+            if (((item.name).toLowerCase()).includes(search.toLowerCase()) || ((item.phone).toLowerCase()).includes(search.toLowerCase())) {
+                results.push(item);
+            }
+        })
+        $(".searchCustomer").removeClass('d-none');
+        $(".contentCustomer div").remove();
+        $.each(results, (i, customer) => {
+            let result = `
+                <div class="MuiBox-root jss4978 InfiniteScroll-MenuItem focus-key-event showInfo"  onclick="showCustomerInfo(${customer.id})"
                      data-id="${customer.id}" tabindex="0">
                     <li class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root jss2894 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
                         tabindex="-1" role="menuitem" aria-disabled="false">
@@ -75,30 +112,18 @@ $("#myInput").on("input", function () {
                     </li>
                 </div>
                 `;
-        $(".contentCustomer").append(result);
-
+            $(".contentCustomer").append(result);
+        })
     })
-
-    handleCloseListCustomers();
-})
+}
 
 
 function showCustomerInfo(idCustomer) {
-    // console.log(idCustomer);
-    // handleCloseListCustomers();
-
+    console.log(idCustomer);
     $("#MuiBox-list-customer").addClass("hide");
 
     $("#idCustomer").val(idCustomer);
-    let result = {};
-
-    customers.forEach((item) => {
-        result = item;
-        if (item.id === idCustomer) {
-            return false;
-        }
-    })
-    // console.log(result);
+    let result = customer = customers.find(({id}) => id === idCustomer);
     let str = `<div class="MuiPaper-root  jss938 MuiPaper-elevation1 MuiPaper-rounded" id="closed_customer_info">
         <div class="MuiBox-root jss985">
             <div class="MuiBox-root jss3887 jss939">
@@ -210,7 +235,7 @@ function showCustomerInfo(idCustomer) {
                                     tabindex="0"
                                     onclick="editCustomer()"
                                      type="button"
-                                    style="margin: 0px 4px; height: 15px; min-width: unset;"><span
+                                    style="margin: 0 4px; height: 15px; min-width: unset;"><span
                                         class="MuiButton-label">Thay đổi</span><span
                                         class="MuiTouchRipple-root"></span>
                                 </button>
@@ -257,7 +282,6 @@ function showCustomerInfo(idCustomer) {
 function handleCloseListCustomers() {
     $(document).on("click", () => {
         $(".searchCustomer").addClass('d-none');
-
     })
 }
 
@@ -272,10 +296,10 @@ function showListProducts() {
             $(".contentProduct div").remove();
             $.each(data, (i, product) => {
                 let result = `             
-                    <div class="MuiBox-root jss3941 InfiniteScroll-MenuItem focus-key-event" key-event="true"
+                    <div class="MuiBox-root jss3941 InfiniteScroll-MenuItem focus-key-event"
                     onclick="showProductInfo(${product.id})" data-id="${product.id}" tabindex="0">
                     <li class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root jss1259 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button" tabindex="-1" role="menuitem" aria-disabled="false">
-                        <img class="jss1260" src="${product.image}">
+                        <img class="jss1260" src="${product.image}" alt="">
                             <div class="MuiBox-root jss3946">
                                 <div class="MuiBox-root jss3947">
                                     <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title}</p>
@@ -325,25 +349,26 @@ function getAllProvinces() {
         url: "https://vapi.vnappmob.com/api/province/"
     })
         .done((data) => {
-                if (data.results.length === 0) {
-                    let str = `<option value="0">Chọn Tỉnh/Thành Phố</option>`;
+            if (data.results.length === 0) {
+                let str = `<option value="0">Chọn Tỉnh/Thành Phố</option>`;
+                $("#province").append(str);
+            } else {
+                $.each(data.results, (i, item) => {
+                    let str = `<option value="${item.province_id}">${item.province_name}</option>`;
                     $("#province").append(str);
-                } else {
-                    $.each(data.results, (i, item) => {
-                        let str = `<option value="${item.province_id}">${item.province_name}</option>`;
-                        $("#province").append(str);
-                        $('#provinceUpdate').append(str);
-                    });
+                    $('#provinceUpdate').append(str);
+                });
             }
 
         })
         .fail((jqXHR) => {
-
+            console.log(jqXHR);
         })
 }
 
 function getAllDistrictsByProvinceId(provinceId) {
     $("#district").empty();
+    $("#districtUpdate").empty();
     return $.ajax({
         headers: {
             "accept": "application/json",
@@ -354,6 +379,7 @@ function getAllDistrictsByProvinceId(provinceId) {
     })
         .done((data) => {
             if (data.results.length === 0) {
+                console.log(data.results.length)
                 let str = `<option value="0">Chọn Quận/Huyện</option>`;
                 $("#district").append(str);
             } else {
@@ -366,11 +392,13 @@ function getAllDistrictsByProvinceId(provinceId) {
             }
         })
         .fail((jqXHR) => {
+            console.log(jqXHR);
         })
 }
 
 function getAllWardsByDistrictId(districtId) {
     $("#ward").empty();
+    $('#wardUpdate').empty();
     return $.ajax({
         headers: {
             "accept": "application/json",
@@ -396,6 +424,7 @@ function getAllWardsByDistrictId(districtId) {
             }
         })
         .fail((jqXHR) => {
+            console.log(jqXHR);
         })
 }
 
@@ -422,14 +451,13 @@ $("#province").on('change', () => {
     })
 });
 
-$("#provinceUpdate").on("change", () =>{
+$("#provinceUpdate").on("change", () => {
     let provinceId = $("#provinceUpdate").val();
-    getAllDistrictsByProvinceId(provinceId).then ( () => {
+    getAllDistrictsByProvinceId(provinceId).then(() => {
         let districtId = $("#districtUpdate").val();
         getAllWardsByDistrictId(districtId);
     })
 })
-
 
 $("#districtUpdate").on("change", () => {
     let districtId = $("#districtUpdate").val();
@@ -449,11 +477,11 @@ function getEmployeeById(id) {
             console.log("phuoc");
             console.log(data)
             employeeResult = data;
-                $.each(data, (i, item) => {
-                    let str = `<option value="${item.id}">${item.name}</option>`;
-                    $("#selectEmployee").append(str);
-                    $("#selectEmployeeUpdate").append(str);
-                });
+            $.each(data, (i, item) => {
+                let str = `<option value="${item.id}">${item.name}</option>`;
+                $("#selectEmployee").append(str);
+                $("#selectEmployeeUpdate").append(str);
+            });
             // }
         })
         .fail((jqXHR) => {
@@ -489,10 +517,9 @@ function doCreateCustomer() {
             .done((data) => {
                 customer = data;
                 customer.locationRegionCreate = locationRegionCreate;
-                removeEventModal();
                 $("#create_order_customer").modal("hide");
                 App.IziToast.showSuccessAlert("Thêm khách hàng thành công!");
-                showCustomerInfo(customer.id);
+                searchCustomer();
                 $('#nameCreate').val("");
                 $('#codeCreate').val("");
                 $('#phoneCreate').val("");
@@ -512,64 +539,67 @@ function doCreateCustomer() {
 doCreateCustomer();
 
 
+
 function handleRemove() {
     let str = `<div class="MuiPaper-root  jss18028 MuiPaper-elevation1 MuiPaper-rounded">
-                                        <div class="MuiBox-root jss18075 customer-info">
-                                            <div class="MuiBox-root jss18076 create-order-step2 jss18040">
-                                                <div class="MuiBox-root jss18077">
-                                                    <h6 class="MuiTypography-root MuiTypography-h6">Thông tin khách
-                                                        hàng</h6>
-                                                </div>
-                                                <div class="jss18078 SI-root">
-                                                    <form autocomplete="off" class="MuiPaper-root jss18080 SearchBox MuiPaper-elevation1 MuiPaper-rounded">
-                                                        <div class="MuiFormControl-root MuiTextField-root jss18081 MuiFormControl-fullWidth autocomplete">
-                                                            <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart">
-                                                                <div class="MuiInputAdornment-root MuiInputAdornment-positionStart">
-                                                                    <svg class="MuiSvgIcon-root" focusable="false"
-                                                                         viewBox="0 0 24 24" color="#A3A8AF"
-                                                                         aria-hidden="true"
-                                                                         style="width: 24px; height: 24px;">
-                                                                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
-                                                                    </svg>
-                                                                </div>
-                                                                <input aria-invalid="false"
-                                                                       id="myInput"
-                                                                       name="myInput"
-                                                                       placeholder="Tìm theo tên, SĐT, mã khách hàng ... (F4)"
-                                                                       type="text"
-                                                                       onclick="showListCustomer()"
-                                                                       class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
-                                                                       value="">
-                                                                <fieldset aria-hidden="true"
-                                                                          class="jss18127 MuiOutlinedInput-notchedOutline"
-                                                                          style="padding-left: 8px;">
-                                                                    <legend class="jss18128" style="width: 0.01px;">
-                                                                        <span>​</span></legend>
-                                                                </fieldset>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="MuiBox-root jss18132 jss18039">
-                                                    <p class="MuiTypography-root MuiTypography-body1"
-                                                       style="color: rgb(163, 168, 175); margin-top: 16px;">
-                                                        Chưa có thông tin khách hàng</p>
-                                                </div>
-                                            </div>
+                <div class="MuiBox-root jss18075 customer-info">
+                    <div class="MuiBox-root jss18076 create-order-step2 jss18040">
+                        <div class="MuiBox-root jss18077">
+                            <h6 class="MuiTypography-root MuiTypography-h6">Thông tin khách
+                                hàng</h6>
+                        </div>
+                        <div class="jss18078 SI-root">
+                            <form autocomplete="off" class="MuiPaper-root jss18080 SearchBox MuiPaper-elevation1 MuiPaper-rounded">
+                                <div class="MuiFormControl-root MuiTextField-root jss18081 MuiFormControl-fullWidth autocomplete">
+                                    <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart">
+                                        <div class="MuiInputAdornment-root MuiInputAdornment-positionStart">
+                                            <svg class="MuiSvgIcon-root" focusable="false"
+                                                 viewBox="0 0 24 24" color="#A3A8AF"
+                                                 aria-hidden="true"
+                                                 style="width: 24px; height: 24px;">
+                                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                                            </svg>
                                         </div>
-                                    </div>`;
+                                        <input aria-invalid="false"
+                                               id="myInput"
+                                               name="myInput"
+                                               placeholder="Tìm theo tên, SĐT, mã khách hàng ... (F4)"
+                                               type="text"
+                                               onclick="showListCustomer()"
+                                               class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                                               value="">
+                                        <fieldset aria-hidden="true"
+                                                  class="jss18127 MuiOutlinedInput-notchedOutline"
+                                                  style="padding-left: 8px;">
+                                            <legend class="jss18128" style="width: 0.01px;">
+                                                <span>​</span></legend>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="MuiBox-root jss18132 jss18039">
+                            <p class="MuiTypography-root MuiTypography-body1"
+                               style="color: rgb(163, 168, 175); margin-top: 16px;">
+                                Chưa có thông tin khách hàng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
     $("#show_customer_info").html(str);
     $("#MuiBox-list-customer").removeClass("hide");
+    // searchCustomer();
+
 }
 
-function getCustomerById(id) {
+function getCustomerById(idCustomer) {
     return $.ajax({
         headers: {
             accept: "application/json",
             "content-type": "application/json"
         },
         type: "GET",
-        url: `${location.origin}/api/customers/` + id
+        url: `${location.origin}/api/customers/` + idCustomer
     })
         .done((data) => {
             customer = data;
@@ -590,8 +620,6 @@ function getAllEmployees() {
     })
         .done((data) => {
             employeeResult = data;
-            console.log("phuocccc")
-            console.log(employeeResult)
             $.each(data, (i, item) => {
                 let str = `<option value="${item.id}">${item.name}</option>`;
                 $("#selectEmployee").append(str);
@@ -606,77 +634,97 @@ function getAllEmployees() {
 
 function editCustomer() {
     let id = $("#idCustomer").val();
+    console.log(customer);
+    $('#idCustomerUpdate').val(customer.id);
+    $("#nameUpdate").val(customer.name)
+    $('#phoneUpdate').val(customer.phone);
+    $('#addressUpdate').val(customer.locationRegionResult.address);
+    $('#provinceUpdate').val(customer.locationRegionResult.provinceId);
+    console.log("provin", customer.locationRegionResult.provinceId)
+    getAllDistrictsByProvinceId(customer.locationRegionResult.provinceId).then(() => {
+        $("#districtUpdate").val(customer.locationRegionResult.districtId);
+        console.log("districtId", customer.locationRegionResult.districtId)
+        getAllWardsByDistrictId(customer.locationRegionResult.districtId).then(() => {
+            $("#wardUpdate").val(customer.locationRegionResult.wardId);
+            console.log("wardId", customer.locationRegionResult.wardId)
+
+        })
+    })
+    console.log(customer)
+    $("#codeUpdate").val(customer.customerCode);
+    $("#selectEmployeeUpdate").val(customer.employeeId);
+
+    $("#update_order_customer").modal("show");
     console.log(id);
-    getCustomerById(id).then(() => {
-        $('#idCustomer').val(customer.id);
-        $("#nameUpdate").val(customer.name)
-        $('#phoneUpdate').val(customer.phone);
-        $('#addressUpdate').val(customer.locationRegionResult.address);
-        $('#provinceUpdate').val(customer.locationRegionResult.provinceId);
-        console.log("provin" , customer.locationRegionResult.provinceId)
-        getAllDistrictsByProvinceId(customer.locationRegionResult.provinceId).then(() => {
-            $("#districtUpdate").val(customer.locationRegionResult.districtId);
-            console.log("districtId" , customer.locationRegionResult.districtId)
-            getAllWardsByDistrictId(customer.locationRegionResult.districtId).then(() => {
-                $("#wardUpdate").val(customer.locationRegionResult.wardId);
-                console.log("wardId" , customer.locationRegionResult.wardId)
-
-            })
-        })
-        console.log(customer)
-        $("#codeUpdate").val(customer.customerCode);
-        $("#selectEmployeeUpdate").val(customer.employeeId);
-
-        $("#update_order_customer").modal("show");
-
-        // $("#modalCreateProduct .modal-alert-danger").removeClass('show').addClass('hide');
-    })
+    // getCustomerById(id).then(() => {
+    //     $("#nameUpdate").val(customer.name)
+    //     $('#phoneUpdate').val(customer.phone);
+    //     // $('#addressUpdate').val(customer.locationRegionResult.address);
+    //     // $('#provinceUpdate').val(customer.locationRegionResult.provinceId);
+    //     // console.log("provin", customer.locationRegionResult.provinceId)
+    //     // getAllDistrictsByProvinceId(customer.locationRegionResult.provinceId).then(() => {
+    //     //     $("#districtUpdate").val(customer.locationRegionResult.districtId);
+    //     //     console.log("districtId", customer.locationRegionResult.districtId)
+    //     //     getAllWardsByDistrictId(customer.locationRegionResult.districtId).then(() => {
+    //     //         $("#wardUpdate").val(customer.locationRegionResult.wardId);
+    //     //         console.log("wardId", customer.locationRegionResult.wardId)
+    //     //
+    //     //     })
+    //     // })
+    //     console.log(customer)
+    //     $("#codeUpdate").val(customer.customerCode);
+    //     $("#selectEmployeeUpdate").val(customer.employeeId);
+    //
+    //     // $("#modalCreateProduct .modal-alert-danger").removeClass('show').addClass('hide');
+    // })
 }
-getAllEmployees();
 
-$('#btnUpdateCustomer').on('click', (customerId) => {
-
-    $.ajax({
-        "headers": {
-            "accept": "application/json",
-            "content-type": "application/json"
-        },
-        "type": "POST",
-        "url": "http://localhost:8080/api/customers/create",
-        "data": JSON.stringify(customer)
-    })
-        .done((data) => {
-            removeEventModal();
-            $("#create_order_customer").modal("hide");
-            App.IziToast.showSuccessAlert("Thêm khách hàng thành công!");
-            $('#nameCreate').val("");
-            $('#codeCreate').val("");
-            $('#phoneCreate').val("");
-            $('#emailCreate').val("");
-            $('#addressCreate').val("");
-            $('#province').val("0").change();
-            $('#district').val("0").change();
-            $('#ward').val("0").change();
-            $('#selectEmployee').val("0").change();
-        })
-        .fail((jqXHR) => {
-            console.log(jqXHR)
-            $('#nameCreate').val("");
-            $('#codeCreate').val("");
-            $('#phoneCreate').val("");
-            $('#emailCreate').val("");
-            $('#addressCreate').val("");
-            $('#province').val("0").change();
-            $('#district').val("0").change();
-            $('#ward').val("0").change();
-            $('#selectEmployee').val("0").change();
-        })
-});
-
-
+//
+// function doUpdateCustomer() {
+//     $('#btnUpdateCustomer').on('click', (idCustomer ) => {
+//         locationRegionCreate.provinceId = $("#provinceUpdate").val();
+//         locationRegionCreate.provinceName = $("#provinceUpdate :selected").text();
+//         locationRegionCreate.districtId = $("#districtUpdate").val();
+//         locationRegionCreate.districtName = $("#districtUpdate :selected").text();
+//         locationRegionCreate.wardId = $("#wardUpdate").val();
+//         locationRegionCreate.wardName = $("#wardUpdate :selected").text();
+//         locationRegionCreate.address = $("#addressUpdate").val();
+//         customer.id = $("#idCustomerUpdate").val();
+//         customer.name = $("#nameUpdate").val();
+//         customer.phone = $("#phoneUpdate").val();
+//         customer.customerCode = $("#codeUpdate").val();
+//         customer.locationRegionCreate = locationRegionCreate;
+//
+//         $.ajax({
+//             "headers": {
+//                 "accept": "application/json",
+//                 "content-type": "application/json"
+//             },
+//             "type": "PUT",
+//             "url": "http://localhost:8080/api/customers/update/" + idCustomer,
+//             "data": JSON.stringify(customer)
+//         })
+//             .done((data) => {
+//                 customer = data;
+//                 customer.locationRegionCreate = locationRegionCreate;
+//                 removeEventModal();
+//                 $("#update_order_customer").modal("hide");
+//                 App.IziToast.showSuccessAlert("Cập nhật khách hàng thành công!");
+//             })
+//             .fail((jqXHR) => {
+//                 console.log(jqXHR);
+//             })
+//     });
+//
+// }
+// doUpdateCustomer();
 
 
-
+$(() => {
+    getAllEmployees();
+    searchCustomer();
+    handleCloseListCustomers()
+})
 
 
 

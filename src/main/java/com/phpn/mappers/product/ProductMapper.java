@@ -7,9 +7,7 @@ import com.phpn.mappers.CategoryMapper;
 import com.phpn.mappers.brand.BrandMapper;
 import com.phpn.repositories.model.Product;
 import org.springframework.stereotype.Component;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 
 @Component
 public class ProductMapper {
@@ -21,8 +19,7 @@ public class ProductMapper {
     @Autowired
     CategoryMapper categoryMapper;
     public Product toModel(ProductParam productParam) {
-        return new Product()
-                .setId(productParam.getId())
+        return new Product(productParam.getCategoryId(),productParam.getBrandId())
                 .setTitle(productParam.getTitle())
                 .setImage(productParam.getImage())
                 .setStatus(productParam.getStatus())
@@ -35,7 +32,6 @@ public class ProductMapper {
                 .setImportPrice(productParam.getImportPrice())
                 .setRetailPrice(productParam.getRetailPrice())
                 .setWholesalePrice(productParam.getWholesalePrice())
-                .setQuantity(productParam.getQuantity())
                 .setBrandId(productParam.getBrandId())
                 .setCategoryId(productParam.getCategoryId())
                 .setDeleted(true);
@@ -55,11 +51,10 @@ public class ProductMapper {
                 .setImportPrice(product.getImportPrice())
                 .setWholesalePrice(product.getWholesalePrice())
                 .setRetailPrice(product.getRetailPrice())
-                .setQuantity(product.getQuantity())
                 .setCreateAt(product.getCreateAt())
-                .setUpdateAt(product.getUpdateAt())
-                .setBrandResult(brandMapper.toDTO(product.getBrand()))
-                .setCategoryResult(categoryMapper.toDTO(product.getCategory()));
+                .setUpdateAt(product.getUpdateAt());
+//                .setBrandResult(brandMapper.toDTO(product.getBrand()))
+//                .setCategoryResult(categoryMapper.toDTO(product.getCategory()));
 
 
     }
@@ -80,7 +75,6 @@ public class ProductMapper {
                 .setImportPrice(productCreate.getImportPrice())
                 .setRetailPrice(productCreate.getRetailPrice())
                 .setWholesalePrice(productCreate.getWholesalePrice())
-                .setQuantity(productCreate.getQuantity())
                 .setBrandId(productCreate.getBrandId())
                 .setCategoryId(productCreate.getCategoryId())
                 .setDeleted(true);

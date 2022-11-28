@@ -1,4 +1,4 @@
-package com.phpn.dto.payment;
+package com.phpn.dto.paymentPurchase;
 
 import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.purchase_order.PurchaseOrderResult;
@@ -16,7 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class PaymentParam {
+public class PaymentPurchaseParam {
 
     private Integer id;
 

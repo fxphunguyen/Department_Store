@@ -2,6 +2,7 @@ package com.phpn.dto.suppliers;
 
 import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.locationRegion.LocationRegionResult;
+import com.phpn.dto.payment_methods.PaymentMethodResult;
 import com.phpn.repositories.model.SupplierStatus;
 
 import lombok.Getter;
@@ -26,6 +27,8 @@ public class SupplierResult {
     private String description;
     private Integer employeeId;
     private EmployeeResult employeeResult;
+    private Integer paymentMethodId;
+    private PaymentMethodResult paymentMethodResult;
     private Integer locationRegionId;
     private LocationRegionResult locationRegionResult;
     private String createAt;

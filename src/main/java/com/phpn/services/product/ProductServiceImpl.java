@@ -56,7 +56,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Product create(ProductParam productParam) {
         return productRepository.save(productMapper.toModel(productParam));
     }

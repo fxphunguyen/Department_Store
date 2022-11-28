@@ -23,6 +23,7 @@ public class SupplierParam {
     private SupplierStatus supplierStatus;
     private String description;
     private Integer employeeId;
+    private Integer paymentMethodId;
     private Integer locationRegionId;
     private String createAt;
     private String updateAt;
