@@ -23,8 +23,7 @@ public enum SupplierStatus {
 
     @JsonCreator
     public static @NotNull SupplierStatus parseSupplierStatus(String value) {
-        SupplierStatus[] values = values();
-        for (SupplierStatus supplierStatus : values) {
+        for (SupplierStatus supplierStatus : SupplierStatus.values()) {
             if (supplierStatus.value.equals(value)) return supplierStatus;
         }
         throw new IllegalArgumentException("The supplier status [" + value + "] is invalid!");

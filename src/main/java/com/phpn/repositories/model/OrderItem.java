@@ -36,7 +36,7 @@ public class OrderItem {
     @JoinColumn(name = "item_id")
     private Item item;
 
-    @Column(name = "item_id",  insertable = false, updatable = false)
+    @Column(name = "item_id", insertable = false, updatable = false)
     private Integer itemId;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -58,8 +58,11 @@ public class OrderItem {
     @Column(name = "update_at")
     private Instant updateAt;
 
-    @Column(name = "total", precision = 10, scale = 2)
-    private BigDecimal total;
+    @Column(name = "tax", nullable = false)
+    private float tax;
+
+    @Column(name = "discount", precision = 10, scale = 2)
+    private BigDecimal discount;
 
 
     public OrderItem(Integer productId, Integer itemId, Integer orderId) {

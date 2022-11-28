@@ -1,6 +1,9 @@
 package com.phpn.repositories.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -13,9 +16,8 @@ import java.util.Date;
 @AllArgsConstructor
 @Accessors(chain = true)
 @Entity
-@Table(name = "payments")
-
-public class Payment {
+@Table(name = "payment_purchase")
+public class PaymentPurchase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,22 +51,22 @@ public class Payment {
     @Column(name = "purchase_order_id", insertable = false, updatable = false)
     private Integer purchaseOrderId;
 
-    public Payment setEmployeeId(Integer employeeId) {
+    public PaymentPurchase setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
         return this;
     }
 
-    public Payment setPaymentMethodId(Integer paymentMethodId) {
+    public PaymentPurchase setPaymentMethodId(Integer paymentMethodId) {
         this.paymentMethod = new PaymentMethod(this.paymentMethodId = paymentMethodId);
         return this;
     }
 
-    public Payment setPurchaseOrderId(Integer paymentMethodId) {
+    public PaymentPurchase setPurchaseOrderId(Integer paymentMethodId) {
         this.purchaseOrder = new PurchaseOrder(this.purchaseOrderId = paymentMethodId);
         return this;
     }
 
-    public Payment(Integer employeeId, Integer paymentMethodId, Integer purchaseOrderId) {
+    public PaymentPurchase(Integer employeeId, Integer paymentMethodId, Integer purchaseOrderId) {
         setEmployeeId(employeeId);
         setPaymentMethodId(paymentMethodId);
         setPurchaseOrderId(paymentMethodId);

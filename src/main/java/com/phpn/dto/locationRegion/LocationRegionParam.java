@@ -14,7 +14,7 @@ public class LocationRegionParam {
 
     private Integer Id;
 
-    private String name;
+    private String address;
 
     private  Integer wardId;
 

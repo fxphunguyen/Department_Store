@@ -1,19 +1,19 @@
-package com.phpn.dto.payment_method;
+package com.phpn.dto.payment_methods;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class PaymentMethodResult {
+public class PaymentMethodParam {
 
     private Integer id;
-
     private String title;
+
 }
