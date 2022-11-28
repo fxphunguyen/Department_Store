@@ -5,6 +5,7 @@ import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.CustomerGender;
+import com.phpn.repositories.model.ICustomer;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -40,4 +41,10 @@ public interface CustomerService {
     List<CustomerResult> findAllCustomerByDelete(boolean deleted);
 
     Customer  updateCustomerOrder(CustomerOrderResult customerOrderResult);
+
+    List<ICustomer> showAllCustomerMixInfoByStatus();
+
+    List<ICustomer>  showAllCustomerMixInfo();
+
+    ICustomer CustomerInfoById(Integer id);
 }

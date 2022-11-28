@@ -5,10 +5,7 @@ import com.phpn.dto.employee.EmployeeRResult;
 import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.locationRegion.LocationRegionCreate;
 import com.phpn.dto.locationRegion.LocationRegionResult;
-import com.phpn.repositories.model.CustomerGender;
-import com.phpn.repositories.model.CustomerGroup;
-import com.phpn.repositories.model.Employee;
-import com.phpn.repositories.model.LocationRegion;
+import com.phpn.repositories.model.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,7 +33,7 @@ public class CustomerResult {
 
     private String birthday;
 
-    private String status;
+    private CustomerStatus customerStatus;
 
     private String createAt;
 
