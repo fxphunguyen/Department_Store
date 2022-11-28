@@ -77,7 +77,9 @@ public class OrderServiceImpl implements OrderService {
         order.setGrandTotal(new BigDecimal(0));
         order.setTotal(new BigDecimal(0));
         order.setOrderCode("SF001");
+        order.setSubTotal(new BigDecimal(0));
         order = orderRepository.save(order);
+        BigDecimal total = BigDecimal.valueOf(0);
         BigDecimal subTotal = BigDecimal.valueOf(0);
         BigDecimal grandTotal = BigDecimal.valueOf(0);
         for (OrderItemExport orderItemExport : orderParam.getOrderItems()) {
@@ -146,12 +148,13 @@ public class OrderServiceImpl implements OrderService {
                 orderItemRepository.save(orderItem);
             }
         }
-       // order.setSubTotal(total);
+        order.setSubTotal(subTotal);
         //cong them phi giao hang
-        BigDecimal total = subTotal.add(BigDecimal.valueOf(0));
+        total = subTotal.add(BigDecimal.valueOf(0));
         order.setTotal(total);
 
         //tru ma giam gia
+        grandTotal = total.add(subTotal);
         order.setGrandTotal(grandTotal);
         return orderMapper.toDTO(order);
 
