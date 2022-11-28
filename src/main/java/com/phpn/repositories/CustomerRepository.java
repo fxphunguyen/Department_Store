@@ -22,6 +22,12 @@ public interface CustomerRepository extends JpaRepository<Customer , Integer> {
     @Query(value = "SELECT * FROM v_GetAllCustomerMixInfo" , nativeQuery = true)
     List<ICustomer> getAllCustomerMixInfo();
 
+
+    @Query(value = "SELECT * FROM v_GetAllCustomerMixInfoByStatus" , nativeQuery = true)
+    List<ICustomer>  getAllCustomerMixInfoByStatus();
+
+    @Query(value = "call `ph-pn`.sp_FindCustomerInfoById(:id);" , nativeQuery = true)
+    ICustomer getCustomerInfoById(Integer id);
 }
 
 

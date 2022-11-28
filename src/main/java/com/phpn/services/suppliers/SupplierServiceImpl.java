@@ -1,7 +1,5 @@
 package com.phpn.services.suppliers;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -57,7 +55,7 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public Supplier save(@NotNull SupplierCreate supplierCreate) {
+    public Supplier save(SupplierCreate supplierCreate) {
         locationRegionRepository.save(locationRegionMapper.toModel(supplierCreate.getLocationRegionCreate()));
         return supplierRepository.save(supplierMapper.toModel(supplierCreate));
     }

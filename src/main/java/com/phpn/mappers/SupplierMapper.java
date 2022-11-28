@@ -3,7 +3,6 @@ package com.phpn.mappers;
 import java.time.LocalDateTime;
 
 import com.phpn.mappers.payment_method.PaymentMethodMapper;
-import org.jetbrains.annotations.NotNull;
 
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class SupplierMapper {
     @Autowired
     private LocationRegionMapper locationRegionMapper;
 
-    public SupplierResult toDTO(@NotNull Supplier supplier) {
+    public SupplierResult toDTO(Supplier supplier) {
         return new SupplierResult()
         .setId(supplier.getId())
         .setSupplierCode(supplier.getSupplierCode())
@@ -46,7 +45,7 @@ public class SupplierMapper {
         .setUpdateAt(supplier.getUpdateAt());
     }
 
-    public Supplier toModel(@NotNull SupplierResult supplierResult) {
+    public Supplier toModel(SupplierResult supplierResult) {
         return new Supplier(supplierResult.getEmployeeId(), supplierResult.getPaymentMethodId(), supplierResult.getLocationRegionId())
         .setId(supplierResult.getId())
         .setSupplierCode(supplierResult.getSupplierCode())
@@ -62,7 +61,7 @@ public class SupplierMapper {
         .setUpdateAt(supplierResult.getUpdateAt());
     }
 
-    public Supplier toModel(@NotNull SupplierParam supplierParam) {
+    public Supplier toModel(SupplierParam supplierParam) {
         return new Supplier(supplierParam.getEmployeeId(), supplierParam.getPaymentMethodId(), supplierParam.getLocationRegionId())
         .setId(supplierParam.getId())
         .setSupplierCode(supplierParam.getSupplierCode())
@@ -78,7 +77,7 @@ public class SupplierMapper {
         .setUpdateAt(supplierParam.getUpdateAt());
     }
 
-    public Supplier toModel(@NotNull SupplierCreate supplierCreate) {
+    public Supplier toModel(SupplierCreate supplierCreate) {
         return new Supplier(supplierCreate.getEmployeeId(), supplierCreate.getPaymentMethodId(), supplierCreate.getLocationRegionId())
         .setSupplierCode(supplierCreate.getSupplierCode())
         .setName(supplierCreate.getName())
