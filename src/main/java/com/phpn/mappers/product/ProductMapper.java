@@ -7,7 +7,10 @@ import com.phpn.mappers.CategoryMapper;
 import com.phpn.mappers.brand.BrandMapper;
 import com.phpn.repositories.model.Product;
 import org.springframework.stereotype.Component;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 81b3ec71ee6b2e6da8121804f32fc8f0b1707bac
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

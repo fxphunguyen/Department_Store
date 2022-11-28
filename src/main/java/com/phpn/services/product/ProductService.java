@@ -15,8 +15,8 @@ public interface ProductService {
 
     List<ProductResult> findAllProductByDeleted(boolean deleted);
 
-
     ProductResult findByIdProduct(Integer id);
+
     Product create(ProductParam productParam);
 
     Product createProduct(ProductCreate productCreate);
