@@ -27,6 +27,10 @@ public class OrderAPI {
     @Autowired
     private CustomerService customerService;
 
+    public void mamam() {
+        
+    }
+
     @PostMapping("/create")
     public ResponseEntity<?> createOrder(@RequestBody OrderParam orderParam) {
         return new ResponseEntity<>(orderService.createOrderExport(orderParam), HttpStatus.OK);
