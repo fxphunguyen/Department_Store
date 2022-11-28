@@ -36,6 +36,7 @@ public class OrderItemMapper {
                 .setItemId(orderItemParam.getItemId())
                 .setProductId(orderItemParam.getProductId())
                 .setQuantity(orderItemParam.getQuantity())
-                .setPrice(orderItemParam.getPrice());
+                .setPrice(orderItemParam.getPrice())
+                .setTax(orderItemParam.getTax());
     }
 }

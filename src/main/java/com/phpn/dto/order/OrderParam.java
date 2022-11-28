@@ -1,7 +1,9 @@
 package com.phpn.dto.order;
 
 import com.phpn.dto.customer.CustomerParam;
+import com.phpn.dto.customer.CustomerResult;
 import com.phpn.dto.employee.EmployeeParam;
+import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.orderItem.OrderItemExport;
 import com.phpn.dto.orderItem.OrderItemParam;
 import com.phpn.dto.payment_methods.PaymentMethodParam;
@@ -12,6 +14,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -24,7 +28,11 @@ public class OrderParam {
 
     private Integer employeeId;
 
+    private EmployeeResult employeeResult;
+
     private Integer customerId;
+
+    private CustomerResult customerResult;
 
     private BigDecimal tax;
 
@@ -34,7 +42,7 @@ public class OrderParam {
 
     private Integer orderStatusId;
 
-    private String createAt;
+    private Instant createAt;
 
     List<OrderItemExport> orderItems;
 

@@ -31,6 +31,8 @@ public class ItemParam {
 
     private Float discount;
 
+    private int available;
+
 
 
 }

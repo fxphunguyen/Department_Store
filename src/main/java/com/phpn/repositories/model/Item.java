@@ -78,6 +78,9 @@ public class Item {
     @Column(name = "defective")
     private Integer defective;
 
+    @Column(name = "discount")
+    private Float discount;
+
     public Item (Integer productId, Integer supplierId, Integer orderId, Integer employeeId){
         setProductId(productId);
         setSupplierId(supplierId);

@@ -1,6 +1,8 @@
 package com.phpn.controllers.api;
 
-import com.phpn.dto.item.ItemRResult;
+import com.phpn.dto.item.ItemResult;
+import com.phpn.mappers.item.ItemMapper;
+import com.phpn.repositories.model.Item;
 import com.phpn.services.item.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,9 +23,11 @@ public class ItemAPI {
 
     @GetMapping("/variants")
     public ResponseEntity<?> findAll() {
-        List<ItemRResult> itemResults = itemService.findAll();
+        List<ItemResult> itemResults = itemService.findAll();
 
         return new ResponseEntity<>(itemResults, HttpStatus.OK);
     }
+
+
 
 }

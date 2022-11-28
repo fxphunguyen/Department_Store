@@ -2,6 +2,7 @@ package com.phpn.dto.customer;
 
 
 import com.phpn.dto.locationRegion.LocationRegionCreate;
+import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.repositories.model.CustomerGender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,10 +41,9 @@ public class CustomerParam {
 
     private CustomerGender customerGender;
 
-
     private Integer locationRegionId;
 
-    private LocationRegionCreate locationRegionCreate;
+    private LocationRegionResult locationRegionResult;
 
 
 }

@@ -2,6 +2,7 @@ package com.phpn.dto.product;
 
 import java.math.BigDecimal;
 
+import com.phpn.dto.item.ItemResult;
 import com.phpn.repositories.model.ProductStatus;
 import lombok.Getter;
 import lombok.Setter;

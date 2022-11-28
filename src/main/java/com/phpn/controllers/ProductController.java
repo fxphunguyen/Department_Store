@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/admin")
 public class ProductController {
 
-    @Autowired
-    private ProductServiceImpl productService;
 
     @GetMapping("/products")
     public ModelAndView showProductListPage() {

@@ -2340,9 +2340,48 @@
     line-height: 11px;
 }
 
-.jss1256 {
+.jss1226 {
     max-height: 600px;
+    box-sizing: inherit;
 }
+
+.table_product {
+    width: 100%;
+    display: table;
+    border-spacing: 0;
+}
+.MuiTable-root {
+    border-spacing: 0;
+    display: table;
+    width: 100%;
+}
+
+.MuiTableHead-root {
+    display: table-header-group;
+}
+.table_product {
+    box-sizing: inherit !important;
+}
+.MuiTable-stickyHeader {
+    border-collapse: separate !important;
+}
+.MuiTableBody-root {
+    box-sizing: inherit !important;
+    display: table-row-group;
+}
+
+.MuiTableRow-root {
+    color: inherit;
+    display: table-row;
+    outline: 0;
+    vertical-align: middle;
+}
+.MuiTableCell-body {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+
+
 
 .MuiTableContainer-root {
     width: 100%;
@@ -3673,5 +3712,108 @@ select#districtUpdate   {
     box-shadow: 0 0 0 0.2rem rgb(231, 238, 238) !important;
 }
 
+.jss1226 .MuiTableCell-root:first-child {
+    padding-left: 16px;
+}
+ .jss1226 .MuiTableCell-head:first-child {
+     border-left: 2px solid #F3F4F5;
+ }
+
+ .jss1226 .MuiTableCell-head {
+     border-top: 1px solid #D3D5D7;
+     font-weight: 500;
+     border-bottom: 1px solid #D3D5D7;
+     background-color: #F3F4F5;
+ }
+
+ .jss1226 .MuiTableCell-root {
+     padding: 10px 12px;
+     font-size: 14px;
+ }
+
+ .MuiTableCell-stickyHeader {
+     top: 0;
+     left: 0;
+     z-index: 2;
+     position: sticky;
+     background-color: #fafafa;
+ }
+
+ .MuiTableCell-alignCenter {
+     text-align: center;
+ }
+
+ .MuiTableCell-head {
+     color: rgba(0, 0, 0, 0.87);
+     /*font-weight: 500;*/
+     line-height: 1.5rem;
+ }
+.MuiTableCell-body {
+    color: rgba(0, 0, 0, 0.87);
+}
+.jss3898 {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    object-fit: contain;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+.jss3905 .MuiTableCell-root {
+    border-top: 2px solid #0088FF !important;
+}
+.jss3905.isNormalLineItem .MuiTableCell-root {
+    border-bottom: 2px solid #0088FF !important;
+}
+.jss3895 {
+    display: flex;
+}
+.jss4054 {
+    position: relative;
+}
+.jss4055 {
+    display: flex;
+    align-items: baseline;
+}
+.jss3895 .btn-hover {
+    display: none;
+}
+ .jss3896 {
+     cursor: pointer;
+     height: auto;
+     padding: 3px 6px;
+     margin-top: -3px;
+     font-weight: normal;
+     margin-left: 5px;
+ }
+.jss3896 .MuiButton-label {
+    font-size: 12px;
+}
+.jss3896 .MuiButton-label {
+    font-size: 12px;
+}
+.jss3910 {
+    display: flex;
+    text-align: center;
+    align-items: flex-end;
+    justify-content: center;
+}
+.jss3912.auto-hidden {
+    /*display: show;*/
+}
+ .jss3912 {
+     width: 24px;
+     cursor: pointer;
+     height: 24px;
+     padding: 0;
+     margin-bottom: 2px;
+ }
+.jss3912 svg {
+    color: #A3A8AF;
+}
+.jss3911 .MuiInputBase-root.MuiInput-root {
+    width: 56px;
+}
 
 

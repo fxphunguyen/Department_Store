@@ -21,6 +21,7 @@ public class CustomerMapper {
     private LocationRegionMapper locationRegionMapper;
 
 
+
     public CustomerResult toDTO(Customer customer) {
         return new CustomerResult()
                 .setId(customer.getId())
@@ -36,7 +37,7 @@ public class CustomerMapper {
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
                 .setLocationRegionId(customer.getLocationRegionId());
-//                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()))
+               // .setLocationRegionResult((locationRegionMapper.toDTO(customer.getLocationRegion())));
 //                .setEmployeeResult(employeeMapper.toDTO(customer.getEmployee()));
     }
     public Customer toOrderDTO(CustomerOrderResult customerOrderResult , Customer customer) {

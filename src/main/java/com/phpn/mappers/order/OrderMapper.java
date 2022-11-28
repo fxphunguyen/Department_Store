@@ -20,6 +20,8 @@ public class OrderMapper {
         return new OrderResult()
                 .setEmployee(employeeMapper.toDTO(order.getEmployee()))
                 .setCustomer(customerMapper.toDTO(order.getCustomer()))
+                .setEmployeeId(order.getEmployeeId())
+                .setCustomerId(order.getCustomerId())
                 .setStatus(order.getOrderStatus().getName())
                 .setId(order.getId())
                 .setGrandTotal(order.getGrandTotal())
