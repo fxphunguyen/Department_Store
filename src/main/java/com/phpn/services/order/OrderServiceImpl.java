@@ -82,9 +82,9 @@ public class OrderServiceImpl implements OrderService {
         BigDecimal grandTotal = BigDecimal.valueOf(0);
         for (OrderItemExport orderItemExport : orderParam.getOrderItems()) {
 
-            Optional<Product> pOptional = productRepository.findById(orderItemExport.getProductId());
+            Optional<Product> productOptional = productRepository.findById(orderItemExport.getProductId());
 
-            if (!pOptional.isPresent()) {
+            if (!productOptional.isPresent()) {
                 throw new NotFoundException("Không tìm thấy Id sản phẩm " + orderItemExport.getProductId());
             }
             //lấy toàn bộ item theo productId
@@ -93,7 +93,7 @@ public class OrderServiceImpl implements OrderService {
             if (totalAvailable < orderItemExport.getQuantity()) {
                 throw new NotEnoughQuantityException("Không đủ số lượng cho đơn hàng, vui lòng kiểm tra lại !");
             }
-            Product product = pOptional.get();
+            Product product = productOptional.get();
             Integer productId = product.getId();
             BigDecimal retailPrice = product.getRetailPrice();
 
