@@ -146,11 +146,11 @@ public class CustomerAPI {
     @GetMapping("/showAllCustomerMixInfo")
     public ResponseEntity<?> showAllCustomerMixInfo() {
         List<ICustomer> iCustomers = customerRepository.getAllCustomerMixInfo();
-        List<ICustomerImpl> iCustomerImpls = iCustomers.stream().map(iCustomer -> {
-            ICustomerImpl iCustomerImpl = new ICustomerImpl();
-            iCustomerImpl.setFromICustomer(iCustomer);
-            return iCustomerImpl;
-        }).collect(Collectors.toList());
-        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
+//        List<ICustomerImpl> iCustomerImpls = iCustomers.stream().map(iCustomer -> {
+//            ICustomerImpl iCustomerImpl = new ICustomerImpl();
+//            iCustomerImpl.setFromICustomer(iCustomer);
+//            return iCustomerImpl;
+//        }).collect(Collectors.toList());
+        return new ResponseEntity<>(iCustomers, HttpStatus.OK);
     }
 }
