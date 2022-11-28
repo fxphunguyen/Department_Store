@@ -1,10 +1,10 @@
 package com.phpn.repositories.model;
 
+import lombok.experimental.Accessors;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import lombok.experimental.Accessors;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -59,6 +59,13 @@ public class Supplier {
     private Integer employeeId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "payment_method_id", nullable = false)
+    private PaymentMethod paymentMethod;
+
+    @Column(name = "payment_method_id", updatable = false, insertable = false)
+    private Integer paymentMethodId;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "location_region_id", nullable = false)
     private LocationRegion locationRegion;
 
@@ -75,13 +82,19 @@ public class Supplier {
         this.id = id;
     }
 
-    public Supplier(Integer employeeId, Integer locationRegionId) {
+    public Supplier(Integer employeeId, Integer paymentMethodId, Integer locationRegionId) {
         setEmployeeId(employeeId);
+        setPaymentMethodId(paymentMethodId);
         setLocationRegionId(locationRegionId);
     }
 
     public Supplier setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
+        return this;
+    }
+
+    public Supplier setPaymentMethodId(Integer paymentMethodId) {
+        this.paymentMethod = new PaymentMethod(this.paymentMethodId = paymentMethodId);
         return this;
     }
 

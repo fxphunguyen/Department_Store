@@ -1,13 +1,10 @@
 package com.phpn.dto.order;
 
-import com.phpn.dto.customer.CustomerParam;
 import com.phpn.dto.customer.CustomerResult;
-import com.phpn.dto.employee.EmployeeParam;
 import com.phpn.dto.employee.EmployeeResult;
-import com.phpn.dto.orderItem.OrderItemParam;
 import com.phpn.dto.orderItem.OrderItemResult;
-import com.phpn.dto.payment_method.PaymentMethodParam;
-import com.phpn.dto.payment_method.PaymentMethodResult;
+import com.phpn.dto.payment_methods.PaymentMethodResult;
+import com.phpn.repositories.model.TaxType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,11 +25,7 @@ public class OrderResult {
 
     private CustomerResult customer;
 
-    private PaymentMethodResult paymentMethod;
-
     private String status;
-
-    private BigDecimal tax;
 
     private BigDecimal discount;
 

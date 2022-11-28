@@ -17,9 +17,7 @@ public class ItemMapper {
                 .setEmployeeId(itemParam.getEmployeeId())
                 .setPurchaseOrderId(itemParam.getPurchaseOrderId())
                 .setQuantity(itemParam.getQuantity())
-                .setSku(itemParam.getSku())
-                .setPrice(itemParam.getPrice())
-                .setDiscount(itemParam.getDiscount());
+                .setPrice(itemParam.getPrice());
     }
 
     public ItemResult toDTO(Item item) {
@@ -30,15 +28,12 @@ public class ItemMapper {
                 .setProductId(item.getProductId())
                 .setSupplierId(item.getSupplierId())
                 .setQuantity(item.getQuantity())
-                .setPrice(item.getPrice())
-                .setSku(item.getSku())
-                .setDiscount(item.getDiscount());
+                .setPrice(item.getPrice());
     }
     public ItemRResult toRDTO(Item item) {
         return (ItemRResult) new ItemRResult()
                 .setId(item.getId())
                 .setQuantity(item.getQuantity())
-                .setPrice(item.getPrice())
-                .setDiscount(item.getDiscount());
+                .setPrice(item.getPrice());
     }
 }
