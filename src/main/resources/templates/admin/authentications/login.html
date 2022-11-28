@@ -22,20 +22,38 @@
                     <h1 class="h5 prevent-select">Đăng nhập vào cửa hàng của bạn</h1>
                 </div>
             </div>
-            <form class="mt-4" action="#" method="post">
+            <form class="mt-4 needs-validation" action="#" method="post" novalidate>
+                <div class="hidden alert-danger sapo-notification">
+                    <div class="col">
+                        <div id="invalid-username" class="hidden">
+                            <img alt="notification-failed.svg" src="../../../static/assets/admin/images/notification-failed.svg"/>
+                            <span>Địa chỉ email/số điện thoại không hợp lệ</span>
+                        </div>
+                        <div id="invalid-password" class="mt-2 hidden">
+                            <img alt="notification-failed.svg" src="../../../static/assets/admin/images/notification-failed.svg"/>
+                            <span>Mật khẩu không hợp lệ</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-login-info">
-                    <div class="form-group">
-                        <input id="login-username" type="text" class="form-input" title="Nhập địa chỉ email/số điện thoại" placeholder="Nhập địa chỉ email/số điện thoại" autocomplete="off" aria-autocomplete="none" required/>
+                    <div class="form-group position-relative">
+                        <input onmouseout="validUserNameHandler();" oninvalid="invalidUserNameHandler();" id="login-username" type="text" class="form-control select-form-input" title="Nhập địa chỉ email/số điện thoại" minlength="6" maxlength="32" placeholder="Nhập địa chỉ email/số điện thoại" autocomplete="off" aria-autocomplete="none" required/>
                     </div>
                     <div class="form-group">
-                        <input id="login-password" type="password" class="form-input" title="Nhập mật khẩu" placeholder="Nhập mật khẩu" autocomplete="off" aria-autocomplete="none" required/>
+                        <input id="login-password" type="password" class="form-control select-form-input" title="Nhập mật khẩu" placeholder="Nhập mật khẩu" autocomplete="off" aria-autocomplete="none" required/>
                         <label for="login-password" class="prevent-select input-inline-button" title="Nhập mật khẩu">
                             <img alt="eye.svg" src="../../../static/assets/admin/images/eye.svg" id="login-icon-eye-id" class="cursor-pointer login-icon-eye" title="Hiện mật khẩu"/>
                             <img alt="eye-slash.svg" src="../../../static/assets/admin/images/eye-slash.svg" id="login-icon-eye-slash-id" class="hidden cursor-pointer login-icon-eye" title="Ẩn mật khẩu"/>
                         </label>
                     </div>
                 </div>
-                <div class="mt-5 text-center">
+                <div class="text-center">
+                    <p class="register-now prevent-select">
+                        Bạn chưa có tài khoản để đăng nhập?
+                        <a href="/register" title="Đăng ký">Đăng ký</a>
+                    </p>
+                </div>
+                <div class="mt-4 text-center">
                     <button type="submit" class="btn-login">Đăng nhập</button>
                 </div>
             </form>
