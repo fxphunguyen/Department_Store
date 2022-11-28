@@ -21,48 +21,12 @@
                         <div class="ui-title-bar__heading-group">
                             <h1 class="ui-title-bar__title">Nhà cung cấp</h1>
                         </div>
-                        <div class="action-bar">
-                            <div class="action-bar__top-links">
-                                <a class="btn sapo-btn-transparent action-bar__link" href="#">
-                                    <svg class="next-icon next-icon--size-20 action-bar__link-icon next-icon--no-nudge">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-export-minor"></use>
-                                    </svg>
-                                    Xuất file
-                                </a>
-
-                                <a class="btn sapo-btn-transparent action-bar__link" href="#">
-                                    <svg class="next-icon next-icon--size-20 action-bar__link-icon next-icon--no-nudge">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-import-minor"></use>
-                                    </svg>
-                                    Nhập file
-                                </a>
-
-                                <a class="btn sapo-btn-transparent action-bar__link" href="#">
-                                    <img src="https://phuphomaique.mysapogo.com/v2/images/icon/friends.svg" alt="friends.svg" style="width: 18px; height: 18px; position: relative; top: -0.6rem; margin-top: -1.1rem; margin-bottom: -1.1rem; margin-right: 3px;"/>
-                                    Nhóm nhà cung cấp
-                                </a>
-
-                                <a class="btn sapo-btn-transparent action-bar__link" href="#">
-                                    <svg class="next-icon next-icon--size-20 action-bar__link-icon next-icon--no-nudge">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-setting"></use>
-                                    </svg>
-                                    Điều chỉnh cột hiển thị
-                                </a>
-                            </div>
-                        </div>
                     </div>
-                    <div class="ui-title-bar__actions" style="margin-bottom: 40px;">
-                        <a href="#" class="btn sapo-btn-default">Thêm nhà cung cấp</a>
-                        <div class="header-fr" style="position: relative; margin-left: 10px; height: 36px;">
-                            <a href="#" class="btn sapo-btn-blank btn-help" style="color: #686868; display: flex; height: 100%; flex-direction: row; justify-content: center; align-items: center; cursor: pointer; border: 1px solid #c4cdd5; float: right; width: auto;">
-                                <img src="https://phuphomaique.mysapogo.com/v2/images/dashboard/icons8-help-20.png" alt="icons8-help-20.png" style="padding-right: 5px;"/>
-                                <span>Trợ giúp</span>
-                            </a>
-                        </div>
+                    <div class="ui-title-bar__actions">
+                        <a href="/admin/suppliers/create" class="btn sapo-btn-default">Thêm nhà cung cấp</a>
                     </div>
                 </div>
             </header>
-
             <div class="gird-layout gird-layout--full-width">
                 <section class="grid-card">
                     <div id="filterAndSavedSearch" class="filter-and-saved-search-order">
@@ -76,7 +40,6 @@
                                 </li>
                             </ul>
                         </div>
-
                         <div class="table-filter-container">
                             <div class="filter-header">
                                 <button class="btn btn-filter" type="button">
@@ -96,7 +59,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div id="resultFilter">
                         <div class="suppliers">
                             <div class="ui-type-container clearfix">
@@ -123,7 +85,6 @@
                                                             </div>
                                                         </div>
                                                     </th>
-
                                                     <th>Mã nhà cung cấp</th>
                                                     <th>Tên nhà cung cấp</th>
                                                     <th>Email</th>
@@ -150,27 +111,14 @@
                     </div>
                 </section>
             </div>
-
-            <div class="grid-footer-help">
-                <div class="grid-footer-help__content">
-                    <div class="grid-footer-help__icon">
-                        <svg class="next-icon next-icon--size-24 next-icon--no-nudge">
-                            <title id="next-help-circle-title">Help</title>
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-help-circle"></use>
-                        </svg>
-                    </div>
-                    <div>
-                        Bạn có thể xem thêm hướng dẫn về quản lý nhà cung cấp
-                        <a href="#" target="_blank" style="color: #0088ff" title="Hướng dẫn">tại đây</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
 <th:block th:replace="/layout/script :: script"/>
+
 <script src="../../../static/assets/admin/js/suppliers/supplier_list.js"></script>
+<script>Page();</script>
 
 </body>
 

@@ -16,7 +16,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class SupplierCreate {
 
-    private Integer id;
     private String supplierCode;
     private String name;
     private String email;
@@ -24,9 +23,8 @@ public class SupplierCreate {
     private SupplierStatus supplierStatus;
     private String description;
     private Integer employeeId;
+    private Integer paymentMethodId;
     private Integer locationRegionId;
     private LocationRegionCreate locationRegionCreate;
-    private String createAt;
-    private String updateAt;
 
 }

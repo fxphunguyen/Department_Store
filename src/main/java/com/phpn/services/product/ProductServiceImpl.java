@@ -3,7 +3,10 @@ package com.phpn.services.product;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/dev_c5
 import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
@@ -57,7 +60,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Product create(ProductParam productParam) {
         return productRepository.save(productMapper.toModel(productParam));
     }
