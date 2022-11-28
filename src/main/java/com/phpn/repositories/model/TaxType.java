@@ -2,7 +2,6 @@ package com.phpn.repositories.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.jetbrains.annotations.NotNull;
 
 public enum TaxType {
 
@@ -21,7 +20,7 @@ public enum TaxType {
     }
 
     @JsonCreator
-    public static @NotNull TaxType parseTypeTax(String value) {
+    public static TaxType parseTypeTax(String value) {
         TaxType[] values = values();
         for (TaxType typeTax : values) {
             if (typeTax.value.equals(value)) return typeTax;
