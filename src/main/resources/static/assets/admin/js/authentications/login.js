@@ -33,10 +33,10 @@ const loginEventHandler = () => {
             "data": JSON.stringify(getLoginInputValue),
             "type": "post"
         })
-        .done(async (data) => {
-            await saveLoginDataToLocalStorage(data);
-            await console.log("Login successfully forward to suppliers!");
-            window.location.href = "/admin/suppliers";
+        .done((data) => {
+            saveLoginDataToLocalStorage(data);
+            alert("Bạn đã đăng nhập vào hệ thống thành công!");
+            window.location.href = "/admin/home";
         })
         .fail((error) => console.log("Login failed: " + error));
 
@@ -46,3 +46,4 @@ const loginEventHandler = () => {
 }
 
 $("#login-submit").on("click", () => loginEventHandler());
+
