@@ -2,6 +2,7 @@ package com.phpn.controllers;
 
 
 import com.phpn.dto.customer.CustomerResult;
+import com.phpn.repositories.model.CustomerStatus;
 import com.phpn.repositories.model.ICustomer;
 import com.phpn.services.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,9 +49,6 @@ public class CustomerController {
         System.out.println("___________________________" + id);
         ModelAndView modelAndView = new ModelAndView();
         ICustomer iCustomer = customerService.CustomerInfoById(id);
-        System.out.println("====================================================");
-        System.out.println(iCustomer.getID());
-        System.out.println(iCustomer);
         modelAndView.addObject("customer", iCustomer);
         modelAndView.setViewName("/admin/customer/history_customer");
         return modelAndView;
