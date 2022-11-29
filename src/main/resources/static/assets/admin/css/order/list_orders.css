@@ -7521,4 +7521,22 @@ html{
     align-items: center;
 }
 
+.csJERM {
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    display: inline-flex;
+    white-space: nowrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 0.285714rem;
+    border-radius: 1.14286rem;
+    height: 1.71429rem;
+    border: 1px solid rgb(159, 237, 207);
+    background-color: white;
+}
+
 

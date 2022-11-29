@@ -21,6 +21,8 @@ public class OrderResult {
 
     private EmployeeResult employee;
 
+    private String orderCode;
+
     private CustomerResult customer;
 
     private String status;
