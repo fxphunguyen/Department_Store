@@ -57,6 +57,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional(readOnly = true)
     public CustomerResult findById(Integer id) {
+        System.out.println(id + "dday laf id");
+        Customer customer = customerRepository.findById(id).get();
+        if(customer == null){
+            System.out.println("duwx lieeuj bij nu");
+        }
         return customerMapper.toDTO(customerRepository.findById(id).get());
     }
 
@@ -111,7 +116,6 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-
     public CustomerGender[] findAllByCustomerGender() {
         CustomerGender[] customerGender = CustomerGender.values();
         return customerGender;

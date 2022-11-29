@@ -10,11 +10,8 @@ public interface ICustomer {
     String getADDRESS();
     String getPHONE();
     String getGENDER();
-
     String getBIRTHDAY();
-
     String getEmail();
-
     String getSTATUS();
     String getCUSTOMER_GROUP();
     Date getCREATE_AT();
