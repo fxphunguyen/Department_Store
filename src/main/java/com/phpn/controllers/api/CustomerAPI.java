@@ -9,6 +9,7 @@ import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.LocationRegionRepository;
+import com.phpn.repositories.OrderRepository;
 import com.phpn.repositories.model.*;
 import com.phpn.services.customer.CustomerService;
 import com.phpn.services.locationRegion.LocationRegionService;
@@ -43,6 +44,9 @@ public class CustomerAPI {
 
     @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    OrderRepository orderRepository;
 
     @GetMapping("/list_customerAll")
     @Transactional(readOnly = true)
@@ -128,6 +132,11 @@ public class CustomerAPI {
         return customerGender;
     }
 
+    @GetMapping("/customerStatus")
+    public CustomerStatus[] findAllByCustomerStatus() {
+        CustomerStatus[] customerStatuses = CustomerStatus.values();
+        return customerStatuses;
+    }
 
 //    @GetMapping("/showAllCustomerMixInfo")
 //    public ResponseEntity<?> showAllCustomerMixInfo() {
@@ -158,5 +167,10 @@ public class CustomerAPI {
         return  new ResponseEntity<>(iCustomer, HttpStatus.OK);
     }
 
-
+    @GetMapping("/historyCustomerOrder/{id}")
+    @Transactional(readOnly = true)
+    public  ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id){
+        List<Order> order = orderRepository.findAllOrderByCustomerId(id);
+        return  new ResponseEntity<>(order, HttpStatus.OK);
+    }
 }
