@@ -21,6 +21,8 @@ public class OrderMapper {
                 .setEmployee(employeeMapper.toDTO(order.getEmployee()))
                 .setCustomer(customerMapper.toDTO(order.getCustomer()))
                 .setStatus(order.getOrderStatus().getName())
+                .setOrderCode(order.getOrderCode())
+                .setCreateAt(order.getCreateAt())
                 .setId(order.getId())
                 .setGrandTotal(order.getGrandTotal())
                 .setDescription(order.getDescription())
