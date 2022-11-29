@@ -1,5 +1,8 @@
-let customer = new Customer()
+let customer = new Customer();
+let locationRegionResult = new LocationRegionResult();
+
 let locationRegionCreate = new LocationRegionCreate();
+
 let employeeResult = new EmployeeResult();
 let productResult = new ProductResult();
 let orderResult = new OrderResult();
@@ -96,12 +99,13 @@ const searchCustomer = () => {
 
 function showCustomerInfo(idCustomer) {
     console.log(idCustomer);
-    $("#MuiBox-list-customer").addClass("hide");
+    // $("#MuiBox-list-customer").addClass("hide");
 
     $("#idCustomer").val(idCustomer);
     let result = customer = customers.find(({id}) => id === idCustomer);
-    console.log("result", result)
-    let str = `<div class="MuiPaper-root  jss938 MuiPaper-elevation1 MuiPaper-rounded" id="closed_customer_info">
+    console.log("resultt", result)
+
+    let str = `<div class="MuiPaper-root jss938 MuiPaper-elevation1 MuiPaper-rounded" id="closed_customer_info">
         <div class="MuiBox-root jss985">
             <div class="MuiBox-root jss3887 jss939">
                 <div class="MuiBox-root jss3888">
@@ -121,7 +125,7 @@ function showCustomerInfo(idCustomer) {
                         </a>
                         <button
                             class="MuiButtonBase-root MuiIconButton-root jss948 MuiIconButton-colorSecondary MuiIconButton-sizeSmall"
-                            tabindex="0" 
+                            tabindex="0"
                             onclick="handleRemove()"
                             type="button">
                             <span class="MuiIconButton-label">
@@ -142,12 +146,7 @@ function showCustomerInfo(idCustomer) {
                 <div class="MuiBox-root jss3896 jss952">
                     <div class="MuiBox-root jss3897">
                         <div class="MuiBox-root jss3898 jss944">
-                            <div class="MuiBox-root jss3899">
-                                <p class="MuiTypography-root jss941 MuiTypography-body2">Địa chỉ giao hàng</p>
-                            </div>
-                            <div class="MuiBox-root jss3900">
-                                <p class="MuiTypography-root MuiTypography-body2">${result.phone}</p>
-                                <p class="MuiTypography-root MuiTypography-body2">${result.locationRegionResult.address}</p>
+                            <div class="MuiBox-root jss3899">${result.locationRegion.address}</p>
                             </div>
                         </div>
                         <div class="MuiBox-root jss3901 jss945 jss947">
@@ -178,7 +177,7 @@ function showCustomerInfo(idCustomer) {
                             </div>
                             <div class="MuiBox-root jss4278">
                                 <p class="MuiTypography-root MuiTypography-body2">${result.phone}</p>
-                                <p class="MuiTypography-root MuiTypography-body2">${result.locationRegionResult.address}</p>
+                                <p class="MuiTypography-root MuiTypography-body2">${result.locationRegion.address}</p>
                             </div>
                         </div>
                         <div class="MuiBox-root jss4279 jss945">
@@ -210,9 +209,124 @@ function showCustomerInfo(idCustomer) {
         </div>
     </div>`;
 
-    $("#show_customer_info").append(str);
+    $("#show_customer_info").html(str);
 
 }
+// function showCustomerInfo(idCustomer) {
+//     console.log(idCustomer);
+//     // $("#MuiBox-list-customer").addClass("hide");
+//
+//     $("#idCustomer").val(idCustomer);
+//     let result = customer = customers.find(({id}) => id === idCustomer);
+//     console.log("resultt", result)
+//
+//     let str = `<div class="MuiPaper-root jss938 MuiPaper-elevation1 MuiPaper-rounded" id="closed_customer_info">
+//         <div class="MuiBox-root jss985">
+//             <div class="MuiBox-root jss3887 jss939">
+//                 <div class="MuiBox-root jss3888">
+//                     <h6 class="MuiTypography-root MuiTypography-h6" style="display: flex; align-items: center;"><svg
+//                             class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
+//                             style="color: rgb(163, 168, 175); font-size: 22px; margin-right: 10px;">
+//                             <path
+//                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z">
+//                             </path>
+//                         </svg>Thông tin khách hàng</h6>
+//                     <div class="MuiBox-root jss3889"><a target="_blank" href="/admin/customers/181966855"
+//                             style="text-decoration: none; display: inline-flex; align-items: center;">
+//                             <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary"
+//                                 title="Denise Zimmerman">${result.name}</h6>
+//                             <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary">
+//                                 &nbsp;-&nbsp;${result.phone}</h6>
+//                         </a>
+//                         <button
+//                             class="MuiButtonBase-root MuiIconButton-root jss948 MuiIconButton-colorSecondary MuiIconButton-sizeSmall"
+//                             tabindex="0"
+//                             onclick="handleRemove()"
+//                             type="button">
+//                             <span class="MuiIconButton-label">
+//                             <svg viewBox="0 0 24 24"
+//                                     fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+//                                     font-size="20">
+//                                     <path
+//                                         d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"
+//                                         fill="currentColor"></path>
+//                                 </svg>
+//                                 </span>
+//                                 <span class="MuiTouchRipple-root"></span>
+//                                 </button>
+//                                 </div>
+//                 </div>
+//             </div>
+//             <div class="MuiBox-root jss3895 jss942">
+//                 <div class="MuiBox-root jss3896 jss952">
+//                     <div class="MuiBox-root jss3897">
+//                         <div class="MuiBox-root jss3898 jss944">
+//                             <div class="MuiBox-root jss3899">${result.locationRegion.address}</p>
+//                             </div>
+//                         </div>
+//                         <div class="MuiBox-root jss3901 jss945 jss947">
+//                             <div class="MuiFormControl-root jss3914 jss3916 jss3911">
+//                                 <div class="MuiFormControl-root MuiTextField-root jss3917" inputmode="numeric">
+//                                     <div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
+//                                         <input aria-invalid="false" autocomplete="off" name="lineItemQuantity-415457da-d825-4964-912f-10804128db81"
+//                                             type="text" class="MuiInputBase-input MuiInput-input" value="1"
+//                                             style="text-align: center; width: 100%;">
+//                                     </div>
+//                             </div>
+//                     </div>
+//                         </div>
+//                     </div>
+//                     <div class="MuiBox-root jss4275">
+//                         <div class="MuiBox-root jss4276 jss944">
+//                             <div class="MuiBox-root jss4277">
+//                                 <p class="MuiTypography-root jss941 MuiTypography-body2">Địa chỉ nhận hóa đơn</p>
+//                                 <button
+//                                     class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
+//                                     tabindex="0"
+//                                     onclick="editCustomer()"
+//                                      type="button"
+//                                     style="margin: 0 4px; height: 15px; min-width: unset;"><span
+//                                         class="MuiButton-label">Thay đổi</span><span
+//                                         class="MuiTouchRipple-root"></span>
+//                                 </button>
+//                             </div>
+//                             <div class="MuiBox-root jss4278">
+//                                 <p class="MuiTypography-root MuiTypography-body2">${result.phone}</p>
+//                                 <p class="MuiTypography-root MuiTypography-body2">${result.locationRegion.address}</p>
+//                             </div>
+//                         </div>
+//                         <div class="MuiBox-root jss4279 jss945">
+//                             <div class="MuiBox-root jss4280">
+//                                 <p class="MuiTypography-root jss941 MuiTypography-body2">Liên hệ</p>
+//                             </div>
+//                             <p class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175);">Chưa có
+//                                 thông tin liên hệ</p>
+//                             <div class="MuiFormControl-root jss1315 MuiFormControl-fullWidth"
+//                                 style="padding-top: 16px;">
+//                                 <div class="MuiFormControl-root MuiTextField-root jss1317 MuiFormControl-fullWidth">
+//                                     <div
+//                                         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl">
+//                                         <input aria-invalid="false" id="557fa869-3d86-41db-933d-de2fc27a08c6"
+//                                             placeholder="Email" type="text" aria-label="Without label" maxlength="200"
+//                                             class="MuiInputBase-input MuiOutlinedInput-input"
+//                                             value=${result.email} >
+//                                         <fieldset aria-hidden="true" class="jss1037 MuiOutlinedInput-notchedOutline"
+//                                             style="padding-left: 8px;">
+//                                             <legend class="jss1038" style="width: 0.01px;"><span>​</span></legend>
+//                                         </fieldset>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>`;
+//
+//     $("#show_customer_info").html(str);
+//
+// }
 
 
 function handleCloseListCustomers() {
@@ -264,9 +378,9 @@ function showListProducts() {
                                     <h6 class="MuiTypography-root MuiTypography-h6">${product.retailPrice}</h6>
                                         <p class="MuiTypography-root MuiTypography-body1" style="margin-top: 4px;">
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">Tồn:  </span>
-                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${result.quantity}</span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${itemResult.quantity}</span>
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">&nbsp;| Có thể bán: </span>
-                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${result.available}</span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${itemResult.available}</span>
                                         </p>
                                 </div>
                             </div>
@@ -468,7 +582,6 @@ function doCreateCustomer() {
                 customer.locationRegionCreate = locationRegionCreate;
                 $("#create_order_customer").modal("hide");
                 App.IziToast.showSuccessAlert("Thêm khách hàng thành công!");
-                // showCustomerInfo(customer.id);
                 searchCustomer();
                 $('#nameCreate').val("");
                 $('#codeCreate').val("");
@@ -487,6 +600,7 @@ function doCreateCustomer() {
 
 }
 doCreateCustomer();
+
 
 
 
@@ -609,18 +723,18 @@ function editCustomer() {
 //
 // function doUpdateCustomer() {
 //     $('#btnUpdateCustomer').on('click', (idCustomer ) => {
-//         locationRegionCreate.provinceId = $("#provinceUpdate").val();
-//         locationRegionCreate.provinceName = $("#provinceUpdate :selected").text();
-//         locationRegionCreate.districtId = $("#districtUpdate").val();
-//         locationRegionCreate.districtName = $("#districtUpdate :selected").text();
-//         locationRegionCreate.wardId = $("#wardUpdate").val();
-//         locationRegionCreate.wardName = $("#wardUpdate :selected").text();
-//         locationRegionCreate.address = $("#addressUpdate").val();
+//         locationRegionResult.provinceId = $("#provinceUpdate").val();
+//         locationRegionResult.provinceName = $("#provinceUpdate :selected").text();
+//         locationRegionResult.districtId = $("#districtUpdate").val();
+//         locationRegionResult.districtName = $("#districtUpdate :selected").text();
+//         locationRegionResult.wardId = $("#wardUpdate").val();
+//         locationRegionResult.wardName = $("#wardUpdate :selected").text();
+//         locationRegionResult.address = $("#addressUpdate").val();
 //         customer.id = $("#idCustomerUpdate").val();
 //         customer.name = $("#nameUpdate").val();
 //         customer.phone = $("#phoneUpdate").val();
 //         customer.customerCode = $("#codeUpdate").val();
-//         customer.locationRegionCreate = locationRegionCreate;
+//         customer.locationRegionResult = locationRegionResult;
 //
 //         $.ajax({
 //             "headers": {
@@ -633,7 +747,7 @@ function editCustomer() {
 //         })
 //             .done((data) => {
 //                 customer = data;
-//                 customer.locationRegionCreate = locationRegionCreate;
+//                 customer.locationRegionResult = locationRegionResult;
 //                 removeEventModal();
 //                 $("#update_order_customer").modal("hide");
 //                 App.IziToast.showSuccessAlert("Cập nhật khách hàng thành công!");
@@ -789,7 +903,6 @@ function showProductInfo(productId) {
 }
 
 $(() => {
-    showListProducts();
     getAllItem();
     getAllEmployees();
     searchCustomer();

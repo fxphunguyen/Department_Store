@@ -10,7 +10,9 @@ import com.phpn.repositories.model.LocationRegion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class LocationRegionServiceImpl implements LocationRegionService {
@@ -47,5 +49,13 @@ public class LocationRegionServiceImpl implements LocationRegionService {
     @Override
     public LocationRegion findByIdCreate(Integer id) {
         return locationRegionRepository.findById(id).get();
+    }
+
+    @Override
+    public List<LocationRegionResult> findAll() {
+        return locationRegionRepository.findAll()
+                .stream()
+                .map(locationRegionMapper :: toDTO)
+                .collect(Collectors.toList());
     }
 }

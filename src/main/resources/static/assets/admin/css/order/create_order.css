@@ -3640,9 +3640,9 @@ select#districtUpdate   {
     border-color: #A3A8AF;
     border-radius: 5px;
 }
- .jss945 {
-     width: 284px;
- }
+.jss945 {
+    width: 284px;
+}
 .jss3902 {
     padding: 6px 0;
 }
@@ -3715,39 +3715,39 @@ select#districtUpdate   {
 .jss1226 .MuiTableCell-root:first-child {
     padding-left: 16px;
 }
- .jss1226 .MuiTableCell-head:first-child {
-     border-left: 2px solid #F3F4F5;
- }
+.jss1226 .MuiTableCell-head:first-child {
+    border-left: 2px solid #F3F4F5;
+}
 
- .jss1226 .MuiTableCell-head {
-     border-top: 1px solid #D3D5D7;
-     font-weight: 500;
-     border-bottom: 1px solid #D3D5D7;
-     background-color: #F3F4F5;
- }
+.jss1226 .MuiTableCell-head {
+    border-top: 1px solid #D3D5D7;
+    font-weight: 500;
+    border-bottom: 1px solid #D3D5D7;
+    background-color: #F3F4F5;
+}
 
- .jss1226 .MuiTableCell-root {
-     padding: 10px 12px;
-     font-size: 14px;
- }
+.jss1226 .MuiTableCell-root {
+    padding: 10px 12px;
+    font-size: 14px;
+}
 
- .MuiTableCell-stickyHeader {
-     top: 0;
-     left: 0;
-     z-index: 2;
-     position: sticky;
-     background-color: #fafafa;
- }
+.MuiTableCell-stickyHeader {
+    top: 0;
+    left: 0;
+    z-index: 2;
+    position: sticky;
+    background-color: #fafafa;
+}
 
- .MuiTableCell-alignCenter {
-     text-align: center;
- }
+.MuiTableCell-alignCenter {
+    text-align: center;
+}
 
- .MuiTableCell-head {
-     color: rgba(0, 0, 0, 0.87);
-     /*font-weight: 500;*/
-     line-height: 1.5rem;
- }
+.MuiTableCell-head {
+    color: rgba(0, 0, 0, 0.87);
+    /*font-weight: 500;*/
+    line-height: 1.5rem;
+}
 .MuiTableCell-body {
     color: rgba(0, 0, 0, 0.87);
 }
@@ -3779,14 +3779,14 @@ select#districtUpdate   {
 .jss3895 .btn-hover {
     display: none;
 }
- .jss3896 {
-     cursor: pointer;
-     height: auto;
-     padding: 3px 6px;
-     margin-top: -3px;
-     font-weight: normal;
-     margin-left: 5px;
- }
+.jss3896 {
+    cursor: pointer;
+    height: auto;
+    padding: 3px 6px;
+    margin-top: -3px;
+    font-weight: normal;
+    margin-left: 5px;
+}
 .jss3896 .MuiButton-label {
     font-size: 12px;
 }
@@ -3802,13 +3802,13 @@ select#districtUpdate   {
 .jss3912.auto-hidden {
     /*display: show;*/
 }
- .jss3912 {
-     width: 24px;
-     cursor: pointer;
-     height: 24px;
-     padding: 0;
-     margin-bottom: 2px;
- }
+.jss3912 {
+    width: 24px;
+    cursor: pointer;
+    height: 24px;
+    padding: 0;
+    margin-bottom: 2px;
+}
 .jss3912 svg {
     color: #A3A8AF;
 }

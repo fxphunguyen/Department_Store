@@ -15,4 +15,6 @@ public interface LocationRegionRepository extends JpaRepository<LocationRegion, 
 
     @Query("SELECT max(id) FROM LocationRegion ")
    LocationRegion  findMaxIdCustomer();
+
+    List<LocationRegion> findAll();
 }
