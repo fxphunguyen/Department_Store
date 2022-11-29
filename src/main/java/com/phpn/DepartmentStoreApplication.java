@@ -8,13 +8,13 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 public class DepartmentStoreApplication extends SpringBootServletInitializer {
 
+    public static void main(String[] args) {
+        SpringApplication.run(DepartmentStoreApplication.class, args);
+    }
+
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder springApplicationBuilder) {
         return springApplicationBuilder.sources(DepartmentStoreApplication.class);
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(DepartmentStoreApplication.class, args);
     }
 
 }

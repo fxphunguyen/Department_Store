@@ -1,13 +1,12 @@
 package com.phpn.services.employee;
 
-import com.phpn.dto.employee.EmployeeResult;
-import com.phpn.repositories.model.Customer;
-
 import java.util.List;
+import com.phpn.dto.employee.EmployeeResult;
 
 public interface EmployeeService {
+
     List<EmployeeResult> findAll();
 
-    EmployeeResult  findById(Integer id);
+    EmployeeResult findById(Integer id);
 
 }
