@@ -13,7 +13,7 @@
             <div class="MuiBox-root jss4549 jss4547">
                 <div class="MuiBox-root jss4550"><a
                         class="MuiTypography-root MuiLink-root MuiLink-underlineNone jss4546 MuiTypography-colorSecondary"
-                        href="https://phuphomaique.mysapogo.com/admin/customers">
+                        href="/admin/customers">
                     <svg viewBox="0 0 24 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                          style="width: 24px; height: 24px; margin-left: -9px; margin-right: 6px;">
@@ -54,12 +54,48 @@
                             <div class="MuiBox-root jss4671 jss4528 jss4523">
                                 <div class="MuiBox-root jss4672 jss4527">
                                     <div class="MuiBox-root jss4673" style="display: flex;">
-                                        <h6 class="MuiTypography-root MuiTypography-subtitle1"
-                                            style="padding-right: 16px;">Thông tin cá
-                                            nhân</h6>
-                                        <div class="sc-jSMfEi hlxtkG"><span
-                                                class="sc-eCYdqJ gIZkwA" th:text="*{customer.getSTATUS()}"></span>
-                                        </div>
+                                        <h6 class="MuiTypography-root MuiTypography-subtitle1" style="padding-right: 16px;">Thông tin cá nhân</h6>
+                                        <style>
+                                            .csJERM {
+                                                box-sizing: border-box;
+                                                position: relative;
+                                                display: inline-flex;
+                                                white-space: nowrap;
+                                                -webkit-box-pack: center;
+                                                justify-content: center;
+                                                -webkit-box-align: center;
+                                                align-items: center;
+                                                vertical-align: middle;
+                                                padding: 0.285714rem;
+                                                border-radius: 1.14286rem;
+                                                height: 1.71429rem;
+                                                border: 1px solid rgb(255, 184, 184);
+                                                background-color: rgb(255, 246, 246);
+                                            }
+                                            .ccQLIN {
+                                                padding: 0px 0.571429rem;
+                                                width: 100%;
+                                                text-overflow: ellipsis;
+                                                white-space: nowrap;
+                                                overflow: hidden;
+                                                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                                                font-weight: 400;
+                                                font-size: 0.928571rem;
+                                                line-height: 1.14286rem;
+                                                margin: 0px;
+                                                color: rgb(238, 71, 71);
+                                            }
+                                        </style>
+                                        <th:block th:if="*{customer.getSTATUS() == 'SUCCESS'}">
+                                            <div class="hlxtkG">
+                                                <span class="gIZkwA">Đang giao dịch</span>
+                                            </div>
+                                        </th:block>
+                                        <th:block th:if="*{customer.getSTATUS() == 'AVAILABLE'}">
+                                            <div class="csJERM">
+                                                <span class="ccQLIN">Ngừng giao dịch</span>
+                                            </div>
+                                        </th:block>
                                         <input class="sc-eCYdqJ gIZkwA idCustomerDelete" th:value="*{customer.getID()}"
                                                style="display: none">
                                     </div>
@@ -86,27 +122,7 @@
 
                                                 </div>
                                             </div>
-                                            <!--                                            {-->
-                                            <!--                                            "id": 7,-->
-                                            <!--                                            "customer_CODE": "Quis autem quam qui ",-->
-                                            <!--                                            "name": "Nissim Carey",-->
-                                            <!--                                            "address": "Tỉnh Bắc Ninh",-->
-                                            <!--                                            "phone": "+1 (432) 903-2941",-->
-                                            <!--                                            "gender": "KHAC",-->
-                                            <!--                                            "sl_MH_DAMUA": 0,-->
-                                            <!--                                            "nv_PHUTRACH": "Đỗ Hồng Huy",-->
-                                            <!--                                            "status": "AVAILABLE",-->
-                                            <!--                                            "sl_SP_DAMUA": 0,-->
-                                            <!--                                            "congno": null,-->
-                                            <!--                                            "create_AT": "2022-11-28 11:42:22 +0700",-->
-                                            <!--                                            "chitieu": null,-->
-                                            <!--                                            "ngm_CUOICUNG": null,-->
-                                            <!--                                            "update_AT": null,-->
-                                            <!--                                            "sl_SP_HOANTRA": 0,-->
-                                            <!--                                            "birthday": "1979-05-20",-->
-                                            <!--                                            "customer_GROUP": "VIP",-->
-                                            <!--                                            "email": "xikoladiwi@mailinator.com"-->
-                                            <!--                                            }-->
+
                                             <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
                                                 <div class="MuiPaper-root jss4530 MuiPaper-elevation1 MuiPaper-rounded">
                                                     <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
@@ -199,14 +215,14 @@
                                             <div class="MuiPaper-root jss4530 MuiPaper-elevation1 MuiPaper-rounded">
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                     itemid="display-total-sales"
-                                                    th:text="*{ ':' + customer.getSL_MH_DAMUA()}">
+                                                    th:text="*{ ': '  + customer.getSL_MH_DAMUA()}">
                                                 </h6>
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                     itemid="display-order-purchases"
-                                                    th:text="*{ ':' + customer.getSL_SP_DAMUA()}">: 0</h6>
+                                                    th:text="*{ ': ' + customer.getSL_SP_DAMUA()}">: 0</h6>
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                     itemid="display-last-order-on"
-                                                    th:text="*{ ':' + customer.getNGM_CUOICUNG()}">: ---</h6>
+                                                    th:text="*{ ': ' + customer.getNGM_CUOICUNG()}">: ---</h6>
                                             </div>
                                         </div>
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
@@ -288,7 +304,7 @@
                     <div class="sc-hZFzCs cTUhMx">
                         <div id="scroller" class="sc-cHPgQl hYUFnd">
                             <div class="sc-gHLcSH ieIWRo">
-                                <button id="histories" class="sc-KfMfS eMTKDV">Lịch sử mua
+                                <button id="histories" class="sc-KfMfS eMTKDV ">Lịch sử mua
                                     hàng
                                 </button>
                                 <button id="debts" class="sc-KfMfS eMTKDV">Công nợ</button>
@@ -298,10 +314,10 @@
                                 <button id="addresses" class="sc-KfMfS eMTKDV">Địa
                                     chỉ
                                 </button>
-                                <button id="notes" class="sc-KfMfS eMTKDV">Ghi chú</button>
-                                <button
-                                        id="customer_groups" class="sc-KfMfS eMTKDV">Nhóm khách hàng
-                                </button>
+<!--                                <button id="notes" class="sc-KfMfS eMTKDV">Ghi chú</button>-->
+<!--                                <button-->
+<!--                                        id="customer_groups" class="sc-KfMfS eMTKDV">Nhóm khách hàng-->
+<!--                                </button>-->
                             </div>
                         </div>
                     </div>
@@ -371,12 +387,18 @@
             'color': 'rgb(116, 124, 135)',
             'border': 'none'
         })
-        customer_groups
         $('#customer_groups').css({
             'color': 'rgb(116, 124, 135)',
             'border': 'none'
         })
     }
+
+    deleteEventModelShow();
+
+    $('#histories').css({
+        'color': '#4a8aff',
+        'border-bottom': '2px solid rgb(0, 136, 255)'
+    });
 
 
     <!--    Công nợ-->
@@ -396,7 +418,7 @@
             'color': '#4a8aff',
             'border-bottom': '2px solid rgb(0, 136, 255)'
         });
-        $('.showModelHistory').append(modalHistoryOrder)
+
         showCustomerInfoHistory();
     });
     // liên hệ
@@ -429,15 +451,15 @@
         });
         $('.showModelHistory').append(modalNote)
     });
-    // Nhóm kahcsh hàng
-    $('#customer_groups').click(function () {
-        deleteEventModelShow();
-        $('#customer_groups').css({
-            'color': '#4a8aff',
-            'border-bottom': '2px solid rgb(0, 136, 255)'
-        });
-        $('.showModelHistory').append(modalCustomerGroup)
-    });
+    // // Nhóm kahcsh hàng
+    // $('#customer_groups').click(function () {
+    //     deleteEventModelShow();
+    //     $('#customer_groups').css({
+    //         'color': '#4a8aff',
+    //         'border-bottom': '2px solid rgb(0, 136, 255)'
+    //     });
+    //     $('.showModelHistory').append(modalCustomerGroup)
+    // });
 
 
     let modalCongNo = `
@@ -504,9 +526,9 @@
                                                        href="/admin/receipt_vouchers/296331927/edit">RVN00014</a></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                                       data-tip="Nguyễn Đình Quốc Huy" currentitem="false"
+                                                       data-tip="" currentitem="false"
                                                        style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                                        Nguyễn Đình Quốc Huy</p></td>
+                                                        </p></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <span>28/11/2022 08:12</span></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
@@ -525,9 +547,9 @@
                                                        href="/admin/receipt_vouchers/296331920/edit">RVN00010</a></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                                       data-tip="Nguyễn Đình Quốc Huy" currentitem="false"
+                                                       data-tip="" currentitem="false"
                                                        style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                                        Nguyễn Đình Quốc Huy</p></td>
+                                                        </p></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <span>28/11/2022 08:12</span></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
@@ -546,9 +568,9 @@
                                                        href="/admin/receipt_vouchers/296331913/edit">RVN00008</a></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                                       data-tip="Nguyễn Đình Quốc Huy" currentitem="false"
+                                                       data-tip="" currentitem="false"
                                                        style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                                        Nguyễn Đình Quốc Huy</p></td>
+                                                        </p></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <span>28/11/2022 08:12</span></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
@@ -567,9 +589,9 @@
                                                 </td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                                       data-tip="Nguyễn Đình Quốc Huy" currentitem="false"
+                                                       data-tip="" currentitem="false"
                                                        style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                                        Nguyễn Đình Quốc Huy</p></td>
+                                                        </p></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <span>28/11/2022 08:12</span></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
@@ -588,9 +610,9 @@
                                                 </td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                                       data-tip="Nguyễn Đình Quốc Huy" currentitem="false"
+                                                       data-tip="" currentitem="false"
                                                        style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                                        Nguyễn Đình Quốc Huy</p></td>
+                                                        </p></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <span>28/11/2022 08:12</span></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
@@ -609,9 +631,9 @@
                                                 </td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                                       data-tip="Nguyễn Đình Quốc Huy" currentitem="false"
+                                                       data-tip="" currentitem="false"
                                                        style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                                        Nguyễn Đình Quốc Huy</p></td>
+                                                        </p></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <span>28/11/2022 08:12</span></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
@@ -771,7 +793,7 @@
                                         border-right-width: 6px;
                                     }
                                 </style>
-                                Nguyễn Đình Quốc Huy
+                                
                             </div>
                         </div>
                     </div>`
@@ -792,7 +814,7 @@
                                                 scope="col" colspan="1" rowspan="1">Trạng thái
                                             </th>
                                             <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignRight"
-                                                scope="col" colspan="1" rowspan="1" style="width: 200px;">Giá trị
+                                                scope="col" colspan="1" rowspan="1" style="width: 200px ;text-align: center; color: black;">Giá trị
                                             </th>
                                             <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
                                                 scope="col" colspan="1" rowspan="1">Chi nhánh
@@ -1036,10 +1058,10 @@
                                                     tabindex="-1">
                                                     <td class="MuiTableCell-root MuiTableCell-body jss3951 MuiTableCell-alignLeft">
                                                         <a class="jss3955"
-                                                           href="/admin/customer_groups/2607991">BANLE</a></td>
+                                                           href="/admin/customer_groups/2607991">Add</a></td>
                                                     <td class="MuiTableCell-root MuiTableCell-body jss3951 MuiTableCell-alignLeft">
                                                         <p class="MuiTypography-root MuiTypography-body1"
-                                                           title="t.customerGroupValidate.name">Bán lẻ</p></td>
+                                                           title="t.customerGroupValidate.name">Ten nhom</p></td>
                                                     <td class="MuiTableCell-root MuiTableCell-body jss3951 MuiTableCell-alignLeft">
                                                         <p class="MuiTypography-root MuiTypography-body1"
                                                            title="t.customerGroupValidate.groupType">Cố định</p></td>
@@ -1185,15 +1207,15 @@
 
     }
 
-    function openPage() {
-        $('#histories').css({
-            'color': '#4a8aff',
-            'border-bottom': '2px solid rgb(0, 136, 255)'
-        });
-        $('.showModelHistory').append(modalHistoryOrder)
-        showCustomerInfoHistory();
-    }
-    openPage();
+    // function openPage() {
+    //     $('#histories').css({
+    //         'color': '#4a8aff',
+    //         'border-bottom': '2px solid rgb(0, 136, 255)'
+    //     });
+    //     $('.showModelHistory').append(modalHistoryOrder)
+    //     showCustomerInfoHistory();
+    // }
+    // openPage();
     idDeleteCustomerById();
 
     function showCustomerInfoHistory() {
@@ -1208,13 +1230,12 @@
             url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer
         })
             .done((data) => {
-                $(".showAllCustomerOrderHistory").val("");
                 console.log(data)
                 if (data.length === 0){
-                    return  $(".showAllCustomerOrderHistory").append(noModalHistoryOrder);
+                    return  $(".showModelHistory").append(noModalHistoryOrder);
                 }
-                $(".showAllCustomerOrderHistory").val("")
                 if (0 < data.length){
+                    $('.showModelHistory').append(modalHistoryOrder)
                    return   $.each(data, (i, order) => {
                         let str = `
                                      <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
@@ -1223,7 +1244,7 @@
                                                     <a class="jss1437" href="/admin/orders/1167549753">${order.orderCode}</a>
                                                 </td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <div class="sc-jSMfEi hBmWYo"><span class="sc-eCYdqJ bzQjtT">${order.orderStatus.name}</span>
+                                                    <div class="sc-jSMfEi hBmWYo"><span class="${order.orderStatus.name === 'Đang giao dịch' ? 'sc-eCYdqJ bzQjtT text-success' : 'sc-eCYdqJ bzQjtT text-warning'}">${order.orderStatus.name}</span>
                                                     </div>
                                                 </td>
 
@@ -1243,7 +1264,7 @@
                                                         Web</p></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
                                                     <p class="MuiTypography-root MuiTypography-body1"
-                                                       title="Nguyễn Đình Quốc Huy">${order.employee.name}</p></td>
+                                                       title="">${order.employee.name}</p></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
                                                     <div>${order.createAt}</div>
                                                 </td>
@@ -1259,7 +1280,65 @@
             })
     }
 
+    // Công nợ
     function showCustomerInfoDebt() {
+        let idCustomer = $('.idCustomerDelete').val();
+        console.log(idCustomer)
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer
+        })
+            .done((data) => {
+                console.log(data)
+                $.each(data, (i, order) => {
+                    let str = `
+                    <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
+                                                    tabindex="-1">
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <a class="jss1437" href="/admin/orders/1167549753">${order.orderCode}</a>
+                                                    </td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <div class="sc-jSMfEi hBmWYo"><span class="sc-eCYdqJ bzQjtT">${order.orderStatus.name}</span>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignRight">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="1,415,000">
+                                                           ${order.grandTotal != null ? (new Intl.NumberFormat('vi-VN', {
+                                                                    style: 'currency',
+                                                                    currency: 'VND'
+                                                                }).format(order.grandTotal)) : "---"}
+                                                           </p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="Chi nhánh mặc định">Chi nhánh mặc định</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1" title="Pos">
+                                                            Web</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="">${order.employee.name}</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <div>${order.createAt}</div>
+                                                    </td>
+                                                </tr>
+                    `
+                    $(".showAllCustomerOrderHistory").append(str);
+                });
+            })
+            .fail((jqXHR) => {
+
+            })
+    }
+
+
+    //Địa chỉ
+    function showCustomerInfoLocationRegion() {
         let idCustomer = $('.idCustomerDelete').val();
         console.log(idCustomer)
         return $.ajax({
@@ -1300,7 +1379,7 @@
                                                             Web</p></td>
                                                     <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
                                                         <p class="MuiTypography-root MuiTypography-body1"
-                                                           title="Nguyễn Đình Quốc Huy">${order.employee.name}</p></td>
+                                                           title="">${order.employee.name}</p></td>
                                                     <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
                                                         <div>${order.createAt}</div>
                                                     </td>
@@ -1314,6 +1393,63 @@
             })
     }
 
+
+    // Liên hệ
+    function showCustomerInfotangent() {
+        let idCustomer = $('.idCustomerDelete').val();
+        console.log(idCustomer)
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer
+        })
+            .done((data) => {
+                console.log(data)
+                $.each(data, (i, order) => {
+                    let str = `
+                    <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
+                                                    tabindex="-1">
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <a class="jss1437" href="/admin/orders/1167549753">${order.orderCode}</a>
+                                                    </td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <div class="sc-jSMfEi hBmWYo"><span class="sc-eCYdqJ bzQjtT">${order.orderStatus.name}</span>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignRight">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="1,415,000">
+                                                           ${order.grandTotal != null ? (new Intl.NumberFormat('vi-VN', {
+                                                                style: 'currency',
+                                                                currency: 'VND'
+                                                            }).format(order.grandTotal)) : "---"}
+                                                           </p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="Chi nhánh mặc định">Chi nhánh mặc định</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1" title="Pos">
+                                                            Web</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="">${order.employee.name}</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <div>${order.createAt}</div>
+                                                    </td>
+                                                </tr>
+                    `
+                    $(".showAllCustomerOrderHistory").append(str);
+                });
+            })
+            .fail((jqXHR) => {
+
+            })
+    }
+    deleteEventModelShow();
 </script>
 
 <style>
