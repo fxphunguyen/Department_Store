@@ -2,6 +2,7 @@ package com.phpn.controllers;
 
 
 import com.phpn.dto.customer.CustomerResult;
+import com.phpn.repositories.model.ICustomer;
 import com.phpn.services.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,26 @@ public class CustomerController {
     }
 
 
+
+    @GetMapping("/history")
+    public String showCustomerHistoryPage() {
+        return "/admin/customer/history_customer";
+    }
+
+    @GetMapping("/customerInfo/{id}")
+    public ModelAndView showCustomerInfoPage(@PathVariable Integer id) {
+        System.out.println(id);
+        System.out.println("___________________________" + id);
+        ModelAndView modelAndView = new ModelAndView();
+        ICustomer iCustomer = customerService.CustomerInfoById(id);
+        System.out.println("====================================================");
+        System.out.println(iCustomer.getID());
+        System.out.println(iCustomer);
+        modelAndView.addObject("customer", iCustomer);
+        modelAndView.setViewName("/admin/customer/history_customer");
+        return modelAndView;
+    }
+
     @GetMapping("/edit/{id}")
     public ModelAndView showCustomerEditPage(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView();
@@ -43,11 +64,6 @@ public class CustomerController {
         modelAndView.addObject("customer", customerOptional);
         modelAndView.setViewName("/admin/customer/edit_customer");
         return modelAndView;
-    }
-
-    @GetMapping("/history")
-    public String showCustomerHistoryPage() {
-        return "/admin/customer/history_customer";
     }
 
 }

@@ -66,7 +66,6 @@ public class CustomerAPI {
     }
 
     @GetMapping("/{id}")
-
     public ResponseEntity<?> findById(@PathVariable Integer id) {
         CustomerResult customerResult = customerService.findById(id);
         return new ResponseEntity<>(customerResult, HttpStatus.OK);
