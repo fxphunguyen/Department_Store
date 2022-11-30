@@ -283,7 +283,7 @@ function getAllItem() {
 function showListProducts() {
     $.ajax({
         type: "GET",
-        contentType: 'application/json',
+        // contentType: 'application/json',
         url: `${location.origin}/api/products/showProductInfo`
     })
         .done((data) => {
@@ -294,6 +294,7 @@ function showListProducts() {
 
                 $(".contentProduct div").remove();
                 $.each(data, (i, product) => {
+                    console.log("poduct", product)
                     let result = `             
                     <div class="MuiBox-root jss3941 InfiniteScroll-MenuItem focus-key-event"
                     onclick="showProductInfo(${product.id})" data-id="${product.id}" tabindex="0">
@@ -303,7 +304,7 @@ function showListProducts() {
                                 <div class="MuiBox-root jss3947">
                                     <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title}</p>
                                         <p class="MuiTypography-root MuiTypography-body2" style="line-height: 16px; display: flex;">
-                                        <span class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175); line-height: 16px;">${product.sku}</span>
+                                        <span class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175); line-height: 16px;">${product.product_CODE}</span>
                                         <span class="MuiTypography-root jss1258 MuiTypography-body2 MuiTypography-colorPrimary" title="Mặc định">Mặc định</span>
                                     </p>
                                 </div>
