@@ -96,6 +96,54 @@ const searchCustomer = () => {
     })
 }
 
+const searchProduct = () => {
+    console.log("searchproduct");
+    $("#input_product").on("input", function () {
+        let search = $(this).val();
+        let results = [];
+        console.log("proddd" , products )
+        products.forEach((item) => {
+            if (((item.title).toLowerCase()).includes(search.toLowerCase()) || ((item.sku).toLowerCase()).includes(search.toLowerCase())
+                || ((item.bar_CODE).toLowerCase()).includes(search.toLowerCase()) || ((item.description).toLowerCase()).includes(search.toLowerCase())) {
+                results.push(item);
+            }
+        })
+        $(".searchProduct").removeClass('d-none');
+        $(".contentProduct div").remove();
+        $.each(results, (i, product) => {
+            let result = `
+                      <div class="MuiBox-root jss3941 InfiniteScroll-MenuItem focus-key-event"
+                    onclick="showProductInfo(${product.id})" data-id="${product.id}" tabindex="0">
+                    <li class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root jss1259 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button" tabindex="-1" role="menuitem" aria-disabled="false">
+                        <img class="jss1260" src="${product.image}" alt="">
+                            <div class="MuiBox-root jss3946">
+                                <div class="MuiBox-root jss3947">
+                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title} - ${product.bar_CODE} - ${product.description} </p>
+                                        <p class="MuiTypography-root MuiTypography-body2" style="line-height: 16px; display: flex;">
+                                    
+                                        <span class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175); line-height: 16px;"> ${ product.sku} </span>
+                                        <span class="MuiTypography-root jss1258 MuiTypography-body2 MuiTypography-colorPrimary" title="Mặc định">${product.description}</span>
+                                    </p>
+                                </div>
+                                <div class="MuiBox-root jss3953">
+                                    <h6 class="MuiTypography-root MuiTypography-h6">${product.retail_PRICE}</h6>
+                                        <p class="MuiTypography-root MuiTypography-body1" style="margin-top: 4px;">
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">Tồn:  </span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.quantity}</span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">&nbsp;| Có thể bán: </span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.available}</span>
+                                        </p>
+                                </div>
+                            </div>
+                        <span class="MuiTouchRipple-root"></span>
+                    </li>
+                </div>    
+                `;
+            $(".contentProduct").append(result);
+        })
+    })
+}
+
 
 function showCustomerInfo(idCustomer) {
     console.log(idCustomer);
@@ -302,19 +350,20 @@ function showListProducts() {
                         <img class="jss1260" src="${product.image}" alt="">
                             <div class="MuiBox-root jss3946">
                                 <div class="MuiBox-root jss3947">
-                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title}</p>
+                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title} - ${product.bar_CODE} - ${product.description} </p>
                                         <p class="MuiTypography-root MuiTypography-body2" style="line-height: 16px; display: flex;">
-                                        <span class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175); line-height: 16px;">${product.product_CODE}</span>
-                                        <span class="MuiTypography-root jss1258 MuiTypography-body2 MuiTypography-colorPrimary" title="Mặc định">Mặc định</span>
+                                    
+                                        <span class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175); line-height: 16px;"> ${ product.sku} </span>
+                                        <span class="MuiTypography-root jss1258 MuiTypography-body2 MuiTypography-colorPrimary" title="Mặc định">${product.description}</span>
                                     </p>
                                 </div>
                                 <div class="MuiBox-root jss3953">
-                                    <h6 class="MuiTypography-root MuiTypography-h6">${product.retailPrice}</h6>
+                                    <h6 class="MuiTypography-root MuiTypography-h6">${product.retail_PRICE}</h6>
                                         <p class="MuiTypography-root MuiTypography-body1" style="margin-top: 4px;">
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">Tồn:  </span>
-                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${itemResult.quantity}</span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.quantity}</span>
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">&nbsp;| Có thể bán: </span>
-                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${itemResult.available}</span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.available}</span>
                                         </p>
                                 </div>
                             </div>
@@ -538,7 +587,7 @@ doCreateCustomer();
 
 
 
-function handleRemove() {
+function    handleRemove() {
     let str = `<div class="MuiPaper-root  jss18028 MuiPaper-elevation1 MuiPaper-rounded">
                 <div class="MuiBox-root jss18075 customer-info">
                     <div class="MuiBox-root jss18076 create-order-step2 jss18040">
@@ -696,156 +745,160 @@ function editCustomer() {
 
 function showProductInfo(productId) {
     $('#MuiBox-list-product').addClass("hide");
-    $("#show_product_info").html("");
+    // $("#show_product_info").html("");
 
     $("#productId").val(productId);
     let result = product = products.find(({id}) => id === productId);
+    console.log("rì dâu", result)
     let str =`
-        <table class="MuiTable-root MuiTable-stickyHeader table_product" aria-label="simple table" style="border-collapse: inherit;">
-            <thead class="MuiTableHead-root">
-                <tr class="MuiTableRow-root MuiTableRow-head">
-                    <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-stickyHeader align-items-center"
-                        scope="col" style="width: 55px;">STT</th>
-                    <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-stickyHeader align-items-center"
-                        scope="col" style="width: 60px;">Ảnh</th>
-                    <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-stickyHeader align-items-center"
-                        scope="col">Tên sản phẩm</th>
-                    <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-stickyHeader align-items-center"
-                        scope="col" style="width: 105px;">Số lượng</th>
-                    <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-stickyHeader align-items-center"
-                        scope="col" style="width: 115px;">Đơn giá</th>
-                    <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-stickyHeader align-items-center"
-                        scope="col" style="width: 115px;">Chiết khấu</th>
-                    <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-stickyHeader align-items-center"
-                        scope="col" style="width: 115px;">Thành tiền</th>
-                    <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-stickyHeader align-items-center"
-                        scope="col" style="width: 30px;"></th>
-                </tr>
-            </thead>
-            <tbody class="MuiTableBody-root">
-                <tr class="MuiTableRow-root jss3894 jss3905 isNormalLineItem">
-                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center">2</td>
-                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center"><a
-                            class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary align-items-center"
-                            target="_blank" href="/admin/products/118801409/variants/185370765"><img class="jss3898"
-                                src="https://sapo.dktcdn.net/100/676/770/variants/f1225b2e-790d-418d-9a35-86ff8a8ce807-1668993704051.jpg"></a>
-                    </td>
-                    <td class="MuiTableCell-root MuiTableCell-body align-items-center">
-                        <div class="MuiBox-root jss4053 jss3895 ">
-                            <div class="MuiBox-root jss4054">
-                                <div class="MuiBox-root jss4055">
-                                    <p class="MuiTypography-root MuiTypography-body1">Sữa dưỡng thể Vaseline trắng da
-                                        tức thì 350ml<button class="MuiButtonBase-root MuiIconButton-root" tabindex="0"
-                                            type="button"
-                                            style="padding: 0px; margin-left: 6px; height: fit-content;"><span
-                                                class="MuiIconButton-label"><svg viewBox="0 0 16 16" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    font-size="16"
-                                                    style="font-size: 16px; margin-top: -5px; cursor: pointer; color: rgb(0, 136, 255);">
-                                                    <path
-                                                        d="M7.4 5v1.2h1.2V5H7.4ZM7.4 8.6V11h1.8V9.8h-.6V7.4H6.8v1.2h.6Z"
-                                                        fill="currentColor"></path>
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M8 2C4.688 2 2 4.688 2 8s2.688 6 6 6 6-2.688 6-6-2.688-6-6-6ZM3.2 8c0 2.646 2.154 4.8 4.8 4.8s4.8-2.154 4.8-4.8S10.646 3.2 8 3.2A4.806 4.806 0 0 0 3.2 8Z"
-                                                        fill="currentColor"></path>
-                                                </svg></span><span class="MuiTouchRipple-root"></span></button></p>
-                                </div>
-                                <h6 class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
-                                    style="font-weight: normal; margin: 2px 0px;">Mặc định</h6><a
-                                    class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
-                                    target="_blank" href="/admin/products/118801409/variants/185370765"><span
-                                        class="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary">PVN04</span></a><button
-                                    class="MuiButtonBase-root MuiButton-root MuiButton-text jss3896 btn-hover MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
-                                    tabindex="0" type="button"><span class="MuiButton-label"><span
-                                            class="MuiButton-startIcon MuiButton-iconSizeSmall"><svg viewBox="0 0 24 24"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                font-size="20" color="primary">
-                                                <path
-                                                    d="M19 3H5c-1.103 0-2 .897-2 2v16l4.8-3.6A2 2 0 0 1 9 17h10c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2Zm0 12H8.334a2 2 0 0 0-1.2.4L5 17V5h14v10Z"
-                                                    fill="#0088FF"></path>
-                                                <path d="M9 9h6v2H9V9Z" fill="#0088FF"></path>
-                                            </svg></span>Ghi chú</span><span
-                                        class="MuiTouchRipple-root"></span></button>
-                            </div>
+        <tr id="tr_${result.id}" class="MuiTableRow-root jss3894 jss3905 isNormalLineItem">
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center">2</td>
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center"><a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary align-items-center"
+                    target="_blank" href="/admin/products/118801409/variants/185370765"><img class="jss3898"
+                        src="https://sapo.dktcdn.net/100/676/770/variants/f1225b2e-790d-418d-9a35-86ff8a8ce807-1668993704051.jpg"></a>
+            </td>
+            <td class="MuiTableCell-root MuiTableCell-body align-items-center">
+                <div class="MuiBox-root jss4053 jss3895 ">
+                    <div class="MuiBox-root jss4054">
+                        <div class="MuiBox-root jss4055">
+                            <p class="MuiTypography-root MuiTypography-body1">${result.title}<button class="MuiButtonBase-root MuiIconButton-root" tabindex="0"
+                                    type="button"
+                                    style="padding: 0px; margin-left: 6px; height: fit-content;"><span
+                                        class="MuiIconButton-label"><svg viewBox="0 0 16 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            font-size="16"
+                                            style="font-size: 16px; margin-top: -5px; cursor: pointer; color: rgb(0, 136, 255);">
+                                            <path
+                                                d="M7.4 5v1.2h1.2V5H7.4ZM7.4 8.6V11h1.8V9.8h-.6V7.4H6.8v1.2h.6Z"
+                                                fill="currentColor"></path>
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M8 2C4.688 2 2 4.688 2 8s2.688 6 6 6 6-2.688 6-6-2.688-6-6-6ZM3.2 8c0 2.646 2.154 4.8 4.8 4.8s4.8-2.154 4.8-4.8S10.646 3.2 8 3.2A4.806 4.806 0 0 0 3.2 8Z"
+                                                fill="currentColor"></path>
+                                        </svg></span><span class="MuiTouchRipple-root"></span></button></p>
                         </div>
-                    </td>
-                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center"
-                        style="width: 105px; padding-left: 0px; padding-right: 0px;">
-                        <div class="MuiBox-root jss4056 jss3910"><button
-                                class="MuiButtonBase-root MuiIconButton-root jss3912 icon-btn btn-subtract auto-hidden"
-                                tabindex="0" type="button"><span class="MuiIconButton-label"><svg
-                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false"
-                                        viewBox="0 0 24 24" aria-hidden="true">
+                        <h6 class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
+                            style="font-weight: normal; margin: 2px 0px;">${result.description}</h6><a
+                            class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+                            target="_blank" href="/admin/products/118801409/variants/185370765"><span
+                                class="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary">${result.sku}</span></a><button
+                            class="MuiButtonBase-root MuiButton-root MuiButton-text jss3896 btn-hover MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+                            tabindex="0" type="button"><span class="MuiButton-label"><span
+                                    class="MuiButton-startIcon MuiButton-iconSizeSmall"><svg viewBox="0 0 24 24"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        font-size="20" color="primary">
                                         <path
-                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z">
-                                        </path>
-                                    </svg></span><span class="MuiTouchRipple-root"></span></button>
-                            <div class="MuiFormControl-root jss3914 jss3916 jss3911">
-                                <div class="MuiFormControl-root MuiTextField-root jss3917" inputmode="numeric">
-                                    <div
-                                        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
-                                        <input aria-invalid="false" autocomplete="off"
-                                            name="lineItemQuantity-415457da-d825-4964-912f-10804128db81" type="text"
-                                            class="MuiInputBase-input MuiInput-input" value="1"
-                                            style="text-align: center; width: 100%;"></div>
-                                </div>
-                            </div><button
-                                class="MuiButtonBase-root MuiIconButton-root jss3912 icon-btn btn-add auto-hidden"
-                                tabindex="0" type="button"><span class="MuiIconButton-label"><svg
-                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false"
-                                        viewBox="0 0 24 24" aria-hidden="true">
-                                        <path
-                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z">
-                                        </path>
-                                    </svg></span><span class="MuiTouchRipple-root"></span></button>
+                                            d="M19 3H5c-1.103 0-2 .897-2 2v16l4.8-3.6A2 2 0 0 1 9 17h10c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2Zm0 12H8.334a2 2 0 0 0-1.2.4L5 17V5h14v10Z"
+                                            fill="#0088FF"></path>
+                                        <path d="M9 9h6v2H9V9Z" fill="#0088FF"></path>
+                                    </svg></span>Ghi chú</span><span
+                                class="MuiTouchRipple-root"></span></button>
+                    </div>
+                </div>
+            </td>
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter "
+                style="width: 105px; padding-left: 0px; padding-right: 0px;">
+                <div class="MuiBox-root jss4056 jss3910"><button
+                        class="MuiButtonBase-root MuiIconButton-root jss3912 icon-btn btn-subtract auto-hidden"
+                        tabindex="0" type="button"><span class="MuiIconButton-label"><svg
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false"
+                                viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z">
+                                </path>
+                            </svg></span><span class="MuiTouchRipple-root"></span></button>
+                    <div class="MuiFormControl-root jss3914 jss3916 jss3911">
+                        <div class="MuiFormControl-root MuiTextField-root jss3917" inputmode="numeric">
+                            <div
+                                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
+                                <input aria-invalid="false" autocomplete="off"
+                                    name="lineItemQuantity-415457da-d825-4964-912f-10804128db81" type="text"
+                                    class="MuiInputBase-input MuiInput-input" value="1"
+                                    style="text-align: center; width: 100%;"></div>
                         </div>
-                    </td>
-                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight align-items-center">
-                        <div class="MuiFormControl-root jss3914 jss3916" style="padding-top: 0px;">
-                            <div class="MuiFormControl-root MuiTextField-root jss3917" inputmode="numeric"
-                                data-for="tooltipTax-415457da-d825-4964-912f-10804128db81">
-                                <div
-                                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
-                                    <input aria-invalid="false" autocomplete="off"
-                                        id="price-line-item-415457da-d825-4964-912f-10804128db81"
-                                        name="input-price-415457da-d825-4964-912f-10804128db81" type="text"
-                                        class="MuiInputBase-input MuiInput-input" value="160,000"
-                                        style="width: 100%; text-align: right;"></div>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight align-items-center">
-                        <button
-                            class="MuiButtonBase-root MuiButton-root MuiButton-text jss3901" tabindex="0" type="button"
-                            id="discount-line-item-415457da-d825-4964-912f-10804128db81"><span class="MuiButton-label">0
-                                <p class="MuiTypography-root discount_rate_line_item MuiTypography-body1"
-                                    style="color: rgb(255, 77, 77); font-size: 12px;"></p></span>
-                        </button> </td>
-                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight align-items-center">160,000</td>
-                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight align-items-center" style="padding-left: 0px;">
-                        <button
-                            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeSmall"
-                            tabindex="0" type="button"><span class="MuiIconButton-label"><svg viewBox="0 0 24 24"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    font-size="20">
-                                    <path
-                                        d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"
-                                        fill="currentColor"></path>
-                                </svg></span><span class="MuiTouchRipple-root"></span></button></td>
-                </tr>
-            </tbody>
-        </table>
+                    </div><button
+                        class="MuiButtonBase-root MuiIconButton-root jss3912 icon-btn btn-add auto-hidden"
+                        tabindex="0" type="button"><span class="MuiIconButton-label"><svg
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false"
+                                viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z">
+                                </path>
+                            </svg></span><span class="MuiTouchRipple-root"></span></button>
+                </div>
+            </td>
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight align-items-center">
+                <div class="MuiFormControl-root jss3914 jss3916" style="padding-top: 0px;">
+                    <div class="MuiFormControl-root MuiTextField-root jss3917" inputmode="numeric"
+                        data-for="tooltipTax-415457da-d825-4964-912f-10804128db81">
+                        <div
+                            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
+                            <input aria-invalid="false" autocomplete="off"
+                                id="price-line-item-415457da-d825-4964-912f-10804128db81"
+                                name="input-price-415457da-d825-4964-912f-10804128db81" type="text"
+                                class="MuiInputBase-input MuiInput-input" value=${result.retail_PRICE}
+                                style="width: 100%; text-align: right;"></div>
+                    </div>
+                </div>
+            </td>
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight ">
+                <button
+                    class="MuiButtonBase-root MuiButton-root MuiButton-text jss3901" tabindex="0" type="button"
+                    id="discount-line-item-415457da-d825-4964-912f-10804128db81"><span class="MuiButton-label">0
+                        <p class="MuiTypography-root discount_rate_line_item MuiTypography-body1"
+                            style="color: rgb(255, 77, 77); font-size: 12px;"></p></span>
+                </button> </td>
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight ">${result.retail_PRICE}</td>
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight " style="padding-left: 0px;">
+                <button
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeSmall"
+                    tabindex="0" type="button"><span class="MuiIconButton-label"><svg viewBox="0 0 24 24"
+                            onclick="removeProduct(${result.id})"
+                            fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            font-size="20">
+                            <path
+                                d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"
+                                fill="currentColor"></path>
+                        </svg></span><span class="MuiTouchRipple-root"></span></button></td>
+        </tr>
     `;
-    $("#show_product_info").prepend(str);
+    $("#tbProduct tbody").prepend(str);
+    $("#divNoInfo").remove();
+    $("#divTbProduct").removeClass("hide");
     // $(".table_product").prepend(str);
+}
+
+function removeProduct(id) {
+    // console.log($(this).data('id'))
+    // $(this).parent().parent().parent().parent().parent().remove();
+    $("#tr_" + id).remove();
+    if (product.id == null) {
+        let str =`
+            <div class="MuiBox-root jss1261 jss1257">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="102" height="102" style="color: rgb(232, 234, 235); height: 102px; width: 102px;">
+                    <path d="M21.902 12.64 19.734 9.45l2.168-3.192a.588.588 0 0 0-.3-.882l-7.07-2.344a.58.58 0 0 0-.673.23L12 6.051l-1.855-2.786a.579.579 0 0 0-.672-.23l-7.07 2.344a.589.589 0 0 0-.3.883l2.163 3.187-2.168 3.191a.589.589 0 0 0 .3.883l7.07 2.344a.582.582 0 0 0 .673-.23l1.855-2.786 1.855 2.785a.586.586 0 0 0 .672.23l7.07-2.343a.582.582 0 0 0 .368-.367.562.562 0 0 0-.059-.516ZM12 11.175 6.82 9.45 12 7.722l5.18 1.727L12 11.175Z" fill="currentColor"></path>
+                    <path d="M14.898 16.976a1.759 1.759 0 0 1-2.02-.691L12 14.96l-.883 1.325a1.755 1.755 0 0 1-2.023.69l-4.711-1.57v3.418c0 .254.16.477.402.555l7.027 2.344c.02.008.043.011.063.02a.669.669 0 0 0 .258-.005c.02-.003.039-.007.058-.015l7.027-2.344a.588.588 0 0 0 .403-.555v-3.421l-4.723 1.574Z" fill="currentColor"></path>
+                </svg>
+                <p class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">Chưa có thông tin sản phẩm</p>
+                <button id="Sapo-Button-553ba6f4-1668-483f-9d74-e9b8c11b515b" class="sc-jqUVSM cJBxnp"><span class="sc-papXJ jcEYKF">Thêm sản phẩm</span>
+                </button>
+            </div>
+    `;
+        $("#show_product_info").html(str);
+    }
+
 }
 
 $(() => {
     getAllItem();
     getAllEmployees();
     searchCustomer();
+    searchProduct();
     handleCloseListCustomers()
+    handleCloseListProducts();
+    searchProduct();
 })
+
 
 
 

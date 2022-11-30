@@ -7,7 +7,7 @@ public interface ProductInfo {
      String getTITLE();
      String getUNIT();
      String getSKU();
-     String getPRODUCT_CODE();
+     String getBAR_CODE();
      String getIMAGE();
      String getDESCRIPTION();
      Integer getQUANTITY();
