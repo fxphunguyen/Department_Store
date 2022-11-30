@@ -16,7 +16,7 @@ import java.time.Instant;
 @Accessors(chain = true)
 @Entity
 @Table(name = "items")
-public class Item {
+public class    Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,6 +77,9 @@ public class Item {
 
     @Column(name = "defective")
     private Integer defective;
+
+    @Column(name = "discount")
+    private Float discount;
 
     public Item (Integer productId, Integer supplierId, Integer orderId, Integer employeeId){
         setProductId(productId);

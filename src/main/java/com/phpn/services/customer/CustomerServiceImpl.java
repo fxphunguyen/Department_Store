@@ -2,6 +2,7 @@ package com.phpn.services.customer;
 
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerOrderResult;
+import com.phpn.dto.customer.CustomerParam;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
@@ -67,14 +68,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     public CustomerOrderResult findByIdCustomerOrder(Integer id) {
         Optional<Customer> customerOptional = customerRepository.findById(id);
-        return customerMapper.toDTOCustomerOrder(customerOptional.get());
+        return customerMapper.toOrderDTO(customerOptional.get());
     }
 
-
-
     @Override
-    public CustomerResult createCustomerResult(CustomerCreate customerCreate) {
-        return customerMapper.toDTO(customerRepository.save(customerMapper.toModel(customerCreate)));
+    public Customer createCustomerResult(CustomerParam customerParam) {
+        return null;
     }
 
 
@@ -93,10 +92,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
+    public List<CustomerOrderResult> findAllCustomerResultByDeleted(boolean deleted) {
         return customerRepository.findAllCustomerResultByDeleted(deleted)
                 .stream()
-                .map(customerMapper::toDTO)
+                .map(customerMapper::toOrderDTO)
                 .collect(Collectors.toList());
     }
 
@@ -124,13 +123,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<CustomerResult> findAllCustomerByDelete(boolean deleted) {
         return null;
-    }
-
-    @Override
-    public Customer updateCustomerOrder(CustomerOrderResult customerOrderResult) {
-        Customer customer = customerRepository.findById(customerOrderResult.getId()).get();
-        customerMapper.toOrderDTO(customerOrderResult , customer);
-        return customer;
     }
 
     @Override

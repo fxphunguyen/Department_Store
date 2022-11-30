@@ -39,6 +39,46 @@ class EmployeeResult {
         this.name = name;
     }
 }
+class ProductResult {
+    constructor(id, title, image, unit, sku, retailPrice, wholesalePrice) {
+            this.id = id;
+            this.title = title;
+            this.image = image;
+            this.unit = unit;
+            this.sku = sku;
+            this.retailPrice = retailPrice;
+            this.wholesalePrice = wholesalePrice;
+    }
+}
+
+class OrderResult {
+    constructor(id, employeeId, employeeResult, customerId, customerResult, discount, description, subTotal, total, granTotal ) {
+        this.id =id;
+        this.employeeId = employeeId;
+        this.employeeResult = employeeResult;
+        this.customerId = customerId;
+        this.customerResult = customerResult;
+        this.discount = discount;
+        this.description = description;
+        this.subTotal = subTotal;
+        this.total = total;
+        this.granTotal = granTotal;
+    }
+}
+
+class OrderItemResult {
+    constructor(id, orderId, productId, productResult, tax, total, quantity, price ) {
+        this.id = id;
+        this.productId = productId;
+        this.productResult = productResult;
+        this.tax = tax;
+        this.total = total;
+        this.total = total;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+}
 
 class Customer {
     constructor(id, customerCode,  name, phone,  email,createAt, updateAt, employeeId, deleted, locationRegionCreate) {
@@ -56,6 +96,18 @@ class Customer {
         this.deleted = deleted;
         // this.locationRegionResult = locationRegionResult;
         this.locationRegionCreate = locationRegionCreate;
+    }
+}
+class ItemResult {
+    constructor(id, productId, employeeId, quantity, price, sku, discount, available) {
+        this.id = id;
+        this.productId = productId;
+        this.employeeId = employeeId;
+        this.quantity = quantity;
+        this.price = price;
+        this.sku = sku;
+        this.discount = discount;
+        this.available = available;
     }
 }
 class App {

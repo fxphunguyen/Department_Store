@@ -22,6 +22,7 @@ public class CustomerMapper {
     private LocationRegionMapper locationRegionMapper;
 
 
+
     public CustomerResult toDTO(Customer customer) {
         return new CustomerResult()
                 .setId(customer.getId())
@@ -41,14 +42,17 @@ public class CustomerMapper {
                 .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()));
 
     }
-    public Customer toOrderDTO(CustomerOrderResult customerOrderResult , Customer customer) {
-        return  customer
+    public CustomerOrderResult toOrderDTO(Customer customer) {
+        return new CustomerOrderResult()
                 .setId(customer.getId())
-                .setCustomerCode(customerOrderResult.getCustomerCode())
-                .setName(customerOrderResult.getName())
-                .setPhone(customerOrderResult.getPhone())
-                .setUpdateAt(java.time.LocalDateTime.now().toString())
-                .setEmployeeId(customerOrderResult.getEmployeeId());
+                .setCustomerCode(customer.getCustomerCode())
+                .setName(customer.getName())
+                .setPhone(customer.getPhone())
+                .setLocationRegionId(customer.getLocationRegionId())
+                .setLocationRegion(locationRegionMapper.toDTO(customer.getLocationRegion()))
+                .setEmployeeId(customer.getEmployeeId())
+                .setEmployee(employeeMapper.toDTO(customer.getEmployee()))
+                .setDeleted(customer.getDeleted());
     }
 
     public Customer toModel(CustomerCreate customerCreate) {
@@ -101,16 +105,6 @@ public class CustomerMapper {
 
     }
 
-
-    public CustomerOrderResult toDTOCustomerOrder(Customer customer) {
-        return new CustomerOrderResult()
-                .setId(customer.getId())
-                .setCustomerCode(customer.getCustomerCode())
-                .setName(customer.getName())
-                .setPhone(customer.getPhone())
-                .setEmployeeId(customer.getEmployeeId())
-                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()));
-    }
 
 
 }

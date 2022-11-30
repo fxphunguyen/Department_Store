@@ -13,20 +13,22 @@ import lombok.experimental.Accessors;
 public class LocationRegionResult {
 
 
-    private Integer Id;
+    private Integer id;
 
-    private String address;
+    private Integer provinceId;
 
-    private  Integer wardId;
-
-    private String wardName;
+    private  String provinceName;
 
     private Integer districtId;
 
     private String districtName;
 
-    private Integer provinceId;
+    private  Integer wardId;
 
-    private  String provinceName;
+    private String wardName;
+
+    private String address;
+
+
 
 }

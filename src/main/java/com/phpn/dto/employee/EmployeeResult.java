@@ -1,10 +1,13 @@
 package com.phpn.dto.employee;
 
+import com.phpn.dto.locationRegion.LocationRegionResult;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import lombok.experimental.Accessors;
 import lombok.Setter;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Getter
 @Setter
@@ -19,5 +22,6 @@ public class EmployeeResult {
     private String birthday;
     private String gender;
     private Integer locationRegionId;
+    private LocationRegionResult locationRegion;
 
 }

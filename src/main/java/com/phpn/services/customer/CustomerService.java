@@ -2,6 +2,7 @@ package com.phpn.services.customer;
 
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerOrderResult;
+import com.phpn.dto.customer.CustomerParam;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.CustomerGender;
@@ -21,14 +22,13 @@ public interface CustomerService {
 
     CustomerOrderResult findByIdCustomerOrder(Integer id);
 
-
-    CustomerResult createCustomerResult(CustomerCreate customerCreate);
+    Customer createCustomerResult(CustomerParam customerParam);
 
     Customer create(CustomerCreate customerCreate);
 
     List<CustomerResult> findCustomerByDeleted(boolean deleted);
 
-    List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted);
+    List<CustomerOrderResult> findAllCustomerResultByDeleted(boolean deleted);
 
     List<CustomerResult> findAll();
 
@@ -40,7 +40,7 @@ public interface CustomerService {
 
     List<CustomerResult> findAllCustomerByDelete(boolean deleted);
 
-    Customer  updateCustomerOrder(CustomerOrderResult customerOrderResult);
+//    Customer  updateCustomerOrder(CustomerOrderResult customerOrderResult);
 
     List<ICustomer> showAllCustomerMixInfoByStatus();
 

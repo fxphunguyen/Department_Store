@@ -57,7 +57,6 @@ public class LocationRegionMapper {
     public LocationRegionCreate toModel(LocationRegion locationRegion) {
         return new LocationRegionCreate()
                 .setId(locationRegion.getId())
-
                 .setAddress(locationRegion.getAddress())
                 .setWardId(locationRegion.getWardId())
                 .setWardName(locationRegion.getWardName())

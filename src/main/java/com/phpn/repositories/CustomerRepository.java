@@ -1,6 +1,7 @@
 package com.phpn.repositories;
 
 
+import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.ICustomer;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -28,6 +29,7 @@ public interface CustomerRepository extends JpaRepository<Customer , Integer> {
 
     @Query(value = "call `ph-pn`.sp_FindCustomerInfoById(:id);" , nativeQuery = true)
     ICustomer getCustomerInfoById(Integer id);
+
 }
 
 

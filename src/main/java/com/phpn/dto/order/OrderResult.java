@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -21,7 +23,12 @@ public class OrderResult {
 
     private EmployeeResult employee;
 
+
     private String orderCode;
+
+    private Integer employeeId;
+
+    private Integer customerId;
 
     private CustomerResult customer;
 
@@ -31,9 +38,11 @@ public class OrderResult {
 
     private String description;
 
-    private String createAt;
+    private Instant createAt;
 
     private BigDecimal total;
+
+    private BigDecimal subTotal;
 
     private BigDecimal grandTotal;
 

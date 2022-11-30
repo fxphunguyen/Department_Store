@@ -59,7 +59,7 @@ public class OrderItem {
     private Instant updateAt;
 
     @Column(name = "tax", nullable = false)
-    private float tax;
+    private Float tax;
 
     @Column(name = "discount", precision = 10, scale = 2)
     private BigDecimal discount;
