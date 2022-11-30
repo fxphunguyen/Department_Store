@@ -173,4 +173,11 @@ public class CustomerAPI {
         List<Order> order = orderRepository.findAllOrderByCustomerId(id);
         return  new ResponseEntity<>(order, HttpStatus.OK);
     }
+
+    @GetMapping("/customerOwer/{id}")
+    @Transactional(readOnly = true)
+    public  ResponseEntity<?> showListCustomerOwerById(@PathVariable Integer id){
+        List<ICustomerOwer> customers =  customerRepository.getCustomerOwerById(id);
+        return  new ResponseEntity<>(customers, HttpStatus.OK);
+    }
 }
