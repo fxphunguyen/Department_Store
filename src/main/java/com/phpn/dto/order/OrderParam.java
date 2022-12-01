@@ -2,10 +2,12 @@ package com.phpn.dto.order;
 
 
 
+import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.dto.customer.CustomerResult;
 
 import com.phpn.dto.employee.EmployeeResult;
 
+import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.dto.orderItem.OrderItemExport;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,13 +29,9 @@ public class OrderParam {
 
     private Integer employeeId;
 
-    private EmployeeResult employeeResult;
-
     private Integer customerId;
 
-    private CustomerResult customerResult;
-
-    private BigDecimal tax;
+    private String orderCode;
 
     private BigDecimal discount;
 

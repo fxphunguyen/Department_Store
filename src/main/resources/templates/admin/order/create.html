@@ -4,6 +4,8 @@
     <th:block th:replace="/layout/header :: header"/>
     <title>Tạo đơn hàng</title>
     <link rel="stylesheet" href="/static/assets/admin/css/order/create_order.css">
+    <link rel="stylesheet" href="/static/assets/admin/css/order/discount.css">
+
 </head>
 <body class="" data-new-gr-c-s-check-loaded="14.1085.0" data-gr-ext-installed="" cz-shortcut-listen="true">
 <div id="root" style="overflow: auto">
@@ -1435,6 +1437,14 @@
                                                             class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
                                                     </div>
                                                 </li>
+                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters" id="vat_tax">
+                                                    <div class="MuiListItemText-root"><span
+                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT (10%)</span>
+                                                    </div>
+                                                    <div class="MuiListItemText-root"><span
+                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
+                                                    </div>
+                                                </li>
                                                 <li class="MuiListItem-root jss1275 MuiListItem-gutters">
                                                     <div class="MuiListItemText-root"><span
                                                             class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Chiết khấu (F6)</span>
@@ -1445,17 +1455,17 @@
                                                             id="f6_total_discount_order" class="jss1278">0</div> </span>
                                                     </div>
                                                 </li>
-                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters">
-                                                    <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-                                                            style="color: rgb(0, 136, 255); cursor: pointer;">Phí giao hàng (F7)</span>
-                                                    </div>
-                                                    <div class="MuiListItemText-root" style="margin: 0px;"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-                                                            style="margin-left: auto; width: 103px; text-align: right;"><div
-                                                            id="f7_order_delivery_fee" class="jss1278">0</div></span>
-                                                    </div>
-                                                </li>
+<!--                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters">-->
+<!--                                                    <div class="MuiListItemText-root"><span-->
+<!--                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"-->
+<!--                                                            style="color: rgb(0, 136, 255); cursor: pointer;">Phí giao hàng (F7)</span>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="MuiListItemText-root" style="margin: 0px;"><span-->
+<!--                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"-->
+<!--                                                            style="margin-left: auto; width: 103px; text-align: right;"><div-->
+<!--                                                            id="f7_order_delivery_fee" class="jss1278">0</div></span>-->
+<!--                                                    </div>-->
+<!--                                                </li>-->
                                                 <li class="MuiListItem-root jss1275 MuiListItem-gutters">
                                                     <div class="MuiListItemText-root"
                                                          style="margin: 0px; height: 28px;"><span
@@ -1915,10 +1925,12 @@
         </div>
     </div>
 </div>
+
 </body>
 <th:block th:replace="/admin/order/modal_create_customer::modal_create_customer"/>
 <th:block th:replace="/admin/order/modal_update_customer::modal_update_customer"/>
 <th:block th:replace="/admin/order/modal_create_product::modal_create_product"/>
+
 <th:block th:replace="/layout/script :: script"/>
 
 <script type="text/javascript" src="/static/assets/admin/js/order/app.js"></script>

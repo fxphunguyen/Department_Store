@@ -3,6 +3,7 @@ package com.phpn.mappers.customer;
 
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerOrderResult;
+import com.phpn.dto.customer.CustomerParam;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
@@ -51,7 +52,7 @@ public class CustomerMapper {
                 .setLocationRegionId(customer.getLocationRegionId())
                 .setLocationRegion(locationRegionMapper.toDTO(customer.getLocationRegion()))
                 .setEmployeeId(customer.getEmployeeId())
-                .setEmployee(employeeMapper.toDTO(customer.getEmployee()))
+                .setEmployee(employeeMapper.toOrderDTO(customer.getEmployee()))
                 .setDeleted(customer.getDeleted());
     }
 
@@ -105,6 +106,16 @@ public class CustomerMapper {
 
     }
 
+    public Customer toModel(CustomerParam customerParam) {
+        return new Customer()
+                .setId(customerParam.getId())
+                .setEmployeeId(customerParam.getEmployeeId())
+                .setCustomerCode(customerParam.getCustomerCode())
+                .setName(customerParam.getName())
+                .setPhone(customerParam.getPhone())
+                .setCreateAt(java.time.LocalDateTime.now().toString())
+                .setLocationRegionId(customerParam.getLocationRegionId());
+    }
 
 
 }
