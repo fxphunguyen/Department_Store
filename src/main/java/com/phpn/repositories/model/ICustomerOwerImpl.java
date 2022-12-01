@@ -1,7 +1,6 @@
 package com.phpn.repositories.model;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 
 public class ICustomerOwerImpl {
     private String order_code;
@@ -13,7 +12,7 @@ public class ICustomerOwerImpl {
     private BigDecimal transaction;
 
 
-    private BigDecimal total_transaction;
+    private  BigDecimal total_transaction;
 
     public ICustomerOwerImpl() {
     }
@@ -24,7 +23,7 @@ public class ICustomerOwerImpl {
         this.employee_name = iCustomerOwer.getEMPLOYEE_NAME();
         this.create_at = iCustomerOwer.getCREATEAT();
         this.transaction = iCustomerOwer.getTRANSACTION();
-        this.total_transaction = iCustomerOwer.getTRANSACTION();
+        this.total_transaction = iCustomerOwer.getTOTALTRANSACTION();
     }
     public String getOrder_code() {
         return order_code;
@@ -56,19 +55,18 @@ public class ICustomerOwerImpl {
         return transaction;
     }
 
-    public void setTransaction(BigDecimal transaction) {
-        this.transaction = transaction;
-    }
-// b1.add(b2, MathContext.DECIMAL32);
-
     public BigDecimal getTotal_transaction() {
-//        BigDecimal total = transaction.multiply(transaction);
-        BigDecimal total = transaction.add(total_transaction, MathContext.DECIMAL32);
-        return total;
+        return total_transaction;
     }
 
     public void setTotal_transaction(BigDecimal total_transaction) {
-        this.total_transaction = total_transaction ;
+        this.total_transaction = total_transaction;
     }
+
+    public void setTransaction(BigDecimal transaction) {
+        this.transaction = transaction;
+    }
+
+
 }
 
