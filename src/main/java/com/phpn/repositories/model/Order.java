@@ -33,12 +33,13 @@ public class Order {
     @Column(name = "total", nullable = false, precision = 10, scale = 2)
     private BigDecimal total;
 
+    @Column(name = "customer_id", insertable = false, updatable = false)
+    private Integer customerId;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @Column(name = "customer_id", insertable = false, updatable = false)
-    private Integer customerId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)

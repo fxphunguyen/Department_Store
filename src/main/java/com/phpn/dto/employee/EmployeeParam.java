@@ -1,5 +1,6 @@
 package com.phpn.dto.employee;
 
+import com.phpn.dto.locationRegion.LocationRegionResult;
 import lombok.experimental.Accessors;
 import lombok.Setter;
 import lombok.Getter;
