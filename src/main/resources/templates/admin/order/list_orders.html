@@ -924,6 +924,7 @@
         </a>
     </div>
 </div>
+
 </body>
 <th:block th:replace="/layout/script :: script"/>
 <script>
@@ -967,41 +968,35 @@
                                                 class="MuiTouchRipple-root"></span></span></td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft"
                                         style="width: 120px; max-width: 120px; min-width: 120px;">
-                                        <p class="MuiTypography-root jss5006 MuiTypography-body1 MuiTypography-noWrap"
-                                           data-tip="SON00017"><a class="jss5098" href="#">${item.orderCode}</a>
+                                        <p class="MuiTypography-root jss5006 MuiTypography-body1 MuiTypography-noWrap">
+                                            <a class="jss5098" href="#">${item.orderCode}</a>
                                         </p>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft"
                                         style="width: 150px; max-width: 150px; min-width: 150px;">
-                                        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                           data-tip="08/11/2022 14:17" currentitem="false"
-                                           style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                            ${item.createAt}</p>
+                                        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+                                            ${moment(item.createAt).format("DD/MM/YYYY hh:mm")}</p>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft"
                                         style="width: 160px; max-width: 160px; min-width: 160px;">
-                                        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                           data-tip="Chị Hoàng Thu Hảo" currentitem="false"
-                                           style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                            ${item.customer.name}</p>
+                                        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">${item.customer.name}</p>
                                     </td>
-                                    <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft"
-                                        style="width: 165px; max-width: 165px; min-width: 165px;">
-                                        <div class="sc-jSMfEi csJERM">
-                                            <span class="sc-eCYdqJ ccQLIN ${item.status === 'Đang giao dịch' ? 'text-warning' : 'Hoàn thành' ? 'text-success' : 'Đã hủy' ? 'text-danger' : 'text-danger'}">${item.status}</span>
+                                    <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft" style="width: 165px; max-width: 165px; min-width: 165px;">
+                                        <div class="${item.status === 'Đang giao dịch' ? 'hlxtkG' : (item.status === 'Hoàn thành' ? 'hBmWYo' : 'csJERM')}">
+                                            <span class="${item.status === 'Đang giao dịch' ? 'gIZkwA' : (item.status === 'Hoàn thành' ? 'bzQjtT' : 'ccQLIN')}">${item.status}</span>
                                         </div>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignCenter"
                                         style="width: 130px; max-width: 130px; min-width: 130px;">
-                                        <p class="MuiTypography-root jss5006 MuiTypography-body1"
-                                           data-tip="Chưa thanh toán"> ${item.paymentOrder}
-<!--                                           <img src="./chitietdonhang_files/916ceb4a6d60046d4173.svg"-->
-<!--                                                style="width: 12px; height: 12px;">-->
-                                                </p>
+                                        <p class="MuiTypography-root jss5006 MuiTypography-body1"> ${item.paymentOrder}</p>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignRight"
                                         style="width: 125px; max-width: 125px; min-width: 125px;">
-                                        <p class="MuiTypography-root jss5006 MuiTypography-body1">${item.grandTotal}</p>
+                                        <p class="MuiTypography-root jss5006 MuiTypography-body1">
+                                            ${new Intl.NumberFormat('vi-VN',
+                                            {style: 'currency', currency: 'VND'})
+                                            .format(item.grandTotal)}
+                                        </p>
                                     </td>
                                 </tr>
                 `);

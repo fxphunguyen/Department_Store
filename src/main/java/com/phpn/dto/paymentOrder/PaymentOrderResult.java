@@ -1,9 +1,7 @@
-package com.phpn.dto.PaymentOrder;
+package com.phpn.dto.paymentOrder;
 
-import com.phpn.dto.customer.CustomerResult;
 import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.order.OrderResult;
-import com.phpn.dto.purchase_order.PurchaseOrderResult;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,15 +16,15 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class PaymentOrderParam {
+public class PaymentOrderResult {
 
     private Integer id;
 
     private BigDecimal paid;
 
-    private Integer customerId;
+    private Integer employeeId;
 
-    private CustomerResult customerResult;
+    private EmployeeResult employeeResult;
 
     private Integer orderId;
 
@@ -35,4 +33,6 @@ public class PaymentOrderParam {
     private Integer paymentMethodId;
 
     private Date createAt;
+
+    private String description;
 }
