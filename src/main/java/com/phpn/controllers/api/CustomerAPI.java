@@ -19,9 +19,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static java.math.BigDecimal.*;
 
 @RestController
 @RequestMapping("/api/customers")
@@ -138,46 +140,46 @@ public class CustomerAPI {
         return customerStatuses;
     }
 
-//    @GetMapping("/showAllCustomerMixInfo")
-//    public ResponseEntity<?> showAllCustomerMixInfo() {
-//        List<ICustomer> iCustomers = customerRepository.getAllCustomerMixInfo();
-//        List<ICustomerImpl> iCustomerImpls = iCustomers.stream().map(iCustomer -> {
-//            ICustomerImpl iCustomerImpl = new ICustomerImpl();
-//            iCustomerImpl.setFromICustomer(iCustomer);
-//            return iCustomerImpl;
-//        }).collect(Collectors.toList());
-//        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
-//    }
-//
-//
 
     @GetMapping("/showAllCustomerMixInfo")
     public ResponseEntity<?> showAllCustomerMixInfo() {
         List<ICustomer> iCustomers = customerService.showAllCustomerMixInfo();
         return new ResponseEntity<>(iCustomers, HttpStatus.OK);
     }
+
     @GetMapping("/showAllCustomerMixInfoByStatus")
     public ResponseEntity<?> showAllCustomerMixInfoByStatus() {
         List<ICustomer> iCustomers = customerService.showAllCustomerMixInfoByStatus();
         return new ResponseEntity<>(iCustomers, HttpStatus.OK);
     }
+
     @GetMapping("/customerInfo/{id}")
-    public  ResponseEntity<?> showListCustomerInfo(@PathVariable Integer id){
+    public ResponseEntity<?> showListCustomerInfo(@PathVariable Integer id) {
         ICustomer iCustomer = customerService.CustomerInfoById(id);
-        return  new ResponseEntity<>(iCustomer, HttpStatus.OK);
+        return new ResponseEntity<>(iCustomer, HttpStatus.OK);
     }
 
     @GetMapping("/historyCustomerOrder/{id}")
     @Transactional(readOnly = true)
-    public  ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id){
+    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id) {
         List<Order> order = orderRepository.findAllOrderByCustomerId(id);
-        return  new ResponseEntity<>(order, HttpStatus.OK);
+        return new ResponseEntity<>(order, HttpStatus.OK);
     }
+
 
     @GetMapping("/customerOwer/{id}")
     @Transactional(readOnly = true)
-    public  ResponseEntity<?> showListCustomerOwerById(@PathVariable Integer id){
-        List<ICustomerOwer> customers =  customerRepository.getCustomerOwerById(id);
-        return  new ResponseEntity<>(customers, HttpStatus.OK);
+    public ResponseEntity<?> showListCustomerOwerById(@PathVariable Integer id) {
+        List<ICustomerOwer> iCustomerOwers = customerRepository.getCustomerOwerById(id);
+        BigDecimal totalOk = null;
+
+        List<ICustomerOwerImpl> iCustomerImpls = iCustomerOwers.stream().map(iCustomerOwer -> {
+            ICustomerOwerImpl iCustomerOwerImpl = new ICustomerOwerImpl();
+            iCustomerOwerImpl.setFromICustomerOwer(iCustomerOwer);
+            return iCustomerOwerImpl;
+        }).collect(Collectors.toList());
+
+        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
     }
 }
+
