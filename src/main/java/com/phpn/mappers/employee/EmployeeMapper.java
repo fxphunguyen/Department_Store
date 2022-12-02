@@ -7,10 +7,6 @@ import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.repositories.model.Employee;
 import org.springframework.stereotype.Component;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> phu_dev
 @Component
 public class EmployeeMapper {
 
@@ -29,9 +25,7 @@ public class EmployeeMapper {
                 .setName(employee.getName())
                 .setEmail(employee.getEmail())
                 .setBirthday(employee.getBirthday())
-                .setGender(employee.getGender())
-                .setLocationRegionId(employee.getLocationRegionId())
-                .setLocationRegion(locationRegionMapper.toDTO(employee.getLocationRegion()));
+                .setGender(employee.getGender());
 
 
     }
@@ -51,8 +45,7 @@ public class EmployeeMapper {
         .setPhone(employeeParam.getPhone())
         .setPassword(employeeParam.getPassword())
         .setBirthday(employeeParam.getBirthday())
-        .setGender(employeeParam.getGender())
-        .setLocationRegionId(employeeParam.getLocationRegionId());
+        .setGender(employeeParam.getGender());
     }
 
 }

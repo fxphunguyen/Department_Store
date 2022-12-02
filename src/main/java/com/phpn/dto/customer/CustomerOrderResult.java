@@ -1,12 +1,6 @@
 package com.phpn.dto.customer;
 
 import com.phpn.dto.employee.EmployeeResult;
-<<<<<<< HEAD
-import com.phpn.dto.locationRegion.LocationRegionResult;
-import com.phpn.repositories.model.Employee;
-import com.phpn.repositories.model.LocationRegion;
-=======
->>>>>>> phu_dev
 import lombok.*;
 import lombok.experimental.Accessors;
 

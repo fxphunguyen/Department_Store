@@ -28,12 +28,9 @@ public interface CustomerRepository extends JpaRepository<Customer , Integer> {
     @Query(value = "call `ph-pn`.sp_FindCustomerInfoById(:id);" , nativeQuery = true)
     ICustomer getCustomerInfoById(Integer id);
 
-<<<<<<< HEAD
 
     @Query(value = "call `ph-pn`.sp_customerOwerById(:id);" , nativeQuery = true)
     List<ICustomerOwer> getCustomerOwerById(Integer id);
-=======
->>>>>>> 3b66ad51328ce8e461613c0e16cc121d6712cdb6
 }
 
 

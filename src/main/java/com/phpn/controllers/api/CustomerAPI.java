@@ -26,13 +26,6 @@ import static java.math.BigDecimal.*;
 @RequestMapping("/api/customers")
 public class CustomerAPI {
 
-<<<<<<< HEAD
-
-    @Autowired
-    private LocationRegionService locationRegionService;
-
-=======
->>>>>>> phu_dev
     @Autowired
     private CustomerMapper customerMapper;
 
@@ -52,19 +45,11 @@ public class CustomerAPI {
         List<CustomerResult> customers = customerService.findAll();
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
-    @GetMapping("/list_customer")
-    public ResponseEntity<?> showListCustomer(boolean deleted) {
-<<<<<<< HEAD
-        List<CustomerResult> customers = customerService.findAllCustomerResultByDeleted(deleted);
-        return new ResponseEntity<>(customers, HttpStatus.OK);
-    }
+
 
     @GetMapping("/customer_list")
     public ResponseEntity<?> showListCustomerByDelete(boolean deleted) {
         List<CustomerResult> customers = customerService.findAllCustomerByDelete(deleted);
-=======
-        List<CustomerOrderResult> customers = customerService.findAllCustomerResultByDeleted(deleted);
->>>>>>> 3b66ad51328ce8e461613c0e16cc121d6712cdb6
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 

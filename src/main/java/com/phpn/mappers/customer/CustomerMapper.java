@@ -35,12 +35,6 @@ public class CustomerMapper {
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
                 .setCustomerStatus(customer.getCustomerStatus());
-<<<<<<< HEAD
-=======
-//                .setLocationRegionId(customer.getLocationRegionId())
-//                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()));
-
->>>>>>> phu_dev
     }
     public CustomerOrderResult toOrderDTO(Customer customer) {
         return new CustomerOrderResult()
@@ -48,14 +42,7 @@ public class CustomerMapper {
                 .setCustomerCode(customer.getCustomerCode())
                 .setName(customer.getName())
                 .setPhone(customer.getPhone())
-                .setEmployeeId(customer.getEmployeeId())
-<<<<<<< HEAD
-                .setEmployee(employeeMapper.toOrderDTO(customer.getEmployee()))
-                .setDeleted(customer.getDeleted());
-=======
-                .setEmployee(employeeMapper.toDTO(customer.getEmployee()));
-              //  .setDeleted(customer.getDeleted());
->>>>>>> phu_dev
+                .setEmployeeId(customer.getEmployeeId());
     }
 
     public Customer toModel(CreateCustomerParam customerCreate) {
@@ -67,17 +54,7 @@ public class CustomerMapper {
                 .setCustomerGroup(customerCreate.getCustomerGroup())
                 .setEmail(customerCreate.getEmail())
                 .setBirthday(customerCreate.getBirthday())
-                .setCustomerStatus(CustomerStatus.AVAILABLE)
-<<<<<<< HEAD
-                .setCreateAt(java.time.LocalDateTime.now().toString())
-                .setUpdateAt(customerCreate.getUpdateAt())
-                .setCustomerGender(customerCreate.getCustomerGender());
-=======
-//                .setCreateAt(java.time.LocalDateTime.now().toString())
-//                .setUpdateAt(customerCreate.getUpdateAt())
-                .setCustomerGender(customerCreate.getCustomerGender());
-//                .setLocationRegionId(customerCreate.getLocationRegionId());
->>>>>>> phu_dev
+                .setCustomerStatus(CustomerStatus.AVAILABLE);
     }
 
     public Customer toCustomer( CreateCustomerParam customerCreate) {
@@ -89,14 +66,7 @@ public class CustomerMapper {
                 .setCustomerGroup(customerCreate.getCustomerGroup())
                 .setCustomerGender(customerCreate.getCustomerGender())
                 .setEmail(customerCreate.getEmail())
-                .setBirthday(customerCreate.getBirthday())
-<<<<<<< HEAD
-                .setCustomerStatus(customerCreate.getCustomerStatus())
-                .setCreateAt(customerCreate.getCreateAt())
-                .setUpdateAt(customerCreate.getUpdateAt());
-=======
-                .setCustomerStatus(customerCreate.getCustomerStatus());
->>>>>>> phu_dev
+                .setBirthday(customerCreate.getBirthday());
     }
 
     public Customer toCustomer(CustomerResult customerResult ,Customer customer) {
@@ -114,27 +84,6 @@ public class CustomerMapper {
 
     }
 
-<<<<<<< HEAD
-
-    public CustomerOrderResult toDTOCustomerOrder(Customer customer) {
-        return new CustomerOrderResult()
-                .setId(customer.getId())
-                .setCustomerCode(customer.getCustomerCode())
-                .setName(customer.getName())
-                .setPhone(customer.getPhone())
-                .setEmployeeId(customer.getEmployeeId());
-=======
-    public Customer toModel(CustomerParam customerParam) {
-        return new Customer()
-                .setId(customerParam.getId())
-                .setEmployeeId(customerParam.getEmployeeId())
-                .setCustomerCode(customerParam.getCustomerCode())
-                .setName(customerParam.getName())
-                .setPhone(customerParam.getPhone())
-                .setCreateAt(java.time.LocalDateTime.now().toString())
-                .setLocationRegionId(customerParam.getLocationRegionId());
->>>>>>> 3b66ad51328ce8e461613c0e16cc121d6712cdb6
-    }
 
 
 
