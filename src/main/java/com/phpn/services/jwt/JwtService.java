@@ -6,8 +6,8 @@ public interface JwtService {
 
     Boolean validateJwtToken(String token);
 
-    String getEmailFromJwtToken(String token);
+    String generateJwtToken(Authentication authentication);
 
-    String generateJwtTokenLogin(Authentication authentication);
+    String getEmailFromJwtToken(String token);
 
 }

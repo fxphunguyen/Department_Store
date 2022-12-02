@@ -1,7 +1,7 @@
 package com.phpn.security;
 
-import com.phpn.services.employee.EmployeeService;
 import com.phpn.services.jwt.JwtService;
+import com.phpn.services.employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -58,18 +58,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         try {
-            String getRequestURI = httpServletRequest.getRequestURI();
-
-            if ("/api/authentication/login".equals(getRequestURI)) {
-                filterChain.doFilter(httpServletRequest, httpServletResponse);
-                return;
-            }
-
             setAuthentication(httpServletRequest, getBearerTokenRequest(httpServletRequest));
             setAuthentication(httpServletRequest, getCookieValue(httpServletRequest));
 
         } catch (Exception exception) {
-            logger.error("Can't set user authentication: " + exception.getMessage());
+            logger.error("Can't set employee authentication: " + exception.getMessage());
         }
 
         filterChain.doFilter(httpServletRequest, httpServletResponse);

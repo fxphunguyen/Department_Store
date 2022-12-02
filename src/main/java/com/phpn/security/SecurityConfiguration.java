@@ -52,39 +52,40 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(employeeService).passwordEncoder(passwordEncoder());
+    public void configureGlobalSecurity(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+        authenticationManagerBuilder.userDetailsService(employeeService).passwordEncoder(passwordEncoder());
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().ignoringAntMatchers("/**").disable();
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.csrf().ignoringAntMatchers("/**");
+        httpSecurity.httpBasic().authenticationEntryPoint(restServicesEntryPoint());
 
-        http.authorizeRequests()
-                .antMatchers(
-                        "/",
-                        "/api/authentication/login",
-                        "/api/authentication/register",
-                        "/api/admin/**",
-                        "/login",
-                        "/logout"
-                ).permitAll()
-                .antMatchers("/resources/**", "/assets/**").permitAll()
+        httpSecurity.authorizeRequests()
+                .antMatchers("/", "/api/authentication/login", "/api/authentication/register", "/login").permitAll()
+                .antMatchers("/assets/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")
                 .loginPage("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/admin/home")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login")
                 .deleteCookies("JWT")
-                .invalidateHttpSession(true);
+                .invalidateHttpSession(true)
+                .and()
+                .csrf().disable();
 
-        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class).exceptionHandling().accessDeniedPage("/404");
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.cors();
+        httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling().accessDeniedHandler(customAccessDeniedHandler());
+
+        httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        httpSecurity.cors();
     }
 
 }

@@ -13,16 +13,14 @@ public interface EmployeeService extends UserDetailsService {
 
     List<EmployeeResult> findAll();
 
+    EmployeeResult findById(Integer id);
+
     Employee getByEmail(String email);
 
-    Optional<Employee> findByEmail(String email);
-
-    Optional<EmployeeParam> findEmployeeParamByEmail(String email);
+    EmployeeResult findByEmail(String email);
 
     Optional<Employee> findEmployeeById(Integer id);
 
     Boolean existsByEmail(String email);
-
-    EmployeeResult findById(Integer id);
 
 }

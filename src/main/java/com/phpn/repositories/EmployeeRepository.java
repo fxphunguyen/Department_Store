@@ -3,7 +3,6 @@ package com.phpn.repositories;
 import java.util.List;
 import java.util.Optional;
 
-import com.phpn.dto.employee.EmployeeParam;
 import com.phpn.repositories.model.Employee;
 
 import org.springframework.stereotype.Repository;
@@ -17,8 +16,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     Employee getByEmail(String email);
 
     Optional<Employee> findByEmail(String email);
-
-    Optional<EmployeeParam> findEmployeeParamByEmail(String email);
 
     Optional<Employee> findEmployeeById(Integer id);
 
