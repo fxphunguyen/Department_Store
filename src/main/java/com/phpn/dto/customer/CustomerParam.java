@@ -1,16 +1,10 @@
 package com.phpn.dto.customer;
 
 
-import com.phpn.dto.locationRegion.LocationRegionCreate;
-import com.phpn.dto.locationRegion.LocationRegionResult;
-import com.phpn.repositories.model.CustomerGender;
-import com.phpn.repositories.model.LocationRegion;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-
-import javax.validation.constraints.DecimalMin;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -42,9 +36,6 @@ public class CustomerParam {
 
 //    private CustomerGender customerGender;
 
-    private Integer locationRegionId;
-
-    private LocationRegionResult locationRegion;
 
 //    private Boolean deleted;
 

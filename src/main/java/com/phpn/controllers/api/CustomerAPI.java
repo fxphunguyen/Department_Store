@@ -1,18 +1,13 @@
 package com.phpn.controllers.api;
 
-import com.phpn.dto.customer.CustomerCreate;
+import com.phpn.dto.customer.CreateCustomerParam;
 import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.dto.customer.CustomerResult;
-
-
 import com.phpn.mappers.customer.CustomerMapper;
-import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
-import com.phpn.repositories.LocationRegionRepository;
 import com.phpn.repositories.OrderRepository;
 import com.phpn.repositories.model.*;
 import com.phpn.services.customer.CustomerService;
-import com.phpn.services.locationRegion.LocationRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,21 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerAPI {
-
-    @Autowired
-    private LocationRegionRepository locationRegionRepository;
-
-    @Autowired
-    private LocationRegionMapper locationRegionMapper;
-
-    @Autowired
-    private LocationRegionService locationRegionService;
 
     @Autowired
     private CustomerMapper customerMapper;
@@ -71,12 +56,12 @@ public class CustomerAPI {
 
     @PostMapping("/delete/{id}")
     public void deleteCustomerById(@PathVariable Integer id) {
-        customerService.deleteStatusCustomer(id);
+     //   customerService.deleteStatusCustomer(id);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createCustomer(@RequestBody CustomerCreate customerCreate) {
-        Customer customer = customerService.create(customerCreate);
+    public ResponseEntity<?> createCustomer(@RequestBody CreateCustomerParam customerCreate) {
+        CustomerResult customer = customerService.create(customerCreate);
         return new ResponseEntity<>(customer, HttpStatus.OK);
 
     }
@@ -93,12 +78,12 @@ public class CustomerAPI {
         }
         customerService.update(customerResult);
 
-        customerResult.getLocationRegionResult().setId(customerResult1.getLocationRegionId());
-
-        if ((customerResult.getLocationRegionResult()) == null) {
-            System.out.println("Dữ liệu ở location bị null");
-        }
-        locationRegionService.update(customerResult.getLocationRegionResult());
+//        customerResult.getLocationRegionResult().setId(customerResult1.getLocationRegionId());
+//
+//        if ((customerResult.getLocationRegionResult()) == null) {
+//            System.out.println("Dữ liệu ở location bị null");
+//        }
+//        locationRegionService.update(customerResult.getLocationRegionResult());
         return new ResponseEntity<>(customerResult, HttpStatus.OK);
     }
 

@@ -1,7 +1,5 @@
 package com.phpn.controllers.api;
 
-import com.phpn.controllers.ProductController;
-import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.repositories.ProductRepository;
