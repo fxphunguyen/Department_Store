@@ -1,8 +1,11 @@
 package com.phpn.dto.customer;
 
 
+import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.locationRegion.LocationRegionCreate;
+import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.repositories.model.CustomerGender;
+import com.phpn.repositories.model.LocationRegion;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,26 +27,26 @@ public class CustomerParam {
 
     private String phone;
 
-    private String customerGroup;
+//    private String customerGroup;
 
-    private String email;
+//    private String email;
 
-    private String birthday;
+//    private String birthday;
 
-    private String status;
+//    private String status;
 
     private String createAt;
 
-    private String updateAt;
+//    private String updateAt;
 
     private Integer employeeId;
 
-    private CustomerGender customerGender;
-
+//    private CustomerGender customerGender;
 
     private Integer locationRegionId;
 
-    private LocationRegionCreate locationRegionCreate;
+
+//    private Boolean deleted;
 
 
 }

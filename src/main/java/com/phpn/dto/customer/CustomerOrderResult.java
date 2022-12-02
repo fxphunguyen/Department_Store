@@ -1,6 +1,9 @@
 package com.phpn.dto.customer;
 
+import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.locationRegion.LocationRegionResult;
+import com.phpn.repositories.model.Employee;
+import com.phpn.repositories.model.LocationRegion;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -21,9 +24,13 @@ public class CustomerOrderResult {
 
     private Integer locationRegionId;
 
-    private LocationRegionResult locationRegionResult;
+    private LocationRegionResult locationRegion;
 
     private Integer employeeId;
+
+    private EmployeeResult employee;
+
+    private Boolean deleted;
 
 
 }

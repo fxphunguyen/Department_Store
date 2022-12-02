@@ -1,6 +1,11 @@
 package com.phpn.controllers.api;
 
-import com.phpn.dto.item.ItemRResult;
+import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
+import com.phpn.dto.item.ItemResult;
+import com.phpn.dto.product.ProductResult;
+import com.phpn.mappers.item.ItemMapper;
+import com.phpn.repositories.model.Item;
+import com.phpn.repositories.model.Product;
 import com.phpn.services.item.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,9 +25,15 @@ public class ItemAPI {
 
     @GetMapping("/variants")
     public ResponseEntity<?> findAll() {
-        List<ItemRResult> itemResults = itemService.findAll();
+        List<ItemResult> itemResults = itemService.findAll();
 
         return new ResponseEntity<>(itemResults, HttpStatus.OK);
     }
 
+//    @GetMapping("/show_product_and_item")
+//    public ResponseEntity<?> findAllProductAndItem() {
+//        List<ItemResult> itemResults = itemService.findAllByProductIdAndAvailableAndQuantity();
+//        return new ResponseEntity<>(itemResults, HttpStatus.OK);
+
+//    }
 }

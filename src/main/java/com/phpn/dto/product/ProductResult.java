@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import com.phpn.dto.brand.BrandResult;
 import com.phpn.dto.category.CategoryResult;
+import com.phpn.dto.item.ItemResult;
 import com.phpn.repositories.model.ProductStatus;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,5 +37,7 @@ public class ProductResult {
     private Integer brandId;
     private CategoryResult categoryResult;
     private BrandResult brandResult;
+    private ItemResult item;
+
 
 }

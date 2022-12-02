@@ -52,6 +52,16 @@ public class PaymentOrder {
     @Column(name = "order_id", insertable = false, updatable = false)
     private Integer orderId;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @Column(name = "customer_id", insertable = false, updatable = false)
+    private Integer customerId;
+
+    @Column(name = "description", nullable = false, length = 200)
+    private String description;
+
     public PaymentOrder setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
         return this;

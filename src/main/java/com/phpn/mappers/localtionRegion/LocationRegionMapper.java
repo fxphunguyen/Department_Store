@@ -1,14 +1,11 @@
 package com.phpn.mappers.localtionRegion;
 
 
-import com.phpn.dto.customer.CustomerCreate;
-import com.phpn.dto.customer.CustomerResult;
 import com.phpn.dto.locationRegion.LocationRegionCreate;
+import com.phpn.dto.locationRegion.LocationRegionParam;
 import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.repositories.LocationRegionRepository;
-import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.LocationRegion;
-import lombok.experimental.Accessors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,6 +27,20 @@ public class LocationRegionMapper {
                 .setProvinceName(locationRegion.getProvinceName());
         }
 
+    public LocationRegion toModelOrder(LocationRegionParam locationRegionParam) {
+        return new LocationRegion()
+                .setId(locationRegionParam.getId())
+                .setAddress(locationRegionParam.getAddress())
+                .setWardId(locationRegionParam.getWardId())
+                .setWardName(locationRegionParam.getWardName())
+                .setDistrictId(locationRegionParam.getDistrictId())
+                .setDistrictName(locationRegionParam.getDistrictName())
+                .setProvinceId(locationRegionParam.getProvinceId())
+                .setProvinceName(locationRegionParam.getProvinceName());
+    }
+
+
+
     public LocationRegion toModel(LocationRegionCreate locationRegionCreate) {
         return new LocationRegion()
                 .setId(0)
@@ -42,22 +53,21 @@ public class LocationRegionMapper {
                 .setProvinceName(locationRegionCreate.getProvinceName());
     }
 
-//    public LocationRegion toModel(LocationRegion locationRegion) {
-//        return new LocationRegion()
-//                .setId(customerResult.getLocationRegionId())
-//                .setAddress(customerResult.getLocationRegionResult().getAddress())
-//                .setWardId(customerResult.getLocationRegionResult().getWardId())
-//                .setWardName(customerResult.getLocationRegionResult().getWardName())
-//                .setDistrictId(customerResult.getLocationRegionResult().getDistrictId())
-//                .setDistrictName(customerResult.getLocationRegionResult().getDistrictName())
-//                .setProvinceId(customerResult.getLocationRegionResult().getProvinceId())
-//                .setProvinceName(customerResult.getLocationRegionResult().getProvinceName());
+//    public LocationRegionResult toOrderDTO(LocationRegion locationRegion) {
+//        return new LocationRegionResult()
+//                .setId(locationRegion.getId())
+//                .setAddress(locationRegion.getAddress())
+//                .setWardId(locationRegion.getWardId())
+//                .setWardName(locationRegion.getWardName())
+//                .setDistrictId(locationRegion.getDistrictId())
+//                .setDistrictName(locationRegion.getDistrictName())
+//                .setProvinceId(locationRegion.getProvinceId())
+//                .setProvinceName(locationRegion.getProvinceName());
 //    }
 
     public LocationRegionCreate toModel(LocationRegion locationRegion) {
         return new LocationRegionCreate()
                 .setId(locationRegion.getId())
-
                 .setAddress(locationRegion.getAddress())
                 .setWardId(locationRegion.getWardId())
                 .setWardName(locationRegion.getWardName())

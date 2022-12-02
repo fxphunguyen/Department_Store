@@ -56,6 +56,7 @@ public class CustomerAPI {
     }
     @GetMapping("/list_customer")
     public ResponseEntity<?> showListCustomer(boolean deleted) {
+<<<<<<< HEAD
         List<CustomerResult> customers = customerService.findAllCustomerResultByDeleted(deleted);
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
@@ -63,6 +64,9 @@ public class CustomerAPI {
     @GetMapping("/customer_list")
     public ResponseEntity<?> showListCustomerByDelete(boolean deleted) {
         List<CustomerResult> customers = customerService.findAllCustomerByDelete(deleted);
+=======
+        List<CustomerOrderResult> customers = customerService.findAllCustomerResultByDeleted(deleted);
+>>>>>>> 3b66ad51328ce8e461613c0e16cc121d6712cdb6
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 
@@ -86,6 +90,7 @@ public class CustomerAPI {
     }
 
 
+
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateCustomer(@RequestBody CustomerResult customerResult) {
 
@@ -105,16 +110,6 @@ public class CustomerAPI {
         return new ResponseEntity<>(customerResult, HttpStatus.OK);
     }
 
-    @PutMapping("/updateCustomerOrder/{id}")
-    public ResponseEntity<?> updateCustomerOrder(@RequestBody CustomerOrderResult customerOrderResult, @PathVariable Integer id) {
-
-
-        CustomerOrderResult customerOrderResult1 = customerService.findByIdCustomerOrder(customerOrderResult.getId());
-        customerService.updateCustomerOrder(customerOrderResult);
-        customerOrderResult.getLocationRegionResult().setId(customerOrderResult1.getLocationRegionId());
-        locationRegionService.update(customerOrderResult.getLocationRegionResult());
-        return new ResponseEntity<>(customerOrderResult, HttpStatus.OK);
-    }
 
     @GetMapping("/customerGroup")
     public CustomerGroup[] findAllByCustomerGroup() {

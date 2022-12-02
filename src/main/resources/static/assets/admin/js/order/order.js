@@ -1,15 +1,22 @@
-let customer = new Customer()
+let customer = new Customer();
+let locationRegionResult = new LocationRegionResult();
+
 let locationRegionCreate = new LocationRegionCreate();
+
 let employeeResult = new EmployeeResult();
+let productResult = new ProductResult();
+let orderResult = new OrderResult();
+let orderItemResult = new OrderItemResult();
+let itemResult = new ItemResult();
 
 
 let customers;
 
+let products;
+
 let employees = [];
 
 function showListCustomer() {
-    console.log(" showListCustomer()");
-
     function show(data) {
 
         $(".searchCustomer").removeClass('d-none');
@@ -55,34 +62,6 @@ function showListCustomer() {
                 })
 }
 
-// const doNotSearch = () => {
-//     $(".searchCustomer").removeClass('d-none');
-//     $(".contentCustomer div").remove();
-//     let str = `
-//                 <div class="MuiPaper-root jss4291 MuiPaper-elevation1 MuiPaper-rounded"
-//                   style="padding: 48px 0px 84px;" >
-//                   <svg
-//                     viewBox="0 0 24 24"
-//                     fill="none"
-//                     xmlns="http://www.w3.org/2000/svg"
-//                     class="jss4292"
-//                   >
-//                     <path
-//                       fill-rule="evenodd"
-//                       clip-rule="evenodd"
-//                       d="M14.891 13.477a6.002 6.002 0 0 0-9.134-7.72 6 6 0 0 0 7.72 9.134l5.715 5.716 1.415-1.415-5.716-5.715Zm-2.063-6.305a4 4 0 1 1-5.656 5.656 4 4 0 0 1 5.656-5.656Z"
-//                       fill="currentColor"
-//                     ></path>
-//                   </svg>
-//                   <p class="jss4293">Không tìm thấy khách hàng phù hợp với kết quả tìm kiếm</p>
-//                   <span class="jss4294">
-//                     Thử thay đổi từ khóa tìm kiếm hoặc thêm mới khách hàng
-//                   </span>
-//                 </div>
-//                    `;
-//     $(".contentCustomer").html(str);
-// }
-// doNotSearch();
 
 const searchCustomer = () => {
     console.log("searchCustomer");
@@ -117,16 +96,66 @@ const searchCustomer = () => {
     })
 }
 
+const searchProduct = () => {
+    console.log("searchproduct");
+    $("#input_product").on("input", function () {
+        let search = $(this).val();
+        let results = [];
+        console.log("proddd" , products )
+        products.forEach((item) => {
+            if (((item.title).toLowerCase()).includes(search.toLowerCase()) || ((item.sku).toLowerCase()).includes(search.toLowerCase())
+                || ((item.bar_CODE).toLowerCase()).includes(search.toLowerCase()) || ((item.description).toLowerCase()).includes(search.toLowerCase())) {
+                results.push(item);
+            }
+        })
+        $(".searchProduct").removeClass('d-none');
+        $(".contentProduct div").remove();
+        $.each(results, (i, product) => {
+            let result = `
+                      <div class="MuiBox-root jss3941 InfiniteScroll-MenuItem focus-key-event"
+                    onclick="showProductInfo(${product.id})" data-id="${product.id}" tabindex="0">
+                    <li class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root jss1259 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button" tabindex="-1" role="menuitem" aria-disabled="false">
+                        <img class="jss1260" src="${product.image}" alt="">
+                            <div class="MuiBox-root jss3946">
+                                <div class="MuiBox-root jss3947">
+                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title} - ${product.bar_CODE} - ${product.description} </p>
+                                        <p class="MuiTypography-root MuiTypography-body2" style="line-height: 16px; display: flex;">
+                                    
+                                        <span class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175); line-height: 16px;"> ${ product.sku} </span>
+                                        <span class="MuiTypography-root jss1258 MuiTypography-body2 MuiTypography-colorPrimary" title="Mặc định">${product.description}</span>
+                                    </p>
+                                </div>
+                                <div class="MuiBox-root jss3953">
+                                    <h6 class="MuiTypography-root MuiTypography-h6">${product.retail_PRICE}</h6>
+                                        <p class="MuiTypography-root MuiTypography-body1" style="margin-top: 4px;">
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">Tồn:  </span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.quantity}</span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">&nbsp;| Có thể bán: </span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.available}</span>
+                                        </p>
+                                </div>
+                            </div>
+                        <span class="MuiTouchRipple-root"></span>
+                    </li>
+                </div>    
+                `;
+            $(".contentProduct").append(result);
+        })
+    })
+}
+
 
 function showCustomerInfo(idCustomer) {
     console.log(idCustomer);
-    $("#MuiBox-list-customer").addClass("hide");
+    // $("#MuiBox-list-customer").addClass("hide");
 
     $("#idCustomer").val(idCustomer);
     let result = customer = customers.find(({id}) => id === idCustomer);
     let str = `<div class="MuiPaper-root  jss938 MuiPaper-elevation1 MuiPaper-rounded" id="closed_customer_info">
         <div class="MuiBox-root jss985">
+        
             <div class="MuiBox-root jss3887 jss939">
+            
                 <div class="MuiBox-root jss3888">
                     <h6 class="MuiTypography-root MuiTypography-h6" style="display: flex; align-items: center;"><svg
                             class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
@@ -161,6 +190,7 @@ function showCustomerInfo(idCustomer) {
                                 </div>
                 </div>
             </div>
+            <hr/>
             <div class="MuiBox-root jss3895 jss942">
                 <div class="MuiBox-root jss3896 jss952">
                     <div class="MuiBox-root jss3897">
@@ -170,7 +200,7 @@ function showCustomerInfo(idCustomer) {
                             </div>
                             <div class="MuiBox-root jss3900">
                                 <p class="MuiTypography-root MuiTypography-body2">${result.phone}</p>
-                                <p class="MuiTypography-root MuiTypography-body2">${result.locationRegionResult.address}</p>
+                                <p class="MuiTypography-root MuiTypography-body2">${result.locationRegion.address}</p>
                             </div>
                         </div>
                         <div class="MuiBox-root jss3901 jss945 jss947">
@@ -242,7 +272,7 @@ function showCustomerInfo(idCustomer) {
                             </div>
                             <div class="MuiBox-root jss4278">
                                 <p class="MuiTypography-root MuiTypography-body2">${result.phone}</p>
-                                <p class="MuiTypography-root MuiTypography-body2">${result.locationRegionResult.address}</p>
+                                <p class="MuiTypography-root MuiTypography-body2">${result.locationRegion.address}</p>
                             </div>
                         </div>
                         <div class="MuiBox-root jss4279 jss945">
@@ -284,37 +314,56 @@ function handleCloseListCustomers() {
         $(".searchCustomer").addClass('d-none');
     })
 }
+function getAllItem() {
+   return  $.ajax({
+        type: "GET",
+        contentType: 'application/json',
+        url: `${location.origin}/api/items/variants`
+    })
+        .done((data) => {
+            items = data;
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR);
+        })
+}
 
 function showListProducts() {
     $.ajax({
         type: "GET",
-        contentType: 'application/json',
-        url: `${location.origin}/api/products/show_list`
+        // contentType: 'application/json',
+        url: `${location.origin}/api/products/showProductInfo`
     })
         .done((data) => {
-            $(".searchProduct").removeClass('d-none');
-            $(".contentProduct div").remove();
-            $.each(data, (i, product) => {
-                let result = `             
+            products = data;
+            console.log("dataaaaa", data)
+                $(".searchProduct").removeClass('d-none');
+                $(".searchProduct").removeClass('hide').addClass('show');
+
+                $(".contentProduct div").remove();
+                $.each(data, (i, product) => {
+                    console.log("prroduct", product)
+                    let result = `             
                     <div class="MuiBox-root jss3941 InfiniteScroll-MenuItem focus-key-event"
                     onclick="showProductInfo(${product.id})" data-id="${product.id}" tabindex="0">
                     <li class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root jss1259 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button" tabindex="-1" role="menuitem" aria-disabled="false">
                         <img class="jss1260" src="${product.image}" alt="">
                             <div class="MuiBox-root jss3946">
                                 <div class="MuiBox-root jss3947">
-                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title}</p>
+                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title} - ${product.bar_CODE} - ${product.description} </p>
                                         <p class="MuiTypography-root MuiTypography-body2" style="line-height: 16px; display: flex;">
-                                        <span class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175); line-height: 16px;">${product.sku}</span>
-                                        <span class="MuiTypography-root jss1258 MuiTypography-body2 MuiTypography-colorPrimary" title="Mặc định">Mặc định</span>
+                                    
+                                        <span class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175); line-height: 16px;"> ${ product.sku} </span>
+                                        <span class="MuiTypography-root jss1258 MuiTypography-body2 MuiTypography-colorPrimary" title="Mặc định">${product.description}</span>
                                     </p>
                                 </div>
                                 <div class="MuiBox-root jss3953">
-                                    <h6 class="MuiTypography-root MuiTypography-h6">${product.retailPrice}</h6>
+                                    <h6 class="MuiTypography-root MuiTypography-h6">${product.retail_PRICE}</h6>
                                         <p class="MuiTypography-root MuiTypography-body1" style="margin-top: 4px;">
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">Tồn:  </span>
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.quantity}</span>
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">&nbsp;| Có thể bán: </span>
-                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.quantity}</span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.available}</span>
                                         </p>
                                 </div>
                             </div>
@@ -322,11 +371,11 @@ function showListProducts() {
                     </li>
                 </div>                       
                 `;
-                $(".contentProduct").append(result)
-            })
+                    $(".contentProduct").append(result)
+                })
 
-            handleCloseListProducts();
-        })
+                handleCloseListProducts();
+            })
         .fail((jqXHR) => {
             console.log(jqXHR);
         })
@@ -379,7 +428,6 @@ function getAllDistrictsByProvinceId(provinceId) {
     })
         .done((data) => {
             if (data.results.length === 0) {
-                console.log(data.results.length)
                 let str = `<option value="0">Chọn Quận/Huyện</option>`;
                 $("#district").append(str);
             } else {
@@ -474,8 +522,6 @@ function getEmployeeById(id) {
         url: `${location.origin}/api/employees/` + id
     })
         .done((data) => {
-            console.log("phuoc");
-            console.log(data)
             employeeResult = data;
             $.each(data, (i, item) => {
                 let str = `<option value="${item.id}">${item.name}</option>`;
@@ -540,6 +586,7 @@ doCreateCustomer();
 
 
 
+
 function handleRemove() {
     let str = `<div class="MuiPaper-root  jss18028 MuiPaper-elevation1 MuiPaper-rounded">
                 <div class="MuiBox-root jss18075 customer-info">
@@ -588,7 +635,7 @@ function handleRemove() {
             </div>`;
     $("#show_customer_info").html(str);
     $("#MuiBox-list-customer").removeClass("hide");
-    // searchCustomer();
+    searchCustomer();
 
 }
 
@@ -634,66 +681,43 @@ function getAllEmployees() {
 
 function editCustomer() {
     let id = $("#idCustomer").val();
-    console.log(customer);
     $('#idCustomerUpdate').val(customer.id);
     $("#nameUpdate").val(customer.name)
     $('#phoneUpdate').val(customer.phone);
     $('#addressUpdate').val(customer.locationRegionResult.address);
     $('#provinceUpdate').val(customer.locationRegionResult.provinceId);
-    console.log("provin", customer.locationRegionResult.provinceId)
     getAllDistrictsByProvinceId(customer.locationRegionResult.provinceId).then(() => {
         $("#districtUpdate").val(customer.locationRegionResult.districtId);
-        console.log("districtId", customer.locationRegionResult.districtId)
         getAllWardsByDistrictId(customer.locationRegionResult.districtId).then(() => {
             $("#wardUpdate").val(customer.locationRegionResult.wardId);
-            console.log("wardId", customer.locationRegionResult.wardId)
+
 
         })
     })
-    console.log(customer)
+
+
+
     $("#codeUpdate").val(customer.customerCode);
     $("#selectEmployeeUpdate").val(customer.employeeId);
 
     $("#update_order_customer").modal("show");
-    console.log(id);
-    // getCustomerById(id).then(() => {
-    //     $("#nameUpdate").val(customer.name)
-    //     $('#phoneUpdate').val(customer.phone);
-    //     // $('#addressUpdate').val(customer.locationRegionResult.address);
-    //     // $('#provinceUpdate').val(customer.locationRegionResult.provinceId);
-    //     // console.log("provin", customer.locationRegionResult.provinceId)
-    //     // getAllDistrictsByProvinceId(customer.locationRegionResult.provinceId).then(() => {
-    //     //     $("#districtUpdate").val(customer.locationRegionResult.districtId);
-    //     //     console.log("districtId", customer.locationRegionResult.districtId)
-    //     //     getAllWardsByDistrictId(customer.locationRegionResult.districtId).then(() => {
-    //     //         $("#wardUpdate").val(customer.locationRegionResult.wardId);
-    //     //         console.log("wardId", customer.locationRegionResult.wardId)
-    //     //
-    //     //     })
-    //     // })
-    //     console.log(customer)
-    //     $("#codeUpdate").val(customer.customerCode);
-    //     $("#selectEmployeeUpdate").val(customer.employeeId);
-    //
-    //     // $("#modalCreateProduct .modal-alert-danger").removeClass('show').addClass('hide');
-    // })
 }
 
 //
 // function doUpdateCustomer() {
 //     $('#btnUpdateCustomer').on('click', (idCustomer ) => {
-//         locationRegionCreate.provinceId = $("#provinceUpdate").val();
-//         locationRegionCreate.provinceName = $("#provinceUpdate :selected").text();
-//         locationRegionCreate.districtId = $("#districtUpdate").val();
-//         locationRegionCreate.districtName = $("#districtUpdate :selected").text();
-//         locationRegionCreate.wardId = $("#wardUpdate").val();
-//         locationRegionCreate.wardName = $("#wardUpdate :selected").text();
-//         locationRegionCreate.address = $("#addressUpdate").val();
+//         locationRegionResult.provinceId = $("#provinceUpdate").val();
+//         locationRegionResult.provinceName = $("#provinceUpdate :selected").text();
+//         locationRegionResult.districtId = $("#districtUpdate").val();
+//         locationRegionResult.districtName = $("#districtUpdate :selected").text();
+//         locationRegionResult.wardId = $("#wardUpdate").val();
+//         locationRegionResult.wardName = $("#wardUpdate :selected").text();
+//         locationRegionResult.address = $("#addressUpdate").val();
 //         customer.id = $("#idCustomerUpdate").val();
 //         customer.name = $("#nameUpdate").val();
 //         customer.phone = $("#phoneUpdate").val();
 //         customer.customerCode = $("#codeUpdate").val();
-//         customer.locationRegionCreate = locationRegionCreate;
+//         customer.locationRegionResult = locationRegionResult;
 //
 //         $.ajax({
 //             "headers": {
@@ -706,7 +730,7 @@ function editCustomer() {
 //         })
 //             .done((data) => {
 //                 customer = data;
-//                 customer.locationRegionCreate = locationRegionCreate;
+//                 customer.locationRegionResult = locationRegionResult;
 //                 removeEventModal();
 //                 $("#update_order_customer").modal("hide");
 //                 App.IziToast.showSuccessAlert("Cập nhật khách hàng thành công!");
@@ -719,12 +743,208 @@ function editCustomer() {
 // }
 // doUpdateCustomer();
 
+function showProductInfo(productId) {
+    $('#MuiBox-list-product').addClass("hide");
+    // $("#show_product_info").html("");
+
+    $("#productId").val(productId);
+    let result = product = products.find(({id}) => id === productId);
+    console.log("rì dâu", result)
+    let str =`
+        <tr id="tr_${result.id}" class="MuiTableRow-root jss3894 jss3905 isNormalLineItem">
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center">2</td>
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center"><a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary align-items-center"
+                    target="_blank" href="/admin/products/118801409/variants/185370765"><img class="jss3898"
+                        src=${result.image}></a>
+            </td>
+            <td class="MuiTableCell-root MuiTableCell-body align-items-center">
+                <div class="MuiBox-root jss4053 jss3895 ">
+                    <div class="MuiBox-root jss4054">
+                        <div class="MuiBox-root jss4055">
+                            <p class="MuiTypography-root MuiTypography-body1">${result.title}<button class="MuiButtonBase-root MuiIconButton-root" tabindex="0"
+                                    type="button"
+                                    style="padding: 0px; margin-left: 6px; height: fit-content;"><span
+                                        class="MuiIconButton-label"><svg viewBox="0 0 16 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            font-size="16"
+                                            style="font-size: 16px; margin-top: -5px; cursor: pointer; color: rgb(0, 136, 255);">
+                                            <path
+                                                d="M7.4 5v1.2h1.2V5H7.4ZM7.4 8.6V11h1.8V9.8h-.6V7.4H6.8v1.2h.6Z"
+                                                fill="currentColor"></path>
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M8 2C4.688 2 2 4.688 2 8s2.688 6 6 6 6-2.688 6-6-2.688-6-6-6ZM3.2 8c0 2.646 2.154 4.8 4.8 4.8s4.8-2.154 4.8-4.8S10.646 3.2 8 3.2A4.806 4.806 0 0 0 3.2 8Z"
+                                                fill="currentColor"></path>
+                                        </svg></span><span class="MuiTouchRipple-root"></span></button></p>
+                        </div>
+                        <h6 class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
+                            style="font-weight: normal; margin: 2px 0px;">${result.description}</h6><a
+                            class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+                            target="_blank" href="/admin/products/118801409/variants/185370765"><span
+                                class="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary">${result.sku}</span></a><button
+                            class="MuiButtonBase-root MuiButton-root MuiButton-text jss3896 btn-hover MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+                            tabindex="0" type="button"><span class="MuiButton-label"><span
+                                    class="MuiButton-startIcon MuiButton-iconSizeSmall"><svg viewBox="0 0 24 24"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        font-size="20" color="primary">
+                                        <path
+                                            d="M19 3H5c-1.103 0-2 .897-2 2v16l4.8-3.6A2 2 0 0 1 9 17h10c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2Zm0 12H8.334a2 2 0 0 0-1.2.4L5 17V5h14v10Z"
+                                            fill="#0088FF"></path>
+                                        <path d="M9 9h6v2H9V9Z" fill="#0088FF"></path>
+                                    </svg></span>Ghi chú</span><span
+                                class="MuiTouchRipple-root"></span></button>
+                    </div>
+                </div>
+            </td>
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter "
+                style="width: 105px; padding-left: 0px; padding-right: 0px;">
+                <div class="MuiBox-root jss4056 jss3910"><button
+                        class="MuiButtonBase-root MuiIconButton-root jss3912 icon-btn btn-subtract auto-hidden"
+                        tabindex="0" type="button"><span class="MuiIconButton-label"><svg
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false"
+                                viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z">
+                                </path>
+                            </svg></span><span class="MuiTouchRipple-root"></span></button>
+                    <div class="MuiFormControl-root jss3914 jss3916 jss3911">
+                        <div class="MuiFormControl-root MuiTextField-root jss3917" inputmode="numeric">
+                            <div
+                                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
+                                <input aria-invalid="false" autocomplete="off"
+                                    name="lineItemQuantity-415457da-d825-4964-912f-10804128db81" type="text"
+                                    class="MuiInputBase-input MuiInput-input" value="1"
+                                    style="text-align: center; width: 100%;"></div>
+                        </div>
+                    </div><button
+                        class="MuiButtonBase-root MuiIconButton-root jss3912 icon-btn btn-add auto-hidden"
+                        tabindex="0" type="button"><span class="MuiIconButton-label"><svg
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false"
+                                viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z">
+                                </path>
+                            </svg></span><span class="MuiTouchRipple-root"></span></button>
+                </div>
+            </td>
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight align-items-center">
+                <div class="MuiFormControl-root jss3914 jss3916" style="padding-top: 0px;">
+                    <div class="MuiFormControl-root MuiTextField-root jss3917" inputmode="numeric"
+                        data-for="tooltipTax-415457da-d825-4964-912f-10804128db81">
+                        <div
+                            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
+                            <input aria-invalid="false" autocomplete="off"
+                                id="price-line-item-415457da-d825-4964-912f-10804128db81"
+                                name="input-price-415457da-d825-4964-912f-10804128db81" type="text"
+                                class="MuiInputBase-input MuiInput-input" value=${result.retail_PRICE}
+                                style="width: 100%; text-align: right;"></div>
+                    </div>
+                </div>
+            </td>
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight show_discount">
+             
+                <button
+                    class="MuiButtonBase-root MuiButton-root MuiButton-text jss3901 " 
+                    tabindex="0" 
+                    type="button"
+                    onclick="discountProduct(${result.id})"
+                    id="discount_product">
+                    <span class="MuiButton-label">0
+                        <p class="MuiTypography-root discount_rate_line_item MuiTypography-body1"
+                            style="color: rgb(255, 77, 77); font-size: 12px;"></p></span>
+                </button>
+              
+                 </td>
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight ">${result.retail_PRICE}</td>
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight " style="padding-left: 0px;">
+                <button
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeSmall"
+                    tabindex="0" type="button"><span class="MuiIconButton-label"><svg viewBox="0 0 24 24"
+                            onclick="removeProduct(${result.id})"
+                            fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            font-size="20">
+                            <path
+                                d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"
+                                fill="currentColor"></path>
+                        </svg></span><span class="MuiTouchRipple-root"></span></button></td>
+        </tr>
+    `;
+    $("#tbProduct tbody").prepend(str);
+    $("#divNoInfo").remove();
+    $("#divTbProduct").removeClass("hide");
+}
+
+function removeProduct(id) {
+    // console.log($(this).data('id'))
+    // $(this).parent().parent().parent().parent().parent().remove();
+    if (id === undefined){
+        $("#divNoInfo").removeClass('hide').addClass('show');
+    }
+        $("#tr_" + id).remove();
+
+}
+
+
+function discountProduct(id) {
+    console.log('id', id);
+
+    let str = `
+    <div class="MuiPaper-root jss1041 MuiPaper-elevation3 MuiPaper-rounded"
+    style="width: 200px;position: absolute;inset: 0px auto auto 0px;transform: translate(995px, 189px);"
+    data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom">
+    <div id="arrow" style="position: absolute;left: 0px;transform: translate(95px, 0px);"></div>
+    <div class="MuiBox-root jss4417">
+        <div class="MuiBox-root jss4418">
+            <div class="MuiBox-root jss4419">
+                <div class="MuiToggleButtonGroup-root jss1283" role="group"><button
+                        class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped Mui-selected"
+                        tabindex="0" type="button" value="VALUE" aria-pressed="true"><span
+                            class="MuiToggleButton-label">Giá trị</span><span
+                            class="MuiTouchRipple-root"></span></button><button
+                        class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped" tabindex="0"
+                        type="button" value="PERCENT" aria-pressed="false"><span
+                            class="MuiToggleButton-label">%</span><span class="MuiTouchRipple-root"></span></button>
+                </div>
+                <div class="MuiFormControl-root jss4241 jss4243 jss1284" style="width: 92px; margin-left: 7px;">
+                    <div class="MuiFormControl-root MuiTextField-root jss4244" inputmode="numeric">
+                        <div
+                            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
+                            <input aria-invalid="false" autocomplete="off" name="c2d2892e-316b-4ed0-aee6-1744e98c2a78"
+                                type="text" class="MuiInputBase-input MuiInput-input" value="0"
+                                style="width: 100%; text-align: right;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    `;
+
+    $(".show_discount").html(str);
+
+}
+
+// function handleCloseDiscountProduct() {
+//     $(document).on("click", () => {
+//         $(".search_discount").addClass('d-none');
+//     })
+// }
+
+
+
 
 $(() => {
+    getAllItem();
     getAllEmployees();
     searchCustomer();
+    searchProduct();
     handleCloseListCustomers()
+    handleCloseListProducts();
+    // handleCloseDiscountProduct();
+    searchProduct();
 })
+
 
 
 

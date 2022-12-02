@@ -3,6 +3,7 @@ package com.phpn.mappers.customer;
 
 import com.phpn.dto.customer.CustomerCreate;
 import com.phpn.dto.customer.CustomerOrderResult;
+import com.phpn.dto.customer.CustomerParam;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
@@ -24,6 +25,7 @@ public class CustomerMapper {
     private LocationRegionMapper locationRegionMapper;
 
 
+
     public CustomerResult toDTO(Customer customer) {
         return new CustomerResult()
                 .setId(customer.getId())
@@ -40,14 +42,17 @@ public class CustomerMapper {
                 .setEmployeeId(customer.getEmployeeId())
                 .setCustomerStatus(customer.getCustomerStatus());
     }
-    public Customer toOrderDTO(CustomerOrderResult customerOrderResult , Customer customer) {
-        return  customer
+    public CustomerOrderResult toOrderDTO(Customer customer) {
+        return new CustomerOrderResult()
                 .setId(customer.getId())
-                .setCustomerCode(customerOrderResult.getCustomerCode())
-                .setName(customerOrderResult.getName())
-                .setPhone(customerOrderResult.getPhone())
-                .setUpdateAt(java.time.LocalDateTime.now().toString())
-                .setEmployeeId(customerOrderResult.getEmployeeId());
+                .setCustomerCode(customer.getCustomerCode())
+                .setName(customer.getName())
+                .setPhone(customer.getPhone())
+                .setLocationRegionId(customer.getLocationRegionId())
+                .setLocationRegion(locationRegionMapper.toDTO(customer.getLocationRegion()))
+                .setEmployeeId(customer.getEmployeeId())
+                .setEmployee(employeeMapper.toOrderDTO(customer.getEmployee()))
+                .setDeleted(customer.getDeleted());
     }
 
     public Customer toModel(CustomerCreate customerCreate) {
@@ -97,6 +102,7 @@ public class CustomerMapper {
 
     }
 
+<<<<<<< HEAD
 
     public CustomerOrderResult toDTOCustomerOrder(Customer customer) {
         return new CustomerOrderResult()
@@ -105,6 +111,17 @@ public class CustomerMapper {
                 .setName(customer.getName())
                 .setPhone(customer.getPhone())
                 .setEmployeeId(customer.getEmployeeId());
+=======
+    public Customer toModel(CustomerParam customerParam) {
+        return new Customer()
+                .setId(customerParam.getId())
+                .setEmployeeId(customerParam.getEmployeeId())
+                .setCustomerCode(customerParam.getCustomerCode())
+                .setName(customerParam.getName())
+                .setPhone(customerParam.getPhone())
+                .setCreateAt(java.time.LocalDateTime.now().toString())
+                .setLocationRegionId(customerParam.getLocationRegionId());
+>>>>>>> 3b66ad51328ce8e461613c0e16cc121d6712cdb6
     }
 
 

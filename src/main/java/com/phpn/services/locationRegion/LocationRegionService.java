@@ -4,6 +4,8 @@ import com.phpn.dto.customer.CustomerResult;
 import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.repositories.model.LocationRegion;
 
+import java.util.List;
+
 public interface LocationRegionService {
 
 
@@ -16,4 +18,7 @@ public interface LocationRegionService {
     LocationRegion update(LocationRegionResult locationRegionResult);
 
     LocationRegion findByIdCreate(Integer id);
+
+    List<LocationRegionResult> findAll();
+
 }

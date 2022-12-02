@@ -12,9 +12,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class LocationRegionParam {
 
-    private Integer Id;
-
-    private String address;
+    private Integer id;
 
     private  Integer wardId;
 
@@ -27,4 +25,7 @@ public class LocationRegionParam {
     private Integer provinceId;
 
     private  String provinceName;
+
+    private String address;
+
 }

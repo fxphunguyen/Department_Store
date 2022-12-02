@@ -13,11 +13,14 @@ import com.phpn.repositories.*;
 import com.phpn.repositories.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 
@@ -57,7 +60,7 @@ public class OrderServiceImpl implements OrderService {
     private ProductTaxRepository productTaxRepository;
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<OrderResult> findAll() {
         return orderRepository.findAll()
                 .stream()
@@ -68,16 +71,28 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public OrderResult createOrderExport(OrderParam orderParam) {
+        Random rand = new Random();
+        int ranNum = rand.nextInt(100000)+1;
 
 //        Integer employeeId = orderParam.getEmployeeId();
         Integer customerId = orderParam.getCustomerId();
-        if (customerId != null && !customerRepository.existsById(customerId))
+        if (customerId == null && !customerRepository.existsById(customerId))
             throw new NotFoundException("Không tìm thấy khách hàng");
+
+        Optional<Customer> customerOptional = customerRepository.findById(customerId);
+        Optional<Employee> employeeOptional = employeeRepository.findById(orderParam.getEmployeeId());
+
+
         Order order = orderMapper.toModel(orderParam);
         order.setGrandTotal(new BigDecimal(0));
         order.setTotal(new BigDecimal(0));
-        order.setOrderCode("SF001");
+        order.setOrderCode("SON00"+String.valueOf(ranNum));
+        order.setCreateAt(Instant.now());
+        order.setSubTotal(new BigDecimal(0));
+        order.setCustomer(customerOptional.get());
+        order.setEmployee(employeeOptional.get());
         order = orderRepository.save(order);
+        BigDecimal total = BigDecimal.valueOf(0);
         BigDecimal subTotal = BigDecimal.valueOf(0);
         BigDecimal grandTotal = BigDecimal.valueOf(0);
         for (OrderItemExport orderItemExport : orderParam.getOrderItems()) {
@@ -106,8 +121,10 @@ public class OrderServiceImpl implements OrderService {
                 float taxTotal = (float) productTaxList.stream()
                         .mapToDouble(productTax -> productTax.getId().getTax().getTax()).sum();
                 orderItem.setTax(taxTotal);
-                orderItemTotal = orderItemTotal.multiply(BigDecimal.valueOf(taxTotal / 100));
+                BigDecimal amountTax = (orderItemTotal.multiply(BigDecimal.valueOf(taxTotal / 100)));
+                orderItemTotal = orderItemTotal.add(amountTax);
             }
+
 
             if (orderItem.getDiscount() != null) {
                 orderItemTotal = orderItemTotal.subtract(orderParam.getDiscount());
@@ -142,15 +159,18 @@ public class OrderServiceImpl implements OrderService {
                 orderItem.setItemId(item.getId());
                 orderItem.setOrderId(order.getId());
 
-
                 orderItemRepository.save(orderItem);
             }
         }
-       // order.setSubTotal(total);
+        order.setSubTotal(subTotal);
         //cong them phi giao hang
-        BigDecimal total = subTotal.add(BigDecimal.valueOf(0));
+        total = subTotal.add(BigDecimal.valueOf(0));
         order.setTotal(total);
-
+        if (order.getDiscount() != null) {
+            grandTotal = total.subtract(order.getDiscount());
+        } else {
+            grandTotal = total;
+        }
         //tru ma giam gia
         order.setGrandTotal(grandTotal);
         return orderMapper.toDTO(order);

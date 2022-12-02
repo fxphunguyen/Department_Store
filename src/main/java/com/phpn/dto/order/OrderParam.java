@@ -1,5 +1,13 @@
 package com.phpn.dto.order;
 
+
+
+import com.phpn.dto.customer.CustomerOrderResult;
+import com.phpn.dto.customer.CustomerResult;
+
+import com.phpn.dto.employee.EmployeeResult;
+
+import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.dto.orderItem.OrderItemExport;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +15,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -21,7 +31,7 @@ public class OrderParam {
 
     private Integer customerId;
 
-    private BigDecimal tax;
+    private String orderCode;
 
     private BigDecimal discount;
 
@@ -29,7 +39,7 @@ public class OrderParam {
 
     private Integer orderStatusId;
 
-    private String createAt;
+    private Instant createAt;
 
     List<OrderItemExport> orderItems;
 
