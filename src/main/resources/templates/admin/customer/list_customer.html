@@ -471,7 +471,7 @@
                     let str = `
                          <tr class="MuiTableRow-root jss3687 MuiTableRow-hover" role="checkbox"
                                 aria-checked="false" tabindex="-1">
-                                <td class="MuiTableCell-root MuiTableCell-body jss3690 MuiTableCell-paddingCheckbox"   style="padding-left: 44px;"><span   class="MuiButtonBase-root MuiIconButton-root jss3677 MuiCheckbox-root MuiCheckbox-colorPrimary jss3667 MuiIconButton-colorPrimary"   aria-disabled="false" style="margin: 0px;"><span
+                                 <td class="MuiTableCell-root MuiTableCell-body jss3690 MuiTableCell-paddingCheckbox"   style="padding-left: 44px;"><span   class="MuiButtonBase-root MuiIconButton-root jss3677 MuiCheckbox-root MuiCheckbox-colorPrimary jss3667 MuiIconButton-colorPrimary"   aria-disabled="false" style="margin: 0px;"><span
                                         class="MuiIconButton-label"><input class="jss3680" type="checkbox" data-indeterminate="false" value=""><span class="jss3668"                 font-size="small"></span></span><span
                                         class="MuiTouchRipple-root"></span></span></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
@@ -479,17 +479,17 @@
                                        href="/admin/customers/customerInfo/${customer.id}">${customer.customer_CODE || "---"}</a></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="Trúc Nguyễn" currentitem="false"
+                                       currentitem="false"
                                        style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
                                         ${customer.name || "---"}</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="0935240482" currentitem="false"
+                                        currentitem="false"
                                        style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
                                         ${customer.phone || "---"}</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="Bán lẻ" currentitem="false"
+                                       currentitem="false"
                                        style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
                                         ${customer.customer_GROUP || "---"}
                                         </p></td>
@@ -499,7 +499,7 @@
                                        ${customer.congno != null ? (new Intl.NumberFormat('vi-VN', {
                         style: 'currency',
                         currency: 'VND'
-                    }).format(customer.congno)) : "---"}
+                    }).format(customer.congno)) : "0"}
                                        </p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
 
@@ -507,12 +507,9 @@
                                        style="padding-right: 6px;">${customer.chitieu != null ? (new Intl.NumberFormat('vi-VN', {
                         style: 'currency',
                         currency: 'VND'
-                    }).format(customer.chitieu)) : "---"}</p></td>
+                    }).format(customer.chitieu)) : "0"}</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.sl_MH_DAMUA || "---"}</p>
-                                </td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.birthday || "---"}</p>
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.sl_MH_DAMUA || 0}</p>
                                 </td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
@@ -527,28 +524,21 @@
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
                                        data-tip="Nguyễn Huy Trúc" currentitem="false">${customer.nv_PHUTRACH || "---"}</p></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="Quảng Bình" currentitem="false">${customer.address || "---"}</p></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="" currentitem="false">${customer.gender || "---"}</p></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="Nữ" currentitem="false">${customer.create_AT != null ? moment(customer.create_AT).format('DD-MM-yyyy') : "---"}</p></td>
 
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="" currentitem="false">${customer.update_AT != null ? moment(customer.update_AT).format('DD-MM-yyyy') : "---"}</p></td>
+                                       data-tip="" currentitem="false">${customer.gender || "---"}</p></td>
+
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                    ${customer.ngm_CUOICUNG != null ? moment(customer.ngm_CUOICUNG).format('DD-MM-yyyy') : "---"}</td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
                                        data-tip="Theo nhóm khách hàng" currentitem="false">
-                                       ${customer.sl_SP_DAMUA || "---"}</p></td>
+                                       ${customer.sl_SP_DAMUA || "0"}</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">
-                                        ${customer.sl_SP_HOANTRA || "---"}</p></td>                            </tr>
+                                        ${customer.sl_SP_HOANTRA || "0"}</p></td>
+                       </tr>
                     `;
                     $("#showAllCustomerInfo").append(str);
                     
