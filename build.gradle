@@ -29,16 +29,16 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok"
 
     runtimeOnly "com.mysql:mysql-connector-j"
-    implementation "org.thymeleaf.extras:thymeleaf-extras-springsecurity5"
+//    implementation "org.thymeleaf.extras:thymeleaf-extras-springsecurity5"
     implementation "com.vladmihalcea:hibernate-types-52:${hibernate_types_version}"
 
-    implementation "io.jsonwebtoken:jjwt-api:${jjwt_version}"
-    runtimeOnly "io.jsonwebtoken:jjwt-impl:${jjwt_version}"
-    runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jjwt_version}"
+//    implementation "io.jsonwebtoken:jjwt-api:${jjwt_version}"
+//    runtimeOnly "io.jsonwebtoken:jjwt-impl:${jjwt_version}"
+//    runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jjwt_version}"
 
     developmentOnly "org.springframework.boot:spring-boot-devtools"
     implementation "org.springframework.boot:spring-boot-starter-web"
-    implementation "org.springframework.boot:spring-boot-starter-security"
+//    implementation "org.springframework.boot:spring-boot-starter-security"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
     implementation "org.springframework.boot:spring-boot-starter-validation"

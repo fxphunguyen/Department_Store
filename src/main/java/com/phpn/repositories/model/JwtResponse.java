@@ -4,12 +4,10 @@ import lombok.experimental.Accessors;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Accessors(chain = true)
 public class JwtResponse {
 
@@ -18,5 +16,12 @@ public class JwtResponse {
     private String type = "Bearer";
     private String email;
     private String name;
+
+    public JwtResponse(String token, Integer id, String email, String name) {
+        this.token = token;
+        this.id = id;
+        this.email = email;
+        this.name = name;
+    }
 
 }
