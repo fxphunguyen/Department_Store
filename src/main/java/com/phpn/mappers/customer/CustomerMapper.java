@@ -8,6 +8,8 @@ import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.CustomerStatus;
+import com.phpn.repositories.model.ICustomerOwer;
+import com.phpn.repositories.model.ICustomerOwerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -111,6 +113,7 @@ public class CustomerMapper {
                 .setEmployeeId(customer.getEmployeeId())
                 .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()));
     }
+
 
 
 }

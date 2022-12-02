@@ -7,16 +7,14 @@ import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.LocationRegionRepository;
-import com.phpn.repositories.model.Customer;
-import com.phpn.repositories.model.CustomerGender;
-import com.phpn.repositories.model.ICustomer;
-import com.phpn.repositories.model.LocationRegion;
+import com.phpn.repositories.model.*;
 import com.phpn.services.locationRegion.LocationRegionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -146,6 +144,24 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public ICustomer CustomerInfoById(Integer id) {
         return customerRepository.getCustomerInfoById(id);
+    }
+
+    @Override
+    public List<ICustomerOwerImpl> CustomerOwerById(Integer id) {
+        List<ICustomerOwer> iCustomerOwers = customerRepository.getCustomerOwerById(id);
+        List<ICustomerOwerImpl> iCustomerImpls = iCustomerOwers.stream().map(iCustomerOwer -> {
+            ICustomerOwerImpl iCustomerOwerImpl = new ICustomerOwerImpl();
+            iCustomerOwerImpl.setFromICustomerOwer(iCustomerOwer);
+            System.out.println("đay là total" + iCustomerOwerImpl.getTotal_transaction());
+            return iCustomerOwerImpl;
+        }).collect(Collectors.toList());
+        BigDecimal tam = BigDecimal.valueOf(0);
+        for (ICustomerOwerImpl customerOwer : iCustomerImpls){
+            tam = tam.add(customerOwer.getTransaction());
+            customerOwer.setTotal_transaction(tam) ;
+            System.out.println(customerOwer.getTransaction());
+        }
+        return  iCustomerImpls;
     }
 
 }

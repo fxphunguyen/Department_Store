@@ -14,4 +14,6 @@ public interface ICustomerOwer {
     BigDecimal getTRANSACTION();
 
     BigDecimal getTOTALTRANSACTION();
+
+    String getDescription();
 }

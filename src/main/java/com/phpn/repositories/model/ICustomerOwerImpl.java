@@ -1,7 +1,18 @@
 package com.phpn.repositories.model;
 
+import lombok.*;
+import lombok.experimental.Accessors;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 
+
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Accessors(chain = true)
 public class ICustomerOwerImpl {
     private String order_code;
 
@@ -14,8 +25,7 @@ public class ICustomerOwerImpl {
 
     private  BigDecimal total_transaction;
 
-    public ICustomerOwerImpl() {
-    }
+    private  String description;
 
 
     public void setFromICustomerOwer(ICustomerOwer iCustomerOwer) {
@@ -24,47 +34,7 @@ public class ICustomerOwerImpl {
         this.create_at = iCustomerOwer.getCREATEAT();
         this.transaction = iCustomerOwer.getTRANSACTION();
         this.total_transaction = iCustomerOwer.getTOTALTRANSACTION();
-    }
-    public String getOrder_code() {
-        return order_code;
-    }
-
-    public void setOrder_code(String order_code) {
-        this.order_code = order_code;
-    }
-
-    public String getEmployee_name() {
-        return employee_name;
-    }
-
-    public void setEmployee_name(String employee_name) {
-        this.employee_name = employee_name;
-    }
-
-    public String getCreate_at() {
-        return create_at;
-    }
-
-    public void setCreate_at(String create_at) {
-        this.create_at = create_at;
-    }
-
-
-
-    public BigDecimal getTransaction() {
-        return transaction;
-    }
-
-    public BigDecimal getTotal_transaction() {
-        return total_transaction;
-    }
-
-    public void setTotal_transaction(BigDecimal total_transaction) {
-        this.total_transaction = total_transaction;
-    }
-
-    public void setTransaction(BigDecimal transaction) {
-        this.transaction = transaction;
+        this.description = iCustomerOwer.getDescription();
     }
 
 

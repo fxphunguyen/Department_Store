@@ -172,38 +172,7 @@ public class CustomerAPI {
     @GetMapping("/customerOwer/{id}")
     @Transactional(readOnly = true)
     public ResponseEntity<?> showListCustomerOwerById(@PathVariable Integer id) {
-//        List<ICustomerOwer> iCustomerOwers = customerRepository.getCustomerOwerById(id);
-//        List<ICustomerOwerImpl> iCustomerImpls = iCustomerOwers.stream().map(iCustomerOwer -> {
-//            ICustomerOwerImpl iCustomerOwerImpl = new ICustomerOwerImpl();
-//            iCustomerOwerImpl.setFromICustomerOwer(iCustomerOwer);
-//            System.out.println("đay là total" + iCustomerOwerImpl.getTotal_transaction());
-//            return iCustomerOwerImpl;
-//
-//        }).collect(Collectors.toList());
-//
-//        BigDecimal tam = BigDecimal.valueOf(0);
-//        for (ICustomerOwerImpl customerOwer : iCustomerImpls){
-////            customerOwer.setCreate_at()
-//            tam = tam.add(customerOwer.getTransaction());
-//            System.out.println( "Đây là tiền tam" + tam);
-//            customerOwer.setTotal_transaction(tam) ;
-//            System.out.println(customerOwer.getTransaction());
-//        }
-//
-//        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
-//    }
-//
-        List<ICustomerOwer> iCustomerOwers = customerRepository.getCustomerOwerById(id);
-
-
-        List<ICustomerOwerImpl> iCustomerOwerList = new ArrayList<>();
-        int i ;
-        for (i = 0 ; i< iCustomerOwers.size(); i++ ){
-            iCustomerOwerList.get(i).setTransaction(iCustomerOwers.get(i).getTRANSACTION());
-            iCustomerOwerList.get(i).setCreate_at(iCustomerOwers.get(i).getCREATEAT());
-            iCustomerOwerList.get(i).setEmployee_name(iCustomerOwers.get(i).getEMPLOYEE_NAME());
-            iCustomerOwerList.get(i).setOrder_code(iCustomerOwers.get(i).getORDER_CODE());
-        }
-        return  new ResponseEntity<>(iCustomerOwerList , HttpStatus.OK );
+        List<ICustomerOwerImpl> iCustomerImpls = customerService.CustomerOwerById(id);
+        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
     }
 }

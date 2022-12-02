@@ -6,6 +6,7 @@ import com.phpn.dto.customer.CustomerResult;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.CustomerGender;
 import com.phpn.repositories.model.ICustomer;
+import com.phpn.repositories.model.ICustomerOwerImpl;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -47,4 +48,7 @@ public interface CustomerService {
     List<ICustomer>  showAllCustomerMixInfo();
 
     ICustomer CustomerInfoById(Integer id);
+
+
+     List<ICustomerOwerImpl> CustomerOwerById(Integer id);
 }

@@ -363,10 +363,6 @@
 <script>
 
 
-
-
-
-
     <!--    Công nợ-->
     $('#debts').click(function () {
         deleteEventModelShow();
@@ -507,18 +503,18 @@
                                                 tabindex="-1">
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
                                                     <a class="jss920" target="_blank"
-                                                       href="/admin/receipt_vouchers/296331927/edit">${order.order_CODE}</a></td>
+                                                       href="/admin/receipt_vouchers/296331927/edit">${order.order_code}</a></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                                       data-tip="" currentitem="false"
-                                                       style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                                        </p></td>
+                                                    <span>${order.employee_name}</td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <span>${order.createat}</td>
+                                                    <span>
+                                                        ${order.create_at != null ? moment(order.create_at).format('DD/MM/yyyy hh:ss') : "---"}</td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <span>${order.createat}</span></td>
+                                                    <span>
+                                                         ${order.create_at != null ? moment(order.create_at).format('DD/MM/yyyy hh:ss') : "---"}</td>
+                                                    </span></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <span>Tạo phiếu thu</span></td>
+                                                    <span>S{order.description}</span></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignRight">
                                                     <span style="padding: 16px;">
                                                                    ${order.transaction != null ? (new Intl.NumberFormat('vi-VN', {
@@ -526,10 +522,13 @@
                                                             currency: 'VND'
                                                         }).format(order.transaction)) : "---"}</span></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignRight">
-                                                    <span style="padding: 16px;">${order.transaction}</span></td>
-                            </tr>
-                    `
-                    $(".showCustomerDebtById").append(str);
+                                                    <span style="padding: 16px;"> ${order.total_transaction != null ? (new Intl.NumberFormat('vi-VN', {
+                                                    style: 'currency',
+                                                    currency: 'VND'
+                                                }).format(order.total_transaction)) : "---"}</span></td>
+                                                    </tr>
+                                        `
+                    $(".showCustomerDebtById").prepend(str);
                 });
             })
             .fail((jqXHR) => {
@@ -568,9 +567,9 @@
                                                         <p class="MuiTypography-root MuiTypography-body1"
                                                            title="1,415,000">
                                                            ${order.grandTotal != null ? (new Intl.NumberFormat('vi-VN', {
-                        style: 'currency',
-                        currency: 'VND'
-                    }).format(order.grandTotal)) : "---"}
+                                                            style: 'currency',
+                                                            currency: 'VND'
+                                                        }).format(order.grandTotal)) : "---"}
                                                            </p></td>
                                                     <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
                                                         <p class="MuiTypography-root MuiTypography-body1"
