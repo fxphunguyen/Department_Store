@@ -38,22 +38,11 @@ public class CustomerMapper {
                 .setCreateAt(customer.getCreateAt())
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
-                .setCustomerStatus(customer.getCustomerStatus())
-                .setLocationRegionId(customer.getLocationRegionId())
-                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()));
+                .setCustomerStatus(customer.getCustomerStatus());
 
     }
     public CustomerOrderResult toOrderDTO(Customer customer) {
-        return new CustomerOrderResult()
-                .setId(customer.getId())
-                .setCustomerCode(customer.getCustomerCode())
-                .setName(customer.getName())
-                .setPhone(customer.getPhone())
-                .setLocationRegionId(customer.getLocationRegionId())
-                .setLocationRegion(locationRegionMapper.toDTO(customer.getLocationRegion()))
-                .setEmployeeId(customer.getEmployeeId())
-                .setEmployee(employeeMapper.toOrderDTO(customer.getEmployee()))
-                .setDeleted(customer.getDeleted());
+       return  null;
     }
 
     public Customer toModel(CustomerCreate customerCreate) {
@@ -68,8 +57,7 @@ public class CustomerMapper {
                 .setCustomerStatus(CustomerStatus.AVAILABLE)
                 .setCreateAt(java.time.LocalDateTime.now().toString())
                 .setUpdateAt(customerCreate.getUpdateAt())
-                .setCustomerGender(customerCreate.getCustomerGender())
-                .setLocationRegionId(customerCreate.getLocationRegionId());
+                .setCustomerGender(customerCreate.getCustomerGender());
     }
 
     public Customer toCustomer( CustomerCreate customerCreate) {
@@ -84,9 +72,7 @@ public class CustomerMapper {
                 .setBirthday(customerCreate.getBirthday())
                 .setCustomerStatus(customerCreate.getCustomerStatus())
                 .setCreateAt(customerCreate.getCreateAt())
-                .setUpdateAt(customerCreate.getUpdateAt())
-                .setLocationRegionId(customerCreate.getLocationRegionId())
-                .setLocationRegion(locationRegionMapper.toModel(customerCreate.getLocationRegionCreate()));
+                .setUpdateAt(customerCreate.getUpdateAt());
     }
 
     public Customer toCustomer(CustomerResult customerResult ,Customer customer) {
@@ -113,8 +99,7 @@ public class CustomerMapper {
                 .setCustomerCode(customerParam.getCustomerCode())
                 .setName(customerParam.getName())
                 .setPhone(customerParam.getPhone())
-                .setCreateAt(java.time.LocalDateTime.now().toString())
-                .setLocationRegionId(customerParam.getLocationRegionId());
+                .setCreateAt(java.time.LocalDateTime.now().toString());
     }
 
 
