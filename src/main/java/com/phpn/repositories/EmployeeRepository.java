@@ -1,9 +1,9 @@
 package com.phpn.repositories;
 
-import com.phpn.repositories.model.Employee;
-
 import java.util.List;
 import java.util.Optional;
+
+import com.phpn.repositories.model.Employee;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,6 +13,12 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     List<Employee> findAll();
 
+    Employee getByEmail(String email);
+
+    Optional<Employee> findByEmail(String email);
+
     Optional<Employee> findEmployeeById(Integer id);
+
+    Boolean existsByEmail(String email);
 
 }
