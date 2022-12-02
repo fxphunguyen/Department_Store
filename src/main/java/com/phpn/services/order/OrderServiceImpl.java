@@ -78,14 +78,19 @@ public class OrderServiceImpl implements OrderService {
         Integer customerId = orderParam.getCustomerId();
         if (customerId == null && !customerRepository.existsById(customerId))
             throw new NotFoundException("Không tìm thấy khách hàng");
+
+        Optional<Customer> customerOptional = customerRepository.findById(customerId);
+        Optional<Employee> employeeOptional = employeeRepository.findById(orderParam.getEmployeeId());
+
+
         Order order = orderMapper.toModel(orderParam);
         order.setGrandTotal(new BigDecimal(0));
         order.setTotal(new BigDecimal(0));
         order.setOrderCode("SON00"+String.valueOf(ranNum));
         order.setCreateAt(Instant.now());
         order.setSubTotal(new BigDecimal(0));
-        order.setCustomer(order.getCustomer());
-        order.setEmployee(order.getEmployee());
+        order.setCustomer(customerOptional.get());
+        order.setEmployee(employeeOptional.get());
         order = orderRepository.save(order);
         BigDecimal total = BigDecimal.valueOf(0);
         BigDecimal subTotal = BigDecimal.valueOf(0);

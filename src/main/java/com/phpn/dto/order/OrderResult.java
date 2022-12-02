@@ -1,5 +1,6 @@
 package com.phpn.dto.order;
 
+import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.orderItem.OrderItemResult;
@@ -21,24 +22,23 @@ public class OrderResult {
 
     private Integer id;
 
-    private EmployeeResult employee;
+    private Integer employeeId;
 
+    private EmployeeResult employee;
 
     private String orderCode;
 
-    private Integer employeeId;
-
-    private Integer customerId;
-
-    private CustomerResult customer;
-
-    private String status;
+    private Integer orderStatusId;
 
     private BigDecimal discount;
 
     private String description;
 
     private Instant createAt;
+
+    private Integer customerId;
+
+    private CustomerOrderResult customer;
 
     private BigDecimal total;
 
