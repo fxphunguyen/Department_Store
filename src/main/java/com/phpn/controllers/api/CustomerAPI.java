@@ -1,7 +1,6 @@
 package com.phpn.controllers.api;
 
 import com.phpn.dto.customer.CreateCustomerParam;
-import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.repositories.CustomerRepository;
@@ -14,13 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import static java.math.BigDecimal.*;
 
 @RestController
 @RequestMapping("/api/customers")
