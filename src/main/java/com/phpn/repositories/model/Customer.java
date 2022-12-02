@@ -24,20 +24,10 @@ public class Customer {
         this.id = id;
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> phu_dev
-
     public Customer setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
         return this;
     }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> phu_dev
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -80,12 +70,7 @@ public class Customer {
     @OneToMany(targetEntity = ShippingAddress.class, mappedBy = "customer")
     private Set<ShippingAddress> shippingAddressSet;
 
-<<<<<<< HEAD
-    @Column(name = "employee_id", insertable = false,updatable = false)
-=======
-
     @Column(name = "employee_id", insertable = false, updatable = false)
->>>>>>> phu_dev
     private Integer employeeId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

@@ -7,17 +7,9 @@ import com.phpn.dto.shipping_address.CreateShippingAddressParam;
 import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.mappers.customer.ShippingAddressMapper;
 import com.phpn.repositories.CustomerRepository;
-<<<<<<< HEAD
-import com.phpn.repositories.LocationRegionRepository;
-import com.phpn.repositories.model.*;
-import com.phpn.services.locationRegion.LocationRegionService;
-=======
+
 import com.phpn.repositories.ShippingAddressRepository;
-import com.phpn.repositories.model.Customer;
-import com.phpn.repositories.model.CustomerGender;
-import com.phpn.repositories.model.ICustomer;
-import com.phpn.repositories.model.ShippingAddress;
->>>>>>> phu_dev
+import com.phpn.repositories.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,14 +38,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private ShippingAddressRepository shippingAddressRepository;
 
-<<<<<<< HEAD
-=======
-    @Override
-    @Transactional
-    public void deleteCustomer(Integer id) {
-        customerRepository.deleteById(id);
-    }
->>>>>>> phu_dev
+
 
 
     @Override
@@ -72,14 +57,6 @@ public class CustomerServiceImpl implements CustomerService {
         return customerMapper.toOrderDTO(customerOptional.get());
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-=======
-=======
-
->>>>>>> phu_dev
     @Override
     @Transactional
     public CustomerResult create(CreateCustomerParam customerCreate) {
@@ -91,33 +68,18 @@ public class CustomerServiceImpl implements CustomerService {
         shippingAddressRepository.save(shippingAddress);
         return customerMapper.toDTO(customer);
     }
->>>>>>> 3b66ad51328ce8e461613c0e16cc121d6712cdb6
 
     @Override
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
-=======
-=======
     @Transactional(readOnly = true)
->>>>>>> phu_dev
     public List<CustomerResult> findCustomerByDeleted(boolean deleted) {
         return null;
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<CustomerOrderResult> findAllCustomerResultByDeleted(boolean deleted) {
-<<<<<<< HEAD
->>>>>>> 3b66ad51328ce8e461613c0e16cc121d6712cdb6
-        return customerRepository.findAllCustomerResultByDeleted(deleted)
-=======
-        return customerRepository.findAllByDeleted(deleted)
->>>>>>> phu_dev
-                .stream()
-                .map(customerMapper::toOrderDTO)
-                .collect(Collectors.toList());
+        return null;
     }
+
 
     @Override
     @Transactional(readOnly = true)
@@ -136,15 +98,12 @@ public class CustomerServiceImpl implements CustomerService {
         return customerMapper.toDTO(customer);
     }
 
-<<<<<<< HEAD
-=======
     @Override
     @Transactional(readOnly = true)
     public CustomerGender[] findAllByCustomerGender() {
         CustomerGender[] customerGender = CustomerGender.values();
         return customerGender;
     }
->>>>>>> phu_dev
 
     @Override
     @Transactional(readOnly = true)

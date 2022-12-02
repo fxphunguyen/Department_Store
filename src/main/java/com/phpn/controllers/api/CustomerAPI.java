@@ -1,7 +1,6 @@
 package com.phpn.controllers.api;
 
 import com.phpn.dto.customer.CreateCustomerParam;
-import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.repositories.CustomerRepository;
@@ -14,25 +13,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import static java.math.BigDecimal.*;
 
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerAPI {
 
-<<<<<<< HEAD
-
-    @Autowired
-    private LocationRegionService locationRegionService;
-
-=======
->>>>>>> phu_dev
     @Autowired
     private CustomerMapper customerMapper;
 
@@ -52,19 +38,11 @@ public class CustomerAPI {
         List<CustomerResult> customers = customerService.findAll();
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
-    @GetMapping("/list_customer")
-    public ResponseEntity<?> showListCustomer(boolean deleted) {
-<<<<<<< HEAD
-        List<CustomerResult> customers = customerService.findAllCustomerResultByDeleted(deleted);
-        return new ResponseEntity<>(customers, HttpStatus.OK);
-    }
+
 
     @GetMapping("/customer_list")
     public ResponseEntity<?> showListCustomerByDelete(boolean deleted) {
         List<CustomerResult> customers = customerService.findAllCustomerByDelete(deleted);
-=======
-        List<CustomerOrderResult> customers = customerService.findAllCustomerResultByDeleted(deleted);
->>>>>>> 3b66ad51328ce8e461613c0e16cc121d6712cdb6
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 

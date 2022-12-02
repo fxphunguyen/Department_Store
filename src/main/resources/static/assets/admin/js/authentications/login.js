@@ -1,21 +1,5 @@
 "use strict";
 
-class Employee {
-    constructor(email, password) {
-        this.email = email;
-        this.password = password;
-    }
-}
-
-class AuthenticationLogin {
-    constructor(email, password) {
-        this.email = email;
-        this.password = password;
-    }
-}
-
-const saveLoginDataToLocalStorage = (data) => window.localStorage.setItem("login_data", JSON.stringify(data));
-
 const loginEventHandler = () => {
     try {
         const getLoginInputValue = {
@@ -34,11 +18,9 @@ const loginEventHandler = () => {
             "type": "post"
         })
         .done((data) => {
-            saveLoginDataToLocalStorage(data);
             alert("Bạn đã đăng nhập vào hệ thống thành công!");
-            window.location.href = "/admin/home";
         })
-        .fail((error) => console.log("Login failed: " + error));
+        .fail(() => alert("Địa chỉ email hoặc mật khẩu không đúng, vui lòng kiểm tra lại thông tin!"));
 
     } catch (error) {
         throw new Error("An error occurred: " + error);
