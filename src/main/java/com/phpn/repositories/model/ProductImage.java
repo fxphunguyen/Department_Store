@@ -17,9 +17,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "avatar")
+@Table(name = "product_images")
 @Accessors(chain = true)
-public class ImageProduct {
+public class ProductImage {
 
     @Id
     @GeneratedValue(generator = "uuid")
