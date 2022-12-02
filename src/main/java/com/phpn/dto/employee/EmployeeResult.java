@@ -1,6 +1,5 @@
 package com.phpn.dto.employee;
 
-import com.phpn.dto.locationRegion.LocationRegionResult;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +21,5 @@ public class EmployeeResult {
     private String birthday;
     private String gender;
     private Integer locationRegionId;
-    private LocationRegionResult locationRegion;
 
 }

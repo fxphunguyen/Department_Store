@@ -4,17 +4,15 @@ package com.phpn.mappers.employee;
 import com.phpn.dto.employee.EmployeeParam;
 import com.phpn.dto.employee.EmployeeRResult;
 import com.phpn.dto.employee.EmployeeResult;
-import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.model.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> phu_dev
 @Component
 public class EmployeeMapper {
-
-    @Autowired
-    private LocationRegionMapper locationRegionMapper;
 
     public EmployeeResult toDTO(Employee employee) {
         return new EmployeeResult()
@@ -22,8 +20,6 @@ public class EmployeeMapper {
                 .setName(employee.getName())
                 .setEmail(employee.getEmail())
                 .setBirthday(employee.getBirthday())
-                .setLocationRegionId(employee.getLocationRegionId())
-                .setLocationRegion(locationRegionMapper.toDTO(employee.getLocationRegion()))
                 .setGender(employee.getGender());
     }
 

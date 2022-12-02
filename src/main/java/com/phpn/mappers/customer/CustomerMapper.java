@@ -1,12 +1,11 @@
 package com.phpn.mappers.customer;
 
 
-import com.phpn.dto.customer.CustomerCreate;
+import com.phpn.dto.customer.CreateCustomerParam;
 import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.dto.customer.CustomerParam;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.employee.EmployeeMapper;
-import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.CustomerStatus;
 import com.phpn.repositories.model.ICustomerOwer;
@@ -17,13 +16,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomerMapper {
 
-
     @Autowired
     private EmployeeMapper employeeMapper;
-
-    @Autowired
-    private LocationRegionMapper locationRegionMapper;
-
 
 
     public CustomerResult toDTO(Customer customer) {
@@ -41,6 +35,12 @@ public class CustomerMapper {
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
                 .setCustomerStatus(customer.getCustomerStatus());
+<<<<<<< HEAD
+=======
+//                .setLocationRegionId(customer.getLocationRegionId())
+//                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()));
+
+>>>>>>> phu_dev
     }
     public CustomerOrderResult toOrderDTO(Customer customer) {
         return new CustomerOrderResult()
@@ -48,14 +48,17 @@ public class CustomerMapper {
                 .setCustomerCode(customer.getCustomerCode())
                 .setName(customer.getName())
                 .setPhone(customer.getPhone())
-                .setLocationRegionId(customer.getLocationRegionId())
-                .setLocationRegion(locationRegionMapper.toDTO(customer.getLocationRegion()))
                 .setEmployeeId(customer.getEmployeeId())
+<<<<<<< HEAD
                 .setEmployee(employeeMapper.toOrderDTO(customer.getEmployee()))
                 .setDeleted(customer.getDeleted());
+=======
+                .setEmployee(employeeMapper.toDTO(customer.getEmployee()));
+              //  .setDeleted(customer.getDeleted());
+>>>>>>> phu_dev
     }
 
-    public Customer toModel(CustomerCreate customerCreate) {
+    public Customer toModel(CreateCustomerParam customerCreate) {
         return new Customer()
                 .setEmployeeId(customerCreate.getEmployeeId())
                 .setCustomerCode(customerCreate.getCustomerCode())
@@ -65,12 +68,19 @@ public class CustomerMapper {
                 .setEmail(customerCreate.getEmail())
                 .setBirthday(customerCreate.getBirthday())
                 .setCustomerStatus(CustomerStatus.AVAILABLE)
+<<<<<<< HEAD
                 .setCreateAt(java.time.LocalDateTime.now().toString())
                 .setUpdateAt(customerCreate.getUpdateAt())
                 .setCustomerGender(customerCreate.getCustomerGender());
+=======
+//                .setCreateAt(java.time.LocalDateTime.now().toString())
+//                .setUpdateAt(customerCreate.getUpdateAt())
+                .setCustomerGender(customerCreate.getCustomerGender());
+//                .setLocationRegionId(customerCreate.getLocationRegionId());
+>>>>>>> phu_dev
     }
 
-    public Customer toCustomer( CustomerCreate customerCreate) {
+    public Customer toCustomer( CreateCustomerParam customerCreate) {
         return new Customer()
                 .setId(customerCreate.getId())
                 .setCustomerCode(customerCreate.getCustomerCode())
@@ -80,9 +90,13 @@ public class CustomerMapper {
                 .setCustomerGender(customerCreate.getCustomerGender())
                 .setEmail(customerCreate.getEmail())
                 .setBirthday(customerCreate.getBirthday())
+<<<<<<< HEAD
                 .setCustomerStatus(customerCreate.getCustomerStatus())
                 .setCreateAt(customerCreate.getCreateAt())
                 .setUpdateAt(customerCreate.getUpdateAt());
+=======
+                .setCustomerStatus(customerCreate.getCustomerStatus());
+>>>>>>> phu_dev
     }
 
     public Customer toCustomer(CustomerResult customerResult ,Customer customer) {
@@ -96,9 +110,7 @@ public class CustomerMapper {
                 .setEmail(customerResult.getEmail())
                 .setBirthday(customerResult.getBirthday())
                 .setCustomerStatus(customerResult.getCustomerStatus())
-                .setUpdateAt(customerResult.getUpdateAt())
-                .setUpdateAt(java.time.LocalDateTime.now().toString())
-                .setDeleted(true);
+                .setUpdateAt(customerResult.getUpdateAt());
 
     }
 

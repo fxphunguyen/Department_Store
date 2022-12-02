@@ -1,9 +1,12 @@
 package com.phpn.dto.customer;
 
 import com.phpn.dto.employee.EmployeeResult;
+<<<<<<< HEAD
 import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.repositories.model.Employee;
 import com.phpn.repositories.model.LocationRegion;
+=======
+>>>>>>> phu_dev
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -22,9 +25,9 @@ public class CustomerOrderResult {
 
     private String phone;
 
-    private Integer locationRegionId;
+//    private Integer locationRegionId;
 
-    private LocationRegionResult locationRegion;
+//    private LocationRegionResult locationRegion;
 
     private Integer employeeId;
 

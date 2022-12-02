@@ -1,17 +1,16 @@
 package com.phpn.dto.customer;
 
 
-import com.phpn.dto.employee.EmployeeRResult;
 import com.phpn.dto.employee.EmployeeResult;
-import com.phpn.dto.locationRegion.LocationRegionCreate;
-import com.phpn.dto.locationRegion.LocationRegionResult;
+import com.phpn.dto.shipping_address.ShippingAddressResult;
 import com.phpn.repositories.model.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-import java.util.Optional;
+import java.time.Instant;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,13 +34,13 @@ public class CustomerResult {
 
     private CustomerStatus customerStatus;
 
-    private String createAt;
+    private Instant createAt;
 
-    private String updateAt;
+    private Instant updateAt;
 
     private Integer locationRegionId;
 
-    private LocationRegionResult locationRegionResult;
+    private List<ShippingAddressResult> shippingAddressList;
 
     private CustomerGender customerGender;
 
@@ -49,7 +48,6 @@ public class CustomerResult {
 
     private EmployeeResult employeeResult;
 
-    private Boolean deleted;
 
 
 }

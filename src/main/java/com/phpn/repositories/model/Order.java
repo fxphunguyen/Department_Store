@@ -1,12 +1,15 @@
 package com.phpn.repositories.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.Date;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -24,7 +27,28 @@ public class Order {
     @Column(name = "order_code", nullable = false, length = 50)
     private String orderCode;
 
-    @Column(name = "description", nullable = false, length = 200)
+    @Column(name = "full_name", length = 50)
+    private String fullName;
+
+    @Column(name = "mobile", length = 50)
+    private String mobile;
+
+    @Column(name = "line1",length = 50)
+    private String line1;
+
+    @Column(name = "line2", length = 50)
+    private String line2;
+
+    @Column(name = "city", length = 50)
+    private String city;
+
+    @Column(name = "province",  length = 50)
+    private String province;
+
+    @Column(name = "zip_code", length = 10)
+    private String zipCode;
+
+    @Column(name = "description", length = 200)
     private String description;
 
     @Column(name = "create_at", nullable = false, length = 50)
@@ -65,6 +89,9 @@ public class Order {
 
     @Column(name = "discount", precision = 10, scale = 2)
     private BigDecimal discount;
+
+    @OneToMany (targetEntity = PaymentOrder.class, mappedBy = "order")
+    private Set<PaymentOrder> paymentOrderSet;
 
     public Order(Integer id) {
         this.id = id;
