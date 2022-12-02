@@ -52,30 +52,23 @@ class ProductResult {
 }
 
 class OrderResult {
-    constructor(id, employeeId, employeeResult, customerId, customerResult, discount, description, subTotal, total, granTotal ) {
+    constructor(id, employeeId, customerId, discount, description, orderCode, orderStausId, orderItemResult ) {
         this.id =id;
         this.employeeId = employeeId;
-        this.employeeResult = employeeResult;
         this.customerId = customerId;
-        this.customerResult = customerResult;
         this.discount = discount;
         this.description = description;
-        this.subTotal = subTotal;
-        this.total = total;
-        this.granTotal = granTotal;
+        this.orderCode = orderCode;
+        this.orderStatusId =  orderStausId;
+        this.orderItemResult = orderItemResult;
     }
 }
 
 class OrderItemResult {
-    constructor(id, orderId, productId, productResult, tax, total, quantity, price ) {
+    constructor(id, productId, quantity ) {
         this.id = id;
         this.productId = productId;
-        this.productResult = productResult;
-        this.tax = tax;
-        this.total = total;
-        this.total = total;
         this.quantity = quantity;
-        this.price = price;
     }
 
 }
