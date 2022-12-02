@@ -37,7 +37,7 @@ public class PaymentOrderParam {
 
     private Integer paymentMethodId;
 
-    private Date createAt;
+    private String createAt;
 
     private String description;
 }

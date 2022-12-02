@@ -43,7 +43,7 @@ public class PaymentOrder {
     private Integer paymentMethodId;
 
     @Column(name = "create_at", nullable = false, length = 50)
-    private Date createAt;
+    private String createAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")

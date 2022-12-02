@@ -1,14 +1,12 @@
 package com.phpn.dto.suppliers;
 
 import com.phpn.dto.employee.EmployeeResult;
-import com.phpn.dto.locationRegion.LocationRegionResult;
 import com.phpn.dto.payment_methods.PaymentMethodResult;
 import com.phpn.repositories.model.SupplierStatus;
-
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter
@@ -23,14 +21,12 @@ public class SupplierResult {
     private String name;
     private String email;
     private String phone;
-    private SupplierStatus supplierStatus;
+    private SupplierStatus status;
     private String description;
     private Integer employeeId;
-    private EmployeeResult employeeResult;
+    private EmployeeResult employee;
     private Integer paymentMethodId;
-    private PaymentMethodResult paymentMethodResult;
-    private Integer locationRegionId;
-    private LocationRegionResult locationRegionResult;
+    private PaymentMethodResult paymentMethod;
     private String createAt;
     private String updateAt;
 

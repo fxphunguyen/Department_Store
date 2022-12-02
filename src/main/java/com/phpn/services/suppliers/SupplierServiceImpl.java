@@ -1,21 +1,18 @@
 package com.phpn.services.suppliers;
 
+import com.phpn.dto.suppliers.SupplierCreate;
+import com.phpn.dto.suppliers.SupplierResult;
+import com.phpn.exceptions.NotFoundException;
+import com.phpn.mappers.SupplierMapper;
+import com.phpn.repositories.SupplierRepository;
+import com.phpn.repositories.model.Supplier;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.phpn.exceptions.NotFoundException;
-import com.phpn.mappers.SupplierMapper;
-import com.phpn.mappers.localtionRegion.LocationRegionMapper;
-import com.phpn.dto.suppliers.SupplierCreate;
-import com.phpn.dto.suppliers.SupplierResult;
-import com.phpn.repositories.model.Supplier;
-import com.phpn.repositories.SupplierRepository;
-import com.phpn.repositories.LocationRegionRepository;
 
 @Service
 @Transactional
@@ -24,14 +21,11 @@ public class SupplierServiceImpl implements SupplierService {
     @Autowired
     private SupplierMapper supplierMapper;
 
-    @Autowired
-    private LocationRegionMapper locationRegionMapper;
+
 
     @Autowired
     private SupplierRepository supplierRepository;
 
-    @Autowired
-    private LocationRegionRepository locationRegionRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -56,7 +50,6 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public Supplier save(SupplierCreate supplierCreate) {
-        locationRegionRepository.save(locationRegionMapper.toModel(supplierCreate.getLocationRegionCreate()));
         return supplierRepository.save(supplierMapper.toModel(supplierCreate));
     }
 
