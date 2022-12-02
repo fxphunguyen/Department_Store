@@ -542,84 +542,657 @@ let modalAddress = `   <div class="MuiBox-root jss797 jss621">
               </div>
             </div>
 `
+let modalCongNo = ` <div class="MuiBox-root jss828 jss820">
+                        <div class="MuiPaper-root jss864 sapo-grid MuiPaper-elevation1 MuiPaper-rounded">
+                            <div class="MuiTableContainer-root jss865 sapo-grid-header-wrapper">
+                                <table class="MuiTable-root jss866 sapo-grid-header" aria-labelledby="tableTitle"
+                                       aria-label="enhanced table">
+                                    <colgroup>
+                                        <col style="width: 100px;">
+                                        <col style="width: 100px;">
+                                        <col style="width: 100px;">
+                                        <col style="width: 100px;">
+                                        <col style="width: 100px;">
+                                        <col style="width: 100px;">
+                                        <col style="width: 100px;">
+                                    </colgroup>
+                                    <thead class="MuiTableHead-root jss879">
+                                    <tr class="MuiTableRow-root MuiTableRow-head">
+                                        <th class="MuiTableCell-root MuiTableCell-head jss883 MuiTableCell-alignLeft"
+                                            scope="col" colspan="1" rowspan="1">Mã phiếu
+                                        </th>
+                                        <th class="MuiTableCell-root MuiTableCell-head jss883 MuiTableCell-alignLeft"
+                                            scope="col" colspan="1" rowspan="1">Người tạo
+                                        </th>
+                                        <th class="MuiTableCell-root MuiTableCell-head jss883 MuiTableCell-alignLeft"
+                                            scope="col" colspan="1" rowspan="1">Ngày tạo
+                                        </th>
+                                        <th class="MuiTableCell-root MuiTableCell-head jss883 MuiTableCell-alignLeft"
+                                            scope="col" colspan="1" rowspan="1">Ngày ghi nhận
+                                        </th>
+                                        <th class="MuiTableCell-root MuiTableCell-head jss883 MuiTableCell-alignLeft"
+                                            scope="col" colspan="1" rowspan="1">Ghi chú
+                                        </th>
+                                        <th class="MuiTableCell-root MuiTableCell-head jss883 MuiTableCell-alignRight"
+                                            scope="col" colspan="1" rowspan="1">Giá trị thay đổi
+                                        </th>
+                                        <th class="MuiTableCell-root MuiTableCell-head jss883 MuiTableCell-alignRight"
+                                            scope="col" colspan="1" rowspan="1">Công nợ
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="MuiTableContainer-root jss867 sapo-grid-body-wrapper">
+                                <div style="position: relative; overflow: hidden; width: 100%; height: auto; min-height: 0px; max-height: unset;">
+                                    <div style="position: relative; overflow: scroll; margin-right: -17px; margin-bottom: -17px; min-height: 17px;">
+                                        <table class="MuiTable-root jss868 sapo-grid-body" aria-labelledby="tableTitle"
+                                               aria-label="enhanced table">
+                                            <colgroup>
+                                                <col style="width: 100px;">
+                                                <col style="width: 100px;">
+                                                <col style="width: 100px;">
+                                                <col style="width: 100px;">
+                                                <col style="width: 100px;">
+                                                <col style="width: 100px;">
+                                                <col style="width: 100px;">
+                                            </colgroup>
+                                            <tbody class="MuiTableBody-root showCustomerDebtById" >
 
-// let modalCustomerGroup = `
-// <div class="MuiBox-root jss797 jss621"><div class="MuiBox-root jss4573 jss4570"><div class="MuiPaper-root jss4577 sapo-grid MuiPaper-elevation1 MuiPaper-rounded"><div class="MuiTableContainer-root jss4578 sapo-grid-header-wrapper"><table class="MuiTable-root jss4579 sapo-grid-header" aria-labelledby="tableTitle" aria-label="enhanced table"><colgroup><col style="width: 105px;"><col style="width: 287px;"><col style="width: 181px;"><col style="width: 219px;"></colgroup><thead class="MuiTableHead-root jss4592"><tr class="MuiTableRow-root MuiTableRow-head"><th class="MuiTableCell-root MuiTableCell-head jss4596 MuiTableCell-alignLeft" scope="col" colspan="1" rowspan="1">Mã nhóm</th><th class="MuiTableCell-root MuiTableCell-head jss4596 MuiTableCell-alignLeft" scope="col" colspan="1" rowspan="1">Tên nhóm</th><th class="MuiTableCell-root MuiTableCell-head jss4596 MuiTableCell-alignLeft" scope="col" colspan="1" rowspan="1">Loại nhóm</th><th class="MuiTableCell-root MuiTableCell-head jss4596 MuiTableCell-alignLeft" scope="col" colspan="1" rowspan="1">Mô tả</th></tr></thead></table></div><div class="MuiTableContainer-root jss4580 sapo-grid-body-wrapper"><div style="position: relative; overflow: hidden; width: 100%; height: auto; min-height: 0px; max-height: unset;"><div style="position: relative; overflow: scroll; margin-right: -17px; margin-bottom: -17px; min-height: 17px;"><table class="MuiTable-root jss4581 sapo-grid-body" aria-labelledby="tableTitle" aria-label="enhanced table"><colgroup><col style="width: 105px;"><col style="width: 287px;"><col style="width: 181px;"><col style="width: 219px;"></colgroup><tbody class="MuiTableBody-root"><tr class="MuiTableRow-root jss4623 MuiTableRow-hover" role="checkbox" tabindex="-1"><td class="MuiTableCell-root MuiTableCell-body jss4629 MuiTableCell-alignLeft"><a class="jss4633" href="/admin/customer_groups/2600939">BANLE</a></td><td class="MuiTableCell-root MuiTableCell-body jss4629 MuiTableCell-alignLeft"><p class="MuiTypography-root MuiTypography-body1" title="t.customerGroupValidate.name">Bán lẻ</p></td><td class="MuiTableCell-root MuiTableCell-body jss4629 MuiTableCell-alignLeft"><p class="MuiTypography-root MuiTypography-body1" title="t.customerGroupValidate.groupType">Cố định</p></td><td class="MuiTableCell-root MuiTableCell-body jss4629 MuiTableCell-alignLeft"><p class="MuiTypography-root MuiTypography-body1" title="t.customerGroupValidate.note"><span>---</span></p></td></tr></tbody></table></div><div class="jss4583" style="position: fixed; height: 6px; left: 262px;"><div class="jss4584" style="position: relative; display: block; height: 100%; width: 0px;"></div></div><div style="position: absolute; width: 6px; right: 2px; bottom: 2px; top: 2px; border-radius: 3px;"><div style="position: relative; display: block; width: 100%; cursor: pointer; border-radius: inherit; background-color: rgba(0, 0, 0, 0.2); height: 0px;"></div></div></div></div><div class="MuiBox-root jss4639 jss4634 sapo-pagination"><p class="MuiTypography-root MuiTypography-body1">Hiển thị</p><div class="MuiFormControl-root"><div class="MuiInputBase-root MuiOutlinedInput-root jss4635 MuiInputBase-formControl"><div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input" tabindex="0" role="button" aria-haspopup="listbox"><p class="MuiTypography-root jss4637 MuiTypography-body1">20</p></div><input type="hidden" value="20"><svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"></path></svg><fieldset aria-hidden="true" class="jss4687 MuiOutlinedInput-notchedOutline" style="padding-left: 8px;"><legend class="jss4688" style="width: 0.01px;"><span>​</span></legend></fieldset></div></div><p class="MuiTypography-root MuiTypography-body1">kết quả</p><p class="MuiTypography-root jss4636 MuiTypography-body1">Từ 1 đến 1 trên tổng 1</p><nav aria-label="pagination navigation" class="MuiPagination-root jss4638"><ul class="MuiPagination-ul"><li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled" tabindex="-1" type="button" disabled="" aria-label="Go to previous page"><svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg></button></li><li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall" tabindex="0" type="button" aria-current="true" aria-label="page 1">1<span class="MuiTouchRipple-root"></span></button></li><li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled" tabindex="-1" type="button" disabled="" aria-label="Go to next page"><svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></li></ul></nav></div><div class="__react_component_tooltip tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69 place-top type-dark" id="tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69" data-id="tooltip"><style aria-hidden="true">
-//   \t.tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69 {
-// \t    color: #fff;
-// \t    background: #222;
-// \t    border: 1px solid transparent;
-//   \t}
-//
-//   \t.tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69.place-top {
-//         margin-top: -10px;
-//     }
-//     .tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69.place-top::before {
-//         border-top: 8px solid transparent;
-//     }
-//     .tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69.place-top::after {
-//         border-left: 8px solid transparent;
-//         border-right: 8px solid transparent;
-//         bottom: -6px;
-//         left: 50%;
-//         margin-left: -8px;
-//         border-top-color: #222;
-//         border-top-style: solid;
-//         border-top-width: 6px;
-//     }
-//
-//     .tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69.place-bottom {
-//         margin-top: 10px;
-//     }
-//     .tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69.place-bottom::before {
-//         border-bottom: 8px solid transparent;
-//     }
-//     .tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69.place-bottom::after {
-//         border-left: 8px solid transparent;
-//         border-right: 8px solid transparent;
-//         top: -6px;
-//         left: 50%;
-//         margin-left: -8px;
-//         border-bottom-color: #222;
-//         border-bottom-style: solid;
-//         border-bottom-width: 6px;
-//     }
-//
-//     .tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69.place-left {
-//         margin-left: -10px;
-//     }
-//     .tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69.place-left::before {
-//         border-left: 8px solid transparent;
-//     }
-//     .tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69.place-left::after {
-//         border-top: 5px solid transparent;
-//         border-bottom: 5px solid transparent;
-//         right: -6px;
-//         top: 50%;
-//         margin-top: -4px;
-//         border-left-color: #222;
-//         border-left-style: solid;
-//         border-left-width: 6px;
-//     }
-//
-//     .tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69.place-right {
-//         margin-left: 10px;
-//     }
-//     .tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69.place-right::before {
-//         border-right: 8px solid transparent;
-//     }
-//     .tcca9a8a2-b16e-48f5-8e54-aa12c2ba5b69.place-right::after {
-//         border-top: 5px solid transparent;
-//         border-bottom: 5px solid transparent;
-//         left: -6px;
-//         top: 50%;
-//         margin-top: -4px;
-//         border-right-color: #222;
-//         border-right-style: solid;
-//         border-right-width: 6px;
-//     }
-//   </style></div></div></div></div>
-//
-// `
-//
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="jss870" style="position: fixed; height: 6px; left: 262px;">
+                                        <div class="jss871"
+                                             style="position: relative; display: block; height: 100%; width: 0px;"></div>
+                                    </div>
+                                    <div style="position: absolute; width: 6px; right: 2px; bottom: 2px; top: 2px; border-radius: 3px;">
+                                        <div style="position: relative; display: block; width: 100%; cursor: pointer; border-radius: inherit; background-color: rgba(0, 0, 0, 0.2); height: 0px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="MuiBox-root jss926 jss921 sapo-pagination"><p
+                                    class="MuiTypography-root MuiTypography-body1">Hiển thị</p>
+                                <div class="MuiFormControl-root">
+                                    <div class="MuiInputBase-root MuiOutlinedInput-root jss922 MuiInputBase-formControl">
+                                        <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+                                             tabindex="0" role="button" aria-haspopup="listbox"><p
+                                                class="MuiTypography-root jss924 MuiTypography-body1">20</p></div>
+                                        <input type="hidden" value="20">
+                                        <svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+                                             focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M7 10l5 5 5-5z"></path>
+                                        </svg>
+                                        <fieldset aria-hidden="true" class="jss974 MuiOutlinedInput-notchedOutline"
+                                                  style="padding-left: 8px;">
+                                            <legend class="jss975" style="width: 0.01px;"><span>​</span></legend>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <p class="MuiTypography-root MuiTypography-body1">kết quả</p>
+                                <p class="MuiTypography-root jss923 MuiTypography-body1">Từ 1 đến 6 trên tổng 6</p>
+                                <nav aria-label="pagination navigation" class="MuiPagination-root jss925">
+                                    <ul class="MuiPagination-ul">
+                                        <li>
+                                            <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"
+                                                    tabindex="-1" type="button" disabled=""
+                                                    aria-label="Go to previous page">
+                                                <svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false"
+                                                     viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+                                                </svg>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall"
+                                                    tabindex="0" type="button" aria-current="true" aria-label="page 1">1<span
+                                                    class="MuiTouchRipple-root"></span></button>
+                                        </li>
+                                        <li>
+                                            <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"
+                                                    tabindex="-1" type="button" disabled=""
+                                                    aria-label="Go to next page">
+                                                <svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false"
+                                                     viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                                                </svg>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="__react_component_tooltip t2da217e8-d449-422f-87bd-f9f06ca64ad0 place-top type-light jss869"
+                                 id="t2da217e8-d449-422f-87bd-f9f06ca64ad0" data-id="tooltip"
+                                 style="left: 509px; top: 465px;">
+                                <style aria-hidden="true">
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0 {
+                                        color: #222;
+                                        background: #fff;
+                                        border: 1px solid transparent;
+                                    }
 
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0.place-top {
+                                        margin-top: -10px;
+                                    }
+
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0.place-top::before {
+                                        border-top: 8px solid transparent;
+                                    }
+
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0.place-top::after {
+                                        border-left: 8px solid transparent;
+                                        border-right: 8px solid transparent;
+                                        bottom: -6px;
+                                        left: 50%;
+                                        margin-left: -8px;
+                                        border-top-color: #fff;
+                                        border-top-style: solid;
+                                        border-top-width: 6px;
+                                    }
+
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0.place-bottom {
+                                        margin-top: 10px;
+                                    }
+
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0.place-bottom::before {
+                                        border-bottom: 8px solid transparent;
+                                    }
+
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0.place-bottom::after {
+                                        border-left: 8px solid transparent;
+                                        border-right: 8px solid transparent;
+                                        top: -6px;
+                                        left: 50%;
+                                        margin-left: -8px;
+                                        border-bottom-color: #fff;
+                                        border-bottom-style: solid;
+                                        border-bottom-width: 6px;
+                                    }
+
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0.place-left {
+                                        margin-left: -10px;
+                                    }
+
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0.place-left::before {
+                                        border-left: 8px solid transparent;
+                                    }
+
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0.place-left::after {
+                                        border-top: 5px solid transparent;
+                                        border-bottom: 5px solid transparent;
+                                        right: -6px;
+                                        top: 50%;
+                                        margin-top: -4px;
+                                        border-left-color: #fff;
+                                        border-left-style: solid;
+                                        border-left-width: 6px;
+                                    }
+
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0.place-right {
+                                        margin-left: 10px;
+                                    }
+
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0.place-right::before {
+                                        border-right: 8px solid transparent;
+                                    }
+
+                                    .t2da217e8-d449-422f-87bd-f9f06ca64ad0.place-right::after {
+                                        border-top: 5px solid transparent;
+                                        border-bottom: 5px solid transparent;
+                                        left: -6px;
+                                        top: 50%;
+                                        margin-top: -4px;
+                                        border-right-color: #fff;
+                                        border-right-style: solid;
+                                        border-right-width: 6px;
+                                    }
+                                </style>
+                                
+                            </div>
+                        </div>
+                    </div>`
+let modalHistoryOrder = `
+                        <div class="MuiBox-root jss817 jss641">
+                        <div class="MuiBox-root jss1378 jss1375">
+                            <div class="MuiPaper-root jss1381 sapo-grid MuiPaper-elevation1 MuiPaper-rounded">
+                                <div class="MuiTableContainer-root jss1382 sapo-grid-header-wrapper">
+                                    <table class="MuiTable-root jss1383 sapo-grid-header" aria-labelledby="tableTitle"
+                                           aria-label="enhanced table">
+                                        <thead class="MuiTableHead-root jss1396">
+                                        <tr class="MuiTableRow-root MuiTableRow-head">
+                                            <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
+                                                scope="col" colspan="1" rowspan="1">Mã đơn hàng
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
+                                                scope="col" colspan="1" rowspan="1">Trạng thái
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignRight"
+                                                scope="col" colspan="1" rowspan="1" style="width: 200px ;text-align: center; color: black;">Giá trị
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
+                                                scope="col" colspan="1" rowspan="1">Chi nhánh
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
+                                                scope="col" colspan="1" rowspan="1">Nguồn đơn
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
+                                                scope="col" colspan="1" rowspan="1">Nhân viên xử lý đơn
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
+                                                scope="col" colspan="1" rowspan="1">Ngày ghi nhận
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="MuiTableContainer-root jss1384 sapo-grid-body-wrapper">
+                                    <div style="position: relative; overflow: hidden; width: 100%; height: auto; min-height: 0px; max-height: unset;">
+                                        <div style="position: relative; overflow: scroll; margin-right: -17px; margin-bottom: -17px; min-height: 17px;">
+                                            <table class="MuiTable-root jss1385 sapo-grid-body"
+                                                   aria-labelledby="tableTitle" aria-label="enhanced table">
+
+                                                <tbody class="MuiTableBody-root showAllCustomerOrderHistory">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="jss1387" style="position: fixed; height: 6px; left: 262px;">
+                                            <div class="jss1388"
+                                                 style="position: relative; display: block; height: 100%; width: 0px;"></div>
+                                        </div>
+                                        <div style="position: absolute; width: 6px; right: 2px; bottom: 2px; top: 2px; border-radius: 3px;">
+                                            <div style="position: relative; display: block; width: 100%; cursor: pointer; border-radius: inherit; background-color: rgba(0, 0, 0, 0.2); height: 0px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="MuiBox-root jss1443 jss1438 sapo-pagination"><p
+                                        class="MuiTypography-root MuiTypography-body1">Hiển thị</p>
+                                    <div class="MuiFormControl-root">
+                                        <div class="MuiInputBase-root MuiOutlinedInput-root jss1439 MuiInputBase-formControl">
+                                            <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+                                                 tabindex="0" role="button" aria-haspopup="listbox"><p
+                                                    class="MuiTypography-root jss1441 MuiTypography-body1">20</p></div>
+                                            <input type="hidden" value="20">
+                                            <svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+                                                 focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M7 10l5 5 5-5z"></path>
+                                            </svg>
+                                            <fieldset aria-hidden="true" class="jss1491 MuiOutlinedInput-notchedOutline"
+                                                      style="padding-left: 8px;">
+                                                <legend class="jss1492" style="width: 0.01px;"><span>​</span></legend>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <p class="MuiTypography-root MuiTypography-body1">kết quả</p>
+                                    <p class="MuiTypography-root jss1440 MuiTypography-body1">Từ 1 đến 3 trên tổng 3</p>
+                                    <nav aria-label="pagination navigation" class="MuiPagination-root jss1442">
+                                        <ul class="MuiPagination-ul">
+                                            <li>
+                                                <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"
+                                                        tabindex="-1" type="button" disabled=""
+                                                        aria-label="Go to previous page">
+                                                    <svg class="MuiSvgIcon-root MuiPaginationItem-icon"
+                                                         focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+                                                    </svg>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall"
+                                                        tabindex="0" type="button" aria-current="true"
+                                                        aria-label="page 1">1<span class="MuiTouchRipple-root"></span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"
+                                                        tabindex="-1" type="button" disabled=""
+                                                        aria-label="Go to next page">
+                                                    <svg class="MuiSvgIcon-root MuiPaginationItem-icon"
+                                                         focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                                                    </svg>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="__react_component_tooltip t9eb02321-a174-4d68-9524-2454badafbce place-top type-dark"
+                                     id="t9eb02321-a174-4d68-9524-2454badafbce" data-id="tooltip">
+                                    <style aria-hidden="true">
+                                        .t9eb02321-a174-4d68-9524-2454badafbce {
+                                            color: #fff;
+                                            background: #222;
+                                            border: 1px solid transparent;
+                                        }
+
+                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-top {
+                                            margin-top: -10px;
+                                        }
+
+                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-top::before {
+                                            border-top: 8px solid transparent;
+                                        }
+
+                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-top::after {
+                                            border-left: 8px solid transparent;
+                                            border-right: 8px solid transparent;
+                                            bottom: -6px;
+                                            left: 50%;
+                                            margin-left: -8px;
+                                            border-top-color: #222;
+                                            border-top-style: solid;
+                                            border-top-width: 6px;
+                                        }
+
+                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-bottom {
+                                            margin-top: 10px;
+                                        }
+
+                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-bottom::before {
+                                            border-bottom: 8px solid transparent;
+                                        }
+
+                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-bottom::after {
+                                            border-left: 8px solid transparent;
+                                            border-right: 8px solid transparent;
+                                            top: -6px;
+                                            left: 50%;
+                                            margin-left: -8px;
+                                            border-bottom-color: #222;
+                                            border-bottom-style: solid;
+                                            border-bottom-width: 6px;
+                                        }
+
+                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-left {
+                                            margin-left: -10px;
+                                        }
+
+                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-left::before {
+                                            border-left: 8px solid transparent;
+                                        }
+
+                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-left::after {
+                                            border-top: 5px solid transparent;
+                                            border-bottom: 5px solid transparent;
+                                            right: -6px;
+                                            top: 50%;
+                                            margin-top: -4px;
+                                            border-left-color: #222;
+                                            border-left-style: solid;
+                                            border-left-width: 6px;
+                                        }
+
+                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-right {
+                                            margin-left: 10px;
+                                        }
+
+                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-right::before {
+                                            border-right: 8px solid transparent;
+                                        }
+
+                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-right::after {
+                                            border-top: 5px solid transparent;
+                                            border-bottom: 5px solid transparent;
+                                            left: -6px;
+                                            top: 50%;
+                                            margin-top: -4px;
+                                            border-right-color: #222;
+                                            border-right-style: solid;
+                                            border-right-width: 6px;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+    `
+
+let modalNote = `
+                        <div class="MuiBox-root jss817 jss641">
+                        <div class="MuiBox-root jss3560 jss3558">
+                            <button id="Sapo-Button-fb87e2dd-7d9d-4775-b5d8-b40cf52e2756" class="sc-jqUVSM cdDLAY">
+                                <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
+                                     style="color: rgb(163, 168, 175); width: 18px;">
+                                    <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                                </svg>
+                                <span class="sc-papXJ fCIlZX">Thêm mới ghi chú</span></button>
+                        </div>
+                        <form action="#"></form>
+                        <div class="MuiBox-root jss3609"><p
+                                class="MuiTypography-root MuiTypography-body1 MuiTypography-colorSecondary">Không có dữ
+                            liệu ghi chú</p></div>
+                    </div>
+    `;
+
+let modalCustomerGroup = `
+                        <div class="MuiBox-root jss817 jss641">
+                        <div class="MuiBox-root jss3895 jss3892">
+                            <div class="MuiPaper-root jss3899 sapo-grid MuiPaper-elevation1 MuiPaper-rounded">
+                                <div class="MuiTableContainer-root jss3900 sapo-grid-header-wrapper">
+                                    <table class="MuiTable-root jss3901 sapo-grid-header" aria-labelledby="tableTitle"
+                                           aria-label="enhanced table">
+                                        <colgroup>
+                                            <col style="width: 105px;">
+                                            <col style="width: 287px;">
+                                            <col style="width: 181px;">
+                                            <col style="width: 219px;">
+                                        </colgroup>
+                                        <thead class="MuiTableHead-root jss3914">
+                                        <tr class="MuiTableRow-root MuiTableRow-head">
+                                            <th class="MuiTableCell-root MuiTableCell-head jss3918 MuiTableCell-alignLeft"
+                                                scope="col" colspan="1" rowspan="1">Mã nhóm
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head jss3918 MuiTableCell-alignLeft"
+                                                scope="col" colspan="1" rowspan="1">Tên nhóm
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head jss3918 MuiTableCell-alignLeft"
+                                                scope="col" colspan="1" rowspan="1">Loại nhóm
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head jss3918 MuiTableCell-alignLeft"
+                                                scope="col" colspan="1" rowspan="1">Mô tả
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="MuiTableContainer-root jss3902 sapo-grid-body-wrapper">
+                                    <div style="position: relative; overflow: hidden; width: 100%; height: auto; min-height: 0px; max-height: unset;">
+                                        <div style="position: relative; overflow: scroll; margin-right: -17px; margin-bottom: -17px; min-height: 17px;">
+                                            <table class="MuiTable-root jss3903 sapo-grid-body"
+                                                   aria-labelledby="tableTitle" aria-label="enhanced table">
+                                                <colgroup>
+                                                    <col style="width: 105px;">
+                                                    <col style="width: 287px;">
+                                                    <col style="width: 181px;">
+                                                    <col style="width: 219px;">
+                                                </colgroup>
+                                                <tbody class="MuiTableBody-root">
+                                                <tr class="MuiTableRow-root jss3945 MuiTableRow-hover" role="checkbox"
+                                                    tabindex="-1">
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss3951 MuiTableCell-alignLeft">
+                                                        <a class="jss3955"
+                                                           href="/admin/customer_groups/2607991">Add</a></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss3951 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="t.customerGroupValidate.name">Ten nhom</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss3951 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="t.customerGroupValidate.groupType">Cố định</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss3951 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="t.customerGroupValidate.note"><span>---</span></p>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <p class="MuiTypography-root MuiTypography-body1"></p>
+                                <p class="MuiTypography-root jss3958 MuiTypography-body1"></p>
+                                <nav aria-label="pagination navigation" class="MuiPagination-root jss3960">
+                                    <ul class="MuiPagination-ul">
+                                        <li>
+                                            <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"
+                                                    tabindex="-1" type="button" disabled=""
+                                                    aria-label="Go to previous page">
+                                            </button>
+                                        </li>
+                                        <li>
+
+                                        </li>
+                                        <li>
+                                            <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"
+                                                    tabindex="-1" type="button" disabled=""
+                                                    aria-label="Go to next page">
+
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="__react_component_tooltip t7cff1fe5-4473-40cf-902e-c620e19d37fe place-top type-dark"
+                                 id="t7cff1fe5-4473-40cf-902e-c620e19d37fe" data-id="tooltip">
+                                <style aria-hidden="true">
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe {
+                                        color: #fff;
+                                        background: #222;
+                                        border: 1px solid transparent;
+                                    }
+
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe.place-top {
+                                        margin-top: -10px;
+                                    }
+
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe.place-top::before {
+                                        border-top: 8px solid transparent;
+                                    }
+
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe.place-top::after {
+                                        border-left: 8px solid transparent;
+                                        border-right: 8px solid transparent;
+                                        bottom: -6px;
+                                        left: 50%;
+                                        margin-left: -8px;
+                                        border-top-color: #222;
+                                        border-top-style: solid;
+                                        border-top-width: 6px;
+                                    }
+
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe.place-bottom {
+                                        margin-top: 10px;
+                                    }
+
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe.place-bottom::before {
+                                        border-bottom: 8px solid transparent;
+                                    }
+
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe.place-bottom::after {
+                                        border-left: 8px solid transparent;
+                                        border-right: 8px solid transparent;
+                                        top: -6px;
+                                        left: 50%;
+                                        margin-left: -8px;
+                                        border-bottom-color: #222;
+                                        border-bottom-style: solid;
+                                        border-bottom-width: 6px;
+                                    }
+
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe.place-left {
+                                        margin-left: -10px;
+                                    }
+
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe.place-left::before {
+                                        border-left: 8px solid transparent;
+                                    }
+
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe.place-left::after {
+                                        border-top: 5px solid transparent;
+                                        border-bottom: 5px solid transparent;
+                                        right: -6px;
+                                        top: 50%;
+                                        margin-top: -4px;
+                                        border-left-color: #222;
+                                        border-left-style: solid;
+                                        border-left-width: 6px;
+                                    }
+
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe.place-right {
+                                        margin-left: 10px;
+                                    }
+
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe.place-right::before {
+                                        border-right: 8px solid transparent;
+                                    }
+
+                                    .t7cff1fe5-4473-40cf-902e-c620e19d37fe.place-right::after {
+                                        border-top: 5px solid transparent;
+                                        border-bottom: 5px solid transparent;
+                                        left: -6px;
+                                        top: 50%;
+                                        margin-top: -4px;
+                                        border-right-color: #222;
+                                        border-right-style: solid;
+                                        border-right-width: 6px;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </div>
+    `
+
+let noModalHistoryOrder = `
+              <div class="MuiBox-root jss13030 jss12854">
+                <div class="MuiBox-root jss13034 jss13031">
+                    <div class="MuiBox-root jss13047"><p
+                            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorSecondary" style="margin-top: 20px;">Không dữ liệu lịch sử
+                        mua hàng</p></div>
+                </div>
+            </div>
+    `
+
+function deleteEventModelShow() {
+    $('.showModelHistory').html("");
+    $('#contacts').css({
+        'color': 'rgb(116, 124, 135)',
+        'border': 'none'
+    })
+    $('#debts').css({
+        'color': 'rgb(116, 124, 135)',
+        'border': 'none'
+    })
+    $('#histories').css({
+        'color': 'rgb(116, 124, 135)',
+        'border': 'none'
+    })
+    $('#notes').css({
+        'color': 'rgb(116, 124, 135)',
+        'border': 'none'
+    })
+    $('#addresses').css({
+        'color': 'rgb(116, 124, 135)',
+        'border': 'none'
+    })
+    $('#customer_groups').css({
+        'color': 'rgb(116, 124, 135)',
+        'border': 'none'
+    })
+}
+
+deleteEventModelShow();
+
+$('#histories').css({
+    'color': '#4a8aff',
+    'border-bottom': '2px solid rgb(0, 136, 255)'
+});
+// // Nhóm kahcsh hàng
+// $('#customer_groups').click(function () {
+//     deleteEventModelShow();
+//     $('#customer_groups').css({
+//         'color': '#4a8aff',
+//         'border-bottom': '2px solid rgb(0, 136, 255)'
+//     });
+//     $('.showModelHistory').append(modalCustomerGroup)
+// });
