@@ -10,6 +10,6 @@ public interface OrderItemService {
 
     List<OrderItemResult> findAll();
 
-    OrderItemResult createOrderItem(OrderItemParam orderItemParam);
+    List<OrderItemResult> findAllOrderItemByOrderId(Integer orderId);
 
 }

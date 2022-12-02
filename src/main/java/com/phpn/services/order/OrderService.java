@@ -9,4 +9,6 @@ public interface OrderService {
     List<OrderResult> findAll();
 
     OrderResult createOrderExport(OrderParam orderParam);
+
+    OrderResult findById(int id);
 }

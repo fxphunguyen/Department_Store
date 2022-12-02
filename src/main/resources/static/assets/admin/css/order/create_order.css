@@ -3914,3 +3914,22 @@ select#districtUpdate   {
 .MuiOutlinedInput-multiline {
     margin-top: 4px;
 }
+.jss1264 {
+    border: 1px solid #E8EAEB;
+}
+.jss3901 {
+    border-bottom: 1px solid #D3D5D7;
+    position: relative;
+    top: -3px;
+}
+.jss3917 {
+    border-bottom: 1px solid #D3D5D7 !important;
+}
+.jss3901:hover {
+    border-bottom: 2px solid #D3D5D7;
+}
+
+.jss3917:hover {
+    border-bottom: 2px solid #D3D5D7 !important;
+
+}

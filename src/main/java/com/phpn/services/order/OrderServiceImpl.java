@@ -178,17 +178,19 @@ public class OrderServiceImpl implements OrderService {
 
     }
 
+    @Override
     @Transactional
     public OrderResult findById(int id) {
         Optional<Order> optional = orderRepository.findById(id);
         if (!optional.isPresent())
-            throw new NotFoundException("order id not invalid");
+            throw new NotFoundException("Đơn hàng không hợp lệ!");
         OrderResult result = orderMapper.toDTO(optional.get());
         List<OrderItemResult> orderItems = orderItemRepository.findAllByOrderId(result.getId())
                 .stream()
                 .map(orderItemMapper::toDTO)
                 .collect(Collectors.toList());
         result.setOrderItems(orderItems);
+
         return result;
     }
 
