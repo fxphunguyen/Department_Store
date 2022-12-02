@@ -1,4 +1,4 @@
-package com.phpn.dto.authentications;
+package com.phpn.repositories.model;
 
 import lombok.experimental.Accessors;
 import lombok.Getter;
@@ -11,9 +11,12 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class AuthenticationLogin {
+public class JwtResponse {
 
+    private Integer id;
+    private String token;
+    private String type = "Bearer";
     private String email;
-    private String password;
+    private String name;
 
 }
