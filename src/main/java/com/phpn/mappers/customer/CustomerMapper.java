@@ -38,10 +38,7 @@ public class CustomerMapper {
                 .setCreateAt(customer.getCreateAt())
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
-                .setCustomerStatus(customer.getCustomerStatus())
-                .setLocationRegionId(customer.getLocationRegionId())
-                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()));
-
+                .setCustomerStatus(customer.getCustomerStatus());
     }
     public Customer toOrderDTO(CustomerOrderResult customerOrderResult , Customer customer) {
         return  customer
@@ -65,8 +62,7 @@ public class CustomerMapper {
                 .setCustomerStatus(CustomerStatus.AVAILABLE)
                 .setCreateAt(java.time.LocalDateTime.now().toString())
                 .setUpdateAt(customerCreate.getUpdateAt())
-                .setCustomerGender(customerCreate.getCustomerGender())
-                .setLocationRegionId(customerCreate.getLocationRegionId());
+                .setCustomerGender(customerCreate.getCustomerGender());
     }
 
     public Customer toCustomer( CustomerCreate customerCreate) {
@@ -81,9 +77,7 @@ public class CustomerMapper {
                 .setBirthday(customerCreate.getBirthday())
                 .setCustomerStatus(customerCreate.getCustomerStatus())
                 .setCreateAt(customerCreate.getCreateAt())
-                .setUpdateAt(customerCreate.getUpdateAt())
-                .setLocationRegionId(customerCreate.getLocationRegionId())
-                .setLocationRegion(locationRegionMapper.toModel(customerCreate.getLocationRegionCreate()));
+                .setUpdateAt(customerCreate.getUpdateAt());
     }
 
     public Customer toCustomer(CustomerResult customerResult ,Customer customer) {
@@ -110,8 +104,7 @@ public class CustomerMapper {
                 .setCustomerCode(customer.getCustomerCode())
                 .setName(customer.getName())
                 .setPhone(customer.getPhone())
-                .setEmployeeId(customer.getEmployeeId())
-                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()));
+                .setEmployeeId(customer.getEmployeeId());
     }
 
 

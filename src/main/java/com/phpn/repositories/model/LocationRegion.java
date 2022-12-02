@@ -31,6 +31,14 @@ public class LocationRegion {
     @Column(name = "province_id", nullable = false)
     private Integer provinceId;
 
+
+    @Column(name = "customer_id", insertable = false, updatable = false)
+    private Integer customerId;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
     @Column(name = "province_name", nullable = false, length = 50)
     private String provinceName;
 

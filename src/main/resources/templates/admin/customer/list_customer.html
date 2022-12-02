@@ -113,9 +113,7 @@
                                 <button type="button" id="active btnShowTableCustomerByStatus"
                                         class="btnShowTableCustomerByStatus ceoyok">Đang giao dịch
                                 </button>
-                                <button type="button" data-id="2"
-                                        class="btnShodsfdwTa ceoyok">click vao coi
-                                </button>
+
                             </div>
                         </div>
                     </div>
@@ -237,9 +235,7 @@
                                 <th class="MuiTableCell-root MuiTableCell-head jss2075 MuiTableCell-alignRight"
                                     scope="col" colspan="1" rowspan="1">Tổng SL đơn hàng
                                 </th>
-                                <th class="MuiTableCell-root MuiTableCell-head jss2075 MuiTableCell-alignLeft"
-                                    scope="col" colspan="1" rowspan="1">Ngày sinh
-                                </th>
+
                                 <th class="MuiTableCell-root MuiTableCell-head jss2075 MuiTableCell-alignLeft"
                                     scope="col" colspan="1" rowspan="1">Email
                                 </th>
@@ -248,15 +244,6 @@
                                 </th>
                                 <th class="MuiTableCell-root MuiTableCell-head jss2075 MuiTableCell-alignLeft"
                                     scope="col" colspan="1" rowspan="1">Nhân viên phụ trách
-                                </th>
-                                <th class="MuiTableCell-root MuiTableCell-head jss2075 MuiTableCell-alignLeft"
-                                    scope="col" colspan="1" rowspan="1">Địa chỉ
-                                </th>
-                                <th class="MuiTableCell-root MuiTableCell-head jss2075 MuiTableCell-alignLeft"
-                                    scope="col" colspan="1" rowspan="1">Giới tính
-                                </th>
-                                <th class="MuiTableCell-root MuiTableCell-head jss2075 MuiTableCell-alignLeft"
-                                    scope="col" colspan="1" rowspan="1">Ngày tạo
                                 </th>
                                 <th class="MuiTableCell-root MuiTableCell-head jss2075 MuiTableCell-alignLeft"
                                     scope="col" colspan="1" rowspan="1">Cập nhật cuối
@@ -268,7 +255,7 @@
                                     scope="col" colspan="1" rowspan="1">Tổng SL sản phẩm đã mua
                                 </th>
                                 <th class="MuiTableCell-root MuiTableCell-head jss2075 MuiTableCell-alignRight"
-                                    scope="col" colspan="1" rowspan="1">Tổng SL sản phẩm hoàn trả
+                                    scope="col" colspan="1" rowspan="1">Tổng SL sản phẩm đã hoàn trả
                                 </th>
                             </tr>
                             </thead>
@@ -400,7 +387,7 @@
                                        ${customer.congno != null ? (new Intl.NumberFormat('vi-VN', {
                         style: 'currency',
                         currency: 'VND'
-                    }).format(customer.congno)) : "---"}
+                    }).format(customer.congno)) : "0"}
                                        </p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
 
@@ -408,12 +395,9 @@
                                        style="padding-right: 6px;">${customer.chitieu != null ? (new Intl.NumberFormat('vi-VN', {
                         style: 'currency',
                         currency: 'VND'
-                    }).format(customer.chitieu)) : "---"}</p></td>
+                    }).format(customer.chitieu)) : "0"}</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.sl_MH_DAMUA || 0}</p>
-                                </td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.birthday || "---"}</p>
                                 </td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
@@ -428,28 +412,21 @@
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
                                        data-tip="Nguyễn Huy Trúc" currentitem="false">${customer.nv_PHUTRACH || "---"}</p></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="Quảng Bình" currentitem="false">${customer.address || "---"}</p></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="" currentitem="false">${customer.gender || "---"}</p></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="Nữ" currentitem="false">${customer.create_AT != null ? moment(customer.create_AT).format('DD-MM-yyyy') : "---"}</p></td>
 
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="" currentitem="false">${customer.update_AT != null ? moment(customer.update_AT).format('DD-MM-yyyy') : "---"}</p></td>
+                                       data-tip="" currentitem="false">${customer.gender || "---"}</p></td>
+
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                    ${customer.ngm_CUOICUNG != null ? moment(customer.ngm_CUOICUNG).format('DD-MM-yyyy') : "---"}</td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
                                        data-tip="Theo nhóm khách hàng" currentitem="false">
-                                       ${customer.sl_SP_DAMUA || "---"}</p></td>
+                                       ${customer.sl_SP_DAMUA || "0"}</p></td>
                                 <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
                                     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">
-                                        ${customer.sl_SP_HOANTRA || "---"}</p></td>                            </tr>
+                                        ${customer.sl_SP_HOANTRA || "0"}</p></td>
+                       </tr>
                     `;
                     $("#showAllCustomerInfo").append(str);
                     $('.btnShowCustomerInfo').off('click');

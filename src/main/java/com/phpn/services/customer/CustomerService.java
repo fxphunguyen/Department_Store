@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public interface CustomerService {
 
-    void  deleteCustomer (Integer id);
+    List<CustomerResult> findAllCustomer();
 
     void  deleteStatusCustomer(Integer id);
 
@@ -22,22 +22,13 @@ public interface CustomerService {
 
     CustomerOrderResult findByIdCustomerOrder(Integer id);
 
-
-    CustomerResult createCustomerResult(CustomerCreate customerCreate);
-
     Customer create(CustomerCreate customerCreate);
-
-    List<CustomerResult> findCustomerByDeleted(boolean deleted);
 
     List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted);
 
     List<CustomerResult> findAll();
 
-
     Customer update(CustomerResult customerResult);
-
-
-     CustomerGender[] findAllByCustomerGender();
 
     List<CustomerResult> findAllCustomerByDelete(boolean deleted);
 
@@ -49,6 +40,7 @@ public interface CustomerService {
 
     ICustomer CustomerInfoById(Integer id);
 
-
      List<ICustomerOwerImpl> CustomerOwerById(Integer id);
+
+
 }

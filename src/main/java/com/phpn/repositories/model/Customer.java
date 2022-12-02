@@ -21,22 +21,12 @@ public class Customer {
         this.id = id;
     }
 
-    public Customer(Integer employeeId , Integer locationRegionId){
-       setEmployeeId(employeeId);
-       setLocationRegionId(locationRegionId);
-    }
 
 
     public Customer setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
         return this;
     }
-
-    public Customer setLocationRegionId(Integer locationRegionId) {
-        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
-        return this;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -74,15 +64,6 @@ public class Customer {
 
     @Column(name = "update_at", nullable = false, length = 50)
     private String updateAt;
-
-
-    @Column(name = "location_region_id", insertable = false,updatable = false)
-    private Integer locationRegionId ;
-
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "location_region_id", nullable = false)
-    private LocationRegion locationRegion;
 
     @Column(name = "employee_id", insertable = false,updatable = false)
     private Integer employeeId;

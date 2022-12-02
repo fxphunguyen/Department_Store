@@ -41,10 +41,6 @@ public class CustomerServiceImpl implements CustomerService {
     private LocationRegionService locationRegionService;
 
 
-    @Override
-    public void deleteCustomer(Integer id) {
-        customerRepository.deleteById(id);
-    }
 
     @Override
     public void deleteStatusCustomer(Integer id) {
@@ -70,10 +66,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 
 
-    @Override
-    public CustomerResult createCustomerResult(CustomerCreate customerCreate) {
-        return customerMapper.toDTO(customerRepository.save(customerMapper.toModel(customerCreate)));
-    }
 
 
     @Override
@@ -85,11 +77,6 @@ public class CustomerServiceImpl implements CustomerService {
 
         return   customerRepository.save(customerMapper.toModel(customerCreate));
     }
-    @Override
-    public List<CustomerResult> findCustomerByDeleted(boolean deleted) {
-        return null;
-    }
-
     @Override
     public List<CustomerResult> findAllCustomerResultByDeleted(boolean deleted) {
         return customerRepository.findAllCustomerResultByDeleted(deleted)
@@ -113,11 +100,6 @@ public class CustomerServiceImpl implements CustomerService {
         return customer;
     }
 
-    @Override
-    public CustomerGender[] findAllByCustomerGender() {
-        CustomerGender[] customerGender = CustomerGender.values();
-        return customerGender;
-    }
 
     @Override
     public List<CustomerResult> findAllCustomerByDelete(boolean deleted) {
@@ -162,6 +144,14 @@ public class CustomerServiceImpl implements CustomerService {
             System.out.println(customerOwer.getTransaction());
         }
         return  iCustomerImpls;
+    }
+
+    @Override
+    public List<CustomerResult> findAllCustomer() {
+        return customerRepository.findAll()
+                .stream()
+                .map(customerMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
 }
