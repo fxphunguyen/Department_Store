@@ -13,7 +13,7 @@
             <div class="MuiBox-root jss4549 jss4547">
                 <div class="MuiBox-root jss4550"><a
                         class="MuiTypography-root MuiLink-root MuiLink-underlineNone jss4546 MuiTypography-colorSecondary"
-                        href="https://phuphomaique.mysapogo.com/admin/customers">
+                        href="/admin/customers">
                     <svg viewBox="0 0 24 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                          style="width: 24px; height: 24px; margin-left: -9px; margin-right: 6px;">
@@ -54,95 +54,142 @@
                             <div class="MuiBox-root jss4671 jss4528 jss4523">
                                 <div class="MuiBox-root jss4672 jss4527">
                                     <div class="MuiBox-root jss4673" style="display: flex;">
-                                        <h6 class="MuiTypography-root MuiTypography-subtitle1"
-                                            style="padding-right: 16px;">Thông tin cá
-                                            nhân</h6>
-                                        <div class="sc-jSMfEi hlxtkG"><span
-                                                class="sc-eCYdqJ gIZkwA">Đang giao dịch</span></div>
+                                        <h6 class="MuiTypography-root MuiTypography-subtitle1" style="padding-right: 16px;">Thông tin cá nhân</h6>
+                                        <style>
+                                            .csJERM {
+                                                box-sizing: border-box;
+                                                position: relative;
+                                                display: inline-flex;
+                                                white-space: nowrap;
+                                                -webkit-box-pack: center;
+                                                justify-content: center;
+                                                -webkit-box-align: center;
+                                                align-items: center;
+                                                vertical-align: middle;
+                                                padding: 0.285714rem;
+                                                border-radius: 1.14286rem;
+                                                height: 1.71429rem;
+                                                border: 1px solid rgb(255, 184, 184);
+                                                background-color: rgb(255, 246, 246);
+                                            }
+                                            .ccQLIN {
+                                                padding: 0px 0.571429rem;
+                                                width: 100%;
+                                                text-overflow: ellipsis;
+                                                white-space: nowrap;
+                                                overflow: hidden;
+                                                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                                                font-weight: 400;
+                                                font-size: 0.928571rem;
+                                                line-height: 1.14286rem;
+                                                margin: 0px;
+                                                color: rgb(238, 71, 71);
+                                            }
+                                        </style>
+                                        <th:block th:if="*{customer.getSTATUS() == 'SUCCESS'}">
+                                            <div class="hlxtkG">
+                                                <span class="gIZkwA">Đang giao dịch</span>
+                                            </div>
+                                        </th:block>
+                                        <th:block th:if="*{customer.getSTATUS() == 'AVAILABLE'}">
+                                            <div class="csJERM">
+                                                <span class="ccQLIN">Ngừng giao dịch</span>
+                                            </div>
+                                        </th:block>
+                                        <input class="sc-eCYdqJ gIZkwA idCustomerDelete" th:value="*{customer.getID()}"
+                                               style="display: none">
                                     </div>
                                     <a class="jss4533"
                                        href="https://phuphomaique.mysapogo.com/admin/customers/181966855/edit">Cập
                                         nhật</a>
                                 </div>
                                 <div class="showByIdCustomer">
+                                    <div class="MuiBox-root jss4674 jss4529">
+                                        <div class="MuiGrid-root MuiGrid-container">
+                                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
+                                                <div class="MuiPaper-root jss4530 jss4531 MuiPaper-elevation1 MuiPaper-rounded">
+                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
+                                                        Ngày sinh </h6>
+                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
+                                                        Giới tính</h6>
+                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
+                                                        Số điện thoại</h6>
+                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
+                                                        Email</h6>
+                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
+                                                        Nhân viên phụ trách
+                                                    </h6>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
+                                                <div class="MuiPaper-root jss4530 MuiPaper-elevation1 MuiPaper-rounded">
+                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
+                                                        title="04/11/2004"
+                                                        itemid="display-dob"
+                                                        th:text="*{ ':  ' + customer.getBIRTHDAY()}"></h6>
+                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
+                                                        title="Khác"
+                                                        itemid="display-sex"
+                                                        th:text="*{ ':  ' + customer.getGENDER()}"></h6>
+                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
+                                                        itemid="display-phone-number"
+                                                        title="12321312" th:text="*{ ':  ' + customer.getPHONE()}"></h6>
+                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
+                                                        itemid="display-email"
+                                                        title="ziqej@mailinator.com"
+                                                        th:text="*{ ':  ' + customer.getEmail()}"></h6>
+                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
+                                                        itemid="display-email"
+                                                        title="ziqej@mailinator.com"
+                                                        th:text="*{ ':  ' + customer.getNV_PHUTRACH()}"></h6>
+                                                </div>
+                                            </div>
+                                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
+                                                <div class="MuiPaper-root jss4530 jss4531 MuiPaper-elevation1 MuiPaper-rounded">
+                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
+                                                        Nhóm khách hàng</h6>
+                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
+                                                        Mã khách hàng</h6>
 
 
-                                    <!--                                    <div class="MuiBox-root jss4674 jss4529">-->
-                                    <!--                                        <div class="MuiGrid-root MuiGrid-container">-->
-                                    <!--                                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">-->
-                                    <!--                                                <div class="MuiPaper-root jss4530 jss4531 MuiPaper-elevation1 MuiPaper-rounded">-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">-->
-                                    <!--                                                        Ngày sinh</h6>-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">-->
-                                    <!--                                                        Giới tính</h6>-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">-->
-                                    <!--                                                        Số điện thoại</h6>-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">-->
-                                    <!--                                                        Email</h6>-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">-->
-                                    <!--                                                        Nhân viên phụ trách-->
-                                    <!--                                                    </h6>-->
-
-                                    <!--                                                </div>-->
-                                    <!--                                            </div>-->
-                                    <!--                                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">-->
-                                    <!--                                                <div class="MuiPaper-root jss4530 MuiPaper-elevation1 MuiPaper-rounded">-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"-->
-                                    <!--                                                        title="04/11/2004"-->
-                                    <!--                                                        itemid="display-dob">: 04/11/2004</h6>-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"-->
-                                    <!--                                                        title="Khác"-->
-                                    <!--                                                        itemid="display-sex">: Khác</h6>-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"-->
-                                    <!--                                                        itemid="display-phone-number"-->
-                                    <!--                                                        title="12321312">: 12321312</h6>-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"-->
-                                    <!--                                                        itemid="display-email"-->
-                                    <!--                                                        title="ziqej@mailinator.com">: ziqej@mailinator.com</h6>-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"-->
-                                    <!--                                                        itemid="display-email"-->
-                                    <!--                                                        title="ziqej@mailinator.com">Phu cute</h6>-->
-                                    <!--                                                </div>-->
-                                    <!--                                            </div>-->
-                                    <!--                                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">-->
-                                    <!--                                                <div class="MuiPaper-root jss4530 jss4531 MuiPaper-elevation1 MuiPaper-rounded">-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">-->
-                                    <!--                                                        Nhóm khách hàng</h6>-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">-->
-                                    <!--                                                        Mã khách hàng</h6>-->
+                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
+                                                        Mô tả</h6>
+                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
+                                                        Tags</h6>
+                                                </div>
+                                            </div>
+                                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
+                                                <div class="MuiPaper-root jss4530 MuiPaper-elevation1 MuiPaper-rounded">
+                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
+                                                        itemid="display-group-name"
+                                                        title="Bán lẻ">: <a class="jss4533"
+                                                                            href="https://phuphomaique.mysapogo.com/admin/customer_groups/2593648"
+                                                                            style="padding-left: 0px;"
+                                                                            th:text="*{ ':  ' + customer.getCUSTOMER_GROUP()}"> </a>
+                                                    </h6>
+                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
+                                                        itemid="display-code"
+                                                        title="Et ullamco voluptate"
+                                                        th:text="*{ ':' + customer.getCUSTOMER_CODE()}"></h6>
 
 
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">-->
-                                    <!--                                                        Mô tả</h6>-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">-->
-                                    <!--                                                        Tags</h6>-->
-                                    <!--                                                </div>-->
-                                    <!--                                            </div>-->
-                                    <!--                                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">-->
-                                    <!--                                                <div class="MuiPaper-root jss4530 MuiPaper-elevation1 MuiPaper-rounded">-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"-->
-                                    <!--                                                        itemid="display-group-name"-->
-                                    <!--                                                        title="Bán lẻ">: <a class="jss4533"-->
-                                    <!--                                                                            href="https://phuphomaique.mysapogo.com/admin/customer_groups/2593648"-->
-                                    <!--                                                                            style="padding-left: 0px;">Bán lẻ</a></h6>-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"-->
-                                    <!--                                                        itemid="display-code"-->
-                                    <!--                                                        title="Et ullamco voluptate">: Et ullamco voluptate</h6>-->
-
-
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"-->
-                                    <!--                                                        itemid="display-description"-->
-                                    <!--                                                        title="Et aperiam consectet">: Et aperiam consectet</h6>-->
-                                    <!--                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"-->
-                                    <!--                                                        itemid="display-tax-number"-->
-                                    <!--                                                        title="897">: -&#45;&#45;</h6>-->
-                                    <!--                                                </div>-->
-                                    <!--                                            </div>-->
-                                    <!--                                        </div>-->
-                                    <!--                                    </div>-->
+                                                    <!--                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"-->
+                                                    <!--                                                        itemid="display-description"-->
+                                                    <!--                                                        title="Et aperiam consectet" th:text="*{ ':' + customer.ge()}"></h6>-->
+                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
+                                                        itemid="display-tax-number"
+                                                        title="897">: ---</h6>
+                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
+                                                        itemid="display-tax-number"
+                                                        title="897">: ---</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
 
                             <div class="MuiBox-root jss4703 jss4528 jss4524">
                                 <div class="MuiBox-root jss4704 jss4527">
@@ -156,7 +203,7 @@
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
                                             <div class="MuiPaper-root jss4530 jss4531 MuiPaper-elevation1 MuiPaper-rounded">
                                                 <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
-                                                    Tổng chi tiêu</h6>
+                                                    Tổng chi tiêu </h6>
                                                 <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
                                                     Tổng SL đơn hàng</h6>
                                                 <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
@@ -167,12 +214,15 @@
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
                                             <div class="MuiPaper-root jss4530 MuiPaper-elevation1 MuiPaper-rounded">
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                    itemid="display-total-sales">
-                                                    : 834</h6>
+                                                    itemid="display-total-sales"
+                                                    th:text="*{ ': '  + customer.getSL_MH_DAMUA()}">
+                                                </h6>
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                    itemid="display-order-purchases">: 0</h6>
+                                                    itemid="display-order-purchases"
+                                                    th:text="*{ ': ' + customer.getSL_SP_DAMUA()}">: 0</h6>
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                    itemid="display-last-order-on">: ---</h6>
+                                                    itemid="display-last-order-on"
+                                                    th:text="*{ ': ' + customer.getNGM_CUOICUNG()}">: ---</h6>
                                             </div>
                                         </div>
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
@@ -190,11 +240,13 @@
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
                                             <div class="MuiPaper-root jss4530 MuiPaper-elevation1 MuiPaper-rounded">
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                    itemid="display-net-quantity">: 0</h6>
+                                                    itemid="display-net-quantity"
+                                                    th:text="*{ ':' + customer.getSL_SP_DAMUA()}"></h6>
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                    itemid="display-returned-item-quantity">: 0</h6>
+                                                    itemid="display-returned-item-quantity"
+                                                    th:text="*{ ':' + customer.getSL_SP_HOANTRA()}"></h6>
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                    itemid="display-debt">:
+                                                    itemid="display-debt" th:text="*{ ':' + customer.getCONGNO()}">:
                                                     -2,474,816</h6>
                                             </div>
                                         </div>
@@ -252,7 +304,7 @@
                     <div class="sc-hZFzCs cTUhMx">
                         <div id="scroller" class="sc-cHPgQl hYUFnd">
                             <div class="sc-gHLcSH ieIWRo">
-                                <button id="histories" class="sc-KfMfS eMTKDV">Lịch sử mua
+                                <button id="histories" class="sc-KfMfS eMTKDV ">Lịch sử mua
                                     hàng
                                 </button>
                                 <button id="debts" class="sc-KfMfS eMTKDV">Công nợ</button>
@@ -262,10 +314,10 @@
                                 <button id="addresses" class="sc-KfMfS eMTKDV">Địa
                                     chỉ
                                 </button>
-                                <button id="notes" class="sc-KfMfS eMTKDV">Ghi chú</button>
-                                <button
-                                        id="customer_groups" class="sc-KfMfS eMTKDV">Nhóm khách hàng
-                                </button>
+<!--                                <button id="notes" class="sc-KfMfS eMTKDV">Ghi chú</button>-->
+<!--                                <button-->
+<!--                                        id="customer_groups" class="sc-KfMfS eMTKDV">Nhóm khách hàng-->
+<!--                                </button>-->
                             </div>
                         </div>
                     </div>
@@ -274,52 +326,44 @@
                 <div class="showModelHistory">
 
                 </div>
+
             </div>
         </div>
     </div>
+</div>
+
+
+<div>
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 </div>
 </body>
 <th:block th:replace="/layout/script :: script"/>
 <script src="/assets/admin/js/customer/customerHistory.js"></script>
 <script>
     Page();
-    hj('trigger', 'split_test_b');
 </script>
-
 <script>
 
 
-    function deleteEventModelShow() {
-        $('.showModelHistory').html("");
-        $('#contacts').css({
-            'color': 'rgb(116, 124, 135)',
-            'border': 'none'
-        })
-        $('#debts').css({
-            'color': 'rgb(116, 124, 135)',
-            'border': 'none'
-        })
-        $('#histories').css({
-            'color': 'rgb(116, 124, 135)',
-            'border': 'none'
-        })
-        $('#notes').css({
-            'color': 'rgb(116, 124, 135)',
-            'border': 'none'
-        })
-        $('#addresses').css({
-            'color': 'rgb(116, 124, 135)',
-            'border': 'none'
-        })
-        customer_groups
-        $('#customer_groups').css({
-            'color': 'rgb(116, 124, 135)',
-            'border': 'none'
-        })
-    }
-
-
-    <!--    Lịch sử mua hàng-->
+    <!--    Công nợ-->
     $('#debts').click(function () {
         deleteEventModelShow();
 
@@ -327,16 +371,19 @@
             'color': '#4a8aff',
             'border-bottom': '2px solid rgb(0, 136, 255)'
         });
+        $('.showModelHistory').append(modalCongNo)
+        showCustomerInfoDebt();
     });
-    //Công nợ
+    //Lịch sừ mua hàng
     $('#histories').click(function () {
         deleteEventModelShow();
         $('#histories').css({
             'color': '#4a8aff',
             'border-bottom': '2px solid rgb(0, 136, 255)'
         });
-    });
 
+        showCustomerInfoHistory();
+    });
     // liên hệ
     $('#contacts').click(function () {
 
@@ -348,7 +395,6 @@
         $('.showModelHistory').append(modalcontact)
 
     });
-
     //địa chỉ
     $('#addresses').click(function () {
         deleteEventModelShow();
@@ -359,115 +405,366 @@
         $('.showModelHistory').append(modalAddress)
 
     });
+    // mô tả
     $('#notes').click(function () {
         deleteEventModelShow();
         $('#notes').css({
             'color': '#4a8aff',
             'border-bottom': '2px solid rgb(0, 136, 255)'
         });
-    });
-    $('#customer_groups').click(function () {
-        deleteEventModelShow();
-        $('#customer_groups').css({
-            'color': '#4a8aff',
-            'border-bottom': '2px solid rgb(0, 136, 255)'
-        });
-        $('.showModelHistory').append(modalCustomerGroup)
+        $('.showModelHistory').append(modalNote)
     });
 
+    function idDeleteCustomerById() {
+        let idDelete = $('.idCustomerDelete').val()
 
-    // showByIdCustomer
-    function showCustomerById() {
+    }
+    idDeleteCustomerById();
+
+    function showCustomerInfoHistory() {
+        let idCustomer = $('.idCustomerDelete').val();
+        console.log(idCustomer)
         return $.ajax({
             headers: {
                 "accept": "application/json",
                 "content-type": "application/json"
             },
             type: "GET",
-            url: "http://localhost:8080/api/customers/184"
+            url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer
         })
             .done((data) => {
                 console.log(data)
-                customer = data;
-                let str = `<div class="MuiBox-root jss4674 jss4529">
-                                        <div class="MuiGrid-root MuiGrid-container">
-                                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
-                                                <div class="MuiPaper-root jss4530 jss4531 MuiPaper-elevation1 MuiPaper-rounded">
-                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
-                                                        Ngày sinh</h6>
-                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
-                                                        Giới tính</h6>
-                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
-                                                        Số điện thoại</h6>
-                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
-                                                        Email</h6>
-                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
-                                                        Nhân viên phụ trách
-                                                    </h6>
+                if (data.length === 0){
+                    return  $(".showModelHistory").append(noModalHistoryOrder);
+                }
+                if (0 < data.length){
+                    $('.showModelHistory').append(modalHistoryOrder)
+                   return   $.each(data, (i, order) => {
+                        let str = `
+                                     <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
+                                                tabindex="-1">
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                    <a class="jss1437" href="/admin/orders/1167549753">${order.orderCode}</a>
+                                                </td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                    <div class="sc-jSMfEi hBmWYo"><span class="${order.orderStatus.name === 'Đang giao dịch' ? 'sc-eCYdqJ bzQjtT text-success' : 'sc-eCYdqJ bzQjtT text-warning'}">${order.orderStatus.name}</span>
+                                                    </div>
+                                                </td>
 
-                                                </div>
-                                            </div>
-                                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
-                                                <div class="MuiPaper-root jss4530 MuiPaper-elevation1 MuiPaper-rounded">
-                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                        title="04/11/2004"
-                                                        itemid="display-dob"> <th:block>: ${customer.birthday ? customer.birthday : '---'}</th:block></h6>
-                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                        title="Khác"
-                                                        itemid="display-sex"><th:block>: ${customer.customerGender ? customer.customerGender : '---'}</th:block></h6></h6>
-                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                        itemid="display-phone-number"
-                                                        title="12321312"><th:block>: ${customer.phone ? customer.phone : '---'}</th:block></h6>
-                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                        itemid="display-email"
-                                                        title="ziqej@mailinator.com"><th:block>: ${customer.email ? customer.email : '---'}</th:block></h6>
-                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                        itemid="display-email"
-                                                        title="ziqej@mailinator.com"><th:block>: ${customer.employeeResult.name ? customer.employeeResult.name : '---'}</th:block></h6>
-                                                </div>
-                                            </div>
-                                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
-                                                <div class="MuiPaper-root jss4530 jss4531 MuiPaper-elevation1 MuiPaper-rounded">
-                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
-                                                        Nhóm khách hàng</h6>
-                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
-                                                        Mã khách hàng</h6>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignRight">
+                                                    <p class="MuiTypography-root MuiTypography-body1"
+                                                       title="1,415,000">
+                                                       ${order.grandTotal != null ? (new Intl.NumberFormat('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }).format(order.grandTotal)) : "---"}
+                                                       </p></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                    <p class="MuiTypography-root MuiTypography-body1"
+                                                       title="Chi nhánh mặc định">Chi nhánh mặc định</p></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                    <p class="MuiTypography-root MuiTypography-body1" title="Pos">
+                                                        Web</p></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                    <p class="MuiTypography-root MuiTypography-body1"
+                                                       title="">${order.employee.name}</p></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                    <div>${order.createAt}</div>
+                                                </td>
+                                            </tr>
+                                   `
+                        $(".showAllCustomerOrderHistory").append(str);
+                    });
 
-
-                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
-                                                        Mô tả</h6>
-                                                    <h6 class="MuiTypography-root jss4532 jss4534 MuiTypography-subtitle1">
-                                                        Tags</h6>
-                                                </div>
-                                            </div>
-                                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
-                                                <div class="MuiPaper-root jss4530 MuiPaper-elevation1 MuiPaper-rounded">
-                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                        itemid="display-group-name"
-                                                        title="Bán lẻ"><th:block>: ${customer.customerGroup ? customer.customerGroup : '---'}</th:block></h6>
-
-                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                        itemid="display-description"
-                                                        title="Et aperiam consectet"><th:block>: ${customer.customerCode ? customer.customerCode : '---'}</th:block></h6>
-                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                        itemid="display-tax-number"
-                                                        title="897"><th:block>: ${customer.status ? customer.status : '---'}</th:block></h6>
-                                                         <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                        itemid="display-tax-number"
-                                                        title="897">:---</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>`
-                $(".showByIdCustomer").append(str);
-
+                }
             })
             .fail((jqXHR) => {
 
             })
     }
 
-    showCustomerById();
+    // Công nợ
+    function showCustomerInfoDebt() {
+        let idCustomer = $('.idCustomerDelete').val();
+        console.log(idCustomer)
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/customers/customerOwer/" + idCustomer
+        })
+            .done((data) => {
+                console.log(data)
+                $.each(data, (i, order) => {
+                    let str = `
+                   <tr class="MuiTableRow-root jss910 MuiTableRow-hover" role="checkbox"
+                                                tabindex="-1">
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+                                                    <a class="jss920" target="_blank"
+                                                       href="/admin/receipt_vouchers/296331927/edit">${order.order_code}</a></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+                                                    <span>${order.employee_name}</td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+                                                    <span>
+                                                        ${order.create_at != null ? moment(order.create_at).format('DD/MM/yyyy hh:ss') : "---"}</td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+                                                    <span>
+                                                         ${order.create_at != null ? moment(order.create_at).format('DD/MM/yyyy hh:ss') : "---"}</td>
+                                                    </span></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+                                                    <span>S{order.description}</span></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignRight">
+                                                    <span style="padding: 16px;">
+                                                                   ${order.transaction != null ? (new Intl.NumberFormat('vi-VN', {
+                                                            style: 'currency',
+                                                            currency: 'VND'
+                                                        }).format(order.transaction)) : "---"}</span></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignRight">
+                                                    <span style="padding: 16px;"> ${order.total_transaction != null ? (new Intl.NumberFormat('vi-VN', {
+                                                    style: 'currency',
+                                                    currency: 'VND'
+                                                }).format(order.total_transaction)) : "---"}</span></td>
+                                                    </tr>
+                                        `
+                    $(".showCustomerDebtById").prepend(str);
+                });
+            })
+            .fail((jqXHR) => {
 
+            })
+    }
+
+
+    //Địa chỉ
+    function showCustomerInfoLocationRegion() {
+        let idCustomer = $('.idCustomerDelete').val();
+        console.log(idCustomer)
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer
+        })
+            .done((data) => {
+                console.log(data)
+                $.each(data, (i, order) => {
+                    let str = `
+                    <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
+                                                    tabindex="-1">
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <a class="jss1437" href="/admin/orders/1167549753">${order.orderCode}</a>
+                                                    </td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <div class="sc-jSMfEi hBmWYo"><span class="sc-eCYdqJ bzQjtT">${order.orderStatus.name}</span>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignRight">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="1,415,000">
+                                                           ${order.grandTotal != null ? (new Intl.NumberFormat('vi-VN', {
+                                                            style: 'currency',
+                                                            currency: 'VND'
+                                                        }).format(order.grandTotal)) : "---"}
+                                                           </p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="Chi nhánh mặc định">Chi nhánh mặc định</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1" title="Pos">
+                                                            Web</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="">${order.employee.name}</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <div>${order.createAt}</div>
+                                                    </td>
+                                                </tr>
+                    `
+                    $(".showAllCustomerOrderHistory").append(str);
+                });
+            })
+            .fail((jqXHR) => {
+
+            })
+    }
+
+
+    // Liên hệ
+    function showCustomerInfotangent() {
+        let idCustomer = $('.idCustomerDelete').val();
+        console.log(idCustomer)
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer
+        })
+            .done((data) => {
+                console.log(data)
+                $.each(data, (i, order) => {
+                    let str = `
+                    <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
+                                                    tabindex="-1">
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <a class="jss1437" href="/admin/orders/1167549753">${order.orderCode}</a>
+                                                    </td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <div class="sc-jSMfEi hBmWYo"><span class="sc-eCYdqJ bzQjtT">${order.orderStatus.name}</span>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignRight">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="1,415,000">
+                                                           ${order.grandTotal != null ? (new Intl.NumberFormat('vi-VN', {
+                                                                style: 'currency',
+                                                                currency: 'VND'
+                                                            }).format(order.grandTotal)) : "---"}
+                                                           </p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="Chi nhánh mặc định">Chi nhánh mặc định</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1" title="Pos">
+                                                            Web</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <p class="MuiTypography-root MuiTypography-body1"
+                                                           title="">${order.employee.name}</p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                        <div>${order.createAt}</div>
+                                                    </td>
+                                                </tr>
+                    `
+                    $(".showAllCustomerOrderHistory").append(str);
+                });
+            })
+            .fail((jqXHR) => {
+
+            })
+    }
+    deleteEventModelShow();
 </script>
+
+<style>
+    .jss13047 {
+        padding: 0px 16px 16px;
+    }
+    .jss923 {
+        margin: 0 64px;
+    }
+
+    .jss921 {
+        flex: 0 0 auto;
+        display: flex;
+        margin-top: 12px;
+        min-height: 28px;
+        align-items: center;
+        margin-bottom: 12px;
+        padding-right: 12px;
+        justify-content: flex-end;
+    }
+
+    .jss923 {
+        flex: 0 0 auto;
+        display: flex;
+        margin-top: 12px;
+        min-height: 28px;
+        align-items: center;
+        margin-bottom: 12px;
+        padding-right: 12px;
+        justify-content: flex-end;
+    }
+
+    .jss1438 {
+        flex: 0 0 auto;
+        display: flex;
+        margin-top: 12px;
+        min-height: 28px;
+        align-items: center;
+        margin-bottom: 12px;
+        padding-right: 12px;
+        justify-content: flex-end;
+    }
+
+    .jss1440 {
+        margin: 0 64px;
+    }
+
+    .jss641 {
+        position: relative;
+        box-shadow: 0px 2px 4px rgb(168 168 168 / 25%);
+        padding-top: 12px;
+        background-color: white;
+    }
+
+    .jss3558 {
+        top: -42px;
+        right: 8px;
+        position: absolute;
+    }
+
+    .cdDLAY {
+        display: inline-flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        -webkit-box-align: center;
+        align-items: center;
+        outline: 0px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1.42857rem;
+        margin: 0px 8px 0px 0px;
+        overflow: hidden;
+        position: relative;
+        height: 2.57143rem;
+        min-width: unset;
+        color: rgb(15, 24, 36);
+        border: none;
+        background: transparent;
+        padding: 0px;
+    }
+
+    .cdDLAY svg {
+        height: 1.42857rem;
+        width: 1.42857rem;
+    }
+
+    .fCIlZX {
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        padding: 0px 0px 0px 0.571429rem;
+        z-index: 2;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+
+    .jss3609 {
+        padding: 0px 12px 12px;
+    }
+
+    .MuiTypography-colorSecondary {
+        color: #747C87;
+    }
+
+    .jss641 {
+        position: relative;
+        box-shadow: 0px 2px 4px rgb(168 168 168 / 25%);
+        padding-top: 12px;
+        background-color: white;
+    }
+</style>
 </html>

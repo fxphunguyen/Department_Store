@@ -1,7 +1,6 @@
 package com.phpn.dto.suppliers;
 
 import com.phpn.repositories.model.SupplierStatus;
-import com.phpn.dto.locationRegion.LocationRegionCreate;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +23,6 @@ public class SupplierCreate {
     private String description;
     private Integer employeeId;
     private Integer paymentMethodId;
-    private Integer locationRegionId;
-    private LocationRegionCreate locationRegionCreate;
+
 
 }

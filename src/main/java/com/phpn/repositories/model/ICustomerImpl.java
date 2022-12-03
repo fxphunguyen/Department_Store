@@ -1,8 +1,20 @@
 package com.phpn.repositories.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
 public class ICustomerImpl
 {
     private Long id;
@@ -30,93 +42,5 @@ public class ICustomerImpl
         this.employeeName = iCustomer.getNV_PHUTRACH();
         this.lastDateOrdered = iCustomer.getNGM_CUOICUNG();
 
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getCustomerGroup() {
-        return customerGroup;
-    }
-
-    public void setCustomerGroup(String customerGroup) {
-        this.customerGroup = customerGroup;
-    }
-
-    public BigDecimal getDebt() {
-        return debt;
-    }
-
-    public void setDebt(BigDecimal debt) {
-        this.debt = debt;
-    }
-
-    public BigDecimal getSpend() {
-        return spend;
-    }
-
-    public void setSpend(BigDecimal spend) {
-        this.spend = spend;
-    }
-
-    public int getNumberProductOrdered() {
-        return numberProductOrdered;
-    }
-
-    public void setNumberProductOrdered(int numberProductOrdered) {
-        this.numberProductOrdered = numberProductOrdered;
-    }
-
-    public String getEmployeeName() {
-        return employeeName;
-    }
-
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
-    }
-
-    public Date getLastDateOrdered() {
-        return lastDateOrdered;
-    }
-
-    public void setLastDateOrdered(Date lastDateOrdered) {
-        this.lastDateOrdered = lastDateOrdered;
-    }
-
-    public int getNumberQuantityOrdered() {
-        return numberQuantityOrdered;
-    }
-
-    public void setNumberQuantityOrdered(int numberQuantityOrdered) {
-        this.numberQuantityOrdered = numberQuantityOrdered;
-    }
-
-    public int getNumberQuantityReturned() {
-        return numberQuantityReturned;
-    }
-
-    public void setNumberQuantityReturned(int numberQuantityReturned) {
-        this.numberQuantityReturned = numberQuantityReturned;
     }
 }

@@ -42,11 +42,11 @@ public class PurchaseOrder {
     private Integer employeeId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "payment_method_id")
-    private PaymentMethod paymentMethod;
+    @JoinColumn(name = "payment_purchase_id")
+    private PaymentPurchase paymentPurchase;
 
-    @Column(name = "payment_method_id", insertable = false, updatable = false)
-    private Integer paymentMethodId;
+    @Column(name = "payment_purchase_id", insertable = false, updatable = false)
+    private Integer paymentPurchaseId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
@@ -61,10 +61,6 @@ public class PurchaseOrder {
 
     @Column(name = "create_at", nullable = false, length = 50)
     private String createAt;
-    
-    @Enumerated(EnumType.STRING)
-    @Column(name = "pays")
-    private PurchaseOrderPays pays;
 
     @Column(name = "total", nullable = false, precision = 10, scale = 2)
     private BigDecimal total;
@@ -75,11 +71,11 @@ public class PurchaseOrder {
     @Column(name = "discount", precision = 10, scale = 2)
     private Float discount;
 
-    public PurchaseOrder(Integer supplierId, Integer purchaseOrderItemId, Integer employeeId, Integer paymentMethodId) {
+    public PurchaseOrder(Integer supplierId, Integer purchaseOrderItemId, Integer employeeId, Integer paymentPurchaseId) {
         setSupplierId(supplierId);
         setEmployeeId(employeeId);
         setPurchaseOrderItemId(purchaseOrderItemId);
-        setPaymentMethodId(paymentMethodId);
+        setPaymentPurchaseId(paymentPurchaseId);
     }
 
     public PurchaseOrder(Integer id) {
@@ -101,8 +97,8 @@ public class PurchaseOrder {
         return this;
     }
 
-    public PurchaseOrder setPaymentMethodId(Integer paymentMethodId) {
-        this.paymentMethod = new PaymentMethod(this.paymentMethodId = paymentMethodId);
+    public PurchaseOrder setPaymentPurchaseId(Integer paymentPurchaseId) {
+        this.paymentPurchase = new PaymentPurchase(this.paymentPurchaseId = paymentPurchaseId);
         return this;
     }
 

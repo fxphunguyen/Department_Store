@@ -18,16 +18,19 @@ public class OrderMapper {
 
     public OrderResult toDTO(Order order) {
         return new OrderResult()
-                .setEmployee(employeeMapper.toDTO(order.getEmployee()))
-                .setCustomer(customerMapper.toDTO(order.getCustomer()))
-                .setStatus(order.getOrderStatus().getName())
                 .setId(order.getId())
-                .setGrandTotal(order.getGrandTotal())
-                .setDescription(order.getDescription())
+                .setEmployeeId(order.getEmployeeId())
+                .setEmployee(employeeMapper.toOrderDTO(order.getEmployee()))
+                .setOrderCode(order.getOrderCode())
+                .setOrderStatusId(order.getOrderStatusId())
                 .setDiscount(order.getDiscount())
+                .setDescription(order.getDescription())
+                .setCreateAt(order.getCreateAt())
+                .setCustomerId(order.getCustomerId())
+                .setCustomer(customerMapper.toOrderDTO(order.getCustomer()))
                 .setTotal(order.getTotal())
+                .setSubTotal(order.getSubTotal())
                 .setGrandTotal(order.getGrandTotal());
-
     }
 
     public Order toModel(OrderParam orderParam) {
@@ -35,9 +38,10 @@ public class OrderMapper {
                 .setId(orderParam.getId())
                 .setDiscount(orderParam.getDiscount())
                 .setDescription(orderParam.getDescription())
-                .setCreateAt(orderParam.getCreateAt())
                 .setCustomerId(orderParam.getCustomerId())
+                .setOrderCode(orderParam.getOrderCode())
                 .setEmployeeId(orderParam.getEmployeeId())
+                .setCreateAt(orderParam.getCreateAt())
                 .setOrderStatusId(orderParam.getOrderStatusId());
 
     }
