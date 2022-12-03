@@ -2,7 +2,6 @@ package com.phpn.controllers.api;
 
 import com.phpn.dto.customer.CreateCustomerParam;
 import com.phpn.dto.customer.CustomerResult;
-import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.OrderRepository;
 import com.phpn.repositories.model.*;
@@ -19,8 +18,6 @@ import java.util.List;
 @RequestMapping("/api/customers")
 public class CustomerAPI {
 
-    @Autowired
-    private CustomerMapper customerMapper;
 
     @Autowired
     private CustomerService customerService;
@@ -128,7 +125,9 @@ public class CustomerAPI {
     @GetMapping("/historyCustomerOrder/{id}")
     @Transactional(readOnly = true)
     public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id) {
-        List<Order> order = orderRepository.findAllOrderByCustomerId(id);
+        System.out.println(id);
+        List<ICustomerOrderHistory> order = customerRepository.getCustomerOrderHistory(id);
+        System.out.println(order);
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
@@ -137,6 +136,13 @@ public class CustomerAPI {
     @Transactional(readOnly = true)
     public ResponseEntity<?> showListCustomerOwerById(@PathVariable Integer id) {
         List<ICustomerOwerImpl> iCustomerImpls = customerService.CustomerOwerById(id);
+        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/custoemrOrrder")
+    public ResponseEntity<?> showListCustwerById() {
+        List<Order> iCustomerImpls =orderRepository.findAll();
         return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
     }
 }
