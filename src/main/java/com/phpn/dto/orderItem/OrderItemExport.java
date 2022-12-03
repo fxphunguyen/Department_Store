@@ -22,4 +22,6 @@ public class OrderItemExport {
     private Integer productId;
 
     private BigDecimal discount;
+
+    private Float tax;
 }

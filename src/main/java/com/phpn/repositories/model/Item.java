@@ -23,13 +23,6 @@ public class Item {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "mrp")
-    private Float mrp;
-
-
-    @Column(name = "price", precision = 10, scale = 2)
-    private BigDecimal price;
-
     @Column(name = "quantity")
     private Integer quantity;
 
@@ -46,7 +39,6 @@ public class Item {
 
     @Column(name = "product_id", insertable = false, updatable = false)
     private Integer productId;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_Id")

@@ -1,13 +1,16 @@
 package com.phpn.mappers.item;
 
 import com.phpn.dto.item.ItemParam;
-import com.phpn.dto.item.ItemRResult;
 import com.phpn.dto.item.ItemResult;
+import com.phpn.mappers.product.ProductMapper;
 import com.phpn.repositories.model.Item;
+import com.phpn.repositories.model.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ItemMapper {
+
 
     public Item toModel(ItemParam itemParam) {
         return new Item()
@@ -16,8 +19,7 @@ public class ItemMapper {
                 .setSupplierId(itemParam.getSupplierId())
                 .setEmployeeId(itemParam.getEmployeeId())
                 .setPurchaseOrderId(itemParam.getPurchaseOrderId())
-                .setQuantity(itemParam.getQuantity())
-                .setPrice(itemParam.getPrice());
+                .setQuantity(itemParam.getQuantity());
     }
 
     public ItemResult toDTO(Item item) {
@@ -28,12 +30,14 @@ public class ItemMapper {
                 .setProductId(item.getProductId())
                 .setSupplierId(item.getSupplierId())
                 .setQuantity(item.getQuantity())
-                .setPrice(item.getPrice());
+                .setSku(item.getProduct().getSku())
+                .setAvailable(item.getAvailable());
     }
-    public ItemRResult toRDTO(Item item) {
-        return (ItemRResult) new ItemRResult()
-                .setId(item.getId())
-                .setQuantity(item.getQuantity())
-                .setPrice(item.getPrice());
-    }
+//    public  ItemResult toItemInfo(Item item){
+//        return  new ItemResult()
+//                .setId(item.getId())
+//                .setQuantity(item.getQuantity())
+//                .setAvailable(item.getAvailable());
+////                .setProductResult(productMapper.toItemDTO(item.getProduct()));
+//    }
 }
