@@ -51,6 +51,10 @@ public class PaymentPurchase {
     @Column(name = "purchase_order_id", insertable = false, updatable = false)
     private Integer purchaseOrderId;
 
+    public PaymentPurchase(Integer id) {
+        this.id = id;
+    }
+
     public PaymentPurchase setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
         return this;
