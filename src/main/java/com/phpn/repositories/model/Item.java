@@ -16,19 +16,12 @@ import java.time.Instant;
 @Accessors(chain = true)
 @Entity
 @Table(name = "items")
-public class    Item {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
-
-    @Column(name = "mrp")
-    private Float mrp;
-
-
-    @Column(name = "price", precision = 10, scale = 2)
-    private BigDecimal price;
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -46,7 +39,6 @@ public class    Item {
 
     @Column(name = "product_id", insertable = false, updatable = false)
     private Integer productId;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_Id")
@@ -77,9 +69,6 @@ public class    Item {
 
     @Column(name = "defective")
     private Integer defective;
-
-    @Column(name = "discount")
-    private Float discount;
 
     public Item (Integer productId, Integer supplierId, Integer orderId, Integer employeeId){
         setProductId(productId);
