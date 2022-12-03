@@ -24,9 +24,7 @@ public class PurchaseOrderMapper {
                 .setPurchaseOrderItemId(purchaseOrderParam.getPurchaseOrderItemId())
                 .setEmployeeId(purchaseOrderParam.getEmployeeId())
                 .setSupplierId(purchaseOrderParam.getSupplierId())
-                .setPaymentMethodId(purchaseOrderParam.getPaymentMethodId())
-                .setStatus(purchaseOrderParam.getStatus())
-                .setPays(purchaseOrderParam.getPays());
+                .setStatus(purchaseOrderParam.getStatus());
     }
 
     public PurchaseOrderResult toDTO(PurchaseOrder purchaseOrder) {
@@ -36,7 +34,6 @@ public class PurchaseOrderMapper {
                 .setEmployeeId(purchaseOrder.getEmployeeId())
                 .setSupplierId(purchaseOrder.getSupplierId())
                 .setSupplierResult(supplierMapper.toDTO(purchaseOrder.getSupplier()))
-                .setPays(purchaseOrder.getPays())
                 .setStatus(purchaseOrder.getStatus())
                 .setGrandTotal(purchaseOrder.getGrandTotal());
     }
