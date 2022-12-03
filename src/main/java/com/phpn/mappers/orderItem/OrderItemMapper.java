@@ -4,7 +4,6 @@ import com.phpn.dto.orderItem.OrderItemParam;
 import com.phpn.dto.orderItem.OrderItemResult;
 import com.phpn.mappers.item.ItemMapper;
 import com.phpn.mappers.product.ProductMapper;
-import com.phpn.repositories.model.Order;
 import com.phpn.repositories.model.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
