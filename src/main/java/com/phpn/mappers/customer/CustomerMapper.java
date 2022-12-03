@@ -6,12 +6,11 @@ import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.dto.customer.CustomerParam;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.employee.EmployeeMapper;
-import com.phpn.repositories.model.Customer;
-import com.phpn.repositories.model.CustomerStatus;
-import com.phpn.repositories.model.ICustomerOwer;
-import com.phpn.repositories.model.ICustomerOwerImpl;
+import com.phpn.repositories.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Set;
 
 @Component
 public class CustomerMapper {
@@ -42,6 +41,7 @@ public class CustomerMapper {
                 .setCustomerCode(customer.getCustomerCode())
                 .setName(customer.getName())
                 .setPhone(customer.getPhone())
+                .setShippingAddressSet(customer.getShippingAddressSet())
                 .setEmployeeId(customer.getEmployeeId());
     }
 
@@ -54,6 +54,7 @@ public class CustomerMapper {
                 .setCustomerGroup(customerCreate.getCustomerGroup())
                 .setEmail(customerCreate.getEmail())
                 .setBirthday(customerCreate.getBirthday())
+                .setShippingAddressSet((Set<ShippingAddress>) customerCreate.getShippingAddress())
                 .setCustomerStatus(CustomerStatus.AVAILABLE);
     }
 

@@ -36,7 +36,6 @@ public class CreateCustomerParam {
 
     private Integer employeeId;
 
-
     private CreateShippingAddressParam shippingAddress;
 
 
