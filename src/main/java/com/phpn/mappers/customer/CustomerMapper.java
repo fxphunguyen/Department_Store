@@ -13,6 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Component
 public class CustomerMapper {
@@ -25,7 +30,7 @@ public class CustomerMapper {
 
 
     public CustomerResult toDTO(Customer customer) {
-        return new CustomerResult()
+        CustomerResult result = new CustomerResult()
                 .setId(customer.getId())
                 .setCustomerCode(customer.getCustomerCode())
                 .setName(customer.getName())
@@ -39,7 +44,13 @@ public class CustomerMapper {
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
                 .setCustomerStatus(customer.getCustomerStatus());
-//        customer.getShippingAddressSet().stream().map(shippingAddressMapper.toDTO())
+        Set<ShippingAddress> shippingAddressSet = customer.getShippingAddressSet();
+        List<ShippingAddressResult> shippingAddressList = shippingAddressSet.stream()
+                .map(shippingAddressMapper::toDTO).collect(Collectors.toList());
+        result.setShippingAddressList(shippingAddressList);
+        Optional<ShippingAddressResult> shippingAddressOpt = shippingAddressList.stream().filter(ShippingAddressResult::isDefault).findFirst();
+        shippingAddressOpt.ifPresent(result::setShippingAddressDefault);
+        return result;
 //                .setShippingAddressList(new ArrayList<ShippingAddressResult>(customer.getShippingAddressSet()));
 
     }
@@ -95,8 +106,4 @@ public class CustomerMapper {
                 .setUpdateAt(customerResult.getUpdateAt());
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 34d69be39a60886a08558dba536a01fe4f640a7d
 }

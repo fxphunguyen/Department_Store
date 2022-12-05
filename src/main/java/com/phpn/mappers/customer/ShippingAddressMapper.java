@@ -1,16 +1,13 @@
-<<<<<<< HEAD
 package com.phpn.mappers.customer;
 
 
 import com.phpn.dto.shipping_address.CreateShippingAddressParam;
 import com.phpn.dto.shipping_address.ShippingAddressResult;
-import com.phpn.repositories.model.Customer;
 import com.phpn.repositories.model.ShippingAddress;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ShippingAddressMapper {
-
 
     public ShippingAddress toModel(CreateShippingAddressParam createParam) {
         return new ShippingAddress()
@@ -29,40 +26,19 @@ public class ShippingAddressMapper {
     }
 
     public ShippingAddressResult toDTO(ShippingAddress shippingAddress) {
-        return new ShippingAddressResult();
+        return new ShippingAddressResult()
+                .setId(shippingAddress.getId())
+                .setCustomerId(shippingAddress.getCustomerId())
+                .setLine1(shippingAddress.getLine1())
+                .setLine2(shippingAddress.getLine2())
+                .setWardId(shippingAddress.getWardId())
+                .setWardName(shippingAddress.getWardName())
+                .setDistrictId(shippingAddress.getDistrictId())
+                .setDistrictName(shippingAddress.getDistrictName())
+                .setProvinceId(shippingAddress.getProvinceId())
+                .setProvinceName(shippingAddress.getProvinceName())
+                .setMobile(shippingAddress.getMobile())
+                .setZipCode(shippingAddress.getZipCode())
+                .setDefault(shippingAddress.getIsDefault());
     }
 }
-=======
-//package com.phpn.mappers.customer;
-//
-//
-//import com.phpn.dto.shipping_address.CreateShippingAddressParam;
-//import com.phpn.repositories.model.Customer;
-//import com.phpn.repositories.model.ShippingAddress;
-//import org.springframework.stereotype.Component;
-//
-//@Component
-//public class ShippingAddressMapper {
-//
-//
-//    public ShippingAddress toModel(CreateShippingAddressParam createParam) {
-//        return new ShippingAddress()
-//                .setCustomerId(createParam.getCustomerId());
-////                .setId(customerResult.getId())
-////                .setCustomerCode(customerResult.getCustomerCode())
-////                .setName(customerResult.getName())
-////                .setPhone(customerResult.getPhone())
-////                .setCustomerGroup(customerResult.getCustomerGroup())
-////                .setCustomerGender(customerResult.getCustomerGender())
-////                .setEmail(customerResult.getEmail())
-////                .setBirthday(customerResult.getBirthday())
-////                .setCustomerStatus(customerResult.getCustomerStatus())
-////                .setUpdateAt(customerResult.getUpdateAt())
-////                .setUpdateAt(java.time.LocalDateTime.now().toString())
-////                .setDeleted(true);
-//
-//    }
-//
-//
-//}
->>>>>>> 34d69be39a60886a08558dba536a01fe4f640a7d

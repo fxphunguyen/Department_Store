@@ -2,7 +2,7 @@ package com.phpn.services.shippingAddress;
 
 
 import com.phpn.dto.shipping_address.ShippingAddressResult;
-import com.phpn.mappers.shippingAddress.ShippingAddressMapper;
+import com.phpn.mappers.customer.ShippingAddressMapper;
 import com.phpn.repositories.ShippingAddressRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
