@@ -95,5 +95,8 @@ public class CustomerMapper {
                 .setUpdateAt(customerResult.getUpdateAt());
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34d69be39a60886a08558dba536a01fe4f640a7d
 }
