@@ -25,4 +25,5 @@ public class OrderItemParam {
 
     private BigDecimal price;
 
+    private Float tax;
 }

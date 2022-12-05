@@ -65,13 +65,6 @@ public class Supplier {
     @Column(name = "payment_method_id", updatable = false, insertable = false)
     private Integer paymentMethodId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "location_region_id", nullable = false)
-    private LocationRegion locationRegion;
-
-    @Column(name = "location_region_id", updatable = false, insertable = false)
-    private Integer locationRegionId;
-
     @Column(name = "create_at", nullable = false)
     private String createAt;
 
@@ -82,10 +75,10 @@ public class Supplier {
         this.id = id;
     }
 
-    public Supplier(Integer employeeId, Integer paymentMethodId, Integer locationRegionId) {
+    public Supplier(Integer employeeId, Integer paymentMethodId) {
         setEmployeeId(employeeId);
         setPaymentMethodId(paymentMethodId);
-        setLocationRegionId(locationRegionId);
+
     }
 
     public Supplier setEmployeeId(Integer employeeId) {
@@ -98,9 +91,5 @@ public class Supplier {
         return this;
     }
 
-    public Supplier setLocationRegionId(Integer locationRegionId) {
-        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
-        return this;
-    }
 
 }

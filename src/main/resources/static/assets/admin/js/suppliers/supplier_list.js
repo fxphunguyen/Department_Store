@@ -1,28 +1,49 @@
+"use strict";
+
+$(document).ready(() => $("#supplier-datatables").DataTable({
+    scrollY: 500,
+    ajax: {
+        url: "http://localhost:8080/api/admin/suppliers",
+        dataSrc: ""
+    },
+    columns: [
+        { data: '' },
+        { data: 'supplierCode' },
+        { data: 'name' },
+        { data: 'email' },
+        { data: 'phone' },
+        { data: 'supplierStatus' },
+        { data: 'employeeResult.name' },
+        { data: 'createAt' },
+        { data: 'updateAt' }
+    ]
+}));
+
 (() => {
     return $.ajax({
         "headers": {
             "accept": "application/json",
             "content-type": "application/json"
         },
-        "type": "get",
-        "url": "http://localhost:8080/api/admin/suppliers"
+        "url": "http://localhost:8080/api/admin/suppliers",
+        "type": "get"
     })
     .done((data) => {
         $.each(data, (i, item) => {
             $("tbody").append(`
                 <tr>
-                    <td class="select bulk-action">
+                    <td class="select">
                         <div class="next-input-wrapper">
                             <input type="checkbox" class="bulk-action-item next-checkbox" value="${item.id}"/>
                             <span class="next-checkbox--styled">
-                                <svg class="next-icon next-icon--size-10 checkmark">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-checkmark-thick"></use>
+                                <svg class="checkmark next-icon next-icon--size-10">
+                                    <use xlink:href="#next-checkmark-thick" xmlns:xlink="http://www.w3.org/1999/xlink"/>
                                 </svg>
                             </span>
                         </div>
                     </td>
                     <td>
-                        <a style="text-decoration: underline;" href="/admin/suppliers/${item.id}/histories" title="${item.supplierCode}">${item.supplierCode}</a>
+                        <a href="/admin/suppliers/${item.id}/histories" title="${item.supplierCode}">${item.supplierCode}</a>
                     </td>
                     <td>
                         <span title="${item.name}">${item.name}</span>
@@ -49,7 +70,5 @@
             `);
         });
     })
-    .fail((jqXHR) => {
-        console.log("An error occurred: " + jqXHR);
-    });
+    .fail(() => console.log("An error occurred, can't get supplier list!"));
 })();
