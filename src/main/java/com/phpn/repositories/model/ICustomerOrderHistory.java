@@ -19,5 +19,9 @@ public interface ICustomerOrderHistory {
 
     String getEmployee_name();
 
+    BigDecimal getPrice_pay();
+
+    BigDecimal getDebt();
+
 
 }

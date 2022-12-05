@@ -403,6 +403,7 @@
             'border-bottom': '2px solid rgb(0, 136, 255)'
         });
         $('.showModelHistory').append(modalAddress)
+        showCustomerInfoShippingAddressByCustomerId();
 
     });
     // mô tả
@@ -438,37 +439,46 @@
                 }
                 if (0 < data.length){
                     $('.showModelHistory').append(modalHistoryOrder)
-                   return   $.each(data, (i, order) => {
+                   return   $.each(data, (i, customer) => {
                         let str = `
                                      <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
                                                 tabindex="-1">
                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <a class="jss1437" href="/admin/orders/1167549753">${order.orderCode}</a>
+                                                    <a class="jss1437" href="/admin/orders/1167549753">${customer.order_code}</a>
                                                 </td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <div class="sc-jSMfEi hBmWYo"><span class="${order.orderStatus.name === 'Đang giao dịch' ? 'sc-eCYdqJ bzQjtT text-success' : 'sc-eCYdqJ bzQjtT text-warning'}">${order.orderStatus.name}</span>
+                                                    <div class="sc-jSMfEi hBmWYo"><span class="${customer.status === 'Đang giao dịch' ? 'sc-eCYdqJ bzQjtT text-success' : 'sc-eCYdqJ bzQjtT text-warning'}">${customer.status}</span>
                                                     </div>
                                                 </td>
 
                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignRight">
                                                     <p class="MuiTypography-root MuiTypography-body1"
-                                                       title="1,415,000">
-                                                       ${order.grandTotal != null ? (new Intl.NumberFormat('vi-VN', {
-                        style: 'currency',
-                        currency: 'VND'
-                    }).format(order.grandTotal)) : "---"}
+                                                       >
+                                                       ${customer.grand_total != null ? (new Intl.NumberFormat('vi-VN', {
+                                                                style: 'currency',
+                                                                currency: 'VND'
+                                                            }).format(customer.grand_total)) : "---"}
                                                        </p></td>
+
                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
                                                     <p class="MuiTypography-root MuiTypography-body1"
-                                                       title="Chi nhánh mặc định">Chi nhánh mặc định</p></td>
+                                                       >Chi nhánh mặc định</p></td>
+                                                         <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                <p class="MuiTypography-root MuiTypography-body1"
+                                                       >${customer.debt != null ? (new Intl.NumberFormat('vi-VN', {
+                                                            style: 'currency',
+                                                            currency: 'VND'
+                                                        }).format(customer.debt)) : "---"}</p></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
                                                     <p class="MuiTypography-root MuiTypography-body1" title="Pos">
                                                         Web</p></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
                                                     <p class="MuiTypography-root MuiTypography-body1"
-                                                       title="">${order.employee.name}</p></td>
+                                                       title="">${customer.employee_name}</p></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <div>${order.createAt}</div>
+                                                    <div>
+                                                    ${customer.create_at != null ? moment(customer.create_at).format('DD/MM/yyyy hh:ss') : "---"}
+                                                    </div>
                                                 </td>
                                             </tr>
                                    `
@@ -492,7 +502,7 @@
                 "content-type": "application/json"
             },
             type: "GET",
-            url: "http://localhost:8080/api/customers/customerOwer/" + idCustomer
+            url: "http://localhost:8080/api/customers/customerDebt/" + idCustomer
         })
             .done((data) => {
                 console.log(data)
@@ -537,7 +547,7 @@
 
 
     //Địa chỉ
-    function showCustomerInfoLocationRegion() {
+    function showCustomerInfoShippingAddressByCustomerId() {
         let idCustomer = $('.idCustomerDelete').val();
         console.log(idCustomer)
         return $.ajax({
@@ -546,45 +556,45 @@
                 "content-type": "application/json"
             },
             type: "GET",
-            url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer
+            url: "http://localhost:8080/api/shippingAddress/findByCustomerId/" + idCustomer
         })
             .done((data) => {
                 console.log(data)
-                $.each(data, (i, order) => {
+                $.each(data, (i, shippingAddress) => {
                     let str = `
-                    <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
-                                                    tabindex="-1">
-                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                        <a class="jss1437" href="/admin/orders/1167549753">${order.orderCode}</a>
-                                                    </td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                        <div class="sc-jSMfEi hBmWYo"><span class="sc-eCYdqJ bzQjtT">${order.orderStatus.name}</span>
-                                                        </div>
-                                                    </td>
-
-                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignRight">
-                                                        <p class="MuiTypography-root MuiTypography-body1"
-                                                           title="1,415,000">
-                                                           ${order.grandTotal != null ? (new Intl.NumberFormat('vi-VN', {
-                                                            style: 'currency',
-                                                            currency: 'VND'
-                                                        }).format(order.grandTotal)) : "---"}
-                                                           </p></td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                        <p class="MuiTypography-root MuiTypography-body1"
-                                                           title="Chi nhánh mặc định">Chi nhánh mặc định</p></td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                        <p class="MuiTypography-root MuiTypography-body1" title="Pos">
-                                                            Web</p></td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                        <p class="MuiTypography-root MuiTypography-body1"
-                                                           title="">${order.employee.name}</p></td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                        <div>${order.createAt}</div>
-                                                    </td>
-                                                </tr>
+                     <tr class="MuiTableRow-root jss6092 MuiTableRow-hover" role="checkbox" aria-checked="false" tabindex="-1">
+                              <td class="MuiTableCell-root MuiTableCell-body jss6095 MuiTableCell-paddingCheckbox" style="padding-left: 16px;"><span class="MuiButtonBase-root MuiIconButton-root jss6087 MuiCheckbox-root MuiCheckbox-colorPrimary jss6077 MuiIconButton-colorPrimary" aria-disabled="false" style="margin: 0px;"><span class="MuiIconButton-label"><input class="jss6090" type="checkbox" data-indeterminate="false" value=""><span class="jss6078" font-size="small"></span></span><span class="MuiTouchRipple-root"></span></span></td>
+                              <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
+                                <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="09876543255" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+                                  ${shippingAddress.mobile}</p>
+                              </td>
+                              <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
+                                <div style="cursor: pointer;">${shippingAddress.address}</div>
+                              </td>
+                              <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
+                                <div style="cursor: pointer;">${shippingAddress.wardName}</div>
+                              </td>
+                              <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
+                                <div style="cursor: pointer;">${shippingAddress.districtName}</div>
+                              </td>
+                              <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
+                                <p class="MuiTypography-root MuiTypo212graphy-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+                               ${shippingAddress.provinceName}
+                                </p>
+                              </td>
+                              <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
+                                <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+                                ${shippingAddress.zipCode}
+                                </p>
+                              </td>
+                              <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
+                                <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+                                ${shippingAddress.email}
+                                </p>
+                              </td>
+                            </tr>
                     `
-                    $(".showAllCustomerOrderHistory").append(str);
+                    $(".showShippingAddress").append(str);
                 });
             })
             .fail((jqXHR) => {
@@ -654,118 +664,6 @@
 </script>
 
 <style>
-    .jss13047 {
-        padding: 0px 16px 16px;
-    }
-    .jss923 {
-        margin: 0 64px;
-    }
 
-    .jss921 {
-        flex: 0 0 auto;
-        display: flex;
-        margin-top: 12px;
-        min-height: 28px;
-        align-items: center;
-        margin-bottom: 12px;
-        padding-right: 12px;
-        justify-content: flex-end;
-    }
-
-    .jss923 {
-        flex: 0 0 auto;
-        display: flex;
-        margin-top: 12px;
-        min-height: 28px;
-        align-items: center;
-        margin-bottom: 12px;
-        padding-right: 12px;
-        justify-content: flex-end;
-    }
-
-    .jss1438 {
-        flex: 0 0 auto;
-        display: flex;
-        margin-top: 12px;
-        min-height: 28px;
-        align-items: center;
-        margin-bottom: 12px;
-        padding-right: 12px;
-        justify-content: flex-end;
-    }
-
-    .jss1440 {
-        margin: 0 64px;
-    }
-
-    .jss641 {
-        position: relative;
-        box-shadow: 0px 2px 4px rgb(168 168 168 / 25%);
-        padding-top: 12px;
-        background-color: white;
-    }
-
-    .jss3558 {
-        top: -42px;
-        right: 8px;
-        position: absolute;
-    }
-
-    .cdDLAY {
-        display: inline-flex;
-        -webkit-box-pack: center;
-        justify-content: center;
-        flex: 0 0 auto;
-        -webkit-box-align: center;
-        align-items: center;
-        outline: 0px;
-        border-radius: 3px;
-        cursor: pointer;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        line-height: 1.42857rem;
-        margin: 0px 8px 0px 0px;
-        overflow: hidden;
-        position: relative;
-        height: 2.57143rem;
-        min-width: unset;
-        color: rgb(15, 24, 36);
-        border: none;
-        background: transparent;
-        padding: 0px;
-    }
-
-    .cdDLAY svg {
-        height: 1.42857rem;
-        width: 1.42857rem;
-    }
-
-    .fCIlZX {
-        display: flex;
-        -webkit-box-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        align-items: center;
-        padding: 0px 0px 0px 0.571429rem;
-        z-index: 2;
-        font-size: inherit;
-        font-weight: inherit;
-    }
-
-    .jss3609 {
-        padding: 0px 12px 12px;
-    }
-
-    .MuiTypography-colorSecondary {
-        color: #747C87;
-    }
-
-    .jss641 {
-        position: relative;
-        box-shadow: 0px 2px 4px rgb(168 168 168 / 25%);
-        padding-top: 12px;
-        background-color: white;
-    }
 </style>
 </html>

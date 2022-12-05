@@ -383,7 +383,7 @@ let modalAddress = `   <div class="MuiBox-root jss797 jss621">
                             <col style="width: 167px;">
                             <col style="width: 167px;">
                           </colgroup>
-                          <tbody class="MuiTableBody-root">
+                          <tbody class="MuiTableBody-root showShippingAddress">
                             <tr class="MuiTableRow-root jss6092 MuiTableRow-hover" role="checkbox" aria-checked="false" tabindex="-1">
                               <td class="MuiTableCell-root MuiTableCell-body jss6095 MuiTableCell-paddingCheckbox" style="padding-left: 16px;"><span class="MuiButtonBase-root MuiIconButton-root jss6087 MuiCheckbox-root MuiCheckbox-colorPrimary jss6077 MuiIconButton-colorPrimary" aria-disabled="false" style="margin: 0px;"><span class="MuiIconButton-label"><input class="jss6090" type="checkbox" data-indeterminate="false" value=""><span class="jss6078" font-size="small"></span></span><span class="MuiTouchRipple-root"></span></span></td>
                               <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
@@ -771,6 +771,9 @@ let modalHistoryOrder = `
                                             </th>
                                             <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
                                                 scope="col" colspan="1" rowspan="1">Chi nhánh
+                                            </th>
+                                              <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
+                                                scope="col" colspan="1" rowspan="1">Thanh toán
                                             </th>
                                             <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
                                                 scope="col" colspan="1" rowspan="1">Nguồn đơn

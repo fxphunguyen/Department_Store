@@ -52,7 +52,7 @@ public class CustomerAPI {
 
     @PostMapping("/delete/{id}")
     public void deleteCustomerById(@PathVariable Integer id) {
-     //   customerService.deleteStatusCustomer(id);
+        //   customerService.deleteStatusCustomer(id);
     }
 
     @PostMapping("/create")
@@ -61,7 +61,6 @@ public class CustomerAPI {
         return new ResponseEntity<>(customer, HttpStatus.OK);
 
     }
-
 
 
     @PutMapping("/update/{id}")
@@ -123,26 +122,17 @@ public class CustomerAPI {
     }
 
     @GetMapping("/historyCustomerOrder/{id}")
-    @Transactional(readOnly = true)
     public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id) {
-        System.out.println(id);
-        List<ICustomerOrderHistory> order = customerRepository.getCustomerOrderHistory(id);
-        System.out.println(order);
-        return new ResponseEntity<>(order, HttpStatus.OK);
+        List<ICustomerOrderHistory> customerOrderHistory = customerRepository.getCustomerOrderHistory(id);
+        return new ResponseEntity<>(customerOrderHistory, HttpStatus.OK);
     }
 
 
-    @GetMapping("/customerOwer/{id}")
+    @GetMapping("/customerDebt/{id}")
     @Transactional(readOnly = true)
-    public ResponseEntity<?> showListCustomerOwerById(@PathVariable Integer id) {
+    public ResponseEntity<?> showListCustomerDebtById(@PathVariable Integer id) {
         List<ICustomerOwerImpl> iCustomerImpls = customerService.CustomerOwerById(id);
         return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
     }
-
-
-    @GetMapping("/custoemrOrrder")
-    public ResponseEntity<?> showListCustwerById() {
-        List<Order> iCustomerImpls =orderRepository.findAll();
-        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
-    }
 }
+
