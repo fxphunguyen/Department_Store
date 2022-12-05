@@ -3599,6 +3599,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:focus::-m
 .MuiTableContainer-root {
     width: 100%;
     overflow-x: auto;
+    /*position: absolute;*/
+}
+.mdl-js {
+    overflow-x: hidden;
 }
 
 .MuiTable-root {
@@ -7517,4 +7521,95 @@ html{
     align-items: center;
 }
 
+.hlxtkG {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-flex;
+    white-space: nowrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 0.285714rem;
+    border-radius: 1.14286rem;
+    height: 1.71429rem;
+    border: 1px solid rgb(255, 223, 155);
+    background-color: rgb(255, 247, 231);
+}
 
+.gIZkwA {
+    padding: 0px 0.571429rem;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 0.928571rem;
+    line-height: 1.14286rem;
+    margin: 0px;
+    color: rgb(228, 156, 6);
+}
+
+.hBmWYo {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-flex;
+    white-space: nowrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 0.285714rem;
+    border-radius: 1.14286rem;
+    height: 1.71429rem;
+    border: 1px solid rgb(159, 237, 207);
+    background-color: rgb(243, 252, 249);
+}
+
+.bzQjtT {
+    padding: 0px 0.571429rem;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 0.928571rem;
+    line-height: 1.14286rem;
+    margin: 0px;
+    color: rgb(13, 180, 115);
+}
+
+.csJERM {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-flex;
+    white-space: nowrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 0.285714rem;
+    border-radius: 1.14286rem;
+    height: 1.71429rem;
+    border: 1px solid rgb(255, 184, 184);
+    background-color: rgb(255, 246, 246);
+}
+
+.ccQLIN {
+    padding: 0px 0.571429rem;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 0.928571rem;
+    line-height: 1.14286rem;
+    margin: 0px;
+    color: rgb(238, 71, 71);
+}

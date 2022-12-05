@@ -43,7 +43,7 @@ public class PaymentOrder {
     private Integer paymentMethodId;
 
     @Column(name = "create_at", nullable = false, length = 50)
-    private Date createAt;
+    private String createAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
@@ -51,6 +51,16 @@ public class PaymentOrder {
 
     @Column(name = "order_id", insertable = false, updatable = false)
     private Integer orderId;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @Column(name = "customer_id", insertable = false, updatable = false)
+    private Integer customerId;
+
+    @Column(name = "description", nullable = false, length = 200)
+    private String description;
 
     public PaymentOrder setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);

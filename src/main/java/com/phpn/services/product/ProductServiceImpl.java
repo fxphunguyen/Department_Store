@@ -3,6 +3,10 @@ package com.phpn.services.product;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+<<<<<<< HEAD
+=======
+
+>>>>>>> de566f8afd7f279511a167d3120b288b8a1b604b
 import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
@@ -31,7 +35,13 @@ public class ProductServiceImpl implements ProductService {
                 .map(productMapper :: toDTO)
                 .collect(Collectors.toList());
     }
-
+//    public List<ProductResult> findAll1() {
+//        item.findBNyProdcutId
+//        return productRepository.findAll()
+//                .stream()
+//                .map(productMapper :: toDTO)
+//                .collect(Collectors.toList());
+//    }
     @Override
     public List<ProductResult> showAllProduct() {
         return productRepository.findAll()

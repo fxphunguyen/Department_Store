@@ -22,6 +22,7 @@ import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderItemServiceImpl implements OrderItemService {
@@ -51,38 +52,10 @@ public class OrderItemServiceImpl implements OrderItemService {
         return null;
     }
 
-    @Override
-    @Transactional
-    public OrderItemResult createOrderItem(OrderItemParam orderItemParam) {
-        Integer productId = orderItemParam.getProductId();
-        Integer itemId = orderItemParam.getItemId();
-        BigDecimal totalProduct;
-        int quantity = orderItemParam.getQuantity();
-
-        Optional<Product> productOptional = productRepository.findById(productId);
-
-        Optional<Item> itemOptional = itemRepository.findById(itemId);
-
-        BigDecimal retailProduct = productOptional.get().getRetailPrice();
-
-        if (productId == null){
-            throw new NotEnoughQuantityException("Không tìm thấy Id sản phẩm");
-        }
-
-        OrderItem orderItem = orderItemMapper.toModel(orderItemParam);
-
-        orderItem.setQuantity(orderItem.getQuantity() + 1);
-
-        totalProduct = retailProduct.multiply(new BigDecimal(quantity));
-
-        orderItem.setQuantity(quantity);
-        orderItem.setItemId(itemId);
-        orderItem.setProductId(productId);
-        orderItem.setOrderId(orderItem.getId());
-        orderItemRepository.save(orderItem);
-
-        return orderItemMapper.toDTO(orderItem);
-    }
-
-
+ @Override
+ public List<OrderItemResult> findAllOrderItemByOrderId(Integer orderId) {
+     return orderItemRepository.findAllByOrderId(orderId)
+             .stream().map(orderItem -> orderItemMapper.toDTO(orderItem))
+             .collect(Collectors.toList());
+ }
 }

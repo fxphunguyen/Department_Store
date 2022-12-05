@@ -19,4 +19,9 @@ public class AuthenticationController {
         return new ModelAndView("/admin/authentications/register");
     }
 
+    @GetMapping("/404")
+    public ModelAndView showExceptionPage() {
+        return new ModelAndView("/admin/exceptions/exception");
+    }
+
 }

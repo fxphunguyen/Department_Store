@@ -1,33 +1,3 @@
-class LocationRegionCreate {
-    constructor(address, wardId, wardName, districtId, districtName, provinceId, provinceName) {
-        this.address = address;
-        this.wardId = wardId;
-        this.wardName = wardName;
-        this.districtId = districtId;
-        this.districtName = districtName;
-        this.provinceId = provinceId;
-        this.provinceName = provinceName;
-    }
-}
-
-class Supplier {
-    constructor(supplierCode, name, email, phone, supplierStatus, description, employeeId, paymentMethodId, locationRegionId, locationRegionCreate) {
-        this.supplierCode = supplierCode;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.supplierStatus = supplierStatus;
-        this.description = description;
-        this.employeeId = employeeId;
-        this.paymentMethodId = paymentMethodId;
-        this.locationRegionId = locationRegionId;
-        this.locationRegionCreate = locationRegionCreate;
-    }
-}
-
-const locationRegionCreate = new LocationRegionCreate();
-const supplier = new Supplier();
-
 (() => {
     return $.ajax({
         "headers": {
