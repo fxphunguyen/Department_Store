@@ -20,6 +20,7 @@ public class ShippingAddress {
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(name = "full_name", length = 50)
     private String fullName;
 
@@ -51,6 +52,7 @@ public class ShippingAddress {
 
     @Column(name = "ward_name", nullable = false, length = 50)
     private String wardName;
+
     @Column(name = "zip_code", length = 10)
     private String zipCode;
 

@@ -5,7 +5,7 @@ import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.dto.shipping_address.CreateShippingAddressParam;
 import com.phpn.mappers.customer.CustomerMapper;
-import com.phpn.mappers.customer.ShippingAddressMapper;
+import com.phpn.mappers.shippingAddress.ShippingAddressMapper;
 import com.phpn.repositories.CustomerRepository;
 
 import com.phpn.repositories.ShippingAddressRepository;
@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 
 
 @Service
-
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
