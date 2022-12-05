@@ -11,6 +11,8 @@ public class CreateShippingAddressParam {
 
     private Integer Id;
 
+    private String address;
+
     private String line1;
 
     private String line2;
@@ -28,6 +30,15 @@ public class CreateShippingAddressParam {
     private String provinceName;
 
     private Integer customerId;
+
+    private String email;
+
+    private String zipCode;
+
+    private  String fullName;
+
+    private  String mobile;
+
 
     private Integer supplierId;
 

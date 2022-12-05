@@ -14,6 +14,8 @@ public class ShippingAddressResult {
 
     private Integer customerId;
 
+    private String address;
+
     private String line1;
 
     private String line2;
