@@ -44,10 +44,4 @@ public class ShippingAddressAPI {
         return  new ResponseEntity<>(shippingAddressResult, HttpStatus.OK) ;
     }
 
-    @PostMapping("/createssa")
-    @Transactional(readOnly = true)
-    public ResponseEntity<ShippingAddress> createShipping(@RequestBody CreateShippingAddressParam createShippingAddressParam ){
-        System.out.println(createShippingAddressParam.getAddress());
-        return  new ResponseEntity<>(shippingAddressRepository.save(shippingAddressMapper.toModel(createShippingAddressParam)), HttpStatus.OK) ;
-    }
 }

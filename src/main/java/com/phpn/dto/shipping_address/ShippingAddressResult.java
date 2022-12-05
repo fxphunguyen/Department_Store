@@ -16,6 +16,10 @@ public class ShippingAddressResult {
 
     private String address;
 
+    private String line1;
+
+    private String line2;
+
     private Integer wardId;
 
     private String wardName;
@@ -30,8 +34,20 @@ public class ShippingAddressResult {
 
     private String mobile;
 
-    private  String email;
+    private String email;
 
     private String zipCode;
+
+    private Boolean isDefault;
+
+
+    public ShippingAddressResult setDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
+        return this;
+    }
+
+    public boolean isDefault() {
+        return isDefault;
+    }
 
 }
