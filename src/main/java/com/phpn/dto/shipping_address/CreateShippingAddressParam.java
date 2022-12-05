@@ -11,7 +11,9 @@ public class CreateShippingAddressParam {
 
     private Integer Id;
 
-    private String address;
+    private String line1;
+
+    private String line2;
 
     private Integer wardId;
 
@@ -28,4 +30,14 @@ public class CreateShippingAddressParam {
     private Integer customerId;
 
     private Integer supplierId;
+
+    private Boolean isDefault;
+
+    public void setDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
+    }
+
+    public boolean isDefault() {
+        return isDefault;
+    }
 }

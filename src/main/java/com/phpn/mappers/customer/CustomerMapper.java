@@ -3,20 +3,25 @@ package com.phpn.mappers.customer;
 
 import com.phpn.dto.customer.CreateCustomerParam;
 import com.phpn.dto.customer.CustomerOrderResult;
-import com.phpn.dto.customer.CustomerParam;
 import com.phpn.dto.customer.CustomerResult;
+import com.phpn.dto.shipping_address.ShippingAddressResult;
 import com.phpn.mappers.employee.EmployeeMapper;
-import com.phpn.repositories.model.*;
+import com.phpn.repositories.model.Customer;
+import com.phpn.repositories.model.CustomerStatus;
+import com.phpn.repositories.model.ShippingAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
+import java.util.ArrayList;
 
 @Component
 public class CustomerMapper {
 
     @Autowired
     private EmployeeMapper employeeMapper;
+
+    @Autowired
+    private ShippingAddressMapper shippingAddressMapper;
 
 
     public CustomerResult toDTO(Customer customer) {
@@ -34,7 +39,11 @@ public class CustomerMapper {
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
                 .setCustomerStatus(customer.getCustomerStatus());
+//        customer.getShippingAddressSet().stream().map(shippingAddressMapper.toDTO())
+//                .setShippingAddressList(new ArrayList<ShippingAddressResult>(customer.getShippingAddressSet()));
+
     }
+
     public CustomerOrderResult toOrderDTO(Customer customer) {
         return new CustomerOrderResult()
                 .setId(customer.getId())
@@ -54,11 +63,10 @@ public class CustomerMapper {
                 .setCustomerGroup(customerCreate.getCustomerGroup())
                 .setEmail(customerCreate.getEmail())
                 .setBirthday(customerCreate.getBirthday())
-                .setShippingAddressSet((Set<ShippingAddress>) customerCreate.getShippingAddress())
                 .setCustomerStatus(CustomerStatus.AVAILABLE);
     }
 
-    public Customer toCustomer( CreateCustomerParam customerCreate) {
+    public Customer toCustomer(CreateCustomerParam customerCreate) {
         return new Customer()
                 .setId(customerCreate.getId())
                 .setCustomerCode(customerCreate.getCustomerCode())
@@ -67,10 +75,13 @@ public class CustomerMapper {
                 .setCustomerGroup(customerCreate.getCustomerGroup())
                 .setCustomerGender(customerCreate.getCustomerGender())
                 .setEmail(customerCreate.getEmail())
-                .setBirthday(customerCreate.getBirthday());
+                .setBirthday(customerCreate.getBirthday())
+                .setCustomerGender(customerCreate.getCustomerGender())
+                .setCustomerStatus(customerCreate.getCustomerStatus())
+                .setEmployeeId(customerCreate.getEmployeeId());
     }
 
-    public Customer toCustomer(CustomerResult customerResult ,Customer customer) {
+    public Customer toCustomer(CustomerResult customerResult, Customer customer) {
         return customer
                 .setId(customerResult.getId())
                 .setCustomerCode(customerResult.getCustomerCode())
@@ -82,10 +93,7 @@ public class CustomerMapper {
                 .setBirthday(customerResult.getBirthday())
                 .setCustomerStatus(customerResult.getCustomerStatus())
                 .setUpdateAt(customerResult.getUpdateAt());
-
     }
-
-
 
 
 }
