@@ -909,6 +909,7 @@ function showProductInfo(productId) {
     $("#divNoInfo").remove();
     $("#divTbProduct").removeClass("hide");
     handleGrandTotal();
+    $("#vat_tax").removeClass('hide');
 
 }
 
@@ -974,13 +975,14 @@ const addQuantity = (productId) => {
 
 function handleGrandTotal(){
     let grandTotal = 0;
+    let totalQuantity = 0;
     $("#tbProduct tbody tr").each(function (){
-
         let rowId = $(this).attr("id").replaceAll("tr_", "");
-
         let item = +$("#amount_product_" + rowId).text().replaceAll(",", "");
-
+        let qty = +$("#quantity_product_" + rowId).val();
+        totalQuantity += qty;
         grandTotal += item;
+        $("#quantity_products").text("Tổng tiền (" + totalQuantity + " sản phẩm)");
        $("#grandTotal").text(grandTotal.formatVND());
     })
 }
