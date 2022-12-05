@@ -27,5 +27,14 @@ public class CreateShippingAddressParam {
 
     private Integer customerId;
 
+    private String email;
+
+    private String zipCode;
+
+    private  String fullName;
+
+    private  String mobile;
+
+
     private Integer supplierId;
 }

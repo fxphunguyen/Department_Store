@@ -334,7 +334,8 @@ let modalcontact = `
 
 //model địa chỉ
 let modalAddress = `   <div class="MuiBox-root jss797 jss621">
-              <div class="MuiBox-root jss5983 jss5981"><button id="Sapo-Button-f9fb4048-7102-4ea6-8bc9-6aa660ffc959" class="sc-jqUVSM cdDLAY" style="float: right; margin-top: -58px"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(163, 168, 175); width: 18px;">
+              <div class="MuiBox-root jss5983 jss5981">
+              <button id="btn_showModalCreateAddress" class="btn_showModalCreateAddress sc-jqUVSM cdDLAY" style="float: right; margin-top: -58px"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(163, 168, 175); width: 18px;">
                     <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z">
                     </path>
                   </svg><span class="sc-papXJ fCIlZX">Thêm mới địa chỉ</span></button></div>
@@ -547,15 +548,7 @@ let modalCongNo = ` <div class="MuiBox-root jss828 jss820">
                             <div class="MuiTableContainer-root jss865 sapo-grid-header-wrapper">
                                 <table class="MuiTable-root jss866 sapo-grid-header" aria-labelledby="tableTitle"
                                        aria-label="enhanced table">
-                                    <colgroup>
-                                        <col style="width: 100px;">
-                                        <col style="width: 100px;">
-                                        <col style="width: 100px;">
-                                        <col style="width: 100px;">
-                                        <col style="width: 100px;">
-                                        <col style="width: 100px;">
-                                        <col style="width: 100px;">
-                                    </colgroup>
+                                    
                                     <thead class="MuiTableHead-root jss879">
                                     <tr class="MuiTableRow-root MuiTableRow-head">
                                         <th class="MuiTableCell-root MuiTableCell-head jss883 MuiTableCell-alignLeft"
@@ -581,26 +574,9 @@ let modalCongNo = ` <div class="MuiBox-root jss828 jss820">
                                         </th>
                                     </tr>
                                     </thead>
-                                </table>
-                            </div>
-                            <div class="MuiTableContainer-root jss867 sapo-grid-body-wrapper">
-                                <div style="position: relative; overflow: hidden; width: 100%; height: auto; min-height: 0px; max-height: unset;">
-                                    <div style="position: relative; overflow: scroll; margin-right: -17px; margin-bottom: -17px; min-height: 17px;">
-                                        <table class="MuiTable-root jss868 sapo-grid-body" aria-labelledby="tableTitle"
-                                               aria-label="enhanced table">
-                                            <colgroup>
-                                                <col style="width: 100px;">
-                                                <col style="width: 100px;">
-                                                <col style="width: 100px;">
-                                                <col style="width: 100px;">
-                                                <col style="width: 100px;">
-                                                <col style="width: 100px;">
-                                                <col style="width: 100px;">
-                                            </colgroup>
-                                            <tbody class="MuiTableBody-root showCustomerDebtById" >
-
-                                            </tbody>
-                                        </table>
+                                    <tbody class="MuiTableBody-root showCustomerDebtById" >
+                                    </tbody>
+                                     </table>
                                     </div>
                                     <div class="jss870" style="position: fixed; height: 6px; left: 262px;">
                                         <div class="jss871"
@@ -611,7 +587,8 @@ let modalCongNo = ` <div class="MuiBox-root jss828 jss820">
                                     </div>
                                 </div>
                             </div>
-                            <div class="MuiBox-root jss926 jss921 sapo-pagination"><p
+                            <div class="MuiBox-root jss926 jss921 sapo-pagination">
+                            <p
                                     class="MuiTypography-root MuiTypography-body1">Hiển thị</p>
                                 <div class="MuiFormControl-root">
                                     <div class="MuiInputBase-root MuiOutlinedInput-root jss922 MuiInputBase-formControl">
@@ -767,7 +744,7 @@ let modalHistoryOrder = `
                                                 scope="col" colspan="1" rowspan="1">Trạng thái
                                             </th>
                                             <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignRight"
-                                                scope="col" colspan="1" rowspan="1" style="width: 200px ;text-align: center; color: black;">Giá trị
+                                                scope="col" colspan="1" rowspan="1" style="width: 200px ;text-align: end; color: black;">Giá trị
                                             </th>
                                             <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
                                                 scope="col" colspan="1" rowspan="1">Chi nhánh
@@ -786,14 +763,6 @@ let modalHistoryOrder = `
                                             </th>
                                         </tr>
                                         </thead>
-                                    </table>
-                                </div>
-                                <div class="MuiTableContainer-root jss1384 sapo-grid-body-wrapper">
-                                    <div style="position: relative; overflow: hidden; width: 100%; height: auto; min-height: 0px; max-height: unset;">
-                                        <div style="position: relative; overflow: scroll; margin-right: -17px; margin-bottom: -17px; min-height: 17px;">
-                                            <table class="MuiTable-root jss1385 sapo-grid-body"
-                                                   aria-labelledby="tableTitle" aria-label="enhanced table">
-
                                                 <tbody class="MuiTableBody-root showAllCustomerOrderHistory">
                                                 </tbody>
                                             </table>
@@ -950,7 +919,7 @@ let modalHistoryOrder = `
 
     `
 
-let modalNote = `
+let noModalNote = `
                         <div class="MuiBox-root jss817 jss641">
                         <div class="MuiBox-root jss3560 jss3558">
                             <button id="Sapo-Button-fb87e2dd-7d9d-4775-b5d8-b40cf52e2756" class="sc-jqUVSM cdDLAY">
@@ -967,6 +936,84 @@ let modalNote = `
                     </div>
     `;
 
+let modalNote = `
+                    <div class="MuiPaper-root jss22054 sapo-grid MuiPaper-elevation1 MuiPaper-rounded"><div class="MuiTableContainer-root jss22055 sapo-grid-header-wrapper"><table class="MuiTable-root jss22056 sapo-grid-header" aria-labelledby="tableTitle" aria-label="enhanced table"><colgroup><col style="width: 45px;"><col style="width: 297px;"><col style="width: 251px;"><col style="width: 207px;"></colgroup><thead class="MuiTableHead-root jss22069"><tr class="MuiTableRow-root MuiTableRow-head"><th class="MuiTableCell-root MuiTableCell-head jss22078 MuiTableCell-paddingCheckbox" scope="col" rowspan="1" style="padding-left: 16px;"><div class="MuiBox-root jss22099"><span class="MuiButtonBase-root MuiIconButton-root jss22110 MuiCheckbox-root MuiCheckbox-colorPrimary jss22100 MuiIconButton-colorPrimary" aria-disabled="false" data-tip="Chọn tất cả ghi chú" currentitem="false" style="margin: 0px;"><span class="MuiIconButton-label"><input class="jss22113" type="checkbox" data-indeterminate="false" value=""><span class="jss22101" font-size="small"></span></span><span class="MuiTouchRipple-root"></span></span></div></th><th class="MuiTableCell-root MuiTableCell-head jss22073 MuiTableCell-alignLeft" scope="col" colspan="1" rowspan="1">Ghi chú</th><th class="MuiTableCell-root MuiTableCell-head jss22073 MuiTableCell-alignLeft" scope="col" colspan="1" rowspan="1">Người thêm</th><th class="MuiTableCell-root MuiTableCell-head jss22073 MuiTableCell-alignLeft" scope="col" colspan="1" rowspan="1">Thời gian</th></tr></thead></table></div><div class="MuiTableContainer-root jss22057 sapo-grid-body-wrapper"><div style="position: relative; overflow: hidden; width: 100%; height: auto; min-height: 0px; max-height: unset;"><div style="position: relative; overflow: scroll; margin-right: -17px; margin-bottom: -17px; min-height: 17px;"><table class="MuiTable-root jss22058 sapo-grid-body" aria-labelledby="tableTitle" aria-label="enhanced table"><colgroup><col style="width: 45px;"><col style="width: 297px;"><col style="width: 251px;"><col style="width: 207px;"></colgroup><tbody class="MuiTableBody-root"><tr class="MuiTableRow-root jss22115 MuiTableRow-hover" role="checkbox" aria-checked="false" tabindex="-1"><td class="MuiTableCell-root MuiTableCell-body jss22118 MuiTableCell-paddingCheckbox" style="padding-left: 16px;"><span class="MuiButtonBase-root MuiIconButton-root jss22110 MuiCheckbox-root MuiCheckbox-colorPrimary jss22100 MuiIconButton-colorPrimary" aria-disabled="false" style="margin: 0px;"><span class="MuiIconButton-label"><input class="jss22113" type="checkbox" data-indeterminate="false" value=""><span class="jss22101" font-size="small"></span></span><span class="MuiTouchRipple-root"></span></span></td><td class="MuiTableCell-root MuiTableCell-body jss22121 cellClick MuiTableCell-alignLeft"><p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="sss" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">sss</p></td><td class="MuiTableCell-root MuiTableCell-body jss22121 MuiTableCell-alignLeft"><div class="MuiBox-root jss22125" style="cursor: pointer;">Nguyễn Đình Quốc Huy</div></td><td class="MuiTableCell-root MuiTableCell-body jss22121 MuiTableCell-alignLeft"><div class="MuiBox-root jss22126" style="cursor: pointer;">05-12-2022 12:39</div></td></tr></tbody></table></div><div class="jss22060" style="position: fixed; height: 6px; left: 262px;"><div class="jss22061" style="position: relative; display: block; height: 100%; width: 0px;"></div></div><div style="position: absolute; width: 6px; right: 2px; bottom: 2px; top: 2px; border-radius: 3px;"><div style="position: relative; display: block; width: 100%; cursor: pointer; border-radius: inherit; background-color: rgba(0, 0, 0, 0.2); height: 0px;"></div></div></div></div><div class="MuiBox-root jss22132 jss22127 sapo-pagination"><p class="MuiTypography-root MuiTypography-body1">Hiển thị</p><div class="MuiFormControl-root"><div class="MuiInputBase-root MuiOutlinedInput-root jss22128 MuiInputBase-formControl"><div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input" tabindex="0" role="button" aria-haspopup="listbox"><p class="MuiTypography-root jss22130 MuiTypography-body1">20</p></div><input type="hidden" value="20"><svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"></path></svg><fieldset aria-hidden="true" class="jss21538 MuiOutlinedInput-notchedOutline" style="padding-left: 8px;"><legend class="jss21539" style="width: 0.01px;"><span>​</span></legend></fieldset></div></div><p class="MuiTypography-root MuiTypography-body1">kết quả</p><p class="MuiTypography-root jss22129 MuiTypography-body1">Từ 1 đến 1 trên tổng 1</p><nav aria-label="pagination navigation" class="MuiPagination-root jss22131"><ul class="MuiPagination-ul"><li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled" tabindex="-1" type="button" disabled="" aria-label="Go to previous page"><svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg></button></li><li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall" tabindex="0" type="button" aria-current="true" aria-label="page 1">1<span class="MuiTouchRipple-root"></span></button></li><li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled" tabindex="-1" type="button" disabled="" aria-label="Go to next page"><svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></li></ul></nav></div><div class="__react_component_tooltip tb680b5d8-75fa-4bd1-8da8-c1e0942cab02 place-top type-light jss22059" id="tb680b5d8-75fa-4bd1-8da8-c1e0942cab02" data-id="tooltip" style="left: 361px; top: 662px;"><style aria-hidden="true">
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02 {
+                            color: #222;
+                            background: #fff;
+                            border: 1px solid transparent;
+                        }
+
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02.place-top {
+                            margin-top: -10px;
+                        }
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02.place-top::before {
+                            border-top: 8px solid transparent;
+                        }
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02.place-top::after {
+                            border-left: 8px solid transparent;
+                            border-right: 8px solid transparent;
+                            bottom: -6px;
+                            left: 50%;
+                            margin-left: -8px;
+                            border-top-color: #fff;
+                            border-top-style: solid;
+                            border-top-width: 6px;
+                        }
+
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02.place-bottom {
+                            margin-top: 10px;
+                        }
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02.place-bottom::before {
+                            border-bottom: 8px solid transparent;
+                        }
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02.place-bottom::after {
+                            border-left: 8px solid transparent;
+                            border-right: 8px solid transparent;
+                            top: -6px;
+                            left: 50%;
+                            margin-left: -8px;
+                            border-bottom-color: #fff;
+                            border-bottom-style: solid;
+                            border-bottom-width: 6px;
+                        }
+
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02.place-left {
+                            margin-left: -10px;
+                        }
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02.place-left::before {
+                            border-left: 8px solid transparent;
+                        }
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02.place-left::after {
+                            border-top: 5px solid transparent;
+                            border-bottom: 5px solid transparent;
+                            right: -6px;
+                            top: 50%;
+                            margin-top: -4px;
+                            border-left-color: #fff;
+                            border-left-style: solid;
+                            border-left-width: 6px;
+                        }
+
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02.place-right {
+                            margin-left: 10px;
+                        }
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02.place-right::before {
+                            border-right: 8px solid transparent;
+                        }
+                        .tb680b5d8-75fa-4bd1-8da8-c1e0942cab02.place-right::after {
+                            border-top: 5px solid transparent;
+                            border-bottom: 5px solid transparent;
+                            left: -6px;
+                            top: 50%;
+                            margin-top: -4px;
+                            border-right-color: #fff;
+                            border-right-style: solid;
+                            border-right-width: 6px;
+                        }
+                    </style>sss</div></div>
+
+`
 let modalCustomerGroup = `
                         <div class="MuiBox-root jss817 jss641">
                         <div class="MuiBox-root jss3895 jss3892">
@@ -1199,3 +1246,285 @@ $('#histories').css({
 //     });
 //     $('.showModelHistory').append(modalCustomerGroup)
 // });
+
+
+function getAllProvinces() {
+    return $.ajax({
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        type: "GET",
+        url: "https://vapi.vnappmob.com/api/province/"
+    })
+        .done((data) => {
+            if (data.results.length === 0) {
+                let str = `<option value="0">Chọn Tỉnh/Thành Phố</option>`;
+                $("#province").append(str);
+            } else {
+                $.each(data.results, (i, item) => {
+                    let str = `<option value="${item.province_id}">${item.province_name}</option>`;
+                    $("#province").append(str);
+                    $('#provinceUpdate').append(str);
+                });
+            }
+
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR);
+        })
+}
+
+function getAllDistrictsByProvinceId(provinceId) {
+    $("#district").empty();
+    $("#districtUpdate").empty();
+    return $.ajax({
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        type: "GET",
+        url: "https://vapi.vnappmob.com/api/province/district/" + provinceId
+    })
+        .done((data) => {
+            if (data.results.length === 0) {
+                let str = `<option value="0">Chọn Quận/Huyện</option>`;
+                $("#district").append(str);
+            } else {
+                $.each(data.results, (i, item) => {
+                    let str = ` <option value="${item.district_id}">${item.district_name}</option>`;
+                    $("#district").append(str);
+                    $('#districtUpdate').append(str);
+                })
+
+            }
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR);
+        })
+}
+
+function getAllWardsByDistrictId(districtId) {
+    $("#ward").empty();
+    $('#wardUpdate').empty();
+    return $.ajax({
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        type: "GET",
+        url: "https://vapi.vnappmob.com/api/province/ward/" + districtId
+    })
+        .done((data) => {
+            // $('#ward').html('');
+            // $('#wardUpdate').html('');
+
+            if (data.results.length === 0) {
+                let str = `<option value="0">Chọn Phường/Xã</option>`;
+                $("#ward").append(str);
+
+            } else {
+                $.each(data.results, (i, item) => {
+                    let str = `<option value="${item.ward_id}">${item.ward_name}</option>`;
+                    $("#ward").append(str);
+                    $('#wardUpdate').append(str);
+                });
+            }
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR);
+        })
+}
+
+getAllProvinces().then(() => {
+    let provinceId = $("#province").val();
+
+    getAllDistrictsByProvinceId(provinceId).then(() => {
+
+        let districtId = $("#district").val();
+
+        getAllWardsByDistrictId(districtId);
+    });
+});
+$("#province").on('change', () => {
+    let provinceId = $("#province").val();
+    getAllDistrictsByProvinceId(provinceId).done(() => {
+        let districtId = $("#district").val();
+        getAllWardsByDistrictId(districtId);
+    })
+
+    $("#district").on('change', () => {
+        let districtId = $("#district").val();
+        getAllWardsByDistrictId(districtId);
+    })
+});
+
+$("#provinceUpdate").on("change", () => {
+    let provinceId = $("#provinceUpdate").val();
+    getAllDistrictsByProvinceId(provinceId).then(() => {
+        let districtId = $("#districtUpdate").val();
+        getAllWardsByDistrictId(districtId);
+    })
+})
+
+$("#districtUpdate").on("change", () => {
+    let districtId = $("#districtUpdate").val();
+    getAllWardsByDistrictId(districtId);
+});
+
+
+
+<!--    Công nợ-->
+$('#debts').click(function () {
+    deleteEventModelShow();
+
+    $('#debts').css({
+        'color': '#4a8aff',
+        'border-bottom': '2px solid rgb(0, 136, 255)'
+    });
+    $('.showModelHistory').append(modalCongNo)
+    showCustomerInfoDebt();
+});
+
+//Lịch sừ mua hàng
+$('#histories').click(function () {
+    deleteEventModelShow();
+    $('#histories').css({
+        'color': '#4a8aff',
+        'border-bottom': '2px solid rgb(0, 136, 255)'
+    });
+
+    showCustomerInfoHistory();
+});
+
+function showCustomerInfoHistory() {
+    let idCustomer = $('.idCustomerDelete').val();
+    console.log(idCustomer)
+    return $.ajax({
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        type: "GET",
+        url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer
+    })
+        .done((data) => {
+            console.log(data)
+            if (data.length === 0){
+                return  $(".showModelHistory").append(noModalHistoryOrder);
+            }
+            if (0 < data.length){
+                $('.showModelHistory').append(modalHistoryOrder)
+                return   $.each(data, (i, customer) => {
+                    let str = `
+                                     <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
+                                                tabindex="-1">
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                    <a class="jss1437" href="/admin/orders/1167549753">${customer.order_code}</a>
+                                                </td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                    <div class="sc-jSMfEi hBmWYo"><span class="${customer.status === 'Đang giao dịch' ? 'sc-eCYdqJ bzQjtT text-success' : 'sc-eCYdqJ bzQjtT text-warning'}">${customer.status}</span>
+                                                    </div>
+                                                </td>
+
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignRight">
+                                                    <p class="MuiTypography-root MuiTypography-body1"
+                                                       >
+                                                       ${customer.grand_total != null ? (new Intl.NumberFormat('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }).format(customer.grand_total)) : "---"}
+                                                       </p></td>
+
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                    <p class="MuiTypography-root MuiTypography-body1"
+                                                       >Chi nhánh mặc định</p></td>
+                                                         <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                <p class="MuiTypography-root MuiTypography-body1"
+                                                       >${customer.debt != null ? (new Intl.NumberFormat('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }).format(customer.debt)) : "---"}</p></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                    <p class="MuiTypography-root MuiTypography-body1" title="Pos">
+                                                        Web</p></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                    <p class="MuiTypography-root MuiTypography-body1"
+                                                       title="">${customer.employee_name}</p></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+                                                    <div>
+                                                    ${customer.create_at != null ? moment(customer.create_at).format('DD/MM/yyyy hh:ss') : "---"}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                   `
+                    $(".showAllCustomerOrderHistory").append(str);
+                });
+
+            }
+        })
+        .fail((jqXHR) => {
+
+        })
+}
+
+
+
+
+// Công nợ
+function showCustomerInfoDebt() {
+    let idCustomer = $('.idCustomerDelete').val();
+    console.log(idCustomer)
+    return $.ajax({
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        type: "GET",
+        url: "http://localhost:8080/api/customers/customerDebt/" + idCustomer
+    })
+        .done((data) => {
+            console.log(data)
+            $.each(data, (i, order) => {
+                let str = `
+                   <tr class="MuiTableRow-root jss910 MuiTableRow-hover" role="checkbox"
+                                                tabindex="-1">
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+                                                    <a class="jss920" target="_blank"
+                                                       href="/admin/receipt_vouchers/296331927/edit">${order.order_code}</a></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+                                                    <span>${order.employee_name}</td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+                                                    <span>
+                                                        ${order.create_at != null ? moment(order.create_at).format('DD/MM/yyyy hh:ss') : "---"}</td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+                                                    <span>
+                                                         ${order.create_at != null ? moment(order.create_at).format('DD/MM/yyyy hh:ss') : "---"}</td>
+                                                    </span></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+                                                    <span>${order.description}</span></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignRight">
+                                                    <span style="padding: 16px;">
+                                                                   ${order.transaction != null ? (new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(order.transaction)) : "---"}</span></td>
+                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignRight">
+                                                    <span style="padding: 16px;"> ${order.total_transaction != null ? (new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(order.total_transaction)) : "---"}</span></td>
+                                                    </tr>
+                                        `
+                $(".showCustomerDebtById").prepend(str);
+            });
+        })
+        .fail((jqXHR) => {
+
+        })
+}
+
+
+
+
+

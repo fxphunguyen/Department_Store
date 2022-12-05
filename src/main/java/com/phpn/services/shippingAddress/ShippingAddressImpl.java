@@ -1,9 +1,11 @@
 package com.phpn.services.shippingAddress;
 
 
+import com.phpn.dto.shipping_address.CreateShippingAddressParam;
 import com.phpn.dto.shipping_address.ShippingAddressResult;
 import com.phpn.mappers.shippingAddress.ShippingAddressMapper;
 import com.phpn.repositories.ShippingAddressRepository;
+import com.phpn.repositories.model.ShippingAddress;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +37,9 @@ public class ShippingAddressImpl implements  ShippingAddressService{
     }
 
     @Override
-    public ShippingAddressResult create() {
-        return null;
+    public ShippingAddressResult create(CreateShippingAddressParam createShippingAddressParam) {
+        shippingAddressRepository.save(shippingAddressMapper.toModel(createShippingAddressParam));
+        ShippingAddress shippingAddress = shippingAddressRepository.save(shippingAddressMapper.toModel(createShippingAddressParam));
+        return shippingAddressMapper.toDTO(shippingAddress);
     }
 }

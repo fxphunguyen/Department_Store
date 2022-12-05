@@ -30,14 +30,19 @@ public class ShippingAddressMapper {
 
         public ShippingAddress toModel(CreateShippingAddressParam createParam) {
         return new ShippingAddress()
+                .setLine1(createParam.getAddress())
                 .setCustomerId(createParam.getCustomerId())
-                .setId(createParam.getId())
                 .setWardId(createParam.getWardId())
                 .setWardName(createParam.getWardName())
                 .setDistrictId(createParam.getDistrictId())
                 .setDistrictName(createParam.getDistrictName())
                 .setProvinceId(createParam.getProvinceId())
-                .setProvinceName(createParam.getProvinceName());
+                .setProvinceName(createParam.getProvinceName())
+                .setZipCode(createParam.getZipCode())
+                .setEmail(createParam.getEmail())
+                .setFullName(createParam.getFullName())
+                .setMobile(createParam.getMobile());
+
 
 
     }
