@@ -70,7 +70,7 @@ public class ShippingAddress {
     @Column(name = "supplier_id", insertable = false, updatable = false)
     private Integer supplierId;
 
-    @Column(name = "default", nullable = false)
+    @Column(name = "default",  insertable = true)
     private Boolean isDefault;
 
     public ShippingAddress setCustomerId(Integer customerId) {

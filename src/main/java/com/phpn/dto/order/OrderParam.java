@@ -19,6 +19,20 @@ public class OrderParam {
 
     private Integer id;
 
+    private String fullName;
+
+    private String mobile;
+
+    private String line1;
+
+    private String line2;
+
+    private String city;
+
+    private String province;
+
+    private String zipCode;
+
     private Integer employeeId;
 
     private Integer customerId;

@@ -25,7 +25,7 @@ public class OrderAPI {
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping("")
+    @GetMapping()
     public ResponseEntity<?> findAll() {
         List<OrderResult> orderResults = orderService.findAll();
 

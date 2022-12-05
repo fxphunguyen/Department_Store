@@ -1,6 +1,7 @@
 package com.phpn.dto.order;
 
 import com.phpn.dto.customer.CustomerOrderResult;
+import com.phpn.dto.customer.CustomerResult;
 import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.orderItem.OrderItemResult;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,20 @@ public class OrderResult {
 
     private Integer id;
 
+    private String fullName;
+
+    private String mobile;
+
+    private String line1;
+
+    private String line2;
+
+    private String city;
+
+    private String province;
+
+    private String zipCode;
+
     private Integer employeeId;
 
     private EmployeeResult employee;
@@ -36,7 +51,7 @@ public class OrderResult {
 
     private Integer customerId;
 
-    private CustomerOrderResult customer;
+    private CustomerResult customer;
 
     private BigDecimal total;
 

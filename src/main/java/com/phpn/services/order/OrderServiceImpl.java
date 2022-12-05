@@ -89,6 +89,8 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderCode("SON00"+String.valueOf(ranNum));
         order.setCreateAt(Instant.now());
         order.setSubTotal(new BigDecimal(0));
+        order.setLine1(order.getLine1());
+        order.setLine2(order.getLine2());
         order.setCustomer(customerOptional.get());
         order.setEmployee(employeeOptional.get());
         order = orderRepository.save(order);
