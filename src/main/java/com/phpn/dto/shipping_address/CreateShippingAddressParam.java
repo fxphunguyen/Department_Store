@@ -1,17 +1,19 @@
 package com.phpn.dto.shipping_address;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter
 @Setter
 @Accessors(chain = true)
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateShippingAddressParam {
 
-    private Integer Id;
-
-    private String address;
+//    private Integer Id;
 
     private String line1;
 
@@ -39,16 +41,15 @@ public class CreateShippingAddressParam {
 
     private  String mobile;
 
-
     private Integer supplierId;
 
     private Boolean isDefault;
 
-    public void setDefault(Boolean isDefault) {
-        this.isDefault = isDefault;
-    }
-
-    public boolean isDefault() {
-        return isDefault;
-    }
+//    public void setDefault(Boolean isDefault) {
+//        this.isDefault = isDefault;
+//    }
+//
+//    public boolean isDefault() {
+//        return isDefault;
+//    }
 }

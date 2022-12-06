@@ -80,7 +80,6 @@ public class CustomerMapper {
 
     public Customer toCustomer(CreateCustomerParam customerCreate) {
         return new Customer()
-                .setId(customerCreate.getId())
                 .setCustomerCode(customerCreate.getCustomerCode())
                 .setName(customerCreate.getName())
                 .setPhone(customerCreate.getPhone())

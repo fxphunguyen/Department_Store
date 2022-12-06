@@ -375,11 +375,13 @@
     }
 
     class ShippingAddress {
-        constructor(fullName, mobile, email, address,districtId,  districtName, provinceId, provinceName, wardId, wardName, zipCode,customerId) {
+        constructor(id, fullName, mobile,line1, line2, email,districtId,  districtName, provinceId, provinceName, wardId, wardName, zipCode,customerId,supplierId ,isDefault) {
             this.fullName = fullName;
+            this.line1 = line1;
+            this.line2 = line2;
             this.mobile = mobile;
             this.email = email;
-            this.address = address;
+            // this.address = address;
             this.districtId = districtId;
             this.districtName = districtName;
             this.provinceId = provinceId;
@@ -388,44 +390,54 @@
             this.wardName = wardName;
             this.zipCode = zipCode;
             this.customerId = customerId;
+            this.id = id;
+            this.isDefault = isDefault;supplierId
+            this.supplierId = supplierId;
         }
     }
 
-    let CreateShippingAddressParam = new ShippingAddress();
+    let shippingAddress = new ShippingAddress();
     // Thêm mới địa chỉ
 
 $("#btn_createCustomerShippingAddress").on('click', () => {
-    createCustomerShippingAddress();
+    alert("createAddress")
+    shippingAddress.supplierId = 1;
+    shippingAddress.id = 2
+    shippingAddress.line1 = $('.addressCreate').val();
+    shippingAddress.s = "b"
+    shippingAddress.fullName = $('.fullNameCreate').val();
+    shippingAddress.mobile = $('.mobileCreate').val();
+    shippingAddress.email = $('.emailCreate').val();
+    // shippingAddress.address = $('.addressCreate').val();
+    shippingAddress.provinceId = $('#province').val();
+    shippingAddress.provinceName = $('#province :selected').text();
+    shippingAddress.districtId = $('#district').val();
+    shippingAddress.districtName = $('#district :selected').text();
+    shippingAddress.wardId = $('#ward').val();
+    shippingAddress.wardName = $('#ward :selected').text();
+    shippingAddress.customerId = $('.idCustomerDelete').val();
+    shippingAddress.zipCode = $('.zipCodeCreate').val();
+    shippingAddress.isDefault = true;
+    console.log(shippingAddress)
+    $.ajax({
+        "headers": {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        "type": "POST",
+        "url": "http://localhost:8080/api/shippingAddress/create",
+        "data": JSON.stringify(shippingAddress)
+    })
+        .done((data) => {
+            console.log(": Tạo sản phẩm thành công")
+        })
+        .fail((jqXHR) => {
+            console.log("Lỗi tại customer")
+
+        })
 })
     function createCustomerShippingAddress(){
-        CreateShippingAddressParam.fullName = $('.fullNameCreate').val();
-        CreateShippingAddressParam.mobile = $('.mobileCreate').val();
-        CreateShippingAddressParam.email = $('.emailCreate').val();
-        CreateShippingAddressParam.address = $('.addressCreate').val();
-        CreateShippingAddressParam.provinceId = $('#province').val();
-        CreateShippingAddressParam.provinceName = $('#province :selected').text();
-        CreateShippingAddressParam.districtId = $('#district').val();
-        CreateShippingAddressParam.districtName = $('#district :selected').text();
-        CreateShippingAddressParam.wardId = $('#ward').val();
-        CreateShippingAddressParam.wardName = $('#ward :selected').text();
-        CreateShippingAddressParam.customerId = $('.idCustomerDelete').val();
-        CreateShippingAddressParam.zipCode = $('.zipCodeCreate').val();
-        console.log(CreateShippingAddressParam)
-        $.ajax({
-            "headers": {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            "type": "POST",
-            "url": "http://localhost:8080/api/shippingAddress/createssa"
-        })
-            .done((data) => {
-                console.log(": Tạo sản phẩm thành công")
-            })
-            .fail((jqXHR) => {
-                console.log("Lỗi tại customer")
 
-            })
 
     }
 

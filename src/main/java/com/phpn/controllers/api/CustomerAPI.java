@@ -57,7 +57,9 @@ public class CustomerAPI {
 
     @PostMapping("/create")
     public ResponseEntity<?> createCustomer(@RequestBody CreateCustomerParam customerCreate) {
-        CustomerResult customer = customerService.create(customerCreate);
+        System.out.println(customerCreate.getCreateShippingAddressParam().getDistrictName());
+        System.out.println(customerCreate);
+        Customer customer = customerService.create(customerCreate);
         return new ResponseEntity<>(customer, HttpStatus.OK);
 
     }

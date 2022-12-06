@@ -3,6 +3,7 @@ package com.phpn.services.shippingAddress;
 
 import com.phpn.dto.shipping_address.CreateShippingAddressParam;
 import com.phpn.dto.shipping_address.ShippingAddressResult;
+import com.phpn.dto.shipping_address.ShippingAddressShowCustomerInfo;
 import com.phpn.mappers.shippingAddress.ShippingAddressMapper;
 import com.phpn.repositories.ShippingAddressRepository;
 import com.phpn.repositories.model.ShippingAddress;
@@ -16,7 +17,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class ShippingAddressImpl implements  ShippingAddressService{
 
     @Autowired
@@ -28,18 +28,18 @@ public class ShippingAddressImpl implements  ShippingAddressService{
 
 
     @Override
-    public List<ShippingAddressResult> findByCustomerId(Integer id) {
-        List<ShippingAddressResult> shippingAddresses = shippingAddressRepository.findAllShippingAddress(id)
+    public List<ShippingAddressShowCustomerInfo> findByCustomerId(Integer id) {
+        List<ShippingAddressShowCustomerInfo> shippingAddressShowCustomerInfos = shippingAddressRepository.findAllShippingAddress(id)
                 .stream()
-                .map(shippingAddress -> shippingAddressMapper.toDTO(shippingAddress))
+                .map(shippingAddress -> shippingAddressMapper.toCustomerInfo(shippingAddress))
                 .collect(Collectors.toList());
-        return  shippingAddresses ;
+        return  shippingAddressShowCustomerInfos ;
     }
 
     @Override
-    public ShippingAddressResult create(CreateShippingAddressParam createShippingAddressParam) {
-        shippingAddressRepository.save(shippingAddressMapper.toModel(createShippingAddressParam));
-        ShippingAddress shippingAddress = shippingAddressRepository.save(shippingAddressMapper.toModel(createShippingAddressParam));
-        return shippingAddressMapper.toDTO(shippingAddress);
+    public ShippingAddress create(CreateShippingAddressParam createShippingAddressParam) {
+//
+//        ShippingAddress shippingAddress = shippingAddressRepository.save(shippingAddressMapper.toModel(createShippingAddressParam));
+        return  shippingAddressRepository.save(shippingAddressMapper.toModel(createShippingAddressParam));
     }
 }

@@ -41,12 +41,9 @@ public class Employee {
     @Column(name = "gender", length = 50, nullable = false)
     private String gender;
 
-
-
     public Employee(Integer id) {
        this.id = id;
     }
-
 
 
 }
