@@ -4,6 +4,7 @@ import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.dto.employee.EmployeeResult;
 import com.phpn.dto.orderItem.OrderItemResult;
+import com.phpn.dto.orderStatus.OrderStatusResult;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -42,6 +43,8 @@ public class OrderResult {
     private String orderCode;
 
     private Integer orderStatusId;
+
+    private OrderStatusResult orderStatus;
 
     private BigDecimal discount;
 

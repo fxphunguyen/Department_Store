@@ -32,6 +32,7 @@ public class ShippingAddress {
 
     @Column(name = "line1", nullable = false, length = 50)
     private String line1;
+
     @Column(name = "line2", length = 50)
     private String line2;
 

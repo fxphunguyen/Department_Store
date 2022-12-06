@@ -67,6 +67,11 @@ public class PaymentOrder {
         return this;
     }
 
+    public PaymentOrder setCustomerId(Integer customerId) {
+        this.customer = new Customer(this.customerId = customerId);
+        return this;
+    }
+
     public PaymentOrder setPaymentMethodId(Integer paymentMethodId) {
         this.paymentMethod = new PaymentMethod(this.paymentMethodId = paymentMethodId);
         return this;
@@ -77,9 +82,10 @@ public class PaymentOrder {
         return this;
     }
 
-    public PaymentOrder(Integer employeeId, Integer paymentMethodId, Integer orderId) {
+    public PaymentOrder(Integer employeeId, Integer paymentMethodId, Integer orderId, Integer customerId) {
         setEmployeeId(employeeId);
         setPaymentMethodId(paymentMethodId);
         setOrderId(paymentMethodId);
+        setCustomerId(customerId);
     }
 }

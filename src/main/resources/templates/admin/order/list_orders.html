@@ -969,7 +969,7 @@
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft"
                                         style="width: 120px; max-width: 120px; min-width: 120px;">
                                         <p class="MuiTypography-root jss5006 MuiTypography-body1 MuiTypography-noWrap">
-                                            <a class="jss5098" href="#">${item.orderCode}</a>
+                                            <a class="jss5098" href="/admin/order_id">${item.orderCode}</a>
                                         </p>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft"
@@ -982,8 +982,8 @@
                                         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">${item.customer.name}</p>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft" style="width: 165px; max-width: 165px; min-width: 165px;">
-                                        <div class="${item.status === 'Đang giao dịch' ? 'hlxtkG' : (item.status === 'Hoàn thành' ? 'hBmWYo' : 'csJERM')}">
-                                            <span class="${item.status === 'Đang giao dịch' ? 'gIZkwA' : (item.status === 'Hoàn thành' ? 'bzQjtT' : 'ccQLIN')}">${item.status}</span>
+                                        <div class="${item.orderStatus.name === 'Đang giao dịch' ? 'hlxtkG' : (item.orderStatus.name === 'Hoàn thành' ? 'hBmWYo' : 'csJERM')}">
+                                            <span class="${item.orderStatus.name === 'Đang giao dịch' ? 'gIZkwA' : (item.orderStatus.name === 'Hoàn thành' ? 'bzQjtT' : 'ccQLIN')}">${item.orderStatus.name}</span>
                                         </div>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignCenter"
