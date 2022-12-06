@@ -139,11 +139,9 @@ const searchProduct = () => {
 
 
 function showCustomerInfo(idCustomer) {
-    console.log("idcustomer", idCustomer);
     // $("#MuiBox-list-customer").addClass("hide");
     $("#idCustomer").val(idCustomer);
     let result = customer = customers.find(({id}) => id === idCustomer);
-    console.log("asdasd", result)
     let str = `<div class="MuiPaper-root  jss938 MuiPaper-elevation1 MuiPaper-rounded" id="closed_customer_info">
         <div class="MuiBox-root jss985">
         
