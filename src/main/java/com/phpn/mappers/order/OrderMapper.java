@@ -2,6 +2,7 @@ package com.phpn.mappers.order;
 
 import com.phpn.dto.order.OrderParam;
 import com.phpn.dto.order.OrderResult;
+import com.phpn.mappers.OrderStatusMapper;
 import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.repositories.model.Order;
@@ -16,6 +17,9 @@ public class OrderMapper {
     @Autowired
     private CustomerMapper customerMapper;
 
+    @Autowired
+    private OrderStatusMapper orderStatusMapper;
+
     public OrderResult toDTO(Order order) {
         return new OrderResult()
                 .setId(order.getId())
@@ -23,10 +27,12 @@ public class OrderMapper {
                 .setEmployee(employeeMapper.toOrderDTO(order.getEmployee()))
                 .setOrderCode(order.getOrderCode())
                 .setOrderStatusId(order.getOrderStatusId())
+                .setOrderStatus(orderStatusMapper.toDTO(order.getOrderStatus()))
                 .setDiscount(order.getDiscount())
                 .setDescription(order.getDescription())
                 .setCreateAt(order.getCreateAt())
                 .setCustomerId(order.getCustomerId())
+                .setGrandTotal(order.getGrandTotal())
                 .setCustomer(customerMapper.toOrderDTO(order.getCustomer()));
     }
 

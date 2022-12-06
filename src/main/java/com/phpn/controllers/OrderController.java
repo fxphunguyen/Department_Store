@@ -31,4 +31,11 @@ public class OrderController {
         return modelAndView;
     }
 
+    @GetMapping("/order_id")
+    public ModelAndView showOrderDetail() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/admin/order/order_id");
+        return modelAndView;
+    }
+
 }

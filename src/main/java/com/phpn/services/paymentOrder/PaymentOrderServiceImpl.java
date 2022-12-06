@@ -52,14 +52,13 @@ public class PaymentOrderServiceImpl implements PaymentOrderService {
     @Override
     @Transactional
     public PaymentOrderResult createPaymentOrder(PaymentOrderParam paymentOrderParam) {
-
+        System.out.println(paymentOrderParam.getOrderId());
         Integer orderId = paymentOrderParam.getOrderId();
         if (orderId != null && !orderRepository.existsById(orderId))
             throw new NotFoundException("Khong tim thay order can thanh toan");
-        PaymentOrder paymentOrder = paymentOrderMapper.toModel(paymentOrderParam);
-        paymentOrder.setPaid(new BigDecimal(0));
-        paymentOrder = paymentOrderRepository.save(paymentOrder);
+        PaymentOrder paymentInput = paymentOrderMapper.toModel(paymentOrderParam);
+        paymentInput = paymentOrderRepository.save(paymentInput);
 
-        return paymentOrderMapper.toDTO(paymentOrder);
+        return paymentOrderMapper.toDTO(paymentInput);
     }
 }
