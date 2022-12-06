@@ -16,11 +16,12 @@ public interface ICustomer {
     String getCUSTOMER_GROUP();
     Date getCREATE_AT();
     Date getUPDATE_AT();
-    BigDecimal getCHITIEU();
-    BigDecimal getCONGNO();
-    int getSL_MH_DAMUA();
-    String getNV_PHUTRACH();
-    Date getNGM_CUOICUNG();
-    int getSL_SP_DAMUA();
-    int getSL_SP_HOANTRA();
+    BigDecimal getTOTAL_PRICE_SPENDING();
+    BigDecimal getORDER_DEBT();
+    int getQUANTITY_ITEMS_ORDER();
+    String getEMPLOYEE_NAME();
+    Date getPRODUCT_ORDER_FINAL();
+    int getQUANTITY_PRODUCT_ORDER();
+    int getQUANTITY_PRODUCT_PAY();
+    Date getDAY_ORDER_LATTER();
 }

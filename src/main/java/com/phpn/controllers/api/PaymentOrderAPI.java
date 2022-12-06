@@ -4,7 +4,6 @@ import com.phpn.dto.paymentOrder.PaymentOrderParam;
 import com.phpn.dto.paymentOrder.PaymentOrderResult;
 import com.phpn.mappers.payment.PaymentOrderMapper;
 import com.phpn.repositories.PaymentOrderRepository;
-import com.phpn.repositories.model.PaymentOrder;
 import com.phpn.services.paymentOrder.PaymentOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -53,3 +52,4 @@ public class PaymentOrderAPI {
 
 
 }
+

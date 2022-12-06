@@ -1,6 +1,6 @@
 
 .jss4417 {
-    padding: 10px;
+    padding: 0px;
 }
 
 .jss4418 {
@@ -16,7 +16,8 @@
 }
 .jss1283 {
     width: 80px;
-    height: 25px;
+    height: 22px;
+    padding-left: 8px;
 }
 .MuiFormControl-root {
     border: 0;
@@ -63,4 +64,8 @@
      padding: 0;
      min-width: 40px;
      border-radius: 3px;
+ }
+ .discount_rate_line_item {
+     position: absolute;
+     bottom: -21px;
  }

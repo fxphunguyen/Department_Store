@@ -2,9 +2,11 @@ package com.phpn.dto.customer;
 
 
 import com.phpn.dto.shipping_address.CreateShippingAddressParam;
+import com.phpn.dto.shipping_address.ShippingAddressResult;
 import com.phpn.repositories.model.CustomerGender;
 import com.phpn.repositories.model.CustomerGroup;
 import com.phpn.repositories.model.CustomerStatus;
+import com.phpn.repositories.model.ShippingAddress;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,7 +37,6 @@ public class CreateCustomerParam {
     private CustomerStatus customerStatus;
 
     private Integer employeeId;
-
 
     private CreateShippingAddressParam shippingAddress;
 

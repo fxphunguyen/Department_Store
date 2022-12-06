@@ -30,7 +30,7 @@ public class ProductAPI {
         return new ResponseEntity<>(productResults, HttpStatus.OK);
     }
 
-    @GetMapping("")
+    @GetMapping()
     @Transactional(readOnly = true)
     public ResponseEntity<?> showAllProduct(){
         List<ProductResult> productResults = productService.showAllProduct();

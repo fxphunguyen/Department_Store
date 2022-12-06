@@ -20,6 +20,7 @@ public class ShippingAddress {
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(name = "full_name", length = 50)
     private String fullName;
 
@@ -52,6 +53,7 @@ public class ShippingAddress {
 
     @Column(name = "ward_name", nullable = false, length = 50)
     private String wardName;
+
     @Column(name = "zip_code", length = 10)
     private String zipCode;
 
@@ -69,8 +71,20 @@ public class ShippingAddress {
     @Column(name = "supplier_id", insertable = false, updatable = false)
     private Integer supplierId;
 
+    @Column(name = "default", nullable = false)
+    private Boolean isDefault;
+
     public ShippingAddress setCustomerId(Integer customerId) {
         this.customer = new Customer(this.customerId = customerId);
         return this;
+    }
+
+    public ShippingAddress setDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
+        return this;
+    }
+
+    public boolean isDefault() {
+        return isDefault;
     }
 }

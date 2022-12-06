@@ -32,8 +32,10 @@ public class OrderMapper {
                 .setDescription(order.getDescription())
                 .setCreateAt(order.getCreateAt())
                 .setCustomerId(order.getCustomerId())
-                .setGrandTotal(order.getGrandTotal())
-                .setCustomer(customerMapper.toOrderDTO(order.getCustomer()));
+                .setCustomer(customerMapper.toOrderDTO(order.getCustomer()))
+                .setTotal(order.getTotal())
+                .setSubTotal(order.getSubTotal())
+                .setGrandTotal(order.getGrandTotal());
     }
 
     public Order toModel(OrderParam orderParam) {
