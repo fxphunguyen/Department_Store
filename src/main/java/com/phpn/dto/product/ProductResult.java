@@ -37,10 +37,12 @@ public class ProductResult {
     private BigDecimal wholesalePrice;
     private Integer categoryId;
     private Integer brandId;
-    private CategoryResult categoryResult;
-    private BrandResult brandResult;
+    private CategoryResult category;
+    private BrandResult brand;
     private Tax tax;
     private ItemResult item;
+    private int ton;
+    private int cothe;
 
 
 }

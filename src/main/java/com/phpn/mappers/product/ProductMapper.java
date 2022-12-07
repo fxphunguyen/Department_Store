@@ -1,11 +1,8 @@
 package com.phpn.mappers.product;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
-<<<<<<< HEAD
 import com.phpn.dto.product.ProductShortParam;
-=======
 import com.phpn.dto.product.ProductWithImageParam;
->>>>>>> dev_c5
 import com.phpn.mappers.CategoryMapper;
 import com.phpn.mappers.brand.BrandMapper;
 import com.phpn.mappers.item.ItemMapper;
@@ -18,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
-<<<<<<< HEAD
 import java.math.BigDecimal;
-=======
->>>>>>> dev_c5
 
 @Component
 public class ProductMapper {
@@ -95,7 +89,7 @@ public class ProductMapper {
     }
 
 
-    public Product toModel(ProductShortParam  productShortParam) {
+    public Product toModel(ProductShortParam productShortParam) {
         return new Product(Integer.parseInt(productShortParam.getCategoryId()))
                 .setId(Integer.parseInt(productShortParam.getId()))
                 .setTitle(productShortParam.getTitle())

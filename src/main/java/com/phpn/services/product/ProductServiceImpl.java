@@ -1,21 +1,17 @@
 package com.phpn.services.product;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
-<<<<<<< HEAD
-import com.phpn.dto.product.ProductParam;
+
 import com.phpn.dto.product.ProductResult;
 import com.phpn.dto.product.ProductShortParam;
-=======
 
 import com.phpn.dto.product.ProductCreate;
-import com.phpn.dto.product.ProductListResult;
-import com.phpn.dto.product.ProductParam;
-import com.phpn.dto.product.ProductResult;
 import com.phpn.dto.product.ProductWithImageParam;
->>>>>>> dev_c5
 import com.phpn.mappers.product.ProductMapper;
 import com.phpn.repositories.ItemRepository;
 import com.phpn.repositories.model.Item;
@@ -28,26 +24,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductMapper productMapper;
 
     @Autowired
-     ProductRepository productRepository;
+    ProductRepository productRepository;
 
     @Autowired
     ItemRepository itemRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<ProductResult> findAll() {
         return productRepository.findAll()
                 .stream()
-                .map(productMapper :: toDTO)
+                .map(productMapper::toDTO)
                 .collect(Collectors.toList());
     }
-//    public List<ProductResult> findAll1() {
+
+    //    public List<ProductResult> findAll1() {
 //        item.findBNyProdcutId
 //        return productRepository.findAll()
 //                .stream()
@@ -55,6 +52,7 @@ public class ProductServiceImpl implements ProductService {
 //                .collect(Collectors.toList());
 //    }
     @Override
+    @Transactional(readOnly = true)
     public List<ProductResult> showAllProduct() {
         return productRepository.findAll()
                 .stream()
@@ -63,20 +61,23 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ProductResult> findAllProductByDeleted(boolean deleted) {
         return productRepository.findAllProductByDeleted(deleted)
                 .stream()
-                .map(productMapper :: toDTO)
+                .map(productMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
 
     @Override
+    @Transactional(readOnly = true)
     public ProductResult findByIdProduct(Integer id) {
         Optional<Product> productOptional = productRepository.findById(id);
-       return productMapper.toDTO(productOptional.get());
+        return productMapper.toDTO(productOptional.get());
     }
 
+    @Transactional
     @Override
     public Product create(ProductWithImageParam productWithImageParam) {
         return productRepository.save(productMapper.toModel(productWithImageParam));
@@ -89,6 +90,8 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
+    @Transactional
+
     public Product createShortProduct(ProductShortParam productShortParam) {
         Product product = productMapper.toModel(productShortParam);
         product.setImage("");
@@ -130,8 +133,28 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductListResult> getAllProductListResult() {
-        return productRepository.getAllProductListResult();
+    public Product createProduct(ProductCreate productCreate) {
+        return null;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<ProductResult> getAllProductListResult() {
+//        List<ProductResult> products=new ArrayList<>();
+        List<Product> entities = productRepository.findAll();
+//        for (Product product : entities) {
+//            products.add(  productMapper.toDTO(product));
+//        }
+//        return products;
+
+        return entities.stream().map(
+                entity -> {
+                    ProductResult dto = productMapper.toDTO(entity);
+                   // int ton = itemRepository.store();
+                 //   dto.setTon(ton);
+                    return dto;
+                }).collect(Collectors.toList());
+
     }
 
 }

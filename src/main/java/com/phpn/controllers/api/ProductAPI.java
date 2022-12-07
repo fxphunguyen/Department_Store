@@ -1,13 +1,6 @@
 package com.phpn.controllers.api;
 
-import com.phpn.dto.product.ProductListResult;
-import com.phpn.dto.product.ProductParam;
-import com.phpn.dto.product.ProductResult;
-<<<<<<< HEAD
-import com.phpn.dto.product.ProductShortParam;
-=======
-import com.phpn.dto.product.ProductWithImageParam;
->>>>>>> dev_c5
+import com.phpn.dto.product.*;
 import com.phpn.repositories.ProductRepository;
 import com.phpn.repositories.model.Product;
 import com.phpn.repositories.model.ProductInfo;
@@ -36,29 +29,20 @@ public class ProductAPI {
         return new ResponseEntity<>(productResults, HttpStatus.OK);
     }
 
-<<<<<<< HEAD
     @GetMapping()
     @Transactional(readOnly = true)
-    public ResponseEntity<?> showAllProduct(){
+    public ResponseEntity<?> showAllProduct() {
         List<ProductResult> productResults = productService.showAllProduct();
-        return  new ResponseEntity<>(productResults, HttpStatus.OK);
-=======
-//    @GetMapping("")
-//    @Transactional(readOnly = true)
-//    public ResponseEntity<?> showAllProduct(){
-//        List<ProductResult> productResults = productService.showAllProduct();
-//        return  new ResponseEntity<>(productResults, HttpStatus.OK);
-//    }
+        return new ResponseEntity<>(productResults, HttpStatus.OK);
+    }
 
 
    // C0522k1
-    @GetMapping("")
+//    @GetMapping("")
     public ResponseEntity<?> getAllProduct(){
-        List<ProductListResult> products = productService.getAllProductListResult();
+        List<ProductResult> products = productService.getAllProductListResult();
         return new ResponseEntity<>(products, HttpStatus.OK);
->>>>>>> dev_c5
     }
-
 
     @GetMapping("/{id}")
     @Transactional(readOnly = true)
@@ -74,16 +58,10 @@ public class ProductAPI {
 //    }
 
     @PostMapping("/create")
-<<<<<<< HEAD
-    public ResponseEntity<?> createProduct(@RequestBody ProductParam productParam){
-        System.out.println(productParam);
-        Product product = productService.create(productParam);
-=======
     public ResponseEntity<?> createProduct(@RequestBody ProductWithImageParam productWithImageParam){
         System.out.println(productWithImageParam);
 
         Product product = productService.create(productWithImageParam);
->>>>>>> dev_c5
         return  new ResponseEntity<>(product, HttpStatus.OK);
     }
 
