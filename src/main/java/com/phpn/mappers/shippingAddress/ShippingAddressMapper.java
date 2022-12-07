@@ -24,7 +24,8 @@ public class ShippingAddressMapper {
                 .setProvinceName(shippingAddress.getProvinceName())
                 .setZipCode(shippingAddress.getZipCode())
                 .setEmail(shippingAddress.getEmail())
-                .setMobile(shippingAddress.getMobile());
+                .setMobile(shippingAddress.getMobile())
+                .setIsDefault(shippingAddress.getIsDefault());
 
     }
 

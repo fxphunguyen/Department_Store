@@ -625,7 +625,6 @@ function handleRemove() {
     $("#show_customer_info").html(str);
     $("#MuiBox-list-customer").removeClass("hide");
     searchCustomer();
-
 }
 
 function getCustomerById(idCustomer) {
@@ -689,71 +688,24 @@ function editCustomer() {
     $("#update_order_customer").modal("show");
 }
 
-//
-// function doUpdateCustomer() {
-//     $('#btnUpdateCustomer').on('click', (idCustomer ) => {
-//         locationRegionResult.provinceId = $("#provinceUpdate").val();
-//         locationRegionResult.provinceName = $("#provinceUpdate :selected").text();
-//         locationRegionResult.districtId = $("#districtUpdate").val();
-//         locationRegionResult.districtName = $("#districtUpdate :selected").text();
-//         locationRegionResult.wardId = $("#wardUpdate").val();
-//         locationRegionResult.wardName = $("#wardUpdate :selected").text();
-//         locationRegionResult.address = $("#addressUpdate").val();
-//         customer.id = $("#idCustomerUpdate").val();
-//         customer.name = $("#nameUpdate").val();
-//         customer.phone = $("#phoneUpdate").val();
-//         customer.customerCode = $("#codeUpdate").val();
-//         customer.locationRegionResult = locationRegionResult;
-//
-//         $.ajax({
-//             "headers": {
-//                 "accept": "application/json",
-//                 "content-type": "application/json"
-//             },
-//             "type": "PUT",
-//             "url": "http://localhost:8080/api/customers/update/" + idCustomer,
-//             "data": JSON.stringify(customer)
-//         })
-//             .done((data) => {
-//                 customer = data;
-//                 customer.locationRegionResult = locationRegionResult;
-//                 removeEventModal();
-//                 $("#update_order_customer").modal("hide");
-//                 App.IziToast.showSuccessAlert("Cập nhật khách hàng thành công!");
-//             })
-//             .fail((jqXHR) => {
-//                 console.log(jqXHR);
-//             })
-//     });
-//
-// }
-// doUpdateCustomer();
+
 
 function showProductInfo(productId) {
     $('#MuiBox-list-product').addClass("hide");
-
-
-    // $("#show_product_info").html("");
-
     $("#productId").val(productId);
     let result = product = products.find(({id}) => id === productId);
-    console.log(result)
-    let percentProduct =  $("#vat_percent").val(result.tax);
-
     let std = `
-            <div class="MuiListItemText-root">
-                                                            
-                <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock d-none" id="vat_percent">VAT (${result.tax}%)</span>
+            <div >
+            <div class="MuiListItemText-root" style="float:left">                                        
+                <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" id="tax_${result.tax}">VAT(${result.tax}%)</span>
             </div>
-            <div class="MuiListItemText-root">
-                <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
+            <div class="MuiListItemText-root" style="float:right">
+                <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" id="tax_value_${result.id}">0</span>
             </div>
-            </br>
+            <div style="clear: both"></div>
+            </div>
     `;
-    $("#vat_tax").prepend(std);
-
-    console.log(result.tax);
-
+    $("#ul_vat_tax").prepend(std);
     let str = `
         <tr id="tr_${result.id}" class="MuiTableRow-root jss3894 jss3905 isNormalLineItem">
             <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center">${result.id}</td>
@@ -925,36 +877,20 @@ function showProductInfo(productId) {
     $("#divTbProduct").removeClass("hide");
     handleGrandTotal();
     $("#vat_tax").removeClass('d-none');
-    $("#vat_percent").removeClass("d-none");
-
-    if (percentProduct === 5,8,10)
-    $("#vat_tax").prepend(percentProduct);
-
-
+    // $(`#tax_value_${result.id}`).text(taxValue);
 }
 
 function removeProduct(id) {
-
-    $("#tr_" + id).remove();
-
     if (id === undefined) {
         $("#divNoInfo").removeClass('hide').addClass('show');
-        // $("#vat_tax").addClass('d-none');
-        $("#vat_tax").addClass('hide');
+        $("#vat_tax").remove();
 
     }
-
-    $("#vat_percent").addClass('d-none');
-
-
-
+    $("#tr_" + id).remove();
 }
 
-
 function discountProduct(event) {
-
     let productId = event.target.parentElement.getAttribute("data-product-discount-id");
-
     let str = `
                 <div class="MuiPaper-root jss1041 MuiPaper-elevation3 MuiPaper-rounded hidden_discount"
                 style="width: 190px;position: absolute;margin-left: -37px;"
@@ -991,33 +927,15 @@ function discountProduct(event) {
 
 const addQuantity = (productId) => {
     const discount = +$(`#discount_value_${productId}`).text().replaceAll(",", "");
-
     let quantityProduct = +($(`#quantity_product_${productId}`).val());
-
     quantityProduct = quantityProduct + 1;
     $(`#quantity_product_${productId}`).val(quantityProduct);
+    let tax = $(`tax_${result.tax}`).val();
+    console.log(tax)
     let retailProduct = +$(`#retail_price_${productId}`).val();
     let amount = (retailProduct - discount) * quantityProduct;
     $(`#amount_product_${productId}`).text(amount.formatVND());
     handleGrandTotal();
-}
-
-function handleGrandTotal(){
-    let grandTotal = 0;
-    let totalQuantity = 0;
-    $("#tbProduct tbody tr").each(function (){
-        let rowId = $(this).attr("id").replaceAll("tr_", "");
-        let item = +$("#amount_product_" + rowId).text().replaceAll(",", "");
-        let qty = +$("#quantity_product_" + rowId).val();
-        totalQuantity += qty;
-        grandTotal += item;
-        $("#quantity_products").text("Tổng tiền (" + totalQuantity + " sản phẩm)");
-        $("#grandTotal").text(grandTotal.formatVND());
-       $("#total_amounts").text(grandTotal.formatVND());
-       $("#total_customer").text(grandTotal.formatVND());
-
-
-    })
 }
 
 function minusQuantity(productId) {
@@ -1046,6 +964,22 @@ function minusQuantity(productId) {
     handleGrandTotal();
 }
 
+function handleGrandTotal(){
+    let grandTotal = 0;
+    let totalQuantity = 0;
+    $("#tbProduct tbody tr").each(function (){
+        let rowId = $(this).attr("id").replaceAll("tr_", "");
+        let item = +$("#amount_product_" + rowId).text().replaceAll(",", "");
+        let qty = +$("#quantity_product_" + rowId).val();
+        totalQuantity += qty;
+        grandTotal += item;
+        $("#quantity_products").text("Tổng tiền (" + totalQuantity + " sản phẩm)");
+        $("#grandTotal").text(grandTotal.formatVND());
+       $("#total_amounts").text(grandTotal.formatVND());
+       $("#total_customer").text(grandTotal.formatVND());
+    })
+}
+
 function removeProduct(productId) {
     $("#tr_" + productId).remove();
     iziToast.success({
@@ -1054,7 +988,8 @@ function removeProduct(productId) {
         timeout: 1500,
         message: 'Xóa sản phẩm khỏi đơn hàng thành công!'
     });
-
+    $(`#tax_id_${productId}`).remove();
+    $("#vat_tax").addClass('d-none');
 }
 
 const valueDiscount = (event) => {

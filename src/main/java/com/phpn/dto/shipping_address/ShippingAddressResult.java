@@ -1,6 +1,7 @@
 package com.phpn.dto.shipping_address;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -46,6 +47,7 @@ public class ShippingAddressResult {
         return this;
     }
 
+    @JsonIgnore
     public boolean isDefault() {
         return isDefault;
     }

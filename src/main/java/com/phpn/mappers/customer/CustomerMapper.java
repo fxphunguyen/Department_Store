@@ -49,7 +49,10 @@ public class CustomerMapper {
         List<ShippingAddressResult> shippingAddressList = shippingAddressSet.stream()
                 .map(shippingAddressMapper::toDTO).collect(Collectors.toList());
         result.setShippingAddressList(shippingAddressList);
-        Optional<ShippingAddressResult> shippingAddressOpt = shippingAddressList.stream().filter(ShippingAddressResult::isDefault).findFirst();
+        Optional<ShippingAddressResult> shippingAddressOpt =
+                shippingAddressList.stream()
+                        .filter(ShippingAddressResult::isDefault)
+                        .findFirst();
         shippingAddressOpt.ifPresent(result::setShippingAddressDefault);
         return result;
 //                .setShippingAddressList(new ArrayList<ShippingAddressResult>(customer.getShippingAddressSet()));
