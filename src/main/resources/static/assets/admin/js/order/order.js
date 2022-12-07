@@ -144,7 +144,7 @@ function showCustomerInfo(idCustomer) {
     $("#idCustomer").val(idCustomer);
     let result = customer = customers.find(({id}) => id === idCustomer);
     let shippingAddress = result.shippingAddress;
-    let fullShippingAddress;
+    let fullShippingAddress = "";
     if (shippingAddress.line1 != null)
         fullShippingAddress = `${shippingAddress.line1}, `;
     if (shippingAddress.line2 != null)
@@ -152,16 +152,21 @@ function showCustomerInfo(idCustomer) {
     if (shippingAddress.wardName != null)
         fullShippingAddress += `${shippingAddress.wardName}, `;
     if (shippingAddress.districtName != null)
+        fullShippingAddress += `${shippingAddress.districtName}, `;
+    if (shippingAddress.provinceName != null)
         fullShippingAddress += `${shippingAddress.provinceName}`;
+
     let billAddress = result.billAddress;
-    let fullBillAddress;
-    if (shippingAddress.line1 != null)
+    let fullBillAddress= "";
+    if (billAddress.line1 != null)
         fullBillAddress = `${billAddress.line1}, `;
-    if (shippingAddress.line2 != null)
+    if (billAddress.line2 != null)
         fullBillAddress += `${billAddress.line2}, `;
-    if (shippingAddress.wardName != null)
+    if (billAddress.wardName != null)
         fullBillAddress += `${billAddress.wardName}, `;
-    if (shippingAddress.districtName != null)
+    if (billAddress.districtName != null)
+        fullBillAddress += `${billAddress.districtName}, `;
+    if (billAddress.provinceName != null)
         fullBillAddress += `${billAddress.provinceName}`;
 
 
