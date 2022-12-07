@@ -1,24 +1,21 @@
 package com.phpn.dto.product;
 
-import java.math.BigDecimal;
-
+import com.phpn.dto.product_image.ProductImageParam;
+import com.phpn.repositories.model.ProductImage;
 import com.phpn.repositories.model.ProductStatus;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.List;
+
+@Data
 @Accessors(chain = true)
-public class ProductParam {
+public class ProductWithImageParam implements Serializable {
 
     private Integer id;
     private String title;
-    private String image;
     private ProductStatus status;
     private String description;
     private String unit;
@@ -32,4 +29,5 @@ public class ProductParam {
     private Integer brandId;
     private Boolean applyTax;
     private Boolean deleted;
+    private List<ProductImageParam> productImageParams;
 }

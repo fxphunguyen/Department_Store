@@ -1,9 +1,8 @@
 package com.phpn.mappers.product;
-
-import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.dto.product.ProductShortParam;
+import com.phpn.dto.product.ProductWithImageParam;
 import com.phpn.mappers.CategoryMapper;
 import com.phpn.mappers.brand.BrandMapper;
 import com.phpn.mappers.item.ItemMapper;
@@ -50,6 +49,24 @@ public class ProductMapper {
                 .setDeleted(true);
     }
 
+    public Product toModel(ProductWithImageParam productWithImageParam) {
+        return new Product(productWithImageParam.getCategoryId(),productWithImageParam.getBrandId())
+                .setTitle(productWithImageParam.getTitle())
+                .setStatus(productWithImageParam.getStatus())
+                .setCreateAt(java.time.LocalDateTime.now().toString())
+                .setUpdateAt(null)
+                .setDescription(productWithImageParam.getDescription())
+                .setUnit(productWithImageParam.getUnit())
+                .setSku(productWithImageParam.getSku())
+                .setBarCode(productWithImageParam.getBarCode())
+                .setImportPrice(productWithImageParam.getImportPrice())
+                .setRetailPrice(productWithImageParam.getRetailPrice())
+                .setWholesalePrice(productWithImageParam.getWholesalePrice())
+                .setBrandId(productWithImageParam.getBrandId())
+                .setCategoryId(productWithImageParam.getCategoryId())
+                .setDeleted(true);
+    }
+
     public ProductResult toDTO(Product product) {
         return new ProductResult()
                 .setId(product.getId())
@@ -72,7 +89,7 @@ public class ProductMapper {
     }
 
 
-    public Product toModel(ProductShortParam  productShortParam) {
+    public Product toModel(ProductShortParam productShortParam) {
         return new Product(Integer.parseInt(productShortParam.getCategoryId()))
                 .setId(Integer.parseInt(productShortParam.getId()))
                 .setTitle(productShortParam.getTitle())

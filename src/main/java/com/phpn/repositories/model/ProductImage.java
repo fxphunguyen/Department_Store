@@ -17,14 +17,13 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "avatar")
+@Table(name = "product_images")
 @Accessors(chain = true)
-public class ImageProduct {
+public class ProductImage {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    @Column(name = "cloud_id")
+    private String cloudId;
 
     @Column(name = "file_name")
     private String fileName;
@@ -38,26 +37,34 @@ public class ImageProduct {
     @Column(name = "file_type")
     private String fileType;
 
-    @Column(name = "cloud_id")
-    private String cloudId;
-
-    @Column(columnDefinition = "BIGINT(20) DEFAULT 0")
-    private Long ts = new Date().getTime();
+    @Column(name = "is_main")
+    private Boolean isMain;
 
     @Column(name = "created_at", updatable = false)
     @CreationTimestamp
     private Date createdAt;
 
     @Column(name = "created_by")
-    private long createdBy;
+    private Long createdBy;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Date updatedAt;
 
     @Column(name = "updated_by")
-    private long updatedBy;
+    private Long updatedBy;
 
     @Column(columnDefinition = "BOOLEAN DEFAULT FALSE")
     private Boolean deleted = false;
+
+    @Column(name = "product_id", insertable = false, updatable = false)
+    private Integer productId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    public ProductImage(Product product) {
+        setProduct(product);
+    }
 }
