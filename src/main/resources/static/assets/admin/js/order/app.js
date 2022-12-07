@@ -153,5 +153,13 @@ class App {
                 timer: 2000,
             });
         }
+        static showSuccessAlert(m) {
+            iziToast.success({
+                title: 'Success',
+                position: 'topRight',
+                message: m,
+                timer: 2000,
+            });
+        }
     }
 }
