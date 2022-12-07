@@ -737,6 +737,23 @@ function showProductInfo(productId) {
 
     $("#productId").val(productId);
     let result = product = products.find(({id}) => id === productId);
+    console.log(result)
+    let percentProduct =  $("#vat_percent").val(result.tax);
+
+    let std = `
+            <div class="MuiListItemText-root">
+                                                            
+                <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock d-none" id="vat_percent">VAT (${result.tax}%)</span>
+            </div>
+            <div class="MuiListItemText-root">
+                <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
+            </div>
+            </br>
+    `;
+    $("#vat_tax").prepend(std);
+
+    console.log(result.tax);
+
     let str = `
         <tr id="tr_${result.id}" class="MuiTableRow-root jss3894 jss3905 isNormalLineItem">
             <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center">${result.id}</td>
@@ -907,15 +924,29 @@ function showProductInfo(productId) {
     $("#divNoInfo").remove();
     $("#divTbProduct").removeClass("hide");
     handleGrandTotal();
-    $("#vat_tax").removeClass('hide');
+    $("#vat_tax").removeClass('d-none');
+    $("#vat_percent").removeClass("d-none");
+
+    if (percentProduct === 5,8,10)
+    $("#vat_tax").prepend(percentProduct);
+
 
 }
 
 function removeProduct(id) {
+
+    $("#tr_" + id).remove();
+
     if (id === undefined) {
         $("#divNoInfo").removeClass('hide').addClass('show');
+        // $("#vat_tax").addClass('d-none');
+        $("#vat_tax").addClass('hide');
+
     }
-    $("#tr_" + id).remove();
+
+    $("#vat_percent").addClass('d-none');
+
+
 
 }
 
@@ -981,7 +1012,11 @@ function handleGrandTotal(){
         totalQuantity += qty;
         grandTotal += item;
         $("#quantity_products").text("Tổng tiền (" + totalQuantity + " sản phẩm)");
-       $("#grandTotal").text(grandTotal.formatVND());
+        $("#grandTotal").text(grandTotal.formatVND());
+       $("#total_amounts").text(grandTotal.formatVND());
+       $("#total_customer").text(grandTotal.formatVND());
+
+
     })
 }
 

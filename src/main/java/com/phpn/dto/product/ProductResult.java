@@ -6,6 +6,8 @@ import com.phpn.dto.brand.BrandResult;
 import com.phpn.dto.category.CategoryResult;
 import com.phpn.dto.item.ItemResult;
 import com.phpn.repositories.model.ProductStatus;
+import com.phpn.repositories.model.Tax;
+import com.phpn.repositories.model.TaxType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -37,6 +39,7 @@ public class ProductResult {
     private Integer brandId;
     private CategoryResult categoryResult;
     private BrandResult brandResult;
+    private Tax tax;
     private ItemResult item;
 
 

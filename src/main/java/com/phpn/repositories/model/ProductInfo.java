@@ -16,4 +16,6 @@ public interface ProductInfo {
      Integer getAvailable();
      Integer getTrading();
      Boolean getApply_tax();
+     Float getTax();
+     Integer getTax_id();
 }

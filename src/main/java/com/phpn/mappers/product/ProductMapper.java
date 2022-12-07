@@ -8,6 +8,7 @@ import com.phpn.mappers.brand.BrandMapper;
 import com.phpn.mappers.item.ItemMapper;
 import com.phpn.repositories.model.Product;
 
+import com.phpn.repositories.model.Tax;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -60,7 +61,8 @@ public class ProductMapper {
                 .setRetailPrice(product.getRetailPrice())
                 .setCreateAt(product.getCreateAt())
                 .setUpdateAt(product.getUpdateAt());
-//                .setBrandResult(brandMapper.toDTO(product.getBrand()))
+//                .setTax((Tax) product.getTaxs());
+        //                .setBrandResult(brandMapper.toDTO(product.getBrand()))
 //                .setCategoryResult(categoryMapper.toDTO(product.getCategory()));
     }
 

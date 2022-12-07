@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" class="sapo-menu-expand sapo-menu-toggle-active" lang="vi-VN">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      class="sapo-menu-expand sapo-menu-toggle-active" lang="vi-VN">
 <head>
     <th:block th:replace="/layout/header :: header"/>
     <title>Tạo đơn hàng</title>
@@ -1416,13 +1417,26 @@
                                                             class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock"  id="grandTotal">0</span>
                                                     </div>
                                                 </li>
-                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters hide" id="vat_tax">
-                                                    <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" id="vat_percent">VAT (10%)</span>
+                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters d-none" id="vat_tax">
+                                                    <div class="list-group">
+                                                        <div class="MuiListItemText-root">
+
+                                                            <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock d-none" id="vat_percent">VAT (${result.tax}%)</span>
+                                                        </div>
+                                                        <div class="MuiListItemText-root">
+                                                            <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
+                                                    <div class="list-group">
+                                                        <div class="MuiListItemText-root">
+
+                                                            <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock d-none" id="vat_percent">VAT (${result.tax}%)</span>
+                                                        </div>
+                                                        <div class="MuiListItemText-root">
+                                                            <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
+                                                        </div>
                                                     </div>
+
                                                 </li>
                                                 <li class="MuiListItem-root jss1275 MuiListItem-gutters">
                                                     <div class="MuiListItemText-root"><span
@@ -1467,7 +1481,7 @@
                                                             class="MuiTypography-root MuiListItemText-primary MuiTypography-subtitle1 MuiTypography-displayBlock">Khách phải trả</span>
                                                     </div>
                                                     <div class="MuiListItemText-root"><h6
-                                                            class="MuiTypography-root MuiTypography-h6 MuiTypography-alignRight">
+                                                            class="MuiTypography-root MuiTypography-h6 MuiTypography-alignRight" id="total_amounts">
                                                         0</h6></div>
                                                 </li>
                                                 <span class="jss1280"></span>
@@ -1494,7 +1508,7 @@
                                                             class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Còn phải trả</span>
                                                     </div>
                                                     <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" id="total_customer"
                                                             style="text-align: right;">0</span></div>
                                                 </li>
                                                 <input readonly="" id="totalPaidAmount" value="0"
