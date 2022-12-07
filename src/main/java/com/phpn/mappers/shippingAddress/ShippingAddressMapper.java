@@ -25,12 +25,13 @@ public class ShippingAddressMapper {
                 .setZipCode(shippingAddress.getZipCode())
                 .setEmail(shippingAddress.getEmail())
                 .setMobile(shippingAddress.getMobile())
-                .setIsDefault(shippingAddress.getIsDefault());
+                .setShipping(shippingAddress.isShippingAddress())
+                .setReceiveBill(shippingAddress.isReceiveBill());
 
     }
 
 
-        public ShippingAddress toModel(CreateShippingAddressParam createParam) {
+    public ShippingAddress toModel(CreateShippingAddressParam createParam) {
         return new ShippingAddress()
                 .setId(0)
                 .setLine1(createParam.getLine1())
@@ -46,9 +47,10 @@ public class ShippingAddressMapper {
                 .setEmail(createParam.getEmail())
                 .setFullName(createParam.getFullName())
                 .setMobile(createParam.getMobile())
-                .setDefault(true)
+                .setShippingAddress(createParam.getIsDefault())
                 .setSupplierId(1);
     }
+
     public ShippingAddressShowCustomerInfo toCustomerInfo(ShippingAddress shippingAddress) {
         return new ShippingAddressShowCustomerInfo()
                 .setId(shippingAddress.getId())

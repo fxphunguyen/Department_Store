@@ -142,6 +142,18 @@ function showCustomerInfo(idCustomer) {
     // $("#MuiBox-list-customer").addClass("hide");
     $("#idCustomer").val(idCustomer);
     let result = customer = customers.find(({id}) => id === idCustomer);
+    let shippingAddress = result.shippingAddress;
+    let fullAddress;
+    if (shippingAddress.line1 != null)
+        fullAddress = `${shippingAddress.line1}, `;
+    if (shippingAddress.line2 != null)
+        fullAddress += `${shippingAddress.line2}, `;
+    if (shippingAddress.wardName != null)
+        fullAddress += `${shippingAddress.wardName}, `;
+    if (shippingAddress.districtName != null)
+        fullAddress += `${shippingAddress.provinceName}`;
+
+
     let str = `<div class="MuiPaper-root  jss938 MuiPaper-elevation1 MuiPaper-rounded" id="closed_customer_info">
         <div class="MuiBox-root jss985">
         
@@ -191,7 +203,7 @@ function showCustomerInfo(idCustomer) {
                             </div>
                             <div class="MuiBox-root jss3900">
                                 <p class="MuiTypography-root MuiTypography-body2">${result.phone}</p>
-                                <p class="MuiTypography-root MuiTypography-body2">${result}</p>
+                                <p class="MuiTypography-root MuiTypography-body2">${fullAddress}</p>
                             </div>
                         </div>
                         <div class="MuiBox-root jss3901 jss945 jss947">
@@ -689,7 +701,6 @@ function editCustomer() {
 }
 
 
-
 function showProductInfo(productId) {
     $('#MuiBox-list-product').addClass("hide");
     $("#productId").val(productId);
@@ -964,10 +975,10 @@ function minusQuantity(productId) {
     handleGrandTotal();
 }
 
-function handleGrandTotal(){
+function handleGrandTotal() {
     let grandTotal = 0;
     let totalQuantity = 0;
-    $("#tbProduct tbody tr").each(function (){
+    $("#tbProduct tbody tr").each(function () {
         let rowId = $(this).attr("id").replaceAll("tr_", "");
         let item = +$("#amount_product_" + rowId).text().replaceAll(",", "");
         let qty = +$("#quantity_product_" + rowId).val();
@@ -975,8 +986,8 @@ function handleGrandTotal(){
         grandTotal += item;
         $("#quantity_products").text("Tổng tiền (" + totalQuantity + " sản phẩm)");
         $("#grandTotal").text(grandTotal.formatVND());
-       $("#total_amounts").text(grandTotal.formatVND());
-       $("#total_customer").text(grandTotal.formatVND());
+        $("#total_amounts").text(grandTotal.formatVND());
+        $("#total_customer").text(grandTotal.formatVND());
     })
 }
 
@@ -1008,8 +1019,8 @@ const valueDiscount = (event) => {
 }
 
 const formatDiscount = (event, productId, retailPrice) => {
-    $("#discount_product_input").on('keyup', function(){
-        var n = parseInt($(this).val().replace(/\D/g,''),10);
+    $("#discount_product_input").on('keyup', function () {
+        var n = parseInt($(this).val().replace(/\D/g, ''), 10);
         $(this).val(n.toLocaleString());
     });
     event.target.value = event.target.value.replace(/[^0-9]/g, '');
@@ -1030,7 +1041,7 @@ const formatDiscount = (event, productId, retailPrice) => {
             } else {
                 discount = total * (valueInput / 100);
                 percentValue = valueInput;
-                totalAfterDiscount=total - discount;
+                totalAfterDiscount = total - discount;
             }
 
             $(`#discount_value_${productId}`).text(discount.formatVND());

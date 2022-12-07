@@ -71,25 +71,14 @@ public class ShippingAddress {
     @Column(name = "`supplier_id`", insertable = false, updatable = false)
     private Integer supplierId;
 
-<<<<<<< HEAD
-    @Column(name = "default")
-    private boolean isDefault;
-=======
-    @Column(name = "`default`",  insertable = true)
-    private Boolean isDefault;
->>>>>>> huy_dev
+    @Column(name = "is_shipping")
+    private boolean isShippingAddress;
+
+    @Column(name = "is_receive_bill")
+    private boolean isReceiveBill;
 
     public ShippingAddress setCustomerId(Integer customerId) {
         this.customer = new Customer(this.customerId = customerId);
       return this;
-    }
-
-    public ShippingAddress setDefault(boolean isDefault) {
-        this.isDefault = isDefault;
-        return this;
-    }
-
-    public boolean isDefault() {
-        return isDefault;
     }
 }

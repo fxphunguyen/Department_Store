@@ -39,17 +39,9 @@ public class ShippingAddressResult {
 
     private String zipCode;
 
-    private boolean isDefault;
+    private boolean isShipping;
 
+    private boolean isReceiveBill;
 
-    public ShippingAddressResult setDefault(boolean isDefault) {
-        this.isDefault = isDefault;
-        return this;
-    }
-
-    @JsonIgnore
-    public boolean isDefault() {
-        return isDefault;
-    }
 
 }
