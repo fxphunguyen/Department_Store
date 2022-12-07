@@ -6,12 +6,14 @@ import com.phpn.mappers.employee.EmployeeMapper;
 import com.phpn.mappers.item.ItemMapper;
 import com.phpn.mappers.product.ProductMapper;
 import com.phpn.repositories.ItemRepository;
+import com.phpn.repositories.model.Item;
 import com.phpn.repositories.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,6 +43,7 @@ public class ItemServiceImpl implements ItemService {
                 })
                 .collect(Collectors.toList());
     }
+
 
 //    @Override
 //    public List<ItemResult> findAllByProductIdAndAvailableAndQuantity() {

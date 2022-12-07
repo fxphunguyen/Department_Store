@@ -45,11 +45,4 @@ public class CreateShippingAddressParam {
 
     private Boolean isDefault;
 
-//    public void setDefault(Boolean isDefault) {
-//        this.isDefault = isDefault;
-//    }
-//
-//    public boolean isDefault() {
-//        return isDefault;
-//    }
 }
