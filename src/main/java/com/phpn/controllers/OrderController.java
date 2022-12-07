@@ -17,6 +17,7 @@ public class OrderController {
 
     @GetMapping("/orders")
     public ModelAndView showListOrderPage() {
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/admin/order/list_orders");
         return modelAndView;
@@ -38,8 +39,9 @@ public class OrderController {
     }
 
     @GetMapping("/orders/{id}")
-    public ModelAndView showOrderDetailPage(@PathVariable Integer id) {
-        ModelAndView modelAndView = new ModelAndView("/admin/order/order_id");
+    public ModelAndView showOrderDetail(@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/admin/order/order_id");
         modelAndView.addObject("orders", orderService.findById(id));
         return modelAndView;
     }
