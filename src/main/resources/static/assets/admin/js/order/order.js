@@ -1053,6 +1053,13 @@ const valueDiscount = (event) => {
     event.target.parentElement.classList.add("Mui-selected");
 }
 
+// const formatDiscountOrder = (productId,retailPrice) => {
+//     $("#discount_product_input").on('keyup', function () {
+//         var n = parseInt($(this).val().replace(/\D/g, ''), 10);
+//         $(this).val(n.toLocaleString());
+//     });
+// }
+
 const formatDiscount = (event, productId, retailPrice) => {
     $("#discount_product_input").on('keyup', function () {
         var n = parseInt($(this).val().replace(/\D/g, ''), 10);
@@ -1060,7 +1067,6 @@ const formatDiscount = (event, productId, retailPrice) => {
     });
     event.target.value = event.target.value.replace(/[^0-9]/g, '');
     const btnValueSelectors = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
-    console.log(btnValueSelectors, "btn")
     const btnValue = [...btnValueSelectors];
     btnValue.forEach((mui, index) => {
         const classLists = [...mui.classList];
