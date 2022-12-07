@@ -1,6 +1,4 @@
 package com.phpn.mappers.product;
-
-
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.dto.product.ProductWithImageParam;

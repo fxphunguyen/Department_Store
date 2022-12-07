@@ -1,7 +1,8 @@
 package com.phpn.services.category;
-
 import com.phpn.dto.category.CategoryCreateParam;
 import com.phpn.dto.category.CategoryResult;
+import com.phpn.repositories.model.Category;
+import com.phpn.dto.category.CategoryParam;
 import com.phpn.repositories.model.Category;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface CategoryService {
     Category save(Category category);
 
     void remove(Integer id);
+
+    Category create(CategoryParam categoryParam);
 }

@@ -62,7 +62,7 @@ function showListCustomer() {
 
 
 const searchCustomer = () => {
-    console.log("searchCustomer");
+    // console.log("searchCustomer");
     $("#myInput").on("input", function () {
         let search = $(this).val();
         let results = [];

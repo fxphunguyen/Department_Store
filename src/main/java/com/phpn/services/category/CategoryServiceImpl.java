@@ -2,6 +2,7 @@ package com.phpn.services.category;
 
 import com.phpn.dto.category.CategoryCreateParam;
 import com.phpn.dto.category.CategoryResult;
+import com.phpn.dto.category.CategoryParam;
 import com.phpn.mappers.CategoryMapper;
 import com.phpn.repositories.CategoryRepository;
 
@@ -53,5 +54,7 @@ public class CategoryServiceImpl implements CategoryService {
 //    public CategoryResult createCategoryResult(CategoryCreateParam categoryCreateParam) {
 //        return categoryMapper.toDTO(categoryRepository.save(categoryMapper.toModel(categoryCreateParam)));
 //    }
-
+    public Category create(CategoryParam categoryParam) {
+        return categoryRepository.save(categoryMapper.toModel(categoryParam));
+    }
 }

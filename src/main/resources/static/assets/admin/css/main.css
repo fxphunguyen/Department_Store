@@ -1,5 +1,7 @@
 @charset "UTF-8";
-
+ol, ul {
+    padding-left: 0;
+}
 .mdl-js {
     font-size: 14px;
 }
