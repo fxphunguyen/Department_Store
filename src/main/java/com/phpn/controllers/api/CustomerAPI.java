@@ -123,17 +123,26 @@ public class CustomerAPI {
         return new ResponseEntity<>(iCustomer, HttpStatus.OK);
     }
 
-    @GetMapping("/historyCustomerOrder/{id}")
-    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id) {
-        List<ICustomerOrderHistory> customerOrderHistory = customerRepository.getCustomerOrderHistory(id);
+    @GetMapping("/historyCustomerOrder/{id}/{startIntPaging}/{endIntPaging}")
+    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id, @PathVariable Integer startIntPaging, @PathVariable Integer endIntPaging ) {
+
+        System.out.println("id" + id + "stare" + startIntPaging +  "end" + endIntPaging);
+        List<ICustomerOrderHistory> customerOrderHistory = customerRepository.getCustomerOrderHistory(id , startIntPaging , endIntPaging);
         return new ResponseEntity<>(customerOrderHistory, HttpStatus.OK);
     }
-
 
     @GetMapping("/customerDebt/{id}")
     @Transactional(readOnly = true)
     public ResponseEntity<?> showListCustomerDebtById(@PathVariable Integer id) {
         List<ICustomerOwerImpl> iCustomerImpls = customerService.CustomerOwerById(id);
+        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/getQuantityOrderByCustomer/{id}")
+    @Transactional(readOnly = true)
+    public ResponseEntity<?> getQuantityOrderByCustomer(@PathVariable Integer id) {
+        Integer iCustomerImpls = customerRepository.getQuantityOrderByCustomer(id);
         return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
     }
 }

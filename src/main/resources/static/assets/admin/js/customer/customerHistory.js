@@ -778,16 +778,21 @@ let modalHistoryOrder = `
                                 </div>
                                 <div class="MuiBox-root jss1443 jss1438 sapo-pagination"><p
                                         class="MuiTypography-root MuiTypography-body1">Hiển thị</p>
-                                    <div class="MuiFormControl-root">
+                                    <div class="MuiFormControl-root" style="    width: 69px;">
                                         <div class="MuiInputBase-root MuiOutlinedInput-root jss1439 MuiInputBase-formControl">
                                             <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
-                                                 tabindex="0" role="button" aria-haspopup="listbox"><p
-                                                    class="MuiTypography-root jss1441 MuiTypography-body1">20</p></div>
-                                            <input type="hidden" value="20">
-                                            <svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
-                                                 focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                                                <path d="M7 10l5 5 5-5z"></path>
-                                            </svg>
+                                                 tabindex="0" role="button" aria-haspopup="listbox">
+<!--                                                 <p-->
+<!--                                                    class="MuiTypography-root jss1441 MuiTypography-body1">20</p>-->
+<!--                                                    -->
+                                            <select id="quantityPage"  aria-label="Default select example">
+                                              <option value="20">20</option>
+                                              <option value="50">50</option>
+                                              <option value="100">100</option>
+                                            </select>
+                                                    </div>
+<!--                                            <input type="hidden" value="20">-->
+                                         
                                             <fieldset aria-hidden="true" class="jss1491 MuiOutlinedInput-notchedOutline"
                                                       style="padding-left: 8px;">
                                                 <legend class="jss1492" style="width: 0.01px;"><span>​</span></legend>
@@ -795,35 +800,41 @@ let modalHistoryOrder = `
                                         </div>
                                     </div>
                                     <p class="MuiTypography-root MuiTypography-body1">kết quả</p>
-                                    <p class="MuiTypography-root jss1440 MuiTypography-body1">Từ 1 đến 3 trên tổng 3</p>
+                                    <p class="MuiTypography-root jss1440 MuiTypography-body1">Từ 1 đến 20 trên tổng 7</p>
                                     <nav aria-label="pagination navigation" class="MuiPagination-root jss1442">
                                         <ul class="MuiPagination-ul">
-                                            <li>
-                                                <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"
-                                                        tabindex="-1" type="button" disabled=""
-                                                        aria-label="Go to previous page">
-                                                    <svg class="MuiSvgIcon-root MuiPaginationItem-icon"
-                                                         focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                                                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
-                                                    </svg>
-                                                </button>
-                                            </li>
+                                           <li>
+                                                <button  id="previousPage" class="previousPage MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary MuiPaginationItem-sizeSmall" tabindex="0" type="button" aria-label="Go to previous page"><svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+                                           <span class="MuiTouchRipple-root"></span></button></li>
                                             <li>
                                                 <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall"
                                                         tabindex="0" type="button" aria-current="true"
                                                         aria-label="page 1">1<span class="MuiTouchRipple-root"></span>
                                                 </button>
                                             </li>
-                                            <li>
-                                                <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"
-                                                        tabindex="-1" type="button" disabled=""
-                                                        aria-label="Go to next page">
-                                                    <svg class="MuiSvgIcon-root MuiPaginationItem-icon"
-                                                         focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                                                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
-                                                    </svg>
+                                              <li>
+                                                <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall"
+                                                        tabindex="0" type="button" aria-current="true"
+                                                        aria-label="page 2">2<span class="MuiTouchRipple-root"></span>
                                                 </button>
                                             </li>
+<!--                                            <li>-->
+<!--                                                <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"-->
+<!--                                                        tabindex="-1" type="button" disabled=""-->
+<!--                                                        aria-label="Go to next page">-->
+<!--                                                    <svg class="MuiSvgIcon-root MuiPaginationItem-icon"-->
+<!--                                                         focusable="false" viewBox="0 0 24 24" aria-hidden="true">-->
+<!--                                                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>-->
+<!--                                                    </svg>-->
+<!--                                                </button>-->
+<!--                                            </li>-->
+
+                                             <li>
+                                                <button id="nextPage" class="nextPage MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary MuiPaginationItem-sizeSmall"  >
+                                                      <svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                                           <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                                                      </svg>
+                                             <span class="MuiTouchRipple-root"></span></button></li> 
                                         </ul>
                                     </nav>
                                 </div>
@@ -1373,7 +1384,6 @@ $("#districtUpdate").on("change", () => {
 });
 
 
-
 <!--    Công nợ-->
 $('#debts').click(function () {
     deleteEventModelShow();
@@ -1394,11 +1404,51 @@ $('#histories').click(function () {
         'border-bottom': '2px solid rgb(0, 136, 255)'
     });
 
-    showCustomerInfoHistory();
+    showCustomerInfoHistory(0, 5);
 });
 
-function showCustomerInfoHistory() {
+function getQuantityOrderCustomer() {
     let idCustomer = $('.idCustomerDelete').val();
+    $.ajax({
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        type: "GET",
+        url: "http://localhost:8080/api/customers/getQuantityOrderByCustomer/" + idCustomer
+    })
+        .done((data) => {
+            console.log(data)
+            return data;
+        })
+        .fail((jqXHR) => {
+            console.log("Ko đêm đc số luoựng")
+        })
+}
+
+
+function eventButtonPage(){
+    $('.nextPage').click(function () {
+        alert("nhan đc rồi")
+        console.log("ok")
+        $(".showModelHistory").val("");
+        showCustomerInfoHistory(10,20);
+    })
+
+    $('.previousPage').click(function (){
+        alert("nhan lùi rồi")
+        console.log("ok")
+    })
+}
+
+function showCustomerInfoHistory(startIntPaging, endIntPaging) {
+    let idCustomer = $('.idCustomerDelete').val();
+    let quantityOrder = getQuantityOrderCustomer();
+
+
+    let quantityPage = $('#quantityPage').val();
+    console.log(quantityPage + "Số page")
+    console.log(quantityOrder + "số lượng đơn hàng")
     console.log(idCustomer)
     return $.ajax({
         headers: {
@@ -1406,16 +1456,16 @@ function showCustomerInfoHistory() {
             "content-type": "application/json"
         },
         type: "GET",
-        url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer
+        url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer + "/" + startIntPaging + "/" + endIntPaging
     })
         .done((data) => {
             console.log(data)
-            if (data.length === 0){
-                return  $(".showModelHistory").append(noModalHistoryOrder);
+            if (data.length === 0) {
+                return $(".showModelHistory").append(noModalHistoryOrder);
             }
-            if (0 < data.length){
+            if (0 < data.length) {
                 $('.showModelHistory').append(modalHistoryOrder)
-                return   $.each(data, (i, customer) => {
+                return $.each(data, (i, customer) => {
                     let str = `
                                      <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
                                                 tabindex="-1">
@@ -1463,13 +1513,12 @@ function showCustomerInfoHistory() {
                 $('#tableHistoryCustomerOrder').DataTable();
 
             }
+
         })
         .fail((jqXHR) => {
 
         })
 }
-
-
 
 
 // Công nợ
