@@ -15,25 +15,26 @@ import java.util.List;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer , Integer> {
 
-    @Query(
-            "FROM Customer c ")
-    List<Customer> findAllByDeleted(boolean deleted);
-
     @Query(value = "SELECT * FROM v_GetAllCustomerMixInfo" , nativeQuery = true)
     List<ICustomer> getAllCustomerMixInfo();
 
     @Query(value = "SELECT * FROM v_GetAllCustomerMixInfoByStatus" , nativeQuery = true)
     List<ICustomer>  getAllCustomerMixInfoByStatus();
 
-    @Query(value = "call `ph-pn`.sp_FindCustomerInfoById(:id);" , nativeQuery = true)
+    @Query(value = "call `ph-pn`.sp_findCustomerInfoByIdcustomer(:id);" , nativeQuery = true)
     ICustomer getCustomerInfoById(Integer id);
-
 
     @Query(value = "call `ph-pn`.sp_customerOwerById(:id);" , nativeQuery = true)
     List<ICustomerOwer> getCustomerOwerById(Integer id);
 
-    @Query(value = " call `ph-pn`.sp_getCustomerHistoryOrderById(:id);" , nativeQuery = true)
-    List<ICustomerOrderHistory> getCustomerOrderHistory(Integer id);
+    @Query(value = " call sp_getCustomerHistoryOrderById(:id ,:startIntPaging,:endIntPaging);" , nativeQuery = true)
+    List<ICustomerOrderHistory> getCustomerOrderHistory(Integer id, Integer startIntPaging, Integer endIntPaging);
+
+
+    @Query(value = "call `ph-pn`.sp_getQuantityOrderByIdCustomer(:idCustomer);" , nativeQuery = true)
+    Integer getQuantityOrderByCustomer(Integer idCustomer);
+
+
 
 }
 
