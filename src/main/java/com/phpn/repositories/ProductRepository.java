@@ -1,5 +1,6 @@
 package com.phpn.repositories;
 
+import com.phpn.dto.product.ProductListResult;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.repositories.model.Product;
 
@@ -28,5 +29,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value = "SELECT * FROM v_item_product" , nativeQuery = true)
     List<ProductInfo> findAllProductInfo();
 
-
+    @Query(value = "call getAllProductList()",nativeQuery = true)
+    List<ProductListResult> getAllProductListResult();
 }

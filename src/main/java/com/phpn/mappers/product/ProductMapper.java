@@ -1,6 +1,6 @@
 package com.phpn.mappers.product;
 
-import com.phpn.dto.product.ProductCreate;
+
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.dto.product.ProductWithImageParam;
@@ -10,7 +10,7 @@ import com.phpn.mappers.item.ItemMapper;
 import com.phpn.repositories.model.Product;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
 
 @Component
 public class ProductMapper {

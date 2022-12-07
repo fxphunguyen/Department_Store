@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.phpn.dto.product.ProductCreate;
+import com.phpn.dto.product.ProductListResult;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.dto.product.ProductWithImageParam;
@@ -89,6 +90,11 @@ public class ProductServiceImpl implements ProductService {
 //
 //        return product;
         return  null;
+    }
+
+    @Override
+    public List<ProductListResult> getAllProductListResult() {
+        return productRepository.getAllProductListResult();
     }
 
 }

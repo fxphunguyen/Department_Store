@@ -1,5 +1,6 @@
 package com.phpn.controllers.api;
 
+import com.phpn.dto.product.ProductListResult;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.dto.product.ProductWithImageParam;
@@ -31,11 +32,19 @@ public class ProductAPI {
         return new ResponseEntity<>(productResults, HttpStatus.OK);
     }
 
+//    @GetMapping("")
+//    @Transactional(readOnly = true)
+//    public ResponseEntity<?> showAllProduct(){
+//        List<ProductResult> productResults = productService.showAllProduct();
+//        return  new ResponseEntity<>(productResults, HttpStatus.OK);
+//    }
+
+
+   // C0522k1
     @GetMapping("")
-    @Transactional(readOnly = true)
-    public ResponseEntity<?> showAllProduct(){
-        List<ProductResult> productResults = productService.showAllProduct();
-        return  new ResponseEntity<>(productResults, HttpStatus.OK);
+    public ResponseEntity<?> getAllProduct(){
+        List<ProductListResult> products = productService.getAllProductListResult();
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
 
