@@ -18,6 +18,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class CreateCustomerParam {
 
+
     private Integer id;
 
     private String customerCode;
@@ -38,7 +39,8 @@ public class CreateCustomerParam {
 
     private Integer employeeId;
 
-    private CreateShippingAddressParam shippingAddress;
+
+    private CreateShippingAddressParam createShippingAddressParam;
 
 
 

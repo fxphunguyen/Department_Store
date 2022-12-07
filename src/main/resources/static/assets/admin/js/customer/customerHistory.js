@@ -733,7 +733,7 @@ let modalHistoryOrder = `
                         <div class="MuiBox-root jss1378 jss1375">
                             <div class="MuiPaper-root jss1381 sapo-grid MuiPaper-elevation1 MuiPaper-rounded">
                                 <div class="MuiTableContainer-root jss1382 sapo-grid-header-wrapper">
-                                    <table class="MuiTable-root jss1383 sapo-grid-header" aria-labelledby="tableTitle"
+                                    <table id="tableHistoryCustomerOrder" class="MuiTable-root jss1383 sapo-grid-header" aria-labelledby="tableTitle"
                                            aria-label="enhanced table">
                                         <thead class="MuiTableHead-root jss1396">
                                         <tr class="MuiTableRow-root MuiTableRow-head">
@@ -765,7 +765,7 @@ let modalHistoryOrder = `
                                         </thead>
                                                 <tbody class="MuiTableBody-root showAllCustomerOrderHistory">
                                                 </tbody>
-                                            </table>
+                                    </table>
                                         </div>
                                         <div class="jss1387" style="position: fixed; height: 6px; left: 262px;">
                                             <div class="jss1388"
@@ -1460,6 +1460,7 @@ function showCustomerInfoHistory() {
                                    `
                     $(".showAllCustomerOrderHistory").append(str);
                 });
+                $('#tableHistoryCustomerOrder').DataTable();
 
             }
         })

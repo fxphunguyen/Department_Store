@@ -3,6 +3,7 @@ package com.phpn.controllers.api;
 
 import com.phpn.dto.shipping_address.CreateShippingAddressParam;
 import com.phpn.dto.shipping_address.ShippingAddressResult;
+import com.phpn.dto.shipping_address.ShippingAddressShowCustomerInfo;
 import com.phpn.mappers.shippingAddress.ShippingAddressMapper;
 import com.phpn.repositories.ShippingAddressRepository;
 import com.phpn.repositories.model.ShippingAddress;
@@ -31,17 +32,13 @@ public class ShippingAddressAPI {
     @GetMapping("/findByCustomerId/{id}")
     @Transactional(readOnly = true)
     public ResponseEntity<?> findShippingAddress(@PathVariable Integer id){
-        List<ShippingAddressResult> shippingAddresses = shippingAddressService.findByCustomerId(id);
+        List<ShippingAddressShowCustomerInfo> shippingAddresses = shippingAddressService.findByCustomerId(id);
         return  new ResponseEntity<>(shippingAddresses, HttpStatus.OK) ;
     }
 
     @PostMapping("/create")
-    @Transactional(readOnly = true)
     public ResponseEntity<?> createShippingAddress(@RequestBody CreateShippingAddressParam createShippingAddressParam ){
-        System.out.println(createShippingAddressParam.getAddress());
-        System.out.println(createShippingAddressParam);
-        ShippingAddressResult shippingAddressResult = shippingAddressService.create(createShippingAddressParam);
-        return  new ResponseEntity<>(shippingAddressResult, HttpStatus.OK) ;
+        ShippingAddress shippingAddress = shippingAddressService.create(createShippingAddressParam);
+        return  new ResponseEntity<>(shippingAddress, HttpStatus.OK) ;
     }
-
 }
