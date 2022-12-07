@@ -5489,3 +5489,18 @@ html {
     padding-top: 12px;
     background-color: white;
 }
+.MuiTableContainer-root {
+    width: 100%;
+    overflow-x: hidden;
+}
+.dataTables_info{
+    margin-left: 1148px;
+}
+.dataTables_length{
+    /*position: absolute;*/
+    /*margin-top: 229px;*/
+    margin-left: 1463px;
+}
+#showShippingAddress{
+    width: 100%;
+}
