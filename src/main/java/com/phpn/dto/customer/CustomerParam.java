@@ -1,14 +1,10 @@
 package com.phpn.dto.customer;
 
 
-import com.phpn.dto.locationRegion.LocationRegionCreate;
-import com.phpn.repositories.model.CustomerGender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-
-import javax.validation.constraints.DecimalMin;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,26 +20,11 @@ public class CustomerParam {
 
     private String phone;
 
-    private String customerGroup;
-
-    private String email;
-
-    private String birthday;
-
-    private String status;
 
     private String createAt;
 
-    private String updateAt;
 
     private Integer employeeId;
-
-    private CustomerGender customerGender;
-
-
-    private Integer locationRegionId;
-
-    private LocationRegionCreate locationRegionCreate;
 
 
 }

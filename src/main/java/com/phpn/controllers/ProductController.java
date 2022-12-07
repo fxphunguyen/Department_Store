@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/admin")
 public class ProductController {
 
-    @Autowired
-    private ProductServiceImpl productService;
 
     @GetMapping("/products")
     public ModelAndView showProductListPage() {
@@ -25,7 +23,7 @@ public class ProductController {
         return new ModelAndView("/admin/product/product_create");
     }
 
-    @GetMapping("/products/detail")
+    @GetMapping("/products/edit")
     public ModelAndView showProductDetailPage() {
         return new ModelAndView("/admin/product/product_detail");
     }

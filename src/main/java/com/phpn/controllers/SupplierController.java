@@ -1,6 +1,5 @@
 package com.phpn.controllers;
 
-import lombok.RequiredArgsConstructor;
 import com.phpn.services.suppliers.SupplierService;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
-@RequiredArgsConstructor
 @RequestMapping("/admin/suppliers")
 public class SupplierController {
 

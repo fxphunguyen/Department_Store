@@ -1,7 +1,5 @@
 package com.phpn.repositories.model;
 
-import org.jetbrains.annotations.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
@@ -22,11 +20,10 @@ public enum SupplierStatus {
     }
 
     @JsonCreator
-    public static @NotNull SupplierStatus parseSupplierStatus(String value) {
-        SupplierStatus[] values = values();
-        for (SupplierStatus supplierStatus : values) {
+    public static SupplierStatus parseSupplierStatus(String value) {
+        for (SupplierStatus supplierStatus : SupplierStatus.values())
             if (supplierStatus.value.equals(value)) return supplierStatus;
-        }
+
         throw new IllegalArgumentException("The supplier status [" + value + "] is invalid!");
     }
 

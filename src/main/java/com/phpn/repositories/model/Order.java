@@ -1,11 +1,15 @@
 package com.phpn.repositories.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -23,21 +27,43 @@ public class Order {
     @Column(name = "order_code", nullable = false, length = 50)
     private String orderCode;
 
-    @Column(name = "description", nullable = false, length = 200)
+    @Column(name = "full_name", length = 50)
+    private String fullName;
+
+    @Column(name = "mobile", length = 50)
+    private String mobile;
+
+    @Column(name = "line1",length = 50)
+    private String line1;
+
+    @Column(name = "line2", length = 50)
+    private String line2;
+
+    @Column(name = "city", length = 50)
+    private String city;
+
+    @Column(name = "province",  length = 50)
+    private String province;
+
+    @Column(name = "zip_code", length = 10)
+    private String zipCode;
+
+    @Column(name = "description", length = 200)
     private String description;
 
     @Column(name = "create_at", nullable = false, length = 50)
-    private String createAt;
+    private Instant createAt;
 
     @Column(name = "total", nullable = false, precision = 10, scale = 2)
     private BigDecimal total;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
-
     @Column(name = "customer_id", insertable = false, updatable = false)
     private Integer customerId;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
@@ -55,31 +81,26 @@ public class Order {
     @Column(name = "order_status_id", insertable = false, updatable = false)
     private Integer orderStatusId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "payment_method_id", nullable = false)
-    private PaymentMethod paymentMethod;
-
-    @Column(name = "tax", precision = 10, scale = 2)
-    private BigDecimal tax;
-
-    @Column(name = "payment_method_id", insertable = false, updatable = false)
-    private Integer paymentMethodId;
-
     @Column(name = "grand_total", nullable = false, precision = 10, scale = 2)
     private BigDecimal grandTotal;
 
+    @Column(name = "sub_total", nullable = false, precision = 10, scale = 2)
+    private BigDecimal subTotal;
+
     @Column(name = "discount", precision = 10, scale = 2)
     private BigDecimal discount;
+
+    @OneToMany (targetEntity = PaymentOrder.class, mappedBy = "order")
+    private Set<PaymentOrder> paymentOrderSet;
 
     public Order(Integer id) {
         this.id = id;
     }
 
-    public Order(Integer customerId, Integer employeeId, Integer orderStatusId, Integer paymentMethodId) {
+    public Order(Integer customerId, Integer employeeId, Integer orderStatusId) {
         setCustomerId(customerId);
         setEmployeeId(employeeId);
         setOrderStatusId(orderStatusId);
-        setPaymentMethodId(paymentMethodId);
     }
 
     public Order setCustomerId(Integer customerId) {
@@ -91,7 +112,6 @@ public class Order {
         this.orderStatus = new OrderStatus(this.orderStatusId = orderStatusId);
         return this;
     }
-
 
     public Order setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);

@@ -1,18 +1,15 @@
 package com.phpn.mappers;
 
-import java.time.LocalDateTime;
-import org.jetbrains.annotations.NotNull;
-
-import org.springframework.stereotype.Component;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.phpn.mappers.employee.EmployeeMapper;
-import com.phpn.mappers.localtionRegion.LocationRegionMapper;
+import com.phpn.dto.suppliers.SupplierCreate;
 import com.phpn.dto.suppliers.SupplierParam;
 import com.phpn.dto.suppliers.SupplierResult;
-import com.phpn.dto.suppliers.SupplierCreate;
-import com.phpn.dto.suppliers.SupplierUpdate;
+import com.phpn.mappers.employee.EmployeeMapper;
+import com.phpn.mappers.payment_method.PaymentMethodMapper;
 import com.phpn.repositories.model.Supplier;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 @Component
 public class SupplierMapper {
@@ -21,42 +18,43 @@ public class SupplierMapper {
     private EmployeeMapper employeeMapper;
 
     @Autowired
-    private LocationRegionMapper locationRegionMapper;
+    private PaymentMethodMapper paymentMethodMapper;
 
-    public SupplierResult toDTO(@NotNull Supplier supplier) {
+    public SupplierResult toDTO(Supplier supplier) {
         return new SupplierResult()
         .setId(supplier.getId())
         .setSupplierCode(supplier.getSupplierCode())
         .setName(supplier.getName())
         .setEmail(supplier.getEmail())
         .setPhone(supplier.getPhone())
-        .setSupplierStatus(supplier.getStatus())
+        .setStatus(supplier.getStatus())
         .setDescription(supplier.getDescription())
         .setEmployeeId(supplier.getEmployeeId())
-        .setEmployeeResult(employeeMapper.toDTO(supplier.getEmployee()))
-        .setLocationRegionId(supplier.getLocationRegionId())
-        .setLocationRegionResult(locationRegionMapper.toDTO(supplier.getLocationRegion()))
+        .setEmployee(employeeMapper.toDTO(supplier.getEmployee()))
+        .setPaymentMethodId(supplier.getPaymentMethodId())
+        .setPaymentMethod(paymentMethodMapper.toDTO(supplier.getPaymentMethod()))
         .setCreateAt(supplier.getCreateAt())
         .setUpdateAt(supplier.getUpdateAt());
     }
 
-    public Supplier toModel(@NotNull SupplierResult supplierResult) {
-        return new Supplier(supplierResult.getEmployeeId(), supplierResult.getLocationRegionId())
+    public Supplier toModel(SupplierResult supplierResult) {
+        return new Supplier(supplierResult.getEmployeeId(), supplierResult.getPaymentMethodId())
         .setId(supplierResult.getId())
         .setSupplierCode(supplierResult.getSupplierCode())
         .setName(supplierResult.getName())
         .setEmail(supplierResult.getEmail())
         .setPhone(supplierResult.getPhone())
-        .setStatus(supplierResult.getSupplierStatus())
+        .setStatus(supplierResult.getStatus())
         .setDescription(supplierResult.getDescription())
         .setEmployeeId(supplierResult.getEmployeeId())
-        .setLocationRegionId(supplierResult.getLocationRegionId())
+        .setPaymentMethodId(supplierResult.getPaymentMethodId())
+
         .setCreateAt(supplierResult.getCreateAt())
         .setUpdateAt(supplierResult.getUpdateAt());
     }
 
-    public Supplier toModel(@NotNull SupplierParam supplierParam) {
-        return new Supplier(supplierParam.getEmployeeId(), supplierParam.getLocationRegionId())
+    public Supplier toModel(SupplierParam supplierParam) {
+        return new Supplier(supplierParam.getEmployeeId(), supplierParam.getPaymentMethodId())
         .setId(supplierParam.getId())
         .setSupplierCode(supplierParam.getSupplierCode())
         .setName(supplierParam.getName())
@@ -65,14 +63,14 @@ public class SupplierMapper {
         .setStatus(supplierParam.getSupplierStatus())
         .setDescription(supplierParam.getDescription())
         .setEmployeeId(supplierParam.getEmployeeId())
-        .setLocationRegionId(supplierParam.getLocationRegionId())
+        .setPaymentMethodId(supplierParam.getPaymentMethodId())
+
         .setCreateAt(supplierParam.getCreateAt())
         .setUpdateAt(supplierParam.getUpdateAt());
     }
 
-    public Supplier toModel(@NotNull SupplierCreate supplierCreate) {
-        return new Supplier(supplierCreate.getEmployeeId(), supplierCreate.getLocationRegionId())
-        .setId(supplierCreate.getId())
+    public Supplier toModel(SupplierCreate supplierCreate) {
+        return new Supplier(supplierCreate.getEmployeeId(), supplierCreate.getPaymentMethodId())
         .setSupplierCode(supplierCreate.getSupplierCode())
         .setName(supplierCreate.getName())
         .setEmail(supplierCreate.getEmail())
@@ -80,23 +78,9 @@ public class SupplierMapper {
         .setStatus(supplierCreate.getSupplierStatus())
         .setDescription(supplierCreate.getDescription())
         .setEmployeeId(supplierCreate.getEmployeeId())
-        .setLocationRegionId(supplierCreate.getLocationRegionId())
-        .setCreateAt(LocalDateTime.now().toString())
-        .setUpdateAt(supplierCreate.getCreateAt());
-    }
+        .setPaymentMethodId(supplierCreate.getPaymentMethodId())
 
-    public Supplier toModel(@NotNull SupplierUpdate supplierUpdate) {
-        return new Supplier(supplierUpdate.getEmployeeId(), supplierUpdate.getLocationRegionId())
-        .setId(supplierUpdate.getId())
-        .setSupplierCode(supplierUpdate.getSupplierCode())
-        .setName(supplierUpdate.getName())
-        .setEmail(supplierUpdate.getEmail())
-        .setPhone(supplierUpdate.getPhone())
-        .setStatus(supplierUpdate.getSupplierStatus())
-        .setDescription(supplierUpdate.getDescription())
-        .setEmployeeId(supplierUpdate.getEmployeeId())
-        .setLocationRegionId(supplierUpdate.getLocationRegionId())
-        .setCreateAt(supplierUpdate.getCreateAt())
+        .setCreateAt(LocalDateTime.now().toString())
         .setUpdateAt(LocalDateTime.now().toString());
     }
 

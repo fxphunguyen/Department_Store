@@ -1,23 +1,23 @@
 package com.phpn.mappers.customer;
 
 
-import com.phpn.dto.customer.CustomerCreate;
+import com.phpn.dto.customer.CreateCustomerParam;
+import com.phpn.dto.customer.CustomerOrderResult;
+import com.phpn.dto.customer.CustomerParam;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.mappers.employee.EmployeeMapper;
-import com.phpn.mappers.localtionRegion.LocationRegionMapper;
 import com.phpn.repositories.model.Customer;
+import com.phpn.repositories.model.CustomerStatus;
+import com.phpn.repositories.model.ICustomerOwer;
+import com.phpn.repositories.model.ICustomerOwerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CustomerMapper {
 
-
     @Autowired
     private EmployeeMapper employeeMapper;
-
-    @Autowired
-    private LocationRegionMapper locationRegionMapper;
 
 
     public CustomerResult toDTO(Customer customer) {
@@ -30,16 +30,22 @@ public class CustomerMapper {
                 .setCustomerGender(customer.getCustomerGender())
                 .setEmail(customer.getEmail())
                 .setBirthday(customer.getBirthday())
-                .setStatus(customer.getStatus())
+                .setCustomerStatus(customer.getCustomerStatus())
                 .setCreateAt(customer.getCreateAt())
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
-                .setLocationRegionId(customer.getLocationRegionId())
-                .setLocationRegionResult(locationRegionMapper.toDTO(customer.getLocationRegion()))
-                .setEmployeeResult(employeeMapper.toDTO(customer.getEmployee()));
+                .setCustomerStatus(customer.getCustomerStatus());
+    }
+    public CustomerOrderResult toOrderDTO(Customer customer) {
+        return new CustomerOrderResult()
+                .setId(customer.getId())
+                .setCustomerCode(customer.getCustomerCode())
+                .setName(customer.getName())
+                .setPhone(customer.getPhone())
+                .setEmployeeId(customer.getEmployeeId());
     }
 
-    public Customer toModel(CustomerCreate customerCreate) {
+    public Customer toModel(CreateCustomerParam customerCreate) {
         return new Customer()
                 .setEmployeeId(customerCreate.getEmployeeId())
                 .setCustomerCode(customerCreate.getCustomerCode())
@@ -48,14 +54,10 @@ public class CustomerMapper {
                 .setCustomerGroup(customerCreate.getCustomerGroup())
                 .setEmail(customerCreate.getEmail())
                 .setBirthday(customerCreate.getBirthday())
-                .setStatus(customerCreate.getStatus())
-                .setCreateAt(java.time.LocalDateTime.now().toString())
-                .setUpdateAt(customerCreate.getUpdateAt())
-                .setCustomerGender(customerCreate.getCustomerGender())
-                .setLocationRegionId(customerCreate.getLocationRegionId());
+                .setCustomerStatus(CustomerStatus.AVAILABLE);
     }
 
-    public Customer toCustomer( CustomerCreate customerCreate) {
+    public Customer toCustomer( CreateCustomerParam customerCreate) {
         return new Customer()
                 .setId(customerCreate.getId())
                 .setCustomerCode(customerCreate.getCustomerCode())
@@ -64,12 +66,7 @@ public class CustomerMapper {
                 .setCustomerGroup(customerCreate.getCustomerGroup())
                 .setCustomerGender(customerCreate.getCustomerGender())
                 .setEmail(customerCreate.getEmail())
-                .setBirthday(customerCreate.getBirthday())
-                .setStatus(customerCreate.getStatus())
-                .setCreateAt(customerCreate.getCreateAt())
-                .setUpdateAt(customerCreate.getUpdateAt())
-                .setLocationRegionId(customerCreate.getLocationRegionId())
-                .setLocationRegion(locationRegionMapper.toModel(customerCreate.getLocationRegionCreate()));
+                .setBirthday(customerCreate.getBirthday());
     }
 
     public Customer toCustomer(CustomerResult customerResult ,Customer customer) {
@@ -82,51 +79,12 @@ public class CustomerMapper {
                 .setCustomerGender(customerResult.getCustomerGender())
                 .setEmail(customerResult.getEmail())
                 .setBirthday(customerResult.getBirthday())
-                .setStatus(customerResult.getStatus())
-                .setUpdateAt(customerResult.getUpdateAt())
-                .setUpdateAt(java.time.LocalDateTime.now().toString())
-                .setDeleted(true);
+                .setCustomerStatus(customerResult.getCustomerStatus())
+                .setUpdateAt(customerResult.getUpdateAt());
 
     }
 
 
-
-
-//    public Customer toModel(CustomerResult customerResult) {
-//        return new Customer()
-//                .setId(customerResult.getId())
-//                .setCustomerCode(customerResult.getCustomerCode())
-//                .setName(customerResult.getName())
-//                .setPhone(customerResult.getPhone())
-//                .setCustomerGroup(customerResult.getCustomerGroup())
-//                .setCustomerGender(customerResult.getCustomerGender())
-//                .setEmail(customerResult.getEmail())
-//                .setBirthday(customerResult.getBirthday())
-//                .setStatus(customerResult.getStatus())
-//                .setCreateAt(customerResult.getCreateAt())
-//                .setUpdateAt(customerResult.getUpdateAt())
-//                .setEmployeeId(customerResult.getEmployeeId())
-//                .setLocationRegionId(customerResult.getLocationRegionId())
-//                .setLocationRegion(locationRegionMapper.toModel(customerResult.getLocationRegionResult().));
-//    }
-
-
-    public CustomerResult toDTOCustomerEdit(Customer customer) {
-        return new CustomerResult()
-                .setId(customer.getId())
-                .setCustomerCode(customer.getCustomerCode())
-                .setName(customer.getName())
-                .setPhone(customer.getPhone())
-                .setCustomerGroup(customer.getCustomerGroup())
-                .setCustomerGender(customer.getCustomerGender())
-                .setEmail(customer.getEmail())
-                .setBirthday(customer.getBirthday())
-                .setStatus(customer.getStatus())
-                .setCreateAt(customer.getCreateAt())
-                .setUpdateAt(customer.getUpdateAt())
-                .setEmployeeId(customer.getEmployeeId())
-                .setDeleted(customer.getDeleted());
-    }
 
 
 }

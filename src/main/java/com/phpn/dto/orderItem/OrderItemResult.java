@@ -1,10 +1,6 @@
 package com.phpn.dto.orderItem;
 
-import com.phpn.dto.item.ItemParam;
 import com.phpn.dto.item.ItemResult;
-import com.phpn.dto.order.OrderParam;
-import com.phpn.dto.order.OrderResult;
-import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,5 +31,6 @@ public class OrderItemResult {
     private ProductResult product;
 
     private Instant createAt;
+
 
 }

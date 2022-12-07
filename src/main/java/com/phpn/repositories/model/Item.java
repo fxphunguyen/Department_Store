@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.Instant;
 
 @Data
 @NoArgsConstructor
@@ -21,26 +23,15 @@ public class Item {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "sku", length = 20)
-    private String sku;
-
-    @Column(name = "mrp")
-    private Float mrp;
-
-    @Column(name = "discount", nullable = false)
-    private Float discount;
-
-    @Column(name = "price", precision = 10, scale = 2)
-    private BigDecimal price;
-
     @Column(name = "quantity")
     private Integer quantity;
 
-    @Column(name = "create_at", length = 20)
-    private String createAt;
+    @CreationTimestamp
+    @Column(name = "create_at", nullable = false)
+    private Instant createAt;
 
     @Column(name = "update_at", length = 20)
-    private String updateAt;
+    private Instant updateAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
@@ -48,7 +39,6 @@ public class Item {
 
     @Column(name = "product_id", insertable = false, updatable = false)
     private Integer productId;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_Id")

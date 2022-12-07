@@ -1,18 +1,14 @@
 package com.phpn.dto.order;
 
-import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
-import com.phpn.dto.customer.CustomerParam;
-import com.phpn.dto.employee.EmployeeParam;
-import com.phpn.dto.orderItem.OrderItemParam;
-import com.phpn.dto.payment_method.PaymentMethodParam;
-import com.phpn.repositories.model.Customer;
-import com.phpn.repositories.model.Employee;
+
+import com.phpn.dto.orderItem.OrderItemExport;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 
 @AllArgsConstructor
@@ -23,26 +19,20 @@ public class OrderParam {
 
     private Integer id;
 
-    private EmployeeParam employeeParam;
+    private Integer employeeId;
 
-    private CustomerParam customerParam;
+    private Integer customerId;
 
-    private PaymentMethodParam paymentMethodParam;
-
-    private Integer orderStatusId;
-
-    private BigDecimal tax;
+    private String orderCode;
 
     private BigDecimal discount;
 
     private String description;
 
-    private String createAt;
+    private Integer orderStatusId;
 
-    private BigDecimal total;
+    private Instant createAt;
 
-    private BigDecimal grandTotal;
-
-    List<OrderItemParam> orderItems;
+    List<OrderItemExport> orderItems;
 
 }

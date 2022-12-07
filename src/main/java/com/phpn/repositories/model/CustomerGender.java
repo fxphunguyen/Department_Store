@@ -10,9 +10,6 @@ public enum CustomerGender {
     NAM("Nam"), NU("Nữ"),KHAC("Khác");
 
     private final String value;
-
-
-
     CustomerGender(String value) {
         this.value = value;
     }

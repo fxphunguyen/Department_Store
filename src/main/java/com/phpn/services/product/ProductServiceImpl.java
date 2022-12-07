@@ -32,7 +32,13 @@ public class ProductServiceImpl implements ProductService {
                 .map(productMapper :: toDTO)
                 .collect(Collectors.toList());
     }
-
+//    public List<ProductResult> findAll1() {
+//        item.findBNyProdcutId
+//        return productRepository.findAll()
+//                .stream()
+//                .map(productMapper :: toDTO)
+//                .collect(Collectors.toList());
+//    }
     @Override
     public List<ProductResult> showAllProduct() {
         return productRepository.findAll()
@@ -57,7 +63,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Product create(ProductParam productParam) {
         return productRepository.save(productMapper.toModel(productParam));
     }

@@ -1,28 +1,11 @@
-<<<<<<< HEAD
-HELP.md
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### STS ###
-=======
 # Maven Project
-mvnw
-mvnw.cmd
-.mvn/wrapper/maven-wrapper.jar
 target/
 
 # Gradle Project
-gradlew
-gradlew.bat
-gradle/wrapper/gradle-wrapper.jar
 build/
 .gradle/
 
 # Eclipse
->>>>>>> ngoc_dev
 .apt_generated
 .classpath
 .factorypath
@@ -31,29 +14,6 @@ build/
 .springBeans
 .sts4-cache
 bin/
-<<<<<<< HEAD
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
-.vscode/
-=======
 
 # IntelliJ IDEA
 *.iml
@@ -74,4 +34,3 @@ nbproject/
 
 # Mac OS
 .DS_Store
->>>>>>> ngoc_dev

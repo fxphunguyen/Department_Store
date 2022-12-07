@@ -1,9 +1,15 @@
 package com.phpn.repositories.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.Instant;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -14,26 +20,14 @@ import javax.persistence.*;
 @Accessors(chain = true)
 public class Customer {
 
-    public  Customer(Integer id){
+    public Customer(Integer id) {
         this.id = id;
     }
-
-    public Customer(Integer employeeId , Integer locationRegionId){
-       setEmployeeId(employeeId);
-       setLocationRegionId(locationRegionId);
-    }
-
 
     public Customer setEmployeeId(Integer employeeId) {
         this.employee = new Employee(this.employeeId = employeeId);
         return this;
     }
-
-    public Customer setLocationRegionId(Integer locationRegionId) {
-        this.locationRegion = new LocationRegion(this.locationRegionId = locationRegionId);
-        return this;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -59,36 +53,29 @@ public class Customer {
     private String birthday;
 
     @Column(name = "status", nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private CustomerStatus customerStatus;
 
     @Column(name = "gender", nullable = false)
     @Enumerated(EnumType.STRING)
     private CustomerGender customerGender;
 
+    @CreationTimestamp
     @Column(name = "create_at", nullable = false, length = 50)
-    private String createAt;
+    private Instant createAt;
 
     @Column(name = "update_at", nullable = false, length = 50)
-    private String updateAt;
+    private Instant updateAt;
 
+    @OneToMany(targetEntity = ShippingAddress.class, mappedBy = "customer")
+    private Set<ShippingAddress> shippingAddressSet;
 
-    @Column(name = "location_region_id", insertable = false,updatable = false)
-    private Integer locationRegionId ;
-
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "location_region_id", nullable = false)
-    private LocationRegion locationRegion;
-
-    @Column(name = "employee_id", insertable = false,updatable = false)
+    @Column(name = "employee_id", insertable = false, updatable = false)
     private Integer employeeId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
-
-    @Column(name = "deleted", nullable = false)
-    private Boolean deleted = false;
 
 
 }
