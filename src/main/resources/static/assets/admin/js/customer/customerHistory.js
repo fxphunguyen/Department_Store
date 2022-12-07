@@ -1521,6 +1521,8 @@ function showCustomerInfoHistory(startIntPaging, endIntPaging) {
 }
 
 
+
+
 // Công nợ
 function showCustomerInfoDebt() {
     let idCustomer = $('.idCustomerDelete').val();

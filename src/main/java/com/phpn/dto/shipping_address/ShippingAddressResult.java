@@ -1,6 +1,7 @@
 package com.phpn.dto.shipping_address;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -38,16 +39,9 @@ public class ShippingAddressResult {
 
     private String zipCode;
 
-    private boolean isDefault;
+    private boolean isShipping;
 
+    private boolean isReceiveBill;
 
-    public ShippingAddressResult setDefault(boolean isDefault) {
-        this.isDefault = isDefault;
-        return this;
-    }
-
-    public boolean isDefault() {
-        return isDefault;
-    }
 
 }

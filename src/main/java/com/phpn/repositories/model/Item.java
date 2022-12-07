@@ -26,6 +26,9 @@ public class Item {
     @Column(name = "quantity")
     private Integer quantity;
 
+    @Column(name = "price")
+    private BigDecimal price;
+
     @CreationTimestamp
     @Column(name = "create_at", nullable = false)
     private Instant createAt;
@@ -72,9 +75,6 @@ public class Item {
 
     @Column(name = "defective")
     private Integer defective;
-
-    @Column(name = "price")
-    private BigDecimal price;
 
     public Item (Integer productId, Integer supplierId, Integer orderId, Integer employeeId){
         setProductId(productId);
