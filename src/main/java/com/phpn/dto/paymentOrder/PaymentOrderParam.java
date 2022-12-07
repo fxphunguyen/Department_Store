@@ -10,6 +10,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Date;
 
 @Getter
@@ -25,19 +26,13 @@ public class PaymentOrderParam {
 
     private Integer employeeId;
 
-    private EmployeeResult employeeResult;
-
     private Integer orderId;
-
-    private OrderResult orderResult;
 
     private Integer customerId;
 
-    private CustomerResult customerResult;
-
     private Integer paymentMethodId;
 
-    private String createAt;
+    private Instant createAt;
 
     private String description;
 }

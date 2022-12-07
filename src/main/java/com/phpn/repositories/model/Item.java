@@ -67,6 +67,9 @@ public class Item {
     @Column(name = "available")
     private Integer available;
 
+    @Column(name = "trading")
+    private Integer trading;
+
     @Column(name = "defective")
     private Integer defective;
 
