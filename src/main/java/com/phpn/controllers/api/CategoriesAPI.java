@@ -30,12 +30,6 @@ public class CategoriesAPI {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
-//    @PostMapping("/create")
-//    public  ResponseEntity<?> createCategory(Category newCategory){
-//        Category category = categoryService.save(newCategory);
-//        return  new ResponseEntity<>(category, HttpStatus.OK);
-//    }
-
     @PostMapping("/create")
     public ResponseEntity<?> addCategory(Category newCategory) {
         Category category = categoryService.save(newCategory);

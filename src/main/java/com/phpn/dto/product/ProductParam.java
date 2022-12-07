@@ -31,7 +31,6 @@ public class ProductParam {
     private BigDecimal wholesalePrice;
     private Integer categoryId;
     private Integer brandId;
-    private Float applyTax;
+    private Boolean applyTax;
     private Boolean deleted;
-
 }
