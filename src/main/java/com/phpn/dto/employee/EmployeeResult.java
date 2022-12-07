@@ -20,6 +20,6 @@ public class EmployeeResult {
     private String email;
     private String birthday;
     private String gender;
-    private Integer locationRegionId;
+
 
 }

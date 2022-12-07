@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" class="sapo-menu-expand sapo-menu-toggle-active" lang="vi-VN">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      class="sapo-menu-expand sapo-menu-toggle-active" lang="vi-VN">
 <head>
     <th:block th:replace="/layout/header :: header"/>
     <title>Tạo đơn hàng</title>
@@ -1255,32 +1256,23 @@
                                             </div>
                                             <div class="MuiTableContainer-root jss1226" id="show_product_info">
                                                 <div id="divTbProduct" class="hide">
-                                                    <table id="tbProduct"
-                                                           class="MuiTable-root MuiTable-stickyHeader table_product"
-                                                           aria-label="simple table" style="border-collapse: inherit;">
+                                                    <table id="tbProduct" class="MuiTable-root MuiTable-stickyHeader table_product" aria-label="simple table" style="border-collapse: inherit;">
                                                         <thead class="MuiTableHead-root">
                                                         <tr class="MuiTableRow-root MuiTableRow-head">
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-stickyHeader "
-                                                                scope="col" style="width: 55px;">STT
-                                                            </th>
+                                                                scope="col" style="width: 55px;">STT</th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-stickyHeader "
-                                                                scope="col" style="width: 60px;">Ảnh
-                                                            </th>
+                                                                scope="col" style="width: 60px;">Ảnh</th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-stickyHeader "
-                                                                scope="col">Tên sản phẩm
-                                                            </th>
+                                                                scope="col">Tên sản phẩm</th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-stickyHeader "
-                                                                scope="col" style="width: 105px;">Số lượng
-                                                            </th>
+                                                                scope="col" style="width: 105px;">Số lượng</th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-stickyHeader quantity-td"
-                                                                scope="col" style="width: 115px;">Đơn giá
-                                                            </th>
+                                                                scope="col" style="width: 115px;">Đơn giá</th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-stickyHeader "
-                                                                scope="col" style="width: 115px;">Chiết khấu
-                                                            </th>
+                                                                scope="col" style="width: 115px;">Chiết khấu</th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-stickyHeader "
-                                                                scope="col" style="width: 115px;">Thành tiền
-                                                            </th>
+                                                                scope="col" style="width: 115px;">Thành tiền</th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-stickyHeader "
                                                                 scope="col" style="width: 30px;"></th>
                                                         </tr>
@@ -1431,20 +1423,35 @@
                                             <div class="MuiBox-root jss1282 create-order-step5 jss1274">
                                                 <li class="MuiListItem-root jss1275 MuiListItem-gutters">
                                                     <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Tổng tiền (0 sản phẩm)</span>
+                                                                class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" id="quantity_products">Tổng tiền ( sản phẩm)</span>
                                                     </div>
                                                     <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
+                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock"  id="grandTotal">0</span>
                                                     </div>
                                                 </li>
-                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters" id="vat_tax">
-                                                    <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT (10%)</span>
+                                                <li class="MuiListItem-root MuiListItem-gutters d-none" id="vat_tax" style="padding: 0 0">
+<!--                                                        <div class="MuiListItemText-root">-->
+
+<!--                                                            <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock d-none" id="vat_percent">VAT (${result.tax}%)</span>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="MuiListItemText-root">-->
+<!--                                                            <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="list-group">-->
+<!--                                                        <div class="MuiListItemText-root">-->
+
+<!--                                                            <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock d-none" id="vat_percent">VAT (${result.tax}%)</span>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="MuiListItemText-root">-->
+<!--                                                            <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+                                                    <div id="ul_vat_tax" class="MuiListItem-root  MuiListItem-gutters" style="display: list-item;list-style: none;padding-top: 0px  ;padding-right: 0;" >
+
                                                     </div>
-                                                    <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
-                                                    </div>
-                                                </li>
+
+
                                                 <li class="MuiListItem-root jss1275 MuiListItem-gutters">
                                                     <div class="MuiListItemText-root"><span
                                                             class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Chiết khấu (F6)</span>
@@ -1455,40 +1462,40 @@
                                                             id="f6_total_discount_order" class="jss1278">0</div> </span>
                                                     </div>
                                                 </li>
-                                                <!--                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters">-->
-                                                <!--                                                    <div class="MuiListItemText-root"><span-->
-                                                <!--                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"-->
-                                                <!--                                                            style="color: rgb(0, 136, 255); cursor: pointer;">Phí giao hàng (F7)</span>-->
-                                                <!--                                                    </div>-->
-                                                <!--                                                    <div class="MuiListItemText-root" style="margin: 0px;"><span-->
-                                                <!--                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"-->
-                                                <!--                                                            style="margin-left: auto; width: 103px; text-align: right;"><div-->
-                                                <!--                                                            id="f7_order_delivery_fee" class="jss1278">0</div></span>-->
-                                                <!--                                                    </div>-->
-                                                <!--                                                </li>-->
-                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters">
-                                                    <div class="MuiListItemText-root"
-                                                         style="margin: 0px; height: 28px;"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-                                                            style="margin-left: auto;"><div class="MuiBox-root jss2775"
-                                                                                            style="display: flex; align-items: flex-end;"><button
-                                                            id="btn-discount-code" class="sc-jqUVSM jocTuY"><span
-                                                            class="sc-papXJ ffDJGn"><p
-                                                            class="MuiTypography-root MuiTypography-body1">Mã giảm giá</p></span><svg
-                                                            class="MuiSvgIcon-root" focusable="false"
-                                                            viewBox="0 0 24 24" aria-hidden="true"
-                                                            style="transform: rotate(0deg); width: 18px;"><path
-                                                            d="M7 10l5 5 5-5z"></path></svg></button></div></span></div>
-                                                    <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
-                                                    </div>
-                                                </li>
+<!--                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters">-->
+<!--                                                    <div class="MuiListItemText-root"><span-->
+<!--                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"-->
+<!--                                                            style="color: rgb(0, 136, 255); cursor: pointer;">Phí giao hàng (F7)</span>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="MuiListItemText-root" style="margin: 0px;"><span-->
+<!--                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"-->
+<!--                                                            style="margin-left: auto; width: 103px; text-align: right;"><div-->
+<!--                                                            id="f7_order_delivery_fee" class="jss1278">0</div></span>-->
+<!--                                                    </div>-->
+<!--                                                </li>-->
+<!--                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters">-->
+<!--                                                    <div class="MuiListItemText-root"-->
+<!--                                                         style="margin: 0px; height: 28px;"><span-->
+<!--                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"-->
+<!--                                                            style="margin-left: auto;"><div class="MuiBox-root jss2775"-->
+<!--                                                                                            style="display: flex; align-items: flex-end;"><button-->
+<!--                                                            id="btn-discount-code" class="sc-jqUVSM jocTuY"><span-->
+<!--                                                            class="sc-papXJ ffDJGn"><p-->
+<!--                                                            class="MuiTypography-root MuiTypography-body1">Mã giảm giá</p></span><svg-->
+<!--                                                            class="MuiSvgIcon-root" focusable="false"-->
+<!--                                                            viewBox="0 0 24 24" aria-hidden="true"-->
+<!--                                                            style="transform: rotate(0deg); width: 18px;"><path-->
+<!--                                                            d="M7 10l5 5 5-5z"></path></svg></button></div></span></div>-->
+<!--                                                    <div class="MuiListItemText-root"><span-->
+<!--                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>-->
+<!--                                                    </div>-->
+<!--                                                </li>-->
                                                 <li class="MuiListItem-root jss1275 MuiListItem-gutters">
                                                     <div class="MuiListItemText-root"><span
                                                             class="MuiTypography-root MuiListItemText-primary MuiTypography-subtitle1 MuiTypography-displayBlock">Khách phải trả</span>
                                                     </div>
                                                     <div class="MuiListItemText-root"><h6
-                                                            class="MuiTypography-root MuiTypography-h6 MuiTypography-alignRight">
+                                                            class="MuiTypography-root MuiTypography-h6 MuiTypography-alignRight" id="total_amounts">
                                                         0</h6></div>
                                                 </li>
                                                 <span class="jss1280"></span>
@@ -1515,7 +1522,7 @@
                                                             class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Còn phải trả</span>
                                                     </div>
                                                     <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" id="total_customer"
                                                             style="text-align: right;">0</span></div>
                                                 </li>
                                                 <input readonly="" id="totalPaidAmount" value="0"
@@ -1881,8 +1888,12 @@
      style="width: 718px; position: absolute; inset: 0px auto auto 0px; transform: translate(278px, 169px); z-index: 999;">
     <div class="MuiBox-root jss4970 jss2932" wrapper-suggest="c05f1dc8-07da-4f36-a8b6-dedaa35f3535">
         <div class="MuiBox-root jss4971" tabindex="0">
+
+<!--            <button data-bs-toggle="modal" data-bs-target="#create_order_customer   " class="MuiButtonBase-root MuiButton-root jss4972 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"-->
+
             <button data-bs-toggle="modal" data-bs-target="#create_order_customer"
                     class="MuiButtonBase-root MuiButton-root jss4972 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"
+
                     tabindex="0" type="button" key-event="true" data-id="-1">
                 <span class="MuiButton-label"><span
                         class="MuiButton-startIcon MuiButton-iconSizeMedium"><svg
@@ -1907,19 +1918,14 @@
      style="width: 905px; position: absolute; inset: 0px auto auto 0px; transform: translate(100px, 184px); z-index: 999;">
     <div class="MuiBox-root jss3933 jss1010 jss1263" wrapper-suggest="e161f822-1e4f-4674-a5bb-c11c22ace43f">
         <div class="MuiBox-root jss3934" tabindex="0">
-            <button class="MuiButtonBase-root MuiButton-root jss3935 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"
-                    tabindex="0" type="button" key-event="true" data-id="-1">
-                <div id="MuiBox-list-product"
-                     class="MuiPaper-root jss1062 MuiPaper-elevation3 MuiPaper-rounded d-none searchProduct"
-                     data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom"
-                     style="width: 905px; position: absolute; inset: 0px auto auto 0px; transform: translate(100px, 184px); z-index: 999;">
-                    <div class="MuiBox-root jss3933 jss1010 jss1263"
-                         wrapper-suggest="e161f822-1e4f-4674-a5bb-c11c22ace43f">
-                        <div class="MuiBox-root jss3934" tabindex="0">
-                            <button data-bs-toggle="modal" data-bs-target="#create_order_product"
-                                    class="MuiButtonBase-root MuiButton-root jss3935 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"
-                                    tabindex="0" type="button" key-event="true" data-id="-1">
-                                <span class="MuiButton-label">
+<!--            <button class="MuiButtonBase-root MuiButton-root jss3935 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"-->
+<!--                    tabindex="0" type="button" key-event="true" data-id="-1">-->
+<!--<div id="MuiBox-list-product" class="MuiPaper-root jss1062 MuiPaper-elevation3 MuiPaper-rounded d-none searchProduct"-->
+<!--     data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom" style="width: 905px; position: absolute; inset: 0px auto auto 0px; transform: translate(100px, 184px); z-index: 999;">-->
+<!--    <div class="MuiBox-root jss3933 jss1010 jss1263" wrapper-suggest="e161f822-1e4f-4674-a5bb-c11c22ace43f">-->
+<!--        <div class="MuiBox-root jss3934" tabindex="0">-->
+            <button data-bs-toggle="modal" data-bs-target="#create_order_product" class="MuiButtonBase-root MuiButton-root jss3935 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth" tabindex="0" type="button" key-event="true" data-id="-1">
+            <span class="MuiButton-label">
                <span class="MuiButton-startIcon MuiButton-iconSizeMedium">
                   <svg class="MuiSvgIcon-root icon MuiSvgIcon-colorPrimary" focusable="false" viewBox="0 0 24 24"
                        aria-hidden="true">
@@ -1928,18 +1934,14 @@
                </span>
                <h6 class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary">Thêm mới sản phẩm</h6>
             </span>
-                                <span class="MuiTouchRipple-root"></span>
-                            </button>
-                        </div>
-                        <div class="infinite-scroll-component__outerdiv">
-                            <div class="infinite-scroll-component InfiniteScroll-ListItem contentProduct"
-                                 style="height: auto; overflow: auto; max-height: 300px;">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <span class="MuiTouchRipple-root"></span>
             </button>
+        </div>
+        <div class="infinite-scroll-component__outerdiv">
+            <div class="infinite-scroll-component InfiniteScroll-ListItem contentProduct"
+                 style="height: auto; overflow: auto; max-height: 300px;">
+
+            </div>
         </div>
     </div>
 </div>
@@ -1953,4 +1955,86 @@
 
 <script type="text/javascript" src="/static/assets/admin/js/order/app.js"></script>
 <script type="text/javascript" src="/static/assets/admin/js/order/order.js"></script>
+
+
+// Thêm mới nhanh sản phẩm
+<script>
+    class Product{
+        constructor(id, title, sku, categoryId, retailPrice, quantity, mass, importPrice) {
+            this.id = id;
+            this.title = title;
+            this.sku = sku;
+            this.quantity = quantity;
+            this.retailPrice = retailPrice;
+            this.importPrice = importPrice;
+            this.categoryId = categoryId;
+            this.mass = mass;
+        }
+    }
+
+    let product = new Product();
+
+    function showAllCategory() {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/categories"
+        })
+            .done((data) => {
+                $("#categoryCreate").empty();
+
+                $.each(data, (i, item) => {
+                    let str = `<option value="${item.id}">${item.name}</option>`;
+                    $(".showAllCategory").append(str);
+                });
+
+            })
+            .fail((jqXHR) => {
+                console.log("Error");
+            })
+    }
+
+    function doCreateProductShort(){
+
+        product.id = 0;
+        product.title = $('#titleCreate').val();
+        product.sku = $('#skuCreate').val();
+        product.quantity = $('#inventoryCreate').val();
+        product.retailPrice= $('#retailPriceCreate').val();
+        product.importPrice = $('#importPriceCreate').val();
+        product.categoryId= $('#categoryCreate').val();
+        product.mass = $('#massCreate').val();
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json",
+            },
+            type: "POST",
+            url: "http://localhost:8080/api/products/create-short",
+            data: JSON.stringify(product),
+        })
+            .done((data) => {
+
+                $('#create_order_product').modal("hide");
+
+                $('#modalProductShort')[0].reset();
+                App.SweetAlert.showSuccessAlert("Thêm thành công sản phẩm!");
+            })
+            .fail((jqXHR) => {
+                console.log(jqXHR.message)
+                App.SweetAlert.showErrorAlert("Thêm không được");
+            })
+    }
+
+    $("#btnCreateProductShort").on("click", function () {
+        doCreateProductShort();
+    })
+
+    showAllCategory();
+
+</script>
 </html>

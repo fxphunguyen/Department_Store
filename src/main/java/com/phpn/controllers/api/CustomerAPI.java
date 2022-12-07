@@ -2,7 +2,6 @@ package com.phpn.controllers.api;
 
 import com.phpn.dto.customer.CreateCustomerParam;
 import com.phpn.dto.customer.CustomerResult;
-import com.phpn.mappers.customer.CustomerMapper;
 import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.OrderRepository;
 import com.phpn.repositories.model.*;
@@ -19,8 +18,6 @@ import java.util.List;
 @RequestMapping("/api/customers")
 public class CustomerAPI {
 
-    @Autowired
-    private CustomerMapper customerMapper;
 
     @Autowired
     private CustomerService customerService;
@@ -55,16 +52,17 @@ public class CustomerAPI {
 
     @PostMapping("/delete/{id}")
     public void deleteCustomerById(@PathVariable Integer id) {
-     //   customerService.deleteStatusCustomer(id);
+        //   customerService.deleteStatusCustomer(id);
     }
 
     @PostMapping("/create")
     public ResponseEntity<?> createCustomer(@RequestBody CreateCustomerParam customerCreate) {
-        CustomerResult customer = customerService.create(customerCreate);
+        System.out.println(customerCreate.getCreateShippingAddressParam().getDistrictName());
+        System.out.println(customerCreate);
+        Customer customer = customerService.create(customerCreate);
         return new ResponseEntity<>(customer, HttpStatus.OK);
 
     }
-
 
 
     @PutMapping("/update/{id}")
@@ -125,18 +123,27 @@ public class CustomerAPI {
         return new ResponseEntity<>(iCustomer, HttpStatus.OK);
     }
 
-    @GetMapping("/historyCustomerOrder/{id}")
-    @Transactional(readOnly = true)
-    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id) {
-        List<Order> order = orderRepository.findAllOrderByCustomerId(id);
-        return new ResponseEntity<>(order, HttpStatus.OK);
+    @GetMapping("/historyCustomerOrder/{id}/{startIntPaging}/{endIntPaging}")
+    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id, @PathVariable Integer startIntPaging, @PathVariable Integer endIntPaging ) {
+
+        System.out.println("id" + id + "stare" + startIntPaging +  "end" + endIntPaging);
+        List<ICustomerOrderHistory> customerOrderHistory = customerRepository.getCustomerOrderHistory(id , startIntPaging , endIntPaging);
+        return new ResponseEntity<>(customerOrderHistory, HttpStatus.OK);
     }
 
-
-    @GetMapping("/customerOwer/{id}")
+    @GetMapping("/customerDebt/{id}")
     @Transactional(readOnly = true)
-    public ResponseEntity<?> showListCustomerOwerById(@PathVariable Integer id) {
+    public ResponseEntity<?> showListCustomerDebtById(@PathVariable Integer id) {
         List<ICustomerOwerImpl> iCustomerImpls = customerService.CustomerOwerById(id);
         return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
     }
+
+
+    @GetMapping("/getQuantityOrderByCustomer/{id}")
+    @Transactional(readOnly = true)
+    public ResponseEntity<?> getQuantityOrderByCustomer(@PathVariable Integer id) {
+        Integer iCustomerImpls = customerRepository.getQuantityOrderByCustomer(id);
+        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
+    }
 }
+

@@ -65,3 +65,11 @@
      min-width: 40px;
      border-radius: 3px;
  }
+ .discount_rate_line_item {
+     position: absolute;
+     bottom: -21px;
+ }
+
+#discount_value_4 {
+    font-weight: 0;
+}

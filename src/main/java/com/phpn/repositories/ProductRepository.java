@@ -25,7 +25,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Product> findAllProductByDeleted(boolean deleted);
 
 
-    @Query(value = "SELECT * FROM v_item_product" , nativeQuery = true)
+    @Query(value = "SELECT * FROM `ph-pn`.v_item_product", nativeQuery = true)
     List<ProductInfo> findAllProductInfo();
 
 

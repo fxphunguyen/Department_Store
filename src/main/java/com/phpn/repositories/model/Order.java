@@ -33,7 +33,7 @@ public class Order {
     @Column(name = "mobile", length = 50)
     private String mobile;
 
-    @Column(name = "line1",length = 50)
+    @Column(name = "line1", length = 50)
     private String line1;
 
     @Column(name = "line2", length = 50)
@@ -42,7 +42,7 @@ public class Order {
     @Column(name = "city", length = 50)
     private String city;
 
-    @Column(name = "province",  length = 50)
+    @Column(name = "province", length = 50)
     private String province;
 
     @Column(name = "zip_code", length = 10)
@@ -64,7 +64,6 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
@@ -72,14 +71,21 @@ public class Order {
     @Column(name = "employee_id", insertable = false, updatable = false)
     private Integer employeeId;
 
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "order_status_id", nullable = false)
+    @JoinColumn(name = "order_status_code", nullable = false)
     private OrderStatus orderStatus;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "payment_status_code",  nullable = false)
+    private OrderStatus paymentStatus;
 
-    @Column(name = "order_status_id", insertable = false, updatable = false)
-    private Integer orderStatusId;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "order_status_code", insertable = false, updatable = false)
+    private OrderStatusCode orderStatusCode;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "payment_status_code", insertable = false, updatable = false)
+    private OrderStatusCode paymentStatusCode;
 
     @Column(name = "grand_total", nullable = false, precision = 10, scale = 2)
     private BigDecimal grandTotal;
@@ -90,17 +96,18 @@ public class Order {
     @Column(name = "discount", precision = 10, scale = 2)
     private BigDecimal discount;
 
-    @OneToMany (targetEntity = PaymentOrder.class, mappedBy = "order")
+    @OneToMany(targetEntity = PaymentOrder.class, mappedBy = "order")
     private Set<PaymentOrder> paymentOrderSet;
 
     public Order(Integer id) {
         this.id = id;
     }
 
-    public Order(Integer customerId, Integer employeeId, Integer orderStatusId) {
+    public Order(Integer customerId, Integer employeeId, OrderStatusCode orderStatus, OrderStatusCode paymentStatus) {
         setCustomerId(customerId);
         setEmployeeId(employeeId);
-        setOrderStatusId(orderStatusId);
+        setOrderStatusCode(orderStatusCode);
+        setOrderStatusCode(orderStatusCode);
     }
 
     public Order setCustomerId(Integer customerId) {
@@ -108,8 +115,15 @@ public class Order {
         return this;
     }
 
-    public Order setOrderStatusId(Integer orderStatusId) {
-        this.orderStatus = new OrderStatus(this.orderStatusId = orderStatusId);
+    public Order setOrderStatus(OrderStatusCode orderStatusCode) {
+        this.orderStatusCode = orderStatusCode;
+        this.orderStatus = new OrderStatus(orderStatusCode.getValue());
+        return this;
+    }
+
+    public Order setPaymentStatus(OrderStatusCode paymentStatusCode) {
+        this.paymentStatusCode = paymentStatusCode;
+        this.paymentStatus = new OrderStatus(paymentStatusCode.getValue());
         return this;
     }
 

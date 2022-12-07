@@ -2,7 +2,7 @@ package com.phpn.controllers.api;
 
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
-import com.phpn.dto.product.ProductWithImageParam;
+import com.phpn.dto.product.ProductShortParam;
 import com.phpn.repositories.ProductRepository;
 import com.phpn.repositories.model.Product;
 import com.phpn.repositories.model.ProductInfo;
@@ -31,7 +31,7 @@ public class ProductAPI {
         return new ResponseEntity<>(productResults, HttpStatus.OK);
     }
 
-    @GetMapping("")
+    @GetMapping()
     @Transactional(readOnly = true)
     public ResponseEntity<?> showAllProduct(){
         List<ProductResult> productResults = productService.showAllProduct();
@@ -46,18 +46,18 @@ public class ProductAPI {
         return new ResponseEntity<>(productResult, HttpStatus.OK);
     }
 
-//    @PostMapping("/create")
-//    public ResponseEntity<?> createProduct(@RequestBody ProductParam productParam){
-//        Product product = productService.create(productParam);
-//        return  new ResponseEntity<>(product, HttpStatus.OK);
-//    }
-
     @PostMapping("/create")
-    public ResponseEntity<?> createProduct(@RequestBody ProductWithImageParam productWithImageParam){
-        System.out.println(productWithImageParam);
-
-        Product product = productService.create(productWithImageParam);
+    public ResponseEntity<?> createProduct(@RequestBody ProductParam productParam){
+        System.out.println(productParam);
+        Product product = productService.create(productParam);
         return  new ResponseEntity<>(product, HttpStatus.OK);
+    }
+
+    @PostMapping("/create-short")
+    public ResponseEntity<?> createProduct(@RequestBody ProductShortParam productShortParam){
+        System.out.println(productShortParam);
+         productService.createShortProduct(productShortParam);
+        return  new ResponseEntity<>(HttpStatus.OK);
     }
 
 

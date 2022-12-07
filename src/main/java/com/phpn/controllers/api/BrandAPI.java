@@ -27,7 +27,7 @@ public class BrandAPI {
 
     @GetMapping("")
     @Transactional(readOnly = true)
-    public ResponseEntity<?> showAllCategory(){
+    public ResponseEntity<?> showAllBrand(){
         List<Brand> brands =  brandRepository.findAll();
         return new ResponseEntity<>(brands, HttpStatus.OK);
     }
