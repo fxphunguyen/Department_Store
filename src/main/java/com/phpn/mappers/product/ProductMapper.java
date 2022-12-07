@@ -84,7 +84,7 @@ public class ProductMapper {
                 .setCreateAt(product.getCreateAt())
                 .setUpdateAt(product.getUpdateAt());
 //                .setTax((Tax) product.getTaxs());
-        //                .setBrandResult(brandMapper.toDTO(product.getBrand()))
+//                        .setBrandResult(brandMapper.toDTO(product.getBrand()))
 //                .setCategoryResult(categoryMapper.toDTO(product.getCategory()));
     }
 

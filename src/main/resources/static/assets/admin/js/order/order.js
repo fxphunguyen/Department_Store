@@ -1051,6 +1051,7 @@ const formatDiscount = (event, productId, retailPrice) => {
     });
     event.target.value = event.target.value.replace(/[^0-9]/g, '');
     const btnValueSelectors = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
+    console.log(btnValueSelectors, "btn")
     const btnValue = [...btnValueSelectors];
     btnValue.forEach((mui, index) => {
         const classLists = [...mui.classList];
