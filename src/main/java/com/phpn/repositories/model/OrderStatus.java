@@ -17,17 +17,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "order_status")
 public class OrderStatus {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "id")
+    private String id;
 
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
 
-    public OrderStatus(Integer id) {
+    public OrderStatus(String id) {
         this.id = id;
     }
 }

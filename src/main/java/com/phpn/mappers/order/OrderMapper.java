@@ -33,8 +33,10 @@ public class OrderMapper {
                 .setEmployeeId(order.getEmployeeId())
                 .setEmployee(employeeMapper.toDTO(order.getEmployee()))
                 .setOrderCode(order.getOrderCode())
-                .setOrderStatusId(order.getOrderStatusId())
+                .setOrderStatusId(order.getOrderStatusCode().getValue())
                 .setOrderStatus(orderStatusMapper.toDTO(order.getOrderStatus()))
+                .setPaymentStatusId(order.getPaymentStatusCode().getValue())
+                .setPaymentStatus(orderStatusMapper.toDTO(order.getPaymentStatus()))
                 .setDiscount(order.getDiscount())
                 .setDescription(order.getDescription())
                 .setCreateAt(order.getCreateAt())
@@ -60,8 +62,8 @@ public class OrderMapper {
                 .setCustomerId(orderParam.getCustomerId())
                 .setOrderCode(orderParam.getOrderCode())
                 .setEmployeeId(orderParam.getEmployeeId())
-                .setCreateAt(orderParam.getCreateAt())
-                .setOrderStatusId(orderParam.getOrderStatusId());
+                .setCreateAt(orderParam.getCreateAt());
+                //.setOrderStatusId(orderParam.getOrderStatusId());
 
     }
 }

@@ -71,15 +71,15 @@ public class ShippingAddress {
     @Column(name = "supplier_id", insertable = false, updatable = false)
     private Integer supplierId;
 
-    @Column(name = "default",  insertable = true)
-    private Boolean isDefault;
+    @Column(name = "default")
+    private boolean isDefault;
 
     public ShippingAddress setCustomerId(Integer customerId) {
         this.customer = new Customer(this.customerId = customerId);
         return this;
     }
 
-    public ShippingAddress setDefault(Boolean isDefault) {
+    public ShippingAddress setDefault(boolean isDefault) {
         this.isDefault = isDefault;
         return this;
     }

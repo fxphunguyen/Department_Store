@@ -43,7 +43,7 @@ public class OrderParam {
 
     private String description;
 
-    private Integer orderStatusId;
+//    private Integer orderStatusId;
 
     private Instant createAt;
 
