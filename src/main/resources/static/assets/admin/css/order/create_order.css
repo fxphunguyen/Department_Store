@@ -3934,3 +3934,7 @@ select#districtUpdate   {
     border-bottom: 2px solid #D3D5D7 !important;
 
 }
+.MuiListItemText-root {
+    position: relative;
+    top: 0px;
+}

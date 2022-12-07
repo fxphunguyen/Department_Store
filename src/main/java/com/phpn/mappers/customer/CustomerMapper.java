@@ -13,12 +13,9 @@ import com.phpn.repositories.model.ShippingAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Component
 public class CustomerMapper {
@@ -45,15 +42,21 @@ public class CustomerMapper {
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
                 .setCustomerStatus(customer.getCustomerStatus());
+
         Set<ShippingAddress> shippingAddressSet = customer.getShippingAddressSet();
         List<ShippingAddressResult> shippingAddressList = shippingAddressSet.stream()
                 .map(shippingAddressMapper::toDTO).collect(Collectors.toList());
         result.setShippingAddressList(shippingAddressList);
-        Optional<ShippingAddressResult> shippingAddressOpt = shippingAddressList.stream().filter(ShippingAddressResult::isDefault).findFirst();
-        shippingAddressOpt.ifPresent(result::setShippingAddressDefault);
-        return result;
-//                .setShippingAddressList(new ArrayList<ShippingAddressResult>(customer.getShippingAddressSet()));
 
+        ShippingAddress shippingAddress = customer.getShippingAddress();
+        if (shippingAddress != null)
+            result.setShippingAddress(shippingAddressMapper.toDTO(customer.getShippingAddress()));
+
+        ShippingAddress receiveBillAddress = customer.getReceiveBillAddress();
+        if (receiveBillAddress != null)
+            result.setBillAddress(shippingAddressMapper.toDTO(customer.getReceiveBillAddress()));
+
+        return result;
     }
 
     public CustomerOrderResult toOrderDTO(Customer customer) {

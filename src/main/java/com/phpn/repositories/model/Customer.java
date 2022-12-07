@@ -1,5 +1,6 @@
 package com.phpn.repositories.model;
 
+import com.phpn.dto.shipping_address.ShippingAddressResult;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -28,6 +30,7 @@ public class Customer {
         this.employee = new Employee(this.employeeId = employeeId);
         return this;
     }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -69,6 +72,20 @@ public class Customer {
 
     @OneToMany(targetEntity = ShippingAddress.class, mappedBy = "customer")
     private Set<ShippingAddress> shippingAddressSet;
+
+    public ShippingAddress getShippingAddress() {
+        Optional<ShippingAddress> opt = shippingAddressSet.stream()
+                .filter(ShippingAddress::isShippingAddress)
+                .findFirst();
+        return opt.orElse(null);
+    }
+
+    public ShippingAddress getReceiveBillAddress() {
+        Optional<ShippingAddress> opt = shippingAddressSet.stream()
+                .filter(ShippingAddress::isReceiveBill)
+                .findFirst();
+        return opt.orElse(null);
+    }
 
     @Column(name = "employee_id", insertable = false, updatable = false)
     private Integer employeeId;
