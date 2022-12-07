@@ -1,17 +1,19 @@
 package com.phpn.services.product;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-
-import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
+import com.phpn.dto.product.ProductShortParam;
 import com.phpn.mappers.product.ProductMapper;
+import com.phpn.repositories.ItemRepository;
+import com.phpn.repositories.model.Item;
 import com.phpn.repositories.model.Product;
 import com.phpn.repositories.ProductRepository;
 
+import com.phpn.repositories.model.ProductStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +27,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
      ProductRepository productRepository;
+
+    @Autowired
+    ItemRepository itemRepository;
 
     @Override
     public List<ProductResult> findAll() {
@@ -70,7 +75,31 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public Product createProduct(ProductCreate productCreate) {
+    public Product createShortProduct(ProductShortParam productShortParam) {
+        Product product = productMapper.toModel(productShortParam);
+        product.setImage("");
+        product.setStatus(ProductStatus.AVAILABLE);
+        product.setDescription("");
+        product.setUnit("");
+        product.setBarCode("");
+        product.setWholesalePrice(new BigDecimal(Integer.parseInt(productShortParam.getRetailPrice())));
+        product.setBrandId(1);
+        product.setApplyTax(false);
+        product.setDeleted(false);
+        product.setCreateAt(java.time.LocalDateTime.now().toString());
+
+        Product p = productRepository.save(product);
+
+        Item item = new Item();
+//        item.setProduct(product);
+        item.setProductId(p.getId());
+        item.setQuantity(Integer.parseInt(productShortParam.getQuantity()));
+        item.setAvailable(Integer.parseInt(productShortParam.getQuantity()));
+        item.setPrice(new BigDecimal(Integer.parseInt(productShortParam.getImportPrice())));
+
+        itemRepository.save(item);
+
+        return product;
 //
 //        String fileType = productCreate.getFile().getContentType();
 //
@@ -83,7 +112,7 @@ public class ProductServiceImpl implements ProductService {
 //        Product product = productRepository.save(productMapper.toProduct(productCreate));
 //
 //        return product;
-        return  null;
+//        return  null;
     }
 
 }
