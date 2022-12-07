@@ -16,7 +16,6 @@ let employees = [];
 
 function showListCustomer() {
     function show(data) {
-
         $(".searchCustomer").removeClass('d-none');
         $(".contentCustomer div").remove();
         $.each(data, (i, customer) => {
@@ -731,9 +730,9 @@ function showProductInfo(productId) {
     let retailPrice = result.retail_price;
     taxText = (retailPrice * (tax / 100));
     let std = `
-            <div >
+            <div id="tax_${result.id}">
             <div class="MuiListItemText-root" style="float:left">                                        
-                <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" id="tax_${result.id}">VAT(${result.tax}%)</span>
+                <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(${result.tax}%)</span>
             </div>
             <div class="MuiListItemText-root" style="float:right">
                 <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" id="tax_value_${result.id}">0</span>
@@ -1034,8 +1033,7 @@ function removeProduct(productId) {
         timeout: 1500,
         message: 'Xóa sản phẩm khỏi đơn hàng thành công!'
     });
-    $(`#tax_id_${productId}`).remove();
-    $("#vat_tax").addClass('d-none');
+    $(`#tax_${productId}`).remove();
 }
 
 const valueDiscount = (event) => {
@@ -1053,12 +1051,12 @@ const valueDiscount = (event) => {
     event.target.parentElement.classList.add("Mui-selected");
 }
 
-// const formatDiscountOrder = (productId,retailPrice) => {
-//     $("#discount_product_input").on('keyup', function () {
-//         var n = parseInt($(this).val().replace(/\D/g, ''), 10);
-//         $(this).val(n.toLocaleString());
-//     });
-// }
+const formatDiscountOrder = (productId,retailPrice) => {
+    $("#discount_product_input_order").on('keyup', function () {
+        var n = parseInt($(this).val().replace(/\D/g, ''), 10);
+        $(this).val(n.toLocaleString());
+    });
+}
 
 const formatDiscount = (event, productId, retailPrice) => {
     $("#discount_product_input").on('keyup', function () {
