@@ -342,21 +342,11 @@ let modalAddress = `   <div class="MuiBox-root jss797 jss621">
               <div class="MuiBox-root jss5998 jss5978">
                 <div class="MuiPaper-root jss6031 sapo-grid MuiPaper-elevation1 MuiPaper-rounded">
                   <div class="MuiTableContainer-root jss6032 sapo-grid-header-wrapper">
-                    <table class="MuiTable-root jss6033 sapo-grid-header" aria-labelledby="tableTitle" aria-label="enhanced table">
-                      <colgroup>
-                        <col style="width: 45px;">
-                        <col style="width: 167px;">
-                        <col style="width: 207px;">
-                        <col style="width: 167px;">
-                        <col style="width: 167px;">
-                        <col style="width: 167px;">
-                        <col style="width: 167px;">
-                        <col style="width: 167px;">
-                      </colgroup>
+                    <table id="showShippingAddress" class="MuiTable-root jss6033 sapo-grid-header" >
                       <thead class="MuiTableHead-root jss6046">
                         <tr class="MuiTableRow-root MuiTableRow-head">
                           <th class="MuiTableCell-root MuiTableCell-head jss6055 MuiTableCell-paddingCheckbox" scope="col" rowspan="1" style="padding-left: 16px;">
-                            <div class="MuiBox-root jss6076"><span class="MuiButtonBase-root MuiIconButton-root jss6087 MuiCheckbox-root MuiCheckbox-colorPrimary jss6077 MuiIconButton-colorPrimary" aria-disabled="false" data-tip="Chọn tất cả địa chỉ" currentitem="false" style="margin: 0px;"><span class="MuiIconButton-label"><input class="jss6090" type="checkbox" data-indeterminate="false" value=""><span class="jss6078" font-size="small"></span></span><span class="MuiTouchRipple-root"></span></span>
+                            <div class="MuiBox-root jss6076"><span class="MuiButtonBase-root MuiIconButton-root jss6087 MuiCheckbox-root MuiCheckbox-colorPrimary jss6077 MuiIconButton-colorPrimary" aria-disabled="false" data-tip="Chọn tất cả địa chỉ" currentitem="false" ><span class="MuiIconButton-label"><input class="jss6090" type="checkbox" data-indeterminate="false" value=""><span class="jss6078" font-size="small"></span></span><span class="MuiTouchRipple-root"></span></span>
                             </div>
                           </th>
                           <th class="MuiTableCell-root MuiTableCell-head jss6050 MuiTableCell-alignLeft" scope="col" colspan="1" rowspan="1">Số điện thoại</th>
@@ -368,51 +358,9 @@ let modalAddress = `   <div class="MuiBox-root jss797 jss621">
                           <th class="MuiTableCell-root MuiTableCell-head jss6050 MuiTableCell-alignLeft" scope="col" colspan="1" rowspan="1">Email</th>
                         </tr>
                       </thead>
-                    </table>
-                  </div>
-                  <div class="MuiTableContainer-root jss6034 sapo-grid-body-wrapper">
-                    <div style="position: relative; overflow: hidden; width: 100%; height: auto; min-height: 0px; max-height: unset;">
-                      <div style="position: relative; overflow: scroll; margin-right: -17px; margin-bottom: -17px; min-height: 17px;">
-                        <table class="MuiTable-root jss6035 sapo-grid-body" aria-labelledby="tableTitle" aria-label="enhanced table">
-                          <colgroup>
-                            <col style="width: 45px;">
-                            <col style="width: 167px;">
-                            <col style="width: 207px;">
-                            <col style="width: 167px;">
-                            <col style="width: 167px;">
-                            <col style="width: 167px;">
-                            <col style="width: 167px;">
-                            <col style="width: 167px;">
-                          </colgroup>
+                  
                           <tbody class="MuiTableBody-root showShippingAddress">
-                            <tr class="MuiTableRow-root jss6092 MuiTableRow-hover" role="checkbox" aria-checked="false" tabindex="-1">
-                              <td class="MuiTableCell-root MuiTableCell-body jss6095 MuiTableCell-paddingCheckbox" style="padding-left: 16px;"><span class="MuiButtonBase-root MuiIconButton-root jss6087 MuiCheckbox-root MuiCheckbox-colorPrimary jss6077 MuiIconButton-colorPrimary" aria-disabled="false" style="margin: 0px;"><span class="MuiIconButton-label"><input class="jss6090" type="checkbox" data-indeterminate="false" value=""><span class="jss6078" font-size="small"></span></span><span class="MuiTouchRipple-root"></span></span></td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
-                                <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="09876543255" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                  09876543255</p>
-                              </td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
-                                <div style="cursor: pointer;">Earum in nostrum cul</div>
-                              </td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
-                                <div style="cursor: pointer;"></div>
-                              </td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
-                                <div style="cursor: pointer;"></div>
-                              </td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
-                                <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                </p>
-                              </td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
-                                <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                </p>
-                              </td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
-                                <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                </p>
-                              </td>
-                            </tr>
+                           
                           </tbody>
                         </table>
                       </div>
@@ -543,11 +491,11 @@ let modalAddress = `   <div class="MuiBox-root jss797 jss621">
               </div>
             </div>
 `
-let modalCongNo = ` <div class="MuiBox-root jss828 jss820">
+let modalCongNo = ` <div class="MuiBox-root jss828 jss820" >
                         <div class="MuiPaper-root jss864 sapo-grid MuiPaper-elevation1 MuiPaper-rounded">
                             <div class="MuiTableContainer-root jss865 sapo-grid-header-wrapper">
                                 <table class="MuiTable-root jss866 sapo-grid-header" aria-labelledby="tableTitle"
-                                       aria-label="enhanced table">
+                                       aria-label="enhanced table" id="showDEBT">
                                     
                                     <thead class="MuiTableHead-root jss879">
                                     <tr class="MuiTableRow-root MuiTableRow-head">
@@ -587,57 +535,57 @@ let modalCongNo = ` <div class="MuiBox-root jss828 jss820">
                                     </div>
                                 </div>
                             </div>
-                            <div class="MuiBox-root jss926 jss921 sapo-pagination">
-                            <p
-                                    class="MuiTypography-root MuiTypography-body1">Hiển thị</p>
-                                <div class="MuiFormControl-root">
-                                    <div class="MuiInputBase-root MuiOutlinedInput-root jss922 MuiInputBase-formControl">
-                                        <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
-                                             tabindex="0" role="button" aria-haspopup="listbox"><p
-                                                class="MuiTypography-root jss924 MuiTypography-body1">20</p></div>
-                                        <input type="hidden" value="20">
-                                        <svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
-                                             focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M7 10l5 5 5-5z"></path>
-                                        </svg>
-                                        <fieldset aria-hidden="true" class="jss974 MuiOutlinedInput-notchedOutline"
-                                                  style="padding-left: 8px;">
-                                            <legend class="jss975" style="width: 0.01px;"><span>​</span></legend>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                                <p class="MuiTypography-root MuiTypography-body1">kết quả</p>
-                                <p class="MuiTypography-root jss923 MuiTypography-body1">Từ 1 đến 6 trên tổng 6</p>
-                                <nav aria-label="pagination navigation" class="MuiPagination-root jss925">
-                                    <ul class="MuiPagination-ul">
-                                        <li>
-                                            <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"
-                                                    tabindex="-1" type="button" disabled=""
-                                                    aria-label="Go to previous page">
-                                                <svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false"
-                                                     viewBox="0 0 24 24" aria-hidden="true">
-                                                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
-                                                </svg>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall"
-                                                    tabindex="0" type="button" aria-current="true" aria-label="page 1">1<span
-                                                    class="MuiTouchRipple-root"></span></button>
-                                        </li>
-                                        <li>
-                                            <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"
-                                                    tabindex="-1" type="button" disabled=""
-                                                    aria-label="Go to next page">
-                                                <svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false"
-                                                     viewBox="0 0 24 24" aria-hidden="true">
-                                                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
-                                                </svg>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
+<!--                            <div class="MuiBox-root jss926 jss921 sapo-pagination">-->
+<!--                            <p-->
+<!--                                    class="MuiTypography-root MuiTypography-body1">Hiển thị</p>-->
+<!--                                <div class="MuiFormControl-root">-->
+<!--                                    <div class="MuiInputBase-root MuiOutlinedInput-root jss922 MuiInputBase-formControl">-->
+<!--                                        <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"-->
+<!--                                             tabindex="0" role="button" aria-haspopup="listbox"><p-->
+<!--                                                class="MuiTypography-root jss924 MuiTypography-body1">20</p></div>-->
+<!--                                        <input type="hidden" value="20">-->
+<!--                                        <svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"-->
+<!--                                             focusable="false" viewBox="0 0 24 24" aria-hidden="true">-->
+<!--                                            <path d="M7 10l5 5 5-5z"></path>-->
+<!--                                        </svg>-->
+<!--                                        <fieldset aria-hidden="true" class="jss974 MuiOutlinedInput-notchedOutline"-->
+<!--                                                  style="padding-left: 8px;">-->
+<!--                                            <legend class="jss975" style="width: 0.01px;"><span>​</span></legend>-->
+<!--                                        </fieldset>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <p class="MuiTypography-root MuiTypography-body1">kết quả</p>-->
+<!--                                <p class="MuiTypography-root jss923 MuiTypography-body1">Từ 1 đến 6 trên tổng 6</p>-->
+<!--                                <nav aria-label="pagination navigation" class="MuiPagination-root jss925">-->
+<!--                                    <ul class="MuiPagination-ul">-->
+<!--                                        <li>-->
+<!--                                            <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"-->
+<!--                                                    tabindex="-1" type="button" disabled=""-->
+<!--                                                    aria-label="Go to previous page">-->
+<!--                                                <svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false"-->
+<!--                                                     viewBox="0 0 24 24" aria-hidden="true">-->
+<!--                                                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>-->
+<!--                                                </svg>-->
+<!--                                            </button>-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall"-->
+<!--                                                    tabindex="0" type="button" aria-current="true" aria-label="page 1">1<span-->
+<!--                                                    class="MuiTouchRipple-root"></span></button>-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"-->
+<!--                                                    tabindex="-1" type="button" disabled=""-->
+<!--                                                    aria-label="Go to next page">-->
+<!--                                                <svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false"-->
+<!--                                                     viewBox="0 0 24 24" aria-hidden="true">-->
+<!--                                                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>-->
+<!--                                                </svg>-->
+<!--                                            </button>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </nav>-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
                             <div class="__react_component_tooltip t2da217e8-d449-422f-87bd-f9f06ca64ad0 place-top type-light jss869"
                                  id="t2da217e8-d449-422f-87bd-f9f06ca64ad0" data-id="tooltip"
                                  style="left: 509px; top: 465px;">
@@ -1384,17 +1332,7 @@ $("#districtUpdate").on("change", () => {
 });
 
 
-<!--    Công nợ-->
-$('#debts').click(function () {
-    deleteEventModelShow();
 
-    $('#debts').css({
-        'color': '#4a8aff',
-        'border-bottom': '2px solid rgb(0, 136, 255)'
-    });
-    $('.showModelHistory').append(modalCongNo)
-    showCustomerInfoDebt();
-});
 
 //Lịch sừ mua hàng
 $('#histories').click(function () {
@@ -1521,59 +1459,202 @@ function showCustomerInfoHistory(startIntPaging, endIntPaging) {
 }
 
 
+<!--    Công nợ-->
+$('#debts').click(function () {
+    deleteEventModelShow();
 
+    $('#debts').css({
+        'color': '#4a8aff',
+        'border-bottom': '2px solid rgb(0, 136, 255)'
+    });
+    $('.showModelHistory').append(modalCongNo)
+    // showCustomerInfoDebt();
+    showCustomerInfoDebt();
+});
 
 // Công nợ
-function showCustomerInfoDebt() {
-    let idCustomer = $('.idCustomerDelete').val();
-    console.log(idCustomer)
-    return $.ajax({
-        headers: {
-            "accept": "application/json",
-            "content-type": "application/json"
-        },
-        type: "GET",
-        url: "http://localhost:8080/api/customers/customerDebt/" + idCustomer
-    })
-        .done((data) => {
-            console.log(data)
-            $.each(data, (i, order) => {
-                let str = `
-                   <tr class="MuiTableRow-root jss910 MuiTableRow-hover" role="checkbox"
-                                                tabindex="-1">
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <a class="jss920" target="_blank"
-                                                       href="/admin/receipt_vouchers/296331927/edit">${order.order_code}</a></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <span>${order.employee_name}</td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <span>
-                                                        ${order.create_at != null ? moment(order.create_at).format('DD/MM/yyyy hh:ss') : "---"}</td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <span>
-                                                         ${order.create_at != null ? moment(order.create_at).format('DD/MM/yyyy hh:ss') : "---"}</td>
-                                                    </span></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <span>${order.description}</span></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignRight">
-                                                    <span style="padding: 16px;">
-                                                                   ${order.transaction != null ? (new Intl.NumberFormat('vi-VN', {
-                    style: 'currency',
-                    currency: 'VND'
-                }).format(order.transaction)) : "---"}</span></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignRight">
-                                                    <span style="padding: 16px;"> ${order.total_transaction != null ? (new Intl.NumberFormat('vi-VN', {
-                    style: 'currency',
-                    currency: 'VND'
-                }).format(order.total_transaction)) : "---"}</span></td>
-                                                    </tr>
-                                        `
-                $(".showCustomerDebtById").prepend(str);
-            });
-        })
-        .fail((jqXHR) => {
+// function showCustomerInfoDebt() {
+//     let idCustomer = $('.idCustomerDelete').val();
+//     console.log(idCustomer)
+//     return $.ajax({
+//         headers: {
+//             "accept": "application/json",
+//             "content-type": "application/json"
+//         },
+//         type: "GET",
+//         url: "http://localhost:8080/api/customers/customerDebt/" + idCustomer
+//     })
+//         .done((data) => {
+//             console.log(data)
+//             $.each(data, (i, order) => {
+//                 let str = `
+//                    <tr class="MuiTableRow-root jss910 MuiTableRow-hover" role="checkbox"
+//                                                 tabindex="-1">
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+//                                                     <a class="jss920" target="_blank"
+//                                                        href="/admin/receipt_vouchers/296331927/edit">${order.order_code}</a></td>
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+//                                                     <span>${order.employee_name}</td>
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+//                                                     <span>
+//                                                         ${order.create_at != null ? moment(order.create_at).format('DD/MM/yyyy hh:ss') : "---"}</td>
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+//                                                     <span>
+//                                                          ${order.create_at != null ? moment(order.create_at).format('DD/MM/yyyy hh:ss') : "---"}</td>
+//                                                     </span></td>
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
+//                                                     <span>${order.description}</span></td>
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignRight">
+//                                                     <span style="padding: 16px;">
+//                                                                    ${order.transaction != null ? (new Intl.NumberFormat('vi-VN', {
+//                     style: 'currency',
+//                     currency: 'VND'
+//                 }).format(order.transaction)) : "---"}</span></td>
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignRight">
+//                                                     <span style="padding: 16px;"> ${order.total_transaction != null ? (new Intl.NumberFormat('vi-VN', {
+//                     style: 'currency',
+//                     currency: 'VND'
+//                 }).format(order.total_transaction)) : "---"}</span></td>
+//                                                     </tr>
+//                                         `
+//                 $(".showCustomerDebtById").prepend(str);
+//             });
+//         })
+//         .fail((jqXHR) => {
+//
+//         })
+// }
 
-        })
+
+//Công nợ
+function  showCustomerInfoDebt(){
+    $(document).ready(function () {
+        let idCustomer = $('.idCustomerDelete').val();
+        $("#showDEBT").DataTable({
+                ajax: {
+                    contentType: 'application/json',
+                    url: location.origin + "/api/customers/customerDebt/" + idCustomer,
+                    type: "GET",
+                    dataSrc: ''
+                },
+                lengthMenu: [
+                    [5, 10, 15, -1],
+                    ['5', '10', '15', 'All']
+                ],fontsize : 14
+            ,
+                searching: false,
+                select: true,
+                columns: [
+                    {
+                        data: 'order_code',
+                        className : 'testCSS',
+                        // render: function() {
+                        //     return `<a>${order_code}</a>`;
+                        // }
+
+                    },
+                    {data: 'employee_name'},
+                    {data: 'create_at'},
+                    {data: 'create_at'},
+                    {data: 'transaction'},
+                    {data: "total_transaction"},
+                    {data: 'description'},
+                ]
+                ,
+            }
+        )
+
+    })
+}
+
+//Địa chỉ
+// function showCustomerInfoShippingAddressByCustomerId() {
+//     let idCustomer = $('.idCustomerDelete').val();
+//     console.log(idCustomer)
+//     return $.ajax({
+//         headers: {
+//             "accept": "application/json",
+//             "content-type": "application/json"
+//         },
+//         type: "GET",
+//         url: "http://localhost:8080/api/shippingAddress/findByCustomerId/" + idCustomer
+//     })
+//         .done((data) => {
+//             console.log(data)
+//             $.each(data, (i, shippingAddress) => {
+//                 let str = `
+//                      <tr class="MuiTableRow-root jss6092 MuiTableRow-hover" role="checkbox" aria-checked="false" tabindex="-1">
+//                               <td class="MuiTableCell-root MuiTableCell-body jss6095 MuiTableCell-paddingCheckbox" style="padding-left: 16px;"><span class="MuiButtonBase-root MuiIconButton-root jss6087 MuiCheckbox-root MuiCheckbox-colorPrimary jss6077 MuiIconButton-colorPrimary" aria-disabled="false" style="margin: 0px;"><span class="MuiIconButton-label"><input class="jss6090" type="checkbox" data-indeterminate="false" value=""><span class="jss6078" font-size="small"></span></span><span class="MuiTouchRipple-root"></span></span></td>
+//                               <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
+//                                 <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="09876543255" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+//                                   ${shippingAddress.mobile}</p>
+//                               </td>
+//                               <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
+//                                 <div style="cursor: pointer;">${shippingAddress.address}</div>
+//                               </td>
+//                               <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
+//                                 <div style="cursor: pointer;">${shippingAddress.wardName}</div>
+//                               </td>
+//                               <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
+//                                 <div style="cursor: pointer;">${shippingAddress.districtName}</div>
+//                               </td>
+//                               <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
+//                                 <p class="MuiTypography-root MuiTypo212graphy-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+//                                ${shippingAddress.provinceName}
+//                                 </p>
+//                               </td>
+//                               <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
+//                                 <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+//                                 ${shippingAddress.zipCode}
+//                                 </p>
+//                               </td>
+//                               <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
+//                                 <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+//                                 ${shippingAddress.email}
+//                                 </p>
+//                               </td>
+//                             </tr>
+//                     `
+//                 $(".showShippingAddress").append(str);
+//             });
+//         })
+//         .fail((jqXHR) => {
+//
+//         })
+// }
+
+
+// DĐiẠ chỉ
+function  showCustomerInfoShippingAddressByCustomerId(){
+    $(document).ready(function () {
+        let idCustomer = $('.idCustomerDelete').val();
+        $("#showShippingAddress").DataTable({
+                ajax: {
+                    contentType: 'application/json',
+                    url: location.origin + "/api/shippingAddress/findByCustomerId/" + idCustomer,
+                    type: "GET",
+                    dataSrc: ''
+                },
+                lengthMenu: [
+                    [5, 10, 15, -1],
+                    ['5', '10', '15', 'All']
+                ],fontsize : 14
+                ,
+                searching: false,
+                select: true,
+                columns: [
+                    {data: 'mobile'},
+                    {data: 'line1'},
+                    {data: 'wardName'},
+                    {data: 'districtName'},
+                    {data: 'provinceName'},
+                    {data: "zipCode"},
+                    {data: 'email'},
+                ]
+                ,
+            }
+        )
+    })
 }
 
 
