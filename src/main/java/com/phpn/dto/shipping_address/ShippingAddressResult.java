@@ -38,10 +38,10 @@ public class ShippingAddressResult {
 
     private String zipCode;
 
-    private Boolean isDefault;
+    private boolean isDefault;
 
 
-    public ShippingAddressResult setDefault(Boolean isDefault) {
+    public ShippingAddressResult setDefault(boolean isDefault) {
         this.isDefault = isDefault;
         return this;
     }

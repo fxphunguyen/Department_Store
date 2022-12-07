@@ -982,13 +982,15 @@
                                         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">${item.customer.name}</p>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft" style="width: 165px; max-width: 165px; min-width: 165px;">
-                                        <div class="${item.orderStatus.name === 'Đang giao dịch' ? 'hlxtkG' : (item.orderStatus.name === 'Hoàn thành' ? 'hBmWYo' : 'csJERM')}">
-                                            <span class="${item.orderStatus.name === 'Đang giao dịch' ? 'gIZkwA' : (item.orderStatus.name === 'Hoàn thành' ? 'bzQjtT' : 'ccQLIN')}">${item.orderStatus.name}</span>
+                                        <div class="${item.orderStatusId === 'CHECKOUT' ? 'hlxtkG' : (item.orderStatusId === 'COMPLETE' ? 'hBmWYo' : 'csJERM')}">
+                                            <span class="${item.orderStatusId === 'CHECKOUT' ? 'gIZkwA' : (item.orderStatusId === 'COMPLETE' ? 'bzQjtT' : 'ccQLIN')}">${item.orderStatus.name}</span>
                                         </div>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignCenter"
                                         style="width: 130px; max-width: 130px; min-width: 130px;">
-                                        <p class="MuiTypography-root jss5006 MuiTypography-body1"> ${item.paymentOrder}</p>
+                                         <div class="${item.paymentStatusId === 'PARTIAL_PAYMENT' ? 'hlxtkG' : (item.paymentStatusId === 'PAID' ? 'hBmWYo' : 'csJERM')}">
+                                            <span class="${item.paymentStatusId === 'PARTIAL_PAYMENT' ? 'gIZkwA' : (item.paymentStatusId === 'PAID' ? 'bzQjtT' : 'ccQLIN')}">${item.paymentStatus.name}</span>
+                                        </div>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignRight"
                                         style="width: 125px; max-width: 125px; min-width: 125px;">

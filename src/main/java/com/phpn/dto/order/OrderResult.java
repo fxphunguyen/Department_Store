@@ -42,9 +42,13 @@ public class OrderResult {
 
     private String orderCode;
 
-    private Integer orderStatusId;
+    private String orderStatusId;
 
     private OrderStatusResult orderStatus;
+
+    private String paymentStatusId;
+
+    private OrderStatusResult paymentStatus;
 
     private BigDecimal discount;
 

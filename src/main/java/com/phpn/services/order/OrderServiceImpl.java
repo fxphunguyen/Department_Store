@@ -93,6 +93,8 @@ public class OrderServiceImpl implements OrderService {
         order.setLine2(order.getLine2());
         order.setCustomer(customerOptional.get());
         order.setEmployee(employeeOptional.get());
+        order.setOrderStatusCode(OrderStatusCode.CHECKOUT);
+        order.setOrderStatusCode(OrderStatusCode.UNPAID);
         order = orderRepository.save(order);
         BigDecimal total = BigDecimal.valueOf(0);
         BigDecimal subTotal = BigDecimal.valueOf(0);
