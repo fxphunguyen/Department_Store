@@ -2,6 +2,7 @@ package com.phpn.controllers.api;
 
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
+import com.phpn.dto.product.ProductWithImageParam;
 import com.phpn.repositories.ProductRepository;
 import com.phpn.repositories.model.Product;
 import com.phpn.repositories.model.ProductInfo;
@@ -45,9 +46,17 @@ public class ProductAPI {
         return new ResponseEntity<>(productResult, HttpStatus.OK);
     }
 
+//    @PostMapping("/create")
+//    public ResponseEntity<?> createProduct(@RequestBody ProductParam productParam){
+//        Product product = productService.create(productParam);
+//        return  new ResponseEntity<>(product, HttpStatus.OK);
+//    }
+
     @PostMapping("/create")
-    public ResponseEntity<?> createProduct(@RequestBody ProductParam productParam){
-        Product product = productService.create(productParam);
+    public ResponseEntity<?> createProduct(@RequestBody ProductWithImageParam productWithImageParam){
+        System.out.println(productWithImageParam);
+
+        Product product = productService.create(productWithImageParam);
         return  new ResponseEntity<>(product, HttpStatus.OK);
     }
 

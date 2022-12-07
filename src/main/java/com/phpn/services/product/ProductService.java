@@ -5,6 +5,7 @@ import java.util.List;
 import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
+import com.phpn.dto.product.ProductWithImageParam;
 import com.phpn.repositories.model.Product;
 
 public interface ProductService {
@@ -17,7 +18,7 @@ public interface ProductService {
 
     ProductResult findByIdProduct(Integer id);
 
-    Product create(ProductParam productParam);
+    Product create(ProductWithImageParam productWithImageParam);
 
     Product createProduct(ProductCreate productCreate);
 }

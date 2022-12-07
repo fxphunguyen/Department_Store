@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
+import com.phpn.dto.product.ProductWithImageParam;
 import com.phpn.mappers.product.ProductMapper;
 import com.phpn.repositories.model.Product;
 import com.phpn.repositories.ProductRepository;
@@ -63,9 +64,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product create(ProductParam productParam) {
-        return productRepository.save(productMapper.toModel(productParam));
+    public Product create(ProductWithImageParam productWithImageParam) {
+        return productRepository.save(productMapper.toModel(productWithImageParam));
     }
+
+//    @Override
+//    public Product create(ProductParam productParam) {
+//        return productRepository.save(productMapper.toModel(productParam));
+//    }
 
 
     @Override

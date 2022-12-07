@@ -758,6 +758,7 @@
         product.categoryId = page.dialogs.elements.categoryIdCreate.val();
         product.brandId = page.dialogs.elements.brandIdCreate.val();
         product.deleted = false;
+        product.productImageParams = imgs
 
         console.log(product)
         $.ajax({
@@ -810,24 +811,27 @@
         })
         .on('fileuploaddone', function (e, data) {
             let infoImg = data.jqXHR.responseJSON;
-            let img = new Img();
-
-            img.name = infoImg.public_id;
-            img.url = infoImg.url;
+            let img = new Image();
+            console.log(infoImg)
+            img.cloudId = infoImg.public_id;
+            img.fileUrl = infoImg.url;
+            img.fileType = infoImg.resource_type;
+            img.fileFolder = infoImg.folder;
+            img.fileName = infoImg.original_filename;
+            console.log(img);
             imgs.push(img);
-            let str = `<div id="div_${img.name}" class="profile-pic jss26799 MuiGrid-item MuiGrid-grid-md-2" style="width: 100%; height: 50%; margin: 0 24px 24px 0; padding: 0">
-                            <img id="img." src="${img.url}" width="100%" height="120px" style="float: left"/>
-                            <div class="edit" id="${img.name}" onclick="removeImg(this)">
+            let str = `<div id="div_${img.fileName}" class="profile-pic jss26799 MuiGrid-item MuiGrid-grid-md-2" style="width: 100%; height: 50%; margin: 0 24px 24px 0; padding: 0">
+                            <img id="img." src="${img.fileUrl}" width="100%" height="120px" style="float: left"/>
+                            <div class="edit" id="${img.fileName}" onclick="removeImg(this)">
                                 <i class="fa-solid fa-circle-xmark" style="color: red"></i>
                             </div>
                        </div>`
             page.dialogs.elements.showImg.append(str);
             $(".progress").attr('hidden', true);
             $(".loading").remove();
-            console.log(imgs)
+            // console.log(imgs)
         })
         .on('fileuploadprogress', function (e, data) {
-            console.log(`${data.loaded / data.total * 100}%`);
             return $(".progress").removeAttr('hidden').css("width", `${data.loaded / data.total * 100}%`);
         });
 
@@ -844,13 +848,10 @@
     }
 
     function removeImg(imgRemove) {
-        console.log("trước", imgs)
         let idImg = (imgRemove.id);
-        console.log("tên thằng xoá == " + idImg);
         if (imgRemove) {
             imgs.splice(imgs.indexOf(idImg), 1);
         }
-        console.log("sau xoá", imgs);
         $("#div_" + idImg).remove();
         if (imgs.length < 1) {
             page.dialogs.elements.showImgBig.removeAttr("hidden");

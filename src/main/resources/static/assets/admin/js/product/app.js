@@ -6,18 +6,20 @@ class App {
 
 
 }
-class Img {
-    constructor(name, url) {
-        this.name = name;
-        this.url = url;
+class Image {
+    constructor(cloudId, fileName, fileFolder, fileUrl, fileType, path) {
+        this.cloudId = cloudId;
+        this.fileName = fileName;
+        this.fileFolder = fileFolder;
+        this.fileUrl = fileUrl;
+        this.fileType = fileType;
     }
 }
 
 class Product {
-    constructor(id, title, image, status, description, unit, sku, barCode, quantity, retailPrice, importPrice, wholesalePrice, categoryId, brandId, deleted) {
+    constructor(id, title, status, description, unit, sku, barCode, quantity, retailPrice, importPrice, wholesalePrice, categoryId, brandId, deleted, image) {
         this.id = id;
         this.title = title;
-        this.image = image;
         this.status = status;
         this.description = description;
         this.unit = unit;
@@ -30,5 +32,6 @@ class Product {
         this.categoryId = categoryId;
         this.brandId = brandId;
         this.deleted = deleted;
+        this.productImageParams = image;
     }
 }
