@@ -4,9 +4,18 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+<<<<<<< HEAD
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.dto.product.ProductShortParam;
+=======
+
+import com.phpn.dto.product.ProductCreate;
+import com.phpn.dto.product.ProductListResult;
+import com.phpn.dto.product.ProductParam;
+import com.phpn.dto.product.ProductResult;
+import com.phpn.dto.product.ProductWithImageParam;
+>>>>>>> dev_c5
 import com.phpn.mappers.product.ProductMapper;
 import com.phpn.repositories.ItemRepository;
 import com.phpn.repositories.model.Item;
@@ -69,9 +78,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product create(ProductParam productParam) {
-        return productRepository.save(productMapper.toModel(productParam));
+    public Product create(ProductWithImageParam productWithImageParam) {
+        return productRepository.save(productMapper.toModel(productWithImageParam));
     }
+
+//    @Override
+//    public Product create(ProductParam productParam) {
+//        return productRepository.save(productMapper.toModel(productParam));
+//    }
 
 
     @Override
@@ -113,6 +127,11 @@ public class ProductServiceImpl implements ProductService {
 //
 //        return product;
 //        return  null;
+    }
+
+    @Override
+    public List<ProductListResult> getAllProductListResult() {
+        return productRepository.getAllProductListResult();
     }
 
 }

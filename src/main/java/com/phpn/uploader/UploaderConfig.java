@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev_c5
 //package com.phpn.uploader;
 //
 //import com.cloudinary.Cloudinary;
