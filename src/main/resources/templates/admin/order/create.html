@@ -1893,21 +1893,18 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
 <div class="MuiPaper-root jss1062 MuiPaper-elevation3 MuiPaper-rounded d-none searchProduct"
      data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom"
      style="width: 905px; position: absolute; inset: 0px auto auto 0px; transform: translate(100px, 184px); z-index: 999;">
     <div class="MuiBox-root jss3933 jss1010 jss1263" wrapper-suggest="e161f822-1e4f-4674-a5bb-c11c22ace43f">
         <div class="MuiBox-root jss3934" tabindex="0">
-            <button class="MuiButtonBase-root MuiButton-root jss3935 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"
-                    tabindex="0" type="button" key-event="true" data-id="-1">
-=======
-<div id="MuiBox-list-product" class="MuiPaper-root jss1062 MuiPaper-elevation3 MuiPaper-rounded d-none searchProduct"
-     data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom" style="width: 905px; position: absolute; inset: 0px auto auto 0px; transform: translate(100px, 184px); z-index: 999;">
-    <div class="MuiBox-root jss3933 jss1010 jss1263" wrapper-suggest="e161f822-1e4f-4674-a5bb-c11c22ace43f">
-        <div class="MuiBox-root jss3934" tabindex="0">
+<!--            <button class="MuiButtonBase-root MuiButton-root jss3935 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"-->
+<!--                    tabindex="0" type="button" key-event="true" data-id="-1">-->
+<!--<div id="MuiBox-list-product" class="MuiPaper-root jss1062 MuiPaper-elevation3 MuiPaper-rounded d-none searchProduct"-->
+<!--     data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom" style="width: 905px; position: absolute; inset: 0px auto auto 0px; transform: translate(100px, 184px); z-index: 999;">-->
+<!--    <div class="MuiBox-root jss3933 jss1010 jss1263" wrapper-suggest="e161f822-1e4f-4674-a5bb-c11c22ace43f">-->
+<!--        <div class="MuiBox-root jss3934" tabindex="0">-->
             <button data-bs-toggle="modal" data-bs-target="#create_order_product" class="MuiButtonBase-root MuiButton-root jss3935 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth" tabindex="0" type="button" key-event="true" data-id="-1">
->>>>>>> main
             <span class="MuiButton-label">
                <span class="MuiButton-startIcon MuiButton-iconSizeMedium">
                   <svg class="MuiSvgIcon-root icon MuiSvgIcon-colorPrimary" focusable="false" viewBox="0 0 24 24"
@@ -1938,4 +1935,86 @@
 
 <script type="text/javascript" src="/static/assets/admin/js/order/app.js"></script>
 <script type="text/javascript" src="/static/assets/admin/js/order/order.js"></script>
+
+
+// Thêm mới nhanh sản phẩm
+<script>
+    class Product{
+        constructor(id, title, sku, categoryId, retailPrice, quantity, mass, importPrice) {
+            this.id = id;
+            this.title = title;
+            this.sku = sku;
+            this.quantity = quantity;
+            this.retailPrice = retailPrice;
+            this.importPrice = importPrice;
+            this.categoryId = categoryId;
+            this.mass = mass;
+        }
+    }
+
+    let product = new Product();
+
+    function showAllCategory() {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/categories"
+        })
+            .done((data) => {
+                $("#categoryCreate").empty();
+
+                $.each(data, (i, item) => {
+                    let str = `<option value="${item.id}">${item.name}</option>`;
+                    $(".showAllCategory").append(str);
+                });
+
+            })
+            .fail((jqXHR) => {
+                console.log("Error");
+            })
+    }
+
+    function doCreateProductShort(){
+
+        product.id = 0;
+        product.title = $('#titleCreate').val();
+        product.sku = $('#skuCreate').val();
+        product.quantity = $('#inventoryCreate').val();
+        product.retailPrice= $('#retailPriceCreate').val();
+        product.importPrice = $('#importPriceCreate').val();
+        product.categoryId= $('#categoryCreate').val();
+        product.mass = $('#massCreate').val();
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json",
+            },
+            type: "POST",
+            url: "http://localhost:8080/api/products/create-short",
+            data: JSON.stringify(product),
+        })
+            .done((data) => {
+
+                $('#create_order_product').modal("hide");
+
+                $('#modalProductShort')[0].reset();
+                App.SweetAlert.showSuccessAlert("Thêm thành công sản phẩm!");
+            })
+            .fail((jqXHR) => {
+                console.log(jqXHR.message)
+                App.SweetAlert.showErrorAlert("Thêm không được");
+            })
+    }
+
+    $("#btnCreateProductShort").on("click", function () {
+        doCreateProductShort();
+    })
+
+    showAllCategory();
+
+</script>
 </html>

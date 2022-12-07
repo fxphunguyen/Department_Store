@@ -2,9 +2,9 @@ package com.phpn.services.product;
 
 import java.util.List;
 
-import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
+import com.phpn.dto.product.ProductShortParam;
 import com.phpn.repositories.model.Product;
 
 public interface ProductService {
@@ -19,5 +19,5 @@ public interface ProductService {
 
     Product create(ProductParam productParam);
 
-    Product createProduct(ProductCreate productCreate);
+    Product createShortProduct(ProductShortParam productShortParam);
 }

@@ -8,21 +8,22 @@
                     <h5 class="modal-title">Thêm nhanh sản phẩm</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" id="myModal">
+                <form method="post" id="modalProductShort">
                     <div class="modal-body"  style="margin-top: -1px;margin-left: 0px">
                         <div class="sc-iqcoie iZrCvq sc-gITdmR cFtstx">
                             <div class="sc-dFdIVH bPLSPb">
                                 <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3" style="margin: 0px -12px;">
                                     <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
                                         <div width="100%" class="sc-cCsOjp gKHUxf"><label
-                                                for="nameCreate"
-                                                class="sc-ksZaOG ftuIiY">Tên sản phẩm hàng<span class="sc-hAZoDl eHshpr">
+                                                for="titleCreate"
+                                                class="sc-ksZaOG ftuIiY">Tên sản phẩm<span class="sc-hAZoDl eHshpr">
                                     </span>
                                         </label>
                                             <div class="sc-gXmSlM PBwdZ Sapo-InputRoot">
                                                 <input
-                                                        id="nameCreate" type="text"
-                                                        class="sc-himrzO iRSKAB" value=""/>
+                                                        id="titleCreate" type="text"
+                                                        class="sc-himrzO iRSKAB" value=""
+                                                        required="" />
                                                 <fieldset class="sc-ezWOiH fCFLbv">
 
                                                 </fieldset>
@@ -31,65 +32,49 @@
                                     </div>
                                     <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
                                         <div width="100%" class="sc-cCsOjp gKHUxf"><label
-                                                for="phoneCreate"
+                                                for="skuCreate"
                                                 class="sc-ksZaOG ftuIiY">Mã sản phẩm/SKU</label>
                                             <div class="sc-gXmSlM PBwdZ Sapo-InputRoot">
-                                                <input id="phoneCreate" type="text" class="sc-himrzO iRSKAB" value=""/>
+                                                <input id="skuCreate" type="text" class="sc-himrzO iRSKAB" value=""/>
                                                 <fieldset class="sc-ezWOiH fCFLbv"></fieldset>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
-                                        <div class="MuiFormControl-root jss1315 MuiFormControl-fullWidth">
-                                            <label class="MuiFormLabel-root MuiInputLabel-root jss1316 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink ftuIiYy"
-                                                data-shrink="true" for="addressCreate">Loại sản phẩm</label>
-                                            <div class="MuiFormControl-root MuiTextField-root jss1317 jss1318 jss3873 MuiFormControl-fullWidth"
-                                                 title="">
-                                                <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline">
-                                                    <input aria-invalid="false" id="" type="text"
-                                                           name="address"
-                                                           placeholder="Nhập sô nhà, tên đường, tên khu vực"
-                                                           aria-label="Without label"
-                                                           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline" />
-                                                    <fieldset aria-hidden="true"
-                                                              class="jss1037 MuiOutlinedInput-notchedOutline"
-                                                              style="padding-left: 8px;">
-                                                        <legend class="jss1038" style="width: 0.01px;"><span>&ZeroWidthSpace;</span>
-                                                        </legend>
-                                                    </fieldset>
-                                                </div>
-                                            </div>
+<!--                                        <div width="100%" class="sc-cCsOjp gKHUxf"><label-->
+<!--                                                for="categoryCreate"-->
+<!--                                                class="sc-ksZaOG ftuIiY">Loại sản phẩm</label>-->
+<!--                                            <div class="sc-gXmSlM PBwdZ Sapo-InputRoot">-->
+<!--                                                </select>-->
+<!--                                                <input id="categoryCreate" type="text" class="sc-himrzO iRSKAB" value=""/>-->
+<!--&lt;!&ndash;                                                <select class="form-control" id="categoryCreate" name="categoryCreate"></select>&ndash;&gt;-->
+<!--                                                <fieldset class="sc-ezWOiH fCFLbv"></fieldset>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+                                        <div class="MuiBox-root jss26824 item-box"
+                                             style="border-top: 0; padding-top: 0;">
+                                            <h6 class="MuiTypography-root title MuiTypography-subtitle1">
+                                                Loại sản phẩm</h6>
+                                            <select id="categoryCreate" class="showAllCategory form-select MuiTypography-root label-select MuiTypography-body1 MuiTypography-colorTextPrimary"></select>
                                         </div>
                                     </div>
                                     <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
-                                        <div class="MuiFormControl-root jss1315 MuiFormControl-fullWidth"><label
-                                                class="MuiFormLabel-root MuiInputLabel-root jss1316 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
-                                                data-shrink="true" for="addressCreate">Giá bán lẻ</label>
-                                            <div class="MuiFormControl-root MuiTextField-root jss1317 jss1318 jss3873 MuiFormControl-fullWidth"
-                                                 title="">
-                                                <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline">
-                                                    <input aria-invalid="false" id="addressCreate" type="text"
-                                                           name="address"
-                                                           placeholder="Nhập sô nhà, tên đường, tên khu vực"
-                                                           aria-label="Without label"
-                                                           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline" />
-                                                    <fieldset aria-hidden="true"
-                                                              class="jss1037 MuiOutlinedInput-notchedOutline"
-                                                              style="padding-left: 8px;">
-                                                        <legend class="jss1038" style="width: 0.01px;"><span>&ZeroWidthSpace;</span>
-                                                        </legend>
-                                                    </fieldset>
-                                                </div>
+                                        <div width="100%" class="sc-cCsOjp gKHUxf"><label
+                                                for="retailPriceCreate"
+                                                class="sc-ksZaOG ftuIiY">Giá bán lẻ</label>
+                                            <div class="sc-gXmSlM PBwdZ Sapo-InputRoot">
+                                                <input id="retailPriceCreate" type="number" class="sc-himrzO iRSKAB" value=""/>
+                                                <fieldset class="sc-ezWOiH fCFLbv"></fieldset>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
                                         <div width="100%" class="sc-cCsOjp gKHUxf"><label
-                                                for="codeCreate"
+                                                for="importPriceCreate"
                                                 class="sc-ksZaOG ftuIiYy">Giá vốn<span
                                                 class="sc-hAZoDl eHshpr">&nbsp</span></label>
                                             <div class="sc-gXmSlM PBwdZz Sapo-InputRoot">
-                                                <input id="codeCreate" type="text"
+                                                <input id="importPriceCreate" type="number"
                                                        class="sc-himrzO iRSKAB" value="">
                                                 <fieldset class="sc-ezWOiH fCFLbv"></fieldset>
                                             </div>
@@ -97,11 +82,12 @@
                                     </div>
                                     <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
                                         <div width="100%" class="sc-cCsOjp gKHUxf"><label
-                                                for="codeCreate"
+                                                for="inventoryCreate"
                                                 class="sc-ksZaOG ftuIiY">Tồn kho<span
                                                 class="sc-hAZoDl eHshpr">&nbsp</span></label>
                                             <div class="sc-gXmSlM PBwdZ Sapo-InputRoot">
-                                                <input  type="text"
+                                                <input  type="number"
+                                                        id="inventoryCreate"
                                                        class="sc-himrzO iRSKAB" value="">
                                                 <fieldset class="sc-ezWOiH fCFLbv"></fieldset>
                                             </div>
@@ -111,10 +97,10 @@
                                         <div class="MuiBox-root jss5133" style="display: flex; align-items: flex-end;">
                                             <div class="MuiBox-root jss5134" style="width: 100%;">
                                                 <div name="weight_value" value="0" class="sc-iTONeN irryLe"><label
-                                                        for="Sapo-NumberField-294bbd64-62b0-44cb-8764-e998aa3835e5" class="sc-ksZaOG ftuIiY">Khối lượng
+                                                        for="massCreate" class="sc-ksZaOG ftuIiY">Khối lượng
                                                     (dùng tính phí vận chuyển)</label>
-                                                    <div class="sc-bZnhIo fgBsKh"><input id="Sapo-NumberField-294bbd64-62b0-44cb-8764-e998aa3835e5"
-                                                                                         variant="outlined" class="sc-jdAMXn gCTRrI" type="text" value="0" inputmode="numeric"
+                                                    <div class="sc-bZnhIo fgBsKh"><input id="massCreate"
+                                                                                         variant="outlined" class="sc-jdAMXn gCTRrI" type="number" value="" inputmode="numeric"
                                                                                          style="text-align: right;">
                                                         <fieldset class="sc-ezWOiH fCFLbv"></fieldset>
                                                     </div>
@@ -149,7 +135,7 @@
                                 <button type="button" data-bs-dismiss="modal"
                                         class="sc-jqUVSM TJspa"><span
                                         class="sc-papXJ jcEYKF">Thoát</span></button>
-                                <button type="button" id="btnCreateCustomer"
+                                <button type="button" id="btnCreateProductShort"
                                         class="sc-jqUVSM hFJmrT"><span
                                         class="sc-papXJ jcEYKF">Thêm</span></button>
                             </div>
@@ -159,5 +145,6 @@
             </div>
         </div>
     </div>
+
 
 </th:block>

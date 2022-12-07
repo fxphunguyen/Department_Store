@@ -3,12 +3,15 @@ package com.phpn.mappers.product;
 import com.phpn.dto.product.ProductCreate;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
+import com.phpn.dto.product.ProductShortParam;
 import com.phpn.mappers.CategoryMapper;
 import com.phpn.mappers.brand.BrandMapper;
 import com.phpn.mappers.item.ItemMapper;
 import com.phpn.repositories.model.Product;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.math.BigDecimal;
 
 @Component
 public class ProductMapper {
@@ -60,6 +63,19 @@ public class ProductMapper {
                 .setUpdateAt(product.getUpdateAt());
 //                .setBrandResult(brandMapper.toDTO(product.getBrand()))
 //                .setCategoryResult(categoryMapper.toDTO(product.getCategory()));
+    }
+
+
+    public Product toModel(ProductShortParam  productShortParam) {
+        return new Product(Integer.parseInt(productShortParam.getCategoryId()))
+                .setId(Integer.parseInt(productShortParam.getId()))
+                .setTitle(productShortParam.getTitle())
+                .setSku(productShortParam.getSku())
+                .setCategoryId(Integer.parseInt(productShortParam.getCategoryId()))
+                .setRetailPrice(new BigDecimal(Integer.parseInt(productShortParam.getRetailPrice())))
+                .setSku(productShortParam.getSku())
+                .setImportPrice(new BigDecimal(Integer.parseInt(productShortParam.getImportPrice())));
+
     }
 
 //    public ProductResult toItemDTO(Product product) {
