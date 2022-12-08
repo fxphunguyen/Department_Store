@@ -11,8 +11,7 @@ import com.phpn.product.dto.ProductShortParam;
 import com.phpn.product.dto.ProductCreate;
 import com.phpn.product.dto.ProductWithImageParam;
 import com.phpn.product.item.ItemRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.phpn.product.item.ItemService;
 import vn.fx.qh.sapo.entities.product.*;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +27,20 @@ public class ProductServiceImpl implements ProductService {
     ProductRepository productRepository;
 
     @Autowired
-    ItemRepository itemRepository;
+    ItemService itemService;
 
     @Override
     @Transactional(readOnly = true)
     public List<ProductResult> findAll() {
         return productRepository.findAll()
                 .stream()
-                .map(productMapper::toDTO)
+                .map(product -> {
+                    Integer productId = product.getId();
+                    ProductResult dto = productMapper.toDTO(product);
+                    dto.setTotalInventory(itemService.getTotalInventoryQuantityByProductId(productId));
+                    dto.setAvailableInventory(itemService.getAvailableInventoryQuantityByProductId(productId));
+                    return dto;
+                })
                 .collect(Collectors.toList());
     }
 
@@ -108,7 +113,7 @@ public class ProductServiceImpl implements ProductService {
         item.setAvailable(Integer.parseInt(productShortParam.getQuantity()));
         item.setPrice(new BigDecimal(Integer.parseInt(productShortParam.getImportPrice())));
 
-        itemRepository.save(item);
+     //   itemRepository.save(item);
 
         return product;
 //
@@ -144,16 +149,11 @@ public class ProductServiceImpl implements ProductService {
         return entities.stream().map(
                 entity -> {
                     ProductResult dto = productMapper.toDTO(entity);
-                   // int ton = itemRepository.store();
-                 //   dto.setTon(ton);
+                    // int ton = itemRepository.store();
+                    //   dto.setTon(ton);
                     return dto;
                 }).collect(Collectors.toList());
 
-    }
-
-    @Override
-    public Page<Product> findAll(Pageable pageable) {
-        return null;
     }
 
 }

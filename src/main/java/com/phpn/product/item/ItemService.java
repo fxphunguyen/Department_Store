@@ -5,7 +5,7 @@ import java.util.List;
 public interface ItemService {
     List<ItemResult> findAll();
 
+    int getTotalInventoryQuantityByProductId(Integer productId);
 
-//    List<ItemResult> findAllByProductIdAndAvailableAndQuantity();
-
+    int getAvailableInventoryQuantityByProductId(Integer productId);
 }
