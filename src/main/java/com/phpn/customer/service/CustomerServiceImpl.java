@@ -1,8 +1,13 @@
-package com.phpn.customer;
+package com.phpn.customer.service;
 
+import com.phpn.customer.CustomerMapper;
+import com.phpn.customer.CustomerRepository;
+import com.phpn.customer.CustomerResult;
+import com.phpn.customer.UpdateCustomerParam;
+import com.phpn.customer.dto.CreateCustomerParam;
+import com.phpn.customer.dto.CreateShippingAddressParam;
 import com.phpn.exceptions.NotFoundException;
 import com.phpn.order.sale.SaleOrderService;
-import com.phpn.payment.purchase.PaymentOrderRepository;
 import com.phpn.payment.purchase.PaymentSaleOrderService;
 import com.phpn.shipping_address.ShippingAddressService;
 import lombok.RequiredArgsConstructor;
