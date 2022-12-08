@@ -25,6 +25,7 @@ ext {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly "org.projectlombok:lombok"
     annotationProcessor "org.projectlombok:lombok"
 
