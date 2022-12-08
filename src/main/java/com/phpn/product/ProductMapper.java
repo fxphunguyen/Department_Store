@@ -1,4 +1,5 @@
 package com.phpn.product;
+
 import com.phpn.brand.dto.BrandMapper;
 import com.phpn.product.dto.ProductParam;
 import com.phpn.product.dto.ProductResult;
@@ -6,6 +7,8 @@ import com.phpn.product.dto.ProductShortParam;
 import com.phpn.product.dto.ProductWithImageParam;
 import com.phpn.category.dto.CategoryMapper;
 import com.phpn.product.item.ItemMapper;
+import com.phpn.tax.dto.TaxMapper;
+import com.phpn.tax.dto.TaxResult;
 import vn.fx.qh.sapo.entities.product.*;
 
 
@@ -14,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class ProductMapper {
@@ -23,13 +28,13 @@ public class ProductMapper {
     BrandMapper brandMapper;
 
     @Autowired
-    private ItemMapper itemMapper;
+    TaxMapper taxMapper;
 
     @Autowired
     CategoryMapper categoryMapper;
 
     public Product toModel(ProductParam productParam) {
-        return new Product(productParam.getCategoryId(),productParam.getBrandId())
+        return new Product(productParam.getCategoryId(), productParam.getBrandId())
                 .setTitle(productParam.getTitle())
                 .setImage(productParam.getImage())
                 .setStatus(productParam.getStatus())
@@ -47,7 +52,7 @@ public class ProductMapper {
     }
 
     public Product toModel(ProductWithImageParam productWithImageParam) {
-        return new Product(productWithImageParam.getCategoryId(),productWithImageParam.getBrandId())
+        return new Product(productWithImageParam.getCategoryId(), productWithImageParam.getBrandId())
                 .setTitle(productWithImageParam.getTitle())
                 .setStatus(productWithImageParam.getStatus())
                 .setCreateAt(java.time.LocalDateTime.now().toString())
@@ -64,7 +69,7 @@ public class ProductMapper {
     }
 
     public ProductResult toDTO(Product product) {
-        return new ProductResult()
+        ProductResult result = new ProductResult()
                 .setId(product.getId())
                 .setTitle(product.getTitle())
                 .setStatus(product.getStatus())
@@ -79,9 +84,13 @@ public class ProductMapper {
                 .setRetailPrice(product.getRetailPrice())
                 .setCreateAt(product.getCreateAt())
                 .setUpdateAt(product.getUpdateAt());
-//                .setTax((Tax) product.getTaxs());
-//                        .setBrandResult(brandMapper.toDTO(product.getBrand()))
-//                .setCategoryResult(categoryMapper.toDTO(product.getCategory()));
+        List<TaxResult> taxSaleList = product.getTaxSale().stream().map(taxMapper::toDTO).collect(Collectors.toList());
+        result.setTaxSaleList(taxSaleList);
+        List<TaxResult> taxPurchaseList = product.getTaxPurchase().stream().map(taxMapper::toDTO).collect(Collectors.toList());
+        result.setTaxPurchaseList(taxPurchaseList);
+        result.setBrand(brandMapper.toDTO(product.getBrand()))
+                .setCategory(categoryMapper.toDTO(product.getCategory()));
+        return result;
     }
 
 

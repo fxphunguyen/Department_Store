@@ -35,6 +35,7 @@ public class ProductServiceImpl implements ProductService {
                 .stream()
                 .map(product -> {
                     ProductResult dto = productMapper.toDTO(product);
+                    return dto;
                 })
                 .collect(Collectors.toList());
     }
