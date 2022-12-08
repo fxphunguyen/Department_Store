@@ -118,7 +118,7 @@ const searchProduct = () => {
                                     </p>
                                 </div>
                                 <div class="MuiBox-root jss3953">
-                                    <h6 class="MuiTypography-root MuiTypography-h6">${product.retail_price} 
+                                    <h6 class="MuiTypography-root MuiTypography-h6">${product.retailPrice} 
 </h6>
                                         <p class="MuiTypography-root MuiTypography-body1" style="margin-top: 4px;">
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">Tồn:  </span>
@@ -379,12 +379,12 @@ function showListProducts() {
                                     </p>
                                 </div>
                                 <div class="MuiBox-root jss3953">
-                                    <h6 class="MuiTypography-root MuiTypography-h6">${(product.retail_price).formatVND()}</h6>
+                                    <h6 class="MuiTypography-root MuiTypography-h6">${(product.retailPrice).formatVND()}</h6>
                                         <p class="MuiTypography-root MuiTypography-body1" style="margin-top: 4px;">
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">Tồn:  </span>
-                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.quantity}</span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.totalInventory}</span>
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">&nbsp;| Có thể bán: </span>
-                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.available}</span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.availableInventory}</span>
                                         </p>
                                 </div>
                             </div>
@@ -725,14 +725,10 @@ function showProductInfo(productId) {
     $("#productId").val(productId);
 
     let result = product = products.find(({id}) => id === productId);
-    let taxText;
-    let tax = result.tax;
-    let retailPrice = result.retail_price;
-    taxText = (retailPrice * (tax / 100));
     let std = `
             <div id="tax_${result.id}">
                 <div class="MuiListItemText-root" style="float:left">                                        
-                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(${result.tax}%)</span>
+                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(${result.taxSaleList}%)</span>
                 </div>
                 <div class="MuiListItemText-root" style="float:right">
                     <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" id="tax_value_${result.id}">0</span>
@@ -829,9 +825,9 @@ function showProductInfo(productId) {
                         <div
                             class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
                             <input aria-invalid="false" autocomplete="off"
-                                id="retail_price_${result.id}"
+                                id="retailPrice_${result.id}"
                                 name="" type="text"
-                                class="MuiInputBase-input MuiInput-input" value=${result.retail_price}
+                                class="MuiInputBase-input MuiInput-input" value=${result.retailPrice}
                                                                  
                                 style="width: 100%; text-align: right"
                                 ></div>
@@ -881,17 +877,17 @@ function showProductInfo(productId) {
                                                name="numonly"
                                                type="text" 
                                                class="MuiInputBase-input MuiInput-input" value="0"
-                                               onkeyup="formatDiscount(event,${result.id},${result.retail_price})"
+                                               onkeyup="formatDiscount(event,${result.id},${result.retailPrice})"
                                                style="width: 100%; text-align: right;">
                                     </div>
-                                             <!--oninput="onInputDiscount(event,${result.id},${result.retail_price})"-->
+                                             <!--oninput="onInputDiscount(event,${result.id},${result.retailPrice})"-->
                                 </div>
                             </div>
                         </div>
                     </div>   
                  </td>
             <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight " >
-                <span id="amount_product_${result.id}" data-value="${product.retail_price}" >${result.retail_price}
+                <span id="amount_product_${result.id}" data-value="${product.retailPrice}" >${result.retailPrice}
                 </span>
             </td>
                 <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight " style="padding-left: 0px;">
@@ -912,11 +908,11 @@ function showProductInfo(productId) {
     $("#divNoInfo").remove();
     $("#divTbProduct").removeClass("hide");
     handleGrandTotal();
-    if (tax == null) {
+    if (taxSaleList == null) {
         $(`#tax_${result.id}`).remove();
     }
     $("#vat_tax").removeClass('d-none');
-    $(`#tax_value_${result.id}`).text(taxText.formatVND());
+    // $(`#tax_value_${result.id}`).text(taxText.formatVND());
     handleGrandTotal();
 }
 
@@ -971,7 +967,7 @@ const addQuantity = (productId) => {
     quantityProduct = quantityProduct + 1;
     $(`#quantity_product_${productId}`).val(quantityProduct);
     let tax = $(`#tax_${productId}`).text().replaceAll("VAT", "").replaceAll(")", "").replaceAll("%", "").replaceAll("(", "");
-    let retailProduct = +$(`#retail_price_${productId}`).val();
+    let retailProduct = +$(`#retailPrice_${productId}`).val();
     let amount = (retailProduct - discount) * quantityProduct;
     let taxValue = (retailProduct * (tax / 100)) * quantityProduct;
     $(`#tax_value_${productId}`).text(taxValue.formatVND());
@@ -984,7 +980,7 @@ function minusQuantity(productId) {
     const discount = +$(`#discount_value_${productId}`).text().replaceAll(",", "");
     let tax = $(`#tax_${productId}`).text().replaceAll("VAT", "").replaceAll(")", "").replaceAll("%", "").replaceAll("(", "");
     quantityProduct = quantityProduct - 1;
-    const retailProduct = +$(`#retail_price_${productId}`).val();
+    const retailProduct = +$(`#retailPrice_${productId}`).val();
     let amount = (retailProduct - discount) * quantityProduct;
     let taxValue = (retailProduct * (tax / 100)) * quantityProduct;
     $(`#tax_value_${productId}`).text(taxValue.formatVND());
