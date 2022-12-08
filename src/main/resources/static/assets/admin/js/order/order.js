@@ -1067,11 +1067,8 @@ const formatDiscountOrder = (event, productId) => {
     let discountOrder = 0;
     $(`#tax_${productId}`).each(function () {
         let taxId = $(this).attr('id');
-        console.log(taxId);
         let tax = +$("#tax_value_" + taxId).text();
         totalTax += tax;
-        // console.log(tax)
-        // console.log(totalTax)
     })
     btnValueOrder.forEach((btn, index) => {
         const classListOrder = [...btn.classList];
