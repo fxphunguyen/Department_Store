@@ -16,7 +16,6 @@ let employees = [];
 
 function showListCustomer() {
     function show(data) {
-
         $(".searchCustomer").removeClass('d-none');
         $(".contentCustomer div").remove();
         $.each(data, (i, customer) => {
@@ -48,7 +47,7 @@ function showListCustomer() {
     }
     $.ajax({
         type: "GET", contentType: 'application/json',
-        url: `${location.origin}/api/customers/list_customerAll`
+        url: `${location.origin}/api/customers`
     })
         .done((data) => {
             customers = data;
@@ -144,15 +143,30 @@ function showCustomerInfo(idCustomer) {
     $("#idCustomer").val(idCustomer);
     let result = customer = customers.find(({id}) => id === idCustomer);
     let shippingAddress = result.shippingAddress;
-    let fullAddress;
+    let fullShippingAddress = "";
     if (shippingAddress.line1 != null)
-        fullAddress = `${shippingAddress.line1}, `;
+        fullShippingAddress = `${shippingAddress.line1}, `;
     if (shippingAddress.line2 != null)
-        fullAddress += `${shippingAddress.line2}, `;
+        fullShippingAddress += `${shippingAddress.line2}, `;
     if (shippingAddress.wardName != null)
-        fullAddress += `${shippingAddress.wardName}, `;
+        fullShippingAddress += `${shippingAddress.wardName}, `;
     if (shippingAddress.districtName != null)
-        fullAddress += `${shippingAddress.provinceName}`;
+        fullShippingAddress += `${shippingAddress.districtName}, `;
+    if (shippingAddress.provinceName != null)
+        fullShippingAddress += `${shippingAddress.provinceName}`;
+
+    let billAddress = result.billAddress;
+    let fullBillAddress= "";
+    if (billAddress.line1 != null)
+        fullBillAddress = `${billAddress.line1}, `;
+    if (billAddress.line2 != null)
+        fullBillAddress += `${billAddress.line2}, `;
+    if (billAddress.wardName != null)
+        fullBillAddress += `${billAddress.wardName}, `;
+    if (billAddress.districtName != null)
+        fullBillAddress += `${billAddress.districtName}, `;
+    if (billAddress.provinceName != null)
+        fullBillAddress += `${billAddress.provinceName}`;
 
 
     let str = `<div class="MuiPaper-root  jss938 MuiPaper-elevation1 MuiPaper-rounded" id="closed_customer_info">
@@ -201,10 +215,14 @@ function showCustomerInfo(idCustomer) {
                         <div class="MuiBox-root jss3898 jss944">
                             <div class="MuiBox-root jss3899">
                                 <p class="MuiTypography-root jss941 MuiTypography-body2">Địa chỉ giao hàng</p>
+                                <button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary" tabindex="0" type="button" style="margin: 0px 4px; height: 15px; min-width: unset;">
+                                <span class="MuiButton-label">Thay đổi</span>
+                                <span class="MuiTouchRipple-root"></span>
+                                </button>
                             </div>
                             <div class="MuiBox-root jss3900">
                                 <p class="MuiTypography-root MuiTypography-body2">${result.phone}</p>
-                                <p class="MuiTypography-root MuiTypography-body2">${fullAddress}</p>
+                                <p class="MuiTypography-root MuiTypography-body2">${fullShippingAddress}</p>
                             </div>
                         </div>
                         <div class="MuiBox-root jss3901 jss945 jss947">
@@ -231,7 +249,7 @@ function showCustomerInfo(idCustomer) {
                                             834</p>
                                     </div>
                                 </li>
-                                <div class="MuiBox-root jss3912">
+                                
                                     <li class="MuiListItem-root MuiListItem-gutters"
                                         style="cursor: pointer; padding: 5px 8px;">
                                         <div class="MuiListItemText-root">
@@ -256,7 +274,7 @@ function showCustomerInfo(idCustomer) {
                                                 0</p>
                                         </div>
                                     </li>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -276,7 +294,7 @@ function showCustomerInfo(idCustomer) {
                             </div>
                             <div class="MuiBox-root jss4278">
                                 <p class="MuiTypography-root MuiTypography-body2">${result.phone}</p>
-                                <p class="MuiTypography-root MuiTypography-body2">${result.shippingAddressList}</p>
+                                <p class="MuiTypography-root MuiTypography-body2">${fullBillAddress}</p>
                             </div>
                         </div>
                         <div class="MuiBox-root jss4279 jss945">
@@ -353,7 +371,7 @@ function showListProducts() {
                         <img class="jss1260" src="${product.image}" alt="">
                             <div class="MuiBox-root jss3946">
                                 <div class="MuiBox-root jss3947">
-                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title} - ${product.bar_code} - ${product.description} </p>
+                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">u  - ${product.bar_code} - ${product.description} </p>
                                         <p class="MuiTypography-root MuiTypography-body2" style="line-height: 16px; display: flex;">
                                     
                                         <span class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175); line-height: 16px;"> ${product.sku} </span>
@@ -705,11 +723,16 @@ function editCustomer() {
 function showProductInfo(productId) {
     $('#MuiBox-list-product').addClass("hide");
     $("#productId").val(productId);
+
     let result = product = products.find(({id}) => id === productId);
+    let taxText;
+    let tax = result.tax;
+    let retailPrice = result.retail_price;
+    taxText = (retailPrice * (tax / 100));
     let std = `
-            <div >
+            <div id="tax_${result.id}">
             <div class="MuiListItemText-root" style="float:left">                                        
-                <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" id="tax_${result.tax}">VAT(${result.tax}%)</span>
+                <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(${result.tax}%)</span>
             </div>
             <div class="MuiListItemText-root" style="float:right">
                 <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" id="tax_value_${result.id}">0</span>
@@ -875,7 +898,7 @@ function showProductInfo(productId) {
                 <button
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeSmall"
                     tabindex="0" type="button"><span class="MuiIconButton-label"><svg viewBox="0 0 24 24"
-                            onclick="removeProduct(${result.id})"
+                            onclick="deleteProduct(${result.id})"
                             fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             font-size="20">
                             <path
@@ -888,8 +911,12 @@ function showProductInfo(productId) {
     $("#divNoInfo").remove();
     $("#divTbProduct").removeClass("hide");
     handleGrandTotal();
+    if (tax == null) {
+        $(`#tax_${result.id}`).remove();
+    }
     $("#vat_tax").removeClass('d-none');
-    // $(`#tax_value_${result.id}`).text(taxValue);
+    $(`#tax_value_${result.id}`).text(taxText.formatVND());
+    handleGrandTotal();
 }
 
 function removeProduct(id) {
@@ -942,10 +969,11 @@ const addQuantity = (productId) => {
     let quantityProduct = +($(`#quantity_product_${productId}`).val());
     quantityProduct = quantityProduct + 1;
     $(`#quantity_product_${productId}`).val(quantityProduct);
-    let tax = $(`tax_${result.tax}`).val();
-    console.log(tax)
+    let tax = $(`#tax_${productId}`).text().replaceAll("VAT", "").replaceAll(")", "").replaceAll("%", "").replaceAll("(", "");
     let retailProduct = +$(`#retail_price_${productId}`).val();
     let amount = (retailProduct - discount) * quantityProduct;
+    let taxValue = (retailProduct * (tax / 100)) * quantityProduct;
+    $(`#tax_value_${productId}`).text(taxValue.formatVND());
     $(`#amount_product_${productId}`).text(amount.formatVND());
     handleGrandTotal();
 }
@@ -953,9 +981,12 @@ const addQuantity = (productId) => {
 function minusQuantity(productId) {
     let quantityProduct = Number($(`#quantity_product_${productId}`).val());
     const discount = +$(`#discount_value_${productId}`).text().replaceAll(",", "");
+    let tax = $(`#tax_${productId}`).text().replaceAll("VAT", "").replaceAll(")", "").replaceAll("%", "").replaceAll("(", "");
     quantityProduct = quantityProduct - 1;
     const retailProduct = +$(`#retail_price_${productId}`).val();
     let amount = (retailProduct - discount) * quantityProduct;
+    let taxValue = (retailProduct * (tax / 100)) * quantityProduct;
+    $(`#tax_value_${productId}`).text(taxValue.formatVND());
     $(`#amount_product_${productId}`).text(amount.formatVND());
 
     if (quantityProduct === 0) {
@@ -968,7 +999,7 @@ function minusQuantity(productId) {
             confirmButtonText: 'Đồng ý'
         }).then((result) => {
             if (result.isConfirmed) {
-                removeProduct(productId);
+                deleteProduct(productId);
             }
         })
     }
@@ -976,23 +1007,28 @@ function minusQuantity(productId) {
     handleGrandTotal();
 }
 
-function handleGrandTotal() {
+function handleGrandTotal(productId) {
+    let total = 0;
     let grandTotal = 0;
     let totalQuantity = 0;
+    let totalTax = 0;
     $("#tbProduct tbody tr").each(function () {
         let rowId = $(this).attr("id").replaceAll("tr_", "");
         let item = +$("#amount_product_" + rowId).text().replaceAll(",", "");
         let qty = +$("#quantity_product_" + rowId).val();
+        let taxs = +$("#tax_value_" + rowId).text().replaceAll(",", "");
+        totalTax += taxs;
         totalQuantity += qty;
-        grandTotal += item;
+        total += item;
+        grandTotal = total + totalTax;
         $("#quantity_products").text("Tổng tiền (" + totalQuantity + " sản phẩm)");
-        $("#grandTotal").text(grandTotal.formatVND());
+        $("#grandTotal").text(total.formatVND());
         $("#total_amounts").text(grandTotal.formatVND());
         $("#total_customer").text(grandTotal.formatVND());
     })
 }
 
-function removeProduct(productId) {
+function deleteProduct(productId) {
     $("#tr_" + productId).remove();
     iziToast.success({
         title: 'OK',
@@ -1000,8 +1036,7 @@ function removeProduct(productId) {
         timeout: 1500,
         message: 'Xóa sản phẩm khỏi đơn hàng thành công!'
     });
-    $(`#tax_id_${productId}`).remove();
-    $("#vat_tax").addClass('d-none');
+    $(`#tax_${productId}`).remove();
 }
 
 const valueDiscount = (event) => {
@@ -1019,6 +1054,41 @@ const valueDiscount = (event) => {
     event.target.parentElement.classList.add("Mui-selected");
 }
 
+const formatDiscountOrder = (event, productId) => {
+    $("#discount_product_input_order").on('keyup', function () {
+        var n = parseInt($(this).val().replace(/\D/g, ''), 10);
+        $(this).val(n.toLocaleString());
+    });
+    const  btnValueSelectOrder = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
+    const btnValueOrder = [...btnValueSelectOrder];
+    btnValueOrder.forEach((btn, index) => {
+        const classListOrder = [...btn.classList];
+        if (classListOrder.includes("Mui-selected")) {
+            const valueInput = event.target.value;
+            const total = document.querySelector('#grandTotal').value;
+            const tax = $(`#tax_value_${productId}`).text();
+            console.log("tax", tax);
+            let grandtotal, percentValue, discount;
+            if (btn.value === "VALUE") {
+                grandtotal = (total - valueInput);
+                percentValue = (valueInput * 100) / total;
+                discount = total ;
+            }
+
+            // } else {
+            //     discount = total * (valueInput / 100);
+            //     percentValue = valueInput;
+            //     totalAfterDiscount = total - discount;
+            // }
+
+            $(`#discount_value_${productId}`).text(discount.formatVND());
+            $(`#percent_value_${productId}`).text(percentValue.toFixed(2) + "%");
+            $(`#amount_product_${productId}`).text(totalAfterDiscount.formatVND());
+        }
+    })
+}
+
+
 const formatDiscount = (event, productId, retailPrice) => {
     $("#discount_product_input").on('keyup', function () {
         var n = parseInt($(this).val().replace(/\D/g, ''), 10);
@@ -1029,6 +1099,7 @@ const formatDiscount = (event, productId, retailPrice) => {
     const btnValue = [...btnValueSelectors];
     btnValue.forEach((mui, index) => {
         const classLists = [...mui.classList];
+        console.log("classLists", classLists)
         if (classLists.includes("Mui-selected")) {
             const valueInput = event.target.value;
             const quantity = document.querySelector(`#quantity_product_${productId}`).value;
