@@ -707,69 +707,11 @@
 </body>
 
 <script>
-    class Product {
-        constructor(id, title, image, status, description, unit, sku, barCode, quantity, retailPrice, importPrice, wholesalePrice, categoryId, brandId, deleted) {
-            this.id = id;
-            this.title = title;
-            this.image = image;
-            this.status = status;
-            this.description = description;
-            this.unit = unit;
-            this.sku = sku;
-            this.barCode = barCode;
-            this.quantity = quantity;
-            this.retailPrice = retailPrice;
-            this.importPrice = importPrice;
-            this.wholesalePrice = wholesalePrice;
-            this.categoryId = categoryId;
-            this.brandId = brandId;
-            this.deleted = deleted;
-        }
-    }
-    let product = new Product();
 
-
-    //Click to create product
-    $('#btnCreateProduct').on('click', () => {
-        product.id = 0;
-        product.title = $('.titleCreate').val();
-        product.image = 'ok cậu';
-        // product.status = $('.statusCreate').attr('checked') ? 1 : 0;
-
-        product.status = $(".statusCreate").is(":checked") ? "Đang giao dịch" : "Ngừng giao dịch";
-
-        product.description = $('.descriptionCreate').val();
-        product.unit = $('.unitCreate').val();
-        product.sku = $('.skuCreate').val();
-        product.barCode = $('.barCodeCreate').val();
-        product.quantity = $('.quantityCreate').val();
-        product.retailPrice = $('.retailPriceCreate').val();
-        product.importPrice = $('.importPriceCreate').val();
-        product.wholesalePrice = $('.wholesalePriceCreate').val();
 
         //nhat-dev get value cat and brand to create product
-        product.categoryId =$("#catProType").data("id");
-        product.brandId = $('#brandProType').data("id");
-        product.deleted = true;
-
-        console.log(product)
-        $.ajax({
-            "headers": {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            "type": "POST",
-            "url": "http://localhost:8080/api/products/create",
-            "data": JSON.stringify(product)
-        })
-            .done((data) => {
-                console.log(": Tạo sản phẩm thành công")
-
-            })
-            .fail((jqXHR) => {
-                console.log("Loi nha may ba")
-            })
-    })
+        // product.categoryId =$("#catProType").data("id");
+        // product.brandId = $('#brandProType').data("id");
 
     //----->>>Nhat-dev OnClick button to create Category
     $('#btnAddCategory').on('click', () => {
