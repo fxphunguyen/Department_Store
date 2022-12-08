@@ -15,7 +15,6 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @Accessors(chain = true)
 public class ProductParam {
-
     private Integer id;
     private String title;
     private String image;
