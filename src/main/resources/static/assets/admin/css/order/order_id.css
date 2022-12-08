@@ -63,7 +63,7 @@
     margin-right: 16px;
 }
 
-.kcDZdE {
+.eyzdgZ {
     display: inline-flex;
     -webkit-box-pack: center;
     justify-content: center;
@@ -83,9 +83,9 @@
     height: 2.57143rem;
     padding: 0px 1.14286rem;
     min-width: 4.57143rem;
-    border: none;
-    background: rgb(243, 244, 245);
-    color: rgb(116, 124, 135);
+    border: 1px solid rgb(255, 77, 77);
+    background: rgb(255, 255, 255);
+    color: rgb(255, 77, 77);
 }
 
 .jcEYKF {
@@ -96,7 +96,7 @@
     align-items: center;
     padding: 0px;
     z-index: 2;
-    font-size: 14px;
+    font-size: inherit;
     font-weight: inherit;
 }
 
@@ -423,7 +423,6 @@
 }
 
 .jss4192 {
-    width: calc(100% - 300px);
     border-bottom: 1px solid #F3F4F5;
 }
 
@@ -525,9 +524,9 @@
 }
 
 .jss4193 {
-    font-weight: 500;
-    line-height: 16px;
-    text-transform: uppercase;
+    font-weight: 500 !important;
+    line-height: 16px !important;
+    text-transform: uppercase !important;
 }
 
 .MuiTypography-body2 {

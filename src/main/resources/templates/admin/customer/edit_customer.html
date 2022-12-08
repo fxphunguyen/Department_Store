@@ -677,8 +677,8 @@
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
 <script rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="/assets/admin/js/customer/customer_app.js"></script>
 
 
 <script>
@@ -919,18 +919,22 @@
             "data": JSON.stringify(customer)
         })
             .done((data) => {
-                console.log(": Tạo sản phẩm thành công")
-                $('#nameCreate').empty();
-                $('#codeCreate').empty();
-                $('#customerGroupCreate').empty();
-                $('#genderCreate').empty();
-                $('#phoneCreate').empty();
-                $('#emailCreate').empty();
-                $('#birthdayCreate').empty();
-                $('#statusCreate').empty
-                $('#genderCreate').empty();
-                $('#birthdayCreate').empty();
-                $('#addressCreate').empty();
+                App.IziToast.showSuccessAlert('Cập nhập khách hàng thành công !!!')
+                $('#nameCreate').val("");
+                $('#codeCreate').val("");
+                $('#phoneCreate').val("");
+                $('#emailCreate').val("");
+                $('#birthdayCreate').val("");
+                $('#statusCreate').val("")
+                $('#addressCreate').val("");
+                $('#employeeNameCreate').val();   $('#nameCreate').val("");
+                $('#codeCreate').val("");
+                $('#phoneCreate').val("");
+                $('#emailCreate').val("");
+                $('#birthdayCreate').val("");
+                $('#statusCreate').val("")
+                $('#addressCreate').val("");
+                $('#employeeNameCreate').val();
 
                 $('#provinceNameCreate').empty();
                 $('#districtNameCreate').empty();
@@ -938,7 +942,12 @@
                 $('#employeeNameCreate').empty();
             })
             .fail((jqXHR) => {
-                console.log("Lỗi tại customer")
+                console.log(jqXHR);
+                if (jqXHR.responseJSON) {
+                    $.each(jqXHR.responseJSON, (key, item)=> {
+                        App.IziToast.showErrorAlert(item);
+                    })
+                }
 
             })
     });
@@ -997,7 +1006,12 @@
                 $('#employeeNameCreate').empty();
             })
             .fail((jqXHR) => {
-                console.log("Lỗi tại customer")
+                console.log(jqXHR);
+                if (jqXHR.responseJSON) {
+                    $.each(jqXHR.responseJSON, (key, item)=> {
+                        App.IziToast.showErrorAlert(item);
+                    })
+                }
 
             })
     })
