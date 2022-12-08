@@ -47,7 +47,7 @@ function showListCustomer() {
     }
     $.ajax({
         type: "GET", contentType: 'application/json',
-        url: `${location.origin}/api/customers/list_customerAll`
+        url: `${location.origin}/api/customers`
     })
         .done((data) => {
             customers = data;
@@ -898,7 +898,7 @@ function showProductInfo(productId) {
                 <button
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeSmall"
                     tabindex="0" type="button"><span class="MuiIconButton-label"><svg viewBox="0 0 24 24"
-                            onclick="removeProduct(${result.id})"
+                            onclick="deleteProduct(${result.id})"
                             fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             font-size="20">
                             <path
@@ -911,6 +911,9 @@ function showProductInfo(productId) {
     $("#divNoInfo").remove();
     $("#divTbProduct").removeClass("hide");
     handleGrandTotal();
+    if (tax == null) {
+        $(`#tax_${result.id}`).remove();
+    }
     $("#vat_tax").removeClass('d-none');
     $(`#tax_value_${result.id}`).text(taxText.formatVND());
     handleGrandTotal();
@@ -996,7 +999,7 @@ function minusQuantity(productId) {
             confirmButtonText: 'Đồng ý'
         }).then((result) => {
             if (result.isConfirmed) {
-                removeProduct(productId);
+                deleteProduct(productId);
             }
         })
     }
@@ -1025,7 +1028,7 @@ function handleGrandTotal(productId) {
     })
 }
 
-function removeProduct(productId) {
+function deleteProduct(productId) {
     $("#tr_" + productId).remove();
     iziToast.success({
         title: 'OK',
@@ -1051,12 +1054,40 @@ const valueDiscount = (event) => {
     event.target.parentElement.classList.add("Mui-selected");
 }
 
-const formatDiscountOrder = (productId,retailPrice) => {
+const formatDiscountOrder = (event, productId) => {
     $("#discount_product_input_order").on('keyup', function () {
         var n = parseInt($(this).val().replace(/\D/g, ''), 10);
         $(this).val(n.toLocaleString());
     });
+    const  btnValueSelectOrder = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
+    const btnValueOrder = [...btnValueSelectOrder];
+    btnValueOrder.forEach((btn, index) => {
+        const classListOrder = [...btn.classList];
+        if (classListOrder.includes("Mui-selected")) {
+            const valueInput = event.target.value;
+            const total = document.querySelector('#grandTotal').value;
+            const tax = $(`#tax_value_${productId}`).text();
+            console.log("tax", tax);
+            let grandtotal, percentValue, discount;
+            if (btn.value === "VALUE") {
+                grandtotal = (total - valueInput);
+                percentValue = (valueInput * 100) / total;
+                discount = total ;
+            }
+
+            // } else {
+            //     discount = total * (valueInput / 100);
+            //     percentValue = valueInput;
+            //     totalAfterDiscount = total - discount;
+            // }
+
+            $(`#discount_value_${productId}`).text(discount.formatVND());
+            $(`#percent_value_${productId}`).text(percentValue.toFixed(2) + "%");
+            $(`#amount_product_${productId}`).text(totalAfterDiscount.formatVND());
+        }
+    })
 }
+
 
 const formatDiscount = (event, productId, retailPrice) => {
     $("#discount_product_input").on('keyup', function () {
@@ -1068,6 +1099,7 @@ const formatDiscount = (event, productId, retailPrice) => {
     const btnValue = [...btnValueSelectors];
     btnValue.forEach((mui, index) => {
         const classLists = [...mui.classList];
+        console.log("classLists", classLists)
         if (classLists.includes("Mui-selected")) {
             const valueInput = event.target.value;
             const quantity = document.querySelector(`#quantity_product_${productId}`).value;
