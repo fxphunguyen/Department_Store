@@ -501,33 +501,23 @@
                                         <h6 class="MuiTypography-root MuiTypography-h6">Thông tin bổ sung</h6>
                                     </div>
                                     <div class="MuiBox-root jss26823">
+<!--                                        nhat-dev: select menu categories-->
                                         <div class="MuiBox-root jss26824 item-box"
                                              style="border-top: 0; padding-top: 0;">
                                             <h6 class="MuiTypography-root title MuiTypography-subtitle1">
                                                 Loại sản phẩm</h6>
-                                            <!--                                            <select class="categoryIdCreate showAllCategory form-select MuiTypography-root label-select MuiTypography-body1 MuiTypography-colorTextPrimary"-->
-                                            <!--                                                    aria-label="Chọn loại sản phẩm">-->
-                                            <!--                                                Chọn loại sản phẩm-->
-                                            <!--                                                <option selected style="color: #0a77bb">-->
-                                            <!--                                                    <button>-->
-                                            <!--                                                        <i class="fa-solid fa-circle-plus"></i>-->
-                                            <!--                                                        Thêm mới sản phẩm-->
-                                            <!--                                                    </button>-->
-                                            <!--                                                </option>-->
-                                            <!--                                            </select>-->
-
-<!--                                            dropdown list categories -->
-<!--                                            nhat-dev show list categories-->
                                             <div class="dropdown">
+<!--                                                <input id="getIdValueCat" type="hidden"/>-->
                                                 <div class="btn bg-secondary dropdown-toggle select-btn-cat" type="button"
                                                      data-bs-toggle="dropdown" aria-expanded="false"
                                                      style=" border: solid 1px #D3D5D7;border: solid 1px #D3D5D7;
                                                             display: flex;
                                                             justify-content: space-between;
                                                             align-items: center; ">
-                                                    <span>Chọn loại sản phẩm</span>
+                                                    <span id="catProType" >Chọn loại sản phẩm</span>
                                                 </div>
                                                 <ul class="dropdown-menu w-100 categoryIdCreate showAllCategory">
+
                                                     <li>
                                                         <div class="d-flex align-items-center">
                                                             <i class="fa-solid fa-magnifying-glass"
@@ -549,34 +539,41 @@
                                                 </ul>
                                             </div>
                                         </div>
-
+                                        <!--                                        nhat-dev: select menu brands-->
                                         <div class="MuiBox-root jss26843 item-box"
                                              style="border-top: 0; padding-top: 0;">
                                             <h6 class="MuiTypography-root title MuiTypography-subtitle1">Nhãn hiệu</h6>
-<!--                                            <select class="brandIdCreate showAllBrand form-select "-->
-<!--                                                    aria-label="Chọn loại sản phẩm">-->
-<!--                                                <option selected style="color: #0a77bb">Chọn nhãn hiệu</option>-->
-<!--                                            </select>-->
-<!--                                            nhat-dev show list brands-->
-                                            <div class="wrapper">
-                                                <div class="select-btn">
-                                                    <span>Chọn loại nhãn hiệu</span>
-                                                    <i class="fa-solid fa-caret-down" style="color: #A3A8AF; font-weight: 600"></i>
+                                            <div class="dropdown">
+                                                <!--                                                <input id="getIdValueCat" type="hidden"/>-->
+                                                <div class="btn bg-secondary dropdown-toggle select-btn-brand" type="button"
+                                                     data-bs-toggle="dropdown" aria-expanded="false"
+                                                     style=" border: solid 1px #D3D5D7;border: solid 1px #D3D5D7;
+                                                            display: flex;
+                                                            justify-content: space-between;
+                                                            align-items: center; ">
+                                                    <span id="brandProType" >Chọn loại nhãn hiệu</span>
                                                 </div>
-                                                <div class="content">
-                                                    <div class="search">
-                                                        <i class="fa-solid fa-magnifying-glass" ></i>
-                                                        <input spellcheck="false" type="text" placeholder="Search"/>
-                                                    </div>
-                                                    <button id="btnCreateBrand" style="border: none; color: #2d9dff;padding: 10px;text-align: start;
+                                                <ul class="dropdown-menu w-100 brandIdCreate showAllBrand">
+
+                                                    <li>
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fa-solid fa-magnifying-glass"
+                                                               style="margin-left: 16px;
+                                                               margin-right: 4px;
+                                                               color: #828282"></i>
+                                                            <input id="inputSearchBrand" style="margin: 2px" class="w-100 form-control border border-0"  placeholder="Tìm kiếm hoặc nhập mới"/>
+                                                        </div>
+                                                    </li>
+                                                    <li class="text-primary dropdown-item">
+                                                        <button id="btnCreateBrand" style="border: none; color: #2d9dff;padding: 10px;text-align: start;
                                                                  font-weight: 500;
-                                                                 font-size: 14px;border-bottom: 1px solid #E8EAEB;" class="bg-white w-100">
-                                                        <i class="fa-solid fa-circle-plus"
-                                                           style="margin: 0 9px"></i>Thêm mới
-                                                        loại nhãn hiệu
-                                                    </button>
-                                                    <ul class="options brandIdCreate showAllBrand"></ul>
-                                                </div>
+                                                                 font-size: 14px" class="bg-white w-100">
+                                                            <i class="fa-solid fa-circle-plus"
+                                                               style="margin: 0 9px"></i>Thêm mới
+                                                            loại sản phẩm
+                                                        </button>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                         <div class="MuiBox-root jss26861 wrapper-autocomplete-tag">
@@ -703,34 +700,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"
         integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="../../../static/assets/admin/js/cate_brand/category.js"></script>
+<script src="../../../static/assets/admin/js/cate_brand/brand.js"></script>
 </body>
 
 <script>
-    // let page = {
-    //     urls: {
-    //         createProductAPI: ,
-    //         getAllRecipients: App.BASE_URL_CUSTOMER + "/get-all-recipients-without-sender",
-    //         createCustomer: App.BASE_URL_CUSTOMER + "/create",
-    //         deposit: App.BASE_URL_CUSTOMER + "/deposit",
-    //         withdraw: App.BASE_URL_CUSTOMER + "/withdraw",
-    //         transfer: App.BASE_URL_CUSTOMER + "/transfer",
-    //         delete: App.BASE_URL_CUSTOMER + "/delete/",
-    //         update: App.BASE_URL_CUSTOMER + "/update"
-    //     },
-    //     elements: {},
-    //     loadData: {},
-    //     commands: {},
-    //     dialogs: {
-    //         elements: {},
-    //         loadData: {},
-    //         commands: {},
-    //     },
-    //     initializeEventControl: {}
-    // }
-
     class Product {
         constructor(id, title, image, status, description, unit, sku, barCode, quantity, retailPrice, importPrice, wholesalePrice, categoryId, brandId, deleted) {
             this.id = id;
@@ -750,271 +726,8 @@
             this.deleted = deleted;
         }
     }
-
-    //nhat-dev class category
-    class  Category{
-        constructor(id,name) {
-            this.id = id;
-            this.name = name;
-        }
-    }
-
-    //nhat-dev class brand
-    class  Brand{
-        constructor(id,name) {
-            this.id = id;
-            this.name = name;
-        }
-    }
-    //nhat-dev obj category
-    let category = new Category();
-
-    //nhat-dev obj brand
-    let brand = new Brand();
-
     let product = new Product();
 
-
-    //nhat-dev select menu
-    const wrapper = document.querySelector(".wrapper"),
-        selectBtn = wrapper.querySelector(".select-btn"),
-        searchInp = wrapper.querySelector("input"),
-        options = wrapper.querySelector(".options");
-    const  selectBtnCat = document.querySelector('.select-btn-cat');
-    const  searchCatBtn = document.querySelector('#inputSearchCat')
-
-    let brands;
-    function showAllBrand(selectedCountry) {
-        options.innerHTML = "";
-        return $.ajax({
-            headers: {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            type: "GET",
-            url: "http://localhost:8080/api/brands"
-        })
-            .done((data) => {
-                brands = data;
-                brands.forEach(item => {
-                    let isSelected = item === selectedCountry ? "selected" : "";
-                    let str = `<li data-id="${item.id}" onclick="updateNameBrand(this)" class="${isSelected} brandItem">${item.name}</li>`;
-                    // options.insertAdjacentHTML("beforeend", li);
-                    $(".showAllBrand").append(str);
-
-                });
-
-            })
-            .fail((jqXHR) => {
-
-            })
-    }
-    showAllBrand();
-
-    //show all categories
-    let categories;
-    function showAllCategories(selectedCountry) {
-        options.innerHTML = "";
-        return $.ajax({
-            headers: {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            type: "GET",
-            url: "http://localhost:8080/api/categories"
-        })
-            .done((data) => {
-                categories = data;
-                categories.forEach(item => {
-                    let isSelected = item === selectedCountry ? "selected" : "";
-                    let str = `<li data-id="${item.id}" onclick="updateNameCat(this)" class="${isSelected} catItem dropdown-item">${item.name}</li>`;
-                    // options.insertAdjacentHTML("beforeend", li);
-                    $(".showAllCategory").append(str);
-
-                });
-
-            })
-            .fail((jqXHR) => {
-
-            })
-    }
-    showAllCategories();
-
-    //update name brand
-    function updateNameBrand(selectedLi) {
-        searchInp.value = "";
-        showAllBrand(selectedLi.innerText);
-        wrapper.classList.remove("active");
-        selectBtn.firstElementChild.innerText = selectedLi.innerText;
-        console.log(selectedLi)
-    }
-
-    //update name cat
-    function updateNameCat(selectedLiCat) {
-        searchCatBtn.value = "";
-        showAllCategories(selectedLiCat.innerText);
-        wrapper.classList.remove("active");
-        selectBtnCat.firstElementChild.innerText= selectedLiCat.innerText;
-        console.log(selectedLiCat)
-    }
-    //search brands
-    searchInp.addEventListener("keyup", () => {
-        let arr = [];
-        let searchWord = searchInp.value.toLowerCase();
-        arr = brands.filter(data => {
-            return (data.name).toLowerCase().includes(searchWord.toLowerCase());
-        }).map(item => {
-            let isSelected = item === selectBtn.firstElementChild.innerText ? "selected" : "";
-            return `<li ${item.id} onclick="updateNameBrand(this)" class="${isSelected} brandItem">${item.name}</li>`;
-        }).join("");
-        options.innerHTML = arr ? arr : `<p style="margin-top: 10px;">Oops! Country not found</p>`;
-    });
-
-    selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
-
-    //search cat
-    const  searchCat = () => {
-        $('#inputSearchCat').on("input", function () {
-            let searchWord = $('#inputSearchCat').val();
-            console.log(searchWord)
-            let arr = [];
-            categories.forEach(item => {
-                if ((item.name).toLowerCase().includes(searchWord.toLowerCase())){
-                    arr.push(item)
-                }
-            })
-            console.log(arr)
-            // r
-            $.each(arr, (i, item) => {
-                console.log(item)
-                let isSelected = item === selectBtnCat.firstElementChild.innerText ? "selected" : "";
-                let result =  `<li data-id="${item.id}" onclick="updateNameCat(this)" class="${isSelected} catItem dropdown-item">${item.name}</li>`;
-                $(".showAllCategory").append(result);
-            })
-        })
-    }
-
-
-    //Nhat-dev show all categories
-
-    // let categories;
-    // function showAllCategory() {
-    //     return $.ajax({
-    //         headers: {
-    //             "accept": "application/json",
-    //             "content-type": "application/json"
-    //         },
-    //         type: "GET",
-    //         url: "http://localhost:8080/api/categories"
-    //     })
-    //         .done((data) => {
-    //             categories = data
-    //             $.each(data, (i, item) => {
-    //                 let str = `<li class="dropdown-item" >
-    //                     <a data-id="${item.id}">${item.name}</a>
-    //                    </li>`;
-    //                 $(".showAllCategory").append(str);
-    //             });
-    //
-    //         })
-    //         .fail((jqXHR) => {
-    //
-    //         })
-    //
-    // }
-
-
-    //Nhat-dev show all brands
-    
-    // function showAllBrand() {
-    //     return $.ajax({
-    //         headers: {
-    //             "accept": "application/json",
-    //             "content-type": "application/json"
-    //         },
-    //         type: "GET",
-    //         url: "http://localhost:8080/api/brands"
-    //     })
-    //         .done((data) => {
-    //             brands = data
-    //             $.each(data, (i, item) => {
-    //                 let str = `<li class="dropdown-item" >
-    //                     <a data-id="${item.id}">${item.name}</a>
-    //                    </li>`;
-    //                 $(".showAllBrand").append(str);
-    //             });
-    //
-    //         })
-    //         .fail((jqXHR) => {
-    //
-    //         })
-    // }
-
-
-    //Nhat-dev show create category modal
-    $('#btnCreateCat').on('click', () => {
-        $('#modalAddCategory').modal('show');
-    })
-
-    //Nhat-dev show create brand modal
-    $('#btnCreateBrand').on('click', () => {
-        $('#modalAddBrand').modal('show');
-    })
-
-
-
-
-    //Nhat-dev OnClick button to create Category
-    $('#btnAddCategory').on('click', () => {
-        category.id = 0;
-        category.name = $('#inputCategory').val();
-        console.log(category)
-        $.ajax({
-            "headers": {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            "type": "POST",
-            "url": "http://localhost:8080/api/categories/create",
-            "data": JSON.stringify(category)
-        })
-            .done((data) => {
-                console.log(": Tạo sản phẩm thành công")
-                showAllCategory();
-                $('#modalAddCategory').modal('hide');
-                $('#frmCreateCat')[0].reset();
-
-            })
-            .fail((jqXHR) => {
-                console.log("Loi nha may ba")
-            })
-    })
-
-    //Nhat-dev OnClick button to create brand
-    $('#btnAddBrand').on('click', () => {
-        brand.id = 0;
-        brand.name = $('#inputBrand').val();
-        console.log(brand)
-        $.ajax({
-            "headers": {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            "type": "POST",
-            "url": "http://localhost:8080/api/brands/create",
-            "data": JSON.stringify(brand)
-        })
-            .done((data) => {
-                console.log(": Tạo sản phẩm thành công")
-                showAllBrand();
-                $('#modalAddBrand').modal('hide');
-                $('#frmCreateBrand')[0].reset();
-
-            })
-            .fail((jqXHR) => {
-                console.log("Loi nha may ba")
-            })
-    })
 
     //Click to create product
     $('#btnCreateProduct').on('click', () => {
@@ -1033,8 +746,10 @@
         product.retailPrice = $('.retailPriceCreate').val();
         product.importPrice = $('.importPriceCreate').val();
         product.wholesalePrice = $('.wholesalePriceCreate').val();
-        product.categoryId = $('.categoryIdCreate').val();
-        product.brandId = $('.brandIdCreate').val();
+
+        //nhat-dev get value cat and brand to create product
+        product.categoryId =$("#catProType").data("id");
+        product.brandId = $('#brandProType').data("id");
         product.deleted = true;
 
         console.log(product)
@@ -1055,12 +770,70 @@
                 console.log("Loi nha may ba")
             })
     })
-    // showAllCategory();
-    // showAllBrand();
-    // https://res.cloudinary.com/toanphat/image/upload\
-    const BASE_URL_CLOUD_IMAGE = "https://res.cloudinary.com/huy-do/image/upload";
-    const BASE_SCALE_IMAGE = "c_limit,w_1000,h_700,q_200";
-   searchCat();
+
+    //----->>>Nhat-dev OnClick button to create Category
+    $('#btnAddCategory').on('click', () => {
+        category.id = 0;
+        category.name = $('#inputCategory').val();
+        console.log(category)
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": "http://localhost:8080/api/categories/create",
+            "data": JSON.stringify(category)
+        })
+            .done((data) => {
+                console.log(": Tạo sản phẩm thành công")
+                showAllCategories();
+                searchCat(id);
+                updateNameCat();
+                $('#modalAddCategory').modal('hide');
+                $('#frmCreateCat')[0].reset();
+
+            })
+            .fail((jqXHR) => {
+                console.log("Loi nha may ba")
+            })
+    })
+    //<<<--------nhat-dev end onclick create category
+
+
+    //----->>>Nhat-dev OnClick button to create brand
+    $('#btnAddBrand').on('click', () => {
+        brand.id = 0;
+        brand.name = $('#inputBrand').val();
+        console.log(brand)
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": "http://localhost:8080/api/brands/create",
+            "data": JSON.stringify(brand)
+        })
+            .done((data) => {
+                console.log(": Tạo sản phẩm thành công")
+                showAllBrands()
+                $('#modalAddBrand').modal('hide');
+                $('#frmCreateBrand')[0].reset();
+
+            })
+            .fail((jqXHR) => {
+                console.log("Loi nha may ba")
+            })
+    })
+    //<<<--------nhat-dev end onclick create brand
+
+    //nhat_dev called function categories and brands
+    showAllCategories();
+    searchCat();
+    showAllBrands();
+    searchBrand();
+
 </script>
 
 </html>

@@ -11,10 +11,9 @@ class  Category{
 //nhat-dev obj category
 let category = new Category();
 
-//show all categories
+//nhat-dev show all categories
 let categories;
-function showAllCategories(selectedCountry) {
-    options.innerHTML = "";
+function showAllCategories(selectedCategory) {
     return $.ajax({
         headers: {
             "accept": "application/json",
@@ -26,8 +25,9 @@ function showAllCategories(selectedCountry) {
         .done((data) => {
             categories = data;
             categories.forEach(item => {
-                let isSelected = item === selectedCountry ? "selected" : "";
-                let str = `<li data-id="${item.id}" onclick="updateNameCat(this)" class="${isSelected} catItem dropdown-item">${item.name}</li>`;
+                //nhat-dev select item and get it value
+                let isSelected = item === selectedCategory ? "selected" : "";
+                let str = `<li id="${item.id}" data-id="${item.id}" onclick="updateNameCat(${item.id})" class="${isSelected} catItem dropdown-item">${item.name}</li>`;
                 // options.insertAdjacentHTML("beforeend", li);
                 $(".showAllCategory").append(str);
 
@@ -39,33 +39,78 @@ function showAllCategories(selectedCountry) {
         })
 }
 
-//update name cat
-function updateNameCat(selectedLiCat) {
-    searchCatBtn.value = "";
-    showAllCategories(selectedLiCat.innerText);
-    wrapper.classList.remove("active");
-    selectBtnCat.firstElementChild.innerText= selectedLiCat.innerText;
-    console.log(selectedLiCat)
+
+//nhat-dev update name cat after selected
+function updateNameCat(id ) {
+   const  arrayCat = categories.filter(item => item.id === id)
+    const val = arrayCat[0].name;
+
+    console.log("is", id , val)
+
+     selectBtnCat.firstElementChild.innerText= val;
+
+    //add data-id on element span tag name
+    $("#catProType").data("id", id);
+
+    // $("#getIdValueCat").data("id", id);
+
+
+    let idValue = $("#catProType").data("id");
+    console.log(idValue);
+    // $('#getIdValueCat').val(idValue);
+    // console.log($('#getIdValueCat').val(idValue))
+
+
+    // console.log($("#getIdValueCat").prop('data-id', id))
+
 }
 //search cat
 const  searchCat = () => {
     $('#inputSearchCat').on("input", function () {
         let searchWord = $('#inputSearchCat').val();
-        console.log(searchWord)
-        let arr = [];
-        categories.forEach(item => {
-            if ((item.name).toLowerCase().includes(searchWord.toLowerCase())){
-                arr.push(item)
-            }
-        })
-        console.log(arr)
-        // r
-        $.each(arr, (i, item) => {
-            console.log(item)
-            let isSelected = item === selectBtnCat.firstElementChild.innerText ? "selected" : "";
-            let result =  `<li data-id="${item.id}" onclick="updateNameCat(this)" class="${isSelected} catItem dropdown-item">${item.name}</li>`;
-            $(".showAllCategory").append(result);
-        })
+        if(searchWord != null){
+            let arr = [];
+            categories.forEach(item => {
+                // console.log("item", item)
+                if ((item.name).toLowerCase().includes(searchWord.toLowerCase())){
+
+                    arr.push(item)
+                }
+
+            })
+            // console.log(arr)
+            // $(".dropdown-menu").hide();
+
+            $('.showAllCategory .catItem ').remove();
+
+            // let  error = `<li class="dropdown-item catItem err">Ngu</li>`
+            // if (arr !== searchWord){
+            //     $(".showAllCategory").append(error);
+            // }
+
+            // render result item of searching
+            $.each(arr, (i, item) => {
+                // console.log(item)
+                let isSelected = item === selectBtnCat.firstElementChild.innerText ? "selected" : "";
+                let result =  `<li id="${item.id}" data-id="${item.id}" onclick="updateNameCat(${item.id})" class="${isSelected} catItem dropdown-item">${item.name}</li>`;
+                // console.log("result", result, categories)
+                $(".showAllCategory").append(result);
+            })
+        }else {
+            $('li .err ').remove();
+            $('.showAllCategory .err ').remove();
+            $.each(categories, (i, item) => {
+                // console.log(item)
+                let isSelected = item === selectBtnCat.firstElementChild.innerText ? "selected" : "";
+                let result =  `<li id="${item.id}" data-id="${item.id}" onclick="updateNameCat(${item.id})" class="${isSelected} catItem dropdown-item">${item.name}</li>`;
+
+                // console.log("result", result, categories)
+
+                $(".showAllCategory").append(result);
+            })
+        }
+        // console.log(searchWord)
+
     })
 }
 //Nhat-dev show create category modal
@@ -73,32 +118,5 @@ $('#btnCreateCat').on('click', () => {
     $('#modalAddCategory').modal('show');
 })
 
-//Nhat-dev OnClick button to create Category
-$('#btnAddCategory').on('click', () => {
-    category.id = 0;
-    category.name = $('#inputCategory').val();
-    console.log(category)
-    $.ajax({
-        "headers": {
-            "accept": "application/json",
-            "content-type": "application/json"
-        },
-        "type": "POST",
-        "url": "http://localhost:8080/api/categories/create",
-        "data": JSON.stringify(category)
-    })
-        .done((data) => {
-            console.log(": Tạo sản phẩm thành công")
-            showAllCategory();
-            $('#modalAddCategory').modal('hide');
-            $('#frmCreateCat')[0].reset();
 
-        })
-        .fail((jqXHR) => {
-            console.log("Loi nha may ba")
-        })
-})
 
-//called function
-showAllCategories();
-searchCat();

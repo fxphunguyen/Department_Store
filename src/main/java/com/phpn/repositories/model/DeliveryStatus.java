@@ -25,6 +25,5 @@ public class DeliveryStatus {
 
     public DeliveryStatus(Integer id) {
         this.id = id;
-
     }
 }
