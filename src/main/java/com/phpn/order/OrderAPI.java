@@ -2,7 +2,7 @@ package com.phpn.order;
 
 import com.phpn.order.sale.dto.SaleOrderParam;
 import com.phpn.order.sale.dto.SaleOrderResult;
-import com.phpn.customer.CustomerService;
+import com.phpn.customer.service.CustomerService;
 import com.phpn.employee.EmployeeService;
 import com.phpn.order.sale.SaleOrderService;
 import org.springframework.beans.factory.annotation.Autowired;

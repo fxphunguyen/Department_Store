@@ -1,5 +1,7 @@
 package com.phpn.customer;
 
+import com.phpn.customer.dto.CreateCustomerParam;
+import com.phpn.customer.service.CustomerService;
 import com.phpn.util.AppUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
