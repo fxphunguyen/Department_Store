@@ -35,10 +35,16 @@ public class ProductAPI {
 
    // C0522k1
 //    @GetMapping("")
-    public ResponseEntity<?> getAllProduct(){
-        List<ProductResult> products = productService.getAllProductListResult();
-        return new ResponseEntity<>(products, HttpStatus.OK);
-    }
+//    public ResponseEntity<?> getAllProduct(){
+//        List<ProductResult> products = productService.getAllProductListResult();
+//        return new ResponseEntity<>(products, HttpStatus.OK);
+//    }
+//   @GetMapping("")
+//    public ResponseEntity<?> getAllProduct(Pageable pageable){
+//        Page<Product> products;
+//        products = productService.findAll(pageable);
+//        return new ResponseEntity<>(products, HttpStatus.OK);
+//    }
 
     @GetMapping("/{id}")
     @Transactional(readOnly = true)
