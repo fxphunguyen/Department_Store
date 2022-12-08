@@ -4,6 +4,7 @@
     <title>Chi tiết đơn hàng</title>
     <th:block th:replace="/layout/header :: header"/>
     <link rel="stylesheet" href="/assets/admin/css/order/order_id.css">
+
 </head>
 <body>
 <div id="root" style="overflow: auto" th:object="${orders}">
@@ -55,7 +56,8 @@
                         </div>
                         <div class="MuiBox-root jss967" style="margin-top: 10px;">
                             <div class="sc-kDDrLX iDRoAG">
-                                <button id="Sapo-Button-4877b1e1-8542-4dab-a647-7f9a76983278" class="sc-jqUVSM ihvLYr">
+                                <button onclick="prints()" id="Sapo-Button-4877b1e1-8542-4dab-a647-7f9a76983278"
+                                        class="sc-jqUVSM ihvLYr">
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="20"
                                          height="20" font-size="20" style="color: rgb(163, 168, 175);">
                                         <path d="M16.163 2H7.837a2.496 2.496 0 0 0-2.5 2.5v3.337c0 .458.368.837.837.837a.829.829 0 0 0 .837-.837V4.5c0-.458.368-.837.837-.837h8.415c.413 0 .748.335.748.748v3.415a.836.836 0 1 0 1.674 0V4.5A2.53 2.53 0 0 0 16.163 2Z"
@@ -68,9 +70,15 @@
                                               fill="currentColor"></path>
                                     </svg>
                                     <span class="sc-papXJ fCIlZX">In đơn hàng</span></button>
-                                <button id="btn-print-order" class="sc-jqUVSM fOOdlQ"><span class="sc-papXJ jcEYKF"><svg
-                                        class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
-                                        style="color: rgb(163, 168, 175);"><path d="M7 10l5 5 5-5z"></path></svg></span>
+                                <button id="btn-print-order" class="sc-jqUVSM fOOdlQ">
+                                    <span class="sc-papXJ jcEYKF">
+                                        <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
+                                             aria-hidden="true"
+                                             style="color: rgb(163, 168, 175);">
+                                            <path d="M7 10l5 5 5-5z">
+                                            </path>
+                                        </svg>
+                                    </span>
                                 </button>
                             </div>
                             <button id="Sapo-Button-3c7ae70e-3ca8-4e2d-b261-0580f82b1017" class="sc-jqUVSM ihvLYr">
@@ -1177,6 +1185,13 @@
         </div>
     </div>
 </div>
+<th:block th:replace="/admin/order/print::print"/>
 </body>
 <th:block th:replace="/layout/script :: script"/>
+
+<script>
+    function prints() {
+        window.print();
+    }
+</script>
 </html>

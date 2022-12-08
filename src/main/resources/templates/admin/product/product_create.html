@@ -4,24 +4,16 @@
 
 <head>
     <th:block th:replace="/layout/header :: header"/>
-    <link rel="stylesheet" href="../../../static/assets/admin/css/product/selectMenu.css" >
     <link rel="stylesheet" href="../../../static/assets/admin/css/product/product_create.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Thêm mới sản phẩm</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-          crossorigin="anonymous">
-
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
 </head>
 
 <body>
-<th:block th:replace="/layout/createBrandModal :: createBrandModal"/>
-<th:block th:replace="/layout/createCategoryModal :: createCatModal"/>
 <div>
     <th:block th:replace="/layout/menu :: menu"/>
+    <!--        <th:block th:replace="/category/modalAddCategory :: modalAddCategory"/>-->
 
     <div class="col-right MuiBox-root jss64 jss40">
         <div class="MuiBox-root jss26581">
@@ -43,7 +35,7 @@
                         </a>
                     </div>
                     <div class="MuiBox-root jss26590">
-                        <div class="MuiBox-root jss26591 jss26558" style="display: block">
+                        <div class="MuiBox-root jss26591 jss26558">
                             <a id="Sapo-Button-086af533-fa8f-465a-a170-65223a6254cb"
                                class="sc-jqUVSM dgJIMY"
                                href="/admin/products">
@@ -52,7 +44,8 @@
                             </a>
                             <button id="btnCreateProduct"
                                     class="btnCreateProduct sc-jqUVSM cHdopB">
-                                    <span class="sc-papXJ jcEYKF">Lưu
+                                    <span class="sc-papXJ jcEYKF">
+                                        Lưu
                                     </span>
                             </button>
                         </div>
@@ -79,8 +72,7 @@
                                                 <div class="MuiBox-root jss27088 jss26573">
                                                     <div class="MuiFormControl-root jss27089 MuiFormControl-fullWidth">
                                                         <label class="MuiFormLabel-root MuiInputLabel-root jss27090 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink Mui-required Mui-required"
-                                                               data-shrink="true">
-                                                            Tên sản phẩm
+                                                               data-shrink="true">Tên sản phẩm
                                                             <span class="MuiTypography-root MuiTypography-caption"
                                                                   title="Tên sản phẩm không bao gồm các giá trị thuộc tính như màu sắc, chất liệu, kích cỡ...">
                                                                     <svg class="MuiSvgIcon-root MuiSvgIcon-colorPrimary"
@@ -499,81 +491,24 @@
                                     <div class="MuiBox-root jss26823">
                                         <div class="MuiBox-root jss26824 item-box"
                                              style="border-top: 0; padding-top: 0;">
-                                            <h6 class="MuiTypography-root title MuiTypography-subtitle1">
-                                                Loại sản phẩm</h6>
-                                            <!--                                            <select class="categoryIdCreate showAllCategory form-select MuiTypography-root label-select MuiTypography-body1 MuiTypography-colorTextPrimary"-->
-                                            <!--                                                    aria-label="Chọn loại sản phẩm">-->
-                                            <!--                                                Chọn loại sản phẩm-->
-                                            <!--                                                <option selected style="color: #0a77bb">-->
-                                            <!--                                                    <button>-->
-                                            <!--                                                        <i class="fa-solid fa-circle-plus"></i>-->
-                                            <!--                                                        Thêm mới sản phẩm-->
-                                            <!--                                                    </button>-->
-                                            <!--                                                </option>-->
-                                            <!--                                            </select>-->
-
-<!--                                            dropdown list categories -->
-<!--                                            nhat-dev show list categories-->
-                                            <div class="dropdown">
-                                                <div class="btn bg-secondary dropdown-toggle select-btn-cat" type="button"
-                                                     data-bs-toggle="dropdown" aria-expanded="false"
-                                                     style=" border: solid 1px #D3D5D7;border: solid 1px #D3D5D7;
-                                                            display: flex;
-                                                            justify-content: space-between;
-                                                            align-items: center; ">
-                                                    <span>Chọn loại sản phẩm</span>
-                                                </div>
-                                                <ul class="dropdown-menu w-100 categoryIdCreate showAllCategory">
-                                                    <li>
-                                                        <div class="d-flex align-items-center">
-                                                            <i class="fa-solid fa-magnifying-glass"
-                                                               style="margin-left: 16px;
-                                                               margin-right: 4px;
-                                                               color: #828282"></i>
-                                                            <input id="inputSearchCat" style="margin: 2px" class="w-100 form-control border border-0"  placeholder="Tìm kiếm hoặc nhập mới"/>
-                                                        </div>
-                                                    </li>
-                                                    <li class="text-primary dropdown-item">
-                                                        <button id="btnCreateCat" style="border: none; color: #2d9dff;padding: 10px;text-align: start;
-                                                                 font-weight: 500;
-                                                                 font-size: 14px" class="bg-white w-100">
-                                                            <i class="fa-solid fa-circle-plus"
-                                                               style="margin: 0 9px"></i>Thêm mới
-                                                            loại sản phẩm
-                                                        </button>
-                                                    </li>
-                                                </ul>
+                                            <div class="row mb-2">
+                                                <h6 class="MuiTypography-root title MuiTypography-subtitle1">
+                                                    Loại sản phẩm
+                                                </h6>
                                             </div>
+                                            <select class="categoryIdCreate showAllCategory form-select MuiTypography-root label-select MuiTypography-body1 MuiTypography-colorTextPrimary"
+                                                    aria-label="Chọn loại sản phẩm">
+                                                Chọn loại sản phẩm
+                                                <option selected style="color: #0a77bb">Thêm mới loại sản phẩm</option>
+                                            </select>
                                         </div>
-
                                         <div class="MuiBox-root jss26843 item-box"
                                              style="border-top: 0; padding-top: 0;">
                                             <h6 class="MuiTypography-root title MuiTypography-subtitle1">Nhãn hiệu</h6>
-<!--                                            <select class="brandIdCreate showAllBrand form-select "-->
-<!--                                                    aria-label="Chọn loại sản phẩm">-->
-<!--                                                <option selected style="color: #0a77bb">Chọn nhãn hiệu</option>-->
-<!--                                            </select>-->
-<!--                                            nhat-dev show list brands-->
-                                            <div class="wrapper">
-                                                <div class="select-btn">
-                                                    <span>Chọn loại nhãn hiệu</span>
-                                                    <i class="fa-solid fa-caret-down" style="color: #A3A8AF; font-weight: 600"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="search">
-                                                        <i class="fa-solid fa-magnifying-glass" ></i>
-                                                        <input spellcheck="false" type="text" placeholder="Search"/>
-                                                    </div>
-                                                    <button id="btnCreateBrand" style="border: none; color: #2d9dff;padding: 10px;text-align: start;
-                                                                 font-weight: 500;
-                                                                 font-size: 14px;border-bottom: 1px solid #E8EAEB;" class="bg-white w-100">
-                                                        <i class="fa-solid fa-circle-plus"
-                                                           style="margin: 0 9px"></i>Thêm mới
-                                                        loại nhãn hiệu
-                                                    </button>
-                                                    <ul class="options brandIdCreate showAllBrand"></ul>
-                                                </div>
-                                            </div>
+                                            <select class="brandIdCreate showAllBrand form-select "
+                                                    aria-label="Chọn loại sản phẩm">
+                                                <option selected style="color: #0a77bb">Chọn nhãn hiệu</option>
+                                            </select>
                                         </div>
                                         <div class="MuiBox-root jss26861 wrapper-autocomplete-tag">
                                             <div class="MuiAutocomplete-root jss26862 MuiAutocomplete-hasClearIcon"
@@ -631,43 +566,6 @@
                                                             </legend>
                                                         </fieldset>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="MuiPaper-root jss26564 MuiPaper-elevation1 MuiPaper-rounded">
-                                    <div class="MuiBox-root jss26956">
-                                        <div class="MuiBox-root jss26957">
-                                            <h6 class="MuiTypography-root MuiTypography-subtitle1">Trạng thái
-                                                <span class="MuiTypography-root MuiTypography-caption">
-                                                        <svg class="MuiSvgIcon-root MuiSvgIcon-colorPrimary"
-                                                             focusable="false"
-                                                             viewBox="0 0 12 12"
-                                                             aria-hidden="true"
-                                                             style="width: 12px; height: 12px; cursor: pointer; margin-left: 6px;">
-                                                              <path d="M5.4 3V4.2H6.6V3H5.4Z"
-                                                                    fill="currenColor">
-                                                              </path>
-                                                              <path d="M5.4 6.6V9H7.2V7.8H6.6V5.4H4.8V6.6H5.4Z"
-                                                                    fill="currenColor">
-                                                              </path>
-                                                              <path fill-rule="evenodd"
-                                                                    clip-rule="evenodd"
-                                                                    d="M6 0C2.688 0 0 2.688 0 6C0 9.312 2.688 12 6 12C9.312 12 12 9.312 12 6C12 2.688 9.312 0 6 0ZM1.2 6C1.2 8.646 3.354 10.8 6 10.8C8.646 10.8 10.8 8.646 10.8 6C10.8 3.354 8.646 1.2 6 1.2C3.354 1.2 1.2 3.354 1.2 6Z"
-                                                                    fill="currenColor">
-                                                              </path>
-                                                        </svg>
-                                                    </span>
-                                            </h6>
-                                            <div class="MuiBox-root jss26963 jss26565">
-                                                <p class="MuiTypography-root MuiTypography-body1">Cho phép bán</p>
-                                                <div class="sc-ESujJ bnnGqn">
-                                                    <label>
-                                                        <input type="checkbox"
-                                                               class=" statusCreate sc-jWEIYm blUUyZ">
-                                                    </label>
-                                                    <span class="sc-eEOqmf gWbFII"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -748,14 +646,7 @@
 <script src="/assets/admin/js/cloudinary/jquery.fileupload-image.js" type="text/javascript"></script>
 <script src="/assets/admin/js/cloudinary/jquery.fileupload-validate.js"></script>
 <script src="/assets/admin/js/product/app.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"
-        integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </body>
-
 
 <script>
     let page = {
@@ -810,61 +701,27 @@
     page.dialogs.elements.progress = $('.progress');
     page.dialogs.elements.progressBar = $(".progress-bar");
 
-    class Product {
-        constructor(id, title, image, status, description, unit, sku, barCode, quantity, retailPrice, importPrice, wholesalePrice, categoryId, brandId, deleted) {
-            this.id = id;
-            this.title = title;
-            this.image = image;
-            this.status = status;
-            this.description = description;
-            this.unit = unit;
-            this.sku = sku;
-            this.barCode = barCode;
-            this.quantity = quantity;
-            this.retailPrice = retailPrice;
-            this.importPrice = importPrice;
-            this.wholesalePrice = wholesalePrice;
-            this.categoryId = categoryId;
-            this.brandId = brandId;
-            this.deleted = deleted;
-        }
+    page.commands.showAllCategory = () => {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: page.urls.url_category
+        })
+            .done((data) => {
+                $.each(data, (i, item) => {
+                    let str = `<option value="${item.id}">${item.name}</option>`;
+                    page.elements.showAllCategory.append(str);
+                });
+            })
+            .fail((jqXHR) => {
+
+            })
     }
 
-    //nhat-dev class category
-    class  Category{
-        constructor(id,name) {
-            this.id = id;
-            this.name = name;
-        }
-    }
-
-    //nhat-dev class brand
-    class  Brand{
-        constructor(id,name) {
-            this.id = id;
-            this.name = name;
-        }
-    }
-    //nhat-dev obj category
-    let category = new Category();
-
-    //nhat-dev obj brand
-    let brand = new Brand();
-
-    let product = new Product();
-
-
-    //nhat-dev select menu
-    const wrapper = document.querySelector(".wrapper"),
-        selectBtn = wrapper.querySelector(".select-btn"),
-        searchInp = wrapper.querySelector("input"),
-        options = wrapper.querySelector(".options");
-    const  selectBtnCat = document.querySelector('.select-btn-cat');
-    const  searchCatBtn = document.querySelector('#inputSearchCat')
-
-    let brands;
-    function showAllBrand(selectedCountry) {
-        options.innerHTML = "";
+    page.commands.showAllBrand = () => {
         return $.ajax({
             headers: {
                 "accept": "application/json",
@@ -874,226 +731,16 @@
             url: page.urls.url_brand
         })
             .done((data) => {
-                brands = data;
-                brands.forEach(item => {
-                    let isSelected = item === selectedCountry ? "selected" : "";
-                    let str = `<li data-id="${item.id}" onclick="updateNameBrand(this)" class="${isSelected} brandItem">${item.name}</li>`;
-                    // options.insertAdjacentHTML("beforeend", li);
-                    $(".showAllBrand").append(str);
+                $.each(data, (i, item) => {
+                    let str = `<option value="${item.id}">${item.name}</option>`;
+                    page.elements.showAllBrand.append(str);
                 });
             })
             .fail((jqXHR) => {
 
             })
     }
-    showAllBrand();
 
-    //show all categories
-    let categories;
-    function showAllCategories(selectedCountry) {
-        options.innerHTML = "";
-        return $.ajax({
-            headers: {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            type: "GET",
-            url: "http://localhost:8080/api/categories"
-        })
-            .done((data) => {
-                categories = data;
-                categories.forEach(item => {
-                    let isSelected = item === selectedCountry ? "selected" : "";
-                    let str = `<li data-id="${item.id}" onclick="updateNameCat(this)" class="${isSelected} catItem dropdown-item">${item.name}</li>`;
-                    // options.insertAdjacentHTML("beforeend", li);
-                    $(".showAllCategory").append(str);
-
-                });
-
-            })
-            .fail((jqXHR) => {
-
-            })
-    }
-    showAllCategories();
-
-    //update name brand
-    function updateNameBrand(selectedLi) {
-        searchInp.value = "";
-        showAllBrand(selectedLi.innerText);
-        wrapper.classList.remove("active");
-        selectBtn.firstElementChild.innerText = selectedLi.innerText;
-        console.log(selectedLi)
-    }
-
-    //update name cat
-    function updateNameCat(selectedLiCat) {
-        searchCatBtn.value = "";
-        showAllCategories(selectedLiCat.innerText);
-        wrapper.classList.remove("active");
-        selectBtnCat.firstElementChild.innerText= selectedLiCat.innerText;
-        console.log(selectedLiCat)
-    }
-    //search brands
-    searchInp.addEventListener("keyup", () => {
-        let arr = [];
-        let searchWord = searchInp.value.toLowerCase();
-        arr = brands.filter(data => {
-            return (data.name).toLowerCase().includes(searchWord.toLowerCase());
-        }).map(item => {
-            let isSelected = item === selectBtn.firstElementChild.innerText ? "selected" : "";
-            return `<li ${item.id} onclick="updateNameBrand(this)" class="${isSelected} brandItem">${item.name}</li>`;
-        }).join("");
-        options.innerHTML = arr ? arr : `<p style="margin-top: 10px;">Oops! Country not found</p>`;
-    });
-
-    selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
-
-    //search cat
-    const  searchCat = () => {
-        $('#inputSearchCat').on("input", function () {
-            let searchWord = $('#inputSearchCat').val();
-            console.log(searchWord)
-            let arr = [];
-            categories.forEach(item => {
-                if ((item.name).toLowerCase().includes(searchWord.toLowerCase())){
-                    arr.push(item)
-                }
-            })
-            console.log(arr)
-            // r
-            $.each(arr, (i, item) => {
-                console.log(item)
-                let isSelected = item === selectBtnCat.firstElementChild.innerText ? "selected" : "";
-                let result =  `<li data-id="${item.id}" onclick="updateNameCat(this)" class="${isSelected} catItem dropdown-item">${item.name}</li>`;
-                $(".showAllCategory").append(result);
-            })
-        })
-    }
-
-
-    //Nhat-dev show all categories
-
-    // let categories;
-    // function showAllCategory() {
-    //     return $.ajax({
-    //         headers: {
-    //             "accept": "application/json",
-    //             "content-type": "application/json"
-    //         },
-    //         type: "GET",
-    //         url: "http://localhost:8080/api/categories"
-    //     })
-    //         .done((data) => {
-    //             categories = data
-    //             $.each(data, (i, item) => {
-    //                 let str = `<li class="dropdown-item" >
-    //                     <a data-id="${item.id}">${item.name}</a>
-    //                    </li>`;
-    //                 $(".showAllCategory").append(str);
-    //             });
-    //
-    //         })
-    //         .fail((jqXHR) => {
-    //
-    //         })
-    //
-    // }
-
-
-    //Nhat-dev show all brands
-    
-    // function showAllBrand() {
-    //     return $.ajax({
-    //         headers: {
-    //             "accept": "application/json",
-    //             "content-type": "application/json"
-    //         },
-    //         type: "GET",
-    //         url: "http://localhost:8080/api/brands"
-    //     })
-    //         .done((data) => {
-    //             brands = data
-    //             $.each(data, (i, item) => {
-    //                 let str = `<li class="dropdown-item" >
-    //                     <a data-id="${item.id}">${item.name}</a>
-    //                    </li>`;
-    //                 $(".showAllBrand").append(str);
-    //             });
-    //
-    //         })
-    //         .fail((jqXHR) => {
-    //
-    //         })
-    // }
-
-
-    //Nhat-dev show create category modal
-    $('#btnCreateCat').on('click', () => {
-        $('#modalAddCategory').modal('show');
-    })
-
-    //Nhat-dev show create brand modal
-    $('#btnCreateBrand').on('click', () => {
-        $('#modalAddBrand').modal('show');
-    })
-
-
-
-
-    //Nhat-dev OnClick button to create Category
-    $('#btnAddCategory').on('click', () => {
-        category.id = 0;
-        category.name = $('#inputCategory').val();
-        console.log(category)
-        $.ajax({
-            "headers": {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            "type": "POST",
-            "url": "http://localhost:8080/api/categories/create",
-            "data": JSON.stringify(category)
-        })
-            .done((data) => {
-                console.log(": Tạo sản phẩm thành công")
-                showAllCategory();
-                $('#modalAddCategory').modal('hide');
-                $('#frmCreateCat')[0].reset();
-
-            })
-            .fail((jqXHR) => {
-                console.log("Loi nha may ba")
-            })
-    })
-
-    //Nhat-dev OnClick button to create brand
-    $('#btnAddBrand').on('click', () => {
-        brand.id = 0;
-        brand.name = $('#inputBrand').val();
-        console.log(brand)
-        $.ajax({
-            "headers": {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            "type": "POST",
-            "url": "http://localhost:8080/api/brands/create",
-            "data": JSON.stringify(brand)
-        })
-            .done((data) => {
-                console.log(": Tạo sản phẩm thành công")
-                showAllBrand();
-                $('#modalAddBrand').modal('hide');
-                $('#frmCreateBrand')[0].reset();
-
-            })
-            .fail((jqXHR) => {
-                console.log("Loi nha may ba")
-            })
-    })
-
-    //Click to create product
     page.elements.btnCreateProduct.on("click", () => {
         product.id = 0;
         product.title = page.dialogs.elements.titleCreate.val();
@@ -1110,7 +757,6 @@
         product.wholesalePrice = page.dialogs.elements.wholesalePriceCreate.val();
         product.categoryId = page.dialogs.elements.categoryIdCreate.val();
         product.brandId = page.dialogs.elements.brandIdCreate.val();
-        product.deleted = false;
         product.productImageParams = imgs
 
         console.log(product)
@@ -1126,11 +772,7 @@
             .done((data) => {
                 console.log(": Tạo sản phẩm thành công")
             })
-            .fail((jqXHR) => {
-                console.log("Loi nha may ba")
-            })
     })
-
 
     // Upload file images
     $.cloudinary.config({
@@ -1215,17 +857,16 @@
             page.dialogs.elements.showImgSmall.attr("hidden", true);
         }
     }
-    searchCat();
 
     page.loadData = () => {
+        page.commands.showAllBrand();
+        page.commands.showAllCategory();
     }
 
     $(() => {
         page.loadData();
     })
 
-    // showAllCategory();
-    // showAllBrand();
 </script>
 
 </html>

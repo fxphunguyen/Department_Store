@@ -25,8 +25,10 @@ public class ProductController {
 
     @GetMapping("/products/edit")
     public ModelAndView showProductDetailPage() {
+
         return new ModelAndView("/admin/product/product_detail");
     }
+    
 
     //    Điều chỉnh giá vốn
     @GetMapping("/price_adjustments")
