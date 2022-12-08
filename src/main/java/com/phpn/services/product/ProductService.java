@@ -7,6 +7,8 @@ import com.phpn.dto.product.ProductListResult;
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
 import com.phpn.repositories.model.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface ProductService {
 
@@ -22,4 +24,5 @@ public interface ProductService {
 
     Product createProduct(ProductCreate productCreate);
     List<ProductListResult> getAllProductListResult();
+
 }
