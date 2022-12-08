@@ -907,13 +907,16 @@ function showProductInfo(productId) {
                         </svg></span><span class="MuiTouchRipple-root"></span></button></td>
         </tr>
     `;
+    let quantity =  $(`#quantity_product_${result.quantity}`).val();
+    console.log(quantity);
     $("#tbProduct tbody").prepend(str);
     $("#divNoInfo").remove();
     $("#divTbProduct").removeClass("hide");
-    handleGrandTotal();
-    if (taxSaleList == null) {
-        $(`#tax_${result.id}`).remove();
-    }
+
+
+    // if (taxSaleList == null) {
+    //     $(`#tax_${result.id}`).remove();
+    // }
     $("#vat_tax").removeClass('d-none');
     // $(`#tax_value_${result.id}`).text(taxText.formatVND());
     handleGrandTotal();
@@ -1079,8 +1082,6 @@ const formatDiscountOrder = (event, productId) => {
                 discountOrder = valueInput;
                 percentValue = (valueInput * 100) / total;
                 grandTotal = (total + totalTax) - discountOrder;
-                // console.log(total , totalTax, discountOrder);
-                // console.log("grandTotal", grandTotal)
             } else {
                 discountOrder = total * (valueInput / 100);
                 percentValue = valueInput;
