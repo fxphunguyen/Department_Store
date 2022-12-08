@@ -123,11 +123,11 @@ public class CustomerAPI {
         return new ResponseEntity<>(iCustomer, HttpStatus.OK);
     }
 
-    @GetMapping("/historyCustomerOrder/{id}/{startIntPaging}/{endIntPaging}")
-    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id, @PathVariable Integer startIntPaging, @PathVariable Integer endIntPaging ) {
+    @GetMapping("/historyCustomerOrder/{id}")
+    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id ) {
 
-        System.out.println("id" + id + "stare" + startIntPaging +  "end" + endIntPaging);
-        List<ICustomerOrderHistory> customerOrderHistory = customerRepository.getCustomerOrderHistory(id , startIntPaging , endIntPaging);
+
+        List<ICustomerOrderHistory> customerOrderHistory = customerRepository.getCustomerOrderHistory(id);
         return new ResponseEntity<>(customerOrderHistory, HttpStatus.OK);
     }
 
