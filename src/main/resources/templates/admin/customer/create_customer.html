@@ -1,6 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" lang="vi-VN" class="sapo-menu-expand sapo-menu-toggle-active">
 <head>
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
@@ -9,10 +10,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+
     <th:block th:replace="/layout/header.html"/>
     <title>Danh sách khách hàng</title>
     <link rel="stylesheet" href="/assets/admin/css/customer/customer_create.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body data-new-gr-c-s-check-loaded="14.1085.0" cz-shortcut-listen="true">
 <div id="root" style="overflow: auto;">
@@ -67,12 +74,14 @@
                                                 <div class="MuiFormControl-root MuiTextField-root jss20483 MuiFormControl-fullWidth">
                                                     <div
                                                             class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl">
-                                                        <input aria-invalid="false"
+                                                        <input
                                                                id="nameCreate" name="nameCreate"
-                                                               placeholder="Nhập tên khách hàng" required="" type="text"
-                                                               aria-label="Without label"
+                                                               placeholder="Nhập tên khách hàng"  type="text"
                                                                class="MuiInputBase-input MuiOutlinedInput-input"
-                                                               value="">
+                                                               minlength="3" maxlength="12"
+                                                        >
+
+
                                                         <fieldset aria-hidden="true"
                                                                   class="jss20550 MuiOutlinedInput-notchedOutline"
                                                                   style="padding-left: 8px;">
@@ -189,1479 +198,19 @@
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
                                             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
                                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
-                                                    <div width="100%" class="sc-himrzO gTRFtW"><label
-
-                                                            class="sc-evZas diplSI" for="birthdayCreate">Ngày
-                                                        sinh</label>
+                                                    <div width="100%" class="sc-himrzO gTRFtW">
+                                                        <label
+                                                                class="sc-evZas diplSI" for="birthdayCreate">Ngày
+                                                            sinh</label>
                                                         <div class="sc-jIZahH hISLMV Sapo-InputRoot">
-
-                                                            <form autocomplete="off">
-                                                                <div class="input-group input-daterange">
-                                                                    <input type="text" id="birthdayCreate"
-                                                                           name="birthdayCreate" class="form-control"
-                                                                           placeholder="Leaving Date" readonly></div>
-
-                                                            </form>
-
+                                                            <div class="input-group input-daterange">
+                                                                <input type="date" id="birthdayCreate"
+                                                                       class="birthdayCreate form-control" style="height: 41px;" ></div>
 
                                                             <fieldset class="sc-iIPllB iUBRZb"></fieldset>
                                                             <div class="sc-gicCDI sc-bZkfAO bqqjdk nysSE">
-                                                                <svg viewBox="0 0 24 25" fill="none"
-                                                                     xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                     height="24" font-size="24"
-                                                                     color="#A3A8AF">
-                                                                    <path
-                                                                            d="M7 12.5h2v2H7v-2ZM7 16.5h2v2H7v-2ZM13 12.5h-2v2h2v-2ZM11 16.5h2v2h-2v-2ZM17 12.5h-2v2h2v-2ZM15 16.5h2v2h-2v-2Z"
-                                                                            fill="#A3A8AF"></path>
-                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                          d="M19 22.5H5c-1.103 0-2-.897-2-2v-14c0-1.103.897-2 2-2h2v-2h2v2h6v-2h2v2h2c1.103 0 2 .897 2 2v14c0 1.103-.897 2-2 2Zm0-14v-2H5v2h14Zm0 2 .001 10H5v-10h14Z"
-                                                                          fill="#A3A8AF"></path>
-                                                                </svg>
+
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="Sapo-Popover-dcbc869c-8a04-4967-a99f-3a14a6250298"
-                                                         width="22.285714285714285rem"
-                                                         class="sc-iBkjds ifKctM"
-                                                         style="position: absolute; inset: auto 0px 0px auto; transform: translate(-1138px, 66px);"
-                                                         data-popper-reference-hidden="true" data-popper-escaped="false"
-                                                         data-popper-placement="top-end">
-                                                        <div class="sc-bZnhIo fWUnNV">
-                                                            <div class="sc-cOFTSb edgrXu">
-                                                                <div width="8.285714285714286rem"
-                                                                     class="sc-hAZoDl knhjvN">
-                                                                    <button
-                                                                            id="Sapo-Button-0315dced-f5de-4707-84f8-c79af23a0b6b"
-                                                                            class="sc-bjUoiL kiCheW">Tháng 11
-                                                                        <svg viewBox="0 0 24 24" fill="none"
-                                                                             xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" font-size="24"
-                                                                             active="false" class="sc-fEOsli iIFQGi">
-                                                                            <path d="m7 9.5 5 5 5-5H7Z"
-                                                                                  fill="currentColor"></path>
-                                                                        </svg>
-                                                                    </button>
-                                                                </div>
-                                                                <div id="Sapo-Popover-66faca9c-88f0-45d2-a8c3-9167433aa507"
-                                                                     data-list="670d5e61-8bb8-4bf4-ba55-26d32403254e"
-                                                                     class="sc-iBkjds keoQDf"
-                                                                     style="position: absolute; inset: 0px auto auto 0px; transform: translate(43px, 48px);"
-                                                                     data-popper-reference-hidden="false"
-                                                                     data-popper-escaped="false"
-                                                                     data-popper-placement="bottom-start">
-                                                                    <div id="Sapo-Select__ListItem-28ca6607-2276-43da-8291-bbad7ce676e7"
-                                                                         class="sc-llJcti ldohKe">
-                                                                        <button data-selected="false" role="option"
-                                                                                data-event="true" data-value="0"
-                                                                                class="sc-bBrHrO dFCpSq">Tháng
-                                                                            1
-                                                                        </button>
-                                                                        <button data-selected="false" role="option"
-                                                                                data-event="true"
-                                                                                data-value="1" class="sc-bBrHrO dFCpSq">
-                                                                            Tháng 2
-                                                                        </button>
-                                                                        <button
-                                                                                data-selected="false" role="option"
-                                                                                data-event="true" data-value="2"
-                                                                                class="sc-bBrHrO dFCpSq">Tháng 3
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="3" class="sc-bBrHrO dFCpSq">
-                                                                            Tháng
-                                                                            4
-                                                                        </button>
-                                                                        <button data-selected="false" role="option"
-                                                                                data-event="true"
-                                                                                data-value="4" class="sc-bBrHrO dFCpSq">
-                                                                            Tháng 5
-                                                                        </button>
-                                                                        <button
-                                                                                data-selected="false" role="option"
-                                                                                data-event="true" data-value="5"
-                                                                                class="sc-bBrHrO dFCpSq">Tháng 6
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="6" class="sc-bBrHrO dFCpSq">
-                                                                            Tháng
-                                                                            7
-                                                                        </button>
-                                                                        <button data-selected="false" role="option"
-                                                                                data-event="true"
-                                                                                data-value="7" class="sc-bBrHrO dFCpSq">
-                                                                            Tháng 8
-                                                                        </button>
-                                                                        <button
-                                                                                data-selected="false" role="option"
-                                                                                data-event="true" data-value="8"
-                                                                                class="sc-bBrHrO dFCpSq">Tháng 9
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="9" class="sc-bBrHrO dFCpSq">
-                                                                            Tháng
-                                                                            10
-                                                                        </button>
-                                                                        <button data-selected="true" role="option"
-                                                                                data-event="true"
-                                                                                data-value="10"
-                                                                                class="sc-bBrHrO ceSEqx">Tháng 11
-                                                                        </button>
-                                                                        <button
-                                                                                data-selected="false" role="option"
-                                                                                data-event="true" data-value="11"
-                                                                                class="sc-bBrHrO dFCpSq">Tháng 12
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                                <div width="6.571428571428571rem"
-                                                                     class="sc-hAZoDl aJRPf">
-                                                                    <button
-                                                                            id="Sapo-Button-aa40bf46-e9a0-4d87-ba3a-bda2f646d610"
-                                                                            class="sc-bjUoiL kiCheW">2004
-                                                                        <svg viewBox="0 0 24 24" fill="none"
-                                                                             xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" font-size="24"
-                                                                             active="false" class="sc-fEOsli iIFQGi">
-                                                                            <path d="m7 9.5 5 5 5-5H7Z"
-                                                                                  fill="currentColor"></path>
-                                                                        </svg>
-                                                                    </button>
-                                                                </div>
-                                                                <div id="Sapo-Popover-53f9eed5-941c-40d0-b829-6d3cc340719f"
-                                                                     data-list="b594901f-27d2-427e-bcc2-61dd7044a78e"
-                                                                     class="sc-iBkjds keoQDf"
-                                                                     style="position: absolute; inset: 0px auto auto 0px; transform: translate(175px, 48px);"
-                                                                     data-popper-reference-hidden="false"
-                                                                     data-popper-escaped="false"
-                                                                     data-popper-placement="bottom-start">
-                                                                    <div id="Sapo-Select__ListItem-fbd525f5-9d03-4038-b6b1-4d495af9c197"
-                                                                         class="sc-llJcti cfxqzW">
-                                                                        <button data-selected="false" role="option"
-                                                                                data-event="true" data-value="1799"
-                                                                                class="sc-bBrHrO dFCpSq">1799
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1800"
-                                                                                class="sc-bBrHrO dFCpSq">1800
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1801"
-                                                                                class="sc-bBrHrO dFCpSq">1801
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1802"
-                                                                                class="sc-bBrHrO dFCpSq">1802
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1803"
-                                                                                class="sc-bBrHrO dFCpSq">1803
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1804"
-                                                                                class="sc-bBrHrO dFCpSq">1804
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1805"
-                                                                                class="sc-bBrHrO dFCpSq">1805
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1806"
-                                                                                class="sc-bBrHrO dFCpSq">1806
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1807"
-                                                                                class="sc-bBrHrO dFCpSq">1807
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1808"
-                                                                                class="sc-bBrHrO dFCpSq">1808
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1809"
-                                                                                class="sc-bBrHrO dFCpSq">1809
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1810"
-                                                                                class="sc-bBrHrO dFCpSq">1810
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1811"
-                                                                                class="sc-bBrHrO dFCpSq">1811
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1812"
-                                                                                class="sc-bBrHrO dFCpSq">1812
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1813"
-                                                                                class="sc-bBrHrO dFCpSq">1813
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1814"
-                                                                                class="sc-bBrHrO dFCpSq">1814
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1815"
-                                                                                class="sc-bBrHrO dFCpSq">1815
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1816"
-                                                                                class="sc-bBrHrO dFCpSq">1816
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1817"
-                                                                                class="sc-bBrHrO dFCpSq">1817
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1818"
-                                                                                class="sc-bBrHrO dFCpSq">1818
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1819"
-                                                                                class="sc-bBrHrO dFCpSq">1819
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1820"
-                                                                                class="sc-bBrHrO dFCpSq">1820
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1821"
-                                                                                class="sc-bBrHrO dFCpSq">1821
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1822"
-                                                                                class="sc-bBrHrO dFCpSq">1822
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1823"
-                                                                                class="sc-bBrHrO dFCpSq">1823
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1824"
-                                                                                class="sc-bBrHrO dFCpSq">1824
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1825"
-                                                                                class="sc-bBrHrO dFCpSq">1825
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1826"
-                                                                                class="sc-bBrHrO dFCpSq">1826
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1827"
-                                                                                class="sc-bBrHrO dFCpSq">1827
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1828"
-                                                                                class="sc-bBrHrO dFCpSq">1828
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1829"
-                                                                                class="sc-bBrHrO dFCpSq">1829
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1830"
-                                                                                class="sc-bBrHrO dFCpSq">1830
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1831"
-                                                                                class="sc-bBrHrO dFCpSq">1831
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1832"
-                                                                                class="sc-bBrHrO dFCpSq">1832
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1833"
-                                                                                class="sc-bBrHrO dFCpSq">1833
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1834"
-                                                                                class="sc-bBrHrO dFCpSq">1834
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1835"
-                                                                                class="sc-bBrHrO dFCpSq">1835
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1836"
-                                                                                class="sc-bBrHrO dFCpSq">1836
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1837"
-                                                                                class="sc-bBrHrO dFCpSq">1837
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1838"
-                                                                                class="sc-bBrHrO dFCpSq">1838
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1839"
-                                                                                class="sc-bBrHrO dFCpSq">1839
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1840"
-                                                                                class="sc-bBrHrO dFCpSq">1840
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1841"
-                                                                                class="sc-bBrHrO dFCpSq">1841
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1842"
-                                                                                class="sc-bBrHrO dFCpSq">1842
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1843"
-                                                                                class="sc-bBrHrO dFCpSq">1843
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1844"
-                                                                                class="sc-bBrHrO dFCpSq">1844
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1845"
-                                                                                class="sc-bBrHrO dFCpSq">1845
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1846"
-                                                                                class="sc-bBrHrO dFCpSq">1846
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1847"
-                                                                                class="sc-bBrHrO dFCpSq">1847
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1848"
-                                                                                class="sc-bBrHrO dFCpSq">1848
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1849"
-                                                                                class="sc-bBrHrO dFCpSq">1849
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1850"
-                                                                                class="sc-bBrHrO dFCpSq">1850
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1851"
-                                                                                class="sc-bBrHrO dFCpSq">1851
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1852"
-                                                                                class="sc-bBrHrO dFCpSq">1852
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1853"
-                                                                                class="sc-bBrHrO dFCpSq">1853
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1854"
-                                                                                class="sc-bBrHrO dFCpSq">1854
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1855"
-                                                                                class="sc-bBrHrO dFCpSq">1855
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1856"
-                                                                                class="sc-bBrHrO dFCpSq">1856
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1857"
-                                                                                class="sc-bBrHrO dFCpSq">1857
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1858"
-                                                                                class="sc-bBrHrO dFCpSq">1858
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1859"
-                                                                                class="sc-bBrHrO dFCpSq">1859
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1860"
-                                                                                class="sc-bBrHrO dFCpSq">1860
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1861"
-                                                                                class="sc-bBrHrO dFCpSq">1861
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1862"
-                                                                                class="sc-bBrHrO dFCpSq">1862
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1863"
-                                                                                class="sc-bBrHrO dFCpSq">1863
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1864"
-                                                                                class="sc-bBrHrO dFCpSq">1864
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1865"
-                                                                                class="sc-bBrHrO dFCpSq">1865
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1866"
-                                                                                class="sc-bBrHrO dFCpSq">1866
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1867"
-                                                                                class="sc-bBrHrO dFCpSq">1867
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1868"
-                                                                                class="sc-bBrHrO dFCpSq">1868
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1869"
-                                                                                class="sc-bBrHrO dFCpSq">1869
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1870"
-                                                                                class="sc-bBrHrO dFCpSq">1870
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1871"
-                                                                                class="sc-bBrHrO dFCpSq">1871
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1872"
-                                                                                class="sc-bBrHrO dFCpSq">1872
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1873"
-                                                                                class="sc-bBrHrO dFCpSq">1873
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1874"
-                                                                                class="sc-bBrHrO dFCpSq">1874
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1875"
-                                                                                class="sc-bBrHrO dFCpSq">1875
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1876"
-                                                                                class="sc-bBrHrO dFCpSq">1876
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1877"
-                                                                                class="sc-bBrHrO dFCpSq">1877
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1878"
-                                                                                class="sc-bBrHrO dFCpSq">1878
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1879"
-                                                                                class="sc-bBrHrO dFCpSq">1879
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1880"
-                                                                                class="sc-bBrHrO dFCpSq">1880
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1881"
-                                                                                class="sc-bBrHrO dFCpSq">1881
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1882"
-                                                                                class="sc-bBrHrO dFCpSq">1882
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1883"
-                                                                                class="sc-bBrHrO dFCpSq">1883
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1884"
-                                                                                class="sc-bBrHrO dFCpSq">1884
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1885"
-                                                                                class="sc-bBrHrO dFCpSq">1885
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1886"
-                                                                                class="sc-bBrHrO dFCpSq">1886
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1887"
-                                                                                class="sc-bBrHrO dFCpSq">1887
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1888"
-                                                                                class="sc-bBrHrO dFCpSq">1888
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1889"
-                                                                                class="sc-bBrHrO dFCpSq">1889
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1890"
-                                                                                class="sc-bBrHrO dFCpSq">1890
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1891"
-                                                                                class="sc-bBrHrO dFCpSq">1891
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1892"
-                                                                                class="sc-bBrHrO dFCpSq">1892
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1893"
-                                                                                class="sc-bBrHrO dFCpSq">1893
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1894"
-                                                                                class="sc-bBrHrO dFCpSq">1894
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1895"
-                                                                                class="sc-bBrHrO dFCpSq">1895
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1896"
-                                                                                class="sc-bBrHrO dFCpSq">1896
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1897"
-                                                                                class="sc-bBrHrO dFCpSq">1897
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1898"
-                                                                                class="sc-bBrHrO dFCpSq">1898
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1899"
-                                                                                class="sc-bBrHrO dFCpSq">1899
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1900"
-                                                                                class="sc-bBrHrO dFCpSq">1900
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1901"
-                                                                                class="sc-bBrHrO dFCpSq">1901
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1902"
-                                                                                class="sc-bBrHrO dFCpSq">1902
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1903"
-                                                                                class="sc-bBrHrO dFCpSq">1903
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1904"
-                                                                                class="sc-bBrHrO dFCpSq">1904
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1905"
-                                                                                class="sc-bBrHrO dFCpSq">1905
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1906"
-                                                                                class="sc-bBrHrO dFCpSq">1906
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1907"
-                                                                                class="sc-bBrHrO dFCpSq">1907
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1908"
-                                                                                class="sc-bBrHrO dFCpSq">1908
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1909"
-                                                                                class="sc-bBrHrO dFCpSq">1909
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1910"
-                                                                                class="sc-bBrHrO dFCpSq">1910
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1911"
-                                                                                class="sc-bBrHrO dFCpSq">1911
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1912"
-                                                                                class="sc-bBrHrO dFCpSq">1912
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1913"
-                                                                                class="sc-bBrHrO dFCpSq">1913
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1914"
-                                                                                class="sc-bBrHrO dFCpSq">1914
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1915"
-                                                                                class="sc-bBrHrO dFCpSq">1915
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1916"
-                                                                                class="sc-bBrHrO dFCpSq">1916
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1917"
-                                                                                class="sc-bBrHrO dFCpSq">1917
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1918"
-                                                                                class="sc-bBrHrO dFCpSq">1918
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1919"
-                                                                                class="sc-bBrHrO dFCpSq">1919
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1920"
-                                                                                class="sc-bBrHrO dFCpSq">1920
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1921"
-                                                                                class="sc-bBrHrO dFCpSq">1921
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1922"
-                                                                                class="sc-bBrHrO dFCpSq">1922
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1923"
-                                                                                class="sc-bBrHrO dFCpSq">1923
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1924"
-                                                                                class="sc-bBrHrO dFCpSq">1924
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1925"
-                                                                                class="sc-bBrHrO dFCpSq">1925
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1926"
-                                                                                class="sc-bBrHrO dFCpSq">1926
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1927"
-                                                                                class="sc-bBrHrO dFCpSq">1927
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1928"
-                                                                                class="sc-bBrHrO dFCpSq">1928
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1929"
-                                                                                class="sc-bBrHrO dFCpSq">1929
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1930"
-                                                                                class="sc-bBrHrO dFCpSq">1930
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1931"
-                                                                                class="sc-bBrHrO dFCpSq">1931
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1932"
-                                                                                class="sc-bBrHrO dFCpSq">1932
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1933"
-                                                                                class="sc-bBrHrO dFCpSq">1933
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1934"
-                                                                                class="sc-bBrHrO dFCpSq">1934
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1935"
-                                                                                class="sc-bBrHrO dFCpSq">1935
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1936"
-                                                                                class="sc-bBrHrO dFCpSq">1936
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1937"
-                                                                                class="sc-bBrHrO dFCpSq">1937
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1938"
-                                                                                class="sc-bBrHrO dFCpSq">1938
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1939"
-                                                                                class="sc-bBrHrO dFCpSq">1939
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1940"
-                                                                                class="sc-bBrHrO dFCpSq">1940
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1941"
-                                                                                class="sc-bBrHrO dFCpSq">1941
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1942"
-                                                                                class="sc-bBrHrO dFCpSq">1942
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1943"
-                                                                                class="sc-bBrHrO dFCpSq">1943
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1944"
-                                                                                class="sc-bBrHrO dFCpSq">1944
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1945"
-                                                                                class="sc-bBrHrO dFCpSq">1945
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1946"
-                                                                                class="sc-bBrHrO dFCpSq">1946
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1947"
-                                                                                class="sc-bBrHrO dFCpSq">1947
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1948"
-                                                                                class="sc-bBrHrO dFCpSq">1948
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1949"
-                                                                                class="sc-bBrHrO dFCpSq">1949
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1950"
-                                                                                class="sc-bBrHrO dFCpSq">1950
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1951"
-                                                                                class="sc-bBrHrO dFCpSq">1951
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1952"
-                                                                                class="sc-bBrHrO dFCpSq">1952
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1953"
-                                                                                class="sc-bBrHrO dFCpSq">1953
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1954"
-                                                                                class="sc-bBrHrO dFCpSq">1954
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1955"
-                                                                                class="sc-bBrHrO dFCpSq">1955
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1956"
-                                                                                class="sc-bBrHrO dFCpSq">1956
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1957"
-                                                                                class="sc-bBrHrO dFCpSq">1957
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1958"
-                                                                                class="sc-bBrHrO dFCpSq">1958
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1959"
-                                                                                class="sc-bBrHrO dFCpSq">1959
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1960"
-                                                                                class="sc-bBrHrO dFCpSq">1960
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1961"
-                                                                                class="sc-bBrHrO dFCpSq">1961
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1962"
-                                                                                class="sc-bBrHrO dFCpSq">1962
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1963"
-                                                                                class="sc-bBrHrO dFCpSq">1963
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1964"
-                                                                                class="sc-bBrHrO dFCpSq">1964
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1965"
-                                                                                class="sc-bBrHrO dFCpSq">1965
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1966"
-                                                                                class="sc-bBrHrO dFCpSq">1966
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1967"
-                                                                                class="sc-bBrHrO dFCpSq">1967
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1968"
-                                                                                class="sc-bBrHrO dFCpSq">1968
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1969"
-                                                                                class="sc-bBrHrO dFCpSq">1969
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1970"
-                                                                                class="sc-bBrHrO dFCpSq">1970
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1971"
-                                                                                class="sc-bBrHrO dFCpSq">1971
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1972"
-                                                                                class="sc-bBrHrO dFCpSq">1972
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1973"
-                                                                                class="sc-bBrHrO dFCpSq">1973
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1974"
-                                                                                class="sc-bBrHrO dFCpSq">1974
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1975"
-                                                                                class="sc-bBrHrO dFCpSq">1975
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1976"
-                                                                                class="sc-bBrHrO dFCpSq">1976
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1977"
-                                                                                class="sc-bBrHrO dFCpSq">1977
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1978"
-                                                                                class="sc-bBrHrO dFCpSq">1978
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1979"
-                                                                                class="sc-bBrHrO dFCpSq">1979
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1980"
-                                                                                class="sc-bBrHrO dFCpSq">1980
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1981"
-                                                                                class="sc-bBrHrO dFCpSq">1981
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1982"
-                                                                                class="sc-bBrHrO dFCpSq">1982
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1983"
-                                                                                class="sc-bBrHrO dFCpSq">1983
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1984"
-                                                                                class="sc-bBrHrO dFCpSq">1984
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1985"
-                                                                                class="sc-bBrHrO dFCpSq">1985
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1986"
-                                                                                class="sc-bBrHrO dFCpSq">1986
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1987"
-                                                                                class="sc-bBrHrO dFCpSq">1987
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1988"
-                                                                                class="sc-bBrHrO dFCpSq">1988
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1989"
-                                                                                class="sc-bBrHrO dFCpSq">1989
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1990"
-                                                                                class="sc-bBrHrO dFCpSq">1990
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1991"
-                                                                                class="sc-bBrHrO dFCpSq">1991
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1992"
-                                                                                class="sc-bBrHrO dFCpSq">1992
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1993"
-                                                                                class="sc-bBrHrO dFCpSq">1993
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1994"
-                                                                                class="sc-bBrHrO dFCpSq">1994
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1995"
-                                                                                class="sc-bBrHrO dFCpSq">1995
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1996"
-                                                                                class="sc-bBrHrO dFCpSq">1996
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1997"
-                                                                                class="sc-bBrHrO dFCpSq">1997
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1998"
-                                                                                class="sc-bBrHrO dFCpSq">1998
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="1999"
-                                                                                class="sc-bBrHrO dFCpSq">1999
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2000"
-                                                                                class="sc-bBrHrO dFCpSq">2000
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2001"
-                                                                                class="sc-bBrHrO dFCpSq">2001
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2002"
-                                                                                class="sc-bBrHrO dFCpSq">2002
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2003"
-                                                                                class="sc-bBrHrO dFCpSq">2003
-                                                                        </button>
-                                                                        <button data-selected="true" role="option"
-                                                                                data-event="true" data-value="2004"
-                                                                                class="sc-bBrHrO ceSEqx">2004
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2005"
-                                                                                class="sc-bBrHrO dFCpSq">2005
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2006"
-                                                                                class="sc-bBrHrO dFCpSq">2006
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2007"
-                                                                                class="sc-bBrHrO dFCpSq">2007
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2008"
-                                                                                class="sc-bBrHrO dFCpSq">2008
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2009"
-                                                                                class="sc-bBrHrO dFCpSq">2009
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2010"
-                                                                                class="sc-bBrHrO dFCpSq">2010
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2011"
-                                                                                class="sc-bBrHrO dFCpSq">2011
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2012"
-                                                                                class="sc-bBrHrO dFCpSq">2012
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2013"
-                                                                                class="sc-bBrHrO dFCpSq">2013
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2014"
-                                                                                class="sc-bBrHrO dFCpSq">2014
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2015"
-                                                                                class="sc-bBrHrO dFCpSq">2015
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2016"
-                                                                                class="sc-bBrHrO dFCpSq">2016
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2017"
-                                                                                class="sc-bBrHrO dFCpSq">2017
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2018"
-                                                                                class="sc-bBrHrO dFCpSq">2018
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2019"
-                                                                                class="sc-bBrHrO dFCpSq">2019
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2020"
-                                                                                class="sc-bBrHrO dFCpSq">2020
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2021"
-                                                                                class="sc-bBrHrO dFCpSq">2021
-                                                                        </button>
-                                                                        <button data-selected="false"
-                                                                                role="option" data-event="true"
-                                                                                data-value="2022"
-                                                                                class="sc-bBrHrO dFCpSq">2022
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sc-iTONeN kMeXsR">
-                                                            <table class="sc-iAvgwm ittoYJ">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th class="sc-efBctP evOKgu">T2</th>
-                                                                    <th class="sc-efBctP evOKgu">T3</th>
-                                                                    <th class="sc-efBctP evOKgu">T4</th>
-                                                                    <th class="sc-efBctP evOKgu">T5</th>
-                                                                    <th class="sc-efBctP evOKgu">T6</th>
-                                                                    <th class="sc-efBctP evOKgu">T7</th>
-                                                                    <th class="sc-efBctP evOKgu">CN</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody id="90c0983f-30d3-434b-bcdb-d616a0938f3d">
-                                                                <tr>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="01-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">1
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="02-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">2
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="03-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">3
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="04-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">4
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="05-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">5
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="06-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">6
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="07-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">7
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="08-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">8
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="09-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">9
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="10-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">10
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="11-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">11
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="12-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">12
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="13-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">13
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="14-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">14
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="15-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">15
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="16-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">16
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="17-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">17
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="18-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">18
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="19-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">19
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="20-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">20
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="21-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">21
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="22-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">22
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="23-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">23
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="24-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">24
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="25-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">25
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="26-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">26
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="27-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">27
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="28-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">28
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="29-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">29
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="30-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">30
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="01-12-2004" data-type="day"
-                                                                                class="sc-jOrMOR jWBRwJ">1
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="02-12-2004" data-type="day"
-                                                                                class="sc-jOrMOR jWBRwJ">2
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="03-12-2004" data-type="day"
-                                                                                class="sc-jOrMOR jWBRwJ">3
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="04-12-2004" data-type="day"
-                                                                                class="sc-jOrMOR jWBRwJ">4
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="05-12-2004" data-type="day"
-                                                                                class="sc-jOrMOR jWBRwJ">5
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1705,11 +254,15 @@
                                                         <div class="MuiBox-root jss20604 jss21097">
                                                             <label class="MuiTypography-root MuiTypography-body1"
                                                                    style="color: rgb(70, 81, 95);"
-                                                                   for="provinceNameCreate">Tỉnh - Thành Phố </label>
+                                                                   for="province">Tỉnh - Thành Phố </label>
                                                         </div>
                                                         <div tabindex="0">
-                                                            <select class="jss87874" name="provinceNameCreate"
-                                                                    id="provinceNameCreate"></select>
+                                                            <select class="form-select jss87874" name="province" id="province">
+                                                                <option selected value="0">
+                                                                    <p class="MuiTypography-root label-select MuiTypography-body1 MuiTypography-colorTextPrimary">
+                                                                        Chọn Tỉnh/Thành phố</p>
+                                                                </option>
+                                                            </select>
 
                                                         </div>
                                                     </div>
@@ -1719,22 +272,31 @@
                                                         <div class="MuiBox-root jss20622 jss21112">
                                                             <label class="MuiTypography-root MuiTypography-body1"
                                                                    style="color: rgb(70, 81, 95);"
-                                                                   for="districtNameCreate">
+                                                                   for="district">
                                                                 Huyện </label>
                                                         </div>
-                                                        <select name="districtNameCreate" id="districtNameCreate"
-                                                                class="jss87874"></select>
+                                                        <select class="form-select jss87874" name="district" id="district">
+                                                            <option value="0">
+                                                                <p class="MuiTypography-root label-select MuiTypography-body1 MuiTypography-colorTextPrimary">
+                                                                    Chọn Quận/Huyện</p>
+                                                            </option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
                                                     <div class="MuiBox-root jss20621 jss21102">
                                                         <div class="MuiBox-root jss20622 jss21112">
                                                             <label class="MuiTypography-root MuiTypography-body1"
-                                                                   style="color: rgb(70, 81, 95);" for="wardNameCreate">
+                                                                   style="color: rgb(70, 81, 95);" for="ward">
                                                                 Xã </label>
                                                         </div>
-                                                        <select name="wardNameCreate" id="wardNameCreate"
-                                                                class="form-select"></select>
+                                                        <select class="form-select jss87874" name="ward" id="ward">
+                                                            <option value="0">
+                                                                <p class="MuiTypography-root label-select MuiTypography-body1 MuiTypography-colorTextPrimary">
+                                                                    Chọn Phường/Xã</p>
+                                                            </option>
+
+                                                        </select>
                                                     </div>
                                                 </div>
 
@@ -1848,34 +410,21 @@
 </div>
 </body>
 <th:block th:replace="/layout/script :: script"/>
+<script src="/assets/admin/js/customer/customer_app.js"></script>
 <script>
     Page();
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 <script rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <script>
 
 
-    class LocationRegionCreate {
-        constructor(address, wardId, wardName, districtId, districtName, provinceId, provinceName) {
-            this.address = address;
-            this.wardId = wardId;
-            this.wardName = wardName;
-            this.districtId = districtId;
-            this.districtName = districtName;
-            this.provinceId = provinceId;
-            this.provinceName = provinceName;
-
-
-        }
-    }
-
     class Customer {
-        constructor(id, customerCode, name, phone, customerGroup, email, birthday, status, createAt, updateAt, employeeId, deleted, locationRegionCreate) {
+        constructor(id, customerCode, name, phone, customerGroup, email, birthday, status, createAt, updateAt, employeeId, deleted, createShippingAddressParam) {
             this.id = id;
             this.customerCode = customerCode;
             this.name = name;
@@ -1888,15 +437,95 @@
             this.updateAt = updateAt;
             this.employeeId = employeeId;
             this.deleted = deleted;
-            this.locationRegionCreate = locationRegionCreate;
+            this.createShippingAddressParam = createShippingAddressParam;
 
 
+        }
+    }
+    class ShippingAddress {
+        constructor(id, fullName, mobile,line1, line2, email,districtId,  districtName, provinceId, provinceName, wardId, wardName, zipCode,customerId,supplierId ,isDefault) {
+            this.fullName = fullName;
+            this.line1 = line1;
+            this.line2 = line2;
+            this.mobile = mobile;
+            this.email = email;
+            // this.address = address;
+            this.districtId = districtId;
+            this.districtName = districtName;
+            this.provinceId = provinceId;
+            this.provinceName = provinceName;
+            this.wardId = wardId;
+            this.wardName = wardName;
+            this.zipCode = zipCode;
+            this.customerId = customerId;
+            this.id = id;
+            this.isDefault = isDefault;supplierId
+            this.supplierId = supplierId;
         }
     }
 
     let customer = new Customer()
 
-    let locationRegionCreate = new LocationRegionCreate();
+    let shippingAddress = new ShippingAddress();
+
+    $('#btnCreateCustomer').on('click', () => {
+        customer.id = null;
+        customer.name = $('#nameCreate').val();
+        customer.customerCode = $('#codeCreate').val();
+        customer.customerGroup = $('#customerGroupCreate :selected').val();
+        customer.phone = $('#phoneCreate').val();
+        customer.email = $('#emailCreate').val();
+        customer.birthday = $('#birthdayCreate').val();
+        customer.status = $('#statusCreate').val
+        customer.customerGender = $('#genderCreate').val();
+        customer.createAt = $('#birthdayCreate').val();
+
+        customer.updateAt = null;
+        shippingAddress.line1 = $('#addressCreate').val();
+        shippingAddress.provinceId = $('#province').val();
+        shippingAddress.provinceName = $('#province :selected').text();
+        shippingAddress.districtId = $('#district').val();
+        shippingAddress.districtName = $('#district :selected').text();
+        shippingAddress.wardId = $('#ward').val();
+        shippingAddress.wardName = $('#ward :selected').text();
+        customer.employeeId = $('#employeeNameCreate').val();
+        customer.createShippingAddressParam = shippingAddress;
+        console.log(customer)
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": "http://localhost:8080/api/customers/create",
+            "data": JSON.stringify(customer)
+        })
+            .done((data) => {
+                App.IziToast.showSuccessAlert('Thêm mới khách hàng thành công  !!!')
+                window.location.href = "/admin/customers";
+                $('#nameCreate').val("");
+                $('#codeCreate').val("");
+                $('#phoneCreate').val("");
+                $('#emailCreate').val("");
+                $('#birthdayCreate').val("");
+                $('#statusCreate').val("")
+                $('#addressCreate').val("");
+                $('#employeeNameCreate').val();
+            })
+            .fail((jqXHR) => {
+                console.log(jqXHR);
+                if (jqXHR.responseJSON) {
+                    $.each(jqXHR.responseJSON, (key, item)=> {
+                        App.IziToast.showErrorAlert(item);
+                    })
+                }
+
+            })
+    });
+
+
+
+
 
     function getAllProvinces() {
         return $.ajax({
@@ -1908,20 +537,26 @@
             url: "https://vapi.vnappmob.com/api/province/"
         })
             .done((data) => {
-                $.each(data.results, (i, item) => {
-                    let str = `<option value="${item.province_id}">${item.province_name}</option>`;
-                    $("#provinceNameCreate").append(str);
-                });
-                $("#districtNameCreate").empty()
-                $("#wardNameCreate").empty()
+                if (data.results.length === 0) {
+                    let str = `<option value="0">Chọn Tỉnh/Thành Phố</option>`;
+                    $("#province").append(str);
+                } else {
+                    $.each(data.results, (i, item) => {
+                        let str = `<option value="${item.province_id}">${item.province_name}</option>`;
+                        $("#province").append(str);
+                        $('#provinceUpdate').append(str);
+                    });
+                }
+
             })
             .fail((jqXHR) => {
-
+                console.log(jqXHR);
             })
     }
 
     function getAllDistrictsByProvinceId(provinceId) {
-        $("#district").empty()
+        $("#district").empty();
+        $("#districtUpdate").empty();
         return $.ajax({
             headers: {
                 "accept": "application/json",
@@ -1931,18 +566,26 @@
             url: "https://vapi.vnappmob.com/api/province/district/" + provinceId
         })
             .done((data) => {
-                $.each(data.results, (i, item) => {
-                    let str = `<option value="${item.district_id}">${item.district_name}</option>`;
-                    $("#districtNameCreate").append(str);
-                });
+                if (data.results.length === 0) {
+                    let str = `<option value="0">Chọn Quận/Huyện</option>`;
+                    $("#district").append(str);
+                } else {
+                    $.each(data.results, (i, item) => {
+                        let str = ` <option value="${item.district_id}">${item.district_name}</option>`;
+                        $("#district").append(str);
+                        $('#districtUpdate').append(str);
+                    })
+
+                }
             })
             .fail((jqXHR) => {
-
+                console.log(jqXHR);
             })
     }
 
     function getAllWardsByDistrictId(districtId) {
-        $("#ward").empty()
+        $("#ward").empty();
+        $('#wardUpdate').empty();
         return $.ajax({
             headers: {
                 "accept": "application/json",
@@ -1952,40 +595,62 @@
             url: "https://vapi.vnappmob.com/api/province/ward/" + districtId
         })
             .done((data) => {
-                console.log("districtId", districtId)
-                $.each(data.results, (i, item) => {
-                    let str = `<option value="${item.ward_id}">${item.ward_name}</option>`;
-                    $("#wardNameCreate").append(str);
-                });
+                // $('#ward').html('');
+                // $('#wardUpdate').html('');
+
+                if (data.results.length === 0) {
+                    let str = `<option value="0">Chọn Phường/Xã</option>`;
+                    $("#ward").append(str);
+
+                } else {
+                    $.each(data.results, (i, item) => {
+                        let str = `<option value="${item.ward_id}">${item.ward_name}</option>`;
+                        $("#ward").append(str);
+                        $('#wardUpdate').append(str);
+                    });
+                }
             })
             .fail((jqXHR) => {
-
+                console.log(jqXHR);
             })
     }
 
     getAllProvinces().then(() => {
-        let provinceId = $("#provinceNameCreate").val();
+        let provinceId = $("#province").val();
 
         getAllDistrictsByProvinceId(provinceId).then(() => {
 
-            let districtId = $("#districtNameCreate").val();
+            let districtId = $("#district").val();
 
             getAllWardsByDistrictId(districtId);
         });
     });
-    $("#provinceNameCreate").on('change', () => {
-        $("#districtNameCreate").empty()
-        let provinceId = $("#provinceNameCreate").val();
+    $("#province").on('change', () => {
+        let provinceId = $("#province").val();
         getAllDistrictsByProvinceId(provinceId).done(() => {
-            let districtId = $("#districtNameCreate").val();
+            let districtId = $("#district").val();
             getAllWardsByDistrictId(districtId);
         })
 
-        $("#districtNameCreate").on('change', () => {
-            let districtId = $("#districtNameCreate").val();
+        $("#district").on('change', () => {
+            let districtId = $("#district").val();
             getAllWardsByDistrictId(districtId);
         })
     });
+
+    $("#provinceUpdate").on("change", () => {
+        let provinceId = $("#provinceUpdate").val();
+        getAllDistrictsByProvinceId(provinceId).then(() => {
+            let districtId = $("#districtUpdate").val();
+            getAllWardsByDistrictId(districtId);
+        })
+    })
+
+    $("#districtUpdate").on("change", () => {
+        let districtId = $("#districtUpdate").val();
+        getAllWardsByDistrictId(districtId);
+    });
+
 
 
     function getAllEmployeeSelect() {
@@ -1995,7 +660,7 @@
                 "content-type": "application/json"
             },
             type: "GET",
-            url: "http://localhost:8080/api/employees/show_list"
+            url: "http://localhost:8080/api/employees/findAll"
         })
             .done((data) => {
                 console.log(data)
@@ -2050,6 +715,12 @@
                 });
             })
             .fail((jqXHR) => {
+                console.log(jqXHR);
+                if (jqXHR.responseJSON) {
+                    $.each(jqXHR.responseJSON, (key, item)=> {
+                        App.IziToast.showErrorAlert(item);
+                    })
+                }
 
             })
     }
@@ -2060,63 +731,7 @@
     $('#btnCloseCustomer').on('click', () => alert(":ok caauj"))
 
 
-    $('#btnCreateCustomer').on('click', () => {
-        customer.id = null;
-        customer.name = $('#nameCreate').val();
-        customer.customerCode = $('#codeCreate').val();
-        customer.customerGroup = $('#customerGroupCreate :selected').val();
-        customer.phone = $('#phoneCreate').val();
-        customer.email = $('#emailCreate').val();
-        customer.birthday = $('#birthdayCreate').val();
-        customer.status = $('#statusCreate').val
-        customer.customerGender = $('#genderCreate').val();
-        customer.createAt = $('#birthdayCreate').val();
 
-        customer.updateAt = null;
-        locationRegionCreate.address = $('#addressCreate').val();
-        locationRegionCreate.address = $('#addressCreate').val();
-        locationRegionCreate.provinceId = $('#provinceNameCreate').val();
-        locationRegionCreate.provinceName = $('#provinceNameCreate :selected').text();
-        locationRegionCreate.districtId = $('#districtNameCreate').val();
-        locationRegionCreate.districtName = $('#districtNameCreate :selected').text();
-        locationRegionCreate.wardId = $('#wardNameCreate').val();
-        locationRegionCreate.wardName = $('#wardNameCreate :selected').text();
-        customer.employeeId = $('#employeeNameCreate').val();
-        customer.locationRegionCreate = locationRegionCreate;
-        console.log(customer)
-        $.ajax({
-            "headers": {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            "type": "POST",
-            "url": "http://localhost:8080/api/customers/create",
-            "data": JSON.stringify(customer)
-        })
-            .done((data) => {
-                console.log(": Tạo sản phẩm thành công")
-                $('#nameCreate').empty();
-                $('#codeCreate').empty();
-                $('#customerGroupCreate').empty();
-                $('#genderCreate').empty();
-                $('#phoneCreate').empty();
-                $('#emailCreate').empty();
-                $('#birthdayCreate').empty();
-                $('#statusCreate').empty
-                $('#genderCreate').empty();
-                $('#birthdayCreate').empty();
-                $('#addressCreate').empty();
-
-                $('#provinceNameCreate').empty();
-                $('#districtNameCreate').empty();
-                $('#wardNameCreate').empty();
-                $('#employeeNameCreate').empty();
-            })
-            .fail((jqXHR) => {
-                console.log("Lỗi tại customer")
-
-            })
-    });
 
 
     getAllCustomerGender();

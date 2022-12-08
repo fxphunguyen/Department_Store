@@ -39,9 +39,42 @@ class EmployeeResult {
         this.name = name;
     }
 }
+class ProductResult {
+    constructor(id, title, image, unit, sku, retailPrice, wholesalePrice) {
+            this.id = id;
+            this.title = title;
+            this.image = image;
+            this.unit = unit;
+            this.sku = sku;
+            this.retailPrice = retailPrice;
+            this.wholesalePrice = wholesalePrice;
+    }
+}
+
+class OrderResult {
+    constructor(id, employeeId, customerId, discount, description, orderCode, orderStausId, orderItemResult ) {
+        this.id =id;
+        this.employeeId = employeeId;
+        this.customerId = customerId;
+        this.discount = discount;
+        this.description = description;
+        this.orderCode = orderCode;
+        this.orderStatusId =  orderStausId;
+        this.orderItemResult = orderItemResult;
+    }
+}
+
+class OrderItemResult {
+    constructor(id, productId, quantity ) {
+        this.id = id;
+        this.productId = productId;
+        this.quantity = quantity;
+    }
+
+}
 
 class Customer {
-    constructor(id, customerCode,  name, phone,  email,createAt, updateAt, employeeId, deleted, locationRegionCreate) {
+    constructor(id, customerCode,  name, phone,  email,createAt, updateAt, employeeId, deleted) {
         this.id = id;
         this.customerCode = customerCode;
         this.name = name;
@@ -54,8 +87,18 @@ class Customer {
         this.updateAt = updateAt;
         this.employeeId = employeeId;
         this.deleted = deleted;
-        // this.locationRegionResult = locationRegionResult;
-        this.locationRegionCreate = locationRegionCreate;
+    }
+}
+class ItemResult {
+    constructor(id, productId, employeeId, quantity, price, sku, discount, available) {
+        this.id = id;
+        this.productId = productId;
+        this.employeeId = employeeId;
+        this.quantity = quantity;
+        this.price = price;
+        this.sku = sku;
+        this.discount = discount;
+        this.available = available;
     }
 }
 class App {
@@ -100,6 +143,14 @@ class App {
                 message: m,
                 timer: 2000,
 
+            });
+        }
+        static showSuccessAlert(m) {
+            iziToast.success({
+                title: 'Success',
+                position: 'topRight',
+                message: m,
+                timer: 2000,
             });
         }
         static showSuccessAlert(m) {

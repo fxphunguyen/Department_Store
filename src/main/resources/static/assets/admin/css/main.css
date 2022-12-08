@@ -1,6 +1,7 @@
 @charset "UTF-8";
-
-
+ol, ul {
+    padding-left: 0;
+}
 .mdl-js {
     font-size: 14px;
 }
@@ -3642,7 +3643,7 @@ h6 {
   font-size: 3.5rem;
 }
 hr {
-  margin-top: 1rem;
+  margin-top: -7px;
   margin-bottom: 1rem;
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -52712,4 +52713,7 @@ tr[id^="orderLineItems-show-packize-"] td {
 }
 .sapo-menu-list-item-link--secondary-active {
     color: #f2f4f6 !important;
+}
+.sapo-menu-list{
+
 }
