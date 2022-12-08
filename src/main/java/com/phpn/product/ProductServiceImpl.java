@@ -31,10 +31,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional(readOnly = true)
     public List<ProductResult> findAll() {
-        return productRepository.findAll()
-                .stream()
-                .map(productMapper::toDTO)
-                .collect(Collectors.toList());
+        return null;
+//                productRepository.findAll()
+//                .stream()
+//                .map(product -> {
+//                    ProductResult dto = productMapper.toDTO(product);
+//                    dto.sets
+//                    return dto;
+//                })
+//                .collect(Collectors.toList());
     }
 
     //    public List<ProductResult> findAll1() {
@@ -142,8 +147,8 @@ public class ProductServiceImpl implements ProductService {
         return entities.stream().map(
                 entity -> {
                     ProductResult dto = productMapper.toDTO(entity);
-                   // int ton = itemRepository.store();
-                 //   dto.setTon(ton);
+                    // int ton = itemRepository.store();
+                    //   dto.setTon(ton);
                     return dto;
                 }).collect(Collectors.toList());
 

@@ -41,7 +41,7 @@ class App {
 }
 
 class Image {
-    constructor(cloudId, fileName, fileFolder, fileUrl, fileType, path) {
+    constructor(cloudId, fileName, fileFolder, fileUrl, fileType) {
         this.cloudId = cloudId;
         this.fileName = fileName;
         this.fileFolder = fileFolder;
@@ -51,7 +51,7 @@ class Image {
 }
 
 class Product {
-    constructor(id, title, status, description, unit, sku, barCode, quantity, retailPrice, importPrice, wholesalePrice, categoryId, brandId, deleted, image) {
+    constructor(id, title, status, description, unit, sku, barCode, quantity, retailPrice, importPrice, wholesalePrice, categoryId, brandId, applyTax, image) {
         this.id = id;
         this.title = title;
         this.status = status;
@@ -65,7 +65,7 @@ class Product {
         this.wholesalePrice = wholesalePrice;
         this.categoryId = categoryId;
         this.brandId = brandId;
-        this.deleted = deleted;
+        this.applyTax = applyTax;
         this.productImageParams = image;
     }
 
