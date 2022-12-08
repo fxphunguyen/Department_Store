@@ -8,7 +8,7 @@ import java.util.Date;
 public class MediaMapper {
 
     public vn.fx.qh.sapo.entities.media.Media toModel(MediaParam productImageParam) {
-        return new vn.fx.qh.sapo.entities.media.Media(productImageParam.getProduct())
+        return new vn.fx.qh.sapo.entities.media.Media()
                 .setCloudId(productImageParam.getCloudId())
                 .setFileName(productImageParam.getFileName())
                 .setFileFolder(productImageParam.getFileFolder())
@@ -17,7 +17,6 @@ public class MediaMapper {
                 .setCreatedAt(new Date(LocalDate.now().toString()))
                 .setCreatedBy(null)
                 .setUpdatedAt(null)
-                .setUpdatedBy(null)
-                .setProductId(productImageParam.getProductId());
+                .setUpdatedBy(null);
     }
 }

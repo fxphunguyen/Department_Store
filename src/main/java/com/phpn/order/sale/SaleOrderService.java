@@ -2,6 +2,8 @@ package com.phpn.order.sale;
 
 import com.phpn.order.sale.dto.SaleOrderParam;
 import com.phpn.order.sale.dto.SaleOrderResult;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface SaleOrderService {
@@ -11,4 +13,7 @@ public interface SaleOrderService {
     SaleOrderResult createOrderExport(SaleOrderParam orderParam);
 
     SaleOrderResult findById(int id);
+
+    BigDecimal getSpendTotal(Integer customerId);
+
 }
