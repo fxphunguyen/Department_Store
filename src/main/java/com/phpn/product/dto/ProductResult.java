@@ -44,8 +44,8 @@ public class ProductResult {
     private List<TaxResult> taxPurchaseList;
     private Tax tax;
     private ItemResult item;
-    private int ton;
-    private int cothe;
+    private int total;
+    private int available;
 
 
 }

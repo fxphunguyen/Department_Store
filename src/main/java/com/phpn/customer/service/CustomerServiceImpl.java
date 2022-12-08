@@ -1,13 +1,20 @@
-package com.phpn.customer;
+package com.phpn.customer.service;
 
+import com.phpn.customer.CustomerMapper;
+import com.phpn.customer.CustomerRepository;
+import com.phpn.customer.CustomerResult;
+import com.phpn.customer.UpdateCustomerParam;
+import com.phpn.customer.dto.CreateCustomerParam;
+import com.phpn.customer.dto.CreateShippingAddressParam;
 import com.phpn.exceptions.NotFoundException;
-import com.phpn.shipping_address.ShippingAddressRepository;
+import com.phpn.order.sale.SaleOrderService;
+import com.phpn.payment.purchase.PaymentSaleOrderService;
 import com.phpn.shipping_address.ShippingAddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import vn.fx.qh.sapo.entities.customer.*;
+import vn.fx.qh.sapo.entities.customer.Customer;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -20,6 +27,9 @@ import java.util.stream.Collectors;
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
+    PaymentSaleOrderService paymentSaleOrderService;
+
+    @Autowired
     private CustomerMapper customerMapper;
 
     @Autowired
@@ -28,6 +38,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private ShippingAddressService shippingAddressService;
+    @Autowired
+    SaleOrderService saleOrderService;
 
 
     @Override
@@ -39,8 +51,23 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<CustomerResult> findAll() {
-        return customerRepository.findAll().stream().map(customerMapper::toDTO).collect(Collectors.toList());
+        return customerRepository.findAll()
+                .stream()
+                .map(customer -> {
+                                CustomerResult dto = customerMapper.toDTO(customer);
+                                BigDecimal spendTotal = saleOrderService.getSpendTotal(customer.getId());
+                                if(spendTotal == null){
+                                    spendTotal = BigDecimal.valueOf(0);}
+                                BigDecimal paidTotal = paymentSaleOrderService.getSpendTotalByCustomerId(customer.getId());
+                                if(paidTotal == null ){
+                                    paidTotal = BigDecimal.valueOf(0);}
+                                BigDecimal debtTotal = spendTotal.subtract(paidTotal);
+                                dto.setSpendTotal(spendTotal);
+                                dto.setDebtTotal(debtTotal);
+                                return dto;
+                            }).collect(Collectors.toList());
     }
 
     @Override
@@ -57,4 +84,6 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerResult update(UpdateCustomerParam updateCustomer) {
         return null;
     }
+
+
 }

@@ -1397,6 +1397,7 @@
 
 .jss17712 {
     width: 100%;
+    padding-top: 30px;
 }
 
 .jss17713 {
@@ -3918,8 +3919,8 @@ select#districtUpdate   {
     border-bottom: 1px solid #D3D5D7;
     position: relative;
     top: -3px;
-    align-items: self-end;
-    margin-right: -35px;
+    align-items: end;
+    margin-right: -15px;
 }
 .jss3917 {
     border-bottom: 1px solid #D3D5D7 !important;
@@ -3936,3 +3937,7 @@ select#districtUpdate   {
     position: relative;
     top: 0px;
 }
+#discount_value_order {
+    padding-left: 40px;
+}
+
