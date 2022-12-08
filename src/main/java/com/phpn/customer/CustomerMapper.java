@@ -103,4 +103,24 @@ public class CustomerMapper {
                 .setUpdateAt(customerResult.getUpdateAt());
     }
 
+
+    public CustomerResult toCustomerInfo(Customer customer) {
+            return new  CustomerResult()
+                .setId(customer.getId())
+                .setCustomerCode(customer.getCustomerCode())
+                .setName(customer.getName())
+                .setPhone(customer.getPhone())
+                .setCustomerGroup(customer.getCustomerGroup())
+                .setCustomerGender(customer.getCustomerGender())
+                .setEmail(customer.getEmail())
+                .setBirthday(customer.getBirthday())
+                .setCustomerStatus(customer.getCustomerStatus())
+                .setCreateAt(customer.getCreateAt())
+                .setUpdateAt(customer.getUpdateAt())
+                .setEmployeeId(customer.getEmployeeId())
+                .setCustomerStatus(customer.getCustomerStatus());
+
+    }
+
+
 }
