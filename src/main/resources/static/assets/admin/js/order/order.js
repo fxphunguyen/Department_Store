@@ -47,7 +47,7 @@ function showListCustomer() {
     }
     $.ajax({
         type: "GET", contentType: 'application/json',
-        url: `${location.origin}/api/customers/list_customerAll`
+        url: `${location.origin}/api/customers`
     })
         .done((data) => {
             customers = data;
