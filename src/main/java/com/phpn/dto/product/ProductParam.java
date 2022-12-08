@@ -32,5 +32,4 @@ public class ProductParam {
     private Integer brandId;
     private Boolean applyTax;
     private Boolean deleted;
-
 }

@@ -14,4 +14,5 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
     List<Item> findAllByProductIdAndAvailableGreaterThanOrderByCreateAt(Integer productId, Integer available);
 
 
+//    int store();
 }

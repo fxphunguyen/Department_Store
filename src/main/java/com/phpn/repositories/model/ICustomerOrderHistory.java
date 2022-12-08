@@ -7,13 +7,15 @@ public interface ICustomerOrderHistory {
 
     Integer getCustomer_id();
 
+    String getCustomerName();
+
     Integer getOrder_id();
 
     String getOrder_code();
 
     String getStatus();
 
-    Date getCreate_at();
+
 
     BigDecimal getGrand_total();
 
@@ -22,6 +24,8 @@ public interface ICustomerOrderHistory {
     BigDecimal getPrice_pay();
 
     BigDecimal getDebt();
+
+    Date getCreate_at();
 
 
 }

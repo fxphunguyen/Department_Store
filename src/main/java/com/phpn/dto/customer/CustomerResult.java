@@ -39,7 +39,8 @@ public class CustomerResult {
     private Instant updateAt;
 
     private Integer locationRegionId;
-    private ShippingAddressResult shippingAddressDefault;
+    private ShippingAddressResult shippingAddress;
+    private ShippingAddressResult billAddress;
     private List<ShippingAddressResult> shippingAddressList;
 
     private CustomerGender customerGender;

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/assets/admin/css/order/order_id.css">
 </head>
 <body>
-<div id="root" style="overflow: auto">
+<div id="root" style="overflow: auto" th:object="${orders}">
     <div class="header-mobile">
         <a href="javascript:" class="icon-menu visible-xs visible-sm" onclick="showMenu()">
             <svg class="next-icon next-icon--size-20">
@@ -45,9 +45,12 @@
             <div class="MuiBox-root jss3799 jss3781 detail_order">
                 <div class="MuiGrid-root MuiGrid-container">
                     <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6" style="flex-direction: column;">
-                        <div class="MuiBox-root jss966"><h4 class="MuiTypography-root MuiTypography-h4"
-                                                            style="line-height: 28px; margin-right: 20px;">SON00021</h4>
-                            <div class="sc-jSMfEi hBmWYo"><span class="sc-eCYdqJ bzQjtT">Hoàn thành</span></div>
+                        <div class="MuiBox-root jss966">
+                            <h4 class="MuiTypography-root MuiTypography-h4"
+                                style="line-height: 28px; margin-right: 20px;" th:text="*{orderCode}"></h4>
+                            <div th:class="*{orderStatus.name} == 'Đang giao dịch' ? 'hlxtkG' : (*{orderStatus.name} == 'Hoàn thành' ? 'hBmWYo' : 'csJERM')">
+                                <span th:class="*{orderStatus.name} == 'Đang giao dịch' ? 'gIZkwA' : (*{orderStatus.name} == 'Hoàn thành' ? 'bzQjtT' : 'ccQLIN')" th:text="*{orderStatus.name}"></span>
+                            </div>
                         </div>
                         <div class="MuiBox-root jss967" style="margin-top: 10px;">
                             <div class="sc-kDDrLX iDRoAG">
@@ -160,7 +163,7 @@
                     </div>
                 </div>
                 <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 MuiGrid-wrap-xs-nowrap"
-                     style="margin-top: 0px;">
+                     style="margin-top: 0px;" th:object="${orders}">
                     <div class="MuiGrid-root MuiGrid-item"
                          style="flex: 1 1 0%; margin-bottom: 12px; height: fit-content;">
                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
@@ -177,11 +180,13 @@
                                                 </svg>
                                                 Thông tin khách hàng
                                             </h6>
-                                            <div class="MuiBox-root jss4559"><a target="_blank"
-                                                                                href="/admin/customers/186453408"
-                                                                                style="text-decoration: none; display: inline-flex; align-items: center;">
-                                                <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary">
-                                                    Khách lẻ</h6></a></div>
+                                            <div class="MuiBox-root jss4559">
+                                                <a target="_blank" href="/admin/customers/186453408" style="text-decoration: none; display: inline-flex; align-items: center;">
+                                                    <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary" th:text="*{customer.name}"></h6>
+                                                </a>
+                                                -
+                                                <h6 th:text="*{customer.phone}"></h6>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="MuiBox-root jss4565 jss4194 jss4195">

@@ -1,3 +1,4 @@
+
 .hide {
     display: none;
 }
@@ -3932,4 +3933,8 @@ select#districtUpdate   {
 .jss3917:hover {
     border-bottom: 2px solid #D3D5D7 !important;
 
+}
+.MuiListItemText-root {
+    position: relative;
+    top: 0px;
 }
