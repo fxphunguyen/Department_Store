@@ -28,6 +28,5 @@ public class ProductWithImageParam implements Serializable {
     private Integer categoryId;
     private Integer brandId;
     private Boolean applyTax;
-    private Boolean deleted;
     private List<ProductImageParam> productImageParams;
 }
