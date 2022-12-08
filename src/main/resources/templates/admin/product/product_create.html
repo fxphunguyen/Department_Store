@@ -744,9 +744,7 @@
     page.elements.btnCreateProduct.on("click", () => {
         product.id = 0;
         product.title = page.dialogs.elements.titleCreate.val();
-        product.image = $("#image").val();
-        product.status = page.dialogs.elements.statusCreate.is(":checked") ? "Đang giao dịch" : "Ngừng giao dịch";
-
+        product.status = page.dialogs.elements.statusCreate.is(":checked") ? "AVAILABLE" : "UNAVAILABLE";
         product.description = page.dialogs.elements.descriptionCreate.val();
         product.unit = page.dialogs.elements.unitCreate.val();
         product.sku = page.dialogs.elements.skuCreate.val();
@@ -757,6 +755,7 @@
         product.wholesalePrice = page.dialogs.elements.wholesalePriceCreate.val();
         product.categoryId = page.dialogs.elements.categoryIdCreate.val();
         product.brandId = page.dialogs.elements.brandIdCreate.val();
+        product.applyTax = true;
         product.productImageParams = imgs
 
         console.log(product)
