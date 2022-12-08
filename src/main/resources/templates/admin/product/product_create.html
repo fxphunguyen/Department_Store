@@ -779,7 +779,8 @@
         product.wholesalePrice = page.dialogs.elements.wholesalePriceCreate.val();
         product.categoryId = page.dialogs.elements.categoryIdCreate.val();
         product.brandId = page.dialogs.elements.brandIdCreate.val();
-        product.deleted = false;
+        product.categoryId =$("#catProType").data("id");
+        product.brandId = $('#brandProType').data("id");
         product.productImageParams = imgs
 
         console.log(product)
@@ -796,10 +797,6 @@
                 console.log(": Tạo sản phẩm thành công")
             })
     })
-    //nhat-dev get value cat and brand to create product
-    // product.categoryId =$("#catProType").data("id");
-    // product.brandId = $('#brandProType').data("id");
-
 
     // Upload file images
     $.cloudinary.config({
