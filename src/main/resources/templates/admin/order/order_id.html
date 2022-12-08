@@ -9,7 +9,7 @@
 
 <body>
     <th:block th:replace="/layout/menu::menu"/>
-    <div class="MuiBox-root jss64 jss40" th:object="${orders}">
+    <div class="MuiBox-root jss64 jss40 col-right" th:object="${orders}">
         <div class="MuiBox-root jss3788 jss3784">
             <div class="MuiBox-root jss3789 jss3787" style="max-width: 1366px;">
                 <div class="MuiBox-root jss3790">
@@ -593,7 +593,7 @@
                                         <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
                                             Ngày bán <span>:</span></p>
                                         <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2"
-                                           th:text="'javascript:moment(' + *{createAt} + ').format(vvdd/MM/yyyy HH:mm)'"></p>  <!--${moment(item.createAt).format("DD/MM/YYYY hh:mm")}-->
+                                           th:text="*{createAt}"></p>
                                     </div>
                                 </div>
                             </div>
@@ -686,7 +686,7 @@
                                                                         style="margin-right: 16px;">Giá chưa bao gồm
                                                                     thuế</p>
                                                                     <p class="MuiTypography-root MuiTypography-body1"
-                                                                       style="padding: 2px 0px 2px 6px; min-width: 78px; text-align: right; border-bottom: 1px solid rgb(232, 234, 235);">
+                                                                       style="padding: 2px 0 2px 6px; min-width: 78px; text-align: right; border-bottom: 1px solid rgb(232, 234, 235);">
                                                                         350,000</p></div>
                                                                 <div class="MuiBox-root jss5884"><p
                                                                         class="MuiTypography-root MuiTypography-body1"
