@@ -21,14 +21,14 @@
             <div class="MuiBox-root jss3789 jss3787" style="max-width: 1366px;">
                 <div class="MuiBox-root jss3790">
                     <a class="MuiTypography-root MuiLink-root MuiLink-underlineNone jss3786 MuiTypography-colorSecondary"
-                    href="/admin/orders">
+                       href="/admin/orders">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         style="width: 24px; height: 24px; margin-left: -9px; margin-right: 6px;">
-                        <path d="M14.298 5.99 8.288 12l6.01 6.01 1.414-1.414L11.116 12l4.596-4.596-1.414-1.414Z"
-                              fill="currentColor"></path>
+                             style="width: 24px; height: 24px; margin-left: -9px; margin-right: 6px;">
+                            <path d="M14.298 5.99 8.288 12l6.01 6.01 1.414-1.414L11.116 12l4.596-4.596-1.414-1.414Z"
+                                  fill="currentColor"></path>
                         </svg>
                         <h6 class="MuiTypography-root MuiTypography-subtitle1">Quay lại danh sách đơn hàng</h6>
-                </a>
+                    </a>
                 </div>
                 <div class="MuiBox-root jss3791">
                     <div class="MuiBox-root jss3792 jss3783">
@@ -49,7 +49,8 @@
                             <h4 class="MuiTypography-root MuiTypography-h4"
                                 style="line-height: 28px; margin-right: 20px;" th:text="*{orderCode}"></h4>
                             <div th:class="*{orderStatus.name} == 'Đang giao dịch' ? 'hlxtkG' : (*{orderStatus.name} == 'Hoàn thành' ? 'hBmWYo' : 'csJERM')">
-                                <span th:class="*{orderStatus.name} == 'Đang giao dịch' ? 'gIZkwA' : (*{orderStatus.name} == 'Hoàn thành' ? 'bzQjtT' : 'ccQLIN')" th:text="*{orderStatus.name}"></span>
+                                <span th:class="*{orderStatus.name} == 'Đang giao dịch' ? 'gIZkwA' : (*{orderStatus.name} == 'Hoàn thành' ? 'bzQjtT' : 'ccQLIN')"
+                                      th:text="*{orderStatus.name}"></span>
                             </div>
                         </div>
                         <div class="MuiBox-root jss967" style="margin-top: 10px;">
@@ -181,8 +182,10 @@
                                                 Thông tin khách hàng
                                             </h6>
                                             <div class="MuiBox-root jss4559">
-                                                <a target="_blank" href="/admin/customers/186453408" style="text-decoration: none; display: inline-flex; align-items: center;">
-                                                    <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary" th:text="*{customer.name}"></h6>
+                                                <a target="_blank" href="/admin/customers/186453408"
+                                                   style="text-decoration: none; display: inline-flex; align-items: center;">
+                                                    <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary"
+                                                        th:text="*{customer.name}"></h6>
                                                 </a>
                                                 -
                                                 <h6 th:text="*{customer.phone}"></h6>
@@ -702,7 +705,7 @@
                                     <div class="MuiBox-root jss4415"
                                          style="border-bottom: 1px solid rgb(232, 234, 235);">
                                         <div class="MuiTableContainer-root jss4416 ">
-                                            <table class="MuiTable-root MuiTable-stickyHeader" aria-label="simple table"
+                                            <table id="tbOrderItem" class="MuiTable-root MuiTable-stickyHeader" aria-label="simple table"
                                                    style="border-collapse: inherit;">
                                                 <thead class="MuiTableHead-root">
                                                 <tr class="MuiTableRow-root MuiTableRow-head">
@@ -730,164 +733,164 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody class="MuiTableBody-root">
-                                                <tr class="MuiTableRow-root jss5868 isNormalLineItem">
-                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter">
-                                                        1
-                                                        <div class="__react_component_tooltip ta6d41119-e511-48af-b149-ee128339bf68 place-bottom type-dark"
-                                                             id="tooltipTax-1258834332" data-id="tooltip">
-                                                            <style aria-hidden="true">
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68 {
-                                                                    color: #fff;
-                                                                    background: #222;
-                                                                    border: 1px solid transparent;
-                                                                }
+<!--                                                <tr class="MuiTableRow-root jss5868 isNormalLineItem">-->
+<!--                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter">-->
+<!--                                                        1-->
+<!--                                                        <div class="__react_component_tooltip ta6d41119-e511-48af-b149-ee128339bf68 place-bottom type-dark"-->
+<!--                                                             id="tooltipTax-1258834332" data-id="tooltip">-->
+<!--                                                            <style aria-hidden="true">-->
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68 {-->
+<!--                                                                    color: #fff;-->
+<!--                                                                    background: #222;-->
+<!--                                                                    border: 1px solid transparent;-->
+<!--                                                                }-->
 
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-top {
-                                                                    margin-top: -10px;
-                                                                }
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-top {-->
+<!--                                                                    margin-top: -10px;-->
+<!--                                                                }-->
 
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-top::before {
-                                                                    border-top: 8px solid transparent;
-                                                                }
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-top::before {-->
+<!--                                                                    border-top: 8px solid transparent;-->
+<!--                                                                }-->
 
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-top::after {
-                                                                    border-left: 8px solid transparent;
-                                                                    border-right: 8px solid transparent;
-                                                                    bottom: -6px;
-                                                                    left: 50%;
-                                                                    margin-left: -8px;
-                                                                    border-top-color: #222;
-                                                                    border-top-style: solid;
-                                                                    border-top-width: 6px;
-                                                                }
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-top::after {-->
+<!--                                                                    border-left: 8px solid transparent;-->
+<!--                                                                    border-right: 8px solid transparent;-->
+<!--                                                                    bottom: -6px;-->
+<!--                                                                    left: 50%;-->
+<!--                                                                    margin-left: -8px;-->
+<!--                                                                    border-top-color: #222;-->
+<!--                                                                    border-top-style: solid;-->
+<!--                                                                    border-top-width: 6px;-->
+<!--                                                                }-->
 
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom {
-                                                                    margin-top: 10px;
-                                                                }
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom {-->
+<!--                                                                    margin-top: 10px;-->
+<!--                                                                }-->
 
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom::before {
-                                                                    border-bottom: 8px solid transparent;
-                                                                }
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom::before {-->
+<!--                                                                    border-bottom: 8px solid transparent;-->
+<!--                                                                }-->
 
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom::after {
-                                                                    border-left: 8px solid transparent;
-                                                                    border-right: 8px solid transparent;
-                                                                    top: -6px;
-                                                                    left: 50%;
-                                                                    margin-left: -8px;
-                                                                    border-bottom-color: #222;
-                                                                    border-bottom-style: solid;
-                                                                    border-bottom-width: 6px;
-                                                                }
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom::after {-->
+<!--                                                                    border-left: 8px solid transparent;-->
+<!--                                                                    border-right: 8px solid transparent;-->
+<!--                                                                    top: -6px;-->
+<!--                                                                    left: 50%;-->
+<!--                                                                    margin-left: -8px;-->
+<!--                                                                    border-bottom-color: #222;-->
+<!--                                                                    border-bottom-style: solid;-->
+<!--                                                                    border-bottom-width: 6px;-->
+<!--                                                                }-->
 
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-left {
-                                                                    margin-left: -10px;
-                                                                }
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-left {-->
+<!--                                                                    margin-left: -10px;-->
+<!--                                                                }-->
 
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-left::before {
-                                                                    border-left: 8px solid transparent;
-                                                                }
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-left::before {-->
+<!--                                                                    border-left: 8px solid transparent;-->
+<!--                                                                }-->
 
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-left::after {
-                                                                    border-top: 5px solid transparent;
-                                                                    border-bottom: 5px solid transparent;
-                                                                    right: -6px;
-                                                                    top: 50%;
-                                                                    margin-top: -4px;
-                                                                    border-left-color: #222;
-                                                                    border-left-style: solid;
-                                                                    border-left-width: 6px;
-                                                                }
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-left::after {-->
+<!--                                                                    border-top: 5px solid transparent;-->
+<!--                                                                    border-bottom: 5px solid transparent;-->
+<!--                                                                    right: -6px;-->
+<!--                                                                    top: 50%;-->
+<!--                                                                    margin-top: -4px;-->
+<!--                                                                    border-left-color: #222;-->
+<!--                                                                    border-left-style: solid;-->
+<!--                                                                    border-left-width: 6px;-->
+<!--                                                                }-->
 
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-right {
-                                                                    margin-left: 10px;
-                                                                }
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-right {-->
+<!--                                                                    margin-left: 10px;-->
+<!--                                                                }-->
 
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-right::before {
-                                                                    border-right: 8px solid transparent;
-                                                                }
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-right::before {-->
+<!--                                                                    border-right: 8px solid transparent;-->
+<!--                                                                }-->
 
-                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-right::after {
-                                                                    border-top: 5px solid transparent;
-                                                                    border-bottom: 5px solid transparent;
-                                                                    left: -6px;
-                                                                    top: 50%;
-                                                                    margin-top: -4px;
-                                                                    border-right-color: #222;
-                                                                    border-right-style: solid;
-                                                                    border-right-width: 6px;
-                                                                }
-                                                            </style>
-                                                            <div class="MuiBox-root jss5882">
-                                                                <div class="MuiBox-root jss5883"><p
-                                                                        class="MuiTypography-root MuiTypography-body1"
-                                                                        style="margin-right: 16px;">Giá chưa bao gồm
-                                                                    thuế</p>
-                                                                    <p class="MuiTypography-root MuiTypography-body1"
-                                                                       style="padding: 2px 0px 2px 6px; min-width: 78px; text-align: right; border-bottom: 1px solid rgb(232, 234, 235);">
-                                                                        350,000</p></div>
-                                                                <div class="MuiBox-root jss5884"><p
-                                                                        class="MuiTypography-root MuiTypography-body1"
-                                                                        style="margin-right: 16px;">Giá đã bao gồm thuế
-                                                                    (10%)</p>
-                                                                    <p class="MuiTypography-root MuiTypography-body1">
-                                                                        385,000</p></div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter">
-                                                        <a class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
-                                                           target="_blank"
-                                                           href="/admin/products/122358547/variants/189770148"><img
-                                                                class="jss5872"
-                                                                src="https://sapo.dktcdn.net/100/679/630/variants/3f4eac62-02c6-401e-83d9-15e6ff767aa9-1669964333888.jpg"></a>
-                                                    </td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body">
-                                                        <div class="MuiBox-root jss5885 jss5869">
-                                                            <div class="MuiBox-root jss5886">
-                                                                <div class="MuiBox-root jss5887">
-                                                                    <p class="MuiTypography-root MuiTypography-body1">
-                                                                        Bia Tiger Crystal bạc lon 330ml (thùng 24 lon)
-                                                                        <button class="MuiButtonBase-root MuiIconButton-root"
-                                                                                tabindex="0" type="button"
-                                                                                style="padding: 0px; margin-left: 6px; height: fit-content;">
-                                                                            <span class="MuiIconButton-label"></span><span
-                                                                                class="MuiTouchRipple-root"></span>
-                                                                        </button>
-                                                                    </p>
-                                                                </div>
-                                                                <h6 class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
-                                                                    style="font-weight: normal; margin: 2px 0px;">Mặc
-                                                                    định</h6><a
-                                                                    class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
-                                                                    target="_blank"
-                                                                    href="/admin/products/122358547/variants/189770148"><span
-                                                                    class="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary">PVN02</span></a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
-                                                        style="width: 105px; padding-left: 0px; padding-right: 0px;"><p
-                                                            class="MuiTypography-root MuiTypography-body1"
-                                                            style="text-align: center; cursor: not-allowed;">1</p></td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
-                                                        <span class="MuiTypography-root MuiTypography-body1"
-                                                              data-tip="true" data-for="tooltipTax-1258834332"
-                                                              currentitem="false"
-                                                              style="text-align: right;">350,000</span></td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
-                                                        <button class="MuiButtonBase-root MuiButton-root MuiButton-text jss5875 showOnly"
-                                                                tabindex="0" type="button"
-                                                                id="discount-line-item-1258834332"><span
-                                                                class="MuiButton-label">0<p
-                                                                class="MuiTypography-root discount_rate_line_item MuiTypography-body1"
-                                                                style="color: rgb(255, 77, 77); font-size: 12px;"></p></span>
-                                                        </button>
-                                                    </td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
-                                                        350,000
-                                                    </td>
-                                                </tr>
+<!--                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-right::after {-->
+<!--                                                                    border-top: 5px solid transparent;-->
+<!--                                                                    border-bottom: 5px solid transparent;-->
+<!--                                                                    left: -6px;-->
+<!--                                                                    top: 50%;-->
+<!--                                                                    margin-top: -4px;-->
+<!--                                                                    border-right-color: #222;-->
+<!--                                                                    border-right-style: solid;-->
+<!--                                                                    border-right-width: 6px;-->
+<!--                                                                }-->
+<!--                                                            </style>-->
+<!--                                                            <div class="MuiBox-root jss5882">-->
+<!--                                                                <div class="MuiBox-root jss5883"><p-->
+<!--                                                                        class="MuiTypography-root MuiTypography-body1"-->
+<!--                                                                        style="margin-right: 16px;">Giá chưa bao gồm-->
+<!--                                                                    thuế</p>-->
+<!--                                                                    <p class="MuiTypography-root MuiTypography-body1"-->
+<!--                                                                       style="padding: 2px 0px 2px 6px; min-width: 78px; text-align: right; border-bottom: 1px solid rgb(232, 234, 235);">-->
+<!--                                                                        350,000</p></div>-->
+<!--                                                                <div class="MuiBox-root jss5884"><p-->
+<!--                                                                        class="MuiTypography-root MuiTypography-body1"-->
+<!--                                                                        style="margin-right: 16px;">Giá đã bao gồm thuế-->
+<!--                                                                    (10%)</p>-->
+<!--                                                                    <p class="MuiTypography-root MuiTypography-body1">-->
+<!--                                                                        385,000</p></div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </td>-->
+<!--                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter">-->
+<!--                                                        <a class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"-->
+<!--                                                           target="_blank"-->
+<!--                                                           href="/admin/products/122358547/variants/189770148"><img-->
+<!--                                                                class="jss5872"-->
+<!--                                                                src="https://sapo.dktcdn.net/100/679/630/variants/3f4eac62-02c6-401e-83d9-15e6ff767aa9-1669964333888.jpg"></a>-->
+<!--                                                    </td>-->
+<!--                                                    <td class="MuiTableCell-root MuiTableCell-body">-->
+<!--                                                        <div class="MuiBox-root jss5885 jss5869">-->
+<!--                                                            <div class="MuiBox-root jss5886">-->
+<!--                                                                <div class="MuiBox-root jss5887">-->
+<!--                                                                    <p class="MuiTypography-root MuiTypography-body1">-->
+<!--                                                                        Bia Tiger Crystal bạc lon 330ml (thùng 24 lon)-->
+<!--                                                                        <button class="MuiButtonBase-root MuiIconButton-root"-->
+<!--                                                                                tabindex="0" type="button"-->
+<!--                                                                                style="padding: 0px; margin-left: 6px; height: fit-content;">-->
+<!--                                                                            <span class="MuiIconButton-label"></span><span-->
+<!--                                                                                class="MuiTouchRipple-root"></span>-->
+<!--                                                                        </button>-->
+<!--                                                                    </p>-->
+<!--                                                                </div>-->
+<!--                                                                <h6 class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"-->
+<!--                                                                    style="font-weight: normal; margin: 2px 0px;">Mặc-->
+<!--                                                                    định</h6><a-->
+<!--                                                                    class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"-->
+<!--                                                                    target="_blank"-->
+<!--                                                                    href="/admin/products/122358547/variants/189770148"><span-->
+<!--                                                                    class="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary">PVN02</span></a>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </td>-->
+<!--                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"-->
+<!--                                                        style="width: 105px; padding-left: 0px; padding-right: 0px;"><p-->
+<!--                                                            class="MuiTypography-root MuiTypography-body1"-->
+<!--                                                            style="text-align: center; cursor: not-allowed;">1</p></td>-->
+<!--                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">-->
+<!--                                                        <span class="MuiTypography-root MuiTypography-body1"-->
+<!--                                                              data-tip="true" data-for="tooltipTax-1258834332"-->
+<!--                                                              currentitem="false"-->
+<!--                                                              style="text-align: right;">350,000</span></td>-->
+<!--                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">-->
+<!--                                                        <button class="MuiButtonBase-root MuiButton-root MuiButton-text jss5875 showOnly"-->
+<!--                                                                tabindex="0" type="button"-->
+<!--                                                                id="discount-line-item-1258834332"><span-->
+<!--                                                                class="MuiButton-label">0<p-->
+<!--                                                                class="MuiTypography-root discount_rate_line_item MuiTypography-body1"-->
+<!--                                                                style="color: rgb(255, 77, 77); font-size: 12px;"></p></span>-->
+<!--                                                        </button>-->
+<!--                                                    </td>-->
+<!--                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">-->
+<!--                                                        350,000-->
+<!--                                                    </td>-->
+<!--                                                </tr>-->
                                                 </tbody>
                                             </table>
                                         </div>
@@ -1165,7 +1168,213 @@
 </div>
 </body>
 <th:block th:replace="/layout/script :: script"/>
+<script src="/assets/admin/js/orderItem/app.js"></script>
 <script>
+    let page = {
+        urls: {
+            getOrderItemById: App.BASE_URL_OrderItem,
+        },
+        elements: {},
+        loadData: {},
+        commands: {},
+        dialogs: {
+            elements: {},
+            loadData: {},
+            commands: {},
+        },
+        initializeEventControl: {}
+    }
+
+    page.elements.tbOrderItem = $("#tbOrderItem tbody");
+
+    function getOrderItemById() {
+        return $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "get",
+            "url": page.urls.getOrderItemById
+        })
+            .done((data) => {
+                console.log(data)
+                // orderItem = data;
+                // $.each(data, (i, item) => {
+                //                     page.elements.tbOrderItem.append(`
+                //                         <tr class="MuiTableRow-root jss5868 isNormalLineItem">
+                //                                                     <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter">
+                //                                                         1
+                //                                                         <div class="__react_component_tooltip ta6d41119-e511-48af-b149-ee128339bf68 place-bottom type-dark"
+                //                                                              id="tooltipTax-1258834332" data-id="tooltip">
+                //                                                             <style aria-hidden="true">
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68 {
+                //                                                                     color: #fff;
+                //                                                                     background: #222;
+                //                                                                     border: 1px solid transparent;
+                //                                                                 }
+                //
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68.place-top {
+                //                                                                     margin-top: -10px;
+                //                                                                 }
+                //
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68.place-top::before {
+                //                                                                     border-top: 8px solid transparent;
+                //                                                                 }
+                //
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68.place-top::after {
+                //                                                                     border-left: 8px solid transparent;
+                //                                                                     border-right: 8px solid transparent;
+                //                                                                     bottom: -6px;
+                //                                                                     left: 50%;
+                //                                                                     margin-left: -8px;
+                //                                                                     border-top-color: #222;
+                //                                                                     border-top-style: solid;
+                //                                                                     border-top-width: 6px;
+                //                                                                 }
+                //
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom {
+                //                                                                     margin-top: 10px;
+                //                                                                 }
+                //
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom::before {
+                //                                                                     border-bottom: 8px solid transparent;
+                //                                                                 }
+                //
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom::after {
+                //                                                                     border-left: 8px solid transparent;
+                //                                                                     border-right: 8px solid transparent;
+                //                                                                     top: -6px;
+                //                                                                     left: 50%;
+                //                                                                     margin-left: -8px;
+                //                                                                     border-bottom-color: #222;
+                //                                                                     border-bottom-style: solid;
+                //                                                                     border-bottom-width: 6px;
+                //                                                                 }
+                //
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68.place-left {
+                //                                                                     margin-left: -10px;
+                //                                                                 }
+                //
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68.place-left::before {
+                //                                                                     border-left: 8px solid transparent;
+                //                                                                 }
+                //
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68.place-left::after {
+                //                                                                     border-top: 5px solid transparent;
+                //                                                                     border-bottom: 5px solid transparent;
+                //                                                                     right: -6px;
+                //                                                                     top: 50%;
+                //                                                                     margin-top: -4px;
+                //                                                                     border-left-color: #222;
+                //                                                                     border-left-style: solid;
+                //                                                                     border-left-width: 6px;
+                //                                                                 }
+                //
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68.place-right {
+                //                                                                     margin-left: 10px;
+                //                                                                 }
+                //
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68.place-right::before {
+                //                                                                     border-right: 8px solid transparent;
+                //                                                                 }
+                //
+                //                                                                 .ta6d41119-e511-48af-b149-ee128339bf68.place-right::after {
+                //                                                                     border-top: 5px solid transparent;
+                //                                                                     border-bottom: 5px solid transparent;
+                //                                                                     left: -6px;
+                //                                                                     top: 50%;
+                //                                                                     margin-top: -4px;
+                //                                                                     border-right-color: #222;
+                //                                                                     border-right-style: solid;
+                //                                                                     border-right-width: 6px;
+                //                                                                 }
+                //                                                             </style>
+                //                                                             <div class="MuiBox-root jss5882">
+                //                                                                 <div class="MuiBox-root jss5883"><p
+                //                                                                         class="MuiTypography-root MuiTypography-body1"
+                //                                                                         style="margin-right: 16px;">Giá chưa bao gồm
+                //                                                                     thuế</p>
+                //                                                                     <p class="MuiTypography-root MuiTypography-body1"
+                //                                                                        style="padding: 2px 0px 2px 6px; min-width: 78px; text-align: right; border-bottom: 1px solid rgb(232, 234, 235);">
+                //                                                                         350,000</p></div>
+                //                                                                 <div class="MuiBox-root jss5884"><p
+                //                                                                         class="MuiTypography-root MuiTypography-body1"
+                //                                                                         style="margin-right: 16px;">Giá đã bao gồm thuế
+                //                                                                     (10%)</p>
+                //                                                                     <p class="MuiTypography-root MuiTypography-body1">
+                //                                                                         385,000</p></div>
+                //                                                             </div>
+                //                                                         </div>
+                //                                                     </td>
+                //                                                     <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter">
+                //                                                         <a class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+                //                                                            target="_blank"
+                //                                                            href="/admin/products/122358547/variants/189770148"><img
+                //                                                                 class="jss5872"
+                //                                                                 src="https://sapo.dktcdn.net/100/679/630/variants/3f4eac62-02c6-401e-83d9-15e6ff767aa9-1669964333888.jpg"></a>
+                //                                                     </td>
+                //                                                     <td class="MuiTableCell-root MuiTableCell-body">
+                //                                                         <div class="MuiBox-root jss5885 jss5869">
+                //                                                             <div class="MuiBox-root jss5886">
+                //                                                                 <div class="MuiBox-root jss5887">
+                //                                                                     <p class="MuiTypography-root MuiTypography-body1">
+                //                                                                         Bia Tiger Crystal bạc lon 330ml (thùng 24 lon)
+                //                                                                         <button class="MuiButtonBase-root MuiIconButton-root"
+                //                                                                                 tabindex="0" type="button"
+                //                                                                                 style="padding: 0px; margin-left: 6px; height: fit-content;">
+                //                                                                             <span class="MuiIconButton-label"></span><span
+                //                                                                                 class="MuiTouchRipple-root"></span>
+                //                                                                         </button>
+                //                                                                     </p>
+                //                                                                 </div>
+                //                                                                 <h6 class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
+                //                                                                     style="font-weight: normal; margin: 2px 0px;">Mặc
+                //                                                                     định</h6><a
+                //                                                                     class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+                //                                                                     target="_blank"
+                //                                                                     href="/admin/products/122358547/variants/189770148"><span
+                //                                                                     class="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary">PVN02</span></a>
+                //                                                             </div>
+                //                                                         </div>
+                //                                                     </td>
+                //                                                     <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+                //                                                         style="width: 105px; padding-left: 0px; padding-right: 0px;"><p
+                //                                                             class="MuiTypography-root MuiTypography-body1"
+                //                                                             style="text-align: center; cursor: not-allowed;">1</p></td>
+                //                                                     <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
+                //                                                         <span class="MuiTypography-root MuiTypography-body1"
+                //                                                               data-tip="true" data-for="tooltipTax-1258834332"
+                //                                                               currentitem="false"
+                //                                                               style="text-align: right;">350,000</span></td>
+                //                                                     <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
+                //                                                         <button class="MuiButtonBase-root MuiButton-root MuiButton-text jss5875 showOnly"
+                //                                                                 tabindex="0" type="button"
+                //                                                                 id="discount-line-item-1258834332"><span
+                //                                                                 class="MuiButton-label">0<p
+                //                                                                 class="MuiTypography-root discount_rate_line_item MuiTypography-body1"
+                //                                                                 style="color: rgb(255, 77, 77); font-size: 12px;"></p></span>
+                //                                                         </button>
+                //                                                     </td>
+                //                                                     <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
+                //                                                         350,000
+                //                                                     </td>
+                //                                                 </tr>`);
+                //                 });
+            })
+            .fail((jqXHR) => {
+                console.log("An error occurred: " + jqXHR);
+            });
+    }
+
+    page.loadData = () => {
+        getOrderItemById()
+    }
+
+    $(() => {
+        page.loadData();
+
+        // page.initializeEventControl();
+    })
 
 </script>
 </html>
