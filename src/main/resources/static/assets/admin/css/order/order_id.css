@@ -88,18 +88,6 @@
     color: rgb(255, 77, 77);
 }
 
-/*.jcEYKF {*/
-/*    display: flex;*/
-/*    -webkit-box-pack: center;*/
-/*    justify-content: center;*/
-/*    -webkit-box-align: center;*/
-/*    align-items: center;*/
-/*    padding: 0px;*/
-/*    z-index: 2;*/
-/*    font-size: 14px;*/
-/*    font-weight: inherit;*/
-/*}*/
-
 .jcEYKF {
     display: flex;
     -webkit-box-pack: center;
