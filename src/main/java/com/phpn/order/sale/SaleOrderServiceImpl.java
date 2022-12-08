@@ -123,7 +123,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
 
             SaleOrderItem orderItem = new SaleOrderItem();
             if (product.getApplyTax()) {
-                List<ProductTax> productTaxList = productTaxRepository.findAllByProductIdAndTaxType(productId, TaxType.OUT);
+                List<ProductTax> productTaxList = productTaxRepository.findAllByProductIdAndTaxType(productId, TaxType.TAX_SALE);
                 float taxTotal = (float) productTaxList.stream()
                         .mapToDouble(productTax -> productTax.getId().getTax().getTax()).sum();
                 orderItem.setTax(taxTotal);
