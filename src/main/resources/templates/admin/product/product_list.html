@@ -335,8 +335,7 @@
 <th:block th:replace="/layout/script :: script"/>
     <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="/static/assets/admin/js/product/app.js"></script>
-    <script src="/static/assets/admin/js/product/jquery-3.5.1.js"></script>
-    <script src="/static/assets/admin/js/product/jquery.dataTables.min.js"></script>
+
     <script>
         let page = {
             urls: {
@@ -377,17 +376,6 @@
                     App.IziToast.showErrorAlert(App.AlertMessageVi.ERROR_404)
                 })
         }
-
-        $(document).ready(function () {
-            $('#tbProduct').DataTable({
-                initComplete: function () {
-                    var api = this.api();
-                    api.$('td').click(function () {
-                        api.search(this.innerHTML).draw();
-                    });
-                },
-            });
-        });
 
         page.loadData = () => {
             page.commands.getAllProducts()

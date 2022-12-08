@@ -1,15 +1,21 @@
 package com.phpn.mappers.product;
-
-
 import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
+import com.phpn.dto.product.ProductShortParam;
+import com.phpn.dto.product.ProductWithImageParam;
 import com.phpn.mappers.CategoryMapper;
 import com.phpn.mappers.brand.BrandMapper;
 import com.phpn.mappers.item.ItemMapper;
 import com.phpn.repositories.model.Product;
+
+
+import com.phpn.repositories.model.Tax;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.math.BigDecimal;
 
 @Component
 public class ProductMapper {
@@ -43,6 +49,24 @@ public class ProductMapper {
                 .setDeleted(true);
     }
 
+    public Product toModel(ProductWithImageParam productWithImageParam) {
+        return new Product(productWithImageParam.getCategoryId(),productWithImageParam.getBrandId())
+                .setTitle(productWithImageParam.getTitle())
+                .setStatus(productWithImageParam.getStatus())
+                .setCreateAt(java.time.LocalDateTime.now().toString())
+                .setUpdateAt(null)
+                .setDescription(productWithImageParam.getDescription())
+                .setUnit(productWithImageParam.getUnit())
+                .setSku(productWithImageParam.getSku())
+                .setBarCode(productWithImageParam.getBarCode())
+                .setImportPrice(productWithImageParam.getImportPrice())
+                .setRetailPrice(productWithImageParam.getRetailPrice())
+                .setWholesalePrice(productWithImageParam.getWholesalePrice())
+                .setBrandId(productWithImageParam.getBrandId())
+                .setCategoryId(productWithImageParam.getCategoryId())
+                .setDeleted(true);
+    }
+
     public ProductResult toDTO(Product product) {
         return new ProductResult()
                 .setId(product.getId())
@@ -59,8 +83,22 @@ public class ProductMapper {
                 .setRetailPrice(product.getRetailPrice())
                 .setCreateAt(product.getCreateAt())
                 .setUpdateAt(product.getUpdateAt());
-//                .setBrandResult(brandMapper.toDTO(product.getBrand()))
+//                .setTax((Tax) product.getTaxs());
+        //                .setBrandResult(brandMapper.toDTO(product.getBrand()))
 //                .setCategoryResult(categoryMapper.toDTO(product.getCategory()));
+    }
+
+
+    public Product toModel(ProductShortParam productShortParam) {
+        return new Product(Integer.parseInt(productShortParam.getCategoryId()))
+                .setId(Integer.parseInt(productShortParam.getId()))
+                .setTitle(productShortParam.getTitle())
+                .setSku(productShortParam.getSku())
+                .setCategoryId(Integer.parseInt(productShortParam.getCategoryId()))
+                .setRetailPrice(new BigDecimal(Integer.parseInt(productShortParam.getRetailPrice())))
+                .setSku(productShortParam.getSku())
+                .setImportPrice(new BigDecimal(Integer.parseInt(productShortParam.getImportPrice())));
+
     }
 
 //    public ProductResult toItemDTO(Product product) {

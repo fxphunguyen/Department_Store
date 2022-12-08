@@ -26,6 +26,9 @@ public class Item {
     @Column(name = "quantity")
     private Integer quantity;
 
+    @Column(name = "price")
+    private BigDecimal price;
+
     @CreationTimestamp
     @Column(name = "create_at", nullable = false)
     private Instant createAt;

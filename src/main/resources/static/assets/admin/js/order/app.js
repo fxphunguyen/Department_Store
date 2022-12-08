@@ -74,7 +74,7 @@ class OrderItemResult {
 }
 
 class Customer {
-    constructor(id, customerCode,  name, phone,  email,createAt, updateAt, employeeId, deleted, locationRegionCreate) {
+    constructor(id, customerCode,  name, phone,  email,createAt, updateAt, employeeId, deleted) {
         this.id = id;
         this.customerCode = customerCode;
         this.name = name;
@@ -87,8 +87,6 @@ class Customer {
         this.updateAt = updateAt;
         this.employeeId = employeeId;
         this.deleted = deleted;
-        // this.locationRegionResult = locationRegionResult;
-        this.locationRegionCreate = locationRegionCreate;
     }
 }
 class ItemResult {
@@ -145,6 +143,14 @@ class App {
                 message: m,
                 timer: 2000,
 
+            });
+        }
+        static showSuccessAlert(m) {
+            iziToast.success({
+                title: 'Success',
+                position: 'topRight',
+                message: m,
+                timer: 2000,
             });
         }
         static showSuccessAlert(m) {

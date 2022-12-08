@@ -34,13 +34,13 @@ public class ICustomerImpl
         this.name = iCustomer.getNAME();
         this.phone = iCustomer.getPHONE();
         this.customerGroup = iCustomer.getCUSTOMER_GROUP();
-        this.debt = iCustomer.getCONGNO();
-        this.spend = iCustomer.getCHITIEU();
-        this.numberProductOrdered = iCustomer.getSL_MH_DAMUA();
-        this.numberQuantityOrdered = iCustomer.getSL_SP_DAMUA();
-        this.numberQuantityReturned = iCustomer.getSL_SP_HOANTRA();
-        this.employeeName = iCustomer.getNV_PHUTRACH();
-        this.lastDateOrdered = iCustomer.getNGM_CUOICUNG();
+        this.debt = iCustomer.getORDER_DEBT();
+        this.spend = iCustomer.getTOTAL_PRICE_SPENDING();
+        this.numberProductOrdered = iCustomer.getQUANTITY_PRODUCT_ORDER();
+        this.numberQuantityOrdered = iCustomer.getQUANTITY_ITEMS_ORDER();
+        this.numberQuantityReturned = iCustomer.getQUANTITY_PRODUCT_PAY();
+        this.employeeName = iCustomer.getEMPLOYEE_NAME();
+        this.lastDateOrdered = iCustomer.getPRODUCT_ORDER_FINAL();
 
     }
 }

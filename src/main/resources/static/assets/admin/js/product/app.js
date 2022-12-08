@@ -1,5 +1,8 @@
 class App {
     static DOMAIN_API = "http://localhost:8080";
+    static BASE_URL_Product = this.DOMAIN_API + "/api/products";
+    static BASE_URL_Categories = this.DOMAIN_API + "/api/categories";
+    static BASE_URL_Brands = this.DOMAIN_API + "/api/brands";
     static BASE_URL_PRODUCT = this.DOMAIN_API + "/api/products";
     static URL_CREATE_PRODUCT = this.BASE_URL_Product + "/create";
 
@@ -35,8 +38,39 @@ class App {
         }
     }
 
+}
+
+class Image {
+    constructor(cloudId, fileName, fileFolder, fileUrl, fileType, path) {
+        this.cloudId = cloudId;
+        this.fileName = fileName;
+        this.fileFolder = fileFolder;
+        this.fileUrl = fileUrl;
+        this.fileType = fileType;
+    }
+}
+
+class Product {
+    constructor(id, title, status, description, unit, sku, barCode, quantity, retailPrice, importPrice, wholesalePrice, categoryId, brandId, deleted, image) {
+        this.id = id;
+        this.title = title;
+        this.status = status;
+        this.description = description;
+        this.unit = unit;
+        this.sku = sku;
+        this.barCode = barCode;
+        this.quantity = quantity;
+        this.retailPrice = retailPrice;
+        this.importPrice = importPrice;
+        this.wholesalePrice = wholesalePrice;
+        this.categoryId = categoryId;
+        this.brandId = brandId;
+        this.deleted = deleted;
+        this.productImageParams = image;
+    }
+
     static renderRowProduct(product) {
-        let str =`
+        let str = `
              <tr id="tr_${product.id}" >
                 <td class="align-middle"></td>
                 <td class="align-middle"><input type="checkbox" value=""></td>
@@ -52,20 +86,5 @@ class App {
             </tr>
         `;
         return str;
-    }
-}
-
-class Product {
-    constructor(id, image, title, categoryName, brandName, available, trading, status, createAt,updateAt) {
-        this.id = id;
-        this.image = image;
-        this.title = title;
-        this.categoryName = categoryName;
-        this.brandName = brandName;
-        this.available = available;
-        this.trading = trading;
-        this.status = status;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
     }
 }

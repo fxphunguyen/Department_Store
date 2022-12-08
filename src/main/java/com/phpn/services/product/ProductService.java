@@ -2,10 +2,10 @@ package com.phpn.services.product;
 
 import java.util.List;
 
-import com.phpn.dto.product.ProductCreate;
-import com.phpn.dto.product.ProductListResult;
-import com.phpn.dto.product.ProductParam;
 import com.phpn.dto.product.ProductResult;
+import com.phpn.dto.product.ProductShortParam;
+import com.phpn.dto.product.ProductCreate;
+import com.phpn.dto.product.ProductWithImageParam;
 import com.phpn.repositories.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,9 +20,11 @@ public interface ProductService {
 
     ProductResult findByIdProduct(Integer id);
 
-    Product create(ProductParam productParam);
+    Product create(ProductWithImageParam productWithImageParam);
 
+    Product createShortProduct(ProductShortParam productShortParam);
     Product createProduct(ProductCreate productCreate);
-    List<ProductListResult> getAllProductListResult();
+
+    List<ProductResult> getAllProductListResult();
 
 }

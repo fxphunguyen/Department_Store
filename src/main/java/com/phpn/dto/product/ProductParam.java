@@ -2,7 +2,6 @@ package com.phpn.dto.product;
 
 import java.math.BigDecimal;
 
-import com.phpn.dto.item.ItemResult;
 import com.phpn.repositories.model.ProductStatus;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,7 +30,6 @@ public class ProductParam {
     private BigDecimal wholesalePrice;
     private Integer categoryId;
     private Integer brandId;
-    private Float applyTax;
+    private Boolean applyTax;
     private Boolean deleted;
-
 }
