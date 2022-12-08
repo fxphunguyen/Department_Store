@@ -502,18 +502,23 @@
         })
             .done((data) => {
                 App.IziToast.showSuccessAlert('Thêm mới khách hàng thành công  !!!')
+                window.location.href = "/admin/customers";
                 $('#nameCreate').val("");
                 $('#codeCreate').val("");
                 $('#phoneCreate').val("");
-                $('#emailCreate').empty("");
-                $('#birthdayCreate').empty("");
-                $('#statusCreate').empty("")
-                $('#addressCreate').empty("");
-
-                $('#employeeNameCreate').empty();
+                $('#emailCreate').val("");
+                $('#birthdayCreate').val("");
+                $('#statusCreate').val("")
+                $('#addressCreate').val("");
+                $('#employeeNameCreate').val();
             })
             .fail((jqXHR) => {
-                App.IziToast.showErrorAlert('showErrorAlert !!!')
+                console.log(jqXHR);
+                if (jqXHR.responseJSON) {
+                    $.each(jqXHR.responseJSON, (key, item)=> {
+                        App.IziToast.showErrorAlert(item);
+                    })
+                }
 
             })
     });
@@ -710,6 +715,12 @@
                 });
             })
             .fail((jqXHR) => {
+                console.log(jqXHR);
+                if (jqXHR.responseJSON) {
+                    $.each(jqXHR.responseJSON, (key, item)=> {
+                        App.IziToast.showErrorAlert(item);
+                    })
+                }
 
             })
     }
