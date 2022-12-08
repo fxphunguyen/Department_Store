@@ -40,13 +40,13 @@ public class ItemServiceImpl implements ItemService {
     @Override
     @Transactional(readOnly = true)
     public int getTotalInventoryQuantityByProductId(Integer productId) {
-        return 0;
+        return itemRepository.getTotalInventoryQuantityByProductId(productId);
     }
 
     @Override
     @Transactional(readOnly = true)
     public int getAvailableInventoryQuantityByProductId(Integer productId) {
-        return 0;
+        return itemRepository.getAvailableInventoryQuantityByProductId(productId);
     }
 
 }
