@@ -76,9 +76,6 @@ public class Item {
     @Column(name = "defective")
     private Integer defective;
 
-    @Column(name = "price")
-    private BigDecimal price;
-
     public Item (Integer productId, Integer supplierId, Integer orderId, Integer employeeId){
         setProductId(productId);
         setSupplierId(supplierId);
