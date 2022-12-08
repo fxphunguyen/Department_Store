@@ -11,6 +11,8 @@ import com.phpn.product.dto.ProductShortParam;
 import com.phpn.product.dto.ProductCreate;
 import com.phpn.product.dto.ProductWithImageParam;
 import com.phpn.product.item.ItemRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import vn.fx.qh.sapo.entities.product.*;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -147,6 +149,11 @@ public class ProductServiceImpl implements ProductService {
                     return dto;
                 }).collect(Collectors.toList());
 
+    }
+
+    @Override
+    public Page<Product> findAll(Pageable pageable) {
+        return null;
     }
 
 }

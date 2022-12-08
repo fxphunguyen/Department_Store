@@ -1,11 +1,3 @@
-<<<<<<< HEAD:src/main/java/com/phpn/mappers/product/ProductMapper.java
-package com.phpn.mappers.product;
-import com.phpn.dto.product.*;
-import com.phpn.mappers.CategoryMapper;
-import com.phpn.mappers.brand.BrandMapper;
-import com.phpn.mappers.item.ItemMapper;
-import com.phpn.repositories.model.Product;
-=======
 package com.phpn.product;
 import com.phpn.brand.dto.BrandMapper;
 import com.phpn.product.dto.ProductParam;
@@ -15,8 +7,6 @@ import com.phpn.product.dto.ProductWithImageParam;
 import com.phpn.category.dto.CategoryMapper;
 import com.phpn.product.item.ItemMapper;
 import vn.fx.qh.sapo.entities.product.*;
->>>>>>> 80a728637f16501bfcefcb1446083940d3e78b6d:src/main/java/com/phpn/product/ProductMapper.java
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 
