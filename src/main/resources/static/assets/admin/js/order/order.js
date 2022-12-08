@@ -358,7 +358,7 @@ function showListProducts() {
     $.ajax({
         type: "GET",
         // contentType: 'application/json',
-        url: `${location.origin}/api/products/showProductInfo`
+        url: `${location.origin}/api/products`
     })
         .done((data) => {
             products = data;

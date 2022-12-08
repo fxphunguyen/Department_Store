@@ -16,9 +16,9 @@ public interface ProductService {
 
     ProductResult findById(Integer id);
 
-    Product create(ProductWithImageParam productWithImageParam);
+    ProductResult create(ProductWithImageParam productWithImageParam);
 
-    Product createShortProduct(ProductShortParam productShortParam);
+    ProductResult createShortProduct(ProductShortParam productShortParam);
 
     Page<Product> findAll(Pageable pageable);
 
