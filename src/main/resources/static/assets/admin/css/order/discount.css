@@ -76,6 +76,8 @@
 #discount_order {
     position: relative;
     bottom: -3px;
+    height: -webkit-fill-available;
+
 }
 #dropdownMenuButton1_2 {
     border-bottom: none

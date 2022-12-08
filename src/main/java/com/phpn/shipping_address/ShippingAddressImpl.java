@@ -1,7 +1,7 @@
 package com.phpn.shipping_address;
 
 
-import com.phpn.customer.CreateShippingAddressParam;
+import com.phpn.customer.dto.CreateShippingAddressParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.fx.qh.sapo.entities.customer.ShippingAddress;

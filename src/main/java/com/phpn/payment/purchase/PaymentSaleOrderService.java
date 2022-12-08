@@ -5,6 +5,7 @@ import com.phpn.payment.sale.PaymentOrderParam;
 import com.phpn.payment.sale.PaymentSaleOrderResult;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface PaymentSaleOrderService {
@@ -15,5 +16,7 @@ public interface PaymentSaleOrderService {
     List<PaymentSaleOrderResult> findAllByOrderId(Integer orderId);
 
     PaymentSaleOrderResult createPaymentOrder(PaymentOrderParam paymentOrderParam);
+
+    BigDecimal getSpendTotalByCustomerId(Integer id);
 
 }
