@@ -1,4 +1,7 @@
 package com.phpn.order.sale;
+import com.phpn.customer.dto.HistoryCustomerOrder;
+import com.phpn.order.sale.dto.SaleOrderByCustomer;
+import com.phpn.order.sale.dto.SaleOrderResult;
 import vn.fx.qh.sapo.entities.order.sale.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +20,11 @@ public interface SaleOrderRepository extends JpaRepository<SaleOrder, Integer> {
     @Query(value = "call `ph-pn`.sp_getSpendTotalByCustomerId(:id);" , nativeQuery = true)
     BigDecimal getSpendTotalByCustomerId(Integer id);
 
+    @Query(value = "call sp_getCountOrderByCustomerId(:id);" , nativeQuery = true)
+    Integer getQuantityProductOrderById(Integer id);
 
+
+    @Query("FROM SaleOrder WHERE customerId = :id")
+    List<SaleOrder> findAllCustomerOrderHistory(Integer id);
 }
 
