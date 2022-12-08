@@ -14,11 +14,6 @@ import java.util.List;
 @EnableJpaRepositories
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-    List<Product> findAll();
-
-    @Query(value = "SELECT * FROM `ph-pn`.v_item_product", nativeQuery = true)
-    List<ProductInfo> findAllProductInfo();
-
     @Query(value = "call getAllProductList()",nativeQuery = true)
     List<ProductResult> getAllProductListResult();
 }

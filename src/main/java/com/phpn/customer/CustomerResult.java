@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import vn.fx.qh.sapo.entities.customer.*;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 
@@ -32,13 +33,16 @@ public class CustomerResult {
 
     private String birthday;
 
+    private BigDecimal debtTotal;
+
+    private BigDecimal spendTotal;
+
     private CustomerStatus customerStatus;
 
     private Instant createAt;
 
     private Instant updateAt;
 
-    private Integer locationRegionId;
     private ShippingAddressResult shippingAddress;
     private ShippingAddressResult billAddress;
     private List<ShippingAddressResult> shippingAddressList;
@@ -47,7 +51,7 @@ public class CustomerResult {
 
     private Integer employeeId;
 
-    private EmployeeResult employeeResult;
+    private EmployeeResult employee;
 
 
 }

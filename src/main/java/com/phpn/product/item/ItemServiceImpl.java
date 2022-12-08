@@ -4,8 +4,8 @@ import com.phpn.employee.dto.EmployeeMapper;
 import com.phpn.product.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +25,7 @@ public class ItemServiceImpl implements ItemService {
     private ProductMapper productMapper;
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<ItemResult> findAll() {
         return itemRepository.findAll()
                 .stream()
@@ -37,14 +37,16 @@ public class ItemServiceImpl implements ItemService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public int getTotalInventoryQuantityByProductId(Integer productId) {
+        return itemRepository.getTotalInventoryQuantityByProductId(productId).orElse(0);
+    }
 
-//    @Override
-//    public List<ItemResult> findAllByProductIdAndAvailableAndQuantity() {
-//        return itemRepository.findAllByProductIdAndAvailableAndQuantity()
-//                .stream()
-//                .map(itemMapper :: toDTO)
-//                .collect(Collectors.toList());
-//    }
-
+    @Override
+    @Transactional(readOnly = true)
+    public int getAvailableInventoryQuantityByProductId(Integer productId) {
+        return itemRepository.getTotalInventoryQuantityByProductId(productId).orElse(0);
+    }
 
 }

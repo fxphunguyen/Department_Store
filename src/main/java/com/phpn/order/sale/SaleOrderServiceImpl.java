@@ -31,7 +31,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
 
 
     @Autowired
-    private SaleOrderRepository orderRepository;
+    private SaleOrderRepository saleOrderRepository;
 
     @Autowired
     private SaleOrderItemRepository orderItemRepository;
@@ -64,7 +64,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
     @Override
     @Transactional(readOnly = true)
     public List<SaleOrderResult> findAll() {
-        return orderRepository.findAll()
+        return saleOrderRepository.findAll()
                 .stream()
                 .map(orderMapper::toDTO)
                 .collect(Collectors.toList());
@@ -74,7 +74,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
     @Transactional
     public SaleOrderResult createOrderExport(SaleOrderParam orderParam) {
         Random rand = new Random();
-        int ranNum = rand.nextInt(100000)+1;
+        int ranNum = rand.nextInt(100000) + 1;
 
 //        Integer employeeId = orderParam.getEmployeeId();
         Integer customerId = orderParam.getCustomerId();
@@ -88,7 +88,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
         SaleOrder order = orderMapper.toModel(orderParam);
         order.setGrandTotal(new BigDecimal(0));
         order.setTotal(new BigDecimal(0));
-        order.setOrderCode("SON00"+String.valueOf(ranNum));
+        order.setOrderCode("SON00" + String.valueOf(ranNum));
         order.setCreateAt(Instant.now());
         order.setSubTotal(new BigDecimal(0));
         order.setLine1(order.getLine1());
@@ -97,7 +97,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
         order.setEmployee(employeeOptional.get());
         order.setOrderStatusCode(OrderStatusCode.CHECKOUT);
         order.setOrderStatusCode(OrderStatusCode.UNPAID);
-        order = orderRepository.save(order);
+        order = saleOrderRepository.save(order);
         BigDecimal total = BigDecimal.valueOf(0);
         BigDecimal subTotal = BigDecimal.valueOf(0);
         BigDecimal grandTotal = BigDecimal.valueOf(0);
@@ -123,7 +123,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
 
             SaleOrderItem orderItem = new SaleOrderItem();
             if (product.getApplyTax()) {
-                List<ProductTax> productTaxList = productTaxRepository.findAllByProductIdAndTaxType(productId, TaxType.OUT);
+                List<ProductTax> productTaxList = productTaxRepository.findAllByProductIdAndTaxType(productId, TaxType.TAX_SALE);
                 float taxTotal = (float) productTaxList.stream()
                         .mapToDouble(productTax -> productTax.getId().getTax().getTax()).sum();
                 orderItem.setTax(taxTotal);
@@ -187,7 +187,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
     @Override
     @Transactional
     public SaleOrderResult findById(int id) {
-        Optional<SaleOrder> optional = orderRepository.findById(id);
+        Optional<SaleOrder> optional = saleOrderRepository.findById(id);
         if (!optional.isPresent())
             throw new NotFoundException("Đơn hàng không hợp lệ!");
         SaleOrderResult result = orderMapper.toDTO(optional.get());
@@ -199,6 +199,13 @@ public class SaleOrderServiceImpl implements SaleOrderService {
 
         return result;
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public BigDecimal getSpendTotal(Integer customerId) {
+        return saleOrderRepository.getSpendTotalByCustomerId(customerId);
+    }
+
 
 
 }

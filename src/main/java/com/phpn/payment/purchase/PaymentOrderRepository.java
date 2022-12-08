@@ -17,4 +17,9 @@ public interface PaymentOrderRepository extends JpaRepository<PaymentSaleOrder, 
 
     List<PaymentSaleOrder> findAllByOrderIdAndPaid(int orderId, BigDecimal paid);
 
+
+    @Query(value = "call sp_getPaidTotalByCustomerById(:id);" , nativeQuery = true)
+    BigDecimal getPaidTotalByCustomerById(Integer id);
+
+
 }
