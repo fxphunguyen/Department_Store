@@ -46,7 +46,7 @@
 
 .MuiTypography-subtitle1 {
     font-size: 1rem;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 500;
     line-height: 20px;
 }
@@ -63,7 +63,7 @@
     margin-right: 16px;
 }
 
-.kcDZdE {
+.eyzdgZ {
     display: inline-flex;
     -webkit-box-pack: center;
     justify-content: center;
@@ -83,9 +83,9 @@
     height: 2.57143rem;
     padding: 0px 1.14286rem;
     min-width: 4.57143rem;
-    border: none;
-    background: rgb(243, 244, 245);
-    color: rgb(116, 124, 135);
+    border: 1px solid rgb(255, 77, 77);
+    background: rgb(255, 255, 255);
+    color: rgb(255, 77, 77);
 }
 
 .jcEYKF {
@@ -96,7 +96,7 @@
     align-items: center;
     padding: 0px;
     z-index: 2;
-    font-size: 14px;
+    font-size: inherit;
     font-weight: inherit;
 }
 
@@ -157,6 +157,7 @@
 .jss966 {
     display: flex;
     align-items: center;
+    margin-right: 427px
 }
 
 .jss4118 {
@@ -166,7 +167,7 @@
 
 .MuiTypography-h4 {
     font-size: 14px;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 500;
     line-height: 24px;
 }
@@ -312,6 +313,7 @@
     padding: 0;
     background-color: transparent;
 }
+
 .MuiStepper-alternativeLabel {
     align-items: flex-start;
 }
@@ -326,11 +328,11 @@
     padding: 24px;
 }
 
-.jss4124>.MuiStep-root:first-child {
+.jss4124 > .MuiStep-root:first-child {
     padding-left: 0;
 }
 
-.jss4124>.MuiStep-root {
+.jss4124 > .MuiStep-root {
     width: 118px;
     padding: 0 48px;
 }
@@ -350,7 +352,7 @@
     align-items: center;
 }
 
-.jss4124>.MuiStep-completed .MuiStepLabel-iconContainer {
+.jss4124 > .MuiStep-completed .MuiStepLabel-iconContainer {
     width: 28px;
     height: 28px;
     padding: 4px;
@@ -363,7 +365,7 @@
     padding-right: 8px;
 }
 
-.jss4124>.MuiStep-root:first-child .MuiStepLabel-root .MuiStepLabel-labelContainer {
+.jss4124 > .MuiStep-root:first-child .MuiStepLabel-root .MuiStepLabel-labelContainer {
     margin-left: 8px;
 }
 
@@ -421,7 +423,6 @@
 }
 
 .jss4192 {
-    width: calc(100% - 300px);
     border-bottom: 1px solid #F3F4F5;
 }
 
@@ -441,7 +442,7 @@
 
 .MuiTypography-h6 {
     font-size: 14px;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 500;
     line-height: 20px;
 }
@@ -464,7 +465,7 @@
     color: #0088FF;
 }
 
-.jss4124>.MuiStep-root:first-child .MuiStepLabel-root .MuiStepLabel-labelContainer {
+.jss4124 > .MuiStep-root:first-child .MuiStepLabel-root .MuiStepLabel-labelContainer {
     margin-left: -6px;
 }
 
@@ -523,14 +524,14 @@
 }
 
 .jss4193 {
-    font-weight: 500;
-    line-height: 16px;
-    text-transform: uppercase;
+    font-weight: 500 !important;
+    line-height: 16px !important;
+    text-transform: uppercase !important;
 }
 
 .MuiTypography-body2 {
     font-size: 14px;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 400;
     line-height: 19px;
 }
@@ -742,7 +743,7 @@
     align-items: baseline;
 }
 
-.jss3780 .list-field .item>.title {
+.jss3780 .list-field .item > .title {
     flex: none;
     width: 160px;
     position: relative;
@@ -1092,15 +1093,15 @@
     display: table-row-group;
 }
 
-.jss4416 .MuiTableBody-root>.MuiTableRow-root:first-child .MuiTableCell-root {
+.jss4416 .MuiTableBody-root > .MuiTableRow-root:first-child .MuiTableCell-root {
     border-top: unset;
 }
 
-.jss5868:not(.disabledFocus)>.MuiTableCell-root {
+.jss5868:not(.disabledFocus) > .MuiTableCell-root {
     border-top: 1px solid #E8EAEB;
 }
 
-.jss5868>.MuiTableCell-root:first-child {
+.jss5868 > .MuiTableCell-root:first-child {
     border-left: 2px solid transparent;
 }
 
@@ -1108,7 +1109,7 @@
     padding-left: 16px;
 }
 
-.jss5868>.MuiTableCell-root {
+.jss5868 > .MuiTableCell-root {
     border-top: unset;
     border-bottom: unset;
 }
@@ -1167,7 +1168,7 @@
 }
 
 .MuiTypography-body1 {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 400;
     line-height: 20px;
     font-size: 14px;
@@ -1179,12 +1180,12 @@
 
 .MuiTypography-subtitle2 {
     font-size: 0.875rem;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 500;
     line-height: 15px;
 }
 
-.jss4416 .MuiTableBody-root>.MuiTableRow-root:first-child .MuiTableCell-root {
+.jss4416 .MuiTableBody-root > .MuiTableRow-root:first-child .MuiTableCell-root {
     border-top: unset;
 }
 
@@ -1315,4 +1316,20 @@
     line-height: 1.14286rem;
     margin: 0px;
     color: rgb(238, 71, 71);
+}
+
+.jss1042 {
+    border: 1px dashed #A3A8AF;
+    border-radius: 5px;
+}
+
+.jss1041 {
+    top: 0;
+    right: 0;
+    position: absolute;
+    background: #fff;
+}
+
+.jss1040 {
+    width: 284px;
 }

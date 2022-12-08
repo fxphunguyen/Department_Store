@@ -1,0 +1,54 @@
+package com.phpn.customer;
+
+
+import com.phpn.shipping_address.ShippingAddressResult;
+import com.phpn.employee.dto.EmployeeResult;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
+import vn.fx.qh.sapo.entities.customer.*;
+
+import java.time.Instant;
+import java.util.List;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Accessors(chain = true)
+public class CustomerResult {
+
+    private Integer id;
+
+    private String customerCode;
+
+    private String name;
+
+    private String phone;
+
+    private CustomerGroup customerGroup;
+
+    private String email;
+
+    private String birthday;
+
+    private CustomerStatus customerStatus;
+
+    private Instant createAt;
+
+    private Instant updateAt;
+
+    private Integer locationRegionId;
+    private ShippingAddressResult shippingAddress;
+    private ShippingAddressResult billAddress;
+    private List<ShippingAddressResult> shippingAddressList;
+
+    private CustomerGender customerGender;
+
+    private Integer employeeId;
+
+    private EmployeeResult employeeResult;
+
+
+}
+
