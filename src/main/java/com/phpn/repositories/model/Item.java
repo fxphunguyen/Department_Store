@@ -26,6 +26,9 @@ public class Item {
     @Column(name = "quantity")
     private Integer quantity;
 
+    @Column(name = "price")
+    private BigDecimal price;
+
     @CreationTimestamp
     @Column(name = "create_at", nullable = false)
     private Instant createAt;
@@ -66,6 +69,9 @@ public class Item {
 
     @Column(name = "available")
     private Integer available;
+
+    @Column(name = "trading")
+    private Integer trading;
 
     @Column(name = "defective")
     private Integer defective;

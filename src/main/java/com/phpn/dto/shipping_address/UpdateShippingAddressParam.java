@@ -28,4 +28,6 @@ public class UpdateShippingAddressParam {
     private Integer customerId;
     
     private Integer supplierId;
+
+
 }

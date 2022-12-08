@@ -1,6 +1,5 @@
 package com.phpn.controllers.api;
 
-import com.phpn.dto.orderItem.OrderItemParam;
 import com.phpn.dto.orderItem.OrderItemResult;
 import com.phpn.services.order_item.OrderItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +21,7 @@ public class OrderItemAPI {
         List<OrderItemResult> orderItemResults = orderItemService.findAllOrderItemByOrderId(orderId);
         return new ResponseEntity<>(orderItemResults,HttpStatus.OK);
     }
+
+
 
 }

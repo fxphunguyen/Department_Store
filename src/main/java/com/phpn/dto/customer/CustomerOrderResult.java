@@ -1,8 +1,11 @@
 package com.phpn.dto.customer;
 
 import com.phpn.dto.employee.EmployeeResult;
+import com.phpn.repositories.model.ShippingAddress;
 import lombok.*;
 import lombok.experimental.Accessors;
+
+import java.util.Set;
 
 
 @NoArgsConstructor
@@ -19,9 +22,7 @@ public class CustomerOrderResult {
 
     private String phone;
 
-//    private Integer locationRegionId;
-
-//    private LocationRegionResult locationRegion;
+    private Set<ShippingAddress> shippingAddressSet;
 
     private Integer employeeId;
 

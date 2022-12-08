@@ -3,16 +3,19 @@ package com.phpn.repositories.model;
 import java.math.BigDecimal;
 
 public interface ProductInfo {
-     Integer getID();
-     String getTITLE();
-     String getUNIT();
-     String getSKU();
-     String getBAR_CODE();
-     String getIMAGE();
-     String getDESCRIPTION();
-     Integer getQUANTITY();
-     BigDecimal getRETAIL_PRICE();
-     Integer getINVENTORY();
-     Integer getAVAILABLE();
-     Integer getTRADING();
+     Integer getId();
+     String getTitle();
+     String getUnit();
+     String getSku();
+     String getBar_code();
+     String getImage();
+     String getDescription();
+     Integer getQuantity();
+     BigDecimal getRetail_price();
+     Integer getInventory();
+     Integer getAvailable();
+     Integer getTrading();
+     Boolean getApply_tax();
+     Float getTax();
+     Integer getTax_id();
 }

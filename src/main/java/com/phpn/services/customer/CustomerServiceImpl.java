@@ -5,11 +5,12 @@ import com.phpn.dto.customer.CustomerOrderResult;
 import com.phpn.dto.customer.CustomerResult;
 import com.phpn.dto.shipping_address.CreateShippingAddressParam;
 import com.phpn.mappers.customer.CustomerMapper;
-import com.phpn.mappers.customer.ShippingAddressMapper;
+import com.phpn.mappers.shippingAddress.ShippingAddressMapper;
 import com.phpn.repositories.CustomerRepository;
 
 import com.phpn.repositories.ShippingAddressRepository;
 import com.phpn.repositories.model.*;
+import com.phpn.services.shippingAddress.ShippingAddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,6 @@ import java.util.stream.Collectors;
 
 
 @Service
-
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
@@ -37,6 +37,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private ShippingAddressRepository shippingAddressRepository;
+
+    @Autowired
+    private ShippingAddressService shippingAddressService;
 
 
 
@@ -59,14 +62,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public CustomerResult create(CreateCustomerParam customerCreate) {
-
-        Customer customer = customerRepository.save(customerMapper.toModel(customerCreate));
-        CreateShippingAddressParam shippingAddressParam = customerCreate.getShippingAddress();
+    public Customer create(CreateCustomerParam customerCreate) {
+        Customer customer = customerRepository.save(customerMapper.toCustomer(customerCreate));
+        CreateShippingAddressParam shippingAddressParam = customerCreate.getCreateShippingAddressParam();
         shippingAddressParam.setCustomerId(customer.getId());
-        ShippingAddress shippingAddress = shippingAddressMapper.toModel(shippingAddressParam);
-        shippingAddressRepository.save(shippingAddress);
-        return customerMapper.toDTO(customer);
+//        ShippingAddress shippingAddress = shippingAddressMapper.toModel(shippingAddressParam);
+        shippingAddressService.create(customerCreate.getCreateShippingAddressParam());
+        return customer;
     }
 
     @Override

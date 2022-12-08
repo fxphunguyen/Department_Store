@@ -25,7 +25,7 @@ public class OrderAPI {
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping("")
+    @GetMapping()
     public ResponseEntity<?> findAll() {
         List<OrderResult> orderResults = orderService.findAll();
 
@@ -39,7 +39,7 @@ public class OrderAPI {
         return new ResponseEntity<>(orderService.createOrderExport(orderParam), HttpStatus.OK);
     }
 
-    @GetMapping("{orderId}")
+    @GetMapping("/{orderId}")
     public ResponseEntity<?> getAllOrderItemByOrderId(@PathVariable Integer orderId) {
         OrderResult orderResult = orderService.findById(orderId);
         return new ResponseEntity<>(orderResult,HttpStatus.OK);
