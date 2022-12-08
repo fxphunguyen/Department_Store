@@ -21,14 +21,14 @@
             <div class="MuiBox-root jss3789 jss3787" style="max-width: 1366px;">
                 <div class="MuiBox-root jss3790">
                     <a class="MuiTypography-root MuiLink-root MuiLink-underlineNone jss3786 MuiTypography-colorSecondary"
-                    href="/admin/orders">
+                       href="/admin/orders">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         style="width: 24px; height: 24px; margin-left: -9px; margin-right: 6px;">
-                        <path d="M14.298 5.99 8.288 12l6.01 6.01 1.414-1.414L11.116 12l4.596-4.596-1.414-1.414Z"
-                              fill="currentColor"></path>
+                             style="width: 24px; height: 24px; margin-left: -9px; margin-right: 6px;">
+                            <path d="M14.298 5.99 8.288 12l6.01 6.01 1.414-1.414L11.116 12l4.596-4.596-1.414-1.414Z"
+                                  fill="currentColor"></path>
                         </svg>
                         <h6 class="MuiTypography-root MuiTypography-subtitle1">Quay lại danh sách đơn hàng</h6>
-                </a>
+                    </a>
                 </div>
                 <div class="MuiBox-root jss3791">
                     <div class="MuiBox-root jss3792 jss3783">
@@ -49,7 +49,8 @@
                             <h4 class="MuiTypography-root MuiTypography-h4"
                                 style="line-height: 28px; margin-right: 20px;" th:text="*{orderCode}"></h4>
                             <div th:class="*{orderStatus.name} == 'Đang giao dịch' ? 'hlxtkG' : (*{orderStatus.name} == 'Hoàn thành' ? 'hBmWYo' : 'csJERM')">
-                                <span th:class="*{orderStatus.name} == 'Đang giao dịch' ? 'gIZkwA' : (*{orderStatus.name} == 'Hoàn thành' ? 'bzQjtT' : 'ccQLIN')" th:text="*{orderStatus.name}"></span>
+                                <span th:class="*{orderStatus.name} == 'Đang giao dịch' ? 'gIZkwA' : (*{orderStatus.name} == 'Hoàn thành' ? 'bzQjtT' : 'ccQLIN')"
+                                      th:text="*{orderStatus.name}"></span>
                             </div>
                         </div>
                         <div class="MuiBox-root jss967" style="margin-top: 10px;">
@@ -181,8 +182,10 @@
                                                 Thông tin khách hàng
                                             </h6>
                                             <div class="MuiBox-root jss4559">
-                                                <a target="_blank" href="/admin/customers/186453408" style="text-decoration: none; display: inline-flex; align-items: center; padding-right: 4px;">
-                                                    <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary" th:text="*{customer.name}"></h6>
+                                                <a target="_blank" href="/admin/customers/186453408"
+                                                   style="text-decoration: none; display: inline-flex; align-items: center; padding-right: 4px;">
+                                                    <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary"
+                                                        th:text="*{customer.name}"></h6>
                                                 </a>
                                                 -
                                                 <h5 th:text="*{customer.phone}" style="padding-left: 4px;"></h5>
@@ -206,6 +209,48 @@
                                                             <span class="MuiButton-label">Thêm địa chỉ</span><span
                                                                 class="MuiTouchRipple-root"></span></button>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MuiBox-root jss1389 jss1040 jss1042 jss1041">
+                                            <div class="MuiBox-root jss1399 jss1390">
+                                                <li class="MuiListItem-root MuiListItem-gutters"
+                                                    style="padding: 5px 8px;">
+                                                    <div class="MuiListItemText-root"><p
+                                                            class="MuiTypography-root jss1391 MuiTypography-body1">Nợ
+                                                        phải thu</p></div>
+                                                    <div class="MuiListItemText-root"><p
+                                                            class="MuiTypography-root jss1398 MuiTypography-body1 MuiTypography-colorError MuiTypography-alignRight">
+                                                        -608,947</p></div>
+                                                </li>
+                                                <li class="MuiListItem-root MuiListItem-gutters"
+                                                    style="cursor: pointer; padding: 5px 8px;">
+                                                    <div class="MuiListItemText-root"><p
+                                                            class="MuiTypography-root jss1391 MuiTypography-body1">Tổng
+                                                        chi tiêu (0 đơn)</p></div>
+                                                    <div class="MuiListItemText-root"><p
+                                                            class="MuiTypography-root jss1398 MuiTypography-body1 MuiTypography-colorPrimary MuiTypography-alignRight">
+                                                        54</p></div>
+                                                </li>
+                                                <div class="MuiBox-root jss1400">
+                                                    <li class="MuiListItem-root MuiListItem-gutters"
+                                                        style="cursor: pointer; padding: 5px 8px;">
+                                                        <div class="MuiListItemText-root"><p
+                                                                class="MuiTypography-root jss1391 MuiTypography-body1">
+                                                            Trả hàng (0 sản phẩm)</p></div>
+                                                        <div class="MuiListItemText-root"><p
+                                                                class="MuiTypography-root jss1398 MuiTypography-body1 MuiTypography-colorError MuiTypography-alignRight">
+                                                            0</p></div>
+                                                    </li>
+                                                    <li class="MuiListItem-root MuiListItem-gutters"
+                                                        style="cursor: pointer; padding: 5px 8px;">
+                                                        <div class="MuiListItemText-root"><p
+                                                                class="MuiTypography-root jss1391 MuiTypography-body1">
+                                                            Giao hàng thất bại (0 đơn)</p></div>
+                                                        <div class="MuiListItemText-root"><p
+                                                                class="MuiTypography-root jss1398 MuiTypography-body1 MuiTypography-colorError MuiTypography-alignRight">
+                                                            0</p></div>
+                                                    </li>
                                                 </div>
                                             </div>
                                         </div>
@@ -490,33 +535,46 @@
                                  style="height: 100%;">
                                 <div class="MuiBox-root jss4354 jss4208">
                                     <div class="MuiBox-root jss6252">
-                                        <h6 class="MuiTypography-root MuiTypography-h6" style="margin-left: 16px;">Thông tin đơn hàng</h6>
+                                        <h6 class="MuiTypography-root MuiTypography-h6" style="margin-left: 16px;">Thông
+                                            tin đơn hàng</h6>
                                     </div>
                                 </div>
                                 <div class="MuiBox-root jss4356 jss4348">
                                     <div class="MuiGrid-root jss4349 MuiGrid-container MuiGrid-wrap-xs-nowrap">
-                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">Chính sách giá <span>:</span></p>
-                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">Giá bán lẻ</p>
+                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
+                                            Chính sách giá <span>:</span></p>
+                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
+                                            Giá bán lẻ</p>
                                     </div>
                                     <div class="MuiGrid-root jss4349 MuiGrid-container MuiGrid-wrap-xs-nowrap">
-                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">Bán tại <span>:</span></p>
-                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">Chi nhánh mặc định</p>
+                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
+                                            Bán tại <span>:</span></p>
+                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
+                                            Chi nhánh mặc định</p>
                                     </div>
                                     <div class="MuiGrid-root jss4349 MuiGrid-container MuiGrid-wrap-xs-nowrap">
-                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">Bán bởi <span>:</span></p>
-                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2" th:text="*{employee.name}"></p>
+                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
+                                            Bán bởi <span>:</span></p>
+                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2"
+                                           th:text="*{employee.name}"></p>
                                     </div>
                                     <div class="MuiGrid-root jss4349 MuiGrid-container MuiGrid-wrap-xs-nowrap">
-                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">Nguồn <span>:</span></p>
-                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">POS</p>
+                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
+                                            Nguồn <span>:</span></p>
+                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
+                                            POS</p>
                                     </div>
                                     <div class="MuiGrid-root jss4349 MuiGrid-container MuiGrid-wrap-xs-nowrap">
-                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">Kênh bán hàng <span>:</span></p>
-                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">POS</p>
+                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
+                                            Kênh bán hàng <span>:</span></p>
+                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
+                                            POS</p>
                                     </div>
                                     <div class="MuiGrid-root jss4349 MuiGrid-container MuiGrid-wrap-xs-nowrap">
-                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">Ngày bán <span>:</span></p>
-                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2" th:text="*{createAt}"></p>
+                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
+                                            Ngày bán <span>:</span></p>
+                                        <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2"
+                                           th:text="*{createAt}"></p>
                                     </div>
                                 </div>
                                 <button id="Sapo-Button-c32175bf-cdad-4e73-8cd6-f68d8fffffa0" class="sc-jqUVSM eOdaoZ">
@@ -608,12 +666,15 @@
                                     </style>
                                 </div>
                             </div>
-                            <div class="MuiPaper-root jss4347 MuiPaper-elevation1 MuiPaper-rounded" style="height: 100%; margin-top: 24px;">
+                            <div class="MuiPaper-root jss4347 MuiPaper-elevation1 MuiPaper-rounded"
+                                 style="height: 100%; margin-top: 24px;">
                                 <div class="MuiGrid-root">
                                     <div class="MuiBox-root jss4363">
                                         <div class="MuiBox-root jss4364">
-                                            <h6 class="MuiTypography-root MuiTypography-h6" style="padding-top: 8px;">Ghi chú</h6>
-                                            <p class="MuiTypography-root jss4353 MuiTypography-body2" th:text="*{description} != '' ? *{description} : 'Chưa có ghi chú'"></p>
+                                            <h6 class="MuiTypography-root MuiTypography-h6" style="padding-top: 8px;">
+                                                Ghi chú</h6>
+                                            <p class="MuiTypography-root jss4353 MuiTypography-body2"
+                                               th:text="*{description} != '' ? *{description} : 'Chưa có ghi chú'"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -629,7 +690,8 @@
                                     <div id="scroller" class="sc-cHPgQl hYUFnd">
                                         <div class="sc-gHLcSH ieIWRo">
                                             <button id="product" class="sc-KfMfS hXNAQt">Thông tin sản phẩm</button>
-                                            <button id="return_history" class="sc-KfMfS eMTKDV">Lịch sử trả hàng</button>
+                                            <button id="return_history" class="sc-KfMfS eMTKDV">Lịch sử trả hàng
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
