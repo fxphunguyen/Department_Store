@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.fx.qh.sapo.entities.payment.sale.PaymentSaleOrder;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,5 +59,11 @@ public class PaymentSaleOrderServiceImpl implements PaymentSaleOrderService {
         paymentInput = paymentOrderRepository.save(paymentInput);
 
         return paymentOrderMapper.toDTO(paymentInput);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public BigDecimal getSpendTotalByCustomerId(Integer id) {
+        return paymentOrderRepository.getPaidTotalByCustomerById(id);
     }
 }

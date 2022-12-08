@@ -1,4 +1,4 @@
-package com.phpn.customer;
+package com.phpn.customer.dto;
 
 import com.phpn.employee.dto.EmployeeResult;
 import lombok.*;
