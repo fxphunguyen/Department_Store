@@ -22,8 +22,6 @@ public class ProductAPI {
     @Autowired
     private ProductService productService;
 
-    @Autowired
-    private ProductRepository productRepository;
 
     @GetMapping("/show_list")
     public ResponseEntity<?> showList(boolean deleted) {
@@ -76,9 +74,7 @@ public class ProductAPI {
 
 
     @GetMapping("/showProductInfo")
-    @Transactional(readOnly = true)
     public  ResponseEntity<?> showProductInfo(){
-        List<ProductInfo> productInfos = productRepository.findAllProductInfo();
-        return  new ResponseEntity<>(productInfos, HttpStatus.OK);
+        return  new ResponseEntity<>( productService.findAll();, HttpStatus.OK);
     }
 }
