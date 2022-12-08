@@ -1,0 +1,87 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Chi tiết đơn hàng (tên đơn hàng bỏ vô đây)</title>-->
+<!--    <link rel="stylesheet" href="../../../static/assets/admin/css/styles.css">-->
+
+<!--</head>-->
+
+
+<!--    <div id="non-printable">-->
+<!--        <button onclick="prints()" style="width:100px; height: 100px;">-->
+<!--            print-->
+<!--        </button>-->
+<!--    </div>-->
+<th:block th:fragment="print">
+
+    <div id="printable" th:object="${orders}">
+        <div class="logo">
+
+            <img src="/templates/admin/order/image/logo.png" alt="">
+
+            <div class="tt">
+                <h5>DEPARTMENT_STORE</h5>
+                <p>HUẾ</p>
+                <p>0989989789</p>
+            </div>
+
+
+        </div>
+
+        <div class="title">
+            <h4>
+                HÓA ĐƠN BÁN HÀNG
+            </h4>
+
+            <p id="mhd">Số: <span th:text="*{orderCode}"></span></p>
+            <p id="datehd">Ngày: <span>...</span></p>
+
+        </div>
+        <div class="users">
+            <p>Khách hàng: <span th:text="*{customer.name}"></span></p>
+            <p>Điện thoại: <span th:text="*{customer.phone}"></span></p>
+            <p>Địa chỉ: <span>....</span></p>
+        </div>
+        <div>
+            <tr>
+
+            </tr>
+        </div>
+
+        <table>
+            <thead>
+            <th style="text-align: left;">SL</th>
+            <th style="text-align: center;">Đơn giá</th>
+            <th style="text-align: right;">Thành tiền</th>
+            </thead>
+            <tbody class="tbTable">
+            <tr>
+                <td>Bia</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">1</td>
+                <td style="text-align: center;">350.000</td>
+                <td style="text-align: right;">350.000</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="total">
+            <p>Cộng tiền hàng: <span>...</span></p>
+            <p>Chiết khấu: <span>...</span></p>
+            <p style="font-weight:bold;">Khách phải trả: <span>...</span></p>
+            <p>Tiền khách đưa: <span>...</span></p>
+            <p>Trả lại: <span>...</span></p>
+        </div>
+        <div id="end">Cảm ơn quý khách. Hẹn gặp lại!</div>
+        <!-- <hr> -->
+    </div>
+
+
+
+</th:block>
+</html>
