@@ -4,14 +4,12 @@ import com.phpn.product.dto.ProductResult;
 import com.phpn.product.dto.ProductShortParam;
 import com.phpn.product.dto.ProductWithImageParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import vn.fx.qh.sapo.entities.product.Product;
-import vn.fx.qh.sapo.entities.product.ProductInfo;
+
 
 import java.util.List;
 
@@ -75,6 +73,6 @@ public class ProductAPI {
 
     @GetMapping("/showProductInfo")
     public  ResponseEntity<?> showProductInfo(){
-        return  new ResponseEntity<>( productService.findAll();, HttpStatus.OK);
+        return  new ResponseEntity<>( productService.findAll(), HttpStatus.OK);
     }
 }
