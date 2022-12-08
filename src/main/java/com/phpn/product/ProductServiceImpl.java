@@ -48,7 +48,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
-
     @Override
     @Transactional(readOnly = true)
     public ProductResult findById(Integer id) {
@@ -58,17 +57,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional
     @Override
-    public Product create(ProductWithImageParam productWithImageParam) {
-        return productRepository.save(productMapper.toModel(productWithImageParam));
+    public ProductResult create(ProductWithImageParam productWithImageParam) {
+        Product product = productRepository.save(productMapper.toModel(productWithImageParam));
+        return productMapper.toDTO(product);
     }
-
-
 
 
     @Override
     @Transactional
 
-    public Product createShortProduct(ProductShortParam productShortParam) {
+    public ProductResult createShortProduct(ProductShortParam productShortParam) {
         Product product = productMapper.toModel(productShortParam);
         product.setImage("");
         product.setStatus(ProductStatus.AVAILABLE);
@@ -89,9 +87,9 @@ public class ProductServiceImpl implements ProductService {
         item.setAvailable(Integer.parseInt(productShortParam.getQuantity()));
         item.setPrice(new BigDecimal(Integer.parseInt(productShortParam.getImportPrice())));
 
-     //   itemRepository.save(item);
+        //   itemRepository.save(item);
 
-        return product;
+        return productMapper.toDTO(product);
 //
 //        String fileType = productCreate.getFile().getContentType();
 //
