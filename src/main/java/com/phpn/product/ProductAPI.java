@@ -9,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import vn.fx.qh.sapo.entities.product.Product;
-
-
 import java.util.List;
 
 @RestController
@@ -48,12 +46,6 @@ public class ProductAPI {
         ProductResult productResult = productService.findByIdProduct(id);
         return new ResponseEntity<>(productResult, HttpStatus.OK);
     }
-
-//    @PostMapping("/create")
-//    public ResponseEntity<?> createProduct(@RequestBody ProductParam productParam){
-//        Product product = productService.create(productParam);
-//        return  new ResponseEntity<>(product, HttpStatus.OK);
-//    }
 
     @PostMapping("/create")
     public ResponseEntity<?> createProduct(@RequestBody ProductWithImageParam productWithImageParam){
