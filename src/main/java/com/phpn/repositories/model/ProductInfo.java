@@ -12,7 +12,6 @@ public interface ProductInfo {
      String getDescription();
      Integer getQuantity();
      BigDecimal getRetail_price();
-     Integer getInventory();
      Integer getAvailable();
      Integer getTrading();
      Boolean getApply_tax();

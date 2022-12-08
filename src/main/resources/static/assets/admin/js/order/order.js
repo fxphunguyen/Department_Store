@@ -371,7 +371,7 @@ function showListProducts() {
                         <img class="jss1260" src="${product.image}" alt="">
                             <div class="MuiBox-root jss3946">
                                 <div class="MuiBox-root jss3947">
-                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">u  - ${product.bar_code} - ${product.description} </p>
+                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title}  - ${product.bar_code} - ${product.description} </p>
                                         <p class="MuiTypography-root MuiTypography-body2" style="line-height: 16px; display: flex;">
                                     
                                         <span class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175); line-height: 16px;"> ${product.sku} </span>
@@ -731,13 +731,13 @@ function showProductInfo(productId) {
     taxText = (retailPrice * (tax / 100));
     let std = `
             <div id="tax_${result.id}">
-            <div class="MuiListItemText-root" style="float:left">                                        
-                <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(${result.tax}%)</span>
-            </div>
-            <div class="MuiListItemText-root" style="float:right">
-                <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" id="tax_value_${result.id}">0</span>
-            </div>
-            <div style="clear: both"></div>
+                <div class="MuiListItemText-root" style="float:left">                                        
+                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(${result.tax}%)</span>
+                </div>
+                <div class="MuiListItemText-root" style="float:right">
+                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" id="tax_value_${result.id}">0</span>
+                </div>
+<!--                <div style="clear: both"></div>-->
             </div>
     `;
     $("#ul_vat_tax").prepend(std);
@@ -846,7 +846,7 @@ function showProductInfo(productId) {
                     type="button"
                          id="dropdownMenuButton1_${result.id}" data-bs-toggle="dropdown" aria-expanded="false"
                     >
-                    <span class="MuiButton-label" id="discount_value_${result.id}">0</span>
+                    <span class="MuiButton-label" id="discount_value_${result.id}" style="font-weight: 400;">0</span>
                         <p class="MuiTypography-root discount_rate_line_item MuiTypography-body1" id="percent_value_${result.id}"
                             style="color: rgb(255, 77, 77); font-size: 12px;">    
                         </p>
@@ -868,7 +868,7 @@ function showProductInfo(productId) {
                             <button onclick="valueDiscount(event)"
                                     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped" tabindex="0"
                                     type="button" value="PERCENT" aria-pressed="false"><span
-                                        class="MuiToggleButton-label">%</span><span class="MuiTouchRipple-root"></span>
+                                    class="MuiToggleButton-label">%</span><span class="MuiTouchRipple-root"></span>
                             </button>
                             </div>
                             <div class="MuiFormControl-root jss4241 jss4243 jss1284" style="width: 92px; margin-left: 7px;">
@@ -897,7 +897,8 @@ function showProductInfo(productId) {
                 <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight " style="padding-left: 0px;">
                 <button
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeSmall"
-                    tabindex="0" type="button"><span class="MuiIconButton-label"><svg viewBox="0 0 24 24"
+                    tabindex="0" type="button">
+                    <span class="MuiIconButton-label"><svg viewBox="0 0 24 24"
                             onclick="deleteProduct(${result.id})"
                             fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             font-size="20">
@@ -1058,34 +1059,44 @@ const formatDiscountOrder = (event, productId) => {
     $("#discount_product_input_order").on('keyup', function () {
         var n = parseInt($(this).val().replace(/\D/g, ''), 10);
         $(this).val(n.toLocaleString());
-    });
+    })
     const  btnValueSelectOrder = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
     const btnValueOrder = [...btnValueSelectOrder];
+    let grandTotal = 0;
+    let percentValue = 0;
+    let totalTax = 0;
+    let discountOrder = 0;
+    $(`#tax_${productId}`).each(function () {
+        let taxId = $(this).attr('id');
+        console.log(taxId);
+        let tax = +$("#tax_value_"+ taxId).text();
+        totalTax += tax;
+        // console.log(tax)
+        // console.log(totalTax)
+    })
     btnValueOrder.forEach((btn, index) => {
         const classListOrder = [...btn.classList];
         if (classListOrder.includes("Mui-selected")) {
-            const valueInput = event.target.value;
-            const total = document.querySelector('#grandTotal').value;
-            const tax = $(`#tax_value_${productId}`).text();
-            console.log("tax", tax);
-            let grandtotal, percentValue, discount;
-            if (btn.value === "VALUE") {
-                grandtotal = (total - valueInput);
-                percentValue = (valueInput * 100) / total;
-                discount = total ;
-            }
+            const valueInput = event.target.value.replaceAll(",", "");
+            const total = document.querySelector('#grandTotal').textContent.replaceAll(",", "");
+                if (btn.value === "VALUE") {
+                    discountOrder = valueInput;
+                    percentValue = (valueInput * 100) / total;
+                    grandTotal = (total + totalTax )- discountOrder;
+                    // console.log(total , totalTax, discountOrder);
+                    // console.log("grandTotal", grandTotal)
+                } else {
+                    discountOrder = total * (valueInput / 100);
+                    percentValue = valueInput;
+                    grandTotal = total + totalTax - discountOrder;
+                }
 
-            // } else {
-            //     discount = total * (valueInput / 100);
-            //     percentValue = valueInput;
-            //     totalAfterDiscount = total - discount;
-            // }
 
-            $(`#discount_value_${productId}`).text(discount.formatVND());
-            $(`#percent_value_${productId}`).text(percentValue.toFixed(2) + "%");
-            $(`#amount_product_${productId}`).text(totalAfterDiscount.formatVND());
+            $("#percent_value_order").text(percentValue.toFixed(2) + "%");
+            $("#discount_value_order").text(discountOrder);
+            $("#total_amounts").text(grandTotal.formatVND());
         }
-    })
+    });
 }
 
 
@@ -1099,7 +1110,6 @@ const formatDiscount = (event, productId, retailPrice) => {
     const btnValue = [...btnValueSelectors];
     btnValue.forEach((mui, index) => {
         const classLists = [...mui.classList];
-        console.log("classLists", classLists)
         if (classLists.includes("Mui-selected")) {
             const valueInput = event.target.value;
             const quantity = document.querySelector(`#quantity_product_${productId}`).value;
