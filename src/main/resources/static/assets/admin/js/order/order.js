@@ -728,7 +728,7 @@ function showProductInfo(productId) {
     let std = `
             <div id="tax_${result.id}">
                 <div class="MuiListItemText-root" style="float:left">                                        
-                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(${result.taxSaleList}%)</span>
+                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(%)</span>
                 </div>
                 <div class="MuiListItemText-root" style="float:right">
                     <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" id="tax_value_${result.id}">0</span>
