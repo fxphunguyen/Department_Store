@@ -71,10 +71,6 @@ public class ShippingAddress {
     @Column(name = "`supplier_id`", insertable = false, updatable = false)
     private Integer supplierId;
 
-
-    @Column(name = "default")
-    private boolean isDefault;
-
     @Column(name = "is_shipping")
     private boolean isShippingAddress;
 
