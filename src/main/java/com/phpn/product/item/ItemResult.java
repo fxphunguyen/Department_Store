@@ -1,6 +1,6 @@
 package com.phpn.product.item;
 
-import com.phpn.employee.EmployeeResult;
+import com.phpn.employee.dto.EmployeeResult;
 import com.phpn.product.dto.ProductResult;
 import lombok.AllArgsConstructor;
 import lombok.Data;

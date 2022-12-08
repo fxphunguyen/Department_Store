@@ -1,11 +1,9 @@
-package com.phpn.dto.suppliers;
+package com.phpn.supplier;
 
-import vn.fx.qh.sapo.entities.SupplierStatus;
-
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter
@@ -19,7 +17,6 @@ public class SupplierCreate {
     private String name;
     private String email;
     private String phone;
-    private SupplierStatus supplierStatus;
     private String description;
     private Integer employeeId;
     private Integer paymentMethodId;

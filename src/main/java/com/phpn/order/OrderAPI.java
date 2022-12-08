@@ -1,10 +1,10 @@
-package com.phpn.controllers.api;
+package com.phpn.order;
 
-import com.phpn.order.sale.dto.OrderParam;
-import com.phpn.order.sale.dto.OrderResult;
+import com.phpn.order.sale.dto.SaleOrderParam;
+import com.phpn.order.sale.dto.SaleOrderResult;
 import com.phpn.customer.CustomerService;
 import com.phpn.employee.EmployeeService;
-import com.phpn.order.sale.OrderService;
+import com.phpn.order.sale.SaleOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import java.util.List;
 public class OrderAPI {
 
     @Autowired
-    private OrderService orderService;
+    private SaleOrderService orderService;
 
     @Autowired
     private EmployeeService employeeService;
@@ -27,21 +27,21 @@ public class OrderAPI {
 
     @GetMapping()
     public ResponseEntity<?> findAll() {
-        List<OrderResult> orderResults = orderService.findAll();
+        List<SaleOrderResult> orderResults = orderService.findAll();
 
         return new ResponseEntity<>(orderResults, HttpStatus.OK);
     }
 
 
     @PostMapping("/create")
-    public ResponseEntity<?> createOrder(@RequestBody OrderParam orderParam) {
+    public ResponseEntity<?> createOrder(@RequestBody SaleOrderParam orderParam) {
 
         return new ResponseEntity<>(orderService.createOrderExport(orderParam), HttpStatus.OK);
     }
 
     @GetMapping("/{orderId}")
     public ResponseEntity<?> getAllOrderItemByOrderId(@PathVariable Integer orderId) {
-        OrderResult orderResult = orderService.findById(orderId);
+        SaleOrderResult orderResult = orderService.findById(orderId);
         return new ResponseEntity<>(orderResult,HttpStatus.OK);
     }
 

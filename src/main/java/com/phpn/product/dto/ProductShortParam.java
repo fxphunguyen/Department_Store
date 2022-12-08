@@ -1,4 +1,4 @@
-package com.phpn.dto.product;
+package com.phpn.product.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

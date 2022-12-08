@@ -1,4 +1,4 @@
-package com.phpn.category;
+package com.phpn.category.dto;
 
 import lombok.Getter;
 import lombok.Setter;

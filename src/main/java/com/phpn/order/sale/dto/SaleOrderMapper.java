@@ -1,7 +1,6 @@
-package com.phpn.order;
+package com.phpn.order.sale.dto;
 
-import com.phpn.order.sale.dto.OrderParam;
-import com.phpn.order.sale.dto.OrderResult;
+import com.phpn.order.OrderStatusMapper;
 import com.phpn.customer.CustomerMapper;
 import com.phpn.employee.dto.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +18,8 @@ public class SaleOrderMapper {
     @Autowired
     private OrderStatusMapper orderStatusMapper;
 
-    public OrderResult toDTO(SaleOrder order) {
-        return new OrderResult()
+    public SaleOrderResult toDTO(SaleOrder order) {
+        return new SaleOrderResult()
                 .setId(order.getId())
                 .setFullName(order.getFullName())
                 .setMobile(order.getMobile())
@@ -46,7 +45,7 @@ public class SaleOrderMapper {
                 .setGrandTotal(order.getGrandTotal());
     }
 
-    public SaleOrder toModel(OrderParam orderParam) {
+    public SaleOrder toModel(SaleOrderParam orderParam) {
         return new SaleOrder()
                 .setId(orderParam.getId())
                 .setFullName(orderParam.getFullName())

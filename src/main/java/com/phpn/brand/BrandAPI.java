@@ -1,10 +1,8 @@
-package com.phpn.controllers.api;
+package com.phpn.brand;
 
 
-import com.phpn.brand.BrandParam;
-import com.phpn.brand.BrandRepository;
+import com.phpn.brand.dto.BrandParam;
 import vn.fx.qh.sapo.entities.product.*;
-import com.phpn.brand.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

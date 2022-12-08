@@ -1,6 +1,6 @@
-package com.phpn.controllers;
+package com.phpn.supplier;
 
-import com.phpn.services.suppliers.SupplierService;
+import com.phpn.supplier.SupplierService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

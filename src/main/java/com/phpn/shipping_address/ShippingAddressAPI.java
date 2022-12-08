@@ -1,17 +1,13 @@
-package com.phpn.customer;
+package com.phpn.shipping_address;
 
 
 import com.phpn.customer.CreateShippingAddressParam;
-import com.phpn.customer.ShippingAddressShowCustomerInfo;
-import com.phpn.customer.ICustomerMapper;
-import com.phpn.customer.ShippingAddressRepository;
-import vn.fx.qh.sapo.entities.ShippingAddress;
-import com.phpn.customer.ShippingAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import vn.fx.qh.sapo.entities.customer.ShippingAddress;
 
 import java.util.List;
 
@@ -24,9 +20,6 @@ public class ShippingAddressAPI {
 
     @Autowired
     ShippingAddressRepository shippingAddressRepository;
-
-    @Autowired
-    ICustomerMapper.ShippingAddressMapper shippingAddressMapper;
 
     @GetMapping("/findByCustomerId/{id}")
     @Transactional(readOnly = true)

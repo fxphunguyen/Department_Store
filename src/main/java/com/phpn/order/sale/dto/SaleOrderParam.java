@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Accessors(chain = true)
-public class OrderParam {
+public class SaleOrderParam {
 
     private Integer id;
 
@@ -46,6 +46,6 @@ public class OrderParam {
 
     private Instant createAt;
 
-    List<OrderItemExport> orderItems;
+    List<SaleOrderItemExport> orderItems;
 
 }

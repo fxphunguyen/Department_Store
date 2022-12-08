@@ -1,4 +1,4 @@
-package com.phpn.order;
+package com.phpn.order.purchase.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

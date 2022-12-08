@@ -1,13 +1,10 @@
-package com.phpn.order;
+package com.phpn.order.sale.dto;
 
-import com.phpn.order.sale.dto.OrderItemParam;
-import com.phpn.order.sale.dto.OrderItemResult;
 import com.phpn.product.item.ItemMapper;
 import com.phpn.product.ProductMapper;
-import vn.fx.qh.sapo.entities.OrderItem;
+import vn.fx.qh.sapo.entities.order.sale.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import vn.fx.qh.sapo.entities.order.sale.SalesOrderItem;
 
 @Component
 public class SaleOrderItemMapper {
@@ -18,8 +15,8 @@ public class SaleOrderItemMapper {
     private ProductMapper productMapper;
 
 
-    public OrderItemResult toDTO(SalesOrderItem orderItem) {
-        return new OrderItemResult()
+    public SaleOrderItemResult toDTO(SaleOrderItem orderItem) {
+        return new SaleOrderItemResult()
                 .setId(orderItem.getId())
                 .setOrderId(orderItem.getOrderId())
                 .setProduct(productMapper.toDTO(orderItem.getProduct()))
@@ -29,8 +26,8 @@ public class SaleOrderItemMapper {
 
     }
 
-    public SalesOrderItem toModel(OrderItemParam orderItemParam) {
-        return new SalesOrderItem()
+    public SaleOrderItem toModel(SaleOrderItemParam orderItemParam) {
+        return new SaleOrderItem()
                 .setItemId(orderItemParam.getId())
                 .setOrderId(orderItemParam.getOrderId())
                 .setItemId(orderItemParam.getItemId())

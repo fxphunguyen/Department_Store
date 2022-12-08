@@ -1,4 +1,4 @@
-package com.phpn.services.product;
+package com.phpn.product;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -10,13 +10,8 @@ import com.phpn.product.dto.ProductShortParam;
 
 import com.phpn.product.dto.ProductCreate;
 import com.phpn.product.dto.ProductWithImageParam;
-import com.phpn.product.ProductMapper;
-import com.phpn.repositories.product.ItemRepository;
-import vn.fx.qh.sapo.entities.Item;
-import vn.fx.qh.sapo.entities.Product;
-import com.phpn.repositories.product.ProductRepository;
-
-import vn.fx.qh.sapo.entities.ProductStatus;
+import com.phpn.product.item.ItemRepository;
+import vn.fx.qh.sapo.entities.product.*;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -61,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional(readOnly = true)
     public List<ProductResult> findAllProductByDeleted(boolean deleted) {
-        return productRepository.findAllProductByDeleted(deleted)
+        return productRepository.findAll()
                 .stream()
                 .map(productMapper::toDTO)
                 .collect(Collectors.toList());
@@ -100,7 +95,6 @@ public class ProductServiceImpl implements ProductService {
         product.setWholesalePrice(new BigDecimal(Integer.parseInt(productShortParam.getRetailPrice())));
         product.setBrandId(1);
         product.setApplyTax(false);
-        product.setDeleted(false);
         product.setCreateAt(java.time.LocalDateTime.now().toString());
 
         Product p = productRepository.save(product);

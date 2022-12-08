@@ -1,8 +1,8 @@
-package com.phpn.payment;
+package com.phpn.order.purchase;
 
-import com.phpn.dto.purchase_order.PurchaseOrderCreate;
-import com.phpn.dto.purchase_order.PurchaseOrderResult;
-import vn.fx.qh.sapo.entities.PurchaseOrder;
+
+import com.phpn.order.purchase.dto.CreatePurchaseOrderParam;
+import com.phpn.order.purchase.dto.PurchaseOrderResult;
 
 import java.util.List;
 
@@ -10,5 +10,5 @@ public interface PurchaseOrderService {
 
     List<PurchaseOrderResult> findAll();
 
-    PurchaseOrder create(PurchaseOrderCreate purchaseOrderCreate);
+    PurchaseOrderResult create(CreatePurchaseOrderParam createPurchaseOrder);
 }

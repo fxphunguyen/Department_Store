@@ -1,12 +1,11 @@
-package com.phpn.order.sale;
+package com.phpn.order.sale.item;
 
-import com.phpn.order.sale.dto.OrderItemResult;
+import com.phpn.order.sale.dto.SaleOrderItemResult;
 import com.phpn.product.item.ItemMapper;
-import com.phpn.order.SaleOrderMapper;
-import com.phpn.order.SaleOrderItemMapper;
+import com.phpn.order.sale.dto.SaleOrderMapper;
+import com.phpn.order.sale.dto.SaleOrderItemMapper;
 import com.phpn.product.ProductMapper;
 import com.phpn.product.item.ItemRepository;
-import com.phpn.order.SaleOrderItemRepository;
 import com.phpn.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,12 +37,12 @@ public class OrderItemServiceImpl implements OrderItemService {
    private ItemRepository itemRepository;
 
     @Override
-    public List<OrderItemResult> findAll() {
+    public List<SaleOrderItemResult> findAll() {
         return null;
     }
 
  @Override
- public List<OrderItemResult> findAllOrderItemByOrderId(Integer orderId) {
+ public List<SaleOrderItemResult> findAllOrderItemByOrderId(Integer orderId) {
      return orderItemRepository.findAllByOrderId(orderId)
              .stream().map(orderItem -> orderItemMapper.toDTO(orderItem))
              .collect(Collectors.toList());

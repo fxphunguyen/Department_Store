@@ -1,16 +1,13 @@
-package com.phpn.dto.customer;
+package com.phpn.customer;
 
 
-import com.phpn.dto.employee.EmployeeResult;
-import com.phpn.dto.shipping_address.ShippingAddressResult;
-import com.phpn.repositories.model.*;
+import com.phpn.shipping_address.ShippingAddressResult;
+import com.phpn.employee.dto.EmployeeResult;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import vn.fx.qh.sapo.entities.CustomerGender;
-import vn.fx.qh.sapo.entities.CustomerGroup;
-import vn.fx.qh.sapo.entities.CustomerStatus;
+import vn.fx.qh.sapo.entities.customer.*;
 
 import java.time.Instant;
 import java.util.List;

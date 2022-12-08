@@ -1,38 +1,21 @@
-package com.phpn.services.employee;
+package com.phpn.employee;
 
-//import com.phpn.dto.employee.EmployeeParam;
-import com.phpn.dto.employee.EmployeeResult;
-import com.phpn.mappers.employee.EmployeeMapper;
-import com.phpn.repositories.employee.EmployeeRepository;
-//import com.phpn.repositories.model.Customer;
-import vn.fx.qh.sapo.entities.Employee;
-//import com.phpn.repositories.model.EmployeePrinciple;
+
+import com.phpn.employee.dto.EmployeeMapper;
+import com.phpn.employee.dto.EmployeeResult;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vn.fx.qh.sapo.entities.employee.Employee;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-//import org.springframework.stereotype.Service;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.transaction.annotation.Transactional;
-//
-//import com.phpn.mappers.employee.EmployeeMapper;
-//import com.phpn.dto.employee.EmployeeResult;
-//import com.phpn.repositories.model.Employee;
-//import com.phpn.repositories.employee.EmployeeRepository;
 
 @Service
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
-
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private EmployeeMapper employeeMapper;

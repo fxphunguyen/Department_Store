@@ -1,4 +1,4 @@
-package com.phpn.dto.payment_methods;
+package com.phpn.order;
 
 import lombok.Getter;
 import lombok.Setter;

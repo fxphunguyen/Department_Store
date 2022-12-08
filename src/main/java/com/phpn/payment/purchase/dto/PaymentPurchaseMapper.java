@@ -1,10 +1,7 @@
-package com.phpn.payment.purchase;
+package com.phpn.payment.purchase.dto;
 
-import com.phpn.order.PaymentPurchaseParam;
-import com.phpn.order.PaymentPurchaseResult;
 import com.phpn.employee.dto.EmployeeMapper;
 import com.phpn.order.purchase.dto.PurchaseOrderMapper;
-import vn.fx.qh.sapo.entities.PaymentPurchase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import vn.fx.qh.sapo.entities.payment.purchase.PaymentPurchaseOrder;
@@ -24,8 +21,7 @@ public class PaymentPurchaseMapper {
                 .setPaid(paymentPurchase.getPaid())
                 .setCreateAt(paymentPurchase.getCreateAt())
                 .setEmployeeResult(employeeMapper.toDTO(paymentPurchase.getEmployee()))
-                .setPaymentMethodId(paymentPurchase.getPaymentMethodId())
-                .setPurchaseOrderResult(purchaseOrderMapper.toDTO(paymentPurchase.getPurchaseOrder()));
+                .setPaymentMethodId(paymentPurchase.getPaymentMethodId());
     }
 
     public PaymentPurchaseOrder toModel(PaymentPurchaseParam paymentParam) {

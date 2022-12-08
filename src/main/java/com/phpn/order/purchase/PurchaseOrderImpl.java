@@ -1,10 +1,8 @@
-package com.phpn.payment;
+package com.phpn.order.purchase;
 
-import com.phpn.dto.purchase_order.PurchaseOrderCreate;
-import com.phpn.dto.purchase_order.PurchaseOrderResult;
-import com.phpn.order.PurchaseOrderMapper;
-import com.phpn.order.PurchaseOrderRepository;
-import vn.fx.qh.sapo.entities.PurchaseOrder;
+import com.phpn.order.purchase.dto.CreatePurchaseOrderParam;
+import com.phpn.order.purchase.dto.PurchaseOrderMapper;
+import com.phpn.order.purchase.dto.PurchaseOrderResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +30,7 @@ public class PurchaseOrderImpl implements PurchaseOrderService {
 
     @Override
     @Transactional
-    public PurchaseOrder create(PurchaseOrderCreate purchaseOrderCreate) {
+    public PurchaseOrderResult create(CreatePurchaseOrderParam createPurchaseOrder) {
 
         return null;
     }

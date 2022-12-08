@@ -1,15 +1,13 @@
-package com.phpn.controllers;
+package com.phpn.customer;
 
 
-import com.phpn.customer.CustomerResult;
-import vn.fx.qh.sapo.entities.ICustomer;
-import com.phpn.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import vn.fx.qh.sapo.entities.customer.ICustomer;
 
 import java.util.Optional;
 
@@ -47,9 +45,9 @@ public class CustomerController {
         System.out.println(id);
         System.out.println("___________________________" + id);
         ModelAndView modelAndView = new ModelAndView();
-        ICustomer iCustomer = customerService.CustomerInfoById(id);
-        modelAndView.addObject("customer", iCustomer);
-        modelAndView.setViewName("/admin/customer/history_customer");
+//        ICustomer iCustomer = customerService.CustomerInfoById(id);
+//        modelAndView.addObject("customer", iCustomer);
+//        modelAndView.setViewName("/admin/customer/history_customer");
         return modelAndView;
     }
 

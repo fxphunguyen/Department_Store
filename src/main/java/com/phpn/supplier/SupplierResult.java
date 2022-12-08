@@ -1,8 +1,8 @@
-package com.phpn.dto.suppliers;
+package com.phpn.supplier;
 
-import com.phpn.employee.EmployeeResult;
-import com.phpn.dto.payment_methods.PaymentMethodResult;
-import vn.fx.qh.sapo.entities.SupplierStatus;
+import com.phpn.employee.dto.EmployeeResult;
+import com.phpn.order.PaymentMethodResult;
+import vn.fx.qh.sapo.entities.product.supplier.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

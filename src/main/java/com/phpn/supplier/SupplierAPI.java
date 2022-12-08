@@ -1,8 +1,8 @@
-package com.phpn.controllers.api;
+package com.phpn.supplier;
 
 import java.util.List;
 
-import vn.fx.qh.sapo.entities.Supplier;
+import vn.fx.qh.sapo.entities.product.supplier.*;
 import com.phpn.supplier.SupplierService;
 import com.phpn.supplier.SupplierResult;
 import com.phpn.supplier.SupplierCreate;

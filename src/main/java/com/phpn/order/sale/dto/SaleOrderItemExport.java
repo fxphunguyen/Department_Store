@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Data
 @Accessors(chain = true)
-public class OrderItemExport {
+public class SaleOrderItemExport {
 
     private Integer id;
 

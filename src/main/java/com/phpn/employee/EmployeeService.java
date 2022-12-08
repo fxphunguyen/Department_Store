@@ -1,13 +1,15 @@
-package com.phpn.services.employee;
+package com.phpn.employee;
 
 //import org.springframework.security.core.userdetails.UserDetailsService;
+
+import com.phpn.employee.dto.EmployeeResult;
 
 import java.util.List;
 //import java.util.Optional;
 //
 //import com.phpn.repositories.model.Employee;
-//import com.phpn.dto.employee.EmployeeParam;
-import com.phpn.dto.employee.EmployeeResult;
+//import com.phpn.employee.dto.EmployeeParam;
+
 
 public interface EmployeeService {
 

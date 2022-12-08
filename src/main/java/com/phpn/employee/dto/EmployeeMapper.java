@@ -1,9 +1,6 @@
-package com.phpn.employee;
+package com.phpn.employee.dto;
 
 
-import com.phpn.employee.EmployeeParam;
-import com.phpn.employee.EmployeeRResult;
-import com.phpn.employee.EmployeeResult;
 import org.springframework.stereotype.Component;
 import vn.fx.qh.sapo.entities.employee.*;
 

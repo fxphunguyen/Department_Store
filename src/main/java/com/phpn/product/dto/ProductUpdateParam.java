@@ -1,8 +1,7 @@
-package com.phpn.dto.product;
+package com.phpn.product.dto;
 
 import java.math.BigDecimal;
 
-import vn.fx.qh.sapo.entities.ProductStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -18,7 +17,6 @@ public class ProductUpdateParam {
 
     private String title;
     private String image;
-    private ProductStatus status;
     private String description;
     private String unit;
     private String sku;

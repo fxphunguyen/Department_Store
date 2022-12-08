@@ -9,8 +9,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Data
 @Accessors(chain = true)
-public class OrderStatusResult {
-
+public class SaleOrderStatusResult {
     private String name;
 
 }

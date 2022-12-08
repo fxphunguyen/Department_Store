@@ -1,7 +1,6 @@
-package com.phpn.order;
+package com.phpn.payment.purchase.dto;
 
 import com.phpn.employee.dto.EmployeeResult;
-import com.phpn.dto.purchase_order.PurchaseOrderResult;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,8 +26,6 @@ public class PaymentPurchaseResult {
     private EmployeeResult employeeResult;
 
     private Integer purchaseOrderId;
-
-    private PurchaseOrderResult purchaseOrderResult;
 
     private Integer paymentMethodId;
 

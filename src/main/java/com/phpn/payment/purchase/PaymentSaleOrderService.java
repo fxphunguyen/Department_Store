@@ -1,13 +1,13 @@
-package com.phpn.payment;
+package com.phpn.payment.purchase;
 
 
-import com.phpn.order.sale.dto.PaymentOrderParam;
-import com.phpn.order.sale.dto.PaymentSaleOrderResult;
+import com.phpn.payment.sale.PaymentOrderParam;
+import com.phpn.payment.sale.PaymentSaleOrderResult;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface PaymentOrderService {
+public interface PaymentSaleOrderService {
 
     List<PaymentSaleOrderResult> findAll();
 

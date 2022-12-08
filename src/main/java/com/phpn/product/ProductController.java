@@ -1,8 +1,6 @@
 
-package com.phpn.controllers;
+package com.phpn.product;
 
-import com.phpn.services.product.ProductServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

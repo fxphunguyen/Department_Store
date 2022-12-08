@@ -1,4 +1,4 @@
-package com.phpn.payment;
+package com.phpn.payment.method;
 
 import java.util.List;
 import com.phpn.order.PaymentMethodResult;

@@ -1,10 +1,12 @@
-package com.phpn.mappers.product;
-import com.phpn.dto.product.ProductParam;
-import com.phpn.dto.product.ProductResult;
-import com.phpn.dto.product.ProductShortParam;
-import com.phpn.dto.product.ProductWithImageParam;
-import com.phpn.mappers.CategoryMapper;
-import vn.fx.qh.sapo.entities.Product;
+package com.phpn.product;
+import com.phpn.brand.dto.BrandMapper;
+import com.phpn.product.dto.ProductParam;
+import com.phpn.product.dto.ProductResult;
+import com.phpn.product.dto.ProductShortParam;
+import com.phpn.product.dto.ProductWithImageParam;
+import com.phpn.category.dto.CategoryMapper;
+import com.phpn.product.item.ItemMapper;
+import vn.fx.qh.sapo.entities.product.*;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +43,7 @@ public class ProductMapper {
                 .setRetailPrice(productParam.getRetailPrice())
                 .setWholesalePrice(productParam.getWholesalePrice())
                 .setBrandId(productParam.getBrandId())
-                .setCategoryId(productParam.getCategoryId())
-                .setDeleted(true);
+                .setCategoryId(productParam.getCategoryId());
     }
 
     public Product toModel(ProductWithImageParam productWithImageParam) {
@@ -59,8 +60,7 @@ public class ProductMapper {
                 .setRetailPrice(productWithImageParam.getRetailPrice())
                 .setWholesalePrice(productWithImageParam.getWholesalePrice())
                 .setBrandId(productWithImageParam.getBrandId())
-                .setCategoryId(productWithImageParam.getCategoryId())
-                .setDeleted(true);
+                .setCategoryId(productWithImageParam.getCategoryId());
     }
 
     public ProductResult toDTO(Product product) {

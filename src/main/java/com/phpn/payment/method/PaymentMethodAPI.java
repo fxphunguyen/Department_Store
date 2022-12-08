@@ -1,9 +1,8 @@
-package com.phpn.payment;
+package com.phpn.payment.method;
 
 import java.util.List;
 
 import com.phpn.order.PaymentMethodResult;
-import com.phpn.payment.PaymentMethodService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

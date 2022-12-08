@@ -1,4 +1,4 @@
-package com.phpn.repositories.product;
+package com.phpn.product;
 
 import com.phpn.product.dto.ProductResult;
 import vn.fx.qh.sapo.entities.product.*;
@@ -15,11 +15,6 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> findAll();
-
-
-
-    List<Product> findAllProductByDeleted(boolean deleted);
-
 
     @Query(value = "SELECT * FROM `ph-pn`.v_item_product", nativeQuery = true)
     List<ProductInfo> findAllProductInfo();

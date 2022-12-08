@@ -1,4 +1,4 @@
-package com.phpn.repositories.product;
+package com.phpn.tax;
 
 import vn.fx.qh.sapo.entities.product.tax.*;
 import org.springframework.data.jpa.repository.JpaRepository;

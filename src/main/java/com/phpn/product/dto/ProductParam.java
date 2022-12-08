@@ -1,8 +1,8 @@
-package com.phpn.dto.product;
+package com.phpn.product.dto;
 
 import java.math.BigDecimal;
 
-import vn.fx.qh.sapo.entities.ProductStatus;
+import vn.fx.qh.sapo.entities.product.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;

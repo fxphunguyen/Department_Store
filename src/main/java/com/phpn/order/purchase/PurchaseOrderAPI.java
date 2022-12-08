@@ -1,7 +1,6 @@
-package com.phpn.order;
+package com.phpn.order.purchase;
 
-import com.phpn.dto.purchase_order.PurchaseOrderResult;
-import com.phpn.payment.PurchaseOrderService;
+import com.phpn.order.purchase.dto.PurchaseOrderResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

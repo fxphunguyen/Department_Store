@@ -1,8 +1,7 @@
-package com.phpn.customer;
+package com.phpn.shipping_address;
 
 import com.phpn.customer.CreateShippingAddressParam;
-import com.phpn.customer.ShippingAddressShowCustomerInfo;
-import vn.fx.qh.sapo.entities.ShippingAddress;
+import vn.fx.qh.sapo.entities.customer.*;
 
 import java.util.List;
 

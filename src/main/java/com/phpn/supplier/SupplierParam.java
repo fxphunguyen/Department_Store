@@ -1,6 +1,6 @@
-package com.phpn.dto.suppliers;
+package com.phpn.supplier;
 
-import vn.fx.qh.sapo.entities.SupplierStatus;
+import vn.fx.qh.sapo.entities.product.supplier.*;
 
 import lombok.Getter;
 import lombok.Setter;

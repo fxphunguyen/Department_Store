@@ -1,9 +1,9 @@
-package com.phpn.dto.customer;
+package com.phpn.customer;
 
-import com.phpn.dto.employee.EmployeeResult;
-import vn.fx.qh.sapo.entities.ShippingAddress;
+import com.phpn.employee.dto.EmployeeResult;
 import lombok.*;
 import lombok.experimental.Accessors;
+import vn.fx.qh.sapo.entities.customer.ShippingAddress;
 
 import java.util.Set;
 

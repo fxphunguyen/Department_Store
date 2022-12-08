@@ -1,13 +1,13 @@
-package com.phpn.order.sale;
+package com.phpn.order.sale.item;
 
-import com.phpn.order.sale.dto.OrderItemResult;
+import com.phpn.order.sale.dto.SaleOrderItemResult;
 
 import java.util.List;
 
 public interface OrderItemService {
 
-    List<OrderItemResult> findAll();
+    List<SaleOrderItemResult> findAll();
 
-    List<OrderItemResult> findAllOrderItemByOrderId(Integer orderId);
+    List<SaleOrderItemResult> findAllOrderItemByOrderId(Integer orderId);
 
 }

@@ -1,4 +1,4 @@
-package com.phpn.customer;
+package com.phpn.shipping_address;
 
 import lombok.Getter;
 import lombok.Setter;

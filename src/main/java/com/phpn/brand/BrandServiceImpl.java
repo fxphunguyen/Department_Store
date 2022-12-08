@@ -1,9 +1,11 @@
 package com.phpn.brand;
 
-import vn.fx.qh.sapo.entities.Brand;
+import com.phpn.brand.dto.BrandMapper;
+import com.phpn.brand.dto.BrandParam;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import vn.fx.qh.sapo.entities.product.Brand;
 
 @Service
 @Transactional

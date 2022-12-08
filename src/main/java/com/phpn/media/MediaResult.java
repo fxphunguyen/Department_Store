@@ -1,2 +1,4 @@
-package com.phpn.media;public class MediaResult {
+package com.phpn.media;
+
+public class MediaResult {
 }

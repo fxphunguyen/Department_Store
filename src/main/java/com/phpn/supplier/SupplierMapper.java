@@ -1,11 +1,8 @@
-package com.phpn.product;
+package com.phpn.supplier;
 
-import com.phpn.dto.suppliers.SupplierCreate;
-import com.phpn.dto.suppliers.SupplierParam;
-import com.phpn.dto.suppliers.SupplierResult;
-import com.phpn.mappers.employee.EmployeeMapper;
-import com.phpn.mappers.payment.PaymentMethodMapper;
-import vn.fx.qh.sapo.entities.Supplier;
+import com.phpn.employee.dto.EmployeeMapper;
+import com.phpn.payment.method.PaymentMethodMapper;
+import vn.fx.qh.sapo.entities.product.supplier.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -63,10 +60,7 @@ public class SupplierMapper {
         .setStatus(supplierParam.getSupplierStatus())
         .setDescription(supplierParam.getDescription())
         .setEmployeeId(supplierParam.getEmployeeId())
-        .setPaymentMethodId(supplierParam.getPaymentMethodId())
-
-        .setCreateAt(supplierParam.getCreateAt())
-        .setUpdateAt(supplierParam.getUpdateAt());
+        .setPaymentMethodId(supplierParam.getPaymentMethodId());
     }
 
     public Supplier toModel(SupplierCreate supplierCreate) {
@@ -75,7 +69,6 @@ public class SupplierMapper {
         .setName(supplierCreate.getName())
         .setEmail(supplierCreate.getEmail())
         .setPhone(supplierCreate.getPhone())
-        .setStatus(supplierCreate.getSupplierStatus())
         .setDescription(supplierCreate.getDescription())
         .setEmployeeId(supplierCreate.getEmployeeId())
         .setPaymentMethodId(supplierCreate.getPaymentMethodId())

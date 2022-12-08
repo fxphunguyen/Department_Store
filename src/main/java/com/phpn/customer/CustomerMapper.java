@@ -1,14 +1,9 @@
-package com.phpn.mappers.customer;
+package com.phpn.customer;
 
 
-import com.phpn.dto.customer.CreateCustomerParam;
-import com.phpn.dto.customer.CustomerOrderResult;
-import com.phpn.dto.customer.CustomerResult;
-import com.phpn.dto.shipping_address.ShippingAddressResult;
-import com.phpn.mappers.employee.EmployeeMapper;
-import vn.fx.qh.sapo.entities.Customer;
-import vn.fx.qh.sapo.entities.CustomerStatus;
-import vn.fx.qh.sapo.entities.ShippingAddress;
+import com.phpn.shipping_address.ShippingAddressResult;
+import com.phpn.employee.dto.EmployeeMapper;
+import vn.fx.qh.sapo.entities.customer.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +18,7 @@ public class CustomerMapper {
     private EmployeeMapper employeeMapper;
 
     @Autowired
-    private ICustomerMapper.ShippingAddressMapper shippingAddressMapper;
+    private ShippingAddressMapper shippingAddressMapper;
 
 
     public CustomerResult toDTO(Customer customer) {

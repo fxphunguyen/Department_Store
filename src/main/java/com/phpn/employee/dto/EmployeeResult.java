@@ -1,4 +1,4 @@
-package com.phpn.employee;
+package com.phpn.employee.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

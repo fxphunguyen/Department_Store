@@ -1,7 +1,6 @@
-package com.phpn.customer;
+package com.phpn.shipping_address;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;

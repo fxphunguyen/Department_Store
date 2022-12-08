@@ -4,7 +4,7 @@ import com.phpn.order.sale.dto.SaleOrderParam;
 import com.phpn.order.sale.dto.SaleOrderResult;
 import java.util.List;
 
-public interface OrderService {
+public interface SaleOrderService {
 
     List<SaleOrderResult> findAll();
 

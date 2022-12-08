@@ -1,4 +1,4 @@
-package com.phpn.order;
+package com.phpn.order.sale.item;
 
 import vn.fx.qh.sapo.entities.order.sale.*;
 import vn.fx.qh.sapo.entities.product.*;
@@ -10,19 +10,19 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface SaleOrderItemRepository extends JpaRepository<SalesOrderItem, Integer> {
-    List<SalesOrderItem> findAllByOrderId(Integer id);
+public interface SaleOrderItemRepository extends JpaRepository<SaleOrderItem, Integer> {
+    List<SaleOrderItem> findAllByOrderId(Integer id);
 
     Boolean existsByProduct(Product product);
 
-    Optional<SalesOrderItem> findByProduct(Product product);
+    Optional<SaleOrderItem> findByProduct(Product product);
 
-    Optional<SalesOrderItem> findByOrderAndProduct(SaleOrder order, Product product);
+    Optional<SaleOrderItem> findByOrderAndProduct(SaleOrder order, Product product);
 
-    int countSalesOrderItemByOrder(SaleOrder order);
+    int countSaleOrderItemByOrder(SaleOrder order);
 
-    @Query("SELECT COUNT(oi) FROM SalesOrderItem  AS oi WHERE oi.id = :orderId")
-    int countSalesOrderItemByOrderId(@Param("orderId") int orderId);
+    @Query("SELECT COUNT(oi) FROM SaleOrderItem  AS oi WHERE oi.id = :orderId")
+    int countSaleOrderItemByOrderId(@Param("orderId") int orderId);
 
 
 }

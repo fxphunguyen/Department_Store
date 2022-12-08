@@ -1,12 +1,13 @@
-package com.phpn.product.category;
+package com.phpn.category;
 
-import vn.fx.qh.sapo.entities.Category;
+import com.phpn.category.dto.CategoryMapper;
+import com.phpn.category.dto.CategoryParam;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import vn.fx.qh.sapo.entities.product.Category;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -24,14 +25,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category getById(Integer id) {
-        return categoryRepository.getById(id);
+    public Category findById(Integer id) {
+        return categoryRepository.findById(id).get();
     }
 
-    @Override
-    public Optional<Category> findById(Integer id) {
-        return categoryRepository.findById(id);
-    }
+
 
     @Override
     public Category save(Category category) {

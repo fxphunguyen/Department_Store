@@ -16,7 +16,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class OrderItemResult {
+public class SaleOrderItemResult {
 
     private Integer id;
 

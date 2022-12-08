@@ -1,8 +1,5 @@
-package com.phpn.services.product_image;
+package com.phpn.media;
 
-import com.phpn.dto.product_image.ProductImageParam;
-import com.phpn.repositories.ProductImageRepository;
-import vn.fx.qh.sapo.entities.ProductImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,13 +7,13 @@ import javax.transaction.Transactional;
 
 @Service
 @Transactional
-public class ProductImageServiceImpl implements ProductImageService{
+public class ProductImageServiceImpl implements MediaService {
 
     @Autowired
-    private ProductImageRepository productImageRepository;
+    private MediaRepository mediaRepository;
 
     @Override
-    public ProductImage save(ProductImageParam productImageParam) {
+    public MediaResult save(MediaParam mediaParam) {
         return null;
     }
 }

@@ -1,4 +1,4 @@
-package com.phpn.services.upload;
+package com.phpn.product;
 
 import org.springframework.web.multipart.MultipartFile;
 

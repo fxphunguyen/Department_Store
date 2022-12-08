@@ -1,4 +1,4 @@
-package com.phpn.payment;
+package com.phpn.payment.method;
 
 import org.springframework.stereotype.Component;
 

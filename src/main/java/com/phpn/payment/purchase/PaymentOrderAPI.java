@@ -1,10 +1,7 @@
-package com.phpn.payment;
+package com.phpn.payment.purchase;
 
-import com.phpn.order.sale.dto.PaymentOrderParam;
-import com.phpn.order.sale.dto.PaymentSaleOrderResult;
-import com.phpn.payment.PaymentOrderMapper;
-import com.phpn.payment.PaymentOrderRepository;
-import com.phpn.payment.PaymentOrderService;
+import com.phpn.payment.sale.PaymentOrderParam;
+import com.phpn.payment.sale.PaymentSaleOrderResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +16,14 @@ import java.util.stream.Collectors;
 public class PaymentOrderAPI {
 
     @Autowired
-    private PaymentOrderService paymentOrderService;
+    private PaymentSaleOrderService paymentOrderService;
 
 
     @Autowired
     private PaymentOrderRepository paymentOrderRepository;
 
     @Autowired
-    private PaymentOrderMapper paymentOrderMapper;
+    private PaymentSaleOrderMapper paymentOrderMapper;
 
     @GetMapping("")
     public ResponseEntity<?> findAll() {
@@ -45,7 +42,7 @@ public class PaymentOrderAPI {
     @Transactional(readOnly = true)
     public ResponseEntity<?> findById(@PathVariable Integer id) {
         List<PaymentSaleOrderResult> paymentOrderResult = paymentOrderRepository.findAllByOrderId(id).stream()
-                .map(paymentOrder -> paymentOrderMapper.toOrderInfo(paymentOrder))
+                .map(paymentOrder -> paymentOrderMapper.toDTO(paymentOrder))
                 .collect(Collectors.toList());
         return new ResponseEntity<>(paymentOrderResult, HttpStatus.OK);
     }

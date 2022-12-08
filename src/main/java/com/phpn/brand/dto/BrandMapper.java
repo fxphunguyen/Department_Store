@@ -1,4 +1,4 @@
-package com.phpn.brand;
+package com.phpn.brand.dto;
 
 import org.springframework.stereotype.Component;
 

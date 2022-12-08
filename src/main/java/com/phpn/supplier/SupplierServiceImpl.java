@@ -1,20 +1,16 @@
-package com.phpn.services.suppliers;
+package com.phpn.supplier;
 
-import com.phpn.dto.suppliers.SupplierCreate;
-import com.phpn.dto.suppliers.SupplierResult;
 import com.phpn.exceptions.AppNotFoundException;
 import com.phpn.exceptions.NotFoundException;
 import com.phpn.exceptions.VersionException;
-import com.phpn.product.SupplierMapper;
-import com.phpn.repositories.ApplicationRepository;
-import com.phpn.repositories.product.SupplierRepository;
+import com.phpn.application.ApplicationRepository;
 import vn.fx.qh.sapo.entities.Application;
-import vn.fx.qh.sapo.entities.Supplier;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vn.fx.qh.sapo.entities.product.supplier.*;
 
 import java.util.List;
 import java.util.Optional;

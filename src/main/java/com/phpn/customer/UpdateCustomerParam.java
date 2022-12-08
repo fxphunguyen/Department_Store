@@ -1,2 +1,4 @@
-package com.phpn.customer;public class UpdateCustomerParam {
+package com.phpn.customer;
+
+public class UpdateCustomerParam {
 }

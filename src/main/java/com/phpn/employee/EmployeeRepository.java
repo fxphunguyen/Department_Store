@@ -1,4 +1,4 @@
-package com.phpn.repositories.employee;
+package com.phpn.employee;
 
 import java.util.List;
 import java.util.Optional;

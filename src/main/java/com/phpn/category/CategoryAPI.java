@@ -1,8 +1,6 @@
-package com.phpn.controllers.api;
-import com.phpn.product.category.CategoryParam;
-import com.phpn.product.category.CategoryRepository;
+package com.phpn.category;
+import com.phpn.category.dto.CategoryParam;
 import vn.fx.qh.sapo.entities.product.*;
-import com.phpn.product.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

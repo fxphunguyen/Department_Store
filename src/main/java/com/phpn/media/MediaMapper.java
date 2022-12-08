@@ -1,15 +1,14 @@
-package com.phpn.mappers.media;
+package com.phpn.media;
 
-import com.phpn.dto.product_image.ProductImageParam;
-import vn.fx.qh.sapo.entities.ProductImage;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.Date;
-
+@Component
 public class MediaMapper {
 
-    public ProductImage toModel(ProductImageParam productImageParam) {
-        return new ProductImage(productImageParam.getProduct())
+    public vn.fx.qh.sapo.entities.media.Media toModel(MediaParam productImageParam) {
+        return new vn.fx.qh.sapo.entities.media.Media(productImageParam.getProduct())
                 .setCloudId(productImageParam.getCloudId())
                 .setFileName(productImageParam.getFileName())
                 .setFileFolder(productImageParam.getFileFolder())
@@ -19,7 +18,6 @@ public class MediaMapper {
                 .setCreatedBy(null)
                 .setUpdatedAt(null)
                 .setUpdatedBy(null)
-                .setDeleted(false)
                 .setProductId(productImageParam.getProductId());
     }
 }

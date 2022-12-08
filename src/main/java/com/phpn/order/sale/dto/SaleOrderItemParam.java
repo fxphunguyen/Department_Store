@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Data
 @Accessors(chain = true)
-public class OrderItemParam {
+public class SaleOrderItemParam {
 
     private Integer id;
 

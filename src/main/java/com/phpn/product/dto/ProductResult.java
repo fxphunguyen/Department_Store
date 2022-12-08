@@ -1,17 +1,17 @@
-package com.phpn.dto.product;
+package com.phpn.product.dto;
+
+import com.phpn.brand.dto.BrandResult;
+import com.phpn.category.dto.CategoryResult;
+import com.phpn.product.item.ItemResult;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+import vn.fx.qh.sapo.entities.product.ProductStatus;
+import vn.fx.qh.sapo.entities.product.tax.Tax;
 
 import java.math.BigDecimal;
-
-import com.phpn.dto.brand.BrandResult;
-import com.phpn.dto.category.CategoryResult;
-import com.phpn.dto.item.ItemResult;
-import vn.fx.qh.sapo.entities.ProductStatus;
-import vn.fx.qh.sapo.entities.Tax;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.experimental.Accessors;
 
 @Getter
 @Setter

@@ -1,6 +1,6 @@
-package com.phpn.customer;
+package com.phpn.shipping_address;
 
-import vn.fx.qh.sapo.entities.custommer.*;
+import vn.fx.qh.sapo.entities.customer.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

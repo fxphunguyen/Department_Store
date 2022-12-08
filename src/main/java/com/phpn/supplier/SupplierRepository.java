@@ -1,4 +1,4 @@
-package com.phpn.repositories.product;
+package com.phpn.supplier;
 
 import vn.fx.qh.sapo.entities.product.supplier.*;
 

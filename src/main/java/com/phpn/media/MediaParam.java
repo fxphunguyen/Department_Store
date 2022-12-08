@@ -6,7 +6,7 @@ import vn.fx.qh.sapo.entities.product.Product;
 
 @Data
 @Accessors(chain = true)
-public class ProductImageParam {
+public class MediaParam {
 
     private String cloudId;
     private String fileName;

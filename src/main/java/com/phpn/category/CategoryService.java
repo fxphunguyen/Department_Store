@@ -1,9 +1,8 @@
-package com.phpn.product.category;
+package com.phpn.category;
+import com.phpn.category.dto.CategoryParam;
 import vn.fx.qh.sapo.entities.product.*;
-import com.phpn.product.category.CategoryParam;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CategoryService {
 
@@ -11,9 +10,7 @@ public interface CategoryService {
 
     List<Category> findAll();
 
-    Category getById(Integer id);
-
-    Optional<Category> findById(Integer id);
+    Category findById(Integer id);
 
     Category save(Category category);
 

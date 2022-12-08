@@ -1,4 +1,4 @@
-package com.phpn.repositories;
+package com.phpn.application;
 
 import vn.fx.qh.sapo.entities.Application;
 import org.springframework.data.jpa.repository.JpaRepository;

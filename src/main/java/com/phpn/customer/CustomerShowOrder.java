@@ -1,6 +1,6 @@
-package com.phpn.dto.customer;
+package com.phpn.customer;
 
-import vn.fx.qh.sapo.entities.CustomerGender;
+import vn.fx.qh.sapo.entities.customer.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;

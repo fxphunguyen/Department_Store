@@ -1,7 +1,6 @@
 package com.phpn.order.sale;
 
 import com.phpn.customer.*;
-import com.phpn.customer.*;
 import com.phpn.employee.*;
 import com.phpn.employee.dto.*;
 import com.phpn.exceptions.*;
@@ -14,7 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.fx.qh.sapo.entities.customer.*;
 import vn.fx.qh.sapo.entities.employee.*;
+import vn.fx.qh.sapo.entities.order.*;
 import vn.fx.qh.sapo.entities.order.sale.*;
+import vn.fx.qh.sapo.entities.product.*;
 import vn.fx.qh.sapo.entities.product.tax.*;
 
 import java.math.BigDecimal;
@@ -26,11 +27,11 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class OrderServiceImpl implements OrderService {
+public class SaleOrderServiceImpl implements SaleOrderService {
 
 
     @Autowired
-    private SalesOrderRepository orderRepository;
+    private SaleOrderRepository orderRepository;
 
     @Autowired
     private SaleOrderItemRepository orderItemRepository;
@@ -84,7 +85,7 @@ public class OrderServiceImpl implements OrderService {
         Optional<Employee> employeeOptional = employeeRepository.findById(orderParam.getEmployeeId());
 
 
-        Order order = orderMapper.toModel(orderParam);
+        SaleOrder order = orderMapper.toModel(orderParam);
         order.setGrandTotal(new BigDecimal(0));
         order.setTotal(new BigDecimal(0));
         order.setOrderCode("SON00"+String.valueOf(ranNum));
@@ -120,7 +121,7 @@ public class OrderServiceImpl implements OrderService {
             int quantityCustomerOrder = orderItemExport.getQuantity();
             BigDecimal orderItemTotal = retailPrice.multiply(new BigDecimal(quantityCustomerOrder));
 
-            OrderItem orderItem = new OrderItem();
+            SaleOrderItem orderItem = new SaleOrderItem();
             if (product.getApplyTax()) {
                 List<ProductTax> productTaxList = productTaxRepository.findAllByProductIdAndTaxType(productId, TaxType.OUT);
                 float taxTotal = (float) productTaxList.stream()
@@ -186,7 +187,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public SaleOrderResult findById(int id) {
-        Optional<Order> optional = orderRepository.findById(id);
+        Optional<SaleOrder> optional = orderRepository.findById(id);
         if (!optional.isPresent())
             throw new NotFoundException("Đơn hàng không hợp lệ!");
         SaleOrderResult result = orderMapper.toDTO(optional.get());

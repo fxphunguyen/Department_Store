@@ -1,4 +1,4 @@
-package com.phpn.payment;
+package com.phpn.payment.method;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.phpn.exceptions.NotFoundException;
 import com.phpn.order.PaymentMethodResult;
-import vn.fx.qh.sapo.entities.PaymentMethod;
+import vn.fx.qh.sapo.entities.payment.*;
 
 @Service
 @Transactional

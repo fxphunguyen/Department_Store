@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Accessors(chain = true)
-public class OrderResult {
+public class SaleOrderResult {
 
     private Integer id;
 
@@ -41,11 +41,11 @@ public class OrderResult {
 
     private String orderStatusId;
 
-    private OrderStatusResult orderStatus;
+    private SaleOrderStatusResult orderStatus;
 
     private String paymentStatusId;
 
-    private OrderStatusResult paymentStatus;
+    private SaleOrderStatusResult paymentStatus;
 
     private BigDecimal discount;
 
@@ -63,6 +63,6 @@ public class OrderResult {
 
     private BigDecimal grandTotal;
 
-    List<OrderItemResult> orderItems;
+    List<SaleOrderItemResult> orderItems;
 
 }

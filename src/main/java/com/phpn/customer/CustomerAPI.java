@@ -1,53 +1,33 @@
-package com.phpn.controllers.api;
+package com.phpn.customer;
 
-import com.phpn.customer.CreateCustomerParam;
-import com.phpn.customer.CustomerResult;
-import com.phpn.customer.CustomerRepository;
-import com.phpn.order.SalesOrderRepository;
-import com.phpn.repositories.model.*;
-import com.phpn.customer.CustomerService;
 import com.phpn.util.AppUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import vn.fx.qh.sapo.entities.customer.CustomerGender;
+import vn.fx.qh.sapo.entities.customer.CustomerGroup;
+import vn.fx.qh.sapo.entities.customer.CustomerStatus;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerAPI {
-
-
     @Autowired
     AppUtil appUtil;
 
     @Autowired
     private CustomerService customerService;
 
-    @Autowired
-    CustomerRepository customerRepository;
-
-    @Autowired
-    SalesOrderRepository orderRepository;
-
-
-    @GetMapping("/list_customerAll")
-    @Transactional(readOnly = true)
-    public ResponseEntity<?> showListCustomerAll() {
+    @GetMapping
+    public ResponseEntity<?> findAll() {
         List<CustomerResult> customers = customerService.findAll();
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 
-
-    @GetMapping("/customer_list")
-    public ResponseEntity<?> showListCustomerByDelete(boolean deleted) {
-        List<CustomerResult> customers = customerService.findAllCustomerByDelete(deleted);
-        return new ResponseEntity<>(customers, HttpStatus.OK);
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
@@ -62,26 +42,16 @@ public class CustomerAPI {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createCustomer(@Validated  @RequestBody CreateCustomerParam customerCreate, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
+    public ResponseEntity<?> createCustomer(@Validated @RequestBody CreateCustomerParam customerCreate, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return appUtil.mapErrorToResponse(bindingResult);
         }
-        Customer customer = customerService.create(customerCreate);
-        return new ResponseEntity<>(customer, HttpStatus.OK);
-
+        return new ResponseEntity<>(customerService.create(customerCreate), HttpStatus.OK);
     }
 
-
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateCustomer(@RequestBody CustomerResult customerResult) {
-
-        CustomerResult customerResult1 = customerService.findById(customerResult.getId());
-
-        if (customerResult1 == null) {
-            System.out.println("Không tìm thấy địa chỉ ad phù hợp");
-        }
-        customerService.update(customerResult);
-        return new ResponseEntity<>(customerResult, HttpStatus.OK);
+    public ResponseEntity<?> updateCustomer(@RequestBody UpdateCustomerParam updateCustomer) {
+        return new ResponseEntity<>(customerService.update(updateCustomer), HttpStatus.OK);
     }
 
 
@@ -105,45 +75,43 @@ public class CustomerAPI {
     }
 
 
-    @GetMapping("/showAllCustomerMixInfo")
-    public ResponseEntity<?> showAllCustomerMixInfo() {
-        List<ICustomer> iCustomers = customerService.showAllCustomerMixInfo();
-        return new ResponseEntity<>(iCustomers, HttpStatus.OK);
-    }
-
-    @GetMapping("/showAllCustomerMixInfoByStatus")
-    public ResponseEntity<?> showAllCustomerMixInfoByStatus() {
-        List<ICustomer> iCustomers = customerService.showAllCustomerMixInfoByStatus();
-        return new ResponseEntity<>(iCustomers, HttpStatus.OK);
-    }
-
-    @GetMapping("/customerInfo/{id}")
-    public ResponseEntity<?> showListCustomerInfo(@PathVariable Integer id) {
-        ICustomer iCustomer = customerService.CustomerInfoById(id);
-        return new ResponseEntity<>(iCustomer, HttpStatus.OK);
-    }
-
-    @GetMapping("/historyCustomerOrder/{id}")
-    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id ) {
-
-
-        List<ICustomerOrderHistory> customerOrderHistory = customerRepository.getCustomerOrderHistory(id);
-        return new ResponseEntity<>(customerOrderHistory, HttpStatus.OK);
-    }
-
-    @GetMapping("/customerDebt/{id}")
-    @Transactional(readOnly = true)
-    public ResponseEntity<?> showListCustomerDebtById(@PathVariable Integer id) {
-        List<ICustomerOwerImpl> iCustomerImpls = customerService.CustomerOwerById(id);
-        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
-    }
-
-
-    @GetMapping("/getQuantityOrderByCustomer/{id}")
-    @Transactional(readOnly = true)
-    public ResponseEntity<?> getQuantityOrderByCustomer(@PathVariable Integer id) {
-        Integer iCustomerImpls = customerRepository.getQuantityOrderByCustomer(id);
-        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
-    }
+//    @GetMapping("/showAllCustomerMixInfo")
+//    public ResponseEntity<?> showAllCustomerMixInfo() {
+//        List<ICustomer> iCustomers = customerService.showAllCustomerMixInfo();
+//        return new ResponseEntity<>(iCustomers, HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/showAllCustomerMixInfoByStatus")
+//    public ResponseEntity<?> showAllCustomerMixInfoByStatus() {
+//        List<ICustomer> iCustomers = customerService.showAllCustomerMixInfoByStatus();
+//        return new ResponseEntity<>(iCustomers, HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/customerInfo/{id}")
+//    public ResponseEntity<?> showListCustomerInfo(@PathVariable Integer id) {
+//        ICustomer iCustomer = customerService.CustomerInfoById(id);
+//        return new ResponseEntity<>(iCustomer, HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/historyCustomerOrder/{id}")
+//    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id) {
+//        List<ICustomerOrderHistory> customerOrderHistory = customerRepository.getCustomerOrderHistory(id);
+//        return new ResponseEntity<>(customerOrderHistory, HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/customerDebt/{id}")
+//    @Transactional(readOnly = true)
+//    public ResponseEntity<?> showListCustomerDebtById(@PathVariable Integer id) {
+//        List<ICustomerOwerImpl> iCustomerImpls = customerService.CustomerOwerById(id);
+//        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
+//    }
+//
+//
+//    @GetMapping("/getQuantityOrderByCustomer/{id}")
+//    @Transactional(readOnly = true)
+//    public ResponseEntity<?> getQuantityOrderByCustomer(@PathVariable Integer id) {
+//        Integer iCustomerImpls = customerRepository.getQuantityOrderByCustomer(id);
+//        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
+//    }
 }
 

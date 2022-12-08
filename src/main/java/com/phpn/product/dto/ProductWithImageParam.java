@@ -1,7 +1,7 @@
-package com.phpn.dto.product;
+package com.phpn.product.dto;
 
-import com.phpn.dto.product_image.ProductImageParam;
-import vn.fx.qh.sapo.entities.ProductStatus;
+import com.phpn.media.MediaParam;
+import vn.fx.qh.sapo.entities.product.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -27,5 +27,5 @@ public class ProductWithImageParam implements Serializable {
     private Integer categoryId;
     private Integer brandId;
     private Boolean applyTax;
-    private List<ProductImageParam> productImageParams;
+    private List<MediaParam> productImageParams;
 }

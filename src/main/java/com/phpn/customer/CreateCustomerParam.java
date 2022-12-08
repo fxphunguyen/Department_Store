@@ -1,14 +1,11 @@
-package com.phpn.dto.customer;
+package com.phpn.customer;
 
 
-import com.phpn.dto.shipping_address.CreateShippingAddressParam;
-import vn.fx.qh.sapo.entities.CustomerGender;
-import vn.fx.qh.sapo.entities.CustomerGroup;
-import vn.fx.qh.sapo.entities.CustomerStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import vn.fx.qh.sapo.entities.customer.*;
 
 @NoArgsConstructor
 @AllArgsConstructor

@@ -1,2 +1,4 @@
-package com.phpn.order.purchase.dto;public class PurchaseOrderResult {
+package com.phpn.order.purchase.dto;
+
+public class PurchaseOrderResult {
 }

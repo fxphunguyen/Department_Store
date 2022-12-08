@@ -1,17 +1,15 @@
-package com.phpn.controllers.api;
+package com.phpn.product;
 
 import com.phpn.product.dto.ProductResult;
 import com.phpn.product.dto.ProductShortParam;
 import com.phpn.product.dto.ProductWithImageParam;
-import com.phpn.product.ProductRepository;
-import vn.fx.qh.sapo.entities.Product;
-import vn.fx.qh.sapo.entities.ProductInfo;
-import com.phpn.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import vn.fx.qh.sapo.entities.product.Product;
+import vn.fx.qh.sapo.entities.product.ProductInfo;
 
 import java.util.List;
 

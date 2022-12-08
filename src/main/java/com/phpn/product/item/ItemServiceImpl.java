@@ -1,6 +1,6 @@
 package com.phpn.product.item;
 
-import com.phpn.employee.EmployeeMapper;
+import com.phpn.employee.dto.EmployeeMapper;
 import com.phpn.product.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,16 +1,5 @@
-package com.phpn.order;
-
-import com.phpn.order.PurchaseOrderItemParam;
-import com.phpn.order.PurchaseOrderItemResult;
-import vn.fx.qh.sapo.entities.PurchaseOrderItem;
-
-import java.util.List;
+package com.phpn.order.purchase;
 
 public interface PurchaseOrderItemService {
 
-    PurchaseOrderItem create(PurchaseOrderItemParam purchaseOrderItemParam);
-
-    List<PurchaseOrderItemResult> findAllByPurchaseOrderId (Integer id);
-
-    List<PurchaseOrderItemResult> findAll();
 }

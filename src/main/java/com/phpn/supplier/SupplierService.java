@@ -1,10 +1,10 @@
-package com.phpn.services.suppliers;
+package com.phpn.supplier;
 
 import java.util.List;
 
-import vn.fx.qh.sapo.entities.Supplier;
-import com.phpn.dto.suppliers.SupplierCreate;
-import com.phpn.dto.suppliers.SupplierResult;
+import vn.fx.qh.sapo.entities.product.supplier.*;
+import com.phpn.supplier.SupplierCreate;
+import com.phpn.supplier.SupplierResult;
 
 public interface SupplierService {
 

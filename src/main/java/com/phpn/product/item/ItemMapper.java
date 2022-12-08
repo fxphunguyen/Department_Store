@@ -1,9 +1,7 @@
 package com.phpn.product.item;
 
-import com.phpn.product.item.ItemParam;
-import com.phpn.product.item.ItemResult;
-import vn.fx.qh.sapo.entities.Item;
 import org.springframework.stereotype.Component;
+import vn.fx.qh.sapo.entities.product.*;
 
 @Component
 public class ItemMapper {

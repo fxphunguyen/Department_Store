@@ -1,4 +1,4 @@
-package com.phpn.brand;
+package com.phpn.brand.dto;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,30 +1,30 @@
 
-package com.phpn.payment;
+package com.phpn.payment.purchase;
 
-import com.phpn.order.sale.dto.PaymentOrderParam;
-import com.phpn.order.sale.dto.PaymentSaleOrderResult;
+import com.phpn.payment.sale.PaymentOrderParam;
+import com.phpn.payment.sale.PaymentSaleOrderResult;
 import com.phpn.exceptions.NotFoundException;
 import com.phpn.employee.EmployeeRepository;
-import com.phpn.order.SalesOrderRepository;
-import vn.fx.qh.sapo.entities.PaymentOrder;
+import com.phpn.order.sale.SaleOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vn.fx.qh.sapo.entities.payment.sale.PaymentSaleOrder;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class PaymentOrderServiceImpl implements PaymentOrderService {
+public class PaymentSaleOrderServiceImpl implements PaymentSaleOrderService {
 
     @Autowired
-    private PaymentOrderMapper paymentOrderMapper;
+    private PaymentSaleOrderMapper paymentOrderMapper;
 
     @Autowired
     private PaymentOrderRepository paymentOrderRepository;
 
     @Autowired
-    private SalesOrderRepository orderRepository;
+    private SaleOrderRepository orderRepository;
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -54,7 +54,7 @@ public class PaymentOrderServiceImpl implements PaymentOrderService {
         Integer orderId = paymentOrderParam.getOrderId();
         if (orderId != null && !orderRepository.existsById(orderId))
             throw new NotFoundException("Khong tim thay order can thanh toan");
-        PaymentOrder paymentInput = paymentOrderMapper.toModel(paymentOrderParam);
+        PaymentSaleOrder paymentInput = paymentOrderMapper.toModel(paymentOrderParam);
         paymentInput = paymentOrderRepository.save(paymentInput);
 
         return paymentOrderMapper.toDTO(paymentInput);

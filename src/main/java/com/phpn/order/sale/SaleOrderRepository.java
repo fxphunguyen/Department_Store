@@ -8,10 +8,7 @@ import java.util.List;
 
 
 @Repository
-public interface SalesOrderRepository extends JpaRepository<SaleOrder, Integer> {
-
-    @Query("FROM SalesOrder c "
-            + "WHERE c.customerId = :id ")
-    List<SaleOrder> findAllOrderByCustomerId(Integer id);
+public interface SaleOrderRepository extends JpaRepository<SaleOrder, Integer> {
+    List<SaleOrder> findAllSaleOrderByCustomerId(Integer customerId);
 }
 

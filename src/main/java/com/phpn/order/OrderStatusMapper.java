@@ -1,13 +1,13 @@
-package com.phpn.mappers.order;
+package com.phpn.order;
 
-import com.phpn.dto.orderStatus.OrderStatusResult;
+import com.phpn.order.sale.dto.SaleOrderStatusResult;
 import org.springframework.stereotype.Component;
 import vn.fx.qh.sapo.entities.order.OrderStatus;
 
 @Component
 public class OrderStatusMapper {
-    public OrderStatusResult toDTO(OrderStatus orderStatus) {
-        return new OrderStatusResult()
+    public SaleOrderStatusResult toDTO(OrderStatus orderStatus) {
+        return new SaleOrderStatusResult()
                 .setName(orderStatus.getName());
     }
 }

@@ -1,13 +1,12 @@
 package com.phpn.payment.purchase;
 
 import com.phpn.employee.dto.EmployeeMapper;
-import com.phpn.order.sale.dto.PaymentOrderParam;
-import com.phpn.order.sale.dto.PaymentSaleOrderResult;
+import com.phpn.payment.sale.PaymentOrderParam;
+import com.phpn.payment.sale.PaymentSaleOrderResult;
 import com.phpn.order.sale.dto.SaleOrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import vn.fx.qh.sapo.entities.payment.sale.PaymentSaleOrder;
-import vn.fx.qh.sapo.entities.payment.sale.PaymentSalesOrder;
 
 import java.time.Instant;
 
@@ -30,16 +29,8 @@ public class PaymentSaleOrderMapper {
                 .setDescription(paymentOrder.getDescription());
     }
 
-    public PaymentSaleOrderResult toOrderInfo(PaymentSalesOrder paymentOrder) {
-        return new PaymentSaleOrderResult()
-                .setId(paymentOrder.getId())
-                .setPaid(paymentOrder.getPaid())
-                .setCreateAt(paymentOrder.getCreateAt())
-                .setDescription(paymentOrder.getDescription());
-    }
-
-    public PaymentSalesOrder toModel(PaymentOrderParam paymentOrderParam) {
-        return new PaymentSalesOrder()
+    public PaymentSaleOrder toModel(PaymentOrderParam paymentOrderParam) {
+        return new PaymentSaleOrder()
                 .setId(0)
                 .setPaid(paymentOrderParam.getPaid())
                 .setCreateAt(Instant.now().toString())

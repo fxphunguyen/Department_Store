@@ -1,4 +1,4 @@
-package com.phpn.employee;
+package com.phpn.employee.dto;
 
 import lombok.experimental.Accessors;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.phpn.product.category;
+package com.phpn.category;
 
 import vn.fx.qh.sapo.entities.product.*;
 

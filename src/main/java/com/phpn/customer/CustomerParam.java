@@ -1,4 +1,4 @@
-package com.phpn.dto.customer;
+package com.phpn.customer;
 
 
 import lombok.AllArgsConstructor;
