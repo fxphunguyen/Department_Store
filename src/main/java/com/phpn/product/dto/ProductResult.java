@@ -42,10 +42,8 @@ public class ProductResult {
     private BrandResult brand;
     private List<TaxResult> taxSaleList;
     private List<TaxResult> taxPurchaseList;
-    private Tax tax;
-    private ItemResult item;
-    private int total;
-    private int available;
+    private int totalInventory;
+    private int availableInventory;
 
 
 }
