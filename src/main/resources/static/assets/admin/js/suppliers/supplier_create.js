@@ -5,7 +5,7 @@
             "content-type": "application/json"
         },
         "type": "get",
-        "url": "http://localhost:8080/api/employees/show_list"
+        "url": "http://localhost:8080/api/employees/findAll"
     })
     .done((data) => {
         $.each(data, (i, item) => {
