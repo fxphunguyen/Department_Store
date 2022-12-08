@@ -3,6 +3,7 @@ package com.phpn.product.dto;
 import com.phpn.brand.dto.BrandResult;
 import com.phpn.category.dto.CategoryResult;
 import com.phpn.product.item.ItemResult;
+import com.phpn.tax.dto.TaxResult;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import vn.fx.qh.sapo.entities.product.ProductStatus;
 import vn.fx.qh.sapo.entities.product.tax.Tax;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -38,6 +40,8 @@ public class ProductResult {
     private Integer brandId;
     private CategoryResult category;
     private BrandResult brand;
+    private List<TaxResult> taxSaleList;
+    private List<TaxResult> taxPurchaseList;
     private Tax tax;
     private ItemResult item;
     private int ton;
