@@ -1,6 +1,8 @@
 package com.phpn.customer;
 
 
+import com.phpn.customer.dto.CreateCustomerParam;
+import com.phpn.customer.dto.CustomerOrderResult;
 import com.phpn.shipping_address.ShippingAddressResult;
 import com.phpn.employee.dto.EmployeeMapper;
 import vn.fx.qh.sapo.entities.customer.*;

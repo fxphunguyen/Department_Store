@@ -1,10 +1,9 @@
-package com.phpn.customer;
+package com.phpn.customer.service;
 
 import com.phpn.customer.CustomerResult;
-import vn.fx.qh.sapo.entities.customer.*;
-import org.springframework.transaction.annotation.Transactional;
+import com.phpn.customer.UpdateCustomerParam;
+import com.phpn.customer.dto.CreateCustomerParam;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public interface CustomerService {
