@@ -10,7 +10,6 @@ public class TaxMapper {
                 .setId(tax.getId())
                 .setTax(tax.getTax())
                 .setTitle(tax.getTitle())
-                .setCode(tax.getCode())
-                .setType(tax.getType());
+                .setCode(tax.getCode());
     }
 }
