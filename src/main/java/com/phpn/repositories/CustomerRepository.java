@@ -27,8 +27,8 @@ public interface CustomerRepository extends JpaRepository<Customer , Integer> {
     @Query(value = "call `ph-pn`.sp_customerOwerById(:id);" , nativeQuery = true)
     List<ICustomerOwer> getCustomerOwerById(Integer id);
 
-    @Query(value = " call sp_getCustomerHistoryOrderById(:id ,:startIntPaging,:endIntPaging);" , nativeQuery = true)
-    List<ICustomerOrderHistory> getCustomerOrderHistory(Integer id, Integer startIntPaging, Integer endIntPaging);
+    @Query(value = " call sp_getCustomerHistoryOrderById(:id);" , nativeQuery = true)
+    List<ICustomerOrderHistory> getCustomerOrderHistory(Integer id);
 
 
     @Query(value = "call `ph-pn`.sp_getQuantityOrderByIdCustomer(:idCustomer);" , nativeQuery = true)

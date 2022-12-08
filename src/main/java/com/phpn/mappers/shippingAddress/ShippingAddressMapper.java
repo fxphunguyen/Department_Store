@@ -47,7 +47,6 @@ public class ShippingAddressMapper {
                 .setEmail(createParam.getEmail())
                 .setFullName(createParam.getFullName())
                 .setMobile(createParam.getMobile())
-                .setShippingAddress(createParam.getIsDefault())
                 .setSupplierId(1);
     }
 

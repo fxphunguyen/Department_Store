@@ -6,10 +6,13 @@ import com.phpn.repositories.CustomerRepository;
 import com.phpn.repositories.OrderRepository;
 import com.phpn.repositories.model.*;
 import com.phpn.services.customer.CustomerService;
+import com.phpn.util.AppUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +21,9 @@ import java.util.List;
 @RequestMapping("/api/customers")
 public class CustomerAPI {
 
+
+    @Autowired
+    AppUtil appUtil;
 
     @Autowired
     private CustomerService customerService;
@@ -56,9 +62,10 @@ public class CustomerAPI {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createCustomer(@RequestBody CreateCustomerParam customerCreate) {
-        System.out.println(customerCreate.getCreateShippingAddressParam().getDistrictName());
-        System.out.println(customerCreate);
+    public ResponseEntity<?> createCustomer(@Validated  @RequestBody CreateCustomerParam customerCreate, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return appUtil.mapErrorToResponse(bindingResult);
+        }
         Customer customer = customerService.create(customerCreate);
         return new ResponseEntity<>(customer, HttpStatus.OK);
 
@@ -74,13 +81,6 @@ public class CustomerAPI {
             System.out.println("Không tìm thấy địa chỉ ad phù hợp");
         }
         customerService.update(customerResult);
-
-//        customerResult.getLocationRegionResult().setId(customerResult1.getLocationRegionId());
-//
-//        if ((customerResult.getLocationRegionResult()) == null) {
-//            System.out.println("Dữ liệu ở location bị null");
-//        }
-//        locationRegionService.update(customerResult.getLocationRegionResult());
         return new ResponseEntity<>(customerResult, HttpStatus.OK);
     }
 
@@ -123,11 +123,11 @@ public class CustomerAPI {
         return new ResponseEntity<>(iCustomer, HttpStatus.OK);
     }
 
-    @GetMapping("/historyCustomerOrder/{id}/{startIntPaging}/{endIntPaging}")
-    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id, @PathVariable Integer startIntPaging, @PathVariable Integer endIntPaging ) {
+    @GetMapping("/historyCustomerOrder/{id}")
+    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id ) {
 
-        System.out.println("id" + id + "stare" + startIntPaging +  "end" + endIntPaging);
-        List<ICustomerOrderHistory> customerOrderHistory = customerRepository.getCustomerOrderHistory(id , startIntPaging , endIntPaging);
+
+        List<ICustomerOrderHistory> customerOrderHistory = customerRepository.getCustomerOrderHistory(id);
         return new ResponseEntity<>(customerOrderHistory, HttpStatus.OK);
     }
 
