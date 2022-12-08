@@ -342,7 +342,7 @@ let modalAddress = `   <div class="MuiBox-root jss797 jss621">
               <div class="MuiBox-root jss5998 jss5978">
                 <div class="MuiPaper-root jss6031 sapo-grid MuiPaper-elevation1 MuiPaper-rounded">
                   <div class="MuiTableContainer-root jss6032 sapo-grid-header-wrapper">
-                    <table id="showShippingAddress" class="MuiTable-root jss6033 sapo-grid-header" >
+                    <table id="showShippingAddress" class="MuiTable-root jss6033 sapo-grid-header" style=" width: 100%;" >
                       <thead class="MuiTableHead-root jss6046">
                         <tr class="MuiTableRow-root MuiTableRow-head">
                           <th class="MuiTableCell-root MuiTableCell-head jss6055 MuiTableCell-paddingCheckbox" scope="col" rowspan="1" style="padding-left: 16px;">
@@ -374,34 +374,34 @@ let modalAddress = `   <div class="MuiBox-root jss797 jss621">
                       </div>
                     </div>
                   </div>
-                  <div class="MuiBox-root jss6107 jss6102 sapo-pagination">
-                    <p class="MuiTypography-root MuiTypography-body1">Hiển thị</p>
-                    <div class="MuiFormControl-root">
-                      <div class="MuiInputBase-root MuiOutlinedInput-root jss6103 MuiInputBase-formControl">
-                        <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input" tabindex="0" role="button" aria-haspopup="listbox">
-                          <p class="MuiTypography-root jss6105 MuiTypography-body1">20</p>
-                        </div><input type="hidden" value="20"><svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                          <path d="M7 10l5 5 5-5z"></path>
-                        </svg>
-                        <fieldset aria-hidden="true" class="jss6155 MuiOutlinedInput-notchedOutline" style="padding-left: 8px;">
-                          <legend class="jss6156" style="width: 0.01px;"><span>​</span></legend>
-                        </fieldset>
-                      </div>
-                    </div>
-                    <p class="MuiTypography-root MuiTypography-body1">kết quả</p>
-                    <p class="MuiTypography-root jss6104 MuiTypography-body1">Từ 1 đến 1 trên tổng 1</p>
-                    <nav aria-label="pagination navigation" class="MuiPagination-root jss6106">
-                      <ul class="MuiPagination-ul">
-                        <li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled" tabindex="-1" type="button" disabled="" aria-label="Go to previous page"><svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
-                            </svg></button></li>
-                        <li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall" tabindex="0" type="button" aria-current="true" aria-label="page 1">1<span class="MuiTouchRipple-root"></span></button></li>
-                        <li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled" tabindex="-1" type="button" disabled="" aria-label="Go to next page"><svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
-                            </svg></button></li>
-                      </ul>
-                    </nav>
-                  </div>
+<!--                  <div class="MuiBox-root jss6107 jss6102 sapo-pagination">-->
+<!--                    <p class="MuiTypography-root MuiTypography-body1">Hiển thị</p>-->
+<!--                    <div class="MuiFormControl-root">-->
+<!--                      <div class="MuiInputBase-root MuiOutlinedInput-root jss6103 MuiInputBase-formControl">-->
+<!--                        <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input" tabindex="0" role="button" aria-haspopup="listbox">-->
+<!--                          <p class="MuiTypography-root jss6105 MuiTypography-body1">20</p>-->
+<!--                        </div><input type="hidden" value="20"><svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined" focusable="false" viewBox="0 0 24 24" aria-hidden="true">-->
+<!--                          <path d="M7 10l5 5 5-5z"></path>-->
+<!--                        </svg>-->
+<!--                        <fieldset aria-hidden="true" class="jss6155 MuiOutlinedInput-notchedOutline" style="padding-left: 8px;">-->
+<!--                          <legend class="jss6156" style="width: 0.01px;"><span>​</span></legend>-->
+<!--                        </fieldset>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <p class="MuiTypography-root MuiTypography-body1">kết quả</p>-->
+<!--                    <p class="MuiTypography-root jss6104 MuiTypography-body1">Từ 1 đến 1 trên tổng 1</p>-->
+<!--                    <nav aria-label="pagination navigation" class="MuiPagination-root jss6106">-->
+<!--                      <ul class="MuiPagination-ul">-->
+<!--                        <li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled" tabindex="-1" type="button" disabled="" aria-label="Go to previous page"><svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">-->
+<!--                              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>-->
+<!--                            </svg></button></li>-->
+<!--                        <li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall" tabindex="0" type="button" aria-current="true" aria-label="page 1">1<span class="MuiTouchRipple-root"></span></button></li>-->
+<!--                        <li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled" tabindex="-1" type="button" disabled="" aria-label="Go to next page"><svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">-->
+<!--                              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>-->
+<!--                            </svg></button></li>-->
+<!--                      </ul>-->
+<!--                    </nav>-->
+<!--                  </div>-->
                   <div class="__react_component_tooltip t8815cdda-f529-4dbe-b100-43436766531c place-top type-dark" id="t8815cdda-f529-4dbe-b100-43436766531c" data-id="tooltip">
                     <style aria-hidden="true">
                       .t8815cdda-f529-4dbe-b100-43436766531c {
@@ -681,9 +681,8 @@ let modalHistoryOrder = `
                         <div class="MuiBox-root jss1378 jss1375">
                             <div class="MuiPaper-root jss1381 sapo-grid MuiPaper-elevation1 MuiPaper-rounded">
                                 <div class="MuiTableContainer-root jss1382 sapo-grid-header-wrapper">
-                                    <table id="tableHistoryCustomerOrder" class="MuiTable-root jss1383 sapo-grid-header" aria-labelledby="tableTitle"
+                                    <table id="showCustomerOrderHistory" class="MuiTable-root jss1383 sapo-grid-header" aria-labelledby="tableTitle"
                                            aria-label="enhanced table">
-                                        <thead class="MuiTableHead-root jss1396">
                                         <tr class="MuiTableRow-root MuiTableRow-head">
                                             <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
                                                 scope="col" colspan="1" rowspan="1">Mã đơn hàng
@@ -710,81 +709,9 @@ let modalHistoryOrder = `
                                                 scope="col" colspan="1" rowspan="1">Ngày ghi nhận
                                             </th>
                                         </tr>
-                                        </thead>
                                                 <tbody class="MuiTableBody-root showAllCustomerOrderHistory">
                                                 </tbody>
                                     </table>
-                                        </div>
-                                        <div class="jss1387" style="position: fixed; height: 6px; left: 262px;">
-                                            <div class="jss1388"
-                                                 style="position: relative; display: block; height: 100%; width: 0px;"></div>
-                                        </div>
-                                        <div style="position: absolute; width: 6px; right: 2px; bottom: 2px; top: 2px; border-radius: 3px;">
-                                            <div style="position: relative; display: block; width: 100%; cursor: pointer; border-radius: inherit; background-color: rgba(0, 0, 0, 0.2); height: 0px;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="MuiBox-root jss1443 jss1438 sapo-pagination"><p
-                                        class="MuiTypography-root MuiTypography-body1">Hiển thị</p>
-                                    <div class="MuiFormControl-root" style="    width: 69px;">
-                                        <div class="MuiInputBase-root MuiOutlinedInput-root jss1439 MuiInputBase-formControl">
-                                            <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
-                                                 tabindex="0" role="button" aria-haspopup="listbox">
-<!--                                                 <p-->
-<!--                                                    class="MuiTypography-root jss1441 MuiTypography-body1">20</p>-->
-<!--                                                    -->
-                                            <select id="quantityPage"  aria-label="Default select example">
-                                              <option value="20">20</option>
-                                              <option value="50">50</option>
-                                              <option value="100">100</option>
-                                            </select>
-                                                    </div>
-<!--                                            <input type="hidden" value="20">-->
-                                         
-                                            <fieldset aria-hidden="true" class="jss1491 MuiOutlinedInput-notchedOutline"
-                                                      style="padding-left: 8px;">
-                                                <legend class="jss1492" style="width: 0.01px;"><span>​</span></legend>
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                    <p class="MuiTypography-root MuiTypography-body1">kết quả</p>
-                                    <p class="MuiTypography-root jss1440 MuiTypography-body1">Từ 1 đến 20 trên tổng 7</p>
-                                    <nav aria-label="pagination navigation" class="MuiPagination-root jss1442">
-                                        <ul class="MuiPagination-ul">
-                                           <li>
-                                                <button  id="previousPage" class="previousPage MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary MuiPaginationItem-sizeSmall" tabindex="0" type="button" aria-label="Go to previous page"><svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
-                                           <span class="MuiTouchRipple-root"></span></button></li>
-                                            <li>
-                                                <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall"
-                                                        tabindex="0" type="button" aria-current="true"
-                                                        aria-label="page 1">1<span class="MuiTouchRipple-root"></span>
-                                                </button>
-                                            </li>
-                                              <li>
-                                                <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall"
-                                                        tabindex="0" type="button" aria-current="true"
-                                                        aria-label="page 2">2<span class="MuiTouchRipple-root"></span>
-                                                </button>
-                                            </li>
-<!--                                            <li>-->
-<!--                                                <button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled"-->
-<!--                                                        tabindex="-1" type="button" disabled=""-->
-<!--                                                        aria-label="Go to next page">-->
-<!--                                                    <svg class="MuiSvgIcon-root MuiPaginationItem-icon"-->
-<!--                                                         focusable="false" viewBox="0 0 24 24" aria-hidden="true">-->
-<!--                                                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>-->
-<!--                                                    </svg>-->
-<!--                                                </button>-->
-<!--                                            </li>-->
-
-                                             <li>
-                                                <button id="nextPage" class="nextPage MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary MuiPaginationItem-sizeSmall"  >
-                                                      <svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                                                           <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
-                                                      </svg>
-                                             <span class="MuiTouchRipple-root"></span></button></li> 
-                                        </ul>
-                                    </nav>
                                 </div>
                                 <div class="__react_component_tooltip t9eb02321-a174-4d68-9524-2454badafbce place-top type-dark"
                                      id="t9eb02321-a174-4d68-9524-2454badafbce" data-id="tooltip">
@@ -1165,56 +1092,45 @@ let noModalHistoryOrder = `
 function deleteEventModelShow() {
     $('.showModelHistory').html("");
     $('#contacts').css({
-        'color': 'rgb(116, 124, 135)',
-        'border': 'none'
+        'color': 'rgb(116, 124, 135)', 'border': 'none'
     })
     $('#debts').css({
-        'color': 'rgb(116, 124, 135)',
-        'border': 'none'
+        'color': 'rgb(116, 124, 135)', 'border': 'none'
     })
     $('#histories').css({
-        'color': 'rgb(116, 124, 135)',
-        'border': 'none'
+        'color': 'rgb(116, 124, 135)', 'border': 'none'
     })
     $('#notes').css({
-        'color': 'rgb(116, 124, 135)',
-        'border': 'none'
+        'color': 'rgb(116, 124, 135)', 'border': 'none'
     })
     $('#addresses').css({
-        'color': 'rgb(116, 124, 135)',
-        'border': 'none'
+        'color': 'rgb(116, 124, 135)', 'border': 'none'
     })
     $('#customer_groups').css({
-        'color': 'rgb(116, 124, 135)',
-        'border': 'none'
+        'color': 'rgb(116, 124, 135)', 'border': 'none'
     })
 }
 
 deleteEventModelShow();
 
 $('#histories').css({
-    'color': '#4a8aff',
-    'border-bottom': '2px solid rgb(0, 136, 255)'
+    'color': '#4a8aff', 'border-bottom': '2px solid rgb(0, 136, 255)'
 });
-// // Nhóm kahcsh hàng
-// $('#customer_groups').click(function () {
-//     deleteEventModelShow();
-//     $('#customer_groups').css({
-//         'color': '#4a8aff',
-//         'border-bottom': '2px solid rgb(0, 136, 255)'
-//     });
-//     $('.showModelHistory').append(modalCustomerGroup)
-// });
+// Nhóm kahcsh hàng
+$('#customer_groups').click(function () {
+    deleteEventModelShow();
+    $('#customer_groups').css({
+        'color': '#4a8aff', 'border-bottom': '2px solid rgb(0, 136, 255)'
+    });
+    $('.showModelHistory').append(modalCustomerGroup)
+});
 
 
 function getAllProvinces() {
     return $.ajax({
         headers: {
-            "accept": "application/json",
-            "content-type": "application/json"
-        },
-        type: "GET",
-        url: "https://vapi.vnappmob.com/api/province/"
+            "accept": "application/json", "content-type": "application/json"
+        }, type: "GET", url: "https://vapi.vnappmob.com/api/province/"
     })
         .done((data) => {
             if (data.results.length === 0) {
@@ -1239,11 +1155,8 @@ function getAllDistrictsByProvinceId(provinceId) {
     $("#districtUpdate").empty();
     return $.ajax({
         headers: {
-            "accept": "application/json",
-            "content-type": "application/json"
-        },
-        type: "GET",
-        url: "https://vapi.vnappmob.com/api/province/district/" + provinceId
+            "accept": "application/json", "content-type": "application/json"
+        }, type: "GET", url: "https://vapi.vnappmob.com/api/province/district/" + provinceId
     })
         .done((data) => {
             if (data.results.length === 0) {
@@ -1268,11 +1181,8 @@ function getAllWardsByDistrictId(districtId) {
     $('#wardUpdate').empty();
     return $.ajax({
         headers: {
-            "accept": "application/json",
-            "content-type": "application/json"
-        },
-        type: "GET",
-        url: "https://vapi.vnappmob.com/api/province/ward/" + districtId
+            "accept": "application/json", "content-type": "application/json"
+        }, type: "GET", url: "https://vapi.vnappmob.com/api/province/ward/" + districtId
     })
         .done((data) => {
             // $('#ward').html('');
@@ -1332,28 +1242,22 @@ $("#districtUpdate").on("change", () => {
 });
 
 
-
-
 //Lịch sừ mua hàng
 $('#histories').click(function () {
     deleteEventModelShow();
     $('#histories').css({
-        'color': '#4a8aff',
-        'border-bottom': '2px solid rgb(0, 136, 255)'
+        'color': '#4a8aff', 'border-bottom': '2px solid rgb(0, 136, 255)'
     });
-
-    showCustomerInfoHistory(0, 5);
+    $('.showModelHistory').append(modalHistoryOrder)
+    showCustomerInfoHistory();
 });
 
 function getQuantityOrderCustomer() {
     let idCustomer = $('.idCustomerDelete').val();
     $.ajax({
         headers: {
-            "accept": "application/json",
-            "content-type": "application/json"
-        },
-        type: "GET",
-        url: "http://localhost:8080/api/customers/getQuantityOrderByCustomer/" + idCustomer
+            "accept": "application/json", "content-type": "application/json"
+        }, type: "GET", url: "http://localhost:8080/api/customers/getQuantityOrderByCustomer/" + idCustomer
     })
         .done((data) => {
             console.log(data)
@@ -1365,15 +1269,15 @@ function getQuantityOrderCustomer() {
 }
 
 
-function eventButtonPage(){
+function eventButtonPage() {
     $('.nextPage').click(function () {
         alert("nhan đc rồi")
         console.log("ok")
         $(".showModelHistory").val("");
-        showCustomerInfoHistory(10,20);
+        showCustomerInfoHistory(10, 20);
     })
 
-    $('.previousPage').click(function (){
+    $('.previousPage').click(function () {
         alert("nhan lùi rồi")
         console.log("ok")
     })
@@ -1390,8 +1294,7 @@ function showCustomerInfoHistory(startIntPaging, endIntPaging) {
     console.log(idCustomer)
     return $.ajax({
         headers: {
-            "accept": "application/json",
-            "content-type": "application/json"
+            "accept": "application/json", "content-type": "application/json"
         },
         type: "GET",
         url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer + "/" + startIntPaging + "/" + endIntPaging
@@ -1419,8 +1322,7 @@ function showCustomerInfoHistory(startIntPaging, endIntPaging) {
                                                     <p class="MuiTypography-root MuiTypography-body1"
                                                        >
                                                        ${customer.grand_total != null ? (new Intl.NumberFormat('vi-VN', {
-                        style: 'currency',
-                        currency: 'VND'
+                        style: 'currency', currency: 'VND'
                     }).format(customer.grand_total)) : "---"}
                                                        </p></td>
 
@@ -1430,8 +1332,7 @@ function showCustomerInfoHistory(startIntPaging, endIntPaging) {
                                                          <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
                                                 <p class="MuiTypography-root MuiTypography-body1"
                                                        >${customer.debt != null ? (new Intl.NumberFormat('vi-VN', {
-                        style: 'currency',
-                        currency: 'VND'
+                        style: 'currency', currency: 'VND'
                     }).format(customer.debt)) : "---"}</p></td>
                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
                                                     <p class="MuiTypography-root MuiTypography-body1" title="Pos">
@@ -1464,8 +1365,7 @@ $('#debts').click(function () {
     deleteEventModelShow();
 
     $('#debts').css({
-        'color': '#4a8aff',
-        'border-bottom': '2px solid rgb(0, 136, 255)'
+        'color': '#4a8aff', 'border-bottom': '2px solid rgb(0, 136, 255)'
     });
     $('.showModelHistory').append(modalCongNo)
     // showCustomerInfoDebt();
@@ -1527,42 +1427,27 @@ $('#debts').click(function () {
 
 
 //Công nợ
-function  showCustomerInfoDebt(){
+function showCustomerInfoDebt() {
     $(document).ready(function () {
         let idCustomer = $('.idCustomerDelete').val();
         $("#showDEBT").DataTable({
-                ajax: {
-                    contentType: 'application/json',
-                    url: location.origin + "/api/customers/customerDebt/" + idCustomer,
-                    type: "GET",
-                    dataSrc: ''
-                },
-                lengthMenu: [
-                    [5, 10, 15, -1],
-                    ['5', '10', '15', 'All']
-                ],fontsize : 14
-            ,
-                searching: false,
-                select: true,
-                columns: [
-                    {
-                        data: 'order_code',
-                        className : 'testCSS',
-                        // render: function() {
-                        //     return `<a>${order_code}</a>`;
-                        // }
+            ajax: {
+                contentType: 'application/json',
+                url: location.origin + "/api/customers/customerDebt/" + idCustomer,
+                type: "GET",
+                dataSrc: ''
+            },
+            lengthMenu: [[5, 10, 15, -1], ['5', '10', '15', 'All']],
+            fontsize: 14,
+            searching: false,
+            select: true,
+            columns: [{
+                data: 'order_code', className: 'testCSS', // render: function() {
+                //     return `<a>${order_code}</a>`;
+                // }
 
-                    },
-                    {data: 'employee_name'},
-                    {data: 'create_at'},
-                    {data: 'create_at'},
-                    {data: 'transaction'},
-                    {data: "total_transaction"},
-                    {data: 'description'},
-                ]
-                ,
-            }
-        )
+            }, {data: 'employee_name'}, {data: 'create_at'}, {data: 'create_at'}, {data: 'transaction'}, {data: "total_transaction"}, {data: 'description'},],
+        })
 
     })
 }
@@ -1625,38 +1510,77 @@ function  showCustomerInfoDebt(){
 
 
 // DĐiẠ chỉ
-function  showCustomerInfoShippingAddressByCustomerId(){
+function showCustomerInfoShippingAddressByCustomerId() {
     $(document).ready(function () {
         let idCustomer = $('.idCustomerDelete').val();
         $("#showShippingAddress").DataTable({
-                ajax: {
-                    contentType: 'application/json',
-                    url: location.origin + "/api/shippingAddress/findByCustomerId/" + idCustomer,
-                    type: "GET",
-                    dataSrc: ''
-                },
-                lengthMenu: [
-                    [5, 10, 15, -1],
-                    ['5', '10', '15', 'All']
-                ],fontsize : 14
-                ,
-                searching: false,
-                select: true,
-                columns: [
-                    {data: 'mobile'},
-                    {data: 'line1'},
-                    {data: 'wardName'},
-                    {data: 'districtName'},
-                    {data: 'provinceName'},
-                    {data: "zipCode"},
-                    {data: 'email'},
-                ]
-                ,
-            }
-        )
+            ajax: {
+                contentType: 'application/json',
+                url: location.origin + "/api/shippingAddress/findByCustomerId/" + idCustomer,
+                type: "GET",
+                dataSrc: ''
+            },
+            lengthMenu: [[5, 10, 15, -1], ['5', '10', '15', 'All']],
+            fontsize: 14,
+            searching: false,
+            select: true,
+            columns: [{data: 'mobile'}, {data: 'line1'}, {data: 'wardName'}, {data: 'districtName'}, {data: 'provinceName'}, {data: "zipCode"}, {data: 'email'},],
+        })
     })
 }
 
+
+function showCustomerInfoShippingAddressByCustomerId() {
+    $(document).ready(function () {
+        let idCustomer = $('.idCustomerDelete').val();
+        $("#showShippingAddress").DataTable({
+            ajax: {
+                contentType: 'application/json',
+                url: location.origin + "/api/shippingAddress/findByCustomerId/" + idCustomer,
+                type: "GET",
+                dataSrc: ''
+            },
+            lengthMenu: [[5, 10, 15, -1], ['5', '10', '15', 'All']],
+            fontsize: 14,
+            searching: false,
+            select: true,
+            columns: [{data: 'mobile'}, {data: 'line1'}, {data: 'wardName'}, {data: 'districtName'}, {data: 'provinceName'}, {data: "zipCode"}, {data: 'email'},],
+        })
+    })
+}
+
+function showCustomerInfoHistory() {
+    let idCustomer = $('.idCustomerDelete').val();
+    $(document).ready(function () {
+        let idCustomer = $('.idCustomerDelete').val();
+        console.log(idCustomer)
+        $("#showCustomerOrderHistory").DataTable({
+            ajax: {
+                contentType: 'application/json',
+                url: location.origin + "/api/customers/historyCustomerOrder/" + idCustomer,
+                type: "GET",
+                dataSrc: ''
+            },
+            lengthMenu: [[5, 10, 15, -1], ['5', '10', '15', 'All']],
+            fontsize: 14,
+            searching: false,
+            select: true,
+            columns: [{data: 'order_code'}, {data: 'status'}, {data: 'price_pay'}, {
+                render: function () {
+                    return "Chi nhánh mặc định"
+                }
+            }, {data: 'price_pay'},
+
+                {
+                    render: function () {
+                        return "Chi nhánh mặc định"
+                    }
+                },
+
+                {data: 'employee_name'}, {data: 'create_at'}],
+        })
+    })
+}
 
 
 
