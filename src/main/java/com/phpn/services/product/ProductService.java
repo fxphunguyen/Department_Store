@@ -27,4 +27,6 @@ public interface ProductService {
 
     List<ProductResult> getAllProductListResult();
 
+    Page<Product>findAll(Pageable pageable);
+
 }

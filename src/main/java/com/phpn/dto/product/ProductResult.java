@@ -41,8 +41,5 @@ public class ProductResult {
     private BrandResult brand;
     private Tax tax;
     private ItemResult item;
-    private int ton;
-    private int cothe;
-
 
 }

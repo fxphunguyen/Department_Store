@@ -35,7 +35,9 @@ public class ItemResult {
 
     private Float discount;
 
-    private int available;
+    private Integer available;
+
+    private Integer trading;
 
     private ProductResult productResult;
 

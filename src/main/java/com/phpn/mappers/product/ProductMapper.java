@@ -1,8 +1,5 @@
 package com.phpn.mappers.product;
-import com.phpn.dto.product.ProductParam;
-import com.phpn.dto.product.ProductResult;
-import com.phpn.dto.product.ProductShortParam;
-import com.phpn.dto.product.ProductWithImageParam;
+import com.phpn.dto.product.*;
 import com.phpn.mappers.CategoryMapper;
 import com.phpn.mappers.brand.BrandMapper;
 import com.phpn.mappers.item.ItemMapper;
