@@ -1,6 +1,8 @@
 package com.phpn.customer;
 
 
+import com.phpn.customer.dto.CreateCustomerParam;
+import com.phpn.customer.dto.CustomerOrderResult;
 import com.phpn.shipping_address.ShippingAddressResult;
 import com.phpn.employee.dto.EmployeeMapper;
 import vn.fx.qh.sapo.entities.customer.*;
@@ -102,5 +104,25 @@ public class CustomerMapper {
                 .setCustomerStatus(customerResult.getCustomerStatus())
                 .setUpdateAt(customerResult.getUpdateAt());
     }
+
+
+    public CustomerResult toCustomerInfo(Customer customer) {
+            return new  CustomerResult()
+                .setId(customer.getId())
+                .setCustomerCode(customer.getCustomerCode())
+                .setName(customer.getName())
+                .setPhone(customer.getPhone())
+                .setCustomerGroup(customer.getCustomerGroup())
+                .setCustomerGender(customer.getCustomerGender())
+                .setEmail(customer.getEmail())
+                .setBirthday(customer.getBirthday())
+                .setCustomerStatus(customer.getCustomerStatus())
+                .setCreateAt(customer.getCreateAt())
+                .setUpdateAt(customer.getUpdateAt())
+                .setEmployeeId(customer.getEmployeeId())
+                .setCustomerStatus(customer.getCustomerStatus());
+
+    }
+
 
 }
