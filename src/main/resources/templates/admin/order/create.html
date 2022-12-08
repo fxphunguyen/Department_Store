@@ -1458,7 +1458,10 @@
                                                     </div>
 <!--                                                 mới dán thêm-->
                                                 <div id="discount_order" class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight show_discount">
-                                                    <button data-product-discount-id="2" class="MuiButtonBase-root MuiButton-root MuiButton-text jss3901 btn-discount dropdown-toggle show" tabindex="0" data-bs-auto-close="outside" type="button" id="dropdownMenuButton1_2" data-bs-toggle="dropdown" aria-expanded="true">
+                                                    <button class="MuiButtonBase-root MuiButton-root MuiButton-text jss3901 btn-discount dropdown-toggle show"
+                                                            tabindex="0" data-bs-auto-close="outside"
+                                                            type="button" id="dropdownMenuButton1_2"
+                                                            data-bs-toggle="dropdown" aria-expanded="true">
                                                         <span class="MuiButton-label" id="discount_value_order">0</span>
                                                         <p class="MuiTypography-root discount_rate_line_item MuiTypography-body1" id="percent_value_order" style="color: rgb(255, 77, 77); font-size: 12px;">
                                                         </p>
@@ -1473,13 +1476,20 @@
                                                                             <span class="MuiToggleButton-label">Giá trị</span>
                                                                             <span class="MuiTouchRipple-root"></span>
                                                                         </button>
-                                                                        <button onclick="valueDiscountOrder()" class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped" tabindex="0" type="button" value="PERCENT" aria-pressed="false"><span class="MuiToggleButton-label">%</span><span class="MuiTouchRipple-root"></span>
+                                                                        <button onclick="valueDiscountOrder()" class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped" tabindex="0" type="button" value="PERCENT" aria-pressed="false">
+                                                                            <span class="MuiToggleButton-label">%</span>
+                                                                            <span class="MuiTouchRipple-root"></span>
                                                                         </button>
                                                                     </div>
                                                                     <div class="MuiFormControl-root jss4241 jss4243 jss1284" style="width: 92px; margin-left: 7px;">
                                                                         <div class="MuiFormControl-root MuiTextField-root jss4244" inputmode="numeric">
                                                                             <div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
-                                                                                <input id="discount_product_input_order" aria-invalid="false" autocomplete="off" name="numonly" type="text" class="MuiInputBase-input MuiInput-input" value="0" onkeyup="formatDiscountOrder()" style="width: 100%; text-align: right;">
+                                                                                <input id="discount_product_input_order" aria-invalid="false"
+                                                                                       autocomplete="off" name="numonly" type="text"
+                                                                                       class="MuiInputBase-input MuiInput-input"
+                                                                                       value="0"
+                                                                                       onkeyup="formatDiscountOrder(event)"
+                                                                                       style="width: 100%; text-align: right;"/>
                                                                             </div>
                                                                             <!--oninput="onInputDiscount(event,2,260000)"-->
                                                                         </div>
