@@ -1,9 +1,10 @@
 package com.phpn.customer.service;
 
+import com.phpn.customer.customerDebt.CustomerDebt;
+import com.phpn.customer.customerDebt.CustomerDebtImpl;
 import com.phpn.customer.dto.CustomerResult;
-import com.phpn.customer.UpdateCustomerParam;
+import com.phpn.customer.dto.UpdateCustomerParam;
 import com.phpn.customer.dto.CreateCustomerParam;
-import com.phpn.order.sale.dto.SaleOrderByCustomer;
 import com.phpn.order.sale.dto.SaleOrderResult;
 
 import java.util.List;
@@ -20,5 +21,6 @@ public interface CustomerService {
 
     List<SaleOrderResult> findHistoryCustomerOrder(Integer id);
 
+    List<CustomerDebtImpl> findCustomerDebtsByCustomerId(Integer customerId);
 
 }

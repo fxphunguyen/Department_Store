@@ -13,17 +13,13 @@ import java.math.BigDecimal;
 @Accessors(chain = true)
 public class SaleOrderItemParam {
 
-    private Integer id;
-
-    private Integer orderId;
-
-    private Integer itemId;
+    private BigDecimal price;
 
     private Integer quantity;
 
     private Integer productId;
 
-    private BigDecimal price;
+    private BigDecimal discount;
 
     private Float tax;
 }

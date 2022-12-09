@@ -345,10 +345,10 @@ let modalAddress = `   <div class="MuiBox-root jss797 jss621">
                     <table id="showShippingAddress" class="MuiTable-root jss6033 sapo-grid-header" style=" width: 100%;" >
                       <thead class="MuiTableHead-root jss6046">
                         <tr class="MuiTableRow-root MuiTableRow-head">
-                          <th class="MuiTableCell-root MuiTableCell-head jss6055 MuiTableCell-paddingCheckbox" scope="col" rowspan="1" style="padding-left: 16px;">
-                            <div class="MuiBox-root jss6076"><span class="MuiButtonBase-root MuiIconButton-root jss6087 MuiCheckbox-root MuiCheckbox-colorPrimary jss6077 MuiIconButton-colorPrimary" aria-disabled="false" data-tip="Chọn tất cả địa chỉ" currentitem="false" ><span class="MuiIconButton-label"><input class="jss6090" type="checkbox" data-indeterminate="false" value=""><span class="jss6078" font-size="small"></span></span><span class="MuiTouchRipple-root"></span></span>
-                            </div>
-                          </th>
+<!--                          <th class="MuiTableCell-root MuiTableCell-head jss6055 MuiTableCell-paddingCheckbox" scope="col" rowspan="1" style="padding-left: 16px;">-->
+<!--                            <div class="MuiBox-root jss6076"><span class="MuiButtonBase-root MuiIconButton-root jss6087 MuiCheckbox-root MuiCheckbox-colorPrimary jss6077 MuiIconButton-colorPrimary" aria-disabled="false" data-tip="Chọn tất cả địa chỉ" currentitem="false" ><span class="MuiIconButton-label"><input class="jss6090" type="checkbox" data-indeterminate="false" value=""><span class="jss6078" font-size="small"></span></span><span class="MuiTouchRipple-root"></span></span>-->
+<!--                            </div>-->
+<!--                          </th>-->
                           <th class="MuiTableCell-root MuiTableCell-head jss6050 MuiTableCell-alignLeft" scope="col" colspan="1" rowspan="1">Số điện thoại</th>
                           <th class="MuiTableCell-root MuiTableCell-head jss6050 MuiTableCell-alignLeft" scope="col" colspan="1" rowspan="1">Địa chỉ</th>
                           <th class="MuiTableCell-root MuiTableCell-head jss6050 MuiTableCell-alignLeft" scope="col" colspan="1" rowspan="1">Phường xã</th>
@@ -374,34 +374,7 @@ let modalAddress = `   <div class="MuiBox-root jss797 jss621">
                       </div>
                     </div>
                   </div>
-<!--                  <div class="MuiBox-root jss6107 jss6102 sapo-pagination">-->
-<!--                    <p class="MuiTypography-root MuiTypography-body1">Hiển thị</p>-->
-<!--                    <div class="MuiFormControl-root">-->
-<!--                      <div class="MuiInputBase-root MuiOutlinedInput-root jss6103 MuiInputBase-formControl">-->
-<!--                        <div class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input" tabindex="0" role="button" aria-haspopup="listbox">-->
-<!--                          <p class="MuiTypography-root jss6105 MuiTypography-body1">20</p>-->
-<!--                        </div><input type="hidden" value="20"><svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined" focusable="false" viewBox="0 0 24 24" aria-hidden="true">-->
-<!--                          <path d="M7 10l5 5 5-5z"></path>-->
-<!--                        </svg>-->
-<!--                        <fieldset aria-hidden="true" class="jss6155 MuiOutlinedInput-notchedOutline" style="padding-left: 8px;">-->
-<!--                          <legend class="jss6156" style="width: 0.01px;"><span>​</span></legend>-->
-<!--                        </fieldset>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                    <p class="MuiTypography-root MuiTypography-body1">kết quả</p>-->
-<!--                    <p class="MuiTypography-root jss6104 MuiTypography-body1">Từ 1 đến 1 trên tổng 1</p>-->
-<!--                    <nav aria-label="pagination navigation" class="MuiPagination-root jss6106">-->
-<!--                      <ul class="MuiPagination-ul">-->
-<!--                        <li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled" tabindex="-1" type="button" disabled="" aria-label="Go to previous page"><svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">-->
-<!--                              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>-->
-<!--                            </svg></button></li>-->
-<!--                        <li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-selected MuiPaginationItem-sizeSmall" tabindex="0" type="button" aria-current="true" aria-label="page 1">1<span class="MuiTouchRipple-root"></span></button></li>-->
-<!--                        <li><button class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textPrimary Mui-disabled MuiPaginationItem-sizeSmall Mui-disabled" tabindex="-1" type="button" disabled="" aria-label="Go to next page"><svg class="MuiSvgIcon-root MuiPaginationItem-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">-->
-<!--                              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>-->
-<!--                            </svg></button></li>-->
-<!--                      </ul>-->
-<!--                    </nav>-->
-<!--                  </div>-->
+
                   <div class="__react_component_tooltip t8815cdda-f529-4dbe-b100-43436766531c place-top type-dark" id="t8815cdda-f529-4dbe-b100-43436766531c" data-id="tooltip">
                     <style aria-hidden="true">
                       .t8815cdda-f529-4dbe-b100-43436766531c {
@@ -681,7 +654,8 @@ let modalHistoryOrder = `
                         <div class="MuiBox-root jss1378 jss1375">
                             <div class="MuiPaper-root jss1381 sapo-grid MuiPaper-elevation1 MuiPaper-rounded">
                                 <div class="MuiTableContainer-root jss1382 sapo-grid-header-wrapper">
-                                    <table id="showCustomerOrderHistory" class="showCustomerOrderHistory    >
+                                    <table id="showCustomerOrderHistory" class="showCustomerOrderHistory">
+                                    <thead>
                                         <tr class="MuiTableRow-root MuiTableRow-head">
                                             <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
                                                 scope="col" colspan="1" rowspan="1">Mã đơn hàng
@@ -707,7 +681,9 @@ let modalHistoryOrder = `
                                             <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
                                                 scope="col" colspan="1" rowspan="1">Ngày ghi nhận
                                             </th>
+
                                         </tr>
+                                        </thead>
                                                 <tbody class="MuiTableBody-root showAllCustomerOrderHistory">
                                                 </tbody>
                                     </table>
@@ -1194,6 +1170,7 @@ function eventButtonPage() {
         console.log("ok")
     })
 }
+
 //
 // function showCustomerInfoHistory(startIntPaging, endIntPaging) {
 //     let idCustomer = $('.idCustomerDelete').val();
@@ -1358,7 +1335,13 @@ function showCustomerInfoDebt() {
                 //     return `<a>${order_code}</a>`;
                 // }
 
-            }, {data: 'employee_name'}, {data: 'create_at'}, {data: 'create_at'}, {data: 'transaction'}, {data: "total_transaction"}, {data: 'description'},],
+            }, {data: 'employee_name'},
+                {data: 'create_at'},
+                {data: 'create_at'},
+                {data: 'description'},
+                {data: 'transaction'},
+                {data: "totalDebt"}
+                ]
         })
 
     })
@@ -1434,32 +1417,19 @@ function showCustomerInfoShippingAddressByCustomerId() {
             },
             lengthMenu: [[5, 10, 15, -1], ['5', '10', '15', 'All']],
             fontsize: 14,
-            searching: false,
+            searching: true,
             select: true,
-            columns: [{data: 'mobile'}, {data: 'line1'}, {data: 'wardName'}, {data: 'districtName'}, {data: 'provinceName'}, {data: "zipCode"}, {data: 'email'},],
+            columns: [{data: 'mobile'},
+                {data: 'address'},
+                {data: 'wardName'},
+                {data: 'districtName'},
+                {data: 'provinceName'},
+                {data: "zipCode"},
+                {data: 'email'},],
         })
     })
 }
 
-
-function showCustomerInfoShippingAddressByCustomerId() {
-    $(document).ready(function () {
-        let idCustomer = $('.idCustomerDelete').val();
-        $("#showShippingAddress").DataTable({
-            ajax: {
-                contentType: 'application/json',
-                url: location.origin + "/api/shippingAddress/findByCustomerId/" + idCustomer,
-                type: "GET",
-                dataSrc: ''
-            },
-            lengthMenu: [[5, 10, 15, -1], ['5', '10', '15', 'All']],
-            fontsize: 14,
-            searching: false,
-            select: true,
-            columns: [{data: 'mobile'}, {data: 'line1'}, {data: 'wardName'}, {data: 'districtName'}, {data: 'provinceName'}, {data: "zipCode"}, {data: 'email'},],
-        })
-    })
-}
 
 function showCustomerInfoHistory() {
     $('.showModelHistory').append(modalHistoryOrder);
@@ -1481,7 +1451,7 @@ function showCustomerInfoHistory() {
             select: true,
             columns: [
                 {data: 'orderCode'},
-                {data: 'orderStatus.name'},
+                {data: 'orderStatus.name',className : "cssCus"},
                 {data: 'orderCode'},
                 {data: 'orderCode'},
                 {data: 'orderCode'},

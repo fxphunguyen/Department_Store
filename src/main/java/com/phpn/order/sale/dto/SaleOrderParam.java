@@ -16,8 +16,6 @@ import java.util.List;
 @Accessors(chain = true)
 public class SaleOrderParam {
 
-    private Integer id;
-
     private String fullName;
 
     private String mobile;
@@ -32,20 +30,14 @@ public class SaleOrderParam {
 
     private String zipCode;
 
-    private Integer employeeId;
-
     private Integer customerId;
 
     private String orderCode;
 
-    private BigDecimal discount;
-
     private String description;
 
-//    private Integer orderStatusId;
+    private BigDecimal discount;
 
-    private Instant createAt;
-
-    List<SaleOrderItemExport> orderItems;
+    List<SaleOrderItemParam> saleOrderItems;
 
 }

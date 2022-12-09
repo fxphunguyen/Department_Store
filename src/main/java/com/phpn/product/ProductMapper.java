@@ -32,7 +32,6 @@ public class ProductMapper {
                 .setTitle(productParam.getTitle())
                 .setImage(productParam.getImage())
                 .setStatus(productParam.getStatus())
-
                 .setDescription(productParam.getDescription())
                 .setUnit(productParam.getUnit())
                 .setSku(productParam.getSku())
@@ -71,7 +70,10 @@ public class ProductMapper {
                 .setDescription(product.getDescription())
                 .setImportPrice(product.getImportPrice())
                 .setWholesalePrice(product.getWholesalePrice())
-                .setRetailPrice(product.getRetailPrice());
+                .setRetailPrice(product.getRetailPrice())
+                .setCreatedAt(product.getCreatedAt())
+                .setUpdatedAt(product.getUpdatedAt());
+
         List<TaxResult> taxSaleList = product.getTaxSale().stream().map(taxMapper::toDTO).collect(Collectors.toList());
         result.setTaxSaleList(taxSaleList);
         List<TaxResult> taxPurchaseList = product.getTaxPurchase().stream().map(taxMapper::toDTO).collect(Collectors.toList());

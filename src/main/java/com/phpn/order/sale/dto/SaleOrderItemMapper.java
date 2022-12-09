@@ -19,14 +19,12 @@ public class SaleOrderItemMapper {
        return new SaleOrderItemResult()
                 .setId(orderItem.getId())
                 .setOrderId(orderItem.getOrderId())
-                .setProduct(productMapper.toDTOProductSale(orderItem.getProduct()));
+                .setProduct(productMapper.toDTOProductSale(orderItem.getProduct()))
+                .setQuantity(orderItem.getQuantity());
     }
 
     public SaleOrderItem toModel(SaleOrderItemParam orderItemParam) {
         return new SaleOrderItem()
-                .setItemId(orderItemParam.getId())
-                .setOrderId(orderItemParam.getOrderId())
-                .setItemId(orderItemParam.getItemId())
                 .setProductId(orderItemParam.getProductId())
                 .setQuantity(orderItemParam.getQuantity())
                 .setPrice(orderItemParam.getPrice())
