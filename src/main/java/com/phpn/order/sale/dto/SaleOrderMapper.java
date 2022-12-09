@@ -48,8 +48,7 @@ public class SaleOrderMapper {
                 .setSubTotal(order.getSubTotal())
                 .setGrandTotal(order.getGrandTotal())
                 .setCreatedAt(order.getCreatedAt())
-                .setUpdatedAt(order.getUpdatedAt())
-                .setShippingAddress(shippingAddressMapper.toDTO(order.getCustomer().getShippingAddress()));
+                .setUpdatedAt(order.getUpdatedAt());
     }
 
     public SaleOrder toModel(SaleOrderParam orderParam) {
