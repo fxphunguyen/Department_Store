@@ -4,6 +4,7 @@ import com.phpn.product.dto.ProductResult;
 import com.phpn.product.dto.ProductShortParam;
 import com.phpn.product.dto.CreateProductParam;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +40,6 @@ public class ProductAPI {
    {
         return new ResponseEntity<>(productService.getAllProductItemPage(pageNo,pageSize), HttpStatus.OK);
     }
-
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
