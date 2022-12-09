@@ -1,15 +1,13 @@
 package com.phpn.order.sale.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 
 @Setter
 @Getter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
@@ -21,5 +19,5 @@ public class SaleOrderItemResult {
     private Integer quantity;
     private Float tax;
     private BigDecimal discount;
-    private SaleOrderItemProductResult product;
+    private ProductSaleResult product;
 }

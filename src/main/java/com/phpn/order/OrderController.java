@@ -1,6 +1,7 @@
 package com.phpn.order;
 
 import com.phpn.order.sale.SaleOrderService;
+import com.phpn.payment.purchase.PaymentSaleOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,9 @@ public class OrderController {
 
     @Autowired
     private SaleOrderService orderService;
+
+    @Autowired
+    private PaymentSaleOrderService paymentSaleOrderService;
 
     @GetMapping("/orders")
     public ModelAndView showListOrderPage() {
@@ -43,6 +47,7 @@ public class OrderController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/admin/order/order_id");
         modelAndView.addObject("orders", orderService.findById(id));
+        modelAndView.addObject("payment_sale_order", paymentSaleOrderService.findAllByOrderId(id));
         return modelAndView;
     }
 

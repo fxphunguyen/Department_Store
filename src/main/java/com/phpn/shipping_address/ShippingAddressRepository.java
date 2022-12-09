@@ -10,8 +10,6 @@ import java.util.List;
 @Repository
 public interface ShippingAddressRepository extends JpaRepository<ShippingAddress, Integer> {
 
-    @Query(value = "SELECT * FROM shipping_address where customer_id = :id" , nativeQuery = true)
-    List<ShippingAddress> findAllShippingAddress(Integer id);
-
+    List<ShippingAddress> findShippingAddressesByCustomerId(Integer id);
 
 }

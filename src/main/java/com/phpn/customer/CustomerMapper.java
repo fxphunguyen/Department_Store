@@ -4,6 +4,7 @@ package com.phpn.customer;
 import com.phpn.customer.dto.CreateCustomerParam;
 import com.phpn.customer.dto.CustomerOrderResult;
 import com.phpn.customer.dto.CustomerResult;
+import com.phpn.customer.dto.UpdateCustomerParam;
 import com.phpn.order.sale.dto.CustomerSaleOrderResult;
 import com.phpn.shipping_address.dto.ShippingAddressResult;
 import com.phpn.employee.dto.EmployeeMapper;
@@ -96,17 +97,17 @@ public class CustomerMapper {
                 .setEmployeeId(customerCreate.getEmployeeId());
     }
 
-    public Customer toCustomer(CustomerResult customerResult, Customer customer) {
+    public Customer toCustomer(UpdateCustomerParam updateCustomerParam, Customer customer) {
         return customer
-                .setId(customerResult.getId())
-                .setCustomerCode(customerResult.getCustomerCode())
-                .setName(customerResult.getName())
-                .setPhone(customerResult.getPhone())
-                .setCustomerGroup(customerResult.getCustomerGroup())
-                .setCustomerGender(customerResult.getCustomerGender())
-                .setEmail(customerResult.getEmail())
-                .setBirthday(customerResult.getBirthday())
-                .setCustomerStatus(customerResult.getCustomerStatus());
+                .setId(updateCustomerParam.getId())
+                .setCustomerCode(updateCustomerParam.getCustomerCode())
+                .setName(updateCustomerParam.getName())
+                .setPhone(updateCustomerParam.getPhone())
+                .setCustomerGroup(updateCustomerParam.getCustomerGroup())
+                .setCustomerGender(updateCustomerParam.getCustomerGender())
+                .setEmail(updateCustomerParam.getEmail())
+                .setBirthday(updateCustomerParam.getBirthday())
+                .setCustomerStatus(updateCustomerParam.getCustomerStatus());
     }
 
 
