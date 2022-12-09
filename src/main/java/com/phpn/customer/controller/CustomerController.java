@@ -1,6 +1,7 @@
-package com.phpn.customer;
+package com.phpn.customer.controller;
 
 
+import com.phpn.customer.dto.CustomerResult;
 import com.phpn.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,9 +46,9 @@ public class CustomerController {
         System.out.println(id);
         System.out.println("___________________________" + id);
         ModelAndView modelAndView = new ModelAndView();
-//        ICustomer iCustomer = customerService.CustomerInfoById(id);
-//        modelAndView.addObject("customer", iCustomer);
-//        modelAndView.setViewName("/admin/customer/history_customer");
+        CustomerResult iCustomer = customerService.findById(id);
+        modelAndView.addObject("customer", iCustomer);
+        modelAndView.setViewName("/admin/customer/history_customer");
         return modelAndView;
     }
 

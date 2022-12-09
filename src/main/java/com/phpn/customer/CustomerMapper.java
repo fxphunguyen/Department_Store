@@ -3,7 +3,8 @@ package com.phpn.customer;
 
 import com.phpn.customer.dto.CreateCustomerParam;
 import com.phpn.customer.dto.CustomerOrderResult;
-import com.phpn.shipping_address.ShippingAddressResult;
+import com.phpn.customer.dto.CustomerResult;
+import com.phpn.shipping_address.dto.ShippingAddressResult;
 import com.phpn.employee.dto.EmployeeMapper;
 import vn.fx.qh.sapo.entities.customer.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class CustomerMapper {
 
     @Autowired
     private ShippingAddressMapper shippingAddressMapper;
+
+
 
 
     public CustomerResult toDTO(Customer customer) {
@@ -120,6 +123,7 @@ public class CustomerMapper {
                 .setCreateAt(customer.getCreateAt())
                 .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
+                 .setEmployeeResult(employeeMapper.toDTO(customer.getEmployee()))
                 .setCustomerStatus(customer.getCustomerStatus());
 
     }

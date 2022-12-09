@@ -1,8 +1,8 @@
 package com.phpn.customer;
 
 import com.phpn.customer.dto.CreateShippingAddressParam;
-import com.phpn.shipping_address.ShippingAddressResult;
-import com.phpn.shipping_address.ShippingAddressShowCustomerInfo;
+import com.phpn.shipping_address.dto.ShippingAddressResult;
+import com.phpn.shipping_address.dto.ShippingAddressShowCustomerInfo;
 import org.springframework.stereotype.Component;
 import vn.fx.qh.sapo.entities.customer.ShippingAddress;
 
