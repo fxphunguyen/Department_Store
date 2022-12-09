@@ -6,6 +6,7 @@ import vn.fx.qh.sapo.entities.product.supplier.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Component
@@ -73,8 +74,8 @@ public class SupplierMapper {
         .setEmployeeId(supplierCreate.getEmployeeId())
         .setPaymentMethodId(supplierCreate.getPaymentMethodId())
 
-        .setCreateAt(LocalDateTime.now().toString())
-        .setUpdateAt(LocalDateTime.now().toString());
+        .setCreateAt(Instant.now())
+        .setUpdateAt(Instant.now());
     }
 
 }

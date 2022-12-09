@@ -33,7 +33,7 @@ public class PaymentSaleOrderMapper {
         return new PaymentSaleOrder()
                 .setId(0)
                 .setPaid(paymentOrderParam.getPaid())
-                .setCreateAt(Instant.now().toString())
+                .setCreateAt(Instant.now())
                 .setOrderId(paymentOrderParam.getOrderId())
                 .setCustomerId(paymentOrderParam.getCustomerId())
                 .setEmployeeId(paymentOrderParam.getEmployeeId())

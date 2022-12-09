@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +36,7 @@ public class ProductMapper {
                 .setTitle(productParam.getTitle())
                 .setImage(productParam.getImage())
                 .setStatus(productParam.getStatus())
-                .setCreateAt(java.time.LocalDateTime.now().toString())
+                .setCreateAt(Instant.now())
                 .setUpdateAt(null)
                 .setDescription(productParam.getDescription())
                 .setUnit(productParam.getUnit())
@@ -52,8 +53,7 @@ public class ProductMapper {
         return new Product(productWithImageParam.getCategoryId(), productWithImageParam.getBrandId())
                 .setTitle(productWithImageParam.getTitle())
                 .setStatus(productWithImageParam.getStatus())
-                .setCreateAt(java.time.LocalDateTime.now().toString())
-                .setUpdateAt(null)
+                .setCreateAt(Instant.now())
                 .setDescription(productWithImageParam.getDescription())
                 .setUnit(productWithImageParam.getUnit())
                 .setSku(productWithImageParam.getSku())
