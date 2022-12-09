@@ -1,5 +1,6 @@
 package com.phpn.order.sale.dto;
 
+import com.phpn.product.item.ItemResult;
 import com.phpn.product.dto.ProductResult;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,17 +19,10 @@ import java.time.Instant;
 public class SaleOrderItemResult {
 
     private Integer id;
-
     private Integer orderId;
-
     private BigDecimal price;
-
     private Integer quantity;
-
-    private ProductResult product;
-
-    private Instant createdAt;
-
-    private Instant updatedAt;
-
+    private Float tax;
+    private BigDecimal discount;
+    private SaleOrderItemProductResult product;
 }
