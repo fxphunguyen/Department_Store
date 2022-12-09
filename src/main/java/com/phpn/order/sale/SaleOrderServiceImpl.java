@@ -94,38 +94,38 @@ public class SaleOrderServiceImpl implements SaleOrderService {
         BigDecimal total = BigDecimal.valueOf(0);
         BigDecimal subTotal = BigDecimal.valueOf(0);
         BigDecimal grandTotal = BigDecimal.valueOf(0);
-        for (SaleOrderItemParam orderItemExport : orderParam.getSaleOrderItems()) {
+        for (SaleOrderItemParam saleOrderItemParam : orderParam.getSaleOrderItems()) {
 
-            Optional<Product> productOptional = productRepository.findById(orderItemExport.getProductId());
+            Optional<Product> productOptional = productRepository.findById(saleOrderItemParam.getProductId());
 
             if (!productOptional.isPresent()) {
-                throw new NotFoundException("Không tìm thấy Id sản phẩm " + orderItemExport.getProductId());
+                throw new NotFoundException("Không tìm thấy Id sản phẩm " + saleOrderItemParam.getProductId());
             }
             //lấy toàn bộ item theo productId
-            List<Item> items = itemRepository.findAllByProductIdAndAvailableGreaterThanOrderByCreatedAt(orderItemExport.getProductId(), 0);
+            List<Item> items = itemRepository.findAllByProductIdAndAvailableGreaterThanOrderByCreatedAt(saleOrderItemParam.getProductId(), 0);
             int totalAvailable = items.stream().mapToInt(Item::getAvailable).sum();
-            if (totalAvailable < orderItemExport.getQuantity()) {
+            if (totalAvailable < saleOrderItemParam.getQuantity()) {
                 throw new NotEnoughQuantityException("Không đủ số lượng cho đơn hàng, vui lòng kiểm tra lại !");
             }
             Product product = productOptional.get();
             Integer productId = product.getId();
             BigDecimal retailPrice = product.getRetailPrice();
 
-            int quantityCustomerOrder = orderItemExport.getQuantity();
+            int quantityCustomerOrder = saleOrderItemParam.getQuantity();
             BigDecimal orderItemTotal = retailPrice.multiply(new BigDecimal(quantityCustomerOrder));
 
-            SaleOrderItem orderItem = new SaleOrderItem();
+            SaleOrderItem saleOrderItem = new SaleOrderItem();
             if (product.getApplyTax()) {
                 List<ProductTax> productTaxList = productTaxRepository.findAllByProductIdAndTaxType(productId, TaxType.TAX_SALE);
                 float taxTotal = (float) productTaxList.stream()
                         .mapToDouble(productTax -> productTax.getTax().getTax()).sum();
-                orderItem.setTax(taxTotal);
+                saleOrderItem.setTax(taxTotal);
                 BigDecimal amountTax = (orderItemTotal.multiply(BigDecimal.valueOf(taxTotal / 100)));
                 orderItemTotal = orderItemTotal.add(amountTax);
             }
 
 
-            if (orderItem.getDiscount() != null) {
+            if (saleOrderItem.getDiscount() != null) {
                 orderItemTotal = orderItemTotal.subtract(orderParam.getDiscount());
             }
 
@@ -152,13 +152,13 @@ public class SaleOrderServiceImpl implements SaleOrderService {
                     quantityCustomerOrder = 0;
                 }
 
-                orderItem.setQuantity(orderItemSold);
-                orderItem.setPrice(retailPrice);
-                orderItem.setProductId(productId);
-                orderItem.setItemId(item.getId());
-                orderItem.setOrderId(order.getId());
-
-                orderItemRepository.save(orderItem);
+                saleOrderItem.setQuantity(orderItemSold);
+                saleOrderItem.setPrice(retailPrice);
+                saleOrderItem.setProductId(productId);
+                saleOrderItem.setItemId(item.getId());
+                saleOrderItem.setOrderId(order.getId());
+                saleOrderItem.setDiscount(saleOrderItemParam.getDiscount());
+                orderItemRepository.save(saleOrderItem);
             }
         }
         order.setSubTotal(subTotal);

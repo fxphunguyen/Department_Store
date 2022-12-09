@@ -1216,6 +1216,7 @@ $(() => {
         })
             .done((data) => {
                 console.log(data);
+                location.href = `${location.origin}/admin/orders/${data.id}`;
             })
             .fail((jqXHR) => {
                 console.log(jqXHR);
