@@ -2,6 +2,7 @@ package com.phpn.product;
 
 import com.phpn.brand.dto.BrandMapper;
 import com.phpn.category.dto.CategoryMapper;
+import com.phpn.order.sale.dto.ProductSaleResult;
 import com.phpn.product.dto.*;
 import com.phpn.tax.dto.TaxMapper;
 import com.phpn.tax.dto.TaxResult;
@@ -90,6 +91,12 @@ public class ProductMapper {
                 .setInventory(0)
                 .setCategory(categoryMapper.toDTO(product.getCategory()))
                 .setBrand(brandMapper.toDTO(product.getBrand()));
+    }
+
+    public ProductSaleResult toDTOProductSale(Product product) {
+        return new ProductSaleResult().setId(product.getId())
+                .setTitle(product.getTitle())
+                .setMainUrl(product.getImage());
     }
 
 

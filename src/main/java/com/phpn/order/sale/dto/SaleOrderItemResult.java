@@ -21,5 +21,5 @@ public class SaleOrderItemResult {
     private Integer quantity;
     private Float tax;
     private BigDecimal discount;
-    private SaleOrderItemProductResult product;
+    private ProductSaleResult product;
 }
