@@ -19,16 +19,10 @@ import java.time.Instant;
 public class SaleOrderItemResult {
 
     private Integer id;
-
     private Integer orderId;
-
     private BigDecimal price;
-
     private Integer quantity;
-
-    private ProductResult product;
-
-    private Instant createAt;
-
-
+    private Float tax;
+    private BigDecimal discount;
+    private SaleOrderItemProductResult product;
 }

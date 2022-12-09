@@ -2,11 +2,13 @@ package com.phpn.product;
 
 import com.phpn.brand.dto.BrandMapper;
 import com.phpn.category.dto.CategoryResult;
+import com.phpn.order.sale.dto.SaleOrderItemResult;
 import com.phpn.product.dto.*;
 import com.phpn.category.dto.CategoryMapper;
 import com.phpn.product.item.ItemMapper;
 import com.phpn.tax.dto.TaxMapper;
 import com.phpn.tax.dto.TaxResult;
+import vn.fx.qh.sapo.entities.order.sale.SaleOrder;
 import vn.fx.qh.sapo.entities.product.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,6 +109,10 @@ public class ProductMapper {
                 .setRetailPrice(new BigDecimal(Integer.parseInt(productShortParam.getRetailPrice())))
                 .setSku(productShortParam.getSku())
                 .setImportPrice(new BigDecimal(Integer.parseInt(productShortParam.getImportPrice())));
+
+    }
+    
+    public SaleOrderItemResult toModel() {
 
     }
 
