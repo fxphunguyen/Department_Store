@@ -96,9 +96,12 @@ public class ProductMapper {
     }
 
     public ProductSaleResult toDTOProductSale(Product product) {
-        return new ProductSaleResult().setId(product.getId())
+        return new ProductSaleResult()
+                .setId(product.getId())
                 .setTitle(product.getTitle())
-                .setMainUrl(product.getImage());
+                .setMainUrl(product.getImage())
+                .setSku(product.getSku());
+
     }
 
 

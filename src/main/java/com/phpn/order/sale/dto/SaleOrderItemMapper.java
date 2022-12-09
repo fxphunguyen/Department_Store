@@ -5,7 +5,6 @@ import com.phpn.product.item.ItemMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import vn.fx.qh.sapo.entities.order.sale.SaleOrderItem;
-import vn.fx.qh.sapo.entities.product.Product;
 
 @Component
 public class SaleOrderItemMapper {
@@ -16,11 +15,14 @@ public class SaleOrderItemMapper {
     private ProductMapper productMapper;
 
     public SaleOrderItemResult toDTO(SaleOrderItem orderItem) {
-       return new SaleOrderItemResult()
+        return new SaleOrderItemResult()
                 .setId(orderItem.getId())
                 .setOrderId(orderItem.getOrderId())
                 .setProduct(productMapper.toDTOProductSale(orderItem.getProduct()))
-                .setQuantity(orderItem.getQuantity());
+                .setQuantity(orderItem.getQuantity())
+                .setPrice(orderItem.getPrice())
+                .setTax(orderItem.getTax())
+                .setDiscount(orderItem.getDiscount());
     }
 
     public SaleOrderItem toModel(SaleOrderItemParam orderItemParam) {

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi-VN" class="sapo-menu-expand sapo-menu-toggle-active" xmlns:th="http://www.thymeleaf.org" th:object="${orders}">
+<html lang="vi-VN" class="sapo-menu-expand sapo-menu-toggle-active" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:replace="/layout/header::header"/>
     <title>Chi tiết đơn hàng</title>
@@ -36,9 +36,9 @@
                 <div class="MuiGrid-root MuiGrid-container">
                     <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6" style="flex-direction: column;">
                         <div class="MuiBox-root jss966">
-                            <h4 id="get-order-id" class="MuiTypography-root MuiTypography-h4" style="line-height: 28px; margin-right: 20px;" th:value="*{id}" th:text="*{orderCode}"></h4>
-                            <div th:class="*{orderStatusId} == 'CHECKOUT' ? 'hlxtkG' : (*{orderStatusId} == 'COMPLETE' ? 'hBmWYo' : 'csJERM')">
-                                <span th:text="*{orderStatus.name}" th:class="*{orderStatusId} == 'CHECKOUT' ? 'gIZkwA' : (*{orderStatusId} == 'COMPLETE' ? 'bzQjtT' : 'ccQLIN')"></span>
+                            <h4 id="get-order-id" class="MuiTypography-root MuiTypography-h4" style="line-height: 28px; margin-right: 20px;" th:text="${orders.orderCode}"></h4>
+                            <div th:class="${orders.orderStatusId} == 'CHECKOUT' ? 'hlxtkG' : (${orders.orderStatusId} == 'COMPLETE' ? 'hBmWYo' : 'csJERM')">
+                                <span th:text="${orders.orderStatus.name}" th:class="${orders.orderStatusId} == 'CHECKOUT' ? 'gIZkwA' : (${orders.orderStatusId} == 'COMPLETE' ? 'bzQjtT' : 'ccQLIN')"></span>
                             </div>
                         </div>
                         <div class="MuiBox-root jss967" style="margin-top: 10px;">
@@ -67,7 +67,7 @@
                                             <span class="MuiStepLabel-labelContainer">
                                                 <span class="MuiTypography-root MuiStepLabel-label MuiStepLabel-alternativeLabel MuiStepLabel-completed MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock">
                                                     <p class="MuiTypography-root MuiTypography-body1">Đặt hàng</p>
-                                                    <p class="MuiTypography-root MuiTypography-body1" style="color: rgb(116, 124, 135); font-size: 12px;" th:text="*{#dates.format(createdAt, 'dd/MM/yyyy HH:mm')}"></p>
+                                                    <p class="MuiTypography-root MuiTypography-body1" style="color: rgb(116, 124, 135); font-size: 12px;" th:text="${#dates.format(orders.createdAt, 'dd/MM/yyyy HH:mm')}"></p>
                                                 </span>
                                             </span>
                                         </span>
@@ -85,7 +85,7 @@
                                             <span class="MuiStepLabel-labelContainer">
                                                 <span class="MuiTypography-root MuiStepLabel-label MuiStepLabel-alternativeLabel MuiStepLabel-completed MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock">
                                                     <p class="MuiTypography-root MuiTypography-body1">Duyệt</p>
-                                                    <p class="MuiTypography-root MuiTypography-body1" style="color: rgb(116, 124, 135); font-size: 12px;" th:text="*{#dates.format(createdAt, 'dd/MM/yyyy HH:mm')}"></p>
+                                                    <p class="MuiTypography-root MuiTypography-body1" style="color: rgb(116, 124, 135); font-size: 12px;" th:text="${#dates.format(orders.createdAt, 'dd/MM/yyyy HH:mm')}"></p>
                                                 </span>
                                             </span>
                                         </span>
@@ -103,7 +103,7 @@
                                             <span class="MuiStepLabel-labelContainer">
                                                 <span class="MuiTypography-root MuiStepLabel-label MuiStepLabel-alternativeLabel MuiStepLabel-completed MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock">
                                                     <p class="MuiTypography-root MuiTypography-body1">Đóng gói</p>
-                                                    <p class="MuiTypography-root MuiTypography-body1" style="color: rgb(116, 124, 135); font-size: 12px;" th:text="*{#dates.format(createdAt, 'dd/MM/yyyy HH:mm')}"></p>
+                                                    <p class="MuiTypography-root MuiTypography-body1" style="color: rgb(116, 124, 135); font-size: 12px;" th:text="${#dates.format(orders.createdAt, 'dd/MM/yyyy HH:mm')}"></p>
                                                 </span>
                                             </span>
                                         </span>
@@ -121,7 +121,7 @@
                                             <span class="MuiStepLabel-labelContainer">
                                                 <span class="MuiTypography-root MuiStepLabel-label MuiStepLabel-alternativeLabel MuiStepLabel-completed MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock">
                                                     <p class="MuiTypography-root MuiTypography-body1">Xuất kho</p>
-                                                    <p class="MuiTypography-root MuiTypography-body1" style="color: rgb(116, 124, 135); font-size: 12px;" th:text="*{#dates.format(createdAt, 'dd/MM/yyyy HH:mm')}"></p>
+                                                    <p class="MuiTypography-root MuiTypography-body1" style="color: rgb(116, 124, 135); font-size: 12px;" th:text="${#dates.format(orders.createdAt, 'dd/MM/yyyy HH:mm')}"></p>
                                                 </span>
                                             </span>
                                         </span>
@@ -139,7 +139,7 @@
                                             <span class="MuiStepLabel-labelContainer">
                                                 <span class="MuiTypography-root MuiStepLabel-label MuiStepLabel-alternativeLabel MuiStepLabel-completed MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock">
                                                     <p class="MuiTypography-root MuiTypography-body1">Hoàn thành</p>
-                                                    <p class="MuiTypography-root MuiTypography-body1" style="color: rgb(116, 124, 135); font-size: 12px;" th:text="*{#dates.format(createdAt, 'dd/MM/yyyy HH:mm')}"></p>
+                                                    <p class="MuiTypography-root MuiTypography-body1" style="color: rgb(116, 124, 135); font-size: 12px;" th:text="${#dates.format(orders.createdAt, 'dd/MM/yyyy HH:mm')}"></p>
                                                 </span>
                                             </span>
                                         </span>
@@ -162,11 +162,11 @@
                                                 Thông tin khách hàng
                                             </h6>
                                             <div class="MuiBox-root jss4559">
-                                                <a target="_blank" style="text-decoration: none; display: inline-flex; align-items: center; padding-right: 4px;" th:href="'/admin/orders/' + *{id}">
-                                                    <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary" th:text="*{customer.name}"></h6>
+                                                <a target="_blank" style="text-decoration: none; display: inline-flex; align-items: center; padding-right: 4px;" th:href="'/admin/orders/' + ${orders.id}">
+                                                    <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary" th:text="${orders.customer.name}"></h6>
                                                 </a>
                                                 -
-                                                <h5 th:text="*{customer.phone}" style="padding-left: 4px;"></h5>
+                                                <h5 th:text="${orders.customer.phone}" style="padding-left: 4px;"></h5>
                                             </div>
                                         </div>
                                     </div>
@@ -178,10 +178,10 @@
                                                         <p class="MuiTypography-root jss4193 MuiTypography-body2">Địa chỉ giao hàng</p>
                                                     </div>
                                                     <div class="MuiBox-root jss4570">
-                                                        <p class="MuiTypography-root MuiTypography-body2" th:text="*{customer.phone}"></p>
-                                                        <p class="MuiTypography-root MuiTypography-body2" th:text="*{line1}"></p>
-                                                        <p class="MuiTypography-root MuiTypography-body2" th:text="*{line2}"></p>
-                                                        <p class="MuiTypography-root MuiTypography-body2" th:text="*{city + ', ' + province}"></p>
+                                                        <p class="MuiTypography-root MuiTypography-body2" th:text="${orders.customer.phone}"></p>
+                                                        <p class="MuiTypography-root MuiTypography-body2" th:text="${orders.line1}"></p>
+                                                        <p class="MuiTypography-root MuiTypography-body2" th:text="${orders.line2}"></p>
+                                                        <p class="MuiTypography-root MuiTypography-body2" th:text="${orders.city + ', ' + orders.province}"></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -319,7 +319,7 @@
                                                 <p class="MuiTypography-root MuiTypography-body2"
                                                    style="color: rgb(163, 168, 175);">Chưa có thông tin liên hệ</p>
                                                 <input type="email" class="form-control"
-                                                       th:placeholder="*{customer.email}"
+                                                       th:placeholder="${orders.customer.email}"
                                                        style="margin-top: 14px; width: 54%; height: 36px !important;"
                                                        disabled />
                                             </div>
@@ -654,7 +654,7 @@
                                                 class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
                                             Bán bởi <span>:</span></p>
                                         <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2"
-                                           th:text="*{employee.name}"></p>
+                                           th:text="${orders.employee.name}"></p>
                                     </div>
                                     <div class="MuiGrid-root jss4349 MuiGrid-container MuiGrid-wrap-xs-nowrap">
                                         <p
@@ -678,7 +678,7 @@
                                                 class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2">
                                             Ngày bán <span>:</span></p>
                                         <p class="MuiTypography-root MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiTypography-body2"
-                                           th:text="*{#dates.format(createdAt, 'dd/MM/yyyy HH:mm')}"></p>
+                                           th:text="${#dates.format(orders.createdAt, 'dd/MM/yyyy HH:mm')}"></p>
                                     </div>
                                 </div>
                             </div>
@@ -690,7 +690,7 @@
                                             <h6 class="MuiTypography-root MuiTypography-h6"
                                                 style="padding-top: 8px;">Ghi chú</h6>
                                             <p class="MuiTypography-root jss4353 MuiTypography-body2"
-                                               th:text="*{description} != '' ? *{description} : 'Chưa có ghi chú'">
+                                               th:text="${orders.description} != '' ? ${orders.description} : 'Chưa có ghi chú'">
                                             </p>
                                         </div>
                                     </div>
@@ -736,8 +736,7 @@
                             </div>
                             <div class="MuiBox-root jss4413 jss4374">
                                 <div class="MuiBox-root jss4414">
-                                    <div class="MuiBox-root jss4415"
-                                         style="border-bottom: 1px solid rgb(232, 234, 235);">
+                                    <div class="MuiBox-root jss4415" style="border-bottom: 1px solid rgb(232, 234, 235);">
                                         <div class="MuiTableContainer-root jss4416 ">
                                             <table class="MuiTable-root MuiTable-stickyHeader"
                                                    aria-label="simple table" style="border-collapse: inherit;">
@@ -766,7 +765,149 @@
                                                     </th>
                                                 </tr>
                                                 </thead>
-                                                <tbody id="tbodyOrderItem" class="MuiTableBody-root"></tbody>
+                                                <tbody class="MuiTableBody-root" th:each="item : ${orders.orderItems}">
+                                                <tr class="MuiTableRow-root jss5868 isNormalLineItem">
+                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter">
+                                                        <div class="__react_component_tooltip ta6d41119-e511-48af-b149-ee128339bf68 place-bottom type-dark"
+                                                             id="tooltipTax-1258834332" data-id="tooltip">
+                                                            <style aria-hidden="true">
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68 {
+                                                                    color: #fff;
+                                                                    background: #222;
+                                                                    border: 1px solid transparent;
+                                                                }
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-top {
+                                                                    margin-top: -10px;
+                                                                }
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-top::before {
+                                                                    border-top: 8px solid transparent;
+                                                                }
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-top::after {
+                                                                    border-left: 8px solid transparent;
+                                                                    border-right: 8px solid transparent;
+                                                                    bottom: -6px;
+                                                                    left: 50%;
+                                                                    margin-left: -8px;
+                                                                    border-top-color: #222;
+                                                                    border-top-style: solid;
+                                                                    border-top-width: 6px;
+                                                                }
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom {
+                                                                    margin-top: 10px;
+                                                                }
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom::before {
+                                                                    border-bottom: 8px solid transparent;
+                                                                }
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom::after {
+                                                                    border-left: 8px solid transparent;
+                                                                    border-right: 8px solid transparent;
+                                                                    top: -6px;
+                                                                    left: 50%;
+                                                                    margin-left: -8px;
+                                                                    border-bottom-color: #222;
+                                                                    border-bottom-style: solid;
+                                                                    border-bottom-width: 6px;
+                                                                }
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-left {
+                                                                    margin-left: -10px;
+                                                                }
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-left::before {
+                                                                    border-left: 8px solid transparent;
+                                                                }
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-left::after {
+                                                                    border-top: 5px solid transparent;
+                                                                    border-bottom: 5px solid transparent;
+                                                                    right: -6px;
+                                                                    top: 50%;
+                                                                    margin-top: -4px;
+                                                                    border-left-color: #222;
+                                                                    border-left-style: solid;
+                                                                    border-left-width: 6px;
+                                                                }
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-right {
+                                                                    margin-left: 10px;
+                                                                }
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-right::before {
+                                                                    border-right: 8px solid transparent;
+                                                                }
+                                                                .ta6d41119-e511-48af-b149-ee128339bf68.place-right::after {
+                                                                    border-top: 5px solid transparent;
+                                                                    border-bottom: 5px solid transparent;
+                                                                    left: -6px;
+                                                                    top: 50%;
+                                                                    margin-top: -4px;
+                                                                    border-right-color: #222;
+                                                                    border-right-style: solid;
+                                                                    border-right-width: 6px;
+                                                                }
+                                                            </style>
+                                                            <div class="MuiBox-root jss5882">
+                                                                <div class="MuiBox-root jss5883"><p
+                                                                        class="MuiTypography-root MuiTypography-body1"
+                                                                        style="margin-right: 16px;">Giá chưa bao gồm
+                                                                    thuế</p>
+                                                                    <p class="MuiTypography-root MuiTypography-body1"
+                                                                       style="padding: 2px 0px 2px 6px; min-width: 78px; text-align: right; border-bottom: 1px solid rgb(232, 234, 235);">
+                                                                        350,000</p></div>
+                                                                <div class="MuiBox-root jss5884"><p
+                                                                        class="MuiTypography-root MuiTypography-body1"
+                                                                        style="margin-right: 16px;">Giá đã bao gồm thuế
+                                                                    (10%)</p>
+                                                                    <p class="MuiTypography-root MuiTypography-body1">
+                                                                        385,000</p></div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter">
+                                                        <a class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+                                                           target="_blank"
+                                                           href="/admin/products/122358547/variants/189770148"><img
+                                                                class="jss5872"
+                                                                th:src="*{item.product.mainUrl}"></a>
+                                                    </td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body">
+                                                        <div class="MuiBox-root jss5885 jss5869">
+                                                            <div class="MuiBox-root jss5886">
+                                                                <div class="MuiBox-root jss5887">
+                                                                    <p class="MuiTypography-root MuiTypography-body1" th:text="*{item.product.title}">
+                                                                        <button class="MuiButtonBase-root MuiIconButton-root"
+                                                                                tabindex="0" type="button"
+                                                                                style="padding: 0px; margin-left: 6px; height: fit-content;">
+                                                                            <span class="MuiIconButton-label"></span><span
+                                                                                class="MuiTouchRipple-root"></span>
+                                                                        </button>
+                                                                    </p>
+                                                                </div>
+                                                                <h6 class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
+                                                                    style="font-weight: normal; margin: 2px 0px;">Mặc định</h6><a
+                                                                    class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+                                                                    target="_blank"
+                                                                    href="/admin/products/122358547/variants/189770148"><span
+                                                                    class="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary" th:text="*{item.product.sku}"></span></a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+                                                        style="width: 105px; padding-left: 0px; padding-right: 0px;"><p
+                                                            class="MuiTypography-root MuiTypography-body1"
+                                                            style="text-align: center; cursor: not-allowed;" th:text="*{item.quantity}"></p></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
+                                                                            <span class="MuiTypography-root MuiTypography-body1"
+                                                                                  data-tip="true" data-for="tooltipTax-1258834332"
+                                                                                  currentitem="false"
+                                                                                  style="text-align: right;" th:text="*{#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT') + 'đ'}"></span></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
+                                                        <button class="MuiButtonBase-root MuiButton-root MuiButton-text jss5875 showOnly"
+                                                                tabindex="0" type="button"
+                                                                id="discount-line-item-1258834332"><span
+                                                                class="MuiButton-label" th:text="*{item.discount}"><p
+                                                                class="MuiTypography-root discount_rate_line_item MuiTypography-body1"
+                                                                style="color: rgb(255, 77, 77); font-size: 12px;"></p></span>
+                                                        </button>
+                                                    </td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight" th:text="*{#numbers.formatDecimal(item.quantity * item.price, 0, 'COMMA', 0, 'POINT') + 'đ'}"></td>
+                                                </tr>
+                                                </tbody>
                                             </table>
                                         </div>
                                         <span id="ReactTooltipBuild" style="display: none;"></span>
@@ -778,23 +919,21 @@
                                         <div class="MuiBox-root jss4437 create-order-step5 jss4429">
                                             <li class="MuiListItem-root jss4430 MuiListItem-gutters">
                                                 <div class="MuiListItemText-root"><span
-                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Tổng
-                                                            tiền (1 sản phẩm)</span>
+                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Tổng tiền</span>
                                                 </div>
                                                 <div class="MuiListItemText-root"><span
-                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">350,000</span>
+                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" th:text="${#numbers.formatDecimal(orders.total, 0, 'COMMA', 0, 'POINT') + 'đ'}"></span>
                                                 </div>
                                             </li>
                                             <li class="MuiListItem-root jss4430 MuiListItem-gutters">
-                                                <div class="MuiListItemText-root"><span
-                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT
-                                                            (10%)</span>
-                                                </div>
-                                                <div class="MuiListItemText-root" style="text-align: right;"><span
-                                                        class="MuiTypography-root MuiTypography-body1"
-                                                        data-tip="true" data-for="toolTipTaxItem-10"
-                                                        currentitem="false">35,000</span>
-                                                </div>
+<!--                                                <div class="MuiListItemText-root">-->
+<!--                                                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" th:text="'VAT (' + ${orders.order} + ')'"></span>-->
+<!--                                                </div>-->
+<!--                                                <div class="MuiListItemText-root" style="text-align: right;"><span-->
+<!--                                                        class="MuiTypography-root MuiTypography-body1"-->
+<!--                                                        data-tip="true" data-for="toolTipTaxItem-10"-->
+<!--                                                        currentitem="false">35,000</span>-->
+<!--                                                </div>-->
                                                 <div class="__react_component_tooltip t905c93fd-37a2-4f83-8928-e58daec447de place-bottom type-dark"
                                                      id="toolTipTaxItem-10" data-id="tooltip">
                                                     <div class="MuiBox-root jss5791">
@@ -865,14 +1004,11 @@
                                                 </div>
                                             </li>
                                             <li class="MuiListItem-root jss4430 MuiListItem-gutters">
-                                                <div class="MuiListItemText-root"><span
-                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-subtitle1 MuiTypography-displayBlock">Khách
-                                                            phải trả</span>
+                                                <div class="MuiListItemText-root">
+                                                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-subtitle1 MuiTypography-displayBlock">Khách phải trả</span>
                                                 </div>
                                                 <div class="MuiListItemText-root">
-                                                    <h6
-                                                            class="MuiTypography-root MuiTypography-h6 MuiTypography-alignRight">
-                                                        385,000</h6>
+                                                    <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-alignRight" th:text="${#numbers.formatDecimal(orders.grandTotal, 0, 'COMMA', 0, 'POINT') + 'đ'}"></h6>
                                                 </div>
                                             </li>
                                             <input readonly="" id="totalPaidAmount" value="385000"
@@ -892,184 +1028,4 @@
 </body>
 <th:block th:replace="/layout/script::script"/>
 <th:block th:replace="/admin/order/print::print"/>
-<!--<script src="/assets/admin/js/orderItem/app.js"></script>-->
-<!--<script>-->
-<!--    function showOrderItemById(orderItemId) {-->
-<!--        return $.ajax({-->
-<!--            "headers": {-->
-<!--                "accept": "application/json", "content-type": "application/json"-->
-<!--            },-->
-<!--            "type": "get", "url": "http://localhost:8080/api/orders/" + orderItemId-->
-<!--        })-->
-<!--            .done((data) => {-->
-<!--                let count = 1;-->
-<!--                console.log("Order: " + data);-->
-<!--                $.each(data, (i, item) => {-->
-<!--                    $("#tbodyOrderItem").append(`-->
-<!--                                            <tr class="MuiTableRow-root jss5868 isNormalLineItem">-->
-<!--                                                                        <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter">-->
-<!--                                                                            ${count++}-->
-<!--                                                                            <div class="__react_component_tooltip ta6d41119-e511-48af-b149-ee128339bf68 place-bottom type-dark"-->
-<!--                                                                                 id="tooltipTax-1258834332" data-id="tooltip">-->
-<!--                                                                                <style aria-hidden="true">-->
-<!--                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68 {-->
-<!--                                                                                        color: #fff;-->
-<!--                                                                                        background: #222;-->
-<!--                                                                                        border: 1px solid transparent;-->
-<!--                                                                                    }-->
-
-<!--                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68.place-top {-->
-<!--                                                                                        margin-top: -10px;-->
-<!--                                                                                    }-->
-
-<!--                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68.place-top::before {-->
-<!--                                                                                        border-top: 8px solid transparent;-->
-<!--                                                                                    }-->
-
-<!--                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68.place-top::after {-->
-<!--                                                                                        border-left: 8px solid transparent;-->
-<!--                                                                                        border-right: 8px solid transparent;-->
-<!--                                                                                        bottom: -6px;-->
-<!--                                                                                        left: 50%;-->
-<!--                                                                                        margin-left: -8px;-->
-<!--                                                                                        border-top-color: #222;-->
-<!--                                                                                        border-top-style: solid;-->
-<!--                                                                                        border-top-width: 6px;-->
-<!--                                                                                    }-->
-
-<!--                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom {-->
-<!--                                                                                        margin-top: 10px;-->
-<!--                                                                                    }-->
-
-<!--                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom::before {-->
-<!--                                                                                        border-bottom: 8px solid transparent;-->
-<!--                                                                                    }-->
-
-<!--                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68.place-bottom::after {-->
-<!--                                                                                        border-left: 8px solid transparent;-->
-<!--                                                                                        border-right: 8px solid transparent;-->
-<!--                                                                                        top: -6px;-->
-<!--                                                                                        left: 50%;-->
-<!--                                                                                        margin-left: -8px;-->
-<!--                                                                                        border-bottom-color: #222;-->
-<!--                                                                                        border-bottom-style: solid;-->
-<!--                                                                                        border-bottom-width: 6px;-->
-<!--                                                                                    }-->
-
-<!--                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68.place-left {-->
-<!--                                                                                        margin-left: -10px;-->
-<!--                                                                                    }-->
-
-<!--                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68.place-left::before {-->
-<!--                                                                                        border-left: 8px solid transparent;-->
-<!--                                                                                    }-->
-
-<!--                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68.place-left::after {-->
-<!--                                                                                        border-top: 5px solid transparent;-->
-<!--                                                                                        border-bottom: 5px solid transparent;-->
-<!--                                                                                        right: -6px;-->
-<!--                                                                                        top: 50%;-->
-<!--                                                                                        margin-top: -4px;-->
-<!--                                                                                        border-left-color: #222;-->
-<!--                                                                                        border-left-style: solid;-->
-<!--                                                                                        border-left-width: 6px;-->
-<!--                                                                                    }-->
-
-<!--                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68.place-right {-->
-<!--                                                                                        margin-left: 10px;-->
-<!--                                                                                    }-->
-
-<!--                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68.place-right::before {-->
-<!--                                                                                        border-right: 8px solid transparent;-->
-<!--                                                                                    }-->
-
-<<<<<<< HEAD
-                                                                                    .ta6d41119-e511-48af-b149-ee128339bf68.place-right::after {
-                                                                                        border-top: 5px solid transparent;
-                                                                                        border-bottom: 5px solid transparent;
-                                                                                        left: -6px;
-                                                                                        top: 50%;
-                                                                                        margin-top: -4px;
-                                                                                        border-right-color: #222;
-                                                                                        border-right-style: solid;
-                                                                                        border-right-width: 6px;
-                                                                                    }
-                                                                                </style>
-                                                                                <div class="MuiBox-root jss5882">
-                                                                                    <div class="MuiBox-root jss5883"><p
-                                                                                            class="MuiTypography-root MuiTypography-body1"
-                                                                                            style="margin-right: 16px;">Giá chưa bao gồm
-                                                                                        thuế</p>
-                                                                                        <p class="MuiTypography-root MuiTypography-body1"
-                                                                                           style="padding: 2px 0px 2px 6px; min-width: 78px; text-align: right; border-bottom: 1px solid rgb(232, 234, 235);">
-                                                                                            350,000</p></div>
-                                                                                    <div class="MuiBox-root jss5884"><p
-                                                                                            class="MuiTypography-root MuiTypography-body1"
-                                                                                            style="margin-right: 16px;">Giá đã bao gồm thuế
-                                                                                        (10%)</p>
-                                                                                        <p class="MuiTypography-root MuiTypography-body1">
-                                                                                            385,000</p></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter">
-                                                                            <a class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
-                                                                               target="_blank"
-                                                                               href="/admin/products/122358547/variants/189770148"><img
-                                                                                    class="jss5872"
-                                                                                    src="https://sapo.dktcdn.net/100/679/630/variants/3f4eac62-02c6-401e-83d9-15e6ff767aa9-1669964333888.jpg"></a>
-                                                                        </td>
-                                                                        <td class="MuiTableCell-root MuiTableCell-body">
-                                                                            <div class="MuiBox-root jss5885 jss5869">
-                                                                                <div class="MuiBox-root jss5886">
-                                                                                    <div class="MuiBox-root jss5887">
-                                                                                        <p class="MuiTypography-root MuiTypography-body1">
-                                                                                            Bia Tiger Crystal bạc lon 330ml (thùng 24 lon)
-                                                                                            <button class="MuiButtonBase-root MuiIconButton-root"
-                                                                                                    tabindex="0" type="button"
-                                                                                                    style="padding: 0px; margin-left: 6px; height: fit-content;">
-                                                                                                <span class="MuiIconButton-label"></span><span
-                                                                                                    class="MuiTouchRipple-root"></span>
-                                                                                            </button>
-                                                                                        </p>
-                                                                                    </div>
-                                                                                    <h6 class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
-                                                                                        style="font-weight: normal; margin: 2px 0px;">${item.orderCode}</h6><a
-                                                                                        class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
-                                                                                        target="_blank"
-                                                                                        href="/admin/products/122358547/variants/189770148"><span
-                                                                                        class="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary">${item.orderCode}</span></a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
-                                                                            style="width: 105px; padding-left: 0px; padding-right: 0px;"><p
-                                                                                class="MuiTypography-root MuiTypography-body1"
-                                                                                style="text-align: center; cursor: not-allowed;">${item.orderItems}</p></td>
-                                                                        <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
-                                                                            <span class="MuiTypography-root MuiTypography-body1"
-                                                                                  data-tip="true" data-for="tooltipTax-1258834332"
-                                                                                  currentitem="false"
-                                                                                  style="text-align: right;">${item.total}</span></td>
-                                                                        <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
-                                                                            <button class="MuiButtonBase-root MuiButton-root MuiButton-text jss5875 showOnly"
-                                                                                    tabindex="0" type="button"
-                                                                                    id="discount-line-item-1258834332"><span
-                                                                                    class="MuiButton-label">${item.discount}<p
-                                                                                    class="MuiTypography-root discount_rate_line_item MuiTypography-body1"
-                                                                                    style="color: rgb(255, 77, 77); font-size: 12px;"></p></span>
-                                                                            </button>
-                                                                        </td>
-                                                                        <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
-                                                                            ${item.total}
-                                                                        </td>
-                                                                    </tr>`);
-                });
-            })
-            .fail((jqXHR) => {
-                console.log("An error occurred: " + jqXHR);
-            });
-    }
-    showOrderItemById($("#get-order-id").val());
-</script>
 </html>

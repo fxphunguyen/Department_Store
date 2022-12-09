@@ -103,13 +103,13 @@
             </h4>
 
             <p id="mhd">Số: <span th:text="*{orderCode}"></span></p>
-            <p id="datehd">Ngày: <span>...</span></p>
+            <p id="datehd">Ngày: <span th:text="*{#dates.format(createdAt, 'dd/MM/yyyy HH:mm')}"></span></p>
 
         </div>
         <div class="users">
             <p>Khách hàng: <span th:text="*{customer.name}"></span></p>
             <p>Điện thoại: <span th:text="*{customer.phone}"></span></p>
-            <p>Địa chỉ: <span>....</span></p>
+            <p>Địa chỉ: <span th:text="*{line2} == 'null' ? *{line1 + ', ' + city + ', ' + province} : *{line1 + ', ' + line2 + ', ' + city + ', ' + province}"></span></p>
         </div>
         <div>
             <tr>
@@ -125,7 +125,7 @@
             </thead>
             <tbody class="tbTable">
             <tr>
-                <td>Bia</td>
+                <td th:text="*{orderItems.product.title}"></td>
             </tr>
             <tr>
                 <td style="text-align: left;">1</td>

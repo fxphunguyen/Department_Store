@@ -13,6 +13,7 @@ public class ProductSaleResult {
     private Integer id;
     private String title;
     private String mainUrl;
+    private String sku;
 
 
 }
