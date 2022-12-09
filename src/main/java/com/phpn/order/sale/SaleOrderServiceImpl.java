@@ -108,7 +108,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
                 throw new NotFoundException("Không tìm thấy Id sản phẩm " + orderItemExport.getProductId());
             }
             //lấy toàn bộ item theo productId
-            List<Item> items = itemRepository.findAllByProductIdAndAvailableGreaterThanOrderByCreateAt(orderItemExport.getProductId(), 0);
+            List<Item> items = itemRepository.findAllByProductIdAndAvailableGreaterThanOrderByCreatedAt(orderItemExport.getProductId(), 0);
             int totalAvailable = items.stream().mapToInt(Item::getAvailable).sum();
             if (totalAvailable < orderItemExport.getQuantity()) {
                 throw new NotEnoughQuantityException("Không đủ số lượng cho đơn hàng, vui lòng kiểm tra lại !");
@@ -201,7 +201,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
 
     @Override
     @Transactional(readOnly = true)
-    public BigDecimal getSpendTotal(Integer customerId) {
+    public BigDecimal getSpendTotalByCustomerId(Integer customerId) {
         return saleOrderRepository.getSpendTotalByCustomerId(customerId);
     }
 
@@ -211,8 +211,15 @@ public class SaleOrderServiceImpl implements SaleOrderService {
     }
 
     @Override
-    public List<SaleOrderResult> findAllSaleOrderByCustomer(Integer id) {
-        return  saleOrderRepository.findAllCustomerOrderHistory(id).stream().map(saleOrder -> orderMapper.toCustomerOrder(saleOrder)).collect(Collectors.toList());
+    @Transactional(readOnly = true)
+    public List<SaleOrderResult> findAllSaleOrderByCustomerId(Integer customerId) {
+        return  saleOrderRepository.findAllCustomerOrderHistory(customerId).stream().map(saleOrder -> orderMapper.toCustomerOrder(saleOrder)).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Instant getLastDayOrderByCustomerId(Integer customerId) {
+        return  saleOrderRepository.getLastDayOrderByCustomerId(customerId);
     }
 
 

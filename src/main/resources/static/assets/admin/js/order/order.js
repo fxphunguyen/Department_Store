@@ -4,6 +4,7 @@ let locationRegionCreate = new LocationRegionCreate();
 let employeeResult = new EmployeeResult();
 let productResult = new ProductResult();
 let order = new OrderResult();
+
 let orderItem = new OrderItemResult();
 let itemResult = new ItemResult();
 
@@ -36,7 +37,6 @@ function showListCustomer() {
                 `;
             $(".contentCustomer").append(result)
         })
-        // searchCustomer();
     }
 
     if (customers !== undefined && customers.length > 0) {
@@ -374,7 +374,7 @@ function showListProducts() {
                         <img class="jss1260" src="${product.image}" alt="">
                             <div class="MuiBox-root jss3946">
                                 <div class="MuiBox-root jss3947">
-                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title}  - ${product.bar_code} - ${product.description} </p>
+                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title} - ${product.barCode} </p>
                                         <p class="MuiTypography-root MuiTypography-body2" style="line-height: 16px; display: flex;">
                                     
                                         <span class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175); line-height: 16px;"> ${product.sku} </span>
@@ -722,22 +722,25 @@ function editCustomer() {
     $("#update_order_customer").modal("show");
 }
 
-
+let taxList = [] ;
 function showProductInfo(productId) {
     $('#MuiBox-list-product').addClass("hide");
     $("#productId").val(productId);
 
     let result = product = products.find(({id}) => id === productId);
+    console.log(result)
+    let tax = result.taxSaleList;
+
     let std = `
-            <div id="tax_${result.id}">
-                <div class="MuiListItemText-root" style="float:left">                                        
-                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(%)</span>
-                </div>
-                <div class="MuiListItemText-root" style="float:right">
-                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" id="tax_value_${result.id}">0</span>
-                </div>
-<!--                <div style="clear: both"></div>-->
-            </div>
+              <div id="tax_${result.id}">
+                    <div class="MuiListItemText-root" style="float:left">                                        
+                        <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" id="number_tax_${result.id}">VAT(%)</span>
+                    </div>
+                    <div class="MuiListItemText-root" style="float:right">
+                        <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" id="tax_value_${result.id}">0</span>
+                    </div>
+                    <div style="clear: both"></div>
+              </div> 
     `;
     $("#ul_vat_tax").prepend(std);
     let str = `
@@ -907,16 +910,23 @@ function showProductInfo(productId) {
                         </svg></span><span class="MuiTouchRipple-root"></span></button></td>
         </tr>
     `;
-    let quantity =  $(`#quantity_product_${result.quantity}`).val();
-    console.log(quantity);
     $("#tbProduct tbody").prepend(str);
+    taxList.push($(`#tax_${productId}`).val());
+    console.log(taxList)
     $("#divNoInfo").remove();
     $("#divTbProduct").removeClass("hide");
+    taxList.forEach((taxObj, index) => {
+        if (taxObj) {
+            order.listTaxItem = {"tax" : taxObj, "listProductId" : product.id }
+            let taxValue = taxObj.tax;
+            let retailProduct = +$(`#retailPrice_${productId}`).val();
+            let quantityProduct = +($(`#quantity_product_${productId}`).val());
+            let tax = (retailProduct * (taxValue / 100)) * quantityProduct;
+            $(`#number_tax_${result.id}`).text("VAT" + "(" + taxValue + "%)");
+            $(`#tax_value_${result.id}`).text(tax);
+        }
+    })
 
-
-    // if (taxSaleList == null) {
-    //     $(`#tax_${result.id}`).remove();
-    // }
     $("#vat_tax").removeClass('d-none');
     // $(`#tax_value_${result.id}`).text(taxText.formatVND());
     handleGrandTotal();
@@ -1042,6 +1052,14 @@ function deleteProduct(productId) {
     $(`#tax_${productId}`).remove();
 }
 
+const resetPrice = () => {
+    $("#grandTotal").text(0);
+    $("#discount_value_order").text(0);
+    $("#percent_value_order").text(0);
+    $("#total_amounts").text(0);
+    $("#total_customer").text(0);
+}
+
 const valueDiscount = (event) => {
     const classList = [...event.target.parentElement.classList] || [];
     const muiSelecteds = event.target.parentElement.parentElement.children;
@@ -1068,17 +1086,14 @@ const formatDiscountOrder = (event, productId) => {
     let percentValue = 0;
     let totalTax = 0;
     let discountOrder = 0;
-    $(`#tax_${productId}`).each(function () {
-        let taxId = $(this).attr('id');
-        let tax = +$("#tax_value_" + taxId).text();
-        totalTax += tax;
-    })
     btnValueOrder.forEach((btn, index) => {
         const classListOrder = [...btn.classList];
         if (classListOrder.includes("Mui-selected")) {
             const valueInput = event.target.value.replaceAll(",", "");
             const total = document.querySelector('#grandTotal').textContent.replaceAll(",", "");
             if (btn.value === "VALUE") {
+                let tax = $(`#tax_value_${productId}`).text();
+                console.log(tax)
                 discountOrder = valueInput;
                 percentValue = (valueInput * 100) / total;
                 grandTotal = (total + totalTax) - discountOrder;
@@ -1124,7 +1139,7 @@ const formatDiscount = (event, productId, retailPrice) => {
             }
 
             $(`#discount_value_${productId}`).text(discount.formatVND());
-            $(`#percent_value_${productId}`).text(percentValue.toFixed(2) + "%");
+            $(`#percent_value_${productId}`).text(percentValue + "%");
             $(`#amount_product_${productId}`).text(totalAfterDiscount.formatVND());
         }
     })

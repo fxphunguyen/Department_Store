@@ -6,6 +6,8 @@ import com.phpn.customer.dto.CustomerResult;
 import com.phpn.customer.UpdateCustomerParam;
 import com.phpn.customer.dto.CreateCustomerParam;
 import com.phpn.customer.dto.CreateShippingAddressParam;
+import com.phpn.exceptions.AppNotFoundException;
+import com.phpn.exceptions.DataInputException;
 import com.phpn.order.sale.SaleOrderService;
 import com.phpn.order.sale.dto.SaleOrderResult;
 import com.phpn.order.sale.item.OrderItemService;
@@ -18,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import vn.fx.qh.sapo.entities.customer.Customer;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,15 +52,15 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerResult findById(Integer id) {
         Customer customer = customerRepository.findById(id).get();
         CustomerResult customerResult = customerMapper.toCustomerInfo(customer);
-        BigDecimal spendTotal = saleOrderService.getSpendTotal(customer.getId());
+        BigDecimal spendTotal = saleOrderService.getSpendTotalByCustomerId(customer.getId());
         if (spendTotal == null) {
             spendTotal = BigDecimal.valueOf(0);
         }
-        BigDecimal paidTotal = paymentSaleOrderService.getSpendTotalByCustomerId(customer.getId());
-        if (paidTotal == null) {
-            paidTotal = BigDecimal.valueOf(0);
-        }
-        BigDecimal debtTotal = spendTotal.subtract(paidTotal);
+//        BigDecimal paidTotal = paymentSaleOrderService.getPaidTotalByCustomerId(customer.getId());
+//        if (paidTotal == null) {
+//            paidTotal = BigDecimal.valueOf(0);
+//        }
+        BigDecimal debtTotal = paymentSaleOrderService.getDebtTotalByCustomerId(customer.getId());
         customerResult.setSpendTotal(spendTotal);
         customerResult.setDebtTotal(debtTotal);
         Integer quantityProductOrder = saleOrderService.getQuantityProductOrder(customerResult.getId());
@@ -71,6 +74,10 @@ public class CustomerServiceImpl implements CustomerService {
         }
         customerResult.setQuantityItemOrder(quantityItemOrder);
 
+        Instant lastDayOrder = saleOrderService.getLastDayOrderByCustomerId(customerResult.getId());
+
+        customerResult.setLastDayOrder(lastDayOrder);
+
         return customerResult;
     }
 
@@ -81,15 +88,13 @@ public class CustomerServiceImpl implements CustomerService {
                 .stream()
                 .map(customer -> {
                     CustomerResult dto = customerMapper.toDTO(customer);
-                    BigDecimal spendTotal = saleOrderService.getSpendTotal(customer.getId());
-                    if (spendTotal == null) {
+                    BigDecimal spendTotal = saleOrderService.getSpendTotalByCustomerId(customer.getId());
+                    if (spendTotal == null)
                         spendTotal = BigDecimal.valueOf(0);
-                    }
-                    BigDecimal paidTotal = paymentSaleOrderService.getSpendTotalByCustomerId(customer.getId());
-                    if (paidTotal == null) {
-                        paidTotal = BigDecimal.valueOf(0);
-                    }
-                    BigDecimal debtTotal = spendTotal.subtract(paidTotal);
+
+                    BigDecimal debtTotal = paymentSaleOrderService.getDebtTotalByCustomerId(customer.getId());
+                    if (debtTotal == null)
+                        debtTotal = BigDecimal.valueOf(0);
                     dto.setSpendTotal(spendTotal);
                     dto.setDebtTotal(debtTotal);
                     return dto;
@@ -98,11 +103,31 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerResult create(CreateCustomerParam customerCreate) {
-        Customer customer = customerRepository.save(customerMapper.toCustomer(customerCreate));
-        CreateShippingAddressParam shippingAddressParam = customerCreate.getCreateShippingAddressParam();
-        shippingAddressParam.setCustomerId(customer.getId());
-        shippingAddressService.create(customerCreate.getCreateShippingAddressParam());
-        return customerMapper.toCustomerInfo(customer);
+        if (customerCreate.getName().equals("")) {
+            throw new DataInputException("Tên khách hàng là bắt buộc");
+        }
+        if (customerCreate.getCustomerCode().equals("")) {
+            throw new DataInputException("Mã khách hàng không được để trống");
+        }
+        if (customerCreate.getEmployeeId() == null) {
+            throw new DataInputException("Bạn chưa chọn nhân viên phụ trách");
+        }
+        try {
+            Customer customer = customerRepository.save(customerMapper.toCustomer(customerCreate));
+
+            CreateShippingAddressParam shippingAddressParam = customerCreate.getCreateShippingAddressParam();
+
+            try {
+                shippingAddressParam.setCustomerId(customer.getId());
+                shippingAddressService.create(customerCreate.getCreateShippingAddressParam());
+            } catch (Exception e) {
+                throw new AppNotFoundException("Địa chỉ của khách hàng không được lưu, lỗi không xác định");
+            }
+            return customerMapper.toCustomerInfo(customer);
+
+        } catch (Exception e) {
+            throw new DataInputException("Lỗi không xác định");
+        }
     }
 
     @Override
@@ -113,7 +138,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional(readOnly = true)
     public List<SaleOrderResult> findHistoryCustomerOrder(Integer id) {
-        List<SaleOrderResult> saleOrderByCustomer = saleOrderService.findAllSaleOrderByCustomer(id);
+        List<SaleOrderResult> saleOrderByCustomer = saleOrderService.findAllSaleOrderByCustomerId(id);
         return saleOrderByCustomer;
     }
 

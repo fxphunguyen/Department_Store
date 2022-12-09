@@ -17,6 +17,8 @@ public interface PaymentSaleOrderService {
 
     PaymentSaleOrderResult createPaymentOrder(PaymentOrderParam paymentOrderParam);
 
-    BigDecimal getSpendTotalByCustomerId(Integer id);
+    BigDecimal getPaidTotalByCustomerId(Integer id);
+
+    BigDecimal getDebtTotalByCustomerId(Integer customerId);
 
 }

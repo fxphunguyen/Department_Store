@@ -21,5 +21,6 @@ public interface PaymentOrderRepository extends JpaRepository<PaymentSaleOrder, 
     @Query(value = "call sp_getPaidTotalByCustomerById(:id);" , nativeQuery = true)
     BigDecimal getPaidTotalByCustomerById(Integer id);
 
-
+    @Query(value = "call sp_getDebtTotalCustomerById(:id);" , nativeQuery = true)
+    BigDecimal getDebtTotalByCustomerById(Integer id);
 }
