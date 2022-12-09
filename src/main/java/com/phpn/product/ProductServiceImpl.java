@@ -87,7 +87,7 @@ public class ProductServiceImpl implements ProductService {
         product.setWholesalePrice(new BigDecimal(Integer.parseInt(productShortParam.getRetailPrice())));
         product.setBrandId(1);
         product.setApplyTax(false);
-        product.setCreateAt(Instant.now());
+
 
         Product p = productRepository.save(product);
 
