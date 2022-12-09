@@ -34,6 +34,7 @@ public class ProductAPI {
 //    }
 
 
+
    // C0522k1
 //    @GetMapping("")
 //    public ResponseEntity<?> getAllProduct(){
@@ -54,6 +55,7 @@ public class ProductAPI {
 //       }
 //        return new ResponseEntity<>(productItemResults, HttpStatus.OK);
 //    }
+
 // kien dang chinh
    @GetMapping("")
     public ResponseEntity<?> getAllProductPage(@RequestParam (defaultValue = "0") Integer pageNo,
