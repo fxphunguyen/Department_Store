@@ -20,7 +20,7 @@ public class SaleOrderItemMapper {
                 .setId(orderItem.getId())
                 .setOrderId(orderItem.getOrderId())
 //                productMapper.toDTO(orderItem.getProduct())
-                .setProduct(productMapper.toModel(orderItem.getProduct()))
+             //   .setProduct(productMapper.toModel(orderItem.getProduct()))
 //                .setItem(itemMapper.toDTO(orderItem.getItem()))
                 .setQuantity(orderItem.getQuantity());
 
@@ -28,9 +28,6 @@ public class SaleOrderItemMapper {
 
     public SaleOrderItem toModel(SaleOrderItemParam orderItemParam) {
         return new SaleOrderItem()
-                .setItemId(orderItemParam.getId())
-                .setOrderId(orderItemParam.getOrderId())
-                .setItemId(orderItemParam.getItemId())
                 .setProductId(orderItemParam.getProductId())
                 .setQuantity(orderItemParam.getQuantity())
                 .setPrice(orderItemParam.getPrice())
