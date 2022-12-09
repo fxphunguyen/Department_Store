@@ -27,12 +27,6 @@ public class ProductController {
         return new ModelAndView("/admin/product/product_detail");
     }
 
-    @GetMapping("/products/infor")
-    public ModelAndView showProductInforPage() {
-
-        return new ModelAndView("/admin/product/product_infor");
-    }
-
 
     //    Điều chỉnh giá vốn
     @GetMapping("/price_adjustments")
