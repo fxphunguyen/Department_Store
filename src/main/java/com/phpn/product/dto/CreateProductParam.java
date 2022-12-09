@@ -1,6 +1,7 @@
 package com.phpn.product.dto;
 
 import com.phpn.media.MediaParam;
+import com.phpn.tax.dto.ProductTaxParam;
 import vn.fx.qh.sapo.entities.product.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -11,11 +12,11 @@ import java.util.List;
 
 @Data
 @Accessors(chain = true)
-public class ProductWithImageParam implements Serializable {
+public class CreateProductParam implements Serializable {
 
     private Integer id;
     private String title;
-    private ProductStatus status;
+    private Boolean enableSell;
     private String description;
     private String unit;
     private String sku;
@@ -27,5 +28,10 @@ public class ProductWithImageParam implements Serializable {
     private Integer categoryId;
     private Integer brandId;
     private Boolean applyTax;
-    private List<MediaParam> productImageParams;
+    private Boolean isTaxInclusive;
+    private List<ProductTaxParam> taxList;
+    private List<MediaParam> mediaList;
+
+
+
 }

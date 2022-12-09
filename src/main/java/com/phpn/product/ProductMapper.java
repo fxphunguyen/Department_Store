@@ -1,10 +1,8 @@
 package com.phpn.product;
 
 import com.phpn.brand.dto.BrandMapper;
-import com.phpn.category.dto.CategoryResult;
 import com.phpn.product.dto.*;
 import com.phpn.category.dto.CategoryMapper;
-import com.phpn.product.item.ItemMapper;
 import com.phpn.tax.dto.TaxMapper;
 import com.phpn.tax.dto.TaxResult;
 import vn.fx.qh.sapo.entities.product.*;
@@ -36,8 +34,7 @@ public class ProductMapper {
                 .setTitle(productParam.getTitle())
                 .setImage(productParam.getImage())
                 .setStatus(productParam.getStatus())
-                .setCreateAt(Instant.now())
-                .setUpdateAt(null)
+
                 .setDescription(productParam.getDescription())
                 .setUnit(productParam.getUnit())
                 .setSku(productParam.getSku())
@@ -49,11 +46,9 @@ public class ProductMapper {
                 .setCategoryId(productParam.getCategoryId());
     }
 
-    public Product toModel(ProductWithImageParam productWithImageParam) {
+    public Product toModel(CreateProductParam productWithImageParam) {
         return new Product(productWithImageParam.getCategoryId(), productWithImageParam.getBrandId())
                 .setTitle(productWithImageParam.getTitle())
-                .setStatus(productWithImageParam.getStatus())
-                .setCreateAt(Instant.now())
                 .setDescription(productWithImageParam.getDescription())
                 .setUnit(productWithImageParam.getUnit())
                 .setSku(productWithImageParam.getSku())
@@ -78,9 +73,7 @@ public class ProductMapper {
                 .setDescription(product.getDescription())
                 .setImportPrice(product.getImportPrice())
                 .setWholesalePrice(product.getWholesalePrice())
-                .setRetailPrice(product.getRetailPrice())
-                .setCreateAt(product.getCreateAt())
-                .setUpdateAt(product.getUpdateAt());
+                .setRetailPrice(product.getRetailPrice());
         List<TaxResult> taxSaleList = product.getTaxSale().stream().map(taxMapper::toDTO).collect(Collectors.toList());
         result.setTaxSaleList(taxSaleList);
         List<TaxResult> taxPurchaseList = product.getTaxPurchase().stream().map(taxMapper::toDTO).collect(Collectors.toList());
@@ -99,9 +92,7 @@ public class ProductMapper {
                 .setAvailable(0)
                 .setInventory(0)
                 .setCategory(categoryMapper.toDTO(product.getCategory()))
-                .setBrand(brandMapper.toDTO(product.getBrand()))
-                .setCreateAt(product.getCreateAt())
-                .setUpdateAt(product.getUpdateAt());
+                .setBrand(brandMapper.toDTO(product.getBrand()));
     }
 
 

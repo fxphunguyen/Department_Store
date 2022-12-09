@@ -21,8 +21,7 @@ public class SaleOrderItemMapper {
                 .setOrderId(orderItem.getOrderId())
                 .setProduct(productMapper.toDTO(orderItem.getProduct()))
               //  .setItem(itemMapper.toDTO(orderItem.getItem()))
-                .setQuantity(orderItem.getQuantity())
-                .setCreateAt(orderItem.getCreateAt());
+                .setQuantity(orderItem.getQuantity());
 
     }
 
