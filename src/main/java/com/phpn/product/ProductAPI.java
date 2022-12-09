@@ -47,6 +47,7 @@ public class ProductAPI {
 //        return new ResponseEntity<>(products, HttpStatus.OK);
 //    }
 //   @GetMapping("")
+<<<<<<< HEAD
     public ResponseEntity<?> getAllProduct(Pageable pageable){
         Page<Product> products;
         products = productService.findAll(pageable);
@@ -59,6 +60,20 @@ public class ProductAPI {
        }
         return new ResponseEntity<>(productItemResults, HttpStatus.OK);
     }
+=======
+//    public ResponseEntity<?> getAllProduct(Pageable pageable){
+//        Page<Product> products;
+//        products = productService.findAll(pageable);
+//        List<Product> productList = products.getContent();
+//        Long totalItem = products.getTotalElements();
+//        int totalPage = products.getTotalPages();
+//       List<ProductItemResult> productItemResults = new ArrayList<>();
+//       for(Product product : productList){
+//           productItemResults.add(productMapper.toDTOPage(product));
+//       }
+//        return new ResponseEntity<>(productItemResults, HttpStatus.OK);
+//    }
+>>>>>>> 33bf6b236f4db980133dd478f0430fd6d6e85dcb
 
 
     @GetMapping("/{id}")
@@ -69,6 +84,7 @@ public class ProductAPI {
 
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody ProductWithImageParam productWithImageParam) {
+        System.out.println(productWithImageParam);
         return new ResponseEntity<>(productService.create(productWithImageParam), HttpStatus.OK);
     }
 

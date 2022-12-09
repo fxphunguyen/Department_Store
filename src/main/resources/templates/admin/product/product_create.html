@@ -9,11 +9,14 @@
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <title>Thêm mới sản phẩm</title>
+<<<<<<< HEAD
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
               rel="stylesheet"
               integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
               crossorigin="anonymous">
     <link rel="stylesheet" href="../../../static/assets/admin/css/product/selectMenu.css">
+=======
+>>>>>>> 33bf6b236f4db980133dd478f0430fd6d6e85dcb
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
@@ -897,7 +900,7 @@
         product.image = 'ok cậu';
         // product.status = $('.statusCreate').attr('checked') ? 1 : 0;
 
-        product.status = $(".statusCreate").is(":checked") ? "Đang giao dịch" : "Ngừng giao dịch";
+        product.status = $(".statusCreate").is(":checked") ? "AVAILABLE" : "UNAVAILABLE";
 
         product.description = $('.descriptionCreate').val();
         product.unit = $('.unitCreate').val();
