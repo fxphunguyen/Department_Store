@@ -575,7 +575,9 @@ function doCreateCustomer() {
         customer.name = $('#nameCreate').val();
         customer.customerCode = $('#codeCreate').val();
         customer.phone = $('#phoneCreate').val();
+
         customer.createShippingAddressParam = shippingAddress;
+        shippingAddress.line1 = $("#addressCreate").val();
         shippingAddress.provinceId = $('#province').val();
         shippingAddress.provinceName = $('#province :selected').text();
         shippingAddress.districtId = $('#district').val();
@@ -1219,7 +1221,8 @@ $(() => {
                 location.href = `${location.origin}/admin/orders/${data.id}`;
             })
             .fail((jqXHR) => {
-                console.log(jqXHR);
+               App.IziToast.showErrorAlert("Không đủ số lượng cho đơn hàng, vui lòng kiểm tra lại");
+               
             })
     });
     $("#discount_product_input").on('keyup', function () {
