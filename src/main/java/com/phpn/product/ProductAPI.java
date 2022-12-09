@@ -36,7 +36,7 @@ public class ProductAPI {
 // kien dang chinh
     @GetMapping("")
     public ResponseEntity<?> getAllProductPage(@RequestParam (defaultValue = "0") Integer pageNo,
-                                           @RequestParam (defaultValue = "20") Integer pageSize)
+                                           @RequestParam (defaultValue = "10") Integer pageSize)
    {
         return new ResponseEntity<>(productService.getAllProductItemPage(pageNo,pageSize), HttpStatus.OK);
     }
