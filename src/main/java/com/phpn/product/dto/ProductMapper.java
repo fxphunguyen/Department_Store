@@ -74,12 +74,12 @@ public class ProductMapper {
                 .setCreatedAt(product.getCreatedAt())
                 .setUpdatedAt(product.getUpdatedAt());
 
-        List<TaxResult> taxSaleList = product.getTaxSale().stream().map(taxMapper::toDTO).collect(Collectors.toList());
-        result.setTaxSaleList(taxSaleList);
-        List<TaxResult> taxPurchaseList = product.getTaxPurchase().stream().map(taxMapper::toDTO).collect(Collectors.toList());
-        result.setTaxPurchaseList(taxPurchaseList);
-        result.setBrand(brandMapper.toDTO(product.getBrand()))
-                .setCategory(categoryMapper.toDTO(product.getCategory()));
+//        List<TaxResult> taxSaleList = product.getTaxSale().stream().map(taxMapper::toDTO).collect(Collectors.toList());
+//        result.setTaxSaleList(taxSaleList);
+//        List<TaxResult> taxPurchaseList = product.getTaxPurchase().stream().map(taxMapper::toDTO).collect(Collectors.toList());
+//        result.setTaxPurchaseList(taxPurchaseList);
+//        result.setBrand(brandMapper.toDTO(product.getBrand()))
+//                .setCategory(categoryMapper.toDTO(product.getCategory()));
         return result;
     }
 

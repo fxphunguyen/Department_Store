@@ -32,13 +32,9 @@ public class OrderAPI {
         return new ResponseEntity<>(orderResults, HttpStatus.OK);
     }
 
-
-
-
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<?> createOrder(@RequestBody SaleOrderParam orderParam) {
-
-        return new ResponseEntity<>(orderService.createOrderExport(orderParam), HttpStatus.OK);
+        return new ResponseEntity<>(orderService.create(orderParam), HttpStatus.OK);
     }
 
     @GetMapping("/{orderId}")

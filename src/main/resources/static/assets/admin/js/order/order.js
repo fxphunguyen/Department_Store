@@ -61,17 +61,6 @@ function showListCustomer() {
         }, 100)
         return;
     }
-    $.ajax({
-        type: "GET", contentType: 'application/json',
-        url: `${location.origin}/api/customers`
-    })
-        .done((data) => {
-            customers = data;
-            show(data);
-        })
-        .fail((jqXHR) => {
-            console.log(jqXHR)
-        })
 }
 
 const searchCustomer = () => {
@@ -171,17 +160,16 @@ function showCustomerInfo(idCustomer) {
             fullShippingAddress += `${shippingAddress.districtName}, `;
         if (shippingAddress.provinceName != null)
             fullShippingAddress += `${shippingAddress.provinceName}`;
+        saleOrder.customerId = customer.id;
         saleOrder.fullName = customer.name;
         saleOrder.mobile = customer.phone;
         saleOrder.email = customer.email;
         saleOrder.line1 = shippingAddress.line1;
-        saleOrder.wardName = shippingAddress.wardName;
-        saleOrder.districtName = shippingAddress.districtName;
-        saleOrder.provinceName = shippingAddress.provinceName;
+        saleOrder.line2 = shippingAddress.line2
+        saleOrder.ward = shippingAddress.wardName;
+        saleOrder.city = shippingAddress.districtName;
+        saleOrder.province = shippingAddress.provinceName;
         saleOrder.zipCode = shippingAddress.zipCode;
-        saleOrder.line1 = shippingAddress.line1;
-        saleOrder.line1 = shippingAddress.line1;
-        saleOrder.line1 = shippingAddress.line1;
     }
 
     let billAddress = result.billAddress;
@@ -796,38 +784,11 @@ function discountProduct(event) {
 const addQuantity = (productId) => {
     renderSaleOrderItem(productId, "plus");
     renderSaleOrder();
-    // const discount = +$(`#discount_value_${productId}`).text().replaceAll(",", "");
-    // let quantityProduct = +($(`#quantity_product_${productId}`).val());
-    // quantityProduct = quantityProduct + 1;
-    // $(`#quantity_product_${productId}`).val(quantityProduct);
-    //
-    // let tax = +$(`.number_tax_${productId}`).attr("tax-value");
-    // let retailProduct = +$(`#retailPrice_${productId}`).val();
-    // let amount = (retailProduct - discount) * quantityProduct;
-    // let taxValue = (retailProduct * (tax / 100)) * quantityProduct;
-    //
-    // let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId = productId);
-    // saleOrderItem.quantity = quantityProduct;
-    // saleOrderItem.discount = discount;
-    //
-    // $(`.tax_value_${productId}`).text(taxValue.formatVND());
-    // $(`#amount_product_${productId}`).text(amount.formatVND());
 }
 
 function minusQuantity(productId) {
     renderSaleOrderItem(productId, "minus");
     renderSaleOrder();
-    //let quantityProduct = Number($(`#quantity_product_${productId}`).val());
-    // const discount = +$(`#discount_value_${productId}`).text().replaceAll(",", "");
-    // let tax = +$(`.number_tax_${productId}`).attr("tax-value");
-    // quantityProduct = quantityProduct - 1;
-    // const retailProduct = +$(`#retailPrice_${productId}`).val();
-    // let amount = (retailProduct - discount) * quantityProduct;
-    // let taxValue = (retailProduct * (tax / 100)) * quantityProduct;
-    //
-    // $(`.tax_value_${productId}`).text(taxValue.formatVND());
-    // $(`#amount_product_${productId}`).text(amount.formatVND());
-
     let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId === productId);
     if (saleOrderItem.quantity === 0) {
         Swal.fire({
@@ -859,15 +820,12 @@ function deleteProduct(productId) {
     renderSaleOrder();
 }
 
-const resetPrice = () => {
-    $("#grandTotal").text("0");
-    $("#discount_value_order").text(0);
-    $("#percent_value_order").remove();
-    $("#total_amounts").text(0);
-    $("#total_customer").text(0);
-}
+const switchDiscountOrder = (value) => {
+    $(`[value=${value}]`).addClass("Mui-selected");
+    $(`[value=${value === "PERCENT" ? "VALUE" : "PERCENT"}]`).removeClass("Mui-selected")
 
-const valueDiscount = (event) => {
+}
+const switchDiscountOrderItem = (event) => {
     const classList = [...event.target.parentElement.classList] || [];
     const muiSelecteds = event.target.parentElement.parentElement.children;
     const muis = [...muiSelecteds];
@@ -882,48 +840,11 @@ const valueDiscount = (event) => {
     event.target.parentElement.classList.add("Mui-selected");
 }
 
-const formatDiscountOrder = (event, productId) => {
-    $("#discount_product_input_order").on('keyup', function () {
-        var n = parseInt($(this).val().replace(/\D/g, ''), 10);
-        $(this).val(n.toLocaleString());
-    })
-    const btnValueSelectOrder = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
-    const btnValueOrder = [...btnValueSelectOrder];
-    let grandTotal = 0;
-    let percentValue = 0;
-    let totalTax = 0;
-    let discountOrder = 0;
-    btnValueOrder.forEach((btn, index) => {
-        const classListOrder = [...btn.classList];
-        if (classListOrder.includes("Mui-selected")) {
-            const valueInput = event.target.value.replaceAll(",", "");
-            const total = document.querySelector('#grandTotal').textContent.replaceAll(",", "");
-            if (btn.value === "VALUE") {
-                let tax = $(`#tax_value_${productId}`).text();
-                console.log(tax)
-                discountOrder = valueInput;
-                percentValue = (valueInput * 100) / total;
-                grandTotal = (total + totalTax) - discountOrder;
-            } else {
-                discountOrder = total * (valueInput / 100);
-                percentValue = valueInput;
-                grandTotal = total + totalTax - discountOrder;
-            }
-
-
-            $("#percent_value_order").text(percentValue.toFixed(2) + "%");
-            $("#discount_value_order").text(discountOrder);
-            $("#total_amounts").text(grandTotal.formatVND());
-        }
-    });
-}
-
-
 const formatDiscount = (event, productId, retailPrice) => {
-    $("#discount_product_input").on('keyup', function () {
-        var n = parseInt($(this).val().replace(/\D/g, ''), 10);
-        $(this).val(n.toLocaleString());
-    });
+    // $("#discount_product_input").on('keydown', function () {
+    //     //     var n = parseInt($(this).val().replace(/\D/g, ''), 10);
+    //     //     $(this).val(n.toLocaleString());
+    //     // });
     event.target.value = event.target.value.replace(/[^0-9]/g, '');
     const btnValueSelectors = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
     const btnValue = [...btnValueSelectors];
@@ -938,29 +859,23 @@ const formatDiscount = (event, productId, retailPrice) => {
                 totalAfterDiscount = (retailPrice - valueInput) * quantity;
                 percentValue = (valueInput * 100) / total;
                 discount = total - totalAfterDiscount;
-
             } else {
                 discount = total * (valueInput / 100);
                 percentValue = valueInput;
                 totalAfterDiscount = total - discount;
             }
 
-            let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId = productId);
+            let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId === productId);
             saleOrderItem.discount = discount;
-
+            renderAmountOrderItem(productId);
+            renderSaleOrder();
             $(`#discount_value_${productId}`).text(discount.formatVND());
             $(`#percent_value_${productId}`).text(percentValue + "%");
-            $(`#amount_product_${productId}`).text(totalAfterDiscount.formatVND());
         }
     })
-    handleGrandTotal();
+
 }
 
-function numberOnly() {
-    $("input[name='numonly']").on('input', function (e) {
-        $(this).val($(this).val().replace(/[^0-9]/g, ''));
-    });
-}
 
 function renderAmountOrderItem(productId) {
     let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId === productId);
@@ -1078,7 +993,7 @@ function renderSaleOrderItem(productId, operator) {
                     </div>
                 </div>
             </td>
-            <td id="td-discount-${result.id}" class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight show_discount">
+            <td id="td-discount-${result.id}" class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
                 <button data-product-discount-id="${result.id}"
                     class="MuiButtonBase-root MuiButton-root MuiButton-text jss3901 btn-discount dropdown-toggle" 
                     tabindex="0" 
@@ -1099,13 +1014,13 @@ function renderSaleOrderItem(productId, operator) {
                     <div class="MuiBox-root jss4418">
                         <div class="MuiBox-root jss4419">
                             <div class="MuiToggleButtonGroup-root jss1283" role="group">
-                            <button onclick="valueDiscount(event)"
+                            <button onclick="switchDiscountOrderItem(event)"
                                     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped Mui-selected "
                                     tabindex="0" type="button" value="VALUE" aria-pressed="true">
                                     <span class="MuiToggleButton-label">Giá trị</span>
                                     <span class="MuiTouchRipple-root"></span>
                             </button>
-                            <button onclick="valueDiscount(event)"
+                            <button onclick="switchDiscountOrderItem(event)"
                                     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped" tabindex="0"
                                     type="button" value="PERCENT" aria-pressed="false"><span
                                     class="MuiToggleButton-label">%</span><span class="MuiTouchRipple-root"></span>
@@ -1120,7 +1035,7 @@ function renderSaleOrderItem(productId, operator) {
                                                autocomplete="off" 
                                                name="numonly"
                                                type="text" 
-                                               class="MuiInputBase-input MuiInput-input" value="0"
+                                               class="discount-item MuiInputBase-input MuiInput-input" value="0"
                                                onkeyup="formatDiscount(event,${result.id},${result.retailPrice})"
                                                style="width: 100%; text-align: right;">
                                     </div>
@@ -1148,6 +1063,9 @@ function renderSaleOrderItem(productId, operator) {
                         </svg></span><span class="MuiTouchRipple-root"></span></button></td>
         </tr>
     `;
+        $(".discount-item").on('input', function (e) {
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
         $("#tbProduct tbody").prepend(htmlOrderItem);
         $("#divNoInfo").addClass("hide");
         $("#divTbProduct").removeClass("hide");
@@ -1205,11 +1123,13 @@ function renderSaleOrder() {
     for (const [taxId, amount] of taxSaleOrderMap.entries()) {
         totalTax += amount;
     }
-    let grandTotal = total + totalTax - totalDiscount;
+    let subtotal = total - totalDiscount;
+    let grandTotal = subtotal + totalTax;
+
 
     if (saleOrderItems.length === 0)
         $("#divNoInfo").removeClass("hide");
-    $("#total").text(total.formatVND());
+    $("#subtotal").text(subtotal.formatVND());
     $("#quantity_products").text("Tổng tiền (" + totalQuantity + " sản phẩm)");
     $("#grandTotal").text(grandTotal.formatVND());
     $("#totalPaid").text(grandTotal.formatVND());
@@ -1251,7 +1171,30 @@ function getTaxList() {
         })
 }
 
+function getCustomerList() {
+    if (customers !== undefined && customers.length > 0) {
+        return;
+    }
+    $.ajax({
+        type: "GET",
+        url: `${location.origin}/api/customers`
+    })
+        .done((data) => {
+            customers = data;
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR);
+        })
+}
+
+function numberOnly() {
+    $("input[name='numonly']").on('input', function (e) {
+        $(this).val($(this).val().replace(/[^0-9]/g, ''));
+    });
+}
+
 $(() => {
+    getCustomerList();
     getTaxList();
     getProductList();
     getAllItem();
@@ -1261,7 +1204,27 @@ $(() => {
     handleCloseListCustomers()
     handleCloseListProducts();
     searchProduct();
-    numberOnly();
+
+    $(".btn_create_order").on("click", () => {
+        $.ajax({
+            "headers": {
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": `${location.origin}/api/orders`,
+            "data": JSON.stringify(saleOrder)
+        })
+            .done((data) => {
+                console.log(data);
+            })
+            .fail((jqXHR) => {
+                console.log(jqXHR);
+            })
+    });
+    $("#discount_product_input").on('keyup', function () {
+        var n = parseInt($(this).val().replace(/\D/g, ''), 10);
+        $(this).val(n.toLocaleString());
+    });
 })
 
 
