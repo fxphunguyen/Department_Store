@@ -2256,7 +2256,7 @@
 }
 .jss1136 svg {
     margin-right: 66px!important;
-    color: rgb(163, 168, 175);
+    color: red !important;
     font-size: 24px;
 }
 .jss1996 {
@@ -2268,6 +2268,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: red !important;
 }
 
 .MuiSelect-iconOutlined {
@@ -2744,7 +2745,7 @@ jss8611 {
     position: absolute !important;
     margin-top: 80px;
     inset: 0px auto auto 0px !important;
-    transform: translate(278px, 466px) !important;
+    transform: translate(278px, 495px) !important;
     z-index: 999 !important;
 }
 
@@ -3513,7 +3514,7 @@ select#districtUpdate   {
     width: 718px;
     position: absolute !important;
     inset: 0px auto auto 0px;
-    transform: translate(278px, 150px) !important;
+    transform: translate(278px, 180px) !important;
     z-index: 999;
 
 }

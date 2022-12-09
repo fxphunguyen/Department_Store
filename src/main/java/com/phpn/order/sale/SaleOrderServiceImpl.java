@@ -19,7 +19,6 @@ import vn.fx.qh.sapo.entities.product.*;
 import vn.fx.qh.sapo.entities.product.tax.*;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -81,8 +80,6 @@ public class SaleOrderServiceImpl implements SaleOrderService {
         if (customerId == null && !customerRepository.existsById(customerId))
             throw new NotFoundException("Không tìm thấy khách hàng");
 
-        Optional<Customer> customerOptional = customerRepository.findById(customerId);
-        Optional<Employee> employeeOptional = employeeRepository.findById(orderParam.getEmployeeId());
 
 
         SaleOrder order = orderMapper.toModel(orderParam);
@@ -92,15 +89,15 @@ public class SaleOrderServiceImpl implements SaleOrderService {
         order.setSubTotal(new BigDecimal(0));
         order.setLine1(order.getLine1());
         order.setLine2(order.getLine2());
-        order.setCustomer(customerOptional.get());
-        order.setEmployee(employeeOptional.get());
+        order.setCustomerId(customerId);
+        order.setEmployeeId(1);
         order.setOrderStatusCode(OrderStatusCode.CHECKOUT);
         order.setOrderStatusCode(OrderStatusCode.UNPAID);
         order = saleOrderRepository.save(order);
         BigDecimal total = BigDecimal.valueOf(0);
         BigDecimal subTotal = BigDecimal.valueOf(0);
         BigDecimal grandTotal = BigDecimal.valueOf(0);
-        for (SaleOrderItemExport orderItemExport : orderParam.getOrderItems()) {
+        for (SaleOrderItemParam orderItemExport : orderParam.getSaleOrderItems()) {
 
             Optional<Product> productOptional = productRepository.findById(orderItemExport.getProductId());
 

@@ -18,35 +18,36 @@ public class SaleOrderMapper {
     @Autowired
     private OrderStatusMapper orderStatusMapper;
 
-    public SaleOrderResult toDTO(SaleOrder order) {
+    public SaleOrderResult toDTO(SaleOrder saleOrder) {
         return new SaleOrderResult()
-                .setId(order.getId())
-                .setFullName(order.getFullName())
-                .setMobile(order.getMobile())
-                .setLine1(order.getLine1())
-                .setLine2(order.getLine2())
-                .setCity(order.getCity())
-                .setProvince(order.getProvince())
-                .setZipCode(order.getZipCode())
-                .setEmployeeId(order.getEmployeeId())
-                .setEmployee(employeeMapper.toDTO(order.getEmployee()))
-                .setOrderCode(order.getOrderCode())
-                .setOrderStatusId(order.getOrderStatusCode().getValue())
-                .setOrderStatus(orderStatusMapper.toDTO(order.getOrderStatus()))
-                .setPaymentStatusId(order.getPaymentStatusCode().getValue())
-                .setPaymentStatus(orderStatusMapper.toDTO(order.getPaymentStatus()))
-                .setDiscount(order.getDiscount())
-                .setDescription(order.getDescription())
-                .setCustomerId(order.getCustomerId())
-                .setCustomer(customerMapper.toDTO(order.getCustomer()))
-                .setTotal(order.getTotal())
-                .setSubTotal(order.getSubTotal())
-                .setGrandTotal(order.getGrandTotal());
+                .setId(saleOrder.getId())
+                .setFullName(saleOrder.getFullName())
+                .setMobile(saleOrder.getMobile())
+                .setLine1(saleOrder.getLine1())
+                .setLine2(saleOrder.getLine2())
+                .setCity(saleOrder.getCity())
+                .setProvince(saleOrder.getProvince())
+                .setZipCode(saleOrder.getZipCode())
+                .setEmployeeId(saleOrder.getEmployeeId())
+                .setEmployee(employeeMapper.toDTO(saleOrder.getEmployee()))
+                .setOrderCode(saleOrder.getOrderCode())
+                .setOrderStatusId(saleOrder.getOrderStatusCode().getValue())
+                .setOrderStatus(orderStatusMapper.toDTO(saleOrder.getOrderStatus()))
+                .setPaymentStatusId(saleOrder.getPaymentStatusCode().getValue())
+                .setPaymentStatus(orderStatusMapper.toDTO(saleOrder.getPaymentStatus()))
+                .setDiscount(saleOrder.getDiscount())
+                .setDescription(saleOrder.getDescription())
+                .setCreatedAt(saleOrder.getCreatedAt())
+                .setUpdatedAt(saleOrder.getUpdatedAt())
+                .setCustomerId(saleOrder.getCustomerId())
+                .setCustomer(customerMapper.toDTO(saleOrder.getCustomer()))
+                .setTotal(saleOrder.getTotal())
+                .setSubTotal(saleOrder.getSubTotal())
+                .setGrandTotal(saleOrder.getGrandTotal());
     }
 
     public SaleOrder toModel(SaleOrderParam orderParam) {
         return new SaleOrder()
-                .setId(orderParam.getId())
                 .setFullName(orderParam.getFullName())
                 .setMobile(orderParam.getMobile())
                 .setLine1(orderParam.getLine1())
@@ -57,8 +58,7 @@ public class SaleOrderMapper {
                 .setDiscount(orderParam.getDiscount())
                 .setDescription(orderParam.getDescription())
                 .setCustomerId(orderParam.getCustomerId())
-                .setOrderCode(orderParam.getOrderCode())
-                .setEmployeeId(orderParam.getEmployeeId());
+                .setOrderCode(orderParam.getOrderCode());
                 //.setOrderStatusId(orderParam.getOrderStatusId());
 
     }

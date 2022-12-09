@@ -50,8 +50,8 @@ public class SaleOrderResult {
     private BigDecimal discount;
 
     private String description;
-
-    private Instant createAt;
+    private Instant createdAt;
+    private Instant updatedAt;
 
     private Integer customerId;
 

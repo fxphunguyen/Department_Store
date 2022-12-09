@@ -27,9 +27,6 @@ public class SaleOrderItemMapper {
 
     public SaleOrderItem toModel(SaleOrderItemParam orderItemParam) {
         return new SaleOrderItem()
-                .setItemId(orderItemParam.getId())
-                .setOrderId(orderItemParam.getOrderId())
-                .setItemId(orderItemParam.getItemId())
                 .setProductId(orderItemParam.getProductId())
                 .setQuantity(orderItemParam.getQuantity())
                 .setPrice(orderItemParam.getPrice())

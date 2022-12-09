@@ -1,19 +1,33 @@
+class SaleOrderItemParam {
+    constructor(price, quantity, productId, discount) {
+        this.price = price;
+        this.quantity = quantity;
+        this.productId = productId;
+        this.discount = discount;
+    }
+};
+
+let saleOrderItems = [];
+let saleOrder = {
+    fullName: undefined,
+    mobile: undefined,
+    line1: undefined,
+    line2: undefined,
+    city: undefined,
+    province: undefined,
+    zipCode: undefined,
+    customerId: undefined,
+    orderCode: undefined,
+    description: undefined,
+    discount: undefined,
+    saleOrderItems: saleOrderItems
+}
+
 let customer = new Customer();
-let locationRegionResult = new LocationRegionResult();
-let locationRegionCreate = new LocationRegionCreate();
-let employeeResult = new EmployeeResult();
-let productResult = new ProductResult();
-let order = new OrderResult();
-
-let orderItem = new OrderItemResult();
-let itemResult = new ItemResult();
-
-
+let shippingAddress = new ShippingAddress();
+let products;
 let customers;
 
-let products;
-
-let employees = [];
 
 function showListCustomer() {
     function show(data) {
@@ -155,6 +169,17 @@ function showCustomerInfo(idCustomer) {
             fullShippingAddress += `${shippingAddress.districtName}, `;
         if (shippingAddress.provinceName != null)
             fullShippingAddress += `${shippingAddress.provinceName}`;
+        saleOrder.fullName = customer.name;
+        saleOrder.mobile = customer.phone;
+        saleOrder.email = customer.email;
+        saleOrder.line1 = shippingAddress.line1;
+        saleOrder.wardName = shippingAddress.wardName;
+        saleOrder.districtName = shippingAddress.districtName;
+        saleOrder.provinceName = shippingAddress.provinceName;
+        saleOrder.zipCode = shippingAddress.zipCode;
+        saleOrder.line1 = shippingAddress.line1;
+        saleOrder.line1 = shippingAddress.line1;
+        saleOrder.line1 = shippingAddress.line1;
     }
 
     let billAddress = result.billAddress;
@@ -355,19 +380,13 @@ function getAllItem() {
 }
 
 function showListProducts() {
-    $.ajax({
-        type: "GET",
-        // contentType: 'application/json',
-        url: `${location.origin}/api/products`
-    })
-        .done((data) => {
-            products = data;
-            $(".searchProduct").removeClass('d-none');
-            $(".searchProduct").removeClass('hide').addClass('show');
+    let renderProducts = (data) => {
+        $(".searchProduct").removeClass('d-none');
+        $(".searchProduct").removeClass('hide').addClass('show');
 
-            $(".contentProduct div").remove();
-            $.each(data, (i, product) => {
-                let result = `             
+        $(".contentProduct div").remove();
+        $.each(data, (i, product) => {
+            let result = `             
                     <div class="MuiBox-root jss3941 InfiniteScroll-MenuItem focus-key-event"
                     onclick="showProductInfo(${product.id})" data-id="${product.id}" tabindex="0">
                     <li class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root jss1259 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button" tabindex="-1" role="menuitem" aria-disabled="false">
@@ -395,10 +414,25 @@ function showListProducts() {
                     </li>
                 </div>                       
                 `;
-                $(".contentProduct").append(result)
-            })
+            $(".contentProduct").append(result)
+        })
 
-            handleCloseListProducts();
+        handleCloseListProducts();
+    }
+    if (products !== undefined && products.length > 0) {
+        setTimeout(() => {
+            renderProducts(products);
+        }, 100)
+        return;
+    }
+    $.ajax({
+        type: "GET",
+        // contentType: 'application/json',
+        url: `${location.origin}/api/products`
+    })
+        .done((data) => {
+            products = data;
+            renderProducts(data);
         })
         .fail((jqXHR) => {
             console.log(jqXHR);
@@ -565,14 +599,13 @@ function doCreateCustomer() {
         customer.name = $('#nameCreate').val();
         customer.customerCode = $('#codeCreate').val();
         customer.phone = $('#phoneCreate').val();
-        customer.locationRegionCreate = locationRegionCreate;
-        locationRegionCreate.address = $('#addressCreate').val();
-        locationRegionCreate.provinceId = $('#province').val();
-        locationRegionCreate.provinceName = $('#province :selected').text();
-        locationRegionCreate.districtId = $('#district').val();
-        locationRegionCreate.districtName = $('#district :selected').text();
-        locationRegionCreate.wardId = $('#ward').val();
-        locationRegionCreate.wardName = $('#ward :selected').text();
+        customer.createShippingAddressParam =  shippingAddress;
+        shippingAddress.provinceId = $('#province').val();
+        shippingAddress.provinceName = $('#province :selected').text();
+        shippingAddress.districtId = $('#district').val();
+        shippingAddress.districtName = $('#district :selected').text();
+        shippingAddress.wardId = $('#ward').val();
+        shippingAddress.wardName = $('#ward :selected').text();
         customer.employeeId = $('#selectEmployee').val();
 
         $.ajax({
@@ -586,7 +619,7 @@ function doCreateCustomer() {
         })
             .done((data) => {
                 customer = data;
-                customer.locationRegionCreate = locationRegionCreate;
+                customer.createShippingAddressParam = shippingAddress;
                 $("#create_order_customer").modal("hide");
                 App.IziToast.showSuccessAlert("Thêm khách hàng thành công!");
                 searchCustomer();
@@ -606,7 +639,6 @@ function doCreateCustomer() {
     });
 
 }
-
 doCreateCustomer();
 
 
@@ -727,29 +759,32 @@ function showProductInfo(productId) {
     $("#productId").val(productId);
 
     let result = product = products.find(({id}) => id === productId);
+    let saleOrderItem = new SaleOrderItemParam(result.retailPrice, 1, result.id, 0)
+    saleOrderItems.push(saleOrderItem);
     console.log(result)
-    let taxList = result.taxSaleList;
-
-    let std = `
+    let taxListHtml = '';
+    result.taxSaleList.forEach(tax => {
+        taxListHtml += `
               <div id="tax_${result.id}">
                     <div class="MuiListItemText-root" style="float:left">                                        
-                        <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" id="number_tax_${result.id}">VAT(%)</span>
+                        <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock number_tax_${result.id}" tax-value="${tax.tax}" >VAT (${tax.tax}%)</span>
                     </div>
                     <div class="MuiListItemText-root" style="float:right">
-                        <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" id="tax_value_${result.id}">0</span>
+                        <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock tax_value_${result.id}">${((tax.tax / 100) * result.retailPrice).formatVND()}</span>
                     </div>
                     <div style="clear: both"></div>
               </div> 
     `;
-    $("#ul_vat_tax").prepend(std);
+    })
+
+    $("#ul_vat_tax").prepend(taxListHtml);
     let str = `
         <tr id="tr_${result.id}" class="MuiTableRow-root jss3894 jss3905 isNormalLineItem">
             <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center">${result.id}</td>
             <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center"><a
                     class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary align-items-center"
                     target="_blank" href="/admin/products/118801409/variants/185370765"><img class="jss3898"
-                        src=${result.image} alt="Sản phẩm"></a>
-            </td>
+                        src=${result.image} alt="Sản phẩm"></a></td>
             <td class="MuiTableCell-root MuiTableCell-body align-items-center">
                 <div class="MuiBox-root jss4053 jss3895 ">
                     <div class="MuiBox-root jss4054">
@@ -895,7 +930,7 @@ function showProductInfo(productId) {
                 <span id="amount_product_${result.id}" data-value="${product.retailPrice}" >${result.retailPrice}
                 </span>
             </td>
-                <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight " style="padding-left: 0px;">
+            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight " style="padding-left: 0px;">
                 <button
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeSmall"
                     tabindex="0" type="button">
@@ -912,16 +947,16 @@ function showProductInfo(productId) {
     $("#tbProduct tbody").prepend(str);
     $("#divNoInfo").remove();
     $("#divTbProduct").removeClass("hide");
-    taxList.forEach((taxObj, index) => {
-        if (taxObj) {
-            let taxValue = taxObj.tax;
-            let retailProduct = +$(`#retailPrice_${productId}`).val();
-            let quantityProduct = +($(`#quantity_product_${productId}`).val());
-            let tax = (retailProduct * (taxValue / 100)) * quantityProduct;
-            $(`#number_tax_${result.id}`).text("VAT" + "(" + taxValue + "%)");
-            $(`#tax_value_${result.id}`).text(tax);
-        }
-    })
+    // taxList.forEach((taxObj, index) => {
+    //     if (taxObj) {
+    //         let taxValue = taxObj.tax;
+    //         let retailProduct = +$(`#retailPrice_${productId}`).val();
+    //         let quantityProduct = +($(`#quantity_product_${productId}`).val());
+    //         let tax = (retailProduct * (taxValue / 100)) * quantityProduct;
+    //         $(`#number_tax_${result.id}`).text("VAT" + "(" + taxValue + "%)");
+    //         $(`#tax_value_${result.id}`).text(tax);
+    //     }
+    // })
 
     $("#vat_tax").removeClass('d-none');
     // $(`#tax_value_${result.id}`).text(taxText.formatVND());
@@ -932,7 +967,6 @@ function removeProduct(id) {
     if (id === undefined) {
         $("#divNoInfo").removeClass('hide').addClass('show');
         $("#vat_tax").remove();
-
     }
     $("#tr_" + id).remove();
 }
@@ -978,11 +1012,17 @@ const addQuantity = (productId) => {
     let quantityProduct = +($(`#quantity_product_${productId}`).val());
     quantityProduct = quantityProduct + 1;
     $(`#quantity_product_${productId}`).val(quantityProduct);
-    let tax = $(`#tax_${productId}`).text().replaceAll("VAT", "").replaceAll(")", "").replaceAll("%", "").replaceAll("(", "");
+
+    let tax = +$(`.number_tax_${productId}`).attr("tax-value");
     let retailProduct = +$(`#retailPrice_${productId}`).val();
     let amount = (retailProduct - discount) * quantityProduct;
     let taxValue = (retailProduct * (tax / 100)) * quantityProduct;
-    $(`#tax_value_${productId}`).text(taxValue.formatVND());
+
+    let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId = productId);
+    saleOrderItem.quantity = quantityProduct;
+    saleOrderItem.discount = discount;
+
+    $(`.tax_value_${productId}`).text(taxValue.formatVND());
     $(`#amount_product_${productId}`).text(amount.formatVND());
     handleGrandTotal();
 }
@@ -990,13 +1030,18 @@ const addQuantity = (productId) => {
 function minusQuantity(productId) {
     let quantityProduct = Number($(`#quantity_product_${productId}`).val());
     const discount = +$(`#discount_value_${productId}`).text().replaceAll(",", "");
-    let tax = $(`#tax_${productId}`).text().replaceAll("VAT", "").replaceAll(")", "").replaceAll("%", "").replaceAll("(", "");
+    let tax = +$(`.number_tax_${productId}`).attr("tax-value");
     quantityProduct = quantityProduct - 1;
     const retailProduct = +$(`#retailPrice_${productId}`).val();
     let amount = (retailProduct - discount) * quantityProduct;
     let taxValue = (retailProduct * (tax / 100)) * quantityProduct;
-    $(`#tax_value_${productId}`).text(taxValue.formatVND());
+
+    $(`.tax_value_${productId}`).text(taxValue.formatVND());
     $(`#amount_product_${productId}`).text(amount.formatVND());
+
+    let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId = productId);
+    saleOrderItem.quantity = quantityProduct;
+    saleOrderItem.discount = discount;
 
     if (quantityProduct === 0) {
         Swal.fire({
@@ -1137,6 +1182,9 @@ const formatDiscount = (event, productId, retailPrice) => {
                 percentValue = valueInput;
                 totalAfterDiscount = total - discount;
             }
+
+            let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId = productId);
+            saleOrderItem.discount = discount;
 
             $(`#discount_value_${productId}`).text(discount.formatVND());
             $(`#percent_value_${productId}`).text(percentValue + "%");
