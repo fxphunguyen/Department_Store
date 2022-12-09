@@ -2,17 +2,16 @@ package com.phpn.product;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.phpn.product.dto.ProductResult;
-import com.phpn.product.dto.ProductShortParam;
+import com.phpn.product.dto.*;
 
-import com.phpn.product.dto.ProductCreate;
-import com.phpn.product.dto.CreateProductParam;
 import com.phpn.product.item.ItemService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import vn.fx.qh.sapo.entities.product.*;
 import org.springframework.stereotype.Service;
@@ -146,6 +145,28 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Page<Product> findAll(Pageable pageable) {
         return productRepository.findAll(pageable);
+    }
+
+    @Override
+    @Transactional
+    public List<?> getAllProductItemPage(Integer pageNo, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        Page<Product> products = productRepository.findAll(pageable);
+        if(products.hasContent()){
+            List<Product> productList = products.getContent();
+            Long totalItem = products.getTotalElements();
+            int totalPage = products.getTotalPages();
+            List<ProductItemResult> productItemResults = new ArrayList<>();
+            for(Product product : productList){
+                ProductItemResult productItemResult = productMapper.toDTOPage(product);
+                productItemResult.setInventory(itemService.getTotalInventoryQuantityByProductId(product.getId()));
+                productItemResult.setAvailable(itemService.getAvailableInventoryQuantityByProductId(product.getId()));
+                productItemResults.add(productItemResult);
+            }
+            return productItemResults;
+        } else {
+            return new ArrayList<ProductItemResult>();
+        }
     }
 
 }
