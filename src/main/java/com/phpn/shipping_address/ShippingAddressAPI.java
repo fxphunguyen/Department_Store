@@ -2,6 +2,7 @@ package com.phpn.shipping_address;
 
 
 import com.phpn.customer.dto.CreateShippingAddressParam;
+import com.phpn.shipping_address.dto.ShippingAddressResult;
 import com.phpn.shipping_address.dto.ShippingAddressShowCustomerInfo;
 import com.phpn.shipping_address.service.ShippingAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +27,13 @@ public class ShippingAddressAPI {
     @GetMapping("/findByCustomerId/{id}")
     @Transactional(readOnly = true)
     public ResponseEntity<?> findShippingAddress(@PathVariable Integer id){
-        List<ShippingAddressShowCustomerInfo> shippingAddresses = shippingAddressService.findByCustomerId(id);
+        List<ShippingAddressResult> shippingAddresses = shippingAddressService.findByCustomerId(id);
         return  new ResponseEntity<>(shippingAddresses, HttpStatus.OK) ;
     }
 
     @PostMapping("/create")
     public ResponseEntity<?> createShippingAddress(@RequestBody CreateShippingAddressParam createShippingAddressParam ){
-        ShippingAddress shippingAddress = shippingAddressService.create(createShippingAddressParam);
-        return  new ResponseEntity<>(shippingAddress, HttpStatus.OK) ;
+        ShippingAddressResult shippingAddressResult = shippingAddressService.create(createShippingAddressParam);
+        return  new ResponseEntity<>(shippingAddressResult, HttpStatus.OK) ;
     }
 }

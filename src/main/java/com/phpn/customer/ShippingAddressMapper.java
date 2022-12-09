@@ -65,4 +65,5 @@ public class ShippingAddressMapper {
                 .setLine2(shippingAddress.getLine2());
 
     }
+
 }

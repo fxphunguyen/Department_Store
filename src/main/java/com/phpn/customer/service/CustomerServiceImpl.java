@@ -2,8 +2,10 @@ package com.phpn.customer.service;
 
 import com.phpn.customer.CustomerMapper;
 import com.phpn.customer.CustomerRepository;
+import com.phpn.customer.customerDebt.CustomerDebt;
+import com.phpn.customer.customerDebt.CustomerDebtImpl;
 import com.phpn.customer.dto.CustomerResult;
-import com.phpn.customer.UpdateCustomerParam;
+import com.phpn.customer.dto.UpdateCustomerParam;
 import com.phpn.customer.dto.CreateCustomerParam;
 import com.phpn.customer.dto.CreateShippingAddressParam;
 import com.phpn.exceptions.AppNotFoundException;
@@ -132,7 +134,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerResult update(UpdateCustomerParam updateCustomer) {
-        return null;
+        Customer customer = customerRepository.findById(updateCustomer.getId()).get();
+        Customer customer1 = customerMapper.toCustomer(updateCustomer, customer);
+        return  customerMapper.toCustomerInfo(customer1);
     }
 
     @Override
@@ -140,6 +144,25 @@ public class CustomerServiceImpl implements CustomerService {
     public List<SaleOrderResult> findHistoryCustomerOrder(Integer id) {
         List<SaleOrderResult> saleOrderByCustomer = saleOrderService.findAllSaleOrderByCustomerId(id);
         return saleOrderByCustomer;
+    }
+
+    @Override
+    public List<CustomerDebtImpl> findCustomerDebtsByCustomerId(Integer customerId) {
+        List<CustomerDebt> customerDebts = customerRepository.findCustomerDebtsByCustomerId(customerId);
+
+//        List<ICustomerOwer> iCustomerOwers = customerRepository.getCustomerOwerById(id);
+        List<CustomerDebtImpl> customerDebts1 = customerDebts.stream().map(customerDebt -> {
+            CustomerDebtImpl customerDebtImpl = new CustomerDebtImpl();
+            customerDebtImpl.setFromICustomerOwer(customerDebt);
+            return customerDebtImpl;
+        }).collect(Collectors.toList());
+        BigDecimal tam = BigDecimal.valueOf(0);
+        for (CustomerDebtImpl customerDebtImpl : customerDebts1){
+            tam = tam.add(customerDebtImpl.getTransaction());
+            customerDebtImpl.setTotalDebt(tam) ;
+            System.out.println(customerDebtImpl.getTransaction());
+        }
+        return  customerDebts1;
     }
 
 }
