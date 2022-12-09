@@ -1,10 +1,8 @@
 package com.phpn.product;
 
 import com.phpn.brand.dto.BrandMapper;
-import com.phpn.category.dto.CategoryResult;
 import com.phpn.product.dto.*;
 import com.phpn.category.dto.CategoryMapper;
-import com.phpn.product.item.ItemMapper;
 import com.phpn.tax.dto.TaxMapper;
 import com.phpn.tax.dto.TaxResult;
 import vn.fx.qh.sapo.entities.product.*;
@@ -48,10 +46,9 @@ public class ProductMapper {
                 .setCategoryId(productParam.getCategoryId());
     }
 
-    public Product toModel(ProductWithImageParam productWithImageParam) {
+    public Product toModel(CreateProductParam productWithImageParam) {
         return new Product(productWithImageParam.getCategoryId(), productWithImageParam.getBrandId())
                 .setTitle(productWithImageParam.getTitle())
-                .setStatus(productWithImageParam.getStatus())
                 .setCreateAt(java.time.LocalDateTime.now().toString())
                 .setUpdateAt(null)
                 .setDescription(productWithImageParam.getDescription())
