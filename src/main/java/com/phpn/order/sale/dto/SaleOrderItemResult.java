@@ -1,6 +1,5 @@
 package com.phpn.order.sale.dto;
 
-import com.phpn.product.item.ItemResult;
 import com.phpn.product.dto.ProductResult;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +27,8 @@ public class SaleOrderItemResult {
 
     private ProductResult product;
 
-    private Instant createAt;
+    private Instant createdAt;
 
+    private Instant updatedAt;
 
 }

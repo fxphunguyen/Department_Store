@@ -2,6 +2,7 @@ package com.phpn.order.sale.dto;
 
 import com.phpn.customer.dto.CustomerResult;
 import com.phpn.employee.dto.EmployeeResult;
+import com.phpn.shipping_address.dto.ShippingAddressResult;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -51,7 +52,9 @@ public class SaleOrderResult {
 
     private String description;
 
-    private Instant createAt;
+    private Instant createdAt;
+
+    private Instant updatedAt;
 
     private Integer customerId;
 
@@ -63,6 +66,8 @@ public class SaleOrderResult {
 
     private BigDecimal grandTotal;
 
-    List<SaleOrderItemResult> orderItems;
+    private List<SaleOrderItemResult> orderItems;
+
+    private ShippingAddressResult shippingAddress;
 
 }

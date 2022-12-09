@@ -33,6 +33,8 @@ public class OrderAPI {
     }
 
 
+
+
     @PostMapping("/create")
     public ResponseEntity<?> createOrder(@RequestBody SaleOrderParam orderParam) {
 
@@ -40,7 +42,7 @@ public class OrderAPI {
     }
 
     @GetMapping("/{orderId}")
-    public ResponseEntity<?> getAllOrderItemByOrderId(@PathVariable Integer orderId) {
+    public ResponseEntity<?> findById(@PathVariable Integer orderId) {
         SaleOrderResult orderResult = orderService.findById(orderId);
         return new ResponseEntity<>(orderResult,HttpStatus.OK);
     }

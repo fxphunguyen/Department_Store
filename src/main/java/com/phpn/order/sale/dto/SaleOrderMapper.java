@@ -1,5 +1,6 @@
 package com.phpn.order.sale.dto;
 
+import com.phpn.customer.ShippingAddressMapper;
 import com.phpn.order.OrderStatusMapper;
 import com.phpn.customer.CustomerMapper;
 import com.phpn.employee.dto.EmployeeMapper;
@@ -9,14 +10,18 @@ import vn.fx.qh.sapo.entities.order.sale.*;
 
 @Component
 public class SaleOrderMapper {
-    @Autowired
-    EmployeeMapper employeeMapper;
 
     @Autowired
     private CustomerMapper customerMapper;
 
     @Autowired
+    private EmployeeMapper employeeMapper;
+
+    @Autowired
     private OrderStatusMapper orderStatusMapper;
+
+    @Autowired
+    private ShippingAddressMapper shippingAddressMapper;
 
     public SaleOrderResult toDTO(SaleOrder order) {
         return new SaleOrderResult()
@@ -41,7 +46,10 @@ public class SaleOrderMapper {
                 .setCustomer(customerMapper.toDTO(order.getCustomer()))
                 .setTotal(order.getTotal())
                 .setSubTotal(order.getSubTotal())
-                .setGrandTotal(order.getGrandTotal());
+                .setGrandTotal(order.getGrandTotal())
+                .setCreatedAt(order.getCreatedAt())
+                .setUpdatedAt(order.getUpdatedAt())
+                .setShippingAddress(shippingAddressMapper.toDTO(order.getCustomer().getShippingAddress()));
     }
 
     public SaleOrder toModel(SaleOrderParam orderParam) {
