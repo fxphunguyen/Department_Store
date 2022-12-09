@@ -12,7 +12,7 @@ import java.util.List;
 public interface PaymentOrderRepository extends JpaRepository<PaymentSaleOrder, Integer> {
 
 
-    @Query(value = "SELECT * FROM payment_order where order_id = :id", nativeQuery = true)
+    @Query(value = "SELECT * FROM payment_sale_order where order_id = :id", nativeQuery = true)
     List<PaymentSaleOrder> findAllByOrderId(Integer id);
 
     List<PaymentSaleOrder> findAllByOrderIdAndPaid(int orderId, BigDecimal paid);
