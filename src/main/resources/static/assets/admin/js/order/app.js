@@ -52,7 +52,7 @@ class ProductResult {
 }
 
 class OrderResult {
-    constructor(id, employeeId, customerId, discount, description, orderCode, orderStausId, orderItemResult ) {
+    constructor(id, employeeId, customerId, discount, description, orderCode, orderStausId, orderItemResult, listTaxItem) {
         this.id =id;
         this.employeeId = employeeId;
         this.customerId = customerId;
@@ -61,6 +61,16 @@ class OrderResult {
         this.orderCode = orderCode;
         this.orderStatusId =  orderStausId;
         this.orderItemResult = orderItemResult;
+
+        this.listTaxItem = listTaxItem;
+    }
+
+}
+class TaxItem{
+    //{id: 1, code: 'VAT5', title: 'Thuế suất 5%', tax: 5, type: null}
+    constructor(tax, listProductId) {
+        this.tax = tax;
+        this.listProductId  = listProductId;
     }
 }
 
