@@ -30,7 +30,8 @@ public class SupplierMapper {
         .setEmployeeId(supplier.getEmployeeId())
         .setEmployee(employeeMapper.toDTO(supplier.getEmployee()))
         .setPaymentMethodId(supplier.getPaymentMethodId())
-        .setPaymentMethod(paymentMethodMapper.toDTO(supplier.getPaymentMethod()))
+        .setPaymentMethod(paymentMethodMapper.toDTO(supplier.getPaymentMethod()));
+
 
     }
 
@@ -44,7 +45,8 @@ public class SupplierMapper {
         .setStatus(supplierResult.getStatus())
         .setDescription(supplierResult.getDescription())
         .setEmployeeId(supplierResult.getEmployeeId())
-        .setPaymentMethodId(supplierResult.getPaymentMethodId())
+        .setPaymentMethodId(supplierResult.getPaymentMethodId());
+
 
 
     }
@@ -70,7 +72,7 @@ public class SupplierMapper {
         .setPhone(supplierCreate.getPhone())
         .setDescription(supplierCreate.getDescription())
         .setEmployeeId(supplierCreate.getEmployeeId())
-        .setPaymentMethodId(supplierCreate.getPaymentMethodId())
+        .setPaymentMethodId(supplierCreate.getPaymentMethodId());
 
 
     }
