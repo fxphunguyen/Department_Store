@@ -722,7 +722,7 @@ function editCustomer() {
     $("#update_order_customer").modal("show");
 }
 
-let taxList ;
+let taxList = [] ;
 function showProductInfo(productId) {
     $('#MuiBox-list-product').addClass("hide");
     $("#productId").val(productId);
