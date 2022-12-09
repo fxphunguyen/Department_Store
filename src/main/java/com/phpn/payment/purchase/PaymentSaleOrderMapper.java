@@ -25,7 +25,8 @@ public class PaymentSaleOrderMapper {
                 .setPaid(paymentOrder.getPaid())
                 .setOrderResult(orderMapper.toDTO(paymentOrder.getOrder()))
                 .setEmployeeResult(employeeMapper.toDTO(paymentOrder.getEmployee()))
-                .setDescription(paymentOrder.getDescription());
+                .setDescription(paymentOrder.getDescription())
+                .setCreatedAt(paymentOrder.getCreatedAt());
     }
 
     public PaymentSaleOrder toModel(PaymentOrderParam paymentOrderParam) {

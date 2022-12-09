@@ -2,10 +2,7 @@ package com.phpn.payment.sale;
 
 import com.phpn.employee.dto.EmployeeResult;
 import com.phpn.order.sale.dto.SaleOrderResult;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
@@ -13,6 +10,7 @@ import java.time.Instant;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
@@ -32,7 +30,7 @@ public class PaymentSaleOrderResult {
 
     private Integer paymentMethodId;
 
-    private Instant createAt;
+    private Instant createdAt;
 
     private String description;
 }
