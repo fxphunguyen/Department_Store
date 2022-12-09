@@ -109,8 +109,8 @@
                 <p id="datehd">Ngày: <span th:text="*{#dates.format(createdAt, 'dd/MM/yyyy HH:mm')}"></span></p>
             </div>
             <div class="users">
-                <p th:text="'Khách hàng: ' + *{customer.name}"></p>
-                <p th:text="'Số điện thoại: ' + *{customer.phone}"></p>
+                <p th:text="'Khách hàng: ' + *{fullName}"></p>
+                <p th:text="'Số điện thoại: ' + *{mobile}"></p>
                 <p>Địa chỉ: <th:block th:text="*{line2} == '' ? *{line1 + ', ' + city + ', ' + province} : *{line1 + ', ' + line2 + ', ' + city + ', ' + province}"/></p>
             </div>
         </th:block>
@@ -140,5 +140,4 @@
         </div>
         <div id="end">Cảm ơn quý khách. Hẹn gặp lại!</div>
     </div>
-
 </th:block>
