@@ -15,6 +15,10 @@ public class MediaMapper {
                 .setFileName(productImageParam.getFileName())
                 .setFileFolder(productImageParam.getFileFolder())
                 .setFileUrl(productImageParam.getFileUrl())
-                .setFileType(productImageParam.getFileType());
+                .setFileType(productImageParam.getFileType())
+                .setCreatedAt(Instant.now())
+                .setCreatedBy(null)
+                .setUpdatedAt(null)
+                .setUpdatedBy(null);
     }
 }

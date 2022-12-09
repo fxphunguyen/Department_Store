@@ -13,9 +13,9 @@ import java.util.Optional;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Integer> {
 
-    List<Item> findAllByProductIdOrderByCreatedAt(Integer productId);
+    List<Item> findAllByProductIdOrderByCreateAt(Integer productId);
 
-    List<Item> findAllByProductIdAndAvailableGreaterThanOrderByCreatedAt(Integer productId, Integer available);
+    List<Item> findAllByProductIdAndAvailableGreaterThanOrderByCreateAt(Integer productId, Integer available);
 
 
     @Query(value = "call sp_getTotalInventoryQuantityByProductId(:productId)", nativeQuery = true)
