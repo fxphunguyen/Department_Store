@@ -144,30 +144,33 @@ function showCustomerInfo(idCustomer) {
     let result = customer = customers.find(({id}) => id === idCustomer);
     let shippingAddress = result.shippingAddress;
     let fullShippingAddress = "";
-    if (shippingAddress.line1 != null)
-        fullShippingAddress = `${shippingAddress.line1}, `;
-    if (shippingAddress.line2 != null)
-        fullShippingAddress += `${shippingAddress.line2}, `;
-    if (shippingAddress.wardName != null)
-        fullShippingAddress += `${shippingAddress.wardName}, `;
-    if (shippingAddress.districtName != null)
-        fullShippingAddress += `${shippingAddress.districtName}, `;
-    if (shippingAddress.provinceName != null)
-        fullShippingAddress += `${shippingAddress.provinceName}`;
+    if (shippingAddress != null) {
+        if (shippingAddress.line1 != null)
+            fullShippingAddress = `${shippingAddress.line1}, `;
+        if (shippingAddress.line2 != null)
+            fullShippingAddress += `${shippingAddress.line2}, `;
+        if (shippingAddress.wardName != null)
+            fullShippingAddress += `${shippingAddress.wardName}, `;
+        if (shippingAddress.districtName != null)
+            fullShippingAddress += `${shippingAddress.districtName}, `;
+        if (shippingAddress.provinceName != null)
+            fullShippingAddress += `${shippingAddress.provinceName}`;
+    }
 
     let billAddress = result.billAddress;
-    let fullBillAddress= "";
-    if (billAddress.line1 != null)
-        fullBillAddress = `${billAddress.line1}, `;
-    if (billAddress.line2 != null)
-        fullBillAddress += `${billAddress.line2}, `;
-    if (billAddress.wardName != null)
-        fullBillAddress += `${billAddress.wardName}, `;
-    if (billAddress.districtName != null)
-        fullBillAddress += `${billAddress.districtName}, `;
-    if (billAddress.provinceName != null)
-        fullBillAddress += `${billAddress.provinceName}`;
-
+    let fullBillAddress = "";
+    if (billAddress != null) {
+        if (billAddress.line1 != null)
+            fullBillAddress = `${billAddress.line1}, `;
+        if (billAddress.line2 != null)
+            fullBillAddress += `${billAddress.line2}, `;
+        if (billAddress.wardName != null)
+            fullBillAddress += `${billAddress.wardName}, `;
+        if (billAddress.districtName != null)
+            fullBillAddress += `${billAddress.districtName}, `;
+        if (billAddress.provinceName != null)
+            fullBillAddress += `${billAddress.provinceName}`;
+    }
 
     let str = `<div class="MuiPaper-root  jss938 MuiPaper-elevation1 MuiPaper-rounded" id="closed_customer_info">
         <div class="MuiBox-root jss985">
@@ -234,7 +237,7 @@ function showCustomerInfo(idCustomer) {
                                     <div class="MuiListItemText-root">
                                         <p
                                             class="MuiTypography-root jss3910 MuiTypography-body1 MuiTypography-colorError MuiTypography-alignRight">
-                                            -2,474,816</p>
+                                            ${result.debtTotal}</p>
                                     </div>
                                 </li>
                                 <li class="MuiListItem-root MuiListItem-gutters"
@@ -246,7 +249,7 @@ function showCustomerInfo(idCustomer) {
                                     <div class="MuiListItemText-root">
                                         <p
                                             class="MuiTypography-root jss3910 MuiTypography-body1 MuiTypography-colorPrimary MuiTypography-alignRight">
-                                            834</p>
+                                             ${result.spendTotal}</p>
                                     </div>
                                 </li>
                                 
@@ -355,7 +358,7 @@ function showListProducts() {
     $.ajax({
         type: "GET",
         // contentType: 'application/json',
-        url: `${location.origin}/api/products/showProductInfo`
+        url: `${location.origin}/api/products`
     })
         .done((data) => {
             products = data;
@@ -682,7 +685,7 @@ function getAllEmployees() {
             "content-type": "application/json"
         },
         type: "GET",
-        url: `${location.origin}/api/employees/show_list/`
+        url: `${location.origin}/api/employees`
     })
         .done((data) => {
             employeeResult = data;
@@ -728,7 +731,7 @@ function showProductInfo(productId) {
     let std = `
             <div id="tax_${result.id}">
                 <div class="MuiListItemText-root" style="float:left">                                        
-                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(${result.taxSaleList}%)</span>
+                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(%)</span>
                 </div>
                 <div class="MuiListItemText-root" style="float:right">
                     <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" id="tax_value_${result.id}">0</span>
@@ -1056,7 +1059,7 @@ const formatDiscountOrder = (event, productId) => {
         var n = parseInt($(this).val().replace(/\D/g, ''), 10);
         $(this).val(n.toLocaleString());
     })
-    const  btnValueSelectOrder = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
+    const btnValueSelectOrder = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
     const btnValueOrder = [...btnValueSelectOrder];
     let grandTotal = 0;
     let percentValue = 0;
@@ -1065,7 +1068,7 @@ const formatDiscountOrder = (event, productId) => {
     $(`#tax_${productId}`).each(function () {
         let taxId = $(this).attr('id');
         console.log(taxId);
-        let tax = +$("#tax_value_"+ taxId).text();
+        let tax = +$("#tax_value_" + taxId).text();
         totalTax += tax;
         // console.log(tax)
         // console.log(totalTax)
@@ -1075,17 +1078,17 @@ const formatDiscountOrder = (event, productId) => {
         if (classListOrder.includes("Mui-selected")) {
             const valueInput = event.target.value.replaceAll(",", "");
             const total = document.querySelector('#grandTotal').textContent.replaceAll(",", "");
-                if (btn.value === "VALUE") {
-                    discountOrder = valueInput;
-                    percentValue = (valueInput * 100) / total;
-                    grandTotal = (total + totalTax )- discountOrder;
-                    // console.log(total , totalTax, discountOrder);
-                    // console.log("grandTotal", grandTotal)
-                } else {
-                    discountOrder = total * (valueInput / 100);
-                    percentValue = valueInput;
-                    grandTotal = total + totalTax - discountOrder;
-                }
+            if (btn.value === "VALUE") {
+                discountOrder = valueInput;
+                percentValue = (valueInput * 100) / total;
+                grandTotal = (total + totalTax) - discountOrder;
+                // console.log(total , totalTax, discountOrder);
+                // console.log("grandTotal", grandTotal)
+            } else {
+                discountOrder = total * (valueInput / 100);
+                percentValue = valueInput;
+                grandTotal = total + totalTax - discountOrder;
+            }
 
 
             $("#percent_value_order").text(percentValue.toFixed(2) + "%");

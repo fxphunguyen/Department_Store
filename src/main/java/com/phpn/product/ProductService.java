@@ -14,18 +14,11 @@ public interface ProductService {
 
     List<ProductResult> findAll();
 
-    List<ProductResult>  showAllProduct();
+    ProductResult findById(Integer id);
 
-    List<ProductResult> findAllProductByDeleted(boolean deleted);
+    ProductResult create(ProductWithImageParam productWithImageParam);
 
-    ProductResult findByIdProduct(Integer id);
-
-    Product create(ProductWithImageParam productWithImageParam);
-
-    Product createShortProduct(ProductShortParam productShortParam);
-    Product createProduct(ProductCreate productCreate);
-    List<ProductResult> getAllProductListResult();
-
+    ProductResult createShortProduct(ProductShortParam productShortParam);
 
     Page<Product> findAll(Pageable pageable);
 
