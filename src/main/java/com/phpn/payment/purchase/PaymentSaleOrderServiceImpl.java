@@ -63,7 +63,13 @@ public class PaymentSaleOrderServiceImpl implements PaymentSaleOrderService {
 
     @Override
     @Transactional(readOnly = true)
-    public BigDecimal getSpendTotalByCustomerId(Integer id) {
+    public BigDecimal getPaidTotalByCustomerId(Integer id) {
         return paymentOrderRepository.getPaidTotalByCustomerById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public BigDecimal getDebtTotalByCustomerId(Integer customerId) {
+        return paymentOrderRepository.getDebtTotalByCustomerById(customerId);
     }
 }

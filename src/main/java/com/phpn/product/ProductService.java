@@ -3,7 +3,7 @@ package com.phpn.product;
 import com.phpn.product.dto.ProductCreate;
 import com.phpn.product.dto.ProductResult;
 import com.phpn.product.dto.ProductShortParam;
-import com.phpn.product.dto.ProductWithImageParam;
+import com.phpn.product.dto.CreateProductParam;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import vn.fx.qh.sapo.entities.product.Product;
@@ -26,11 +26,13 @@ public interface ProductService {
 //    Product createShortProduct(ProductShortParam productShortParam);
     Product createProduct(ProductCreate productCreate);
 
-    ProductResult create(ProductWithImageParam productWithImageParam);
+    ProductResult create(CreateProductParam productWithImageParam);
 
     ProductResult createShortProduct(ProductShortParam productShortParam);
 
 
     Page<Product> findAll(Pageable pageable);
+
+    List<?> getAllProductItemPage(Integer pageNo, Integer pageSize);
 
 }

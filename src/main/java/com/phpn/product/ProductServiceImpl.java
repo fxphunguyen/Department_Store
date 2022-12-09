@@ -1,20 +1,20 @@
 package com.phpn.product;
 
 import java.math.BigDecimal;
-import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.phpn.product.dto.ProductResult;
-import com.phpn.product.dto.ProductShortParam;
+import com.phpn.exceptions.AppNotFoundException;
+import com.phpn.product.dto.*;
 
-import com.phpn.product.dto.ProductCreate;
-import com.phpn.product.dto.ProductWithImageParam;
-import com.phpn.product.item.ItemRepository;
 import com.phpn.product.item.ItemService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import vn.fx.qh.sapo.entities.product.*;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,17 +66,18 @@ public class ProductServiceImpl implements ProductService {
         return null;
     }
 
-    @Transactional
     @Override
-    public ProductResult create(ProductWithImageParam productWithImageParam) {
-        Product product = productRepository.save(productMapper.toModel(productWithImageParam));
+    @Transactional
+    public ProductResult create(CreateProductParam productWithImageParam) {
+        Product product = productMapper.toModel(productWithImageParam);
+        System.out.println(product);
+//        Product product = productRepository.save(productMapper.toModel(productWithImageParam));
         return productMapper.toDTO(product);
     }
 
 
     @Override
     @Transactional
-
     public ProductResult createShortProduct(ProductShortParam productShortParam) {
         Product product = productMapper.toModel(productShortParam);
         product.setImage("");
@@ -148,4 +149,25 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll(pageable);
     }
 
+    @Override
+    @Transactional
+    public List<?> getAllProductItemPage(Integer pageNo, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        Page<Product> products = productRepository.findAll(pageable);
+        if(products.hasContent()){
+            List<Product> productList = products.getContent();
+            Long totalItem = products.getTotalElements();
+            int totalPage = products.getTotalPages();
+            List<ProductItemResult> productItemResults = new ArrayList<>();
+            for(Product product : productList){
+                ProductItemResult productItemResult = productMapper.toDTOPage(product);
+                productItemResult.setInventory(itemService.getTotalInventoryQuantityByProductId(product.getId()));
+                productItemResult.setAvailable(itemService.getAvailableInventoryQuantityByProductId(product.getId()));
+                productItemResults.add(productItemResult);
+            }
+            return productItemResults;
+        } else {
+            return new ArrayList<ProductItemResult>();
+        }
+    }
 }

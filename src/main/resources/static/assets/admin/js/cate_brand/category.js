@@ -2,14 +2,14 @@
 const  selectBtnCat = document.querySelector('.select-btn-cat');
 const  searchCatBtn = document.querySelector('#inputSearchCat')
 //nhat-dev class category
-class  Category{
-    constructor(id,name) {
-        this.id = id;
-        this.name = name;
-    }
-}
-//nhat-dev obj category
-let category = new Category();
+// class  Category{
+//     constructor(id,name) {
+//         this.id = id;
+//         this.name = name;
+//     }
+// }
+// //nhat-dev obj category
+// let category = new Category();
 
 //nhat-dev show all categories
 let categories;

@@ -1,20 +1,22 @@
 package com.phpn.tax.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Accessors(chain = true)
-public class TaxResult {
+public class TaxParam {
     private Integer id;
+
     private String code;
+
     private String title;
+
     private float tax;
 }

@@ -12,4 +12,12 @@ public class TaxMapper {
                 .setTitle(tax.getTitle())
                 .setCode(tax.getCode());
     }
+
+    public Tax toModel(TaxParam taxParam) {
+        return new Tax()
+                .setId(taxParam.getId())
+                .setCode(taxParam.getCode())
+                .setTitle(taxParam.getTitle())
+                .setTax(taxParam.getTax());
+    }
 }
