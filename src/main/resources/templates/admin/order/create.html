@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" class="sapo-menu-expand sapo-menu-toggle-active" lang="vi-VN">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      class="sapo-menu-expand sapo-menu-toggle-active" lang="vi-VN">
 <head>
     <th:block th:replace="/layout/header :: header"/>
     <title>Tạo đơn hàng</title>
@@ -8,7 +9,7 @@
 
 </head>
 <body class="" data-new-gr-c-s-check-loaded="14.1085.0" data-gr-ext-installed="" cz-shortcut-listen="true">
-<div id="root" style="overflow: auto">
+<div id="root">
     <div class="hidden" context="tenantInfo"
          define="{tenantInfo: new Components.TenantInfo(this,{&quot;countries&quot;:{&quot;countryId&quot;:201}})}">
     </div>
@@ -52,7 +53,8 @@
                     <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
                             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
-                                <div class="MuiGrid-root MuiGrid-item show" id="show_customer_info" style="flex: 1 0 0px;">
+                                <div class="MuiGrid-root MuiGrid-item show" id="show_customer_info"
+                                     style="flex: 1 0 0px;">
                                     <div class="MuiPaper-root  jss18028 MuiPaper-elevation1 MuiPaper-rounded">
                                         <div class="MuiBox-root jss18075 customer-info">
                                             <div class="MuiBox-root jss18076 create-order-step2 jss18040">
@@ -61,7 +63,8 @@
                                                         hàng</h6>
                                                 </div>
                                                 <div class="jss18078 SI-root">
-                                                    <form autocomplete="off" class="MuiPaper-root jss18080 SearchBox MuiPaper-elevation1 MuiPaper-rounded">
+                                                    <form autocomplete="off"
+                                                          class="MuiPaper-root jss18080 SearchBox MuiPaper-elevation1 MuiPaper-rounded">
                                                         <div class="MuiFormControl-root MuiTextField-root jss18081 MuiFormControl-fullWidth autocomplete">
                                                             <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart">
                                                                 <div class="MuiInputAdornment-root MuiInputAdornment-positionStart">
@@ -115,10 +118,10 @@
                                                         style="margin-left: 8px;">
                                                         <span class="MuiIconButton-label">
                                                         <svg class="MuiSvgIcon-root" focusable="false"
-                                                        viewBox="0 0 24 24" aria-hidden="true"
-                                                        style="color: rgb(163, 168, 175); font-size: 25px;">
+                                                             viewBox="0 0 24 24" aria-hidden="true"
+                                                             style="color: rgb(163, 168, 175); font-size: 25px;">
                                                             <path transform="scale(1.2, 1.2)"
-                                                                d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z">
+                                                                  d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z">
                                                             </path>
                                                         </svg>
                                                         </span>
@@ -154,7 +157,8 @@
                                                 <div class="MuiBox-root jss18181 jss18151">
                                                     <div class="MuiBox-root jss18197 jss18688">
                                                         <div class="MuiBox-root jss18602 jss18150">
-                                                            <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap searchEmployee" onclick="showListEmployees()">
+                                                            <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap searchEmployee"
+                                                               onclick="showListEmployees()">
                                                                 Phước Nguyễn
                                                             </p>
                                                             <svg class="MuiSvgIcon-root" focusable="false"
@@ -1229,13 +1233,23 @@
                                                     <div class="MuiFormControl-root jss1134"
                                                          style="width: 160px; height: 36px; font-size: 1rem;">
                                                         <div class="dropdown price_dropdown">
-                                                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <a class="btn btn-primary dropdown-toggle" href="#"
+                                                               role="button" id="dropdownMenuLink"
+                                                               data-bs-toggle="dropdown" aria-expanded="false">
                                                                 Giá bán lẻ
                                                             </a>
-                                                            <svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"></path></svg>
-                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                <li><a class="dropdown-item" href="#">Giá bán lẻ</a></li>
-                                                                <li><a class="dropdown-item" href="#">Giá bán buôn</a></li>
+                                                            <svg class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+                                                                 focusable="false" viewBox="0 0 24 24"
+                                                                 aria-hidden="true">
+                                                                <path d="M7 10l5 5 5-5z"></path>
+                                                            </svg>
+                                                            <ul class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuLink">
+                                                                <li><a class="dropdown-item" href="#">Giá bán lẻ</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item" href="#"
+                                                                       style="color: red">Giá bán buôn</a>
+                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -1243,23 +1257,32 @@
                                             </div>
                                             <div class="MuiTableContainer-root jss1226" id="show_product_info">
                                                 <div id="divTbProduct" class="hide">
-                                                    <table id="tbProduct" class="MuiTable-root MuiTable-stickyHeader table_product" aria-label="simple table" style="border-collapse: inherit;">
+                                                    <table id="tbProduct"
+                                                           class="MuiTable-root MuiTable-stickyHeader table_product"
+                                                           aria-label="simple table" style="border-collapse: inherit;">
                                                         <thead class="MuiTableHead-root">
                                                         <tr class="MuiTableRow-root MuiTableRow-head">
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-stickyHeader "
-                                                                scope="col" style="width: 55px;">STT</th>
+                                                                scope="col" style="width: 55px;">STT
+                                                            </th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-stickyHeader "
-                                                                scope="col" style="width: 60px;">Ảnh</th>
+                                                                scope="col" style="width: 60px;">Ảnh
+                                                            </th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-stickyHeader "
-                                                                scope="col">Tên sản phẩm</th>
+                                                                scope="col">Tên sản phẩm
+                                                            </th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-stickyHeader "
-                                                                scope="col" style="width: 105px;">Số lượng</th>
+                                                                scope="col" style="width: 105px;">Số lượng
+                                                            </th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-stickyHeader quantity-td"
-                                                                scope="col" style="width: 115px;">Đơn giá</th>
+                                                                scope="col" style="width: 115px;">Đơn giá
+                                                            </th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-stickyHeader "
-                                                                scope="col" style="width: 115px;">Chiết khấu</th>
+                                                                scope="col" style="width: 115px;">Chiết khấu
+                                                            </th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-stickyHeader "
-                                                                scope="col" style="width: 115px;">Thành tiền</th>
+                                                                scope="col" style="width: 115px;">Thành tiền
+                                                            </th>
                                                             <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-stickyHeader "
                                                                 scope="col" style="width: 30px;"></th>
                                                         </tr>
@@ -1410,64 +1433,98 @@
                                             <div class="MuiBox-root jss1282 create-order-step5 jss1274">
                                                 <li class="MuiListItem-root jss1275 MuiListItem-gutters">
                                                     <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Tổng tiền (0 sản phẩm)</span>
+                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                                                            id="quantity_products">Tổng tiền ( sản phẩm)</span>
                                                     </div>
                                                     <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
+                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock"
+                                                            id="subtotal">0</span>
                                                     </div>
                                                 </li>
-                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters hide" id="vat_tax">
-                                                    <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT (10%)</span>
-                                                    </div>
-                                                    <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
+                                                <li class="MuiListItem-root MuiListItem-gutters" id="vat_tax"
+                                                    style="padding: 0 0">
+                                                    <div id="ul_vat_tax" class="MuiListItem-root  MuiListItem-gutters"
+                                                         style="display: list-item;list-style: none;padding-top: 0px  ;padding-right: 0;">
+
                                                     </div>
                                                 </li>
+
+
                                                 <li class="MuiListItem-root jss1275 MuiListItem-gutters">
                                                     <div class="MuiListItemText-root"><span
                                                             class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Chiết khấu (F6)</span>
                                                     </div>
-                                                    <div class="MuiListItemText-root" style="margin: 0px;"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-                                                            style="margin-left: auto; text-align: right;"><div
-                                                            id="f6_total_discount_order" class="jss1278">0</div> </span>
+                                                    <!--                                                 mới dán thêm-->
+                                                    <div id="discount_order"
+                                                         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
+                                                        <button class="MuiButtonBase-root MuiButton-root MuiButton-text jss3901 btn-discount"
+                                                                tabindex="0"
+                                                                type="button" id="dropdownMenuButton1_2"
+                                                                data-bs-auto-close="outside"
+                                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <span class="MuiButton-label" id="discount_value_order"
+                                                                  style="font-weight: 400;">0</span>
+                                                            <p class="MuiTypography-root discount_rate_line_item MuiTypography-body1"
+                                                               id="percent_value_order"
+                                                               style="color: rgb(255, 77, 77); font-size: 12px;">
+                                                            </p>
+                                                        </button>
+                                                        <div aria-labelledby="dropdownMenuButton1_2"
+                                                             class="dropdown-menu MuiPaper-root jss1041 MuiPaper-elevation3 MuiPaper-rounded hidden_discount show"
+                                                             style="width: 190px; position: absolute; margin: 0px; inset: 0px auto auto 0px; transform: translate(1072px, 653px);"
+                                                             data-popper-placement="bottom-start">
+                                                            <div id="arrow"
+                                                                 style="position: absolute;left: 0px;transform: translate(95px, 0px);"></div>
+                                                            <div class="MuiBox-root jss4417">
+                                                                <div class="MuiBox-root jss4418">
+                                                                    <div class="MuiBox-root jss4419">
+                                                                        <div class="MuiToggleButtonGroup-root jss1283"
+                                                                             role="group">
+                                                                            <button onclick="switchDiscountOrder(value)"
+                                                                                    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped Mui-selected "
+                                                                                    tabindex="0" type="button"
+                                                                                    value="VALUE" aria-pressed="true">
+                                                                                <span class="MuiToggleButton-label">Giá trị</span>
+                                                                                <span class="MuiTouchRipple-root"></span>
+                                                                            </button>
+                                                                            <button onclick="switchDiscountOrder(value)"
+                                                                                    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped"
+                                                                                    tabindex="0" type="button"
+                                                                                    value="PERCENT"
+                                                                                    aria-pressed="false">
+                                                                                <span class="MuiToggleButton-label">%</span>
+                                                                                <span class="MuiTouchRipple-root"></span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="MuiFormControl-root jss4241 jss4243 jss1284"
+                                                                             style="width: 92px; margin-left: 7px;">
+                                                                            <div class="MuiFormControl-root MuiTextField-root jss4244"
+                                                                                 inputmode="numeric">
+                                                                                <div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
+                                                                                    <input id="discount_input_order"
+                                                                                           aria-invalid="false"
+                                                                                           autocomplete="off"
+                                                                                           name="numonly" type="text"
+                                                                                           class="MuiInputBase-input MuiInput-input"
+                                                                                           value="0"
+                                                                                           style="width: 100%; text-align: right;"/>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </li>
-<!--                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters">-->
-<!--                                                    <div class="MuiListItemText-root"><span-->
-<!--                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"-->
-<!--                                                            style="color: rgb(0, 136, 255); cursor: pointer;">Phí giao hàng (F7)</span>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="MuiListItemText-root" style="margin: 0px;"><span-->
-<!--                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"-->
-<!--                                                            style="margin-left: auto; width: 103px; text-align: right;"><div-->
-<!--                                                            id="f7_order_delivery_fee" class="jss1278">0</div></span>-->
-<!--                                                    </div>-->
-<!--                                                </li>-->
-                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters">
-                                                    <div class="MuiListItemText-root"
-                                                         style="margin: 0px; height: 28px;"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-                                                            style="margin-left: auto;"><div class="MuiBox-root jss2775"
-                                                                                            style="display: flex; align-items: flex-end;"><button
-                                                            id="btn-discount-code" class="sc-jqUVSM jocTuY"><span
-                                                            class="sc-papXJ ffDJGn"><p
-                                                            class="MuiTypography-root MuiTypography-body1">Mã giảm giá</p></span><svg
-                                                            class="MuiSvgIcon-root" focusable="false"
-                                                            viewBox="0 0 24 24" aria-hidden="true"
-                                                            style="transform: rotate(0deg); width: 18px;"><path
-                                                            d="M7 10l5 5 5-5z"></path></svg></button></div></span></div>
-                                                    <div class="MuiListItemText-root"><span
-                                                            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
-                                                    </div>
-                                                </li>
-                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters">
+                                                <li class="MuiListItem-root jss1275 MuiListItem-gutters"
+                                                    style="top: 16px;font-weight: 100;">
                                                     <div class="MuiListItemText-root"><span
                                                             class="MuiTypography-root MuiListItemText-primary MuiTypography-subtitle1 MuiTypography-displayBlock">Khách phải trả</span>
                                                     </div>
                                                     <div class="MuiListItemText-root"><h6
-                                                            class="MuiTypography-root MuiTypography-h6 MuiTypography-alignRight">
+                                                            class="MuiTypography-root MuiTypography-h6 MuiTypography-alignRight"
+                                                            id="grandTotal">
                                                         0</h6></div>
                                                 </li>
                                                 <span class="jss1280"></span>
@@ -1495,6 +1552,7 @@
                                                     </div>
                                                     <div class="MuiListItemText-root"><span
                                                             class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                                                            id="totalPaid"
                                                             style="text-align: right;">0</span></div>
                                                 </li>
                                                 <input readonly="" id="totalPaidAmount" value="0"
@@ -1523,35 +1581,35 @@
                                         <div class="MuiBox-root jss18423">
                                             <div class="MuiBox-root jss18424 create-order-step6">
                                                 <div class="MuiToggleButtonGroup-root jss18418" role="group">
-                                                    <button
-                                                            class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped"
-                                                            tabindex="0" type="button" value="externalShipper"
-                                                            aria-pressed="false"><span
-                                                            class="MuiToggleButton-label"><svg
-                                                            class="MuiSvgIcon-root" focusable="false"
-                                                            viewBox="0 0 24 24" aria-hidden="true">
-                                                                        <path
-                                                                                d="M19 7C19 5.9 18.1 5 17 5H14V7H17V9.65L13.52 14H10V9H6C3.79 9 2 10.79 2 13V16H4C4 17.66 5.34 19 7 19C8.66 19 10 17.66 10 16H14.48L19 10.35V7ZM4 14V13C4 11.9 4.9 11 6 11H8V14H4ZM7 17C6.45 17 6 16.55 6 16H8C8 16.55 7.55 17 7 17Z"
-                                                                                fill="currentColor"></path>
-                                                                        <path
-                                                                                d="M5 6H10V8H5V6ZM19 13C17.34 13 16 14.34 16 16C16 17.66 17.34 19 19 19C20.66 19 22 17.66 22 16C22 14.34 20.66 13 19 13ZM19 17C18.45 17 18 16.55 18 16C18 15.45 18.45 15 19 15C19.55 15 20 15.45 20 16C20 16.55 19.55 17 19 17Z"
-                                                                                fill="currentColor"></path>
-                                                                    </svg>
-                                                                    <h6
-                                                                            class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextPrimary">
-                                                                        Tự gọi shipper</h6><svg
-                                                                class="MuiSvgIcon-root buttonCheckedIcon"
-                                                                focusable="false" viewBox="0 0 24 24"
-                                                                aria-hidden="true">
-                                                                        <path
-                                                                                d="M1 23.5911L21.9645 1V16.5322C21.9645 20.4307 19.0317 23.5911 15.4139 23.5911H1Z"
-                                                                                fill="currentColor"></path>
-                                                                        <path
-                                                                                d="M13.1347 19.0351L11.2841 17.1669C11.0291 16.9094 10.6172 16.9094 10.3622 17.1669C10.1071 17.4244 10.1071 17.8403 10.3622 18.0976L12.9058 20.6658C13.0366 20.7978 13.2393 20.7978 13.3701 20.6658L19.1504 14.8299C19.4055 14.5724 19.4055 14.1565 19.1504 13.899C18.8955 13.6416 18.4835 13.6416 18.2285 13.899L13.1347 19.0351Z"
-                                                                                fill="white"></path>
-                                                                    </svg>
-                                                                </span><span
-                                                            class="MuiTouchRipple-root"></span></button>
+                                                    <!--                                                    <button-->
+                                                    <!--                                                            class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped"-->
+                                                    <!--                                                            tabindex="0" type="button" value="externalShipper"-->
+                                                    <!--                                                            aria-pressed="false"><span-->
+                                                    <!--                                                            class="MuiToggleButton-label"><svg-->
+                                                    <!--                                                            class="MuiSvgIcon-root" focusable="false"-->
+                                                    <!--                                                            viewBox="0 0 24 24" aria-hidden="true">-->
+                                                    <!--                                                                        <path-->
+                                                    <!--                                                                                d="M19 7C19 5.9 18.1 5 17 5H14V7H17V9.65L13.52 14H10V9H6C3.79 9 2 10.79 2 13V16H4C4 17.66 5.34 19 7 19C8.66 19 10 17.66 10 16H14.48L19 10.35V7ZM4 14V13C4 11.9 4.9 11 6 11H8V14H4ZM7 17C6.45 17 6 16.55 6 16H8C8 16.55 7.55 17 7 17Z"-->
+                                                    <!--                                                                                fill="currentColor"></path>-->
+                                                    <!--                                                                        <path-->
+                                                    <!--                                                                                d="M5 6H10V8H5V6ZM19 13C17.34 13 16 14.34 16 16C16 17.66 17.34 19 19 19C20.66 19 22 17.66 22 16C22 14.34 20.66 13 19 13ZM19 17C18.45 17 18 16.55 18 16C18 15.45 18.45 15 19 15C19.55 15 20 15.45 20 16C20 16.55 19.55 17 19 17Z"-->
+                                                    <!--                                                                                fill="currentColor"></path>-->
+                                                    <!--                                                                    </svg>-->
+                                                    <!--                                                                    <h6-->
+                                                    <!--                                                                            class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextPrimary">-->
+                                                    <!--                                                                        Tự gọi shipper</h6><svg-->
+                                                    <!--                                                                class="MuiSvgIcon-root buttonCheckedIcon"-->
+                                                    <!--                                                                focusable="false" viewBox="0 0 24 24"-->
+                                                    <!--                                                                aria-hidden="true">-->
+                                                    <!--                                                                        <path-->
+                                                    <!--                                                                                d="M1 23.5911L21.9645 1V16.5322C21.9645 20.4307 19.0317 23.5911 15.4139 23.5911H1Z"-->
+                                                    <!--                                                                                fill="currentColor"></path>-->
+                                                    <!--                                                                        <path-->
+                                                    <!--                                                                                d="M13.1347 19.0351L11.2841 17.1669C11.0291 16.9094 10.6172 16.9094 10.3622 17.1669C10.1071 17.4244 10.1071 17.8403 10.3622 18.0976L12.9058 20.6658C13.0366 20.7978 13.2393 20.7978 13.3701 20.6658L19.1504 14.8299C19.4055 14.5724 19.4055 14.1565 19.1504 13.899C18.8955 13.6416 18.4835 13.6416 18.2285 13.899L13.1347 19.0351Z"-->
+                                                    <!--                                                                                fill="white"></path>-->
+                                                    <!--                                                                    </svg>-->
+                                                    <!--                                                                </span><span-->
+                                                    <!--                                                            class="MuiTouchRipple-root"></span></button>-->
                                                     <button
                                                             class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped Mui-selected"
                                                             tabindex="0" type="button" value="pickup"
@@ -1860,14 +1918,19 @@
      style="width: 718px; position: absolute; inset: 0px auto auto 0px; transform: translate(278px, 169px); z-index: 999;">
     <div class="MuiBox-root jss4970 jss2932" wrapper-suggest="c05f1dc8-07da-4f36-a8b6-dedaa35f3535">
         <div class="MuiBox-root jss4971" tabindex="0">
-            <button data-bs-toggle="modal" data-bs-target="#create_order_customer" class="MuiButtonBase-root MuiButton-root jss4972 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"
+
+            <!--            <button data-bs-toggle="modal" data-bs-target="#create_order_customer   " class="MuiButtonBase-root MuiButton-root jss4972 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"-->
+
+            <button data-bs-toggle="modal" data-bs-target="#create_order_customer"
+                    class="MuiButtonBase-root MuiButton-root jss4972 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"
+
                     tabindex="0" type="button" key-event="true" data-id="-1">
                 <span class="MuiButton-label"><span
-                    class="MuiButton-startIcon MuiButton-iconSizeMedium"><svg
-                    class="MuiSvgIcon-root icon MuiSvgIcon-colorPrimary" focusable="false" viewBox="0 0 24 24"
-                    aria-hidden="true"><path
-                    d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg></span><h6
-                    class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary">Thêm mới khách hàng</h6></span><span
+                        class="MuiButton-startIcon MuiButton-iconSizeMedium"><svg
+                        class="MuiSvgIcon-root icon MuiSvgIcon-colorPrimary" focusable="false" viewBox="0 0 24 24"
+                        aria-hidden="true"><path
+                        d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg></span><h6
+                        class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary">Thêm mới khách hàng</h6></span><span
                     class="MuiTouchRipple-root"></span>
             </button>
 
@@ -1880,14 +1943,24 @@
         </div>
     </div>
 </div>
-<div id="MuiBox-list-product" class="MuiPaper-root jss1062 MuiPaper-elevation3 MuiPaper-rounded d-none searchProduct"
-     data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom" style="width: 905px; position: absolute; inset: 0px auto auto 0px; transform: translate(100px, 184px); z-index: 999;">
+<div class="MuiPaper-root jss1062 MuiPaper-elevation3 MuiPaper-rounded d-none searchProduct"
+     data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom"
+     style="width: 905px; position: absolute; inset: 0px auto auto 0px; transform: translate(100px, 184px); z-index: 999;">
     <div class="MuiBox-root jss3933 jss1010 jss1263" wrapper-suggest="e161f822-1e4f-4674-a5bb-c11c22ace43f">
         <div class="MuiBox-root jss3934" tabindex="0">
-            <button data-bs-toggle="modal" data-bs-target="#create_order_product" class="MuiButtonBase-root MuiButton-root jss3935 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth" tabindex="0" type="button" key-event="true" data-id="-1">
+            <!--            <button class="MuiButtonBase-root MuiButton-root jss3935 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"-->
+            <!--                    tabindex="0" type="button" key-event="true" data-id="-1">-->
+            <!--<div id="MuiBox-list-product" class="MuiPaper-root jss1062 MuiPaper-elevation3 MuiPaper-rounded d-none searchProduct"-->
+            <!--     data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom" style="width: 905px; position: absolute; inset: 0px auto auto 0px; transform: translate(100px, 184px); z-index: 999;">-->
+            <!--    <div class="MuiBox-root jss3933 jss1010 jss1263" wrapper-suggest="e161f822-1e4f-4674-a5bb-c11c22ace43f">-->
+            <!--        <div class="MuiBox-root jss3934" tabindex="0">-->
+            <button data-bs-toggle="modal" data-bs-target="#create_order_product"
+                    class="MuiButtonBase-root MuiButton-root jss3935 MuiButton-text InfiniteScroll-BoxCreate MuiButton-fullWidth"
+                    tabindex="0" type="button" key-event="true" data-id="-1">
             <span class="MuiButton-label">
                <span class="MuiButton-startIcon MuiButton-iconSizeMedium">
-                  <svg class="MuiSvgIcon-root icon MuiSvgIcon-colorPrimary" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg class="MuiSvgIcon-root icon MuiSvgIcon-colorPrimary" focusable="false" viewBox="0 0 24 24"
+                       aria-hidden="true">
                      <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
                   </svg>
                </span>
@@ -1910,8 +1983,88 @@
 <th:block th:replace="/admin/order/modal_update_customer::modal_update_customer"/>
 <th:block th:replace="/admin/order/modal_create_product::modal_create_product"/>
 
+
 <th:block th:replace="/layout/script :: script"/>
 
 <script type="text/javascript" src="/static/assets/admin/js/order/app.js"></script>
 <script type="text/javascript" src="/static/assets/admin/js/order/order.js"></script>
+<script>
+    class Product {
+        constructor(id, title, sku, categoryId, retailPrice, quantity, mass, importPrice) {
+            this.id = id;
+            this.title = title;
+            this.sku = sku;
+            this.quantity = quantity;
+            this.retailPrice = retailPrice;
+            this.importPrice = importPrice;
+            this.categoryId = categoryId;
+            this.mass = mass;
+        }
+    }
+
+    let product = new Product();
+
+    function showAllCategory() {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/categories"
+        })
+            .done((data) => {
+                $("#categoryCreate").empty();
+
+                $.each(data, (i, item) => {
+                    let str = `<option value="${item.id}">${item.name}</option>`;
+                    $(".showAllCategory").append(str);
+                });
+
+            })
+            .fail((jqXHR) => {
+                console.log("Error");
+            })
+    }
+
+    function doCreateProductShort() {
+
+        product.id = 0;
+        product.title = $('#titleCreate').val();
+        product.sku = $('#skuCreate').val();
+        product.quantity = $('#inventoryCreate').val();
+        product.retailPrice = $('#retailPriceCreate').val();
+        product.importPrice = $('#importPriceCreate').val();
+        product.categoryId = $('#categoryCreate').val();
+        product.mass = $('#massCreate').val();
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json",
+            },
+            type: "POST",
+            url: "http://localhost:8080/api/products/create-short",
+            data: JSON.stringify(product),
+        })
+            .done((data) => {
+
+                $('#create_order_product').modal("hide");
+
+                $('#modalProductShort')[0].reset();
+                App.SweetAlert.showSuccessAlert("Thêm thành công sản phẩm!");
+            })
+            .fail((jqXHR) => {
+                console.log(jqXHR.message)
+                App.SweetAlert.showErrorAlert("Thêm không được");
+            })
+    }
+
+    $("#btnCreateProductShort").on("click", function () {
+        doCreateProductShort();
+    })
+
+    showAllCategory();
+
+</script>
 </html>

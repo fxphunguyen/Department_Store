@@ -1,24 +1,5 @@
 "use strict";
 
-$(document).ready(() => $("#supplier-datatables").DataTable({
-    scrollY: 500,
-    ajax: {
-        url: "http://localhost:8080/api/admin/suppliers",
-        dataSrc: ""
-    },
-    columns: [
-        { data: '' },
-        { data: 'supplierCode' },
-        { data: 'name' },
-        { data: 'email' },
-        { data: 'phone' },
-        { data: 'supplierStatus' },
-        { data: 'employeeResult.name' },
-        { data: 'createAt' },
-        { data: 'updateAt' }
-    ]
-}));
-
 (() => {
     return $.ajax({
         "headers": {
@@ -58,7 +39,7 @@ $(document).ready(() => $("#supplier-datatables").DataTable({
                         <span class="${item.supplierStatus === 'Đang giao dịch' ? 'text-success' : 'text-danger'}" title="${item.supplierStatus}">${item.supplierStatus}</span>
                     </td>
                     <td>
-                        <span title="${item.employeeResult.name}">${item.employeeResult.name}</span>
+                        <span title="${item.name}">${item.name}</span>
                     </td>
                     <td>
                         <span title="${item.createAt}">${item.createAt}</span>

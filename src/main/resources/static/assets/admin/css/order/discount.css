@@ -69,3 +69,21 @@
      position: absolute;
      bottom: -21px;
  }
+
+#discount_value_4 {
+    font-weight: 0;
+}
+#discount_order {
+    position: relative;
+    bottom: -3px;
+    height: -webkit-fill-available;
+    left: 9px;
+
+}
+#dropdownMenuButton1_2 {
+    border-bottom: none;
+    margin: 0;
+}
+#percent_value_order {
+    margin-right: -60px;
+}

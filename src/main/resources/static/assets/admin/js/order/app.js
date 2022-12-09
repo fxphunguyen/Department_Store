@@ -52,7 +52,7 @@ class ProductResult {
 }
 
 class OrderResult {
-    constructor(id, employeeId, customerId, discount, description, orderCode, orderStausId, orderItemResult ) {
+    constructor(id, employeeId, customerId, discount, description, orderCode, orderStausId, orderItemResult, listTaxItem) {
         this.id =id;
         this.employeeId = employeeId;
         this.customerId = customerId;
@@ -61,6 +61,15 @@ class OrderResult {
         this.orderCode = orderCode;
         this.orderStatusId =  orderStausId;
         this.orderItemResult = orderItemResult;
+        this.listTaxItem = listTaxItem;
+    }
+
+}
+class TaxItem{
+    //{id: 1, code: 'VAT5', title: 'Thuế suất 5%', tax: 5, type: null}
+    constructor(tax, listProductId) {
+        this.tax = tax;
+        this.listProductId  = listProductId;
     }
 }
 
@@ -73,22 +82,60 @@ class OrderItemResult {
 
 }
 
+class LocationRegion {
+    constructor(address, wardId, wardName, districtId, districtName, provinceId, provinceName) {
+        this.address = address;
+        this.wardId = wardId;
+        this.wardName = wardName;
+        this.districtId = districtId;
+        this.districtName = districtName;
+        this.provinceId = provinceId;
+        this.provinceName = provinceName;
+
+
+    }
+}
 class Customer {
-    constructor(id, customerCode,  name, phone,  email,createAt, updateAt, employeeId, deleted) {
+    constructor(id, customerCode, name, phone,customerRegionId,  customerGroup, email, birthday, status, createAt, updateAt, employeeId, deleted, locationRegionResult) {
         this.id = id;
+        this.customerRegionId = customerRegionId;
         this.customerCode = customerCode;
         this.name = name;
         this.phone = phone;
-        // this.customerGroup = customerGroup;
+        this.customerGroup = customerGroup;
         this.email = email;
-        // this.birthday = birthday;
-        // this.status = status;
+        this.birthday = birthday;
+        this.status = status;
         this.createAt = createAt;
         this.updateAt = updateAt;
         this.employeeId = employeeId;
         this.deleted = deleted;
+        this.locationRegionResult = locationRegionResult;
     }
 }
+
+class ShippingAddress {
+    constructor(id, fullName, mobile,line1, line2, email,districtId,  districtName, provinceId, provinceName, wardId, wardName, zipCode,customerId,supplierId ,isDefault) {
+        this.fullName = fullName;
+        this.line1 = line1;
+        this.line2 = line2;
+        this.mobile = mobile;
+        this.email = email;
+        // this.address = address;
+        this.districtId = districtId;
+        this.districtName = districtName;
+        this.provinceId = provinceId;
+        this.provinceName = provinceName;
+        this.wardId = wardId;
+        this.wardName = wardName;
+        this.zipCode = zipCode;
+        this.customerId = customerId;
+        this.id = id;
+        this.isDefault = isDefault;supplierId
+        this.supplierId = supplierId;
+    }
+}
+
 class ItemResult {
     constructor(id, productId, employeeId, quantity, price, sku, discount, available) {
         this.id = id;
@@ -143,6 +190,14 @@ class App {
                 message: m,
                 timer: 2000,
 
+            });
+        }
+        static showSuccessAlert(m) {
+            iziToast.success({
+                title: 'Success',
+                position: 'topRight',
+                message: m,
+                timer: 2000,
             });
         }
         static showSuccessAlert(m) {

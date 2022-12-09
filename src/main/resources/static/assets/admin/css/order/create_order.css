@@ -1,3 +1,4 @@
+
 .hide {
     display: none;
 }
@@ -1396,6 +1397,7 @@
 
 .jss17712 {
     width: 100%;
+    padding-top: 30px;
 }
 
 .jss17713 {
@@ -2254,7 +2256,7 @@
 }
 .jss1136 svg {
     margin-right: 66px!important;
-    color: rgb(163, 168, 175);
+    color: red !important;
     font-size: 24px;
 }
 .jss1996 {
@@ -2266,6 +2268,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: red !important;
 }
 
 .MuiSelect-iconOutlined {
@@ -2551,10 +2554,7 @@
     height: 30px;
     padding: 1px 0 1px 16px;
     align-items: flex-end;
-}
-
-.jss1275 .MuiListItemText-root {
-    margin: 0;
+    top: -3px;
 }
 
 .jss1280 {
@@ -2745,7 +2745,7 @@ jss8611 {
     position: absolute !important;
     margin-top: 80px;
     inset: 0px auto auto 0px !important;
-    transform: translate(278px, 466px) !important;
+    transform: translate(278px, 495px) !important;
     z-index: 999 !important;
 }
 
@@ -3514,7 +3514,7 @@ select#districtUpdate   {
     width: 718px;
     position: absolute !important;
     inset: 0px auto auto 0px;
-    transform: translate(278px, 150px) !important;
+    transform: translate(278px, 180px) !important;
     z-index: 999;
 
 }
@@ -3806,7 +3806,6 @@ select#districtUpdate   {
 
     width: 40px;
     height: 40px;
-    display: flex;
     object-fit: contain;
     align-items: center;
     justify-content: center;
@@ -3921,6 +3920,8 @@ select#districtUpdate   {
     border-bottom: 1px solid #D3D5D7;
     position: relative;
     top: -3px;
+    align-items: end;
+    margin-right: -15px;
 }
 .jss3917 {
     border-bottom: 1px solid #D3D5D7 !important;
@@ -3933,3 +3934,11 @@ select#districtUpdate   {
     border-bottom: 2px solid #D3D5D7 !important;
 
 }
+.MuiListItemText-root {
+    position: relative;
+    top: 0px;
+}
+#discount_value_order {
+    padding-left: 60px;
+}
+

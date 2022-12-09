@@ -969,26 +969,27 @@
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft"
                                         style="width: 120px; max-width: 120px; min-width: 120px;">
                                         <p class="MuiTypography-root jss5006 MuiTypography-body1 MuiTypography-noWrap">
-                                            <a class="jss5098" href="#">${item.orderCode}</a>
+                                            <a class="jss5098" href="/admin/orders/${item.id}">${item.orderCode}</a>
                                         </p>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft"
                                         style="width: 150px; max-width: 150px; min-width: 150px;">
-                                        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                            ${moment(item.createAt).format("DD/MM/YYYY hh:mm")}</p>
+                                        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">${moment(item.createAt).format("DD/MM/yyyy HH:mm")}</p>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft"
                                         style="width: 160px; max-width: 160px; min-width: 160px;">
                                         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">${item.customer.name}</p>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignLeft" style="width: 165px; max-width: 165px; min-width: 165px;">
-                                        <div class="${item.status === 'Đang giao dịch' ? 'hlxtkG' : (item.status === 'Hoàn thành' ? 'hBmWYo' : 'csJERM')}">
-                                            <span class="${item.status === 'Đang giao dịch' ? 'gIZkwA' : (item.status === 'Hoàn thành' ? 'bzQjtT' : 'ccQLIN')}">${item.status}</span>
+                                        <div class="${item.orderStatusId === 'CHECKOUT' ? 'hlxtkG' : (item.orderStatusId === 'COMPLETE' ? 'hBmWYo' : 'csJERM')}">
+                                            <span class="${item.orderStatusId === 'CHECKOUT' ? 'gIZkwA' : (item.orderStatusId === 'COMPLETE' ? 'bzQjtT' : 'ccQLIN')}">${item.orderStatus.name}</span>
                                         </div>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignCenter"
                                         style="width: 130px; max-width: 130px; min-width: 130px;">
-                                        <p class="MuiTypography-root jss5006 MuiTypography-body1"> ${item.paymentOrder}</p>
+                                         <div class="${item.paymentStatusId === 'PARTIAL_PAYMENT' ? 'hlxtkG' : (item.paymentStatusId === 'PAID' ? 'hBmWYo' : 'csJERM')}">
+                                            <span class="${item.paymentStatusId === 'PARTIAL_PAYMENT' ? 'gIZkwA' : (item.paymentStatusId === 'PAID' ? 'bzQjtT' : 'ccQLIN')}">${item.paymentStatus.name}</span>
+                                        </div>
                                     </td>
                                     <td class="MuiTableCell-root MuiTableCell-body jss5091 MuiTableCell-alignRight"
                                         style="width: 125px; max-width: 125px; min-width: 125px;">

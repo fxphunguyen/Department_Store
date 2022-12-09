@@ -5,7 +5,7 @@
     <title>Lịch sử khách hàng</title>
     <link rel="stylesheet" href="/assets/admin/css/customer/edit.css"/>
 </head>
-<body data-new-gr-c-s-check-loaded="14.1085.0" cz-shortcut-listen="true">
+<body data-new-gr-c-s-check-loaded="14.1085.0" >
 <div id="root" style="overflow: auto;">
     <th:block th:replace="/layout/menu.html"/>
     <div class="col-right MuiBox-root jss64 jss40">
@@ -86,22 +86,21 @@
                                                 color: rgb(238, 71, 71);
                                             }
                                         </style>
-                                        <th:block th:if="*{customer.getSTATUS() == 'SUCCESS'}">
+                                        <th:block th:if="*{customer.getCustomerStatus() == 'UNAVAILABLE'}">
                                             <div class="hlxtkG">
                                                 <span class="gIZkwA">Đang giao dịch</span>
                                             </div>
                                         </th:block>
-                                        <th:block th:if="*{customer.getSTATUS() == 'AVAILABLE'}">
+                                        <th:block th:if="*{customer.getCustomerStatus() == 'AVAILABLE'}">
                                             <div class="csJERM">
                                                 <span class="ccQLIN">Ngừng giao dịch</span>
                                             </div>
                                         </th:block>
-                                        <input class="sc-eCYdqJ gIZkwA idCustomerDelete" th:value="*{customer.getID()}"
+                                        <input class="sc-eCYdqJ gIZkwA idCustomerDelete" th:value="*{customer.getId()}"
                                                style="display: none">
                                     </div>
                                     <a class="jss4533"
-                                       href="https://phuphomaique.mysapogo.com/admin/customers/181966855/edit">Cập
-                                        nhật</a>
+                                       th:href="'/admin/customers/edit/' + ${customer.getId()}">Cập nhật</a>
                                 </div>
                                 <div class="showByIdCustomer">
                                     <div class="MuiBox-root jss4674 jss4529">
@@ -128,14 +127,14 @@
                                                     <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                         title="04/11/2004"
                                                         itemid="display-dob"
-                                                        th:text="*{ ':  ' + customer.getBIRTHDAY()}"></h6>
+                                                        th:text="*{ ':  ' + customer.getBirthday()}"></h6>
                                                     <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                         title="Khác"
                                                         itemid="display-sex"
-                                                        th:text="*{ ':  ' + customer.getGENDER()}"></h6>
+                                                        th:text="*{ ':  ' + customer.getCustomerGender()}"></h6>
                                                     <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                         itemid="display-phone-number"
-                                                        title="12321312" th:text="*{ ':  ' + customer.getPHONE()}"></h6>
+                                                        title="12321312" th:text="*{ ':  ' + customer.getPhone()}"></h6>
                                                     <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                         itemid="display-email"
                                                         title="ziqej@mailinator.com"
@@ -143,7 +142,7 @@
                                                     <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                         itemid="display-email"
                                                         title="ziqej@mailinator.com"
-                                                        th:text="*{ ':  ' + customer.getEMPLOYEE_NAME()}"></h6>
+                                                        th:text="*{ ': ' + customer.employeeResult.getName()}"></h6>
                                                 </div>
                                             </div>
                                             <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
@@ -167,12 +166,12 @@
                                                         title="Bán lẻ">: <a class="jss4533"
                                                                             href="https://phuphomaique.mysapogo.com/admin/customer_groups/2593648"
                                                                             style="padding-left: 0px;"
-                                                                            th:text="*{ ':  ' + customer.getCUSTOMER_GROUP()}"> </a>
+                                                                            th:text="*{ ':  ' + customer.getCustomerGroup()}"> </a>
                                                     </h6>
                                                     <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                         itemid="display-code"
                                                         title="Et ullamco voluptate"
-                                                        th:text="*{ ':' + customer.getCUSTOMER_CODE()}"></h6>
+                                                        th:text="*{ ':' + customer.getCustomerCode()}"></h6>
 
 
                                                     <!--                                                    <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"-->
@@ -215,14 +214,18 @@
                                             <div class="MuiPaper-root jss4530 MuiPaper-elevation1 MuiPaper-rounded">
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                     itemid="display-total-sales"
-                                                    th:text="*{ ': '  + customer.getTOTAL_PRICE_SPENDING()}">
+                                                    th:text="*{ ': '  + customer.getSpendTotal()}">
                                                 </h6>
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                     itemid="display-order-purchases"
-                                                    th:text="*{ ': ' + customer.getQUANTITY_PRODUCT_ORDER()}">: 0</h6>
+                                                    th:text="*{ ': ' + customer.getQuantityProductOrder()}">: 0</h6>
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                     itemid="display-last-order-on"
-                                                    th:text="*{ ': ' + customer.getDAY_ORDER_LATTER()}">: ---</h6>
+                                                    th:text="*{': ' +  #dates.format(customer.getLastDayOrder(), 'dd/MM/yyyy HH:mm')} "> </h6>
+
+<!--                                                th:text="*{ (': ' + customer.getLastDayOrder()) }" > </h6>-->
+
+<!--                                                th:text="*{#dates.format(createAt, 'dd/MM/yyyy HH:mm')}-->
                                             </div>
                                         </div>
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3">
@@ -241,13 +244,18 @@
                                             <div class="MuiPaper-root jss4530 MuiPaper-elevation1 MuiPaper-rounded">
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                     itemid="display-net-quantity"
-                                                    th:text="*{ ':' + customer.getQUANTITY_ITEMS_ORDER()}"></h6>
+                                                    th:text="*{ ':' + customer.getQuantityItemOrder()}"></h6>
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
                                                     itemid="display-returned-item-quantity"
-                                                    th:text="*{ ':' + customer.getQUANTITY_PRODUCT_PAY()}"></h6>
+                                                    th:text="*{ ':' + customer.getQuantityItemOrder()}"></h6>
+<!--                                                <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"-->
+<!--                                                    itemid="display-debt" th:text="*{ ':' + customer.getORDER_DEBT()}">:-->
+<!--                                                    </h6>-->
                                                 <h6 class="MuiTypography-root jss4532 MuiTypography-subtitle1"
-                                                    itemid="display-debt" th:text="*{ ':' + customer.getORDER_DEBT()}">:
-                                                    </h6>
+                                                    itemid="display-debt"
+                                                    th:text="*{ ':' + customer.getDebtTotal()}"
+                                                >
+                                                </h6>
                                             </div>
                                         </div>
                                     </div>
@@ -308,9 +316,9 @@
                                     hàng
                                 </button>
                                 <button id="debts" class="sc-KfMfS eMTKDV">Công nợ</button>
-                                <button id="contacts"
-                                        class="sc-KfMfS eMTKDV">Liên hệ
-                                </button>
+<!--                                <button id="contacts"-->
+<!--                                        class="sc-KfMfS eMTKDV">Liên hệ-->
+<!--                                </button>-->
                                 <button id="addresses" class="sc-KfMfS eMTKDV">Địa
                                     chỉ
                                 </button>
@@ -352,38 +360,95 @@
         </div>
     </div>
 
+
+    <th:block th:replace="/admin/customer/modal_create_shippingAddress.html"/>
 </div>
 </div>
 </body>
-<th:block th:replace="/layout/script :: script"/>
+<th:block th:replace="/layout/script.html"/>
 <script src="/assets/admin/js/customer/customerHistory.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--<script src="https://cdn.datatables.net/plug-ins/1.13.1/i18n/vi.json"></script>-->
 <script>
     Page();
 </script>
 <script>
 
+    handleCreateShowProduct();
+    function handleCreateShowProduct() {
+        $('#btn_showModalCreateAddress').click(function () {
+            alert("ok cậu")
+            $('#modal_create_shippingAddress').modal('show');
+        })
+    }
 
-    <!--    Công nợ-->
-    $('#debts').click(function () {
-        deleteEventModelShow();
+    class ShippingAddress {
+        constructor(id, fullName, mobile,line1, line2, email,districtId,  districtName, provinceId, provinceName, wardId, wardName, zipCode,customerId,supplierId ,isDefault) {
+            this.fullName = fullName;
+            this.line1 = line1;
+            this.line2 = line2;
+            this.mobile = mobile;
+            this.email = email;
+            // this.address = address;
+            this.districtId = districtId;
+            this.districtName = districtName;
+            this.provinceId = provinceId;
+            this.provinceName = provinceName;
+            this.wardId = wardId;
+            this.wardName = wardName;
+            this.zipCode = zipCode;
+            this.customerId = customerId;
+            this.id = id;
+            this.isDefault = isDefault;supplierId
+            this.supplierId = supplierId;
+        }
+    }
 
-        $('#debts').css({
-            'color': '#4a8aff',
-            'border-bottom': '2px solid rgb(0, 136, 255)'
-        });
-        $('.showModelHistory').append(modalCongNo)
-        showCustomerInfoDebt();
-    });
-    //Lịch sừ mua hàng
-    $('#histories').click(function () {
-        deleteEventModelShow();
-        $('#histories').css({
-            'color': '#4a8aff',
-            'border-bottom': '2px solid rgb(0, 136, 255)'
-        });
+    let shippingAddress = new ShippingAddress();
+    // Thêm mới địa chỉ
 
-        showCustomerInfoHistory();
-    });
+$("#btn_createCustomerShippingAddress").on('click', () => {
+    alert("createAddress")
+    shippingAddress.supplierId = 1;
+    shippingAddress.id = 2
+    shippingAddress.line1 = $('.addressCreate').val();
+    shippingAddress.s = "b"
+    shippingAddress.fullName = $('.fullNameCreate').val();
+    shippingAddress.mobile = $('.mobileCreate').val();
+    shippingAddress.email = $('.emailCreate').val();
+    // shippingAddress.address = $('.addressCreate').val();
+    shippingAddress.provinceId = $('#province').val();
+    shippingAddress.provinceName = $('#province :selected').text();
+    shippingAddress.districtId = $('#district').val();
+    shippingAddress.districtName = $('#district :selected').text();
+    shippingAddress.wardId = $('#ward').val();
+    shippingAddress.wardName = $('#ward :selected').text();
+    shippingAddress.customerId = $('.idCustomerDelete').val();
+    shippingAddress.zipCode = $('.zipCodeCreate').val();
+    shippingAddress.isDefault = true;
+    console.log(shippingAddress)
+    $.ajax({
+        "headers": {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        "type": "POST",
+        "url": "http://localhost:8080/api/shippingAddress/create",
+        "data": JSON.stringify(shippingAddress)
+    })
+        .done((data) => {
+            console.log(": Tạo sản phẩm thành công")
+        })
+        .fail((jqXHR) => {
+            console.log("Lỗi tại customer")
+
+        })
+})
+    function createCustomerShippingAddress(){
+
+
+    }
+
     // liên hệ
     $('#contacts').click(function () {
 
@@ -404,6 +469,7 @@
         });
         $('.showModelHistory').append(modalAddress)
         showCustomerInfoShippingAddressByCustomerId();
+        handleCreateShowProduct();
 
     });
     // mô tả
@@ -421,186 +487,64 @@
 
     }
 
-    function showCustomerInfoHistory() {
-        let idCustomer = $('.idCustomerDelete').val();
-        console.log(idCustomer)
-        return $.ajax({
-            headers: {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            type: "GET",
-            url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer
-        })
-            .done((data) => {
-                console.log(data)
-                if (data.length === 0){
-                    return  $(".showModelHistory").append(noModalHistoryOrder);
-                }
-                if (0 < data.length){
-                    $('.showModelHistory').append(modalHistoryOrder)
-                   return   $.each(data, (i, customer) => {
-                        let str = `
-                                     <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
-                                                tabindex="-1">
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <a class="jss1437" href="/admin/orders/1167549753">${customer.order_code}</a>
-                                                </td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <div class="sc-jSMfEi hBmWYo"><span class="${customer.status === 'Đang giao dịch' ? 'sc-eCYdqJ bzQjtT text-success' : 'sc-eCYdqJ bzQjtT text-warning'}">${customer.status}</span>
-                                                    </div>
-                                                </td>
-
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignRight">
-                                                    <p class="MuiTypography-root MuiTypography-body1"
-                                                       >
-                                                       ${customer.grand_total != null ? (new Intl.NumberFormat('vi-VN', {
-                                                                style: 'currency',
-                                                                currency: 'VND'
-                                                            }).format(customer.grand_total)) : "---"}
-                                                       </p></td>
-
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <p class="MuiTypography-root MuiTypography-body1"
-                                                       >Chi nhánh mặc định</p></td>
-                                                         <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                <p class="MuiTypography-root MuiTypography-body1"
-                                                       >${customer.debt != null ? (new Intl.NumberFormat('vi-VN', {
-                                                            style: 'currency',
-                                                            currency: 'VND'
-                                                        }).format(customer.debt)) : "---"}</p></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <p class="MuiTypography-root MuiTypography-body1" title="Pos">
-                                                        Web</p></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <p class="MuiTypography-root MuiTypography-body1"
-                                                       title="">${customer.employee_name}</p></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <div>
-                                                    ${customer.create_at != null ? moment(customer.create_at).format('DD/MM/yyyy hh:ss') : "---"}
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                   `
-                        $(".showAllCustomerOrderHistory").append(str);
-                    });
-
-                }
-            })
-            .fail((jqXHR) => {
-
-            })
-    }
-
-    // Công nợ
-    function showCustomerInfoDebt() {
-        let idCustomer = $('.idCustomerDelete').val();
-        console.log(idCustomer)
-        return $.ajax({
-            headers: {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            type: "GET",
-            url: "http://localhost:8080/api/customers/customerDebt/" + idCustomer
-        })
-            .done((data) => {
-                console.log(data)
-                $.each(data, (i, order) => {
-                    let str = `
-                   <tr class="MuiTableRow-root jss910 MuiTableRow-hover" role="checkbox"
-                                                tabindex="-1">
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <a class="jss920" target="_blank"
-                                                       href="/admin/receipt_vouchers/296331927/edit">${order.order_code}</a></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <span>${order.employee_name}</td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <span>
-                                                        ${order.create_at != null ? moment(order.create_at).format('DD/MM/yyyy hh:ss') : "---"}</td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <span>
-                                                         ${order.create_at != null ? moment(order.create_at).format('DD/MM/yyyy hh:ss') : "---"}</td>
-                                                    </span></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignLeft">
-                                                    <span>S{order.description}</span></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignRight">
-                                                    <span style="padding: 16px;">
-                                                                   ${order.transaction != null ? (new Intl.NumberFormat('vi-VN', {
-                                                            style: 'currency',
-                                                            currency: 'VND'
-                                                        }).format(order.transaction)) : "---"}</span></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss916 MuiTableCell-alignRight">
-                                                    <span style="padding: 16px;"> ${order.total_transaction != null ? (new Intl.NumberFormat('vi-VN', {
-                                                    style: 'currency',
-                                                    currency: 'VND'
-                                                }).format(order.total_transaction)) : "---"}</span></td>
-                                                    </tr>
-                                        `
-                    $(".showCustomerDebtById").prepend(str);
-                });
-            })
-            .fail((jqXHR) => {
-
-            })
-    }
 
 
-    //Địa chỉ
-    function showCustomerInfoShippingAddressByCustomerId() {
-        let idCustomer = $('.idCustomerDelete').val();
-        console.log(idCustomer)
-        return $.ajax({
-            headers: {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            type: "GET",
-            url: "http://localhost:8080/api/shippingAddress/findByCustomerId/" + idCustomer
-        })
-            .done((data) => {
-                console.log(data)
-                $.each(data, (i, shippingAddress) => {
-                    let str = `
-                     <tr class="MuiTableRow-root jss6092 MuiTableRow-hover" role="checkbox" aria-checked="false" tabindex="-1">
-                              <td class="MuiTableCell-root MuiTableCell-body jss6095 MuiTableCell-paddingCheckbox" style="padding-left: 16px;"><span class="MuiButtonBase-root MuiIconButton-root jss6087 MuiCheckbox-root MuiCheckbox-colorPrimary jss6077 MuiIconButton-colorPrimary" aria-disabled="false" style="margin: 0px;"><span class="MuiIconButton-label"><input class="jss6090" type="checkbox" data-indeterminate="false" value=""><span class="jss6078" font-size="small"></span></span><span class="MuiTouchRipple-root"></span></span></td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
-                                <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="09876543255" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                  ${shippingAddress.mobile}</p>
-                              </td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
-                                <div style="cursor: pointer;">${shippingAddress.address}</div>
-                              </td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
-                                <div style="cursor: pointer;">${shippingAddress.wardName}</div>
-                              </td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
-                                <div style="cursor: pointer;">${shippingAddress.districtName}</div>
-                              </td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
-                                <p class="MuiTypography-root MuiTypo212graphy-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                               ${shippingAddress.provinceName}
-                                </p>
-                              </td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
-                                <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                ${shippingAddress.zipCode}
-                                </p>
-                              </td>
-                              <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
-                                <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                ${shippingAddress.email}
-                                </p>
-                              </td>
-                            </tr>
-                    `
-                    $(".showShippingAddress").append(str);
-                });
-            })
-            .fail((jqXHR) => {
+    // //Địa chỉ
+    // function showCustomerInfoShippingAddressByCustomerId() {
+    //     let idCustomer = $('.idCustomerDelete').val();
+    //     console.log(idCustomer)
+    //     return $.ajax({
+    //         headers: {
+    //             "accept": "application/json",
+    //             "content-type": "application/json"
+    //         },
+    //         type: "GET",
+    //         url: "http://localhost:8080/api/shippingAddress/findByCustomerId/" + idCustomer
+    //     })
+    //         .done((data) => {
+    //             console.log(data)
+    //             $.each(data, (i, shippingAddress) => {
+    //                 let str = `
+    //                  <tr class="MuiTableRow-root jss6092 MuiTableRow-hover" role="checkbox" aria-checked="false" tabindex="-1">
+    //                           <td class="MuiTableCell-root MuiTableCell-body jss6095 MuiTableCell-paddingCheckbox" style="padding-left: 16px;"><span class="MuiButtonBase-root MuiIconButton-root jss6087 MuiCheckbox-root MuiCheckbox-colorPrimary jss6077 MuiIconButton-colorPrimary" aria-disabled="false" style="margin: 0px;"><span class="MuiIconButton-label"><input class="jss6090" type="checkbox" data-indeterminate="false" value=""><span class="jss6078" font-size="small"></span></span><span class="MuiTouchRipple-root"></span></span></td>
+    //                           <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
+    //                             <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="09876543255" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+    //                               ${shippingAddress.mobile}</p>
+    //                           </td>
+    //                           <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
+    //                             <div style="cursor: pointer;">${shippingAddress.address}</div>
+    //                           </td>
+    //                           <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
+    //                             <div style="cursor: pointer;">${shippingAddress.wardName}</div>
+    //                           </td>
+    //                           <td class="MuiTableCell-root MuiTableCell-body jss6098 MuiTableCell-alignLeft">
+    //                             <div style="cursor: pointer;">${shippingAddress.districtName}</div>
+    //                           </td>
+    //                           <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
+    //                             <p class="MuiTypography-root MuiTypo212graphy-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+    //                            ${shippingAddress.provinceName}
+    //                             </p>
+    //                           </td>
+    //                           <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
+    //                             <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+    //                             ${shippingAddress.zipCode}
+    //                             </p>
+    //                           </td>
+    //                           <td class="MuiTableCell-root MuiTableCell-body jss6098 cellClick MuiTableCell-alignLeft">
+    //                             <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap" data-tip="" currentitem="false" style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
+    //                             ${shippingAddress.email}
+    //                             </p>
+    //                           </td>
+    //                         </tr>
+    //                 `
+    //                 $(".showShippingAddress").append(str);
+    //             });
+    //         })
+    //         .fail((jqXHR) => {
+    //
+    //         })
+    // }
 
-            })
-    }
 
 
     // Liên hệ
@@ -625,7 +569,8 @@
                                                         <a class="jss1437" href="/admin/orders/1167549753">${order.orderCode}</a>
                                                     </td>
                                                     <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                        <div class="sc-jSMfEi hBmWYo"><span class="sc-eCYdqJ bzQjtT">${order.orderStatus.name}</span>
+                                                        <div class="sc-jSMfEi hBmWYo">
+                                                        <span class="sc-eCYdqJ bzQjtT">${order.orderStatus.name}</span>
                                                         </div>
                                                     </td>
 
@@ -658,8 +603,10 @@
 
             })
     }
+
     deleteEventModelShow();
     idDeleteCustomerById();
+
 
 </script>
 
