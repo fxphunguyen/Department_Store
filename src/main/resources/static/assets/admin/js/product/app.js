@@ -43,7 +43,7 @@ class App {
              <tr id="tr_${item.id}" >
                 <td class="align-middle"></td>
                 <td class="align-middle"><input type="checkbox" value=""></td>
-                <td class="align-middle"><img width="70px" height="50px" src=${item.image} alt=""></td>
+                <td class="align-middle"><img width="50px" height="40px" src=${item.image} alt=""></td>
                 <td class="align-middle">${item.title}</td>
                 <td class="align-middle">${item.category.name}</td>
                 <td class="align-middle">${item.brand.name}</td>
