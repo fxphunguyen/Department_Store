@@ -19,7 +19,6 @@ public class PaymentPurchaseMapper {
         return new PaymentPurchaseResult()
                 .setId(paymentPurchase.getId())
                 .setPaid(paymentPurchase.getPaid())
-                .setCreateAt(paymentPurchase.getCreateAt())
                 .setEmployeeResult(employeeMapper.toDTO(paymentPurchase.getEmployee()))
                 .setPaymentMethodId(paymentPurchase.getPaymentMethodId());
     }
@@ -28,7 +27,6 @@ public class PaymentPurchaseMapper {
         return new PaymentPurchaseOrder()
                 .setId(paymentParam.getId())
                 .setPaid(paymentParam.getPaid())
-                .setCreateAt(paymentParam.getCreateAt())
                 .setEmployeeId(paymentParam.getEmployeeId())
                 .setPurchaseOrderId(paymentParam.getPurchaseOrderId())
                 .setPaymentMethodId(paymentParam.getPaymentMethodId());

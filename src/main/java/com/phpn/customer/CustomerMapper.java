@@ -3,7 +3,8 @@ package com.phpn.customer;
 
 import com.phpn.customer.dto.CreateCustomerParam;
 import com.phpn.customer.dto.CustomerOrderResult;
-import com.phpn.shipping_address.ShippingAddressResult;
+import com.phpn.customer.dto.CustomerResult;
+import com.phpn.shipping_address.dto.ShippingAddressResult;
 import com.phpn.employee.dto.EmployeeMapper;
 import vn.fx.qh.sapo.entities.customer.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class CustomerMapper {
     private ShippingAddressMapper shippingAddressMapper;
 
 
+
+
     public CustomerResult toDTO(Customer customer) {
         CustomerResult result = new CustomerResult()
                 .setId(customer.getId())
@@ -34,8 +37,7 @@ public class CustomerMapper {
                 .setEmail(customer.getEmail())
                 .setBirthday(customer.getBirthday())
                 .setCustomerStatus(customer.getCustomerStatus())
-                .setCreateAt(customer.getCreateAt())
-                .setUpdateAt(customer.getUpdateAt())
+
                 .setEmployeeId(customer.getEmployeeId())
                 .setCustomerStatus(customer.getCustomerStatus());
 
@@ -101,8 +103,7 @@ public class CustomerMapper {
                 .setCustomerGender(customerResult.getCustomerGender())
                 .setEmail(customerResult.getEmail())
                 .setBirthday(customerResult.getBirthday())
-                .setCustomerStatus(customerResult.getCustomerStatus())
-                .setUpdateAt(customerResult.getUpdateAt());
+                .setCustomerStatus(customerResult.getCustomerStatus());
     }
 
 
@@ -117,9 +118,8 @@ public class CustomerMapper {
                 .setEmail(customer.getEmail())
                 .setBirthday(customer.getBirthday())
                 .setCustomerStatus(customer.getCustomerStatus())
-                .setCreateAt(customer.getCreateAt())
-                .setUpdateAt(customer.getUpdateAt())
                 .setEmployeeId(customer.getEmployeeId())
+                 .setEmployeeResult(employeeMapper.toDTO(customer.getEmployee()))
                 .setCustomerStatus(customer.getCustomerStatus());
 
     }

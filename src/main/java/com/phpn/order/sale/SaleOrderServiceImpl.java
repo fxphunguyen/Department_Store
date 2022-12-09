@@ -89,7 +89,6 @@ public class SaleOrderServiceImpl implements SaleOrderService {
         order.setGrandTotal(new BigDecimal(0));
         order.setTotal(new BigDecimal(0));
         order.setOrderCode("SON00" + String.valueOf(ranNum));
-        order.setCreateAt(Instant.now());
         order.setSubTotal(new BigDecimal(0));
         order.setLine1(order.getLine1());
         order.setLine2(order.getLine2());
@@ -206,6 +205,15 @@ public class SaleOrderServiceImpl implements SaleOrderService {
         return saleOrderRepository.getSpendTotalByCustomerId(customerId);
     }
 
+    @Override
+    public Integer getQuantityProductOrder(Integer id) {
+        return saleOrderRepository.getQuantityProductOrderById(id);
+    }
+
+    @Override
+    public List<SaleOrderResult> findAllSaleOrderByCustomer(Integer id) {
+        return  saleOrderRepository.findAllCustomerOrderHistory(id).stream().map(saleOrder -> orderMapper.toCustomerOrder(saleOrder)).collect(Collectors.toList());
+    }
 
 
 }

@@ -37,7 +37,6 @@ public class SaleOrderMapper {
                 .setPaymentStatus(orderStatusMapper.toDTO(order.getPaymentStatus()))
                 .setDiscount(order.getDiscount())
                 .setDescription(order.getDescription())
-                .setCreateAt(order.getCreateAt())
                 .setCustomerId(order.getCustomerId())
                 .setCustomer(customerMapper.toDTO(order.getCustomer()))
                 .setTotal(order.getTotal())
@@ -59,10 +58,24 @@ public class SaleOrderMapper {
                 .setDescription(orderParam.getDescription())
                 .setCustomerId(orderParam.getCustomerId())
                 .setOrderCode(orderParam.getOrderCode())
-                .setEmployeeId(orderParam.getEmployeeId())
-                .setCreateAt(orderParam.getCreateAt());
+                .setEmployeeId(orderParam.getEmployeeId());
                 //.setOrderStatusId(orderParam.getOrderStatusId());
 
+    }
+
+    public SaleOrderResult toCustomerOrder(SaleOrder order) {
+        return new SaleOrderResult()
+                .setId(order.getId())
+                .setFullName(order.getFullName())
+                .setEmployeeId(order.getEmployeeId())
+                .setEmployee(employeeMapper.toDTO(order.getEmployee()))
+                .setOrderCode(order.getOrderCode())
+                .setOrderStatusId(order.getOrderStatusCode().getValue())
+                .setOrderStatus(orderStatusMapper.toDTO(order.getOrderStatus()))
+                .setPaymentStatusId(order.getPaymentStatusCode().getValue())
+                .setPaymentStatus(orderStatusMapper.toDTO(order.getPaymentStatus()))
+                .setDiscount(order.getDiscount())
+                .setDescription(order.getDescription());
     }
 }
 

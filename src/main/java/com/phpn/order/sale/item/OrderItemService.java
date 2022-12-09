@@ -10,4 +10,7 @@ public interface OrderItemService {
 
     List<SaleOrderItemResult> findAllOrderItemByOrderId(Integer orderId);
 
+
+    Integer getQuantityItemCustomerOrderById(Integer id);
+
 }

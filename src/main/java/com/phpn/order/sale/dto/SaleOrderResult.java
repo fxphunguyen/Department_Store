@@ -1,6 +1,6 @@
 package com.phpn.order.sale.dto;
 
-import com.phpn.customer.CustomerResult;
+import com.phpn.customer.dto.CustomerResult;
 import com.phpn.employee.dto.EmployeeResult;
 import lombok.AllArgsConstructor;
 import lombok.Data;

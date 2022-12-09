@@ -1,4 +1,4 @@
-package com.phpn.shipping_address;
+package com.phpn.shipping_address.dto;
 
 
 import lombok.Getter;
@@ -8,7 +8,8 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class ShippingAddressShowCustomerInfo {
+public class ShippingAddressResult {
+
     private Integer Id;
 
     private Integer customerId;
@@ -36,4 +37,10 @@ public class ShippingAddressShowCustomerInfo {
     private String email;
 
     private String zipCode;
+
+    private boolean isShipping;
+
+    private boolean isReceiveBill;
+
+
 }

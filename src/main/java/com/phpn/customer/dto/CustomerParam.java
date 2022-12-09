@@ -1,10 +1,12 @@
-package com.phpn.customer;
+package com.phpn.customer.dto;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+
+import java.time.Instant;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,7 +23,7 @@ public class CustomerParam {
     private String phone;
 
 
-    private String createAt;
+    private Instant createAt;
 
 
     private Integer employeeId;

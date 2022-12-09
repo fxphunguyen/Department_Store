@@ -1,28 +1,35 @@
 package com.phpn.order.sale.dto;
 
-import com.phpn.product.item.ItemResult;
+import com.phpn.employee.dto.EmployeeResult;
 import com.phpn.product.dto.ProductResult;
+import com.phpn.product.item.ItemResult;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@Accessors(chain = true)
-public class SaleOrderItemResult {
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Accessors(chain = true)
+public class SaleOrderByCustomer {
     private Integer id;
 
     private Integer orderId;
 
-    private BigDecimal price;
+    private  String orderCode;
+
+    private EmployeeResult employeeResult;
+
+    private BigDecimal grandTotal;
+
+    private BigDecimal total;
+
+    private ItemResult item;
 
     private Integer quantity;
 
