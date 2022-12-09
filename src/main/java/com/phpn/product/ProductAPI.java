@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-
 @RestController
 @RequestMapping("/api/products")
 public class ProductAPI {
@@ -35,6 +34,7 @@ public class ProductAPI {
 
 
 
+
    // C0522k1
 //    @GetMapping("")
 //    public ResponseEntity<?> getAllProduct(){
@@ -55,6 +55,7 @@ public class ProductAPI {
 //       }
 //        return new ResponseEntity<>(productItemResults, HttpStatus.OK);
 //    }
+
 
 // kien dang chinh
    @GetMapping("")
