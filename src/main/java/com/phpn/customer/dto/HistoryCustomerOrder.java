@@ -18,9 +18,9 @@ public class HistoryCustomerOrder {
 
     private String status;
 
-    private String createAt;
+    private Instant createAt;
 
-    private String updateAt;
+    private Instant updateAt;
 
     private CustomerGender customerGender;
 }

@@ -554,7 +554,6 @@
                                                     <span id="brandProType">Chọn loại nhãn hiệu</span>
                                                 </div>
                                                 <ul class="dropdown-menu w-100 brandIdCreate showAllBrand">
-
                                                     <li>
                                                         <div class="d-flex align-items-center">
                                                             <i class="fa-solid fa-magnifying-glass" style="margin-left: 16px;
@@ -654,11 +653,10 @@
                                             <div class="MuiBox-root jss26963 jss26565">
                                                 <p class="MuiTypography-root MuiTypography-body1">Cho phép bán</p>
                                                 <div class="sc-ESujJ bnnGqn">
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" role="switch"
-                                                               id="flexSwitchCheckDefault">
-                                                    </div>
-                                                    <span class="sc-eEOqmf gWbFII"></span>
+                                                    <label>
+                                                        <input type="checkbox"
+                                                               class=" statusCreate sc-jWEIYm blUUyZ">
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -759,6 +757,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -959,7 +958,7 @@
 
     page.commands.renderImg = () => {
         let str = `<div class="profile-pic loading jss26799 MuiGrid-item MuiGrid-grid-md-2" style="width: 100%; height: 120px; margin: 0 24px 24px 0; padding: 0">
-                        <div class="progress"  style="margin:0 0; background-color: #0db473">
+                        <div class="progress"  style="margin:0 0; background-color: #0db473; height: 8px">
                             <div class="progress-bar progress-bar-striped" hidden role="progressbar"
                                  style="width: 0" aria-valuenow="0"
                                  aria-valuemin="0" aria-valuemax="100">

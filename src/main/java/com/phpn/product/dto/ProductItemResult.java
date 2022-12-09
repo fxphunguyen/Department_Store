@@ -9,6 +9,8 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import vn.fx.qh.sapo.entities.product.ProductStatus;
 
+import java.time.Instant;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,6 +25,6 @@ public class ProductItemResult {
     private Integer available;
     private Integer trading;
     private ProductStatus status;
-    private String createAt;
-    private String updateAt;
+    private Instant createAt;
+    private Instant updateAt;
 }
