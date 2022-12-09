@@ -93,11 +93,11 @@ public class CustomerServiceImpl implements CustomerService {
                     if (spendTotal == null)
                         spendTotal = BigDecimal.valueOf(0);
 
-                    BigDecimal debtTotal = paymentSaleOrderService.getDebtTotalByCustomerId(customer.getId());
-                    if (debtTotal == null)
-                        debtTotal = BigDecimal.valueOf(0);
+                    BigDecimal paidTotal = paymentSaleOrderService.getPaidTotalByCustomerId(customer.getId());
+                    if (paidTotal == null)
+                        paidTotal = BigDecimal.valueOf(0);
                     dto.setSpendTotal(spendTotal);
-                    dto.setDebtTotal(debtTotal);
+                    dto.setDebtTotal(spendTotal.subtract(paidTotal));
                     return dto;
                 }).collect(Collectors.toList());
     }

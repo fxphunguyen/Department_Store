@@ -252,7 +252,7 @@ function showCustomerInfo(idCustomer) {
                                     <div class="MuiListItemText-root">
                                         <p
                                             class="MuiTypography-root jss3910 MuiTypography-body1 MuiTypography-colorError MuiTypography-alignRight">
-                                            ${result.debtTotal}</p>
+                                            ${result.debtTotal.formatVND()}</p>
                                     </div>
                                 </li>
                                 <li class="MuiListItem-root MuiListItem-gutters"
@@ -264,7 +264,7 @@ function showCustomerInfo(idCustomer) {
                                     <div class="MuiListItemText-root">
                                         <p
                                             class="MuiTypography-root jss3910 MuiTypography-body1 MuiTypography-colorPrimary MuiTypography-alignRight">
-                                             ${result.spendTotal}</p>
+                                             ${result.spendTotal.formatVND()}</p>
                                     </div>
                                 </li>
                                 
