@@ -46,7 +46,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     @Transactional(readOnly = true)
     public int getAvailableInventoryQuantityByProductId(Integer productId) {
-        return itemRepository.getTotalInventoryQuantityByProductId(productId).orElse(0);
+        return itemRepository.getAvailableInventoryQuantityByProductId(productId).orElse(0);
     }
 
 }
