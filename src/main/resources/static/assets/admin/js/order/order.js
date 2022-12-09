@@ -118,7 +118,7 @@ const searchProduct = () => {
                                     </p>
                                 </div>
                                 <div class="MuiBox-root jss3953">
-                                    <h6 class="MuiTypography-root MuiTypography-h6">${product.retail_price} 
+                                    <h6 class="MuiTypography-root MuiTypography-h6">${product.retailPrice} 
 </h6>
                                         <p class="MuiTypography-root MuiTypography-body1" style="margin-top: 4px;">
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">Tồn:  </span>
@@ -144,30 +144,33 @@ function showCustomerInfo(idCustomer) {
     let result = customer = customers.find(({id}) => id === idCustomer);
     let shippingAddress = result.shippingAddress;
     let fullShippingAddress = "";
-    if (shippingAddress.line1 != null)
-        fullShippingAddress = `${shippingAddress.line1}, `;
-    if (shippingAddress.line2 != null)
-        fullShippingAddress += `${shippingAddress.line2}, `;
-    if (shippingAddress.wardName != null)
-        fullShippingAddress += `${shippingAddress.wardName}, `;
-    if (shippingAddress.districtName != null)
-        fullShippingAddress += `${shippingAddress.districtName}, `;
-    if (shippingAddress.provinceName != null)
-        fullShippingAddress += `${shippingAddress.provinceName}`;
+    if (shippingAddress != null) {
+        if (shippingAddress.line1 != null)
+            fullShippingAddress = `${shippingAddress.line1}, `;
+        if (shippingAddress.line2 != null)
+            fullShippingAddress += `${shippingAddress.line2}, `;
+        if (shippingAddress.wardName != null)
+            fullShippingAddress += `${shippingAddress.wardName}, `;
+        if (shippingAddress.districtName != null)
+            fullShippingAddress += `${shippingAddress.districtName}, `;
+        if (shippingAddress.provinceName != null)
+            fullShippingAddress += `${shippingAddress.provinceName}`;
+    }
 
     let billAddress = result.billAddress;
-    let fullBillAddress= "";
-    if (billAddress.line1 != null)
-        fullBillAddress = `${billAddress.line1}, `;
-    if (billAddress.line2 != null)
-        fullBillAddress += `${billAddress.line2}, `;
-    if (billAddress.wardName != null)
-        fullBillAddress += `${billAddress.wardName}, `;
-    if (billAddress.districtName != null)
-        fullBillAddress += `${billAddress.districtName}, `;
-    if (billAddress.provinceName != null)
-        fullBillAddress += `${billAddress.provinceName}`;
-
+    let fullBillAddress = "";
+    if (billAddress != null) {
+        if (billAddress.line1 != null)
+            fullBillAddress = `${billAddress.line1}, `;
+        if (billAddress.line2 != null)
+            fullBillAddress += `${billAddress.line2}, `;
+        if (billAddress.wardName != null)
+            fullBillAddress += `${billAddress.wardName}, `;
+        if (billAddress.districtName != null)
+            fullBillAddress += `${billAddress.districtName}, `;
+        if (billAddress.provinceName != null)
+            fullBillAddress += `${billAddress.provinceName}`;
+    }
 
     let str = `<div class="MuiPaper-root  jss938 MuiPaper-elevation1 MuiPaper-rounded" id="closed_customer_info">
         <div class="MuiBox-root jss985">
@@ -234,7 +237,7 @@ function showCustomerInfo(idCustomer) {
                                     <div class="MuiListItemText-root">
                                         <p
                                             class="MuiTypography-root jss3910 MuiTypography-body1 MuiTypography-colorError MuiTypography-alignRight">
-                                            -2,474,816</p>
+                                            ${result.debtTotal}</p>
                                     </div>
                                 </li>
                                 <li class="MuiListItem-root MuiListItem-gutters"
@@ -246,7 +249,7 @@ function showCustomerInfo(idCustomer) {
                                     <div class="MuiListItemText-root">
                                         <p
                                             class="MuiTypography-root jss3910 MuiTypography-body1 MuiTypography-colorPrimary MuiTypography-alignRight">
-                                            834</p>
+                                             ${result.spendTotal}</p>
                                     </div>
                                 </li>
                                 
@@ -355,7 +358,7 @@ function showListProducts() {
     $.ajax({
         type: "GET",
         // contentType: 'application/json',
-        url: `${location.origin}/api/products/showProductInfo`
+        url: `${location.origin}/api/products`
     })
         .done((data) => {
             products = data;
@@ -379,12 +382,12 @@ function showListProducts() {
                                     </p>
                                 </div>
                                 <div class="MuiBox-root jss3953">
-                                    <h6 class="MuiTypography-root MuiTypography-h6">${(product.retail_price).formatVND()}</h6>
+                                    <h6 class="MuiTypography-root MuiTypography-h6">${(product.retailPrice).formatVND()}</h6>
                                         <p class="MuiTypography-root MuiTypography-body1" style="margin-top: 4px;">
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">Tồn:  </span>
-                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.quantity}</span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.totalInventory}</span>
                                             <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(163, 168, 175);">&nbsp;| Có thể bán: </span>
-                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.available}</span>
+                                            <span class="MuiTypography-root MuiTypography-body1" style="color: rgb(0, 136, 255);">${product.availableInventory}</span>
                                         </p>
                                 </div>
                             </div>
@@ -682,7 +685,7 @@ function getAllEmployees() {
             "content-type": "application/json"
         },
         type: "GET",
-        url: `${location.origin}/api/employees/show_list/`
+        url: `${location.origin}/api/employees`
     })
         .done((data) => {
             employeeResult = data;
@@ -725,14 +728,10 @@ function showProductInfo(productId) {
     $("#productId").val(productId);
 
     let result = product = products.find(({id}) => id === productId);
-    let taxText;
-    let tax = result.tax;
-    let retailPrice = result.retail_price;
-    taxText = (retailPrice * (tax / 100));
     let std = `
             <div id="tax_${result.id}">
                 <div class="MuiListItemText-root" style="float:left">                                        
-                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(${result.tax}%)</span>
+                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT(%)</span>
                 </div>
                 <div class="MuiListItemText-root" style="float:right">
                     <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" id="tax_value_${result.id}">0</span>
@@ -829,9 +828,9 @@ function showProductInfo(productId) {
                         <div
                             class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
                             <input aria-invalid="false" autocomplete="off"
-                                id="retail_price_${result.id}"
+                                id="retailPrice_${result.id}"
                                 name="" type="text"
-                                class="MuiInputBase-input MuiInput-input" value=${result.retail_price}
+                                class="MuiInputBase-input MuiInput-input" value=${result.retailPrice}
                                                                  
                                 style="width: 100%; text-align: right"
                                 ></div>
@@ -881,17 +880,17 @@ function showProductInfo(productId) {
                                                name="numonly"
                                                type="text" 
                                                class="MuiInputBase-input MuiInput-input" value="0"
-                                               onkeyup="formatDiscount(event,${result.id},${result.retail_price})"
+                                               onkeyup="formatDiscount(event,${result.id},${result.retailPrice})"
                                                style="width: 100%; text-align: right;">
                                     </div>
-                                             <!--oninput="onInputDiscount(event,${result.id},${result.retail_price})"-->
+                                             <!--oninput="onInputDiscount(event,${result.id},${result.retailPrice})"-->
                                 </div>
                             </div>
                         </div>
                     </div>   
                  </td>
             <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight " >
-                <span id="amount_product_${result.id}" data-value="${product.retail_price}" >${result.retail_price}
+                <span id="amount_product_${result.id}" data-value="${product.retailPrice}" >${result.retailPrice}
                 </span>
             </td>
                 <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight " style="padding-left: 0px;">
@@ -908,15 +907,18 @@ function showProductInfo(productId) {
                         </svg></span><span class="MuiTouchRipple-root"></span></button></td>
         </tr>
     `;
+    let quantity =  $(`#quantity_product_${result.quantity}`).val();
+    console.log(quantity);
     $("#tbProduct tbody").prepend(str);
     $("#divNoInfo").remove();
     $("#divTbProduct").removeClass("hide");
-    handleGrandTotal();
-    if (tax == null) {
-        $(`#tax_${result.id}`).remove();
-    }
+
+
+    // if (taxSaleList == null) {
+    //     $(`#tax_${result.id}`).remove();
+    // }
     $("#vat_tax").removeClass('d-none');
-    $(`#tax_value_${result.id}`).text(taxText.formatVND());
+    // $(`#tax_value_${result.id}`).text(taxText.formatVND());
     handleGrandTotal();
 }
 
@@ -971,7 +973,7 @@ const addQuantity = (productId) => {
     quantityProduct = quantityProduct + 1;
     $(`#quantity_product_${productId}`).val(quantityProduct);
     let tax = $(`#tax_${productId}`).text().replaceAll("VAT", "").replaceAll(")", "").replaceAll("%", "").replaceAll("(", "");
-    let retailProduct = +$(`#retail_price_${productId}`).val();
+    let retailProduct = +$(`#retailPrice_${productId}`).val();
     let amount = (retailProduct - discount) * quantityProduct;
     let taxValue = (retailProduct * (tax / 100)) * quantityProduct;
     $(`#tax_value_${productId}`).text(taxValue.formatVND());
@@ -984,7 +986,7 @@ function minusQuantity(productId) {
     const discount = +$(`#discount_value_${productId}`).text().replaceAll(",", "");
     let tax = $(`#tax_${productId}`).text().replaceAll("VAT", "").replaceAll(")", "").replaceAll("%", "").replaceAll("(", "");
     quantityProduct = quantityProduct - 1;
-    const retailProduct = +$(`#retail_price_${productId}`).val();
+    const retailProduct = +$(`#retailPrice_${productId}`).val();
     let amount = (retailProduct - discount) * quantityProduct;
     let taxValue = (retailProduct * (tax / 100)) * quantityProduct;
     $(`#tax_value_${productId}`).text(taxValue.formatVND());
@@ -1060,7 +1062,7 @@ const formatDiscountOrder = (event, productId) => {
         var n = parseInt($(this).val().replace(/\D/g, ''), 10);
         $(this).val(n.toLocaleString());
     })
-    const  btnValueSelectOrder = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
+    const btnValueSelectOrder = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
     const btnValueOrder = [...btnValueSelectOrder];
     let grandTotal = 0;
     let percentValue = 0;
@@ -1068,28 +1070,23 @@ const formatDiscountOrder = (event, productId) => {
     let discountOrder = 0;
     $(`#tax_${productId}`).each(function () {
         let taxId = $(this).attr('id');
-        console.log(taxId);
-        let tax = +$("#tax_value_"+ taxId).text();
+        let tax = +$("#tax_value_" + taxId).text();
         totalTax += tax;
-        // console.log(tax)
-        // console.log(totalTax)
     })
     btnValueOrder.forEach((btn, index) => {
         const classListOrder = [...btn.classList];
         if (classListOrder.includes("Mui-selected")) {
             const valueInput = event.target.value.replaceAll(",", "");
             const total = document.querySelector('#grandTotal').textContent.replaceAll(",", "");
-                if (btn.value === "VALUE") {
-                    discountOrder = valueInput;
-                    percentValue = (valueInput * 100) / total;
-                    grandTotal = (total + totalTax )- discountOrder;
-                    // console.log(total , totalTax, discountOrder);
-                    // console.log("grandTotal", grandTotal)
-                } else {
-                    discountOrder = total * (valueInput / 100);
-                    percentValue = valueInput;
-                    grandTotal = total + totalTax - discountOrder;
-                }
+            if (btn.value === "VALUE") {
+                discountOrder = valueInput;
+                percentValue = (valueInput * 100) / total;
+                grandTotal = (total + totalTax) - discountOrder;
+            } else {
+                discountOrder = total * (valueInput / 100);
+                percentValue = valueInput;
+                grandTotal = total + totalTax - discountOrder;
+            }
 
 
             $("#percent_value_order").text(percentValue.toFixed(2) + "%");

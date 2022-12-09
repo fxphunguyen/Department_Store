@@ -43,7 +43,7 @@ public class CustomerResult {
 
     private Instant updateAt;
 
-    private Integer locationRegionId;
+    private EmployeeResult employeeResult;
 
     private ShippingAddressResult shippingAddress;
 
@@ -55,7 +55,7 @@ public class CustomerResult {
 
     private Integer employeeId;
 
-    private EmployeeResult employeeResult;
+    private EmployeeResult employee;
 
     private Integer quantityProductOrder;
 

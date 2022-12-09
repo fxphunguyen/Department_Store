@@ -1,35 +1,100 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Chi tiết đơn hàng (tên đơn hàng bỏ vô đây)</title>-->
-<!--    <link rel="stylesheet" href="../../../static/assets/admin/css/styles.css">-->
-
-<!--</head>-->
-
-
-<!--    <div id="non-printable">-->
-<!--        <button onclick="prints()" style="width:100px; height: 100px;">-->
-<!--            print-->
-<!--        </button>-->
-<!--    </div>-->
 <th:block th:fragment="print">
+    <style>
+        #printable {
+            display: none;
+        }
 
+        @media print {
+            #root {
+                display: none;
+            }
+
+            #printable {
+                display: block;
+            }
+        }
+
+        #printable{
+            font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+        }
+        .logo {
+            border-bottom: dashed 0.5px;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+
+        }
+        .logo img{
+            width: 150px;
+            height: 150px;
+            position: relative;
+            left: 44%;
+        }
+
+        .tt {
+            margin-top: -20px;
+            position: relative;
+            width: 100%;
+            text-align: center;
+            line-height: 12px;
+        }
+
+        .title #mhd {
+            width: 50%;
+            float: left;
+            /* display: inline-block; */
+        }
+
+        .title #datehd {
+            width: 50%;
+            float: right;
+            text-align: right;
+        }
+
+        h4 {
+            width: 100%;
+            text-align: center;
+        }
+
+        .title {
+            height: 40px;
+            border-bottom: solid 1px black;
+            padding-bottom: 5%;
+        }
+        .users{
+            border-bottom: dashed 0.5px;
+        }
+        table {
+            border-bottom: dashed 1px gray;
+            width: 100%;
+        }
+        .total{
+            width: 100%;
+        }
+        .total p{
+
+            text-align: left;
+        }
+        .total p span{
+
+            float: right;
+        }
+        #end{
+            text-align: center;
+            font-style: italic;
+
+        }
+    </style>
     <div id="printable" th:object="${orders}">
-        <div class="logo">
+        <div class="logo" >
 
             <img src="/templates/admin/order/image/logo.png" alt="">
 
             <div class="tt">
-                <h5>DEPARTMENT_STORE</h5>
-                <p>HUẾ</p>
+                <h5>DEPARTMENT_STORE</h5><br>
+                <p>HUẾ</p><br>
                 <p>0989989789</p>
             </div>
-
-
         </div>
 
         <div class="title">
@@ -78,10 +143,6 @@
             <p>Trả lại: <span>...</span></p>
         </div>
         <div id="end">Cảm ơn quý khách. Hẹn gặp lại!</div>
-        <!-- <hr> -->
     </div>
 
-
-
 </th:block>
-</html>

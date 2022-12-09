@@ -1,6 +1,7 @@
 package com.phpn.employee;
 
 
+import com.phpn.employee.dto.EmployeeResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,16 +18,14 @@ import java.util.List;
 public class EmployeeAPI {
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    EmployeeService employeeService;
 
-
-    @GetMapping("/findAll")
+    @GetMapping()
     @Transactional(readOnly = true)
     public ResponseEntity<?> showListCustomerAll() {
-        List<Employee> employees = employeeRepository.findAll();
+        List<EmployeeResult> employees = employeeService.findAll();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
-
 
 
 }

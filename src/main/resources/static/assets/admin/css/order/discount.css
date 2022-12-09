@@ -80,6 +80,9 @@
 
 }
 #dropdownMenuButton1_2 {
-    border-bottom: none
-;
+    border-bottom: none;
+    margin: 0;
+}
+#percent_value_order {
+    margin-right: -60px;
 }
