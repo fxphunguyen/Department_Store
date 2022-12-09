@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.time.Instant;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,7 +29,7 @@ public class SupplierResult {
     private EmployeeResult employee;
     private Integer paymentMethodId;
     private PaymentMethodResult paymentMethod;
-    private String createAt;
-    private String updateAt;
+    private Instant createAt;
+    private Instant updateAt;
 
 }

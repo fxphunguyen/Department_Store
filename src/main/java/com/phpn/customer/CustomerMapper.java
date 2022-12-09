@@ -37,8 +37,7 @@ public class CustomerMapper {
                 .setEmail(customer.getEmail())
                 .setBirthday(customer.getBirthday())
                 .setCustomerStatus(customer.getCustomerStatus())
-                .setCreateAt(customer.getCreateAt())
-                .setUpdateAt(customer.getUpdateAt())
+
                 .setEmployeeId(customer.getEmployeeId())
                 .setCustomerStatus(customer.getCustomerStatus());
 
@@ -120,8 +119,7 @@ public class CustomerMapper {
                 .setEmail(customer.getEmail())
                 .setBirthday(customer.getBirthday())
                 .setCustomerStatus(customer.getCustomerStatus())
-                .setCreateAt(customer.getCreateAt())
-                .setUpdateAt(customer.getUpdateAt())
+
                 .setEmployeeId(customer.getEmployeeId())
                  .setEmployeeResult(employeeMapper.toDTO(customer.getEmployee()))
                 .setCustomerStatus(customer.getCustomerStatus());
