@@ -19,7 +19,8 @@ public class SaleOrderItemMapper {
         return new SaleOrderItemResult()
                 .setId(orderItem.getId())
                 .setOrderId(orderItem.getOrderId())
-                .setProduct(productMapper.toDTO(orderItem.getProduct()))
+//                productMapper.toDTO(orderItem.getProduct())
+                .setProduct(productMapper.toModel(orderItem.getProduct()))
 //                .setItem(itemMapper.toDTO(orderItem.getItem()))
                 .setQuantity(orderItem.getQuantity());
 
