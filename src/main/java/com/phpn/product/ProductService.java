@@ -24,8 +24,6 @@ public interface ProductService {
 
     Product createShortProduct(ProductShortParam productShortParam);
     Product createProduct(ProductCreate productCreate);
-    List<ProductResult> getAllProductListResult();
-
 
     Page<Product> findAll(Pageable pageable);
 

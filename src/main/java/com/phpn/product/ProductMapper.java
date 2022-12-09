@@ -1,10 +1,8 @@
 package com.phpn.product;
 
 import com.phpn.brand.dto.BrandMapper;
-import com.phpn.product.dto.ProductParam;
-import com.phpn.product.dto.ProductResult;
-import com.phpn.product.dto.ProductShortParam;
-import com.phpn.product.dto.ProductWithImageParam;
+import com.phpn.category.dto.CategoryResult;
+import com.phpn.product.dto.*;
 import com.phpn.category.dto.CategoryMapper;
 import com.phpn.product.item.ItemMapper;
 import com.phpn.tax.dto.TaxMapper;
@@ -90,6 +88,19 @@ public class ProductMapper {
         result.setBrand(brandMapper.toDTO(product.getBrand()))
                 .setCategory(categoryMapper.toDTO(product.getCategory()));
         return result;
+    }
+
+    public ProductItemResult toDTOPage(Product product) {
+        return new ProductItemResult()
+                .setId(product.getId())
+                .setImage(product.getImage())
+                .setStatus(product.getStatus())
+                .setAvailable(0)
+                .setTrading(0)
+                .setCategory(categoryMapper.toDTO(product.getCategory()))
+                .setBrand(brandMapper.toDTO(product.getBrand()))
+                .setCreateAt(product.getCreateAt())
+                .setUpdateAt(product.getUpdateAt());
     }
 
 

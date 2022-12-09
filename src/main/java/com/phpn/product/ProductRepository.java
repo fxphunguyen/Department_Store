@@ -14,6 +14,5 @@ import java.util.List;
 @EnableJpaRepositories
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-    @Query(value = "call getAllProductList()",nativeQuery = true)
-    List<ProductResult> getAllProductListResult();
+
 }

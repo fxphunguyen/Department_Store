@@ -138,29 +138,29 @@ public class ProductServiceImpl implements ProductService {
         return null;
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<ProductResult> getAllProductListResult() {
-//        List<ProductResult> products=new ArrayList<>();
-        List<Product> entities = productRepository.findAll();
-//        for (Product product : entities) {
-//            products.add(  productMapper.toDTO(product));
-//        }
-//        return products;
-
-        return entities.stream().map(
-                entity -> {
-                    ProductResult dto = productMapper.toDTO(entity);
-                    // int ton = itemRepository.store();
-                    //   dto.setTon(ton);
-                    return dto;
-                }).collect(Collectors.toList());
-
-    }
+//    @Override
+//    @Transactional(readOnly = true)
+//    public List<ProductResult> getAllProductListResult() {
+////        List<ProductResult> products=new ArrayList<>();
+//        List<Product> entities = productRepository.findAll();
+////        for (Product product : entities) {
+////            products.add(  productMapper.toDTO(product));
+////        }
+////        return products;
+//
+//        return entities.stream().map(
+//                entity -> {
+//                    ProductResult dto = productMapper.toDTO(entity);
+//                    // int ton = itemRepository.store();
+//                    //   dto.setTon(ton);
+//                    return dto;
+//                }).collect(Collectors.toList());
+//
+//    }
 
     @Override
     public Page<Product> findAll(Pageable pageable) {
-        return null;
+        return productRepository.findAll(pageable);
     }
 
 }
