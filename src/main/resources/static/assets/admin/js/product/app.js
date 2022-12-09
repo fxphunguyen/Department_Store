@@ -59,6 +59,7 @@ class App {
 
 }
 
+
 class Image {
     constructor(cloudId, fileName, fileFolder, fileUrl, fileType) {
         this.cloudId = cloudId;
@@ -117,3 +118,5 @@ class Brand {
         this.name = name;
     }
 }
+
+

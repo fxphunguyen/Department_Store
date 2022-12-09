@@ -148,4 +148,9 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll(pageable);
     }
 
+    @Override
+    public List<?> getAllProdcutItemPage(Integer pageNo, Integer pageSize) {
+        return null;
+    }
+
 }

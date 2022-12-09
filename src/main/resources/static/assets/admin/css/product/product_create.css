@@ -138,6 +138,31 @@
     top: -5px;
     border-color: #D3D5D7;
 }
+.jss21759.MuiInputLabel-shrink {
+    font-size: 14px;
+    transform: none;
+    line-height: 17px;
+}
+.jss21759 {
+    color: #46515F;
+    position: unset;
+}
+.MuiInputLabel-outlined {
+    z-index: 1;
+    transform: translate(14px, 20px) scale(1);
+    pointer-events: none;
+}
+.MuiInputLabel-animated {
+    transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+}
+.jss21757 {
+    overflow: hidden;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
 
 .dCpUzP {
     position: absolute;
