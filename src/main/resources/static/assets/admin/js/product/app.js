@@ -118,5 +118,13 @@ class Brand {
         this.name = name;
     }
 }
+class Tax{
+    constructor(id,code,title,tax) {
+        this.id = id;
+        this.code = code;
+        this.title = title;
+        this.tax = tax;
+    }
+}
 
 
