@@ -7,10 +7,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 import vn.fx.qh.sapo.entities.customer.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 @NoArgsConstructor
@@ -60,6 +62,8 @@ public class CustomerResult {
     private Integer quantityProductOrder;
 
     private  Integer quantityItemOrder;
+
+    private Instant lastDayOrder;
 
 }
 

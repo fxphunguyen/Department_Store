@@ -681,8 +681,7 @@ let modalHistoryOrder = `
                         <div class="MuiBox-root jss1378 jss1375">
                             <div class="MuiPaper-root jss1381 sapo-grid MuiPaper-elevation1 MuiPaper-rounded">
                                 <div class="MuiTableContainer-root jss1382 sapo-grid-header-wrapper">
-                                    <table id="showCustomerOrderHistory" class="MuiTable-root jss1383 sapo-grid-header" aria-labelledby="tableTitle"
-                                           aria-label="enhanced table">
+                                    <table id="showCustomerOrderHistory" class="showCustomerOrderHistory    >
                                         <tr class="MuiTableRow-root MuiTableRow-head">
                                             <th class="MuiTableCell-root MuiTableCell-head jss1400 MuiTableCell-alignLeft"
                                                 scope="col" colspan="1" rowspan="1">Mã đơn hàng
@@ -712,92 +711,6 @@ let modalHistoryOrder = `
                                                 <tbody class="MuiTableBody-root showAllCustomerOrderHistory">
                                                 </tbody>
                                     </table>
-                                </div>
-                                <div class="__react_component_tooltip t9eb02321-a174-4d68-9524-2454badafbce place-top type-dark"
-                                     id="t9eb02321-a174-4d68-9524-2454badafbce" data-id="tooltip">
-                                    <style aria-hidden="true">
-                                        .t9eb02321-a174-4d68-9524-2454badafbce {
-                                            color: #fff;
-                                            background: #222;
-                                            border: 1px solid transparent;
-                                        }
-
-                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-top {
-                                            margin-top: -10px;
-                                        }
-
-                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-top::before {
-                                            border-top: 8px solid transparent;
-                                        }
-
-                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-top::after {
-                                            border-left: 8px solid transparent;
-                                            border-right: 8px solid transparent;
-                                            bottom: -6px;
-                                            left: 50%;
-                                            margin-left: -8px;
-                                            border-top-color: #222;
-                                            border-top-style: solid;
-                                            border-top-width: 6px;
-                                        }
-
-                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-bottom {
-                                            margin-top: 10px;
-                                        }
-
-                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-bottom::before {
-                                            border-bottom: 8px solid transparent;
-                                        }
-
-                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-bottom::after {
-                                            border-left: 8px solid transparent;
-                                            border-right: 8px solid transparent;
-                                            top: -6px;
-                                            left: 50%;
-                                            margin-left: -8px;
-                                            border-bottom-color: #222;
-                                            border-bottom-style: solid;
-                                            border-bottom-width: 6px;
-                                        }
-
-                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-left {
-                                            margin-left: -10px;
-                                        }
-
-                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-left::before {
-                                            border-left: 8px solid transparent;
-                                        }
-
-                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-left::after {
-                                            border-top: 5px solid transparent;
-                                            border-bottom: 5px solid transparent;
-                                            right: -6px;
-                                            top: 50%;
-                                            margin-top: -4px;
-                                            border-left-color: #222;
-                                            border-left-style: solid;
-                                            border-left-width: 6px;
-                                        }
-
-                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-right {
-                                            margin-left: 10px;
-                                        }
-
-                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-right::before {
-                                            border-right: 8px solid transparent;
-                                        }
-
-                                        .t9eb02321-a174-4d68-9524-2454badafbce.place-right::after {
-                                            border-top: 5px solid transparent;
-                                            border-bottom: 5px solid transparent;
-                                            left: -6px;
-                                            top: 50%;
-                                            margin-top: -4px;
-                                            border-right-color: #222;
-                                            border-right-style: solid;
-                                            border-right-width: 6px;
-                                        }
-                                    </style>
                                 </div>
                             </div>
                         </div>
@@ -1248,7 +1161,7 @@ $('#histories').click(function () {
     $('#histories').css({
         'color': '#4a8aff', 'border-bottom': '2px solid rgb(0, 136, 255)'
     });
-    $('.showModelHistory').append(modalHistoryOrder)
+
     showCustomerInfoHistory();
 });
 
@@ -1274,7 +1187,6 @@ function eventButtonPage() {
         alert("nhan đc rồi")
         console.log("ok")
         $(".showModelHistory").val("");
-        showCustomerInfoHistory(10, 20);
     })
 
     $('.previousPage').click(function () {
@@ -1282,82 +1194,82 @@ function eventButtonPage() {
         console.log("ok")
     })
 }
-
-function showCustomerInfoHistory(startIntPaging, endIntPaging) {
-    let idCustomer = $('.idCustomerDelete').val();
-    let quantityOrder = getQuantityOrderCustomer();
-
-
-    let quantityPage = $('#quantityPage').val();
-    console.log(quantityPage + "Số page")
-    console.log(quantityOrder + "số lượng đơn hàng")
-    console.log(idCustomer)
-    return $.ajax({
-        headers: {
-            "accept": "application/json", "content-type": "application/json"
-        },
-        type: "GET",
-        url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer + "/" + startIntPaging + "/" + endIntPaging
-    })
-        .done((data) => {
-            console.log(data)
-            if (data.length === 0) {
-                return $(".showModelHistory").append(noModalHistoryOrder);
-            }
-            if (0 < data.length) {
-                $('.showModelHistory').append(modalHistoryOrder)
-                return $.each(data, (i, customer) => {
-                    let str = `
-                                     <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
-                                                tabindex="-1">
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <a class="jss1437" href="/admin/orders/1167549753">${customer.order_code}</a>
-                                                </td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <div class="sc-jSMfEi hBmWYo"><span class="${customer.status === 'Đang giao dịch' ? 'sc-eCYdqJ bzQjtT text-success' : 'sc-eCYdqJ bzQjtT text-warning'}">${customer.status}</span>
-                                                    </div>
-                                                </td>
-
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignRight">
-                                                    <p class="MuiTypography-root MuiTypography-body1"
-                                                       >
-                                                       ${customer.grand_total != null ? (new Intl.NumberFormat('vi-VN', {
-                        style: 'currency', currency: 'VND'
-                    }).format(customer.grand_total)) : "---"}
-                                                       </p></td>
-
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <p class="MuiTypography-root MuiTypography-body1"
-                                                       >Chi nhánh mặc định</p></td>
-                                                         <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                <p class="MuiTypography-root MuiTypography-body1"
-                                                       >${customer.debt != null ? (new Intl.NumberFormat('vi-VN', {
-                        style: 'currency', currency: 'VND'
-                    }).format(customer.debt)) : "---"}</p></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <p class="MuiTypography-root MuiTypography-body1" title="Pos">
-                                                        Web</p></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <p class="MuiTypography-root MuiTypography-body1"
-                                                       title="">${customer.employee_name}</p></td>
-                                                <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
-                                                    <div>
-                                                    ${customer.create_at != null ? moment(customer.create_at).format('DD/MM/yyyy hh:ss') : "---"}
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                   `
-                    $(".showAllCustomerOrderHistory").append(str);
-                });
-                $('#tableHistoryCustomerOrder').DataTable();
-
-            }
-
-        })
-        .fail((jqXHR) => {
-
-        })
-}
+//
+// function showCustomerInfoHistory(startIntPaging, endIntPaging) {
+//     let idCustomer = $('.idCustomerDelete').val();
+//     let quantityOrder = getQuantityOrderCustomer();
+//
+//
+//     let quantityPage = $('#quantityPage').val();
+//     console.log(quantityPage + "Số page")
+//     console.log(quantityOrder + "số lượng đơn hàng")
+//     console.log(idCustomer)
+//     return $.ajax({
+//         headers: {
+//             "accept": "application/json", "content-type": "application/json"
+//         },
+//         type: "GET",
+//         url: "http://localhost:8080/api/customers/historyCustomerOrder/" + idCustomer + "/" + startIntPaging + "/" + endIntPaging
+//     })
+//         .done((data) => {
+//             console.log(data)
+//             if (data.length === 0) {
+//                 return $(".showModelHistory").append(noModalHistoryOrder);
+//             }
+//             if (0 < data.length) {
+//                 $('.showModelHistory').append(modalHistoryOrder)
+//                 return $.each(data, (i, customer) => {
+//                     let str = `
+//                                      <tr class="MuiTableRow-root jss1427 MuiTableRow-hover" role="checkbox"
+//                                                 tabindex="-1">
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+//                                                     <a class="jss1437" href="/admin/orders/1167549753">${customer.order_code}</a>
+//                                                 </td>
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+//                                                     <div class="sc-jSMfEi hBmWYo"><span class="${customer.status === 'Đang giao dịch' ? 'sc-eCYdqJ bzQjtT text-success' : 'sc-eCYdqJ bzQjtT text-warning'}">${customer.status}</span>
+//                                                     </div>
+//                                                 </td>
+//
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignRight">
+//                                                     <p class="MuiTypography-root MuiTypography-body1"
+//                                                        >
+//                                                        ${customer.grand_total != null ? (new Intl.NumberFormat('vi-VN', {
+//                         style: 'currency', currency: 'VND'
+//                     }).format(customer.grand_total)) : "---"}
+//                                                        </p></td>
+//
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+//                                                     <p class="MuiTypography-root MuiTypography-body1"
+//                                                        >Chi nhánh mặc định</p></td>
+//                                                          <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+//                                                 <p class="MuiTypography-root MuiTypography-body1"
+//                                                        >${customer.debt != null ? (new Intl.NumberFormat('vi-VN', {
+//                         style: 'currency', currency: 'VND'
+//                     }).format(customer.debt)) : "---"}</p></td>
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+//                                                     <p class="MuiTypography-root MuiTypography-body1" title="Pos">
+//                                                         Web</p></td>
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+//                                                     <p class="MuiTypography-root MuiTypography-body1"
+//                                                        title="">${customer.employee_name}</p></td>
+//                                                 <td class="MuiTableCell-root MuiTableCell-body jss1433 MuiTableCell-alignLeft">
+//                                                     <div>
+//                                                     ${customer.create_at != null ? moment(customer.create_at).format('DD/MM/yyyy hh:ss') : "---"}
+//                                                     </div>
+//                                                 </td>
+//                                             </tr>
+//                                    `
+//                     $(".showAllCustomerOrderHistory").append(str);
+//                 });
+//                 $('#tableHistoryCustomerOrder').DataTable();
+//
+//             }
+//
+//         })
+//         .fail((jqXHR) => {
+//
+//         })
+// }
 
 
 <!--    Công nợ-->
@@ -1509,7 +1421,7 @@ function showCustomerInfoDebt() {
 // }
 
 
-// DĐiẠ chỉ
+// ĐiẠ chỉ
 function showCustomerInfoShippingAddressByCustomerId() {
     $(document).ready(function () {
         let idCustomer = $('.idCustomerDelete').val();
@@ -1550,34 +1462,33 @@ function showCustomerInfoShippingAddressByCustomerId() {
 }
 
 function showCustomerInfoHistory() {
-    let idCustomer = $('.idCustomerDelete').val();
+    $('.showModelHistory').append(modalHistoryOrder);
     $(document).ready(function () {
         let idCustomer = $('.idCustomerDelete').val();
         console.log(idCustomer)
-        $("#showCustomerOrderHistory").DataTable({
+        $(".showCustomerOrderHistory").DataTable({
             ajax: {
                 contentType: 'application/json',
                 url: location.origin + "/api/customers/historyCustomerOrder/" + idCustomer,
                 type: "GET",
                 dataSrc: ''
             },
-            lengthMenu: [[5, 10, 15, -1], ['5', '10', '15', 'All']],
-            fontsize: 14,
+            lengthMenu: [
+                [5, 10, 20, -1],
+                ["5", "10", "20", "All"]
+            ],
             searching: false,
             select: true,
-            columns: [{data: 'order_code'}, {data: 'status'}, {data: 'price_pay'}, {
-                render: function () {
-                    return "Chi nhánh mặc định"
-                }
-            }, {data: 'price_pay'},
-
-                {
-                    render: function () {
-                        return "Chi nhánh mặc định"
-                    }
-                },
-
-                {data: 'employee_name'}, {data: 'create_at'}],
+            columns: [
+                {data: 'orderCode'},
+                {data: 'orderStatus.name'},
+                {data: 'orderCode'},
+                {data: 'orderCode'},
+                {data: 'orderCode'},
+                {data: 'employee.name'},
+                {data: 'employee.name'},
+                {data: 'createAt'}
+            ]
         })
     })
 }
