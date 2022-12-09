@@ -1,6 +1,7 @@
 package com.phpn.product;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -86,7 +87,7 @@ public class ProductServiceImpl implements ProductService {
         product.setWholesalePrice(new BigDecimal(Integer.parseInt(productShortParam.getRetailPrice())));
         product.setBrandId(1);
         product.setApplyTax(false);
-        product.setCreateAt(java.time.LocalDateTime.now().toString());
+        product.setCreateAt(Instant.now());
 
         Product p = productRepository.save(product);
 
