@@ -206,6 +206,15 @@ public class SaleOrderServiceImpl implements SaleOrderService {
         return saleOrderRepository.getSpendTotalByCustomerId(customerId);
     }
 
+    @Override
+    public Integer getQuantityProductOrder(Integer id) {
+        return saleOrderRepository.getQuantityProductOrderById(id);
+    }
+
+    @Override
+    public List<SaleOrderResult> findAllSaleOrderByCustomer(Integer id) {
+        return  saleOrderRepository.findAllCustomerOrderHistory(id).stream().map(saleOrder -> orderMapper.toCustomerOrder(saleOrder)).collect(Collectors.toList());
+    }
 
 
 }

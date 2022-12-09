@@ -1,11 +1,11 @@
-package com.phpn.customer;
+package com.phpn.customer.dto;
 
 import vn.fx.qh.sapo.entities.customer.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 
-public class CustomerShowOrder {
+public class HistoryCustomerOrder {
     private BigDecimal price;
 
     private Integer quantity;

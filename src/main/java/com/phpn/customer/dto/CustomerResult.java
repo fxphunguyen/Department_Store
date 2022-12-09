@@ -1,7 +1,7 @@
-package com.phpn.customer;
+package com.phpn.customer.dto;
 
 
-import com.phpn.shipping_address.ShippingAddressResult;
+import com.phpn.shipping_address.dto.ShippingAddressResult;
 import com.phpn.employee.dto.EmployeeResult;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,8 +43,12 @@ public class CustomerResult {
 
     private Instant updateAt;
 
+    private EmployeeResult employeeResult;
+
     private ShippingAddressResult shippingAddress;
+
     private ShippingAddressResult billAddress;
+
     private List<ShippingAddressResult> shippingAddressList;
 
     private CustomerGender customerGender;
@@ -53,6 +57,9 @@ public class CustomerResult {
 
     private EmployeeResult employee;
 
+    private Integer quantityProductOrder;
+
+    private  Integer quantityItemOrder;
 
 }
 

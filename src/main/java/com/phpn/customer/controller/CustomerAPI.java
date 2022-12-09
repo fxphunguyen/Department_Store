@@ -1,7 +1,11 @@
-package com.phpn.customer;
+package com.phpn.customer.controller;
 
+import com.phpn.customer.dto.CustomerResult;
+import com.phpn.customer.UpdateCustomerParam;
 import com.phpn.customer.dto.CreateCustomerParam;
 import com.phpn.customer.service.CustomerService;
+import com.phpn.order.sale.dto.SaleOrderByCustomer;
+import com.phpn.order.sale.dto.SaleOrderResult;
 import com.phpn.util.AppUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -89,17 +93,18 @@ public class CustomerAPI {
 //        return new ResponseEntity<>(iCustomers, HttpStatus.OK);
 //    }
 //
-//    @GetMapping("/customerInfo/{id}")
+//    @GetMapping("/showAllShippingAddress/{id}")
 //    public ResponseEntity<?> showListCustomerInfo(@PathVariable Integer id) {
-//        ICustomer iCustomer = customerService.CustomerInfoById(id);
+//        -=]
+//
 //        return new ResponseEntity<>(iCustomer, HttpStatus.OK);
 //    }
-//
-//    @GetMapping("/historyCustomerOrder/{id}")
-//    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id) {
-//        List<ICustomerOrderHistory> customerOrderHistory = customerRepository.getCustomerOrderHistory(id);
-//        return new ResponseEntity<>(customerOrderHistory, HttpStatus.OK);
-//    }
+
+    @GetMapping("/historyCustomerOrder/{id}")
+    public ResponseEntity<?> showListCustomerOrderById(@PathVariable Integer id) {
+        List<SaleOrderResult> saleOrderByCustomers = customerService.findHistoryCustomerOrder(id);
+        return new ResponseEntity<>(saleOrderByCustomers, HttpStatus.OK);
+    }
 //
 //    @GetMapping("/customerDebt/{id}")
 //    @Transactional(readOnly = true)

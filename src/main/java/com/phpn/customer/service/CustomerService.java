@@ -1,10 +1,11 @@
 package com.phpn.customer.service;
 
-import com.phpn.customer.CustomerResult;
+import com.phpn.customer.dto.CustomerResult;
 import com.phpn.customer.UpdateCustomerParam;
 import com.phpn.customer.dto.CreateCustomerParam;
+import com.phpn.order.sale.dto.SaleOrderByCustomer;
+import com.phpn.order.sale.dto.SaleOrderResult;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public interface CustomerService {
@@ -17,6 +18,7 @@ public interface CustomerService {
 
     CustomerResult update(UpdateCustomerParam updateCustomer);
 
+    List<SaleOrderResult> findHistoryCustomerOrder(Integer id);
 
 
 }

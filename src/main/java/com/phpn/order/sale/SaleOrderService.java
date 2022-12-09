@@ -1,5 +1,6 @@
 package com.phpn.order.sale;
 
+import com.phpn.order.sale.dto.SaleOrderByCustomer;
 import com.phpn.order.sale.dto.SaleOrderParam;
 import com.phpn.order.sale.dto.SaleOrderResult;
 
@@ -16,4 +17,7 @@ public interface SaleOrderService {
 
     BigDecimal getSpendTotal(Integer customerId);
 
+    Integer getQuantityProductOrder(Integer id);
+
+    List<SaleOrderResult> findAllSaleOrderByCustomer(Integer id);
 }
