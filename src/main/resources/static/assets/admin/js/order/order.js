@@ -722,14 +722,13 @@ function editCustomer() {
     $("#update_order_customer").modal("show");
 }
 
-let taxList = [] ;
 function showProductInfo(productId) {
     $('#MuiBox-list-product').addClass("hide");
     $("#productId").val(productId);
 
     let result = product = products.find(({id}) => id === productId);
     console.log(result)
-    let tax = result.taxSaleList;
+    let taxList = result.taxSaleList;
 
     let std = `
               <div id="tax_${result.id}">
@@ -911,13 +910,10 @@ function showProductInfo(productId) {
         </tr>
     `;
     $("#tbProduct tbody").prepend(str);
-    taxList.push($(`#tax_${productId}`).val());
-    console.log(taxList)
     $("#divNoInfo").remove();
     $("#divTbProduct").removeClass("hide");
     taxList.forEach((taxObj, index) => {
         if (taxObj) {
-            order.listTaxItem = {"tax" : taxObj, "listProductId" : product.id }
             let taxValue = taxObj.tax;
             let retailProduct = +$(`#retailPrice_${productId}`).val();
             let quantityProduct = +($(`#quantity_product_${productId}`).val());
@@ -1050,12 +1046,16 @@ function deleteProduct(productId) {
         message: 'Xóa sản phẩm khỏi đơn hàng thành công!'
     });
     $(`#tax_${productId}`).remove();
+
+    if ($(`#tax_${productId}`) === "") {
+        resetPrice();
+    }
 }
 
 const resetPrice = () => {
-    $("#grandTotal").text(0);
+    $("#grandTotal").text("0");
     $("#discount_value_order").text(0);
-    $("#percent_value_order").text(0);
+    $("#percent_value_order").remove();
     $("#total_amounts").text(0);
     $("#total_customer").text(0);
 }
