@@ -2,8 +2,10 @@ package com.phpn.media;
 
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Date;
+
 @Component
 public class MediaMapper {
 
@@ -13,10 +15,6 @@ public class MediaMapper {
                 .setFileName(productImageParam.getFileName())
                 .setFileFolder(productImageParam.getFileFolder())
                 .setFileUrl(productImageParam.getFileUrl())
-                .setFileType(productImageParam.getFileType())
-                .setCreatedAt(new Date(LocalDate.now().toString()))
-                .setCreatedBy(null)
-                .setUpdatedAt(null)
-                .setUpdatedBy(null);
+                .setFileType(productImageParam.getFileType());
     }
 }

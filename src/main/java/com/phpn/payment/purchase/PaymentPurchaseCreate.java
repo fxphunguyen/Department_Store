@@ -9,6 +9,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Date;
 
 @Getter
@@ -32,5 +33,5 @@ public class PaymentPurchaseCreate {
 
     private Integer paymentMethodId;
 
-    private Date createAt;
+    private Instant createAt;
 }
