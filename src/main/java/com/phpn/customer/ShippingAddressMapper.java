@@ -60,7 +60,9 @@ public class ShippingAddressMapper {
                 .setProvinceName(shippingAddress.getProvinceName())
                 .setZipCode(shippingAddress.getZipCode())
                 .setEmail(shippingAddress.getEmail())
-                .setMobile(shippingAddress.getMobile());
+                .setMobile(shippingAddress.getMobile())
+                .setLine1(shippingAddress.getLine1())
+                .setLine2(shippingAddress.getLine2());
 
     }
 }

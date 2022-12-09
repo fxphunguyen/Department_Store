@@ -2,16 +2,16 @@
 const  selectBtnBrand = document.querySelector('.select-btn-brand');
 const  searchBrandBtn = document.querySelector('#inputSearchBrand')
 //nhat-dev class brand
-class  Brand{
-    constructor(id,name) {
-        this.id = id;
-        this.name = name;
-    }
-}
+// class  Brand{
+//     constructor(id,name) {
+//         this.id = id;
+//         this.name = name;
+//     }
+// }
 
 
 //nhat-dev obj brand
-let brand = new Brand();
+// let brand = new Brand();
 
 //show all brands
 let brands;

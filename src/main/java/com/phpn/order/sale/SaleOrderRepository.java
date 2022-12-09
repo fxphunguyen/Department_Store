@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 
 
@@ -26,5 +27,8 @@ public interface SaleOrderRepository extends JpaRepository<SaleOrder, Integer> {
 
     @Query("FROM SaleOrder WHERE customerId = :id")
     List<SaleOrder> findAllCustomerOrderHistory(Integer id);
+
+    @Query(value = "call sp_getLastDayOrderByCustomerId( :customerId);" , nativeQuery = true)
+    Instant getLastDayOrderByCustomerId(Integer customerId);
 }
 

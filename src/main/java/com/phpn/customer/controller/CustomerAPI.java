@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import vn.fx.qh.sapo.entities.customer.CustomerGender;
 import vn.fx.qh.sapo.entities.customer.CustomerGroup;
 import vn.fx.qh.sapo.entities.customer.CustomerStatus;
+//import vn.fx.qh.sapo.entities.customer.ICustomerOwerImpl;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -48,10 +50,7 @@ public class CustomerAPI {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createCustomer(@Validated @RequestBody CreateCustomerParam customerCreate, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return appUtil.mapErrorToResponse(bindingResult);
-        }
+    public ResponseEntity<?> createCustomer( @RequestBody CreateCustomerParam customerCreate) {
         return new ResponseEntity<>(customerService.create(customerCreate), HttpStatus.OK);
     }
 
@@ -105,9 +104,8 @@ public class CustomerAPI {
         List<SaleOrderResult> saleOrderByCustomers = customerService.findHistoryCustomerOrder(id);
         return new ResponseEntity<>(saleOrderByCustomers, HttpStatus.OK);
     }
-//
+
 //    @GetMapping("/customerDebt/{id}")
-//    @Transactional(readOnly = true)
 //    public ResponseEntity<?> showListCustomerDebtById(@PathVariable Integer id) {
 //        List<ICustomerOwerImpl> iCustomerImpls = customerService.CustomerOwerById(id);
 //        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);

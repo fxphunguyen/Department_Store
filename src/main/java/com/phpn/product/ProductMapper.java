@@ -1,22 +1,15 @@
 package com.phpn.product;
 
 import com.phpn.brand.dto.BrandMapper;
-import com.phpn.category.dto.CategoryResult;
-import com.phpn.order.sale.dto.SaleOrderItemResult;
-import com.phpn.product.dto.*;
 import com.phpn.category.dto.CategoryMapper;
-import com.phpn.product.item.ItemMapper;
+import com.phpn.product.dto.*;
 import com.phpn.tax.dto.TaxMapper;
 import com.phpn.tax.dto.TaxResult;
-import vn.fx.qh.sapo.entities.order.sale.SaleOrder;
-import vn.fx.qh.sapo.entities.product.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Component;
+import vn.fx.qh.sapo.entities.product.Product;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,10 +43,9 @@ public class ProductMapper {
                 .setCategoryId(productParam.getCategoryId());
     }
 
-    public Product toModel(ProductWithImageParam productWithImageParam) {
+    public Product toModel(CreateProductParam productWithImageParam) {
         return new Product(productWithImageParam.getCategoryId(), productWithImageParam.getBrandId())
                 .setTitle(productWithImageParam.getTitle())
-                .setStatus(productWithImageParam.getStatus())
                 .setDescription(productWithImageParam.getDescription())
                 .setUnit(productWithImageParam.getUnit())
                 .setSku(productWithImageParam.getSku())
@@ -91,10 +83,11 @@ public class ProductMapper {
     public ProductItemResult toDTOPage(Product product) {
         return new ProductItemResult()
                 .setId(product.getId())
+                .setTitle(product.getTitle())
                 .setImage(product.getImage())
                 .setStatus(product.getStatus())
                 .setAvailable(0)
-                .setTrading(0)
+                .setInventory(0)
                 .setCategory(categoryMapper.toDTO(product.getCategory()))
                 .setBrand(brandMapper.toDTO(product.getBrand()));
     }
@@ -111,50 +104,4 @@ public class ProductMapper {
                 .setImportPrice(new BigDecimal(Integer.parseInt(productShortParam.getImportPrice())));
 
     }
-    
-    public SaleOrderItemResult toModel() {
-
-    }
-
-//    public ProductResult toItemDTO(Product product) {
-//        return new ProductResult()
-//                .setId(product.getId())
-//                .setTitle(product.getTitle())
-//                .setStatus(product.getStatus())
-//                .setBarCode(product.getBarCode())
-//                .setSku(product.getSku())
-//                .setBrandId(product.getBrandId())
-//                .setCategoryId(product.getCategoryId())
-//                .setImage(product.getImage())
-//                .setDescription(product.getDescription())
-//                .setImportPrice(product.getImportPrice())
-//                .setWholesalePrice(product.getWholesalePrice())
-//                .setRetailPrice(product.getRetailPrice())
-//                .setCreateAt(product.getCreateAt())
-//                .setUpdateAt(product.getUpdateAt());
-////                .setBrandResult(brandMapper.toDTO(product.getBrand()))
-////                .setCategoryResult(categoryMapper.toDTO(product.getCategory()));
-//    }
-
-
-//    public Product toProduct(ProductCreate productCreate) {
-//        return new Product()
-//                .setId(productCreate.getId())
-//                .setTitle(productCreate.getTitle())
-//                .setImage(productCreate.getImage())
-//                .setStatus(productCreate.getStatus())
-//                .setCreateAt(java.time.LocalDateTime.now().toString())
-//                .setUpdateAt(null)
-//                .setDescription(productCreate.getDescription())
-//                .setUnit(productCreate.getUnit())
-//                .setSku(productCreate.getSku())
-//                .setBarCode(productCreate.getBarCode())
-//                .setImportPrice(productCreate.getImportPrice())
-//                .setRetailPrice(productCreate.getRetailPrice())
-//                .setWholesalePrice(productCreate.getWholesalePrice())
-//                .setBrandId(productCreate.getBrandId())
-//                .setCategoryId(productCreate.getCategoryId())
-//                .setDeleted(true);
-//    }
-
 }
