@@ -1,6 +1,10 @@
 
 package com.phpn.product;
 
+import com.phpn.exceptions.AppNotFoundException;
+import com.phpn.product.dto.ProductResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/admin")
 public class ProductController {
+    @Autowired
+    ProductService productService;
 
 
     @GetMapping("/products")
@@ -25,6 +31,14 @@ public class ProductController {
     public ModelAndView showProductDetailPage() {
 
         return new ModelAndView("/admin/product/product_detail");
+    }
+
+    @GetMapping("/product/{id}")
+    public ModelAndView showDetailProduct(@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("product", productService.findById(id));
+        modelAndView.setViewName("/admin/product/product_detail");
+        return modelAndView;
     }
 
 

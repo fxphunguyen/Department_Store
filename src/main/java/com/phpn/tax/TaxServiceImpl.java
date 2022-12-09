@@ -25,11 +25,7 @@ public class TaxServiceImpl implements TaxService {
     public List<TaxResult> findAllTax() {
         return taxRepository.findAll()
                 .stream()
-                .map(tax -> {
-                    Integer productId = tax.getId();
-                    TaxResult dto = taxMapper.toDTO(tax);
-                    return dto;
-                })
+                .map(taxMapper::toDTO)
                 .collect(Collectors.toList());
     }
 

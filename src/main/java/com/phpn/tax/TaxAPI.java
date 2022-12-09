@@ -22,6 +22,7 @@ public class TaxAPI {
     @GetMapping("")
     public ResponseEntity<?> showAllTax(){
         List<TaxResult> taxes =  taxService.findAllTax();
+        System.out.println(taxes);
         return new ResponseEntity<>(taxes, HttpStatus.OK);
     }
 

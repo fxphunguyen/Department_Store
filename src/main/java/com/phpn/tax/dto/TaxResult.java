@@ -17,5 +17,4 @@ public class TaxResult {
     private String code;
     private String title;
     private float tax;
-    private String type;
 }
