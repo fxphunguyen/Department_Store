@@ -6,6 +6,7 @@ import com.phpn.customer.dto.CustomerResult;
 import com.phpn.customer.dto.UpdateCustomerParam;
 import com.phpn.customer.dto.CreateCustomerParam;
 import com.phpn.customer.service.CustomerService;
+import com.phpn.exceptions.DataInputException;
 import com.phpn.order.sale.dto.SaleOrderResult;
 import com.phpn.util.AppUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,13 @@ public class CustomerAPI {
     }
 
 
+    @GetMapping("/findCustomerByStatus")
+    public ResponseEntity<?> findCustomerByStatus() {
+        List<CustomerResult> customers = customerService.findCustomerByStatus();
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+
+
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
         CustomerResult customerResult = customerService.findById(id);
@@ -43,7 +51,11 @@ public class CustomerAPI {
 
     @PostMapping("/delete/{id}")
     public void deleteCustomerById(@PathVariable Integer id) {
-        //   customerService.deleteStatusCustomer(id);
+        try {
+            customerService.delete(id);
+        } catch (Exception e) {
+            throw new DataInputException("Lỗi không xác định ");
+        }
     }
 
     @PostMapping("/create")

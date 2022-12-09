@@ -5501,11 +5501,6 @@ html {
 .dataTables_info{
     margin-left: 1148px;
 }
-.dataTables_length{
-    /*position: absolute;*/
-    /*margin-top: 229px;*/
-    margin-left: 1463px;
-}
 #showShippingAddress{
     width: 100%;
 }

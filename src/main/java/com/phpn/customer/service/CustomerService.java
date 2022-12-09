@@ -15,6 +15,8 @@ public interface CustomerService {
 
     List<CustomerResult> findAll();
 
+    List<CustomerResult> findCustomerByStatus();
+
     CustomerResult create(CreateCustomerParam customerCreate);
 
     CustomerResult update(UpdateCustomerParam updateCustomer);
@@ -22,5 +24,7 @@ public interface CustomerService {
     List<SaleOrderResult> findHistoryCustomerOrder(Integer id);
 
     List<CustomerDebtImpl> findCustomerDebtsByCustomerId(Integer customerId);
+
+    void delete(Integer customerId);
 
 }

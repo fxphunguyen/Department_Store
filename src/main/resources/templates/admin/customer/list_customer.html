@@ -194,12 +194,316 @@
         $(document).ready(function () {
             console.log("show all customer")
             $("#showAllCustomerTable").DataTable({
+                language:
+                    {
+                        "processing": "Đang xử lý...",
+                        "aria": {
+                            "sortAscending": ": Sắp xếp thứ tự tăng dần",
+                            "sortDescending": ": Sắp xếp thứ tự giảm dần"
+                        },
+                        "autoFill": {
+                            "cancel": "Hủy",
+                            "fill": "Điền tất cả ô với <i>%d<\/i>",
+                            "fillHorizontal": "Điền theo hàng ngang",
+                            "fillVertical": "Điền theo hàng dọc"
+                        },
+                        "buttons": {
+                            "collection": "Chọn lọc <span class=\"ui-button-icon-primary ui-icon ui-icon-triangle-1-s\"><\/span>",
+                            "colvis": "Hiển thị theo cột",
+                            "colvisRestore": "Khôi phục hiển thị",
+                            "copy": "Sao chép",
+                            "copyKeys": "Nhấn Ctrl hoặc u2318 + C để sao chép bảng dữ liệu vào clipboard.<br \/><br \/>Để hủy, click vào thông báo này hoặc nhấn ESC",
+                            "copySuccess": {
+                                "1": "Đã sao chép 1 dòng dữ liệu vào clipboard",
+                                "_": "Đã sao chép %d dòng vào clipboard"
+                            },
+                            "copyTitle": "Sao chép vào clipboard",
+                            "pageLength": {
+                                "-1": "Xem tất cả các dòng",
+                                "_": "Hiển thị %d dòng",
+                                "1": "Hiển thị 1 dòng"
+                            },
+                            "print": "In ấn",
+                            "createState": "Tạo trạng thái",
+                            "csv": "CSV",
+                            "excel": "Excel",
+                            "pdf": "PDF",
+                            "removeAllStates": "Xóa hết trạng thái",
+                            "removeState": "Xóa",
+                            "renameState": "Đổi tên",
+                            "savedStates": "Trạng thái đã lưu",
+                            "stateRestore": "Trạng thái %d",
+                            "updateState": "Cập nhật"
+                        },
+                        "select": {
+                            "cells": {
+                                "1": "1 ô đang được chọn",
+                                "_": "%d ô đang được chọn"
+                            },
+                            "columns": {
+                                "1": "1 cột đang được chọn",
+                                "_": "%d cột đang được được chọn"
+                            },
+                            "rows": {
+                                "1": "1 dòng đang được chọn",
+                                "_": "%d dòng đang được chọn"
+                            }
+                        },
+                        "searchBuilder": {
+                            "title": {
+                                "_": "Thiết lập tìm kiếm (%d)",
+                                "0": "Thiết lập tìm kiếm"
+                            },
+                            "button": {
+                                "0": "Thiết lập tìm kiếm",
+                                "_": "Thiết lập tìm kiếm (%d)"
+                            },
+                            "value": "Giá trị",
+                            "clearAll": "Xóa hết",
+                            "condition": "Điều kiện",
+                            "conditions": {
+                                "date": {
+                                    "after": "Sau",
+                                    "before": "Trước",
+                                    "between": "Nằm giữa",
+                                    "empty": "Rỗng",
+                                    "equals": "Bằng với",
+                                    "not": "Không phải",
+                                    "notBetween": "Không nằm giữa",
+                                    "notEmpty": "Không rỗng"
+                                },
+                                "number": {
+                                    "between": "Nằm giữa",
+                                    "empty": "Rỗng",
+                                    "equals": "Bằng với",
+                                    "gt": "Lớn hơn",
+                                    "gte": "Lớn hơn hoặc bằng",
+                                    "lt": "Nhỏ hơn",
+                                    "lte": "Nhỏ hơn hoặc bằng",
+                                    "not": "Không phải",
+                                    "notBetween": "Không nằm giữa",
+                                    "notEmpty": "Không rỗng"
+                                },
+                                "string": {
+                                    "contains": "Chứa",
+                                    "empty": "Rỗng",
+                                    "endsWith": "Kết thúc bằng",
+                                    "equals": "Bằng",
+                                    "not": "Không phải",
+                                    "notEmpty": "Không rỗng",
+                                    "startsWith": "Bắt đầu với",
+                                    "notContains": "Không chứa",
+                                    "notEndsWith": "Không kết thúc với",
+                                    "notStartsWith": "Không bắt đầu với"
+                                },
+                                "array": {
+                                    "equals": "Bằng",
+                                    "empty": "Trống",
+                                    "contains": "Chứa",
+                                    "not": "Không",
+                                    "notEmpty": "Không được rỗng",
+                                    "without": "không chứa"
+                                }
+                            },
+                            "logicAnd": "Và",
+                            "logicOr": "Hoặc",
+                            "add": "Thêm điều kiện",
+                            "data": "Dữ liệu",
+                            "deleteTitle": "Xóa quy tắc lọc",
+                            "leftTitle": "Giảm thụt lề",
+                            "rightTitle": "Tăng thụt lề"
+                        },
+                        "searchPanes": {
+                            "countFiltered": "{shown} ({total})",
+                            "emptyPanes": "Không có phần tìm kiếm",
+                            "clearMessage": "Xóa hết",
+                            "loadMessage": "Đang load phần tìm kiếm",
+                            "collapse": {
+                                "0": "Phần tìm kiếm",
+                                "_": "Phần tìm kiếm (%d)"
+                            },
+                            "title": "Bộ lọc đang hoạt động - %d",
+                            "count": "{total}",
+                            "collapseMessage": "Thu gọn tất cả",
+                            "showMessage": "Hiện tất cả"
+                        },
+                        "datetime": {
+                            "hours": "Giờ",
+                            "minutes": "Phút",
+                            "next": "Sau",
+                            "previous": "Trước",
+                            "seconds": "Giây",
+                            "amPm": [
+                                "am",
+                                "pm"
+                            ],
+                            "unknown": "-",
+                            "weekdays": [
+                                "Chủ nhật"
+                            ],
+                            "months": [
+                                "Tháng Một",
+                                "Tháng Hai",
+                                "Tháng Ba",
+                                "Tháng Tư",
+                                "Tháng Năm",
+                                "Tháng Sáu",
+                                "Tháng Bảy",
+                                "Tháng Tám",
+                                "Tháng Chín",
+                                "Tháng Mười",
+                                "Tháng Mười Một",
+                                "Tháng Mười Hai"
+                            ]
+                        },
+                        "emptyTable": "Không có dữ liệu",
+                        "info": "Hiển thị _START_ tới _END_ của _TOTAL_ dữ liệu",
+                        "infoEmpty": "Hiển thị 0 tới 0 của 0 dữ liệu",
+                        "lengthMenu": "Hiển thị _MENU_ dữ liệu",
+                        "loadingRecords": "Đang tải...",
+                        "paginate": {
+                            "first": "Đầu tiên",
+                            "last": "Cuối cùng",
+                            "next": "Sau",
+                            "previous": "Trước"
+                        },
+                        "search": "Tìm kiếm:",
+                        "zeroRecords": "Không tìm thấy kết quả",
+                        "decimal": ",",
+                        "editor": {
+                            "close": "Đóng",
+                            "create": {
+                                "button": "Thêm",
+                                "submit": "Thêm",
+                                "title": "Thêm mục mới"
+                            },
+                            "edit": {
+                                "button": "Sửa",
+                                "submit": "Cập nhật",
+                                "title": "Sửa mục"
+                            },
+                            "error": {
+                                "system": "Đã xảy ra lỗi hệ thống (&lt;a target=\"\\\" rel=\"nofollow\" href=\"\\\"&gt;Thêm thông tin&lt;\/a&gt;)."
+                            },
+                            "multi": {
+                                "info": "Các mục đã chọn chứa các giá trị khác nhau cho đầu vào này. Để chỉnh sửa và đặt tất cả các mục cho đầu vào này thành cùng một giá trị, hãy nhấp hoặc nhấn vào đây, nếu không chúng sẽ giữ lại các giá trị riêng lẻ của chúng.",
+                                "noMulti": "Đầu vào này có thể được chỉnh sửa riêng lẻ, nhưng không phải là một phần của một nhóm.",
+                                "restore": "Hoàn tác thay đổi",
+                                "title": "Nhiều giá trị"
+                            },
+                            "remove": {
+                                "button": "Xóa",
+                                "confirm": {
+                                    "_": "Bạn có chắc chắn muốn xóa %d hàng không?",
+                                    "1": "Bạn có chắc chắn muốn xóa 1 hàng không?"
+                                },
+                                "submit": "Xóa",
+                                "title": "Xóa"
+                            }
+                        },
+                        "infoFiltered": "(được lọc từ _MAX_ dữ liệu)",
+                        "searchPlaceholder": "Nhập tìm kiếm...",
+                        "stateRestore": {
+                            "creationModal": {
+                                "button": "Thêm",
+                                "columns": {
+                                    "search": "Tìm kiếm cột",
+                                    "visible": "Khả năng hiển thị cột"
+                                },
+                                "name": "Tên:",
+                                "order": "Sắp xếp",
+                                "paging": "Phân trang",
+                                "scroller": "Cuộn vị trí",
+                                "search": "Tìm kiếm",
+                                "searchBuilder": "Trình tạo tìm kiếm",
+                                "select": "Chọn",
+                                "title": "Thêm trạng thái",
+                                "toggleLabel": "Bao gồm:"
+                            },
+                            "duplicateError": "Trạng thái có tên này đã tồn tại.",
+                            "emptyError": "Tên không được để trống.",
+                            "emptyStates": "Không có trạng thái đã lưu",
+                            "removeConfirm": "Bạn có chắc chắn muốn xóa %s không?",
+                            "removeError": "Không xóa được trạng thái.",
+                            "removeJoiner": "và",
+                            "removeSubmit": "Xóa",
+                            "removeTitle": "Xóa trạng thái",
+                            "renameButton": "Đổi tên",
+                            "renameLabel": "Tên mới cho %s:",
+                            "renameTitle": "Đổi tên trạng thái"
+                        },
+                        "infoThousands": ".",
+                        "thousands": "."
+                    } ,
                 ajax: {
                     contentType: 'application/json',
                     url: "http://localhost:8080/api/customers",
                     type: "GET",
                     dataSrc: ''
                 },
+                lengthMenu: [
+                    [5, 10, 20, -1],
+                    ["5", "10", "20", "All"]
+                ],
+                searching: true,
+                destroy: true,
+                columns: [
+                    {data: 'customerCode'},
+                    {data: 'name'},
+                    {data: 'phone'},
+                    {data: 'customerGroup'},
+                    {data: 'debtTotal'},
+                    {data: "spendTotal"}],
+                columnDefs: [
+                    {
+                        targets: 0,
+                        render: function (data, type, row, meta) {
+                            return `<a href="/admin/customers/customerInfo/${row.id}">${row.customerCode}</a>`;
+                        }
+                    },
+                    {
+                        targets: 4,
+                        render: function (data, type, row, meta) {
+                            return `
+                                <p class="text-end"
+                                           style="padding-right: 6px;">${row.debtTotal != null ? (new Intl.NumberFormat('vi-VN', {
+                                style: 'currency',
+                                currency: 'VND'
+                            }).format(row.debtTotal)) : "0"}</p>
+
+                            `
+                        }
+                    },
+                    {
+                        targets: 5,
+                        render: function (data, type, row, meta) {
+                            return `
+                                <p class="text-end"
+                                           style="padding-right: 6px;">${row.spendTotal != null ? (new Intl.NumberFormat('vi-VN', {
+                                                                    style: 'currency',
+                                                                    currency: 'VND'
+                            }).format(row.spendTotal)) : "0"}</p>
+
+                            `
+                        }
+                    },
+                    ],
+            })
+        })
+    }
+
+
+    function getAllCustomerInfoByStatus() {
+        $(document).ready(function () {
+            console.log("show all customer")
+            $("#showAllCustomerTable").DataTable({
+                ajax: {
+                    contentType: 'application/json',
+                    url: "http://localhost:8080/api/customers/findCustomerByStatus",
+                    type: "GET",
+                    dataSrc: ''
+                },
+                destroy: true,
                 lengthMenu: [
                     [5, 10, 20, -1],
                     ["5", "10", "20", "All"]
@@ -223,142 +527,31 @@
                     {
                         targets: 4,
                         render: function (data, type, row, meta) {
-                            if(row.id == null){{
-                                return `<span> -- </span>`
-                            }}
-                            return `<span>${row.id}</span>`
+                            return `
+                                <p class="text-end"
+                                           style="padding-right: 6px;">${row.debtTotal != null ? (new Intl.NumberFormat('vi-VN', {
+                                style: 'currency',
+                                currency: 'VND'
+                            }).format(row.debtTotal)) : "0"}</p>
+
+                            `
                         }
                     },
-
-                    ],
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    {
+                        targets: 5,
+                        render: function (data, type, row, meta) {
+                            return `
+                                <p class="text-end"
+                                           style="padding-right: 6px;">${row.spendTotal != null ? (new Intl.NumberFormat('vi-VN', {
+                                style: 'currency',
+                                currency: 'VND'
+                            }).format(row.spendTotal)) : "0"}</p>
+                       `
+                        }
+                    },
+                ],
             })
         })
-    }
-
-    function getAllCustomerInfoByStatus() {
-        return $.ajax({
-            headers: {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            type: "GET",
-            url: "http://localhost:8080/api/customers/showAllCustomerMixInfoByStatus"
-        })
-            .done((data) => {
-
-                console.log(data)
-                $.each(data, (i, item) => {
-                    customer = item;
-                    if (customer.status == "AVAILABLE") {
-                        customer.status = customer.status = "Ngừng giao dịch";
-                    }
-                    if (customer.status == "SUCCESS") {
-                        customer.status = "Đang giao dịch"
-                    }
-                    if (customer.gender == "NU") {
-                        customer.gender = "Nữ"
-                    }
-                    if (customer.gender == "NAM") {
-                        customer.gender = "Nam"
-                    }
-                    if (customer.gender == "KHAC") {
-                        customer.gender = "Khác"
-                    }
-                    console.log(customer)
-                    let str = `
-                         <tr class="MuiTableRow-root jss3687 MuiTableRow-hover" role="checkbox"
-                                aria-checked="false" tabindex="-1">
-                                 <td class="MuiTableCell-root MuiTableCell-body jss3690 MuiTableCell-paddingCheckbox"   style="padding-left: 44px;"><span   class="MuiButtonBase-root MuiIconButton-root jss3677 MuiCheckbox-root MuiCheckbox-colorPrimary jss3667 MuiIconButton-colorPrimary"   aria-disabled="false" style="margin: 0px;"><span
-                                        class="MuiIconButton-label"><input class="jss3680" type="checkbox" data-indeterminate="false" value=""><span class="jss3668"                 font-size="small"></span></span><span
-                                        class="MuiTouchRipple-root"></span></span></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary"
-                                       href="/admin/customers/customerInfo/${customer.id}">${customer.customer_CODE || "---"}</a></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       currentitem="false"
-                                       style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                        ${customer.name || "---"}</p></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                        currentitem="false"
-                                       style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                        ${customer.phone || "---"}</p></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       currentitem="false"
-                                       style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">
-                                        ${customer.customer_GROUP || "---"}
-                                        </p></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       style="padding-right: 6px;">
-                                       ${customer.congno != null ? (new Intl.NumberFormat('vi-VN', {
-                        style: 'currency',
-                        currency: 'VND'
-                    }).format(customer.congno)) : "0"}
-                                       </p></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
-
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       style="padding-right: 6px;">${customer.chitieu != null ? (new Intl.NumberFormat('vi-VN', {
-                        style: 'currency',
-                        currency: 'VND'
-                    }).format(customer.chitieu)) : "0"}</p></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignRight">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">${customer.sl_MH_DAMUA || 0}</p>
-                                </td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 cellClick MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="" currentitem="false"
-                                       style="width: fit-content; max-width: 100%; display: inline-block; vertical-align: middle;">${customer.email || "---"}</p>
-                                </td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft"
-                                    style="padding: 0px 16px;">
-                                    <div class="sc-jSMfEi csJERM"><span
-                                            class="sc-eCYdqJ ccQLIN">${customer.status || "---"}</span></div>
-                                </td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="Nguyễn Huy Trúc" currentitem="false">${customer.nv_PHUTRACH || "---"}</p></td>
-
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="" currentitem="false">${customer.gender || "---"}</p></td>
-
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                   ${customer.ngm_CUOICUNG != null ? moment(customer.ngm_CUOICUNG).format('DD-MM-yyyy') : "---"}</td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap"
-                                       data-tip="Theo nhóm khách hàng" currentitem="false">
-                                       ${customer.sl_SP_DAMUA || "0"}</p></td>
-                                <td class="MuiTableCell-root MuiTableCell-body jss3693 MuiTableCell-alignLeft">
-                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap">
-                                        ${customer.sl_SP_HOANTRA || "0"}</p></td>
-                       </tr>
-                    `;
-                    $("#showAllCustomerInfo").append(str);
-
-                });
-            })
-            .fail((jqXHR) => {
-                console.log("chương trình show info của bn bị lỗi")
-
-            })
     }
 
     function deleteEventButtonModelShow() {
@@ -396,7 +589,7 @@
 </script>
 <style>
     #showAllCustomerTable_length{
-        margin-left: 1399px;
+        float: right;
     }
     #showAllCustomerInfo{
         font-size: 14px;
@@ -408,9 +601,9 @@
     .jss2075{
         font-size: 16px;
     }
-    #showAllCustomerTable_filter{
-        margin-top: -30px;
-    }
+    /*#showAllCustomerTable_filter{*/
+    /*    margin-top: -30px;*/
+    /*}*/
     .dataTables_info{
         font-size: 15px;
     }
