@@ -42,10 +42,10 @@
                         <span title="${item.name}">${item.name}</span>
                     </td>
                     <td>
-                        <span title="${item.createAt}">${item.createAt}</span>
+                        <span title="${item.createAt}">${item.createdAt}</span>
                     </td>
                     <td>
-                        <span title="${item.updateAt}">${item.updateAt}</span>
+                        <span title="${item.updateAt}">${item.updatedAt}</span>
                     </td>
                 </tr>
             `);
