@@ -10,13 +10,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-<<<<<<< HEAD
+
 import vn.fx.qh.sapo.entities.product.Product;
 
 import java.util.ArrayList;
 import java.util.List;
-=======
->>>>>>> dev_c5
+
 
 @RestController
 @RequestMapping("/api/products")
@@ -32,7 +31,7 @@ public class ProductAPI {
         return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
     }
 
-<<<<<<< HEAD
+
 //    @GetMapping()
 //    @Transactional(readOnly = true)
 //    public ResponseEntity<?> showAllProduct() {
@@ -61,8 +60,7 @@ public class ProductAPI {
         return new ResponseEntity<>(productItemResults, HttpStatus.OK);
     }
 
-=======
->>>>>>> dev_c5
+
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
         ProductResult productResult = productService.findById(id);

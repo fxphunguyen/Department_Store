@@ -55,6 +55,16 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.toDTO(productOptional.get());
     }
 
+    @Override
+    public List<ProductResult> findAllProductByDeleted(boolean deleted) {
+        return null;
+    }
+
+    @Override
+    public ProductResult findByIdProduct(Integer id) {
+        return null;
+    }
+
     @Transactional
     @Override
     public ProductResult create(ProductWithImageParam productWithImageParam) {
@@ -105,7 +115,7 @@ public class ProductServiceImpl implements ProductService {
 //        return  null;
     }
 
-<<<<<<< HEAD
+
     @Override
     public Product createProduct(ProductCreate productCreate) {
         return null;
@@ -130,8 +140,7 @@ public class ProductServiceImpl implements ProductService {
 //                }).collect(Collectors.toList());
 //
 //    }
-=======
->>>>>>> dev_c5
+
 
     @Override
     public Page<Product> findAll(Pageable pageable) {

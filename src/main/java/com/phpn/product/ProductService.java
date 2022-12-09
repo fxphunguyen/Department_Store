@@ -16,20 +16,20 @@ public interface ProductService {
 
     ProductResult findById(Integer id);
 
-<<<<<<< HEAD
+
     List<ProductResult> findAllProductByDeleted(boolean deleted);
 
     ProductResult findByIdProduct(Integer id);
 
-    Product create(ProductWithImageParam productWithImageParam);
-
-    Product createShortProduct(ProductShortParam productShortParam);
+//    Product create(ProductWithImageParam productWithImageParam);
+//
+//    Product createShortProduct(ProductShortParam productShortParam);
     Product createProduct(ProductCreate productCreate);
-=======
+
     ProductResult create(ProductWithImageParam productWithImageParam);
 
     ProductResult createShortProduct(ProductShortParam productShortParam);
->>>>>>> dev_c5
+
 
     Page<Product> findAll(Pageable pageable);
 
