@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import vn.fx.qh.sapo.entities.customer.CustomerGender;
 import vn.fx.qh.sapo.entities.customer.CustomerGroup;
 import vn.fx.qh.sapo.entities.customer.CustomerStatus;
-import vn.fx.qh.sapo.entities.customer.ICustomerOwerImpl;
+//import vn.fx.qh.sapo.entities.customer.ICustomerOwerImpl;
 
 import javax.transaction.Transactional;
 import java.util.List;
