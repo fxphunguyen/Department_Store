@@ -33,39 +33,13 @@ public class ProductAPI {
 //    }
 
 
-
-
-   // C0522k1
-//    @GetMapping("")
-//    public ResponseEntity<?> getAllProduct(){
-//        List<ProductResult> products = productService.getAllProductListResult();
-//        return new ResponseEntity<>(products, HttpStatus.OK);
-//    }
-//   @GetMapping("")
-
-//    public ResponseEntity<?> getAllProduct(Pageable pageable){
-//        Page<Product> products;
-//        products = productService.findAll(pageable);
-//        List<Product> productList = products.getContent();
-//        Long totalItem = products.getTotalElements();
-//        int totalPage = products.getTotalPages();
-//       List<ProductItemResult> productItemResults = new ArrayList<>();
-//       for(Product product : productList){
-//           productItemResults.add(productMapper.toDTOPage(product));
-//       }
-//        return new ResponseEntity<>(productItemResults, HttpStatus.OK);
-//    }
-
-
 // kien dang chinh
    @GetMapping("")
     public ResponseEntity<?> getAllProductPage(@RequestParam (defaultValue = "0") Integer pageNo,
                                                @RequestParam (defaultValue = "20") Integer pageSize)
    {
         return new ResponseEntity<>(productService.getAllProdcutItemPage(pageNo,pageSize), HttpStatus.OK);
-
     }
-
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id) {

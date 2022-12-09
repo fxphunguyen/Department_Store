@@ -31,8 +31,6 @@ public class SupplierMapper {
         .setEmployee(employeeMapper.toDTO(supplier.getEmployee()))
         .setPaymentMethodId(supplier.getPaymentMethodId())
         .setPaymentMethod(paymentMethodMapper.toDTO(supplier.getPaymentMethod()));
-
-
     }
 
     public Supplier toModel(SupplierResult supplierResult) {
@@ -46,9 +44,6 @@ public class SupplierMapper {
         .setDescription(supplierResult.getDescription())
         .setEmployeeId(supplierResult.getEmployeeId())
         .setPaymentMethodId(supplierResult.getPaymentMethodId());
-
-
-
     }
 
     public Supplier toModel(SupplierParam supplierParam) {

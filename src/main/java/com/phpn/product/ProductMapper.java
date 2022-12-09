@@ -49,7 +49,6 @@ public class ProductMapper {
     public Product toModel(CreateProductParam productWithImageParam) {
         return new Product(productWithImageParam.getCategoryId(), productWithImageParam.getBrandId())
                 .setTitle(productWithImageParam.getTitle())
-                .setStatus(productWithImageParam.getStatus())
                 .setDescription(productWithImageParam.getDescription())
                 .setUnit(productWithImageParam.getUnit())
                 .setSku(productWithImageParam.getSku())
