@@ -33,6 +33,6 @@ public interface ProductService {
 
     Page<Product> findAll(Pageable pageable);
 
-    public List<?> getAllProdcutItemPage(Integer pageNo, Integer pageSize);
+    List<?> getAllProductItemPage(Integer pageNo, Integer pageSize);
 
 }

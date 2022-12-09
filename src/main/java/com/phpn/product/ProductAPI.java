@@ -33,11 +33,11 @@ public class ProductAPI {
 
 
 // kien dang chinh
-   @GetMapping("")
+    @GetMapping("")
     public ResponseEntity<?> getAllProductPage(@RequestParam (defaultValue = "0") Integer pageNo,
-                                               @RequestParam (defaultValue = "20") Integer pageSize)
+                                           @RequestParam (defaultValue = "20") Integer pageSize)
    {
-        return new ResponseEntity<>(productService.getAllProdcutItemPage(pageNo,pageSize), HttpStatus.OK);
+        return new ResponseEntity<>(productService.getAllProductItemPage(pageNo,pageSize), HttpStatus.OK);
     }
 
 
