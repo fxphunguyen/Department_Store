@@ -13,6 +13,7 @@ import vn.fx.qh.sapo.entities.product.ProductStatus;
 import vn.fx.qh.sapo.entities.product.tax.Tax;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 
 @Getter
@@ -26,8 +27,8 @@ public class ProductResult {
     private String title;
     private String image;
     private ProductStatus status;
-    private String createAt;
-    private String updateAt;
+    private Instant createAt;
+    private Instant updateAt;
     private String description;
     private String unit;
     private String sku;
