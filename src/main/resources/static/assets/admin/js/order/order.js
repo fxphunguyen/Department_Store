@@ -1215,7 +1215,7 @@ $(() => {
             "data": JSON.stringify(saleOrder)
         })
             .done((data) => {
-                console.log(data);
+                App.IziToast.showSuccessAlert("Tạo đơn hàng thành công!");
                 location.href = `${location.origin}/admin/orders/${data.id}`;
             })
             .fail((jqXHR) => {
