@@ -46,7 +46,7 @@ public class ProductAPI {
 //        List<ProductResult> products = productService.getAllProductListResult();
 //        return new ResponseEntity<>(products, HttpStatus.OK);
 //    }
-   @GetMapping("")
+//   @GetMapping("")
     public ResponseEntity<?> getAllProduct(Pageable pageable){
         Page<Product> products;
         products = productService.findAll(pageable);
