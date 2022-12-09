@@ -1,7 +1,5 @@
 package com.phpn.tax.dto;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 import vn.fx.qh.sapo.entities.product.tax.Tax;
 
