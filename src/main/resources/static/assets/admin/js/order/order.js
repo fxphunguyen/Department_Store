@@ -879,7 +879,7 @@ const formatDiscount = (event, productId, retailPrice) => {
 
 function renderAmountOrderItem(productId) {
     let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId === productId);
-    let amount = (saleOrderItem.price - saleOrderItem.discount) * saleOrderItem.quantity;
+    let amount = (saleOrderItem.price * saleOrderItem.quantity) - saleOrderItem.discount;
     $(`#amount_product_${productId}`).text(amount.formatVND());
 }
 
