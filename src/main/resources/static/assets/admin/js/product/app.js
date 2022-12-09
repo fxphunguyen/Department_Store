@@ -38,6 +38,25 @@ class App {
         }
     }
 
+    static renderRowProduct(item) {
+        let str = `
+             <tr id="tr_${item.id}" >
+                <td class="align-middle"></td>
+                <td class="align-middle"><input type="checkbox" value=""></td>
+                <td class="align-middle"><img width="70px" height="50px" src=${item.image} alt=""></td>
+                <td class="align-middle">${item.title}</td>
+                <td class="align-middle">${item.category.name}</td>
+                <td class="align-middle">${item.brand.name}</td>
+                <td class="align-middle">${item.available}</td>
+                <td class="align-middle">${item.inventory}</td>
+                <td class="align-middle">${item.status}</td>
+                <td class="align-middle">${item.createAt}</td>
+                <td class="align-middle">${item.updateAt}</td>
+            </tr>
+        `;
+        return str;
+    }
+
 }
 
 class Image {
@@ -68,23 +87,33 @@ class Product {
         this.applyTax = applyTax;
         this.productImageParams = image;
     }
+}
 
-    static renderRowProduct(product) {
-        let str = `
-             <tr id="tr_${product.id}" >
-                <td class="align-middle"></td>
-                <td class="align-middle"><input type="checkbox" value=""></td>
-                <td class="align-middle"><img width="70px" height="50px" src=${product.image} alt=""></td>
-                <td class="align-middle">${product.title}</td>
-                <td class="align-middle">${product.categoryName}</td>
-                <td class="align-middle">${product.brandName}</td>
-                <td class="align-middle">${product.available}</td>
-                <td class="align-middle">${product.available + product.trading}</td>
-                <td class="align-middle">${product.status}</td>
-                <td class="align-middle">${product.createAt}</td>
-                <td class="align-middle">${product.updateAt}</td>
-            </tr>
-        `;
-        return str;
+class ProductItemPage {
+    constructor(id, image, title, brand, category, available, inventory, status, createAt, updateAt) {
+        this.id = id;
+        this.image = image;
+        this.title = title;
+        this.brand = brand;
+        this.category = category;
+        this.available = available;
+        this.inventory = inventory;
+        this.status = status;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+    }
+}
+
+class Category {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+class Brand {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
     }
 }

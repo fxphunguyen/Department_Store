@@ -93,10 +93,11 @@ public class ProductMapper {
     public ProductItemResult toDTOPage(Product product) {
         return new ProductItemResult()
                 .setId(product.getId())
+                .setTitle(product.getTitle())
                 .setImage(product.getImage())
                 .setStatus(product.getStatus())
                 .setAvailable(0)
-                .setTrading(0)
+                .setInventory(0)
                 .setCategory(categoryMapper.toDTO(product.getCategory()))
                 .setBrand(brandMapper.toDTO(product.getBrand()))
                 .setCreateAt(product.getCreateAt())

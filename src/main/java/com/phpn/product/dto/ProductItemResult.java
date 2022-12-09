@@ -21,7 +21,7 @@ public class ProductItemResult {
     private CategoryResult category;
     private BrandResult brand;
     private Integer available;
-    private Integer trading;
+    private Integer inventory;
     private ProductStatus status;
     private String createAt;
     private String updateAt;
