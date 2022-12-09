@@ -55,6 +55,16 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.toDTO(productOptional.get());
     }
 
+    @Override
+    public List<ProductResult> findAllProductByDeleted(boolean deleted) {
+        return null;
+    }
+
+    @Override
+    public ProductResult findByIdProduct(Integer id) {
+        return null;
+    }
+
     @Transactional
     @Override
     public ProductResult create(ProductWithImageParam productWithImageParam) {
@@ -107,8 +117,34 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public Page<Product> findAll(Pageable pageable) {
+    public Product createProduct(ProductCreate productCreate) {
         return null;
+    }
+
+//    @Override
+//    @Transactional(readOnly = true)
+//    public List<ProductResult> getAllProductListResult() {
+////        List<ProductResult> products=new ArrayList<>();
+//        List<Product> entities = productRepository.findAll();
+////        for (Product product : entities) {
+////            products.add(  productMapper.toDTO(product));
+////        }
+////        return products;
+//
+//        return entities.stream().map(
+//                entity -> {
+//                    ProductResult dto = productMapper.toDTO(entity);
+//                    // int ton = itemRepository.store();
+//                    //   dto.setTon(ton);
+//                    return dto;
+//                }).collect(Collectors.toList());
+//
+//    }
+
+
+    @Override
+    public Page<Product> findAll(Pageable pageable) {
+        return productRepository.findAll(pageable);
     }
 
 }
