@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.time.Instant;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,7 +27,7 @@ public class SupplierParam {
     private Integer employeeId;
     private Integer paymentMethodId;
     private Integer locationRegionId;
-    private String createAt;
-    private String updateAt;
+    private Instant createAt;
+    private Instant updateAt;
 
 }

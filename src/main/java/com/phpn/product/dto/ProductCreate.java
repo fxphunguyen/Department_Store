@@ -9,6 +9,7 @@ import vn.fx.qh.sapo.entities.product.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.Instant;
 
 
 @Data
@@ -17,8 +18,8 @@ public class ProductCreate implements Serializable {
     private Integer id;
     private String title;
     private String image;
-    private String createAt;
-    private String updateAt;
+    private Instant createAt;
+    private Instant updateAt;
     private String description;
     private String unit;
     private String sku;

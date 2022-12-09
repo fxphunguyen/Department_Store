@@ -89,7 +89,6 @@ public class SaleOrderServiceImpl implements SaleOrderService {
         order.setGrandTotal(new BigDecimal(0));
         order.setTotal(new BigDecimal(0));
         order.setOrderCode("SON00" + String.valueOf(ranNum));
-        order.setCreateAt(Instant.now());
         order.setSubTotal(new BigDecimal(0));
         order.setLine1(order.getLine1());
         order.setLine2(order.getLine2());
