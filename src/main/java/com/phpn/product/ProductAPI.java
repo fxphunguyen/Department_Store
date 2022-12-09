@@ -69,6 +69,7 @@ public class ProductAPI {
 
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody ProductWithImageParam productWithImageParam) {
+        System.out.println(productWithImageParam);
         return new ResponseEntity<>(productService.create(productWithImageParam), HttpStatus.OK);
     }
 
