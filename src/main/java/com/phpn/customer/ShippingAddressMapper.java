@@ -30,7 +30,6 @@ public class ShippingAddressMapper {
 
     public ShippingAddress toModel(CreateShippingAddressParam createParam) {
         return new ShippingAddress()
-                .setId(0)
                 .setLine1(createParam.getLine1())
                 .setLine2(createParam.getLine2())
                 .setCustomerId(createParam.getCustomerId())
@@ -44,7 +43,10 @@ public class ShippingAddressMapper {
                 .setEmail(createParam.getEmail())
                 .setFullName(createParam.getFullName())
                 .setMobile(createParam.getMobile())
-                .setSupplierId(1);
+                .setSupplierId(createParam.getSupplierId())
+                .setShippingAddress(createParam.getIsShipping())
+                .setReceiveBill(createParam.getIsReceiveBill());
+
     }
 
     public ShippingAddressShowCustomerInfo toCustomerInfo(ShippingAddress shippingAddress) {

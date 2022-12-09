@@ -1,10 +1,9 @@
 package com.phpn.customer.controller;
 
-import com.phpn.customer.customerDebt.CustomerDebt;
 import com.phpn.customer.customerDebt.CustomerDebtImpl;
+import com.phpn.customer.dto.CreateCustomerParam;
 import com.phpn.customer.dto.CustomerResult;
 import com.phpn.customer.dto.UpdateCustomerParam;
-import com.phpn.customer.dto.CreateCustomerParam;
 import com.phpn.customer.service.CustomerService;
 import com.phpn.order.sale.dto.SaleOrderResult;
 import com.phpn.util.AppUtil;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import vn.fx.qh.sapo.entities.customer.CustomerGender;
 import vn.fx.qh.sapo.entities.customer.CustomerGroup;
 import vn.fx.qh.sapo.entities.customer.CustomerStatus;
+
 import java.util.List;
 
 @RestController
@@ -120,7 +120,6 @@ public class CustomerAPI {
 
 
     @GetMapping("/customerDebt/{id}")
-    @Transactional(readOnly = true)
     public ResponseEntity<?> findCustomerDebtById(@PathVariable Integer id) {
         List<CustomerDebtImpl> customerDebtImpl = customerService.findCustomerDebtsByCustomerId(id);
         return new ResponseEntity<>(customerDebtImpl, HttpStatus.OK);
