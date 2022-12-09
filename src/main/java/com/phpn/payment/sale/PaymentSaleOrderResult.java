@@ -9,7 +9,6 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 
 @Getter
 @Setter
@@ -32,7 +31,7 @@ public class PaymentSaleOrderResult {
 
     private Integer paymentMethodId;
 
-    private Instant createAt;
+    private String createAt;
 
     private String description;
 }

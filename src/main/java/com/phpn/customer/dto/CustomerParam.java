@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-import java.time.Instant;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -23,7 +21,7 @@ public class CustomerParam {
     private String phone;
 
 
-    private Instant createAt;
+    private String createAt;
 
 
     private Integer employeeId;

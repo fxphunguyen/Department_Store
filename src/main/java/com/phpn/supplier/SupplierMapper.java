@@ -6,7 +6,6 @@ import vn.fx.qh.sapo.entities.product.supplier.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Component
@@ -30,8 +29,9 @@ public class SupplierMapper {
         .setEmployeeId(supplier.getEmployeeId())
         .setEmployee(employeeMapper.toDTO(supplier.getEmployee()))
         .setPaymentMethodId(supplier.getPaymentMethodId())
-        .setPaymentMethod(paymentMethodMapper.toDTO(supplier.getPaymentMethod()));
-
+        .setPaymentMethod(paymentMethodMapper.toDTO(supplier.getPaymentMethod()))
+        .setCreateAt(supplier.getCreateAt())
+        .setUpdateAt(supplier.getUpdateAt());
     }
 
     public Supplier toModel(SupplierResult supplierResult) {
@@ -44,9 +44,10 @@ public class SupplierMapper {
         .setStatus(supplierResult.getStatus())
         .setDescription(supplierResult.getDescription())
         .setEmployeeId(supplierResult.getEmployeeId())
-        .setPaymentMethodId(supplierResult.getPaymentMethodId());
+        .setPaymentMethodId(supplierResult.getPaymentMethodId())
 
-
+        .setCreateAt(supplierResult.getCreateAt())
+        .setUpdateAt(supplierResult.getUpdateAt());
     }
 
     public Supplier toModel(SupplierParam supplierParam) {
@@ -70,9 +71,10 @@ public class SupplierMapper {
         .setPhone(supplierCreate.getPhone())
         .setDescription(supplierCreate.getDescription())
         .setEmployeeId(supplierCreate.getEmployeeId())
-        .setPaymentMethodId(supplierCreate.getPaymentMethodId());
+        .setPaymentMethodId(supplierCreate.getPaymentMethodId())
 
-
+        .setCreateAt(LocalDateTime.now().toString())
+        .setUpdateAt(LocalDateTime.now().toString());
     }
 
 }

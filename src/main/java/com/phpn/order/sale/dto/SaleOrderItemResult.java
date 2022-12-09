@@ -22,7 +22,9 @@ public class SaleOrderItemResult {
 
     private Integer orderId;
 
-    private BigDecimal price;
+    private BigDecimal total;
+
+    private ItemResult item;
 
     private Integer quantity;
 

@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,7 +35,8 @@ public class ProductMapper {
                 .setTitle(productParam.getTitle())
                 .setImage(productParam.getImage())
                 .setStatus(productParam.getStatus())
-
+                .setCreateAt(java.time.LocalDateTime.now().toString())
+                .setUpdateAt(null)
                 .setDescription(productParam.getDescription())
                 .setUnit(productParam.getUnit())
                 .setSku(productParam.getSku())
@@ -52,6 +52,8 @@ public class ProductMapper {
         return new Product(productWithImageParam.getCategoryId(), productWithImageParam.getBrandId())
                 .setTitle(productWithImageParam.getTitle())
                 .setStatus(productWithImageParam.getStatus())
+                .setCreateAt(java.time.LocalDateTime.now().toString())
+                .setUpdateAt(null)
                 .setDescription(productWithImageParam.getDescription())
                 .setUnit(productWithImageParam.getUnit())
                 .setSku(productWithImageParam.getSku())
@@ -76,7 +78,9 @@ public class ProductMapper {
                 .setDescription(product.getDescription())
                 .setImportPrice(product.getImportPrice())
                 .setWholesalePrice(product.getWholesalePrice())
-                .setRetailPrice(product.getRetailPrice());
+                .setRetailPrice(product.getRetailPrice())
+                .setCreateAt(product.getCreateAt())
+                .setUpdateAt(product.getUpdateAt());
         List<TaxResult> taxSaleList = product.getTaxSale().stream().map(taxMapper::toDTO).collect(Collectors.toList());
         result.setTaxSaleList(taxSaleList);
         List<TaxResult> taxPurchaseList = product.getTaxPurchase().stream().map(taxMapper::toDTO).collect(Collectors.toList());
@@ -94,7 +98,9 @@ public class ProductMapper {
                 .setAvailable(0)
                 .setTrading(0)
                 .setCategory(categoryMapper.toDTO(product.getCategory()))
-                .setBrand(brandMapper.toDTO(product.getBrand()));
+                .setBrand(brandMapper.toDTO(product.getBrand()))
+                .setCreateAt(product.getCreateAt())
+                .setUpdateAt(product.getUpdateAt());
     }
 
 
