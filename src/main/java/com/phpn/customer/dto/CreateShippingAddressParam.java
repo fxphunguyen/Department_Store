@@ -17,7 +17,7 @@ public class CreateShippingAddressParam {
 
 
     @NotBlank(message = "Không được để trông địa chỉ!!")
-    @Size(min=2, max=200, message = "Dữ liệu địa chỉ không được ngắn hơn 2 kí tự và nhiều hơn 200 kí tự")
+    @Size(min = 2, max = 200, message = "Dữ liệu địa chỉ không được ngắn hơn 2 kí tự và nhiều hơn 200 kí tự")
     private String line1;
 
     private String line2;
@@ -45,20 +45,23 @@ public class CreateShippingAddressParam {
 
     @NotBlank(message = "Không được để trống email")
     @Email(message = "Email : đây ko  phải là 1 email")
-    @Size(min=2, max=30, message = "Dữ liệu email không được ngắn hơn 2 kí tự và nhiều hơn 30 kí tự")
+    @Size(min = 2, max = 30, message = "Dữ liệu email không được ngắn hơn 2 kí tự và nhiều hơn 30 kí tự")
     private String email;
 
     private String zipCode;
 
     @NotBlank(message = "Tên khách hàng không được để trống")
-    @Size(min=2, max=200, message = "Dữ liệu tên không được ngắn hơn 2 kí tự và nhiều hơn 200 kí tự")
-    private  String fullName;
+    @Size(min = 2, max = 200, message = "Dữ liệu tên không được ngắn hơn 2 kí tự và nhiều hơn 200 kí tự")
+    private String fullName;
 
     @NotBlank(message = "KHông được để trống trường mobile")
-    @Size(min=2, max=30, message = "Dữ liệu số điện thoại không được ngắn hơn 2 kí tự và nhiều hơn 30 kí tự")
-    private  String mobile;
+    @Size(min = 2, max = 30, message = "Dữ liệu số điện thoại không được ngắn hơn 2 kí tự và nhiều hơn 30 kí tự")
+    private String mobile;
 
     private Integer supplierId;
+
+    private Boolean isReceiveBill;
+    private Boolean isShipping;
 
 
 }
