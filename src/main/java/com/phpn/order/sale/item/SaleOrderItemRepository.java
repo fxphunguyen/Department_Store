@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,4 +26,6 @@ public interface SaleOrderItemRepository extends JpaRepository<SaleOrderItem, In
     int countSaleOrderItemByOrderId(@Param("orderId") int orderId);
 
 
+    @Query(value = "call sp_getCountItemByCustomerId(:id);" , nativeQuery = true)
+    Integer getQuantityItemCustomerOrderById(Integer id);
 }

@@ -47,4 +47,9 @@ public class OrderItemServiceImpl implements OrderItemService {
              .stream().map(orderItem -> orderItemMapper.toDTO(orderItem))
              .collect(Collectors.toList());
  }
+
+ @Override
+ public Integer getQuantityItemCustomerOrderById(Integer id) {
+     return orderItemRepository.getQuantityItemCustomerOrderById(id);
+ }
 }

@@ -64,6 +64,22 @@ public class SaleOrderMapper {
                 //.setOrderStatusId(orderParam.getOrderStatusId());
 
     }
+
+    public SaleOrderResult toCustomerOrder(SaleOrder order) {
+        return new SaleOrderResult()
+                .setId(order.getId())
+                .setFullName(order.getFullName())
+                .setEmployeeId(order.getEmployeeId())
+                .setEmployee(employeeMapper.toDTO(order.getEmployee()))
+                .setOrderCode(order.getOrderCode())
+                .setOrderStatusId(order.getOrderStatusCode().getValue())
+                .setOrderStatus(orderStatusMapper.toDTO(order.getOrderStatus()))
+                .setPaymentStatusId(order.getPaymentStatusCode().getValue())
+                .setPaymentStatus(orderStatusMapper.toDTO(order.getPaymentStatus()))
+                .setDiscount(order.getDiscount())
+                .setDescription(order.getDescription())
+                .setCreateAt(order.getCreateAt());
+    }
 }
 
 
