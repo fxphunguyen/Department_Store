@@ -1,12 +1,11 @@
 package com.phpn.employee;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import vn.fx.qh.sapo.entities.employee.Employee;
+
 import java.util.List;
 import java.util.Optional;
-
-import vn.fx.qh.sapo.entities.employee.*;
-
-import org.springframework.stereotype.Repository;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {

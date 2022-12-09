@@ -14,8 +14,9 @@ public interface ProductService {
 
     List<ProductResult> findAll();
 
-    List<ProductResult>  showAllProduct();
+    ProductResult findById(Integer id);
 
+<<<<<<< HEAD
     List<ProductResult> findAllProductByDeleted(boolean deleted);
 
     ProductResult findByIdProduct(Integer id);
@@ -24,6 +25,11 @@ public interface ProductService {
 
     Product createShortProduct(ProductShortParam productShortParam);
     Product createProduct(ProductCreate productCreate);
+=======
+    ProductResult create(ProductWithImageParam productWithImageParam);
+
+    ProductResult createShortProduct(ProductShortParam productShortParam);
+>>>>>>> dev_c5
 
     Page<Product> findAll(Pageable pageable);
 
