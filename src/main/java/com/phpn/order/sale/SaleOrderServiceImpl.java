@@ -108,7 +108,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
                 throw new NotFoundException("Không tìm thấy Id sản phẩm " + orderItemExport.getProductId());
             }
             //lấy toàn bộ item theo productId
-            List<Item> items = itemRepository.findAllByProductIdAndAvailableGreaterThanOrderByCreateAt(orderItemExport.getProductId(), 0);
+            List<Item> items = itemRepository.findAllByProductIdAndAvailableGreaterThanOrderByCreatedAt(orderItemExport.getProductId(), 0);
             int totalAvailable = items.stream().mapToInt(Item::getAvailable).sum();
             if (totalAvailable < orderItemExport.getQuantity()) {
                 throw new NotEnoughQuantityException("Không đủ số lượng cho đơn hàng, vui lòng kiểm tra lại !");
