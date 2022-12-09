@@ -12,7 +12,10 @@ import java.util.Optional;
 
 @Repository
 public interface SaleOrderItemRepository extends JpaRepository<SaleOrderItem, Integer> {
+
     List<SaleOrderItem> findAllByOrderId(Integer id);
+
+    List<SaleOrderItem> findSaleOrderItemByOrderId(Integer id);
 
     Boolean existsByProduct(Product product);
 

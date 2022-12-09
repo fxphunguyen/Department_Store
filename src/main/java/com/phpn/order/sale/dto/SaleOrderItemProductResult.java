@@ -13,4 +13,6 @@ public class SaleOrderItemProductResult {
     private Integer id;
     private String title;
     private String mainUrl;
+
+
 }

@@ -2,6 +2,7 @@ package com.phpn.product;
 
 import com.phpn.brand.dto.BrandMapper;
 import com.phpn.category.dto.CategoryResult;
+import com.phpn.order.sale.dto.SaleOrderItemProductResult;
 import com.phpn.order.sale.dto.SaleOrderItemResult;
 import com.phpn.product.dto.*;
 import com.phpn.category.dto.CategoryMapper;
@@ -112,8 +113,12 @@ public class ProductMapper {
 
     }
     
-    public SaleOrderItemResult toModel() {
-
+    public SaleOrderItemProductResult toModel(Product product) {
+        SaleOrderItemProductResult result = new SaleOrderItemProductResult()
+                .setId(product.getId())
+                .setTitle(product.getTitle())
+                .setMainUrl(product.getImage());
+        return result;
     }
 
 //    public ProductResult toItemDTO(Product product) {

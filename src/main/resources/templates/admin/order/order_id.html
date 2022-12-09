@@ -900,7 +900,7 @@
             "headers": {
                 "accept": "application/json", "content-type": "application/json"
             },
-            "type": "get", "url": "http://localhost:8080/api/orders/" + orderItemId
+            "type": "get", "url": "http://localhost:8080/api/orderitems/" + orderItemId
         })
             .done((data) => {
                 let count = 1;
@@ -1045,7 +1045,7 @@
                                                                         <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
                                                                             style="width: 105px; padding-left: 0px; padding-right: 0px;"><p
                                                                                 class="MuiTypography-root MuiTypography-body1"
-                                                                                style="text-align: center; cursor: not-allowed;">${item.orderItems}</p></td>
+                                                                                style="text-align: center; cursor: not-allowed;">1</p></td>
                                                                         <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
                                                                             <span class="MuiTypography-root MuiTypography-body1"
                                                                                   data-tip="true" data-for="tooltipTax-1258834332"
