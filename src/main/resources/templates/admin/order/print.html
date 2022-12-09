@@ -14,21 +14,23 @@
             }
         }
 
-        #printable{
-            font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
+        #printable {
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
             font-size: 18px;
         }
+
         .logo {
+            justify-content: center;
             border-bottom: dashed 0.5px;
             padding-bottom: 10px;
             margin-bottom: 10px;
-
         }
-        .logo img{
-            width: 150px;
+
+        .logo img {
+            width: 400px;
             height: 150px;
             position: relative;
-            left: 44%;
+            left: 34%;
         }
 
         .tt {
@@ -61,84 +63,78 @@
             border-bottom: solid 1px black;
             padding-bottom: 5%;
         }
-        .users{
+
+        .users {
             border-bottom: dashed 0.5px;
         }
+
         table {
             border-bottom: dashed 1px gray;
             width: 100%;
         }
-        .total{
+
+        .total {
             width: 100%;
         }
-        .total p{
+
+        .total p {
 
             text-align: left;
         }
-        .total p span{
+
+        .total p span {
 
             float: right;
         }
-        #end{
+
+        #end {
             text-align: center;
             font-style: italic;
 
         }
     </style>
-    <div id="printable" th:object="${orders}">
-        <div class="logo" >
-
+    <div id="printable">
+        <div class="logo">
             <img src="/templates/admin/order/image/logo.png" alt="">
-
             <div class="tt">
-                <h5>DEPARTMENT_STORE</h5><br>
-                <p>HUẾ</p><br>
+                <h5>Department Store</h5><br>
+                <p>Huế</p><br>
                 <p>0989989789</p>
             </div>
         </div>
-
-        <div class="title">
-            <h4>
-                HÓA ĐƠN BÁN HÀNG
-            </h4>
-
-            <p id="mhd">Số: <span th:text="*{orderCode}"></span></p>
-            <p id="datehd">Ngày: <span th:text="*{#dates.format(createdAt, 'dd/MM/yyyy HH:mm')}"></span></p>
-
-        </div>
-        <div class="users">
-            <p>Khách hàng: <span th:text="*{customer.name}"></span></p>
-            <p>Điện thoại: <span th:text="*{customer.phone}"></span></p>
-            <p>Địa chỉ: <span th:text="*{line2} == 'null' ? *{line1 + ', ' + city + ', ' + province} : *{line1 + ', ' + line2 + ', ' + city + ', ' + province}"></span></p>
-        </div>
-        <div>
-            <tr>
-
-            </tr>
-        </div>
-
+        <th:block th:object="${orders}">
+            <div class="title">
+                <h4>HÓA ĐƠN BÁN HÀNG</h4>
+                <p id="mhd">Số: <span th:text="*{orderCode}"></span></p>
+                <p id="datehd">Ngày: <span th:text="*{#dates.format(createdAt, 'dd/MM/yyyy HH:mm')}"></span></p>
+            </div>
+            <div class="users">
+                <p th:text="'Khách hàng: ' + *{customer.name}"></p>
+                <p th:text="'Số điện thoại: ' + *{customer.phone}"></p>
+                <p>Địa chỉ: <th:block th:text="*{line2} == '' ? *{line1 + ', ' + city + ', ' + province} : *{line1 + ', ' + line2 + ', ' + city + ', ' + province}"/></p>
+            </div>
+        </th:block>
         <table>
             <thead>
-            <th style="text-align: left;">SL</th>
-            <th style="text-align: center;">Đơn giá</th>
-            <th style="text-align: right;">Thành tiền</th>
+                <th style="text-align: left;">SL</th>
+                <th style="text-align: center;">Đơn giá</th>
+                <th style="text-align: right;">Thành tiền</th>
             </thead>
-            <tbody class="tbTable">
-            <tr>
-<!--                <td th:text="*{orderItems.product.title}"></td>-->
-            </tr>
-            <tr>
-                <td style="text-align: left;">1</td>
-                <td style="text-align: center;">350.000</td>
-                <td style="text-align: right;">350.000</td>
-            </tr>
+            <tbody class="tbTable" th:each="item : ${orders.orderItems}">
+                <tr>
+                    <td th:text="*{item.product.title}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;" th:text="${item.quantity}"></td>
+                    <td style="text-align: center;" th:text="${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT') + '₫'}"></td>
+                    <td style="text-align: right;" th:text="${#numbers.formatDecimal(item.price * item.quantity, 0, 'COMMA', 0, 'POINT') + '₫'}"></td>
+                </tr>
             </tbody>
         </table>
-
-        <div class="total">
-            <p>Cộng tiền hàng: <span>...</span></p>
-            <p>Chiết khấu: <span>...</span></p>
-            <p style="font-weight:bold;">Khách phải trả: <span>...</span></p>
+        <div class="total" th:object="${orders}">
+            <p>Cộng tiền hàng: <span th:text="${#numbers.formatDecimal(orders.total, 0, 'COMMA', 0, 'POINT') + '₫'}"></span></p>
+            <p>Chiết khấu: <span th:text=" ${#numbers.formatDecimal(orders.discount, 0, 'COMMA', 0, 'POINT') + '₫'}"></span></p>
+            <p style="font-weight:bold;">Khách phải trả: <span th:text=" ${#numbers.formatDecimal(orders.grandTotal, 0, 'COMMA', 0, 'POINT') + '₫'}"></span></p>
             <p>Tiền khách đưa: <span>...</span></p>
             <p>Trả lại: <span>...</span></p>
         </div>

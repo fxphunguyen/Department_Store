@@ -876,30 +876,18 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
-                                                        style="width: 105px; padding-left: 0px; padding-right: 0px;"><p
-                                                            class="MuiTypography-root MuiTypography-body1"
-                                                            style="text-align: center; cursor: not-allowed;"
-                                                            th:text="*{item.quantity}"></p></td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
-                                                                            <span class="MuiTypography-root MuiTypography-body1"
-                                                                                  data-tip="true"
-                                                                                  data-for="tooltipTax-1258834332"
-                                                                                  currentitem="false"
-                                                                                  style="text-align: right;"
-                                                                                  th:text="*{#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT') + 'đ'}"></span>
+                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter" style="width: 105px; padding-left: 0; padding-right: 0;">
+                                                        <p class="MuiTypography-root MuiTypography-body1" style="text-align: center; cursor: not-allowed;" th:text="*{item.quantity}"></p>
+                                                        <span class="MuiTypography-root MuiTypography-body1" data-tip="true" data-for="tooltipTax-1258834332" currentitem="false"style="text-align: right;" th:text="*{#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT') + '₫'}"></span>
                                                     </td>
                                                     <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
-                                                        <button class="MuiButtonBase-root MuiButton-root MuiButton-text jss5875 showOnly"
-                                                                tabindex="0" type="button"
-                                                                id="discount-line-item-1258834332"><span
-                                                                class="MuiButton-label" th:text="*{item.discount}"><p
-                                                                class="MuiTypography-root discount_rate_line_item MuiTypography-body1"
-                                                                style="color: rgb(255, 77, 77); font-size: 12px;"></p></span>
+                                                        <button class="MuiButtonBase-root MuiButton-root MuiButton-text jss5875 showOnly" tabindex="0" type="button" id="discount-line-item-1258834332">
+                                                            <span class="MuiButton-label" th:text="*{item.discount}">
+                                                                <p class="MuiTypography-root discount_rate_line_item MuiTypography-body1" style="color: rgb(255, 77, 77); font-size: 12px;"></p>
+                                                            </span>
                                                         </button>
                                                     </td>
-                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
-                                                        th:text="*{#numbers.formatDecimal(item.quantity * item.price, 0, 'COMMA', 0, 'POINT') + 'đ'}"></td>
+                                                    <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight" th:text="*{#numbers.formatDecimal(item.quantity * item.price, 0, 'COMMA', 0, 'POINT') + '₫'}"></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -912,12 +900,11 @@
                                     <div class="MuiBox-root jss4428 jss4375">
                                         <div class="MuiBox-root jss4437 create-order-step5 jss4429">
                                             <li class="MuiListItem-root jss4430 MuiListItem-gutters">
-                                                <div class="MuiListItemText-root"><span
-                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Tổng tiền</span>
+                                                <div class="MuiListItemText-root">
+                                                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Tổng tiền</span>
                                                 </div>
-                                                <div class="MuiListItemText-root"><span
-                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock"
-                                                        th:text="${#numbers.formatDecimal(orders.total, 0, 'COMMA', 0, 'POINT') + 'đ'}"></span>
+                                                <div class="MuiListItemText-root">
+                                                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock" th:text="${#numbers.formatDecimal(orders.total, 0, 'COMMA', 0, 'POINT') + '₫'}"></span>
                                                 </div>
                                             </li>
                                             <li class="MuiListItem-root jss4430 MuiListItem-gutters">
@@ -929,75 +916,57 @@
                                                 <!--                                                        data-tip="true" data-for="toolTipTaxItem-10"-->
                                                 <!--                                                        currentitem="false">35,000</span>-->
                                                 <!--                                                </div>-->
-                                                <div class="__react_component_tooltip t905c93fd-37a2-4f83-8928-e58daec447de place-bottom type-dark"
-                                                     id="toolTipTaxItem-10" data-id="tooltip">
+                                                <div class="__react_component_tooltip t905c93fd-37a2-4f83-8928-e58daec447de place-bottom type-dark" id="toolTipTaxItem-10" data-id="tooltip">
                                                     <div class="MuiBox-root jss5791">
                                                         <div class="MuiBox-root jss5792">
-                                                            <p class="MuiTypography-root MuiTypography-body1"
-                                                               style="padding-right: 16px;">Thuế đã bao gồm trong
-                                                                SP</p>
+                                                            <p class="MuiTypography-root MuiTypography-body1" style="padding-right: 16px;">Thuế đã bao gồm trong SP</p>
                                                             <p class="MuiTypography-root MuiTypography-body1">0</p>
                                                         </div>
                                                         <div class="MuiBox-root jss5793">
                                                             <p class="MuiTypography-root MuiTypography-body1"
                                                                style="padding-right: 16px;">Thuế phải trả thêm</p>
-                                                            <p class="MuiTypography-root MuiTypography-body1">35,000
-                                                            </p>
+                                                            <p class="MuiTypography-root MuiTypography-body1">35,000</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="MuiListItem-root jss4430 MuiListItem-gutters">
-                                                <div class="MuiListItemText-root"><span
-                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Chiết
-                                                            khấu<button class="MuiButtonBase-root MuiIconButton-root"
-                                                                        tabindex="0" type="button"
-                                                                        style="padding: 0px; margin-left: 6px; top: -3px;"><span
-                                                            class="MuiIconButton-label"><svg viewBox="0 0 16 16"
-                                                                                             fill="none"
-                                                                                             xmlns="http://www.w3.org/2000/svg"
-                                                                                             width="16" height="16"
-                                                                                             font-size="16"
-                                                                                             color="primary"
-                                                                                             style="font-size: 16px; cursor: pointer;">
-                                                                        <path
-                                                                                d="M7.4 5v1.2h1.2V5H7.4ZM7.4 8.6V11h1.8V9.8h-.6V7.4H6.8v1.2h.6Z"
-                                                                                fill="#0088FF"></path>
-                                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                              d="M8 2C4.688 2 2 4.688 2 8s2.688 6 6 6 6-2.688 6-6-2.688-6-6-6ZM3.2 8c0 2.646 2.154 4.8 4.8 4.8s4.8-2.154 4.8-4.8S10.646 3.2 8 3.2A4.806 4.806 0 0 0 3.2 8Z"
-                                                                              fill="#0088FF"></path>
-                                                                    </svg></span><span
-                                                            class="MuiTouchRipple-root"></span></button></span>
+                                                <div class="MuiListItemText-root">
+                                                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">
+                                                        Chiết khấu
+                                                        <button class="MuiButtonBase-root MuiIconButton-root" tabindex="0" type="button" style="padding: 0; margin-left: 6px; top: -3px;">
+                                                            <span class="MuiIconButton-label">
+                                                                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" font-size="16" color="primary" style="font-size: 16px; cursor: pointer;">
+                                                                    <path d="M7.4 5v1.2h1.2V5H7.4ZM7.4 8.6V11h1.8V9.8h-.6V7.4H6.8v1.2h.6Z" fill="#0088FF"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 2C4.688 2 2 4.688 2 8s2.688 6 6 6 6-2.688 6-6-2.688-6-6-6ZM3.2 8c0 2.646 2.154 4.8 4.8 4.8s4.8-2.154 4.8-4.8S10.646 3.2 8 3.2A4.806 4.806 0 0 0 3.2 8Z" fill="#0088FF"/>
+                                                                </svg>
+                                                            </span>
+                                                            <span class="MuiTouchRipple-root"></span>
+                                                        </button>
+                                                    </span>
                                                 </div>
-                                                <div class="MuiListItemText-root" style="margin: 0px;"><span
-                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-                                                        style="margin-left: auto; text-align: right;">0</span></div>
-                                            </li>
-                                            <li class="MuiListItem-root jss4430 MuiListItem-gutters">
-                                                <div class="MuiListItemText-root"><span
-                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Phí
-                                                            giao hàng</span>
-                                                </div>
-                                                <div class="MuiListItemText-root" style="margin: 0px;"><span
-                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-                                                        style="margin-left: auto; width: 103px; text-align: right;">0</span>
+                                                <div class="MuiListItemText-root" style="margin: 0;">
+                                                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" style="margin-left: auto; text-align: right;">0</span>
                                                 </div>
                                             </li>
                                             <li class="MuiListItem-root jss4430 MuiListItem-gutters">
-                                                <div class="MuiListItemText-root"
-                                                     style="margin: 0px; height: 28px;">
-                                                        <span
-                                                                class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-                                                                style="margin-left: auto;">
-                                                            <div class="MuiBox-root jss5367"
-                                                                 style="display: flex; align-items: flex-end;">
-                                                                <p class="MuiTypography-root MuiTypography-body1">Mã
-                                                                    giảm giá</p>
-                                                            </div>
-                                                        </span>
+                                                <div class="MuiListItemText-root">
+                                                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Phí giao hàng</span>
                                                 </div>
-                                                <div class="MuiListItemText-root"><span
-                                                        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
+                                                <div class="MuiListItemText-root" style="margin: 0;">
+                                                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" style="margin-left: auto; width: 103px; text-align: right;">0</span>
+                                                </div>
+                                            </li>
+                                            <li class="MuiListItem-root jss4430 MuiListItem-gutters">
+                                                <div class="MuiListItemText-root" style="margin: 0; height: 28px;">
+                                                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock" style="margin-left: auto;">
+                                                        <div class="MuiBox-root jss5367" style="display: flex; align-items: flex-end;">
+                                                            <p class="MuiTypography-root MuiTypography-body1">Mã giảm giá</p>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                                <div class="MuiListItemText-root">
+                                                    <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">0</span>
                                                 </div>
                                             </li>
                                             <li class="MuiListItem-root jss4430 MuiListItem-gutters">
@@ -1005,13 +974,9 @@
                                                     <span class="MuiTypography-root MuiListItemText-primary MuiTypography-subtitle1 MuiTypography-displayBlock">Khách phải trả</span>
                                                 </div>
                                                 <div class="MuiListItemText-root">
-                                                    <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-alignRight"
-                                                        th:text="${#numbers.formatDecimal(orders.grandTotal, 0, 'COMMA', 0, 'POINT') + 'đ'}"></h6>
+                                                    <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-alignRight" th:text="${#numbers.formatDecimal(orders.grandTotal, 0, 'COMMA', 0, 'POINT') + '₫'}"></h6>
                                                 </div>
                                             </li>
-                                            <input readonly="" id="totalPaidAmount" value="385000"
-                                                   style="display: none;">
-                                            <input readonly="" id="unPaidAmount" value="385000" style="display: none;">
                                         </div>
                                     </div>
                                 </div>
@@ -1023,7 +988,7 @@
         </div>
     </div>
 </div>
-</body>
 <th:block th:replace="/layout/script::script"/>
 <th:block th:replace="/admin/order/print::print"/>
+</body>
 </html>
