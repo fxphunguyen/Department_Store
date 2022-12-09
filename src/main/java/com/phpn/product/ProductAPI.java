@@ -15,28 +15,19 @@ public class ProductAPI {
 
     @Autowired
     private ProductService productService;
-    @Autowired
-    private ProductMapper productMapper;
 
-//    @GetMapping
+    @GetMapping
     public ResponseEntity<?> findAll() {
         return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
     }
 
 
-//    @GetMapping()
-//    @Transactional(readOnly = true)
-//    public ResponseEntity<?> showAllProduct() {
-//        List<ProductResult> productResults = productService.showAllProduct();
-//        return new ResponseEntity<>(productResults, HttpStatus.OK);
-//    }
-
-
 // kien dang chinh
-    @GetMapping("")
+    @GetMapping("getAllProductPage")
     public ResponseEntity<?> getAllProductPage(@RequestParam (defaultValue = "0") Integer pageNo,
                                            @RequestParam (defaultValue = "10") Integer pageSize)
    {
+       //Lan sau de nghi anh khong comment code ham dang chay___ CCCCCUUUUUU
         return new ResponseEntity<>(productService.getAllProductItemPage(pageNo,pageSize), HttpStatus.OK);
     }
 

@@ -27,6 +27,8 @@ let customer = new Customer();
 let shippingAddress = new ShippingAddress();
 let products;
 let customers;
+let taxMap;
+const taxSaleOrderMap = new Map();
 
 
 function showListCustomer() {
@@ -59,17 +61,6 @@ function showListCustomer() {
         }, 100)
         return;
     }
-    $.ajax({
-        type: "GET", contentType: 'application/json',
-        url: `${location.origin}/api/customers`
-    })
-        .done((data) => {
-            customers = data;
-            show(data);
-        })
-        .fail((jqXHR) => {
-            console.log(jqXHR)
-        })
 }
 
 const searchCustomer = () => {
@@ -169,17 +160,16 @@ function showCustomerInfo(idCustomer) {
             fullShippingAddress += `${shippingAddress.districtName}, `;
         if (shippingAddress.provinceName != null)
             fullShippingAddress += `${shippingAddress.provinceName}`;
+        saleOrder.customerId = customer.id;
         saleOrder.fullName = customer.name;
         saleOrder.mobile = customer.phone;
         saleOrder.email = customer.email;
         saleOrder.line1 = shippingAddress.line1;
-        saleOrder.wardName = shippingAddress.wardName;
-        saleOrder.districtName = shippingAddress.districtName;
-        saleOrder.provinceName = shippingAddress.provinceName;
+        saleOrder.line2 = shippingAddress.line2
+        saleOrder.ward = shippingAddress.wardName;
+        saleOrder.city = shippingAddress.districtName;
+        saleOrder.province = shippingAddress.provinceName;
         saleOrder.zipCode = shippingAddress.zipCode;
-        saleOrder.line1 = shippingAddress.line1;
-        saleOrder.line1 = shippingAddress.line1;
-        saleOrder.line1 = shippingAddress.line1;
     }
 
     let billAddress = result.billAddress;
@@ -419,24 +409,10 @@ function showListProducts() {
 
         handleCloseListProducts();
     }
-    if (products !== undefined && products.length > 0) {
-        setTimeout(() => {
-            renderProducts(products);
-        }, 100)
-        return;
-    }
-    $.ajax({
-        type: "GET",
-        // contentType: 'application/json',
-        url: `${location.origin}/api/products`
-    })
-        .done((data) => {
-            products = data;
-            renderProducts(data);
-        })
-        .fail((jqXHR) => {
-            console.log(jqXHR);
-        })
+    setTimeout(() => {
+        renderProducts(products);
+    }, 100)
+
 }
 
 function handleCloseListProducts() {
@@ -599,7 +575,7 @@ function doCreateCustomer() {
         customer.name = $('#nameCreate').val();
         customer.customerCode = $('#codeCreate').val();
         customer.phone = $('#phoneCreate').val();
-        customer.createShippingAddressParam =  shippingAddress;
+        customer.createShippingAddressParam = shippingAddress;
         shippingAddress.provinceId = $('#province').val();
         shippingAddress.provinceName = $('#province :selected').text();
         shippingAddress.districtId = $('#district').val();
@@ -639,6 +615,7 @@ function doCreateCustomer() {
     });
 
 }
+
 doCreateCustomer();
 
 
@@ -755,30 +732,172 @@ function editCustomer() {
 }
 
 function showProductInfo(productId) {
-    $('#MuiBox-list-product').addClass("hide");
-    $("#productId").val(productId);
+    renderSaleOrderItem(productId, "plus");
+    renderSaleOrder();
+}
 
-    let result = product = products.find(({id}) => id === productId);
-    let saleOrderItem = new SaleOrderItemParam(result.retailPrice, 1, result.id, 0)
-    saleOrderItems.push(saleOrderItem);
-    console.log(result)
-    let taxListHtml = '';
-    result.taxSaleList.forEach(tax => {
-        taxListHtml += `
-              <div id="tax_${result.id}">
-                    <div class="MuiListItemText-root" style="float:left">                                        
-                        <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock number_tax_${result.id}" tax-value="${tax.tax}" >VAT (${tax.tax}%)</span>
-                    </div>
-                    <div class="MuiListItemText-root" style="float:right">
-                        <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock tax_value_${result.id}">${((tax.tax / 100) * result.retailPrice).formatVND()}</span>
-                    </div>
-                    <div style="clear: both"></div>
-              </div> 
+
+function removeProduct(id) {
+    if (id === undefined) {
+        $("#divNoInfo").removeClass('hide').addClass('show');
+        $("#vat_tax").remove();
+    }
+    $("#tr_" + id).remove();
+}
+
+function discountProduct(event) {
+    let productId = event.target.parentElement.getAttribute("data-product-discount-id");
+    let str = `
+                <div class="MuiPaper-root jss1041 MuiPaper-elevation3 MuiPaper-rounded hidden_discount"
+                style="width: 190px;position: absolute;margin-left: -37px;"
+                data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom">
+                <div id="arrow" style="position: absolute;left: 0px;transform: translate(95px, 0px);"></div>
+                <div class="MuiBox-root jss4417">
+                    <div class="MuiBox-root jss4418">
+                        <div class="MuiBox-root jss4419">
+                            <div class="MuiToggleButtonGroup-root jss1283" role="group"><button
+                                    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped Mui-selected" id="value_discount_${productId}" 
+                                    tabindex="0" type="button" value="VALUE" aria-pressed="true"><span
+                                        class="MuiToggleButton-label">Giá trị</span><span
+                                        class="MuiTouchRipple-root"></span></button>
+                                        <button
+                                    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped" tabindex="0" id="rate_discount_${productId}"
+                                    type="button" value="PERCENT" aria-pressed="false"><span
+                                        class="MuiToggleButton-label">%</span><span class="MuiTouchRipple-root"></span></button>
+                            </div>
+                            <div class="MuiFormControl-root jss4241 jss4243 jss1284" style="width: 92px; margin-left: 7px;">
+                                <div class="MuiFormControl-root MuiTextField-root jss4244" inputmode="numeric">
+                                    <div
+                                        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
+                                        <input id="discount_product_input" aria-invalid="false" autocomplete="off" name="c2d2892e-316b-4ed0-aee6-1744e98c2a78"
+                                            type="text" class="MuiInputBase-input MuiInput-input" value="0"
+                                            style="width: 100%; text-align: right;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
     `;
+    $(`#td-discount-${productId}`).append(str);
+}
+
+const addQuantity = (productId) => {
+    renderSaleOrderItem(productId, "plus");
+    renderSaleOrder();
+}
+
+function minusQuantity(productId) {
+    renderSaleOrderItem(productId, "minus");
+    renderSaleOrder();
+    let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId === productId);
+    if (saleOrderItem.quantity === 0) {
+        Swal.fire({
+            text: "Bạn chắc chắn muốn bỏ sản phẩm này ra khỏi đơn hàng không?",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText: "Hủy",
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Đồng ý'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteProduct(productId);
+            }
+        })
+    }
+
+}
+
+function deleteProduct(productId) {
+    $("#tr_" + productId).remove();
+    iziToast.success({
+        title: 'OK',
+        position: 'bottomLeft',
+        timeout: 1500,
+        message: 'Xóa sản phẩm khỏi đơn hàng thành công!'
+    });
+    $(`#tax_${productId}`).remove();
+    saleOrderItems.splice(saleOrderItems.findIndex(saleOrderItem => saleOrderItem.productId === productId), 1);
+    renderSaleOrder();
+}
+
+const switchDiscountOrder = (value) => {
+    $(`[value=${value}]`).addClass("Mui-selected");
+    $(`[value=${value === "PERCENT" ? "VALUE" : "PERCENT"}]`).removeClass("Mui-selected")
+
+}
+const switchDiscountOrderItem = (event) => {
+    const classList = [...event.target.parentElement.classList] || [];
+    const muiSelecteds = event.target.parentElement.parentElement.children;
+    const muis = [...muiSelecteds];
+    if (classList.includes("Mui-selected")) {
+        return;
+    }
+    muis.forEach((mui, index) => {
+        if (mui) {
+            mui.classList.remove("Mui-selected");
+        }
+    })
+    event.target.parentElement.classList.add("Mui-selected");
+}
+
+const formatDiscount = (event, productId, retailPrice) => {
+    // $("#discount_product_input").on('keydown', function () {
+    //     //     var n = parseInt($(this).val().replace(/\D/g, ''), 10);
+    //     //     $(this).val(n.toLocaleString());
+    //     // });
+    event.target.value = event.target.value.replace(/[^0-9]/g, '');
+    const btnValueSelectors = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
+    const btnValue = [...btnValueSelectors];
+    btnValue.forEach((mui, index) => {
+        const classLists = [...mui.classList];
+        if (classLists.includes("Mui-selected")) {
+            const valueInput = event.target.value;
+            const quantity = document.querySelector(`#quantity_product_${productId}`).value;
+            const total = retailPrice * quantity;
+            let totalAfterDiscount, percentValue, discount;
+            if (mui.value === "VALUE") {
+                totalAfterDiscount = (retailPrice - valueInput) * quantity;
+                percentValue = (valueInput * 100) / total;
+                discount = total - totalAfterDiscount;
+            } else {
+                discount = total * (valueInput / 100);
+                percentValue = valueInput;
+                totalAfterDiscount = total - discount;
+            }
+
+            let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId === productId);
+            saleOrderItem.discount = discount;
+            renderAmountOrderItem(productId);
+            renderSaleOrder();
+            $(`#discount_value_${productId}`).text(discount.formatVND());
+            $(`#percent_value_${productId}`).text(percentValue + "%");
+        }
     })
 
-    $("#ul_vat_tax").prepend(taxListHtml);
-    let str = `
+}
+
+
+function renderAmountOrderItem(productId) {
+    let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId === productId);
+    let amount = (saleOrderItem.price - saleOrderItem.discount) * saleOrderItem.quantity;
+    $(`#amount_product_${productId}`).text(amount.formatVND());
+}
+
+function renderSaleOrderItem(productId, operator) {
+    productId = parseInt(productId);
+    let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId === productId);
+    if (saleOrderItem !== undefined) {
+        if (operator === "minus")
+            saleOrderItem.quantity -= 1;
+        if (operator === "plus")
+            saleOrderItem.quantity += 1;
+        $(`#quantity_product_${productId}`).val(saleOrderItem.quantity);
+        renderAmountOrderItem(productId);
+    } else {
+        let result = products.find(product => product.id === productId)
+        let saleOrderItem = new SaleOrderItemParam(result.retailPrice, 1, result.id, 0)
+        saleOrderItems.push(saleOrderItem);
+        let htmlOrderItem = `
         <tr id="tr_${result.id}" class="MuiTableRow-root jss3894 jss3905 isNormalLineItem">
             <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center">${result.id}</td>
             <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter align-items-center"><a
@@ -867,14 +986,14 @@ function showProductInfo(productId) {
                             <input aria-invalid="false" autocomplete="off"
                                 id="retailPrice_${result.id}"
                                 name="" type="text"
-                                class="MuiInputBase-input MuiInput-input" value=${result.retailPrice}
+                                class="MuiInputBase-input MuiInput-input" value=${result.retailPrice.formatVND()}
                                                                  
                                 style="width: 100%; text-align: right"
                                 ></div>
                     </div>
                 </div>
             </td>
-            <td id="td-discount-${result.id}" class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight show_discount">
+            <td id="td-discount-${result.id}" class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight">
                 <button data-product-discount-id="${result.id}"
                     class="MuiButtonBase-root MuiButton-root MuiButton-text jss3901 btn-discount dropdown-toggle" 
                     tabindex="0" 
@@ -895,13 +1014,13 @@ function showProductInfo(productId) {
                     <div class="MuiBox-root jss4418">
                         <div class="MuiBox-root jss4419">
                             <div class="MuiToggleButtonGroup-root jss1283" role="group">
-                            <button onclick="valueDiscount(event)"
+                            <button onclick="switchDiscountOrderItem(event)"
                                     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped Mui-selected "
                                     tabindex="0" type="button" value="VALUE" aria-pressed="true">
                                     <span class="MuiToggleButton-label">Giá trị</span>
                                     <span class="MuiTouchRipple-root"></span>
                             </button>
-                            <button onclick="valueDiscount(event)"
+                            <button onclick="switchDiscountOrderItem(event)"
                                     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped" tabindex="0"
                                     type="button" value="PERCENT" aria-pressed="false"><span
                                     class="MuiToggleButton-label">%</span><span class="MuiTouchRipple-root"></span>
@@ -916,7 +1035,7 @@ function showProductInfo(productId) {
                                                autocomplete="off" 
                                                name="numonly"
                                                type="text" 
-                                               class="MuiInputBase-input MuiInput-input" value="0"
+                                               class="discount-item MuiInputBase-input MuiInput-input" value="0"
                                                onkeyup="formatDiscount(event,${result.id},${result.retailPrice})"
                                                style="width: 100%; text-align: right;">
                                     </div>
@@ -927,7 +1046,7 @@ function showProductInfo(productId) {
                     </div>   
                  </td>
             <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight " >
-                <span id="amount_product_${result.id}" data-value="${product.retailPrice}" >${result.retailPrice}
+                <span id="amount_product_${result.id}" data-value="${product.retailPrice}" >${result.retailPrice.formatVND()}
                 </span>
             </td>
             <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight " style="padding-left: 0px;">
@@ -944,315 +1063,140 @@ function showProductInfo(productId) {
                         </svg></span><span class="MuiTouchRipple-root"></span></button></td>
         </tr>
     `;
-    $("#tbProduct tbody").prepend(str);
-    $("#divNoInfo").remove();
-    $("#divTbProduct").removeClass("hide");
-    // taxList.forEach((taxObj, index) => {
-    //     if (taxObj) {
-    //         let taxValue = taxObj.tax;
-    //         let retailProduct = +$(`#retailPrice_${productId}`).val();
-    //         let quantityProduct = +($(`#quantity_product_${productId}`).val());
-    //         let tax = (retailProduct * (taxValue / 100)) * quantityProduct;
-    //         $(`#number_tax_${result.id}`).text("VAT" + "(" + taxValue + "%)");
-    //         $(`#tax_value_${result.id}`).text(tax);
-    //     }
-    // })
-
-    $("#vat_tax").removeClass('d-none');
-    // $(`#tax_value_${result.id}`).text(taxText.formatVND());
-    handleGrandTotal();
-}
-
-function removeProduct(id) {
-    if (id === undefined) {
-        $("#divNoInfo").removeClass('hide').addClass('show');
-        $("#vat_tax").remove();
+        $(".discount-item").on('input', function (e) {
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
+        $("#tbProduct tbody").prepend(htmlOrderItem);
+        $("#divNoInfo").addClass("hide");
+        $("#divTbProduct").removeClass("hide");
     }
-    $("#tr_" + id).remove();
 }
 
-function discountProduct(event) {
-    let productId = event.target.parentElement.getAttribute("data-product-discount-id");
-    let str = `
-                <div class="MuiPaper-root jss1041 MuiPaper-elevation3 MuiPaper-rounded hidden_discount"
-                style="width: 190px;position: absolute;margin-left: -37px;"
-                data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom">
-                <div id="arrow" style="position: absolute;left: 0px;transform: translate(95px, 0px);"></div>
-                <div class="MuiBox-root jss4417">
-                    <div class="MuiBox-root jss4418">
-                        <div class="MuiBox-root jss4419">
-                            <div class="MuiToggleButtonGroup-root jss1283" role="group"><button
-                                    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped Mui-selected" id="value_discount_${productId}" 
-                                    tabindex="0" type="button" value="VALUE" aria-pressed="true"><span
-                                        class="MuiToggleButton-label">Giá trị</span><span
-                                        class="MuiTouchRipple-root"></span></button>
-                                        <button
-                                    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped" tabindex="0" id="rate_discount_${productId}"
-                                    type="button" value="PERCENT" aria-pressed="false"><span
-                                        class="MuiToggleButton-label">%</span><span class="MuiTouchRipple-root"></span></button>
-                            </div>
-                            <div class="MuiFormControl-root jss4241 jss4243 jss1284" style="width: 92px; margin-left: 7px;">
-                                <div class="MuiFormControl-root MuiTextField-root jss4244" inputmode="numeric">
-                                    <div
-                                        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl">
-                                        <input id="discount_product_input" aria-invalid="false" autocomplete="off" name="c2d2892e-316b-4ed0-aee6-1744e98c2a78"
-                                            type="text" class="MuiInputBase-input MuiInput-input" value="0"
-                                            style="width: 100%; text-align: right;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>   
-    `;
-    $(`#td-discount-${productId}`).append(str);
-}
-
-const addQuantity = (productId) => {
-    const discount = +$(`#discount_value_${productId}`).text().replaceAll(",", "");
-    let quantityProduct = +($(`#quantity_product_${productId}`).val());
-    quantityProduct = quantityProduct + 1;
-    $(`#quantity_product_${productId}`).val(quantityProduct);
-
-    let tax = +$(`.number_tax_${productId}`).attr("tax-value");
-    let retailProduct = +$(`#retailPrice_${productId}`).val();
-    let amount = (retailProduct - discount) * quantityProduct;
-    let taxValue = (retailProduct * (tax / 100)) * quantityProduct;
-
-    let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId = productId);
-    saleOrderItem.quantity = quantityProduct;
-    saleOrderItem.discount = discount;
-
-    $(`.tax_value_${productId}`).text(taxValue.formatVND());
-    $(`#amount_product_${productId}`).text(amount.formatVND());
-    handleGrandTotal();
-}
-
-function minusQuantity(productId) {
-    let quantityProduct = Number($(`#quantity_product_${productId}`).val());
-    const discount = +$(`#discount_value_${productId}`).text().replaceAll(",", "");
-    let tax = +$(`.number_tax_${productId}`).attr("tax-value");
-    quantityProduct = quantityProduct - 1;
-    const retailProduct = +$(`#retailPrice_${productId}`).val();
-    let amount = (retailProduct - discount) * quantityProduct;
-    let taxValue = (retailProduct * (tax / 100)) * quantityProduct;
-
-    $(`.tax_value_${productId}`).text(taxValue.formatVND());
-    $(`#amount_product_${productId}`).text(amount.formatVND());
-
-    let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId = productId);
-    saleOrderItem.quantity = quantityProduct;
-    saleOrderItem.discount = discount;
-
-    if (quantityProduct === 0) {
-        Swal.fire({
-            text: "Bạn chắc chắn muốn bỏ sản phẩm này ra khỏi đơn hàng không?",
-            icon: 'warning',
-            showCancelButton: true,
-            cancelButtonText: "Hủy",
-            confirmButtonColor: '#d33',
-            confirmButtonText: 'Đồng ý'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                deleteProduct(productId);
+function renderSaleOrderTax() {
+    taxSaleOrderMap.clear();
+    saleOrderItems.forEach(saleOrderItem => {
+        let p = products.find(product => product.id === saleOrderItem.productId);
+        if (p.applyTax === undefined || p.applyTax === false)
+            return;
+        let totalAmount = p.retailPrice * saleOrderItem.quantity;
+        totalAmount -= saleOrderItem.discount;
+        p.taxSaleList.forEach((t) => {
+            let taxAmount = (t.tax / 100) * totalAmount;
+            if (taxSaleOrderMap.get(t.id) === undefined)
+                taxSaleOrderMap.set(t.id, taxAmount);
+            else {
+                taxSaleOrderMap.set(t.id, taxSaleOrderMap.get(t.id) + taxAmount);
             }
         })
+
+    });
+    let taxListHtml = '';
+    for (const [taxId, amount] of taxSaleOrderMap.entries()) {
+        let tax = taxMap.get(taxId);
+        taxListHtml += `
+              <div>
+                    <div class="MuiListItemText-root" style="float:left">                                        
+                        <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">VAT (${tax.tax}%)</span>
+                    </div>
+                    <div class="MuiListItemText-root" style="float:right">
+                        <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-alignRight MuiTypography-displayBlock">${amount.formatVND()}</span>
+                    </div>
+                    <div style="clear: both"></div>
+              </div>`;
     }
-    $(`#quantity_product_${productId}`).val(quantityProduct);
-    handleGrandTotal();
+    $("#ul_vat_tax").empty();
+    $("#ul_vat_tax").prepend(taxListHtml);
 }
 
-function handleGrandTotal(productId) {
+function renderSaleOrder() {
+    renderSaleOrderTax();
     let total = 0;
-    let grandTotal = 0;
     let totalQuantity = 0;
     let totalTax = 0;
-    $("#tbProduct tbody tr").each(function () {
-        let rowId = $(this).attr("id").replaceAll("tr_", "");
-        let item = +$("#amount_product_" + rowId).text().replaceAll(",", "");
-        let qty = +$("#quantity_product_" + rowId).val();
-        let taxs = +$("#tax_value_" + rowId).text().replaceAll(",", "");
-        totalTax += taxs;
-        totalQuantity += qty;
-        total += item;
-        grandTotal = total + totalTax;
-        $("#quantity_products").text("Tổng tiền (" + totalQuantity + " sản phẩm)");
-        $("#grandTotal").text(total.formatVND());
-        $("#total_amounts").text(grandTotal.formatVND());
-        $("#total_customer").text(grandTotal.formatVND());
-    })
-}
-
-function deleteProduct(productId) {
-    $("#tr_" + productId).remove();
-    iziToast.success({
-        title: 'OK',
-        position: 'bottomLeft',
-        timeout: 1500,
-        message: 'Xóa sản phẩm khỏi đơn hàng thành công!'
+    let totalDiscount = 0;
+    saleOrderItems.forEach(saleOrderItem => {
+        total += saleOrderItem.quantity * saleOrderItem.price;
+        totalQuantity += saleOrderItem.quantity;
+        totalDiscount += saleOrderItem.discount;
     });
-    $(`#tax_${productId}`).remove();
 
-    if ($(`#tax_${productId}`) === "") {
-        resetPrice();
+    for (const [taxId, amount] of taxSaleOrderMap.entries()) {
+        totalTax += amount;
     }
+    let subtotal = total - totalDiscount;
+    let grandTotal = subtotal + totalTax;
+
+
+    if (saleOrderItems.length === 0)
+        $("#divNoInfo").removeClass("hide");
+    $("#subtotal").text(subtotal.formatVND());
+    $("#quantity_products").text("Tổng tiền (" + totalQuantity + " sản phẩm)");
+    $("#grandTotal").text(grandTotal.formatVND());
+    $("#totalPaid").text(grandTotal.formatVND());
 }
 
-const resetPrice = () => {
-    $("#grandTotal").text("0");
-    $("#discount_value_order").text(0);
-    $("#percent_value_order").remove();
-    $("#total_amounts").text(0);
-    $("#total_customer").text(0);
-}
 
-const valueDiscount = (event) => {
-    const classList = [...event.target.parentElement.classList] || [];
-    const muiSelecteds = event.target.parentElement.parentElement.children;
-    const muis = [...muiSelecteds];
-    if (classList.includes("Mui-selected")) {
+function getProductList() {
+    if (products !== undefined && products.length > 0) {
         return;
     }
-    muis.forEach((mui, index) => {
-        if (mui) {
-            mui.classList.remove("Mui-selected");
-        }
+    $.ajax({
+        type: "GET",
+        url: `${location.origin}/api/products`
     })
-    event.target.parentElement.classList.add("Mui-selected");
+        .done((data) => {
+            products = data;
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR);
+        })
 }
 
-const formatDiscountOrder = (event, productId) => {
-    $("#discount_product_input_order").on('keyup', function () {
-        var n = parseInt($(this).val().replace(/\D/g, ''), 10);
-        $(this).val(n.toLocaleString());
+function getTaxList() {
+    if (taxMap !== undefined) {
+        return;
+    }
+    $.ajax({
+        type: "GET",
+        url: `${location.origin}/api/taxes`
     })
-    const btnValueSelectOrder = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
-    const btnValueOrder = [...btnValueSelectOrder];
-    let grandTotal = 0;
-    let percentValue = 0;
-    let totalTax = 0;
-    let discountOrder = 0;
-    btnValueOrder.forEach((btn, index) => {
-        const classListOrder = [...btn.classList];
-        if (classListOrder.includes("Mui-selected")) {
-            const valueInput = event.target.value.replaceAll(",", "");
-            const total = document.querySelector('#grandTotal').textContent.replaceAll(",", "");
-            if (btn.value === "VALUE") {
-                let tax = $(`#tax_value_${productId}`).text();
-                console.log(tax)
-                discountOrder = valueInput;
-                percentValue = (valueInput * 100) / total;
-                grandTotal = (total + totalTax) - discountOrder;
-            } else {
-                discountOrder = total * (valueInput / 100);
-                percentValue = valueInput;
-                grandTotal = total + totalTax - discountOrder;
-            }
-
-
-            $("#percent_value_order").text(percentValue.toFixed(2) + "%");
-            $("#discount_value_order").text(discountOrder);
-            $("#total_amounts").text(grandTotal.formatVND());
-        }
-    });
+        .done((data) => {
+            taxMap = new Map()
+            data.forEach((t) => {
+                taxMap.set(t.id, t);
+            });
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR);
+        })
 }
 
-
-const formatDiscount = (event, productId, retailPrice) => {
-    $("#discount_product_input").on('keyup', function () {
-        var n = parseInt($(this).val().replace(/\D/g, ''), 10);
-        $(this).val(n.toLocaleString());
-    });
-    event.target.value = event.target.value.replace(/[^0-9]/g, '');
-    const btnValueSelectors = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children;
-    const btnValue = [...btnValueSelectors];
-    btnValue.forEach((mui, index) => {
-        const classLists = [...mui.classList];
-        if (classLists.includes("Mui-selected")) {
-            const valueInput = event.target.value;
-            const quantity = document.querySelector(`#quantity_product_${productId}`).value;
-            const total = retailPrice * quantity;
-            let totalAfterDiscount, percentValue, discount;
-            if (mui.value === "VALUE") {
-                totalAfterDiscount = (retailPrice - valueInput) * quantity;
-                percentValue = (valueInput * 100) / total;
-                discount = total - totalAfterDiscount;
-
-            } else {
-                discount = total * (valueInput / 100);
-                percentValue = valueInput;
-                totalAfterDiscount = total - discount;
-            }
-
-            let saleOrderItem = saleOrderItems.find(saleOrderItem => saleOrderItem.productId = productId);
-            saleOrderItem.discount = discount;
-
-            $(`#discount_value_${productId}`).text(discount.formatVND());
-            $(`#percent_value_${productId}`).text(percentValue + "%");
-            $(`#amount_product_${productId}`).text(totalAfterDiscount.formatVND());
-        }
+function getCustomerList() {
+    if (customers !== undefined && customers.length > 0) {
+        return;
+    }
+    $.ajax({
+        type: "GET",
+        url: `${location.origin}/api/customers`
     })
-    handleGrandTotal();
+        .done((data) => {
+            customers = data;
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR);
+        })
 }
 
 function numberOnly() {
     $("input[name='numonly']").on('input', function (e) {
         $(this).val($(this).val().replace(/[^0-9]/g, ''));
     });
-};
-
-// const createOrder = () => {
-//
-//     $("#btn_create_order").on('click', () => {
-//         order.customerId = $(".showInfo").val();
-//         order.employeeId = $(".searchEmployee").val();
-//         order.discount = $("#discount_product").val();
-//         order.description = $("")
-//     })
-//
-//     $.ajax({
-//             "headers": {
-//                 "accept": "application/json",
-//                 "content-type": "application/json"
-//             },
-//             "type": "POST",
-//             "url": `${location.origin}/api/orders/create`,
-//             "data": JSON.stringify(order)
-//         })
-//             .done((data) => {
-//                 order = data;
-//                 // order.orderItemResult = orderItem;
-//                 // App.IziToast.showSuccessAlert("Thêm khách hàng thành công!");
-//                 // searchCustomer();
-//                 // $('#nameCreate').val("");
-//                 // $('#codeCreate').val("");
-//                 // $('#phoneCreate').val("");
-//                 // $('#emailCreate').val("");
-//                 // $('#addressCreate').val("");
-//                 // $('#province').val("0").change();
-//                 // $('#district').val("0").change();
-//                 // $('#ward').val("0").change();
-//                 // $('#selectEmployee').val("0").change();
-//             })
-//             .fail((jqXHR) => {
-//                 console.log(jqXHR)
-//             })
-//
-// }
-// createOrder();
-// function hiddenDiscount() {
-//     $(document).on("click", () => {
-//         $(".hidden_discount").removeClass('show').addClass('hide');
-//     })
-// }
-// hiddenDiscount();
-// window.onclick = function(event) {
-//     //discount_product
-//     if (!event.target.matches('.hidden_discount')&&!event.target.matches('#discount_product')) {
-//         $(".hidden_discount").addClass("d-none");
-//     }
-// }
+}
 
 $(() => {
+    getCustomerList();
+    getTaxList();
+    getProductList();
     getAllItem();
     getAllEmployees();
     searchCustomer();
@@ -1260,7 +1204,27 @@ $(() => {
     handleCloseListCustomers()
     handleCloseListProducts();
     searchProduct();
-    numberOnly();
+
+    $(".btn_create_order").on("click", () => {
+        $.ajax({
+            "headers": {
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": `${location.origin}/api/orders`,
+            "data": JSON.stringify(saleOrder)
+        })
+            .done((data) => {
+                console.log(data);
+            })
+            .fail((jqXHR) => {
+                console.log(jqXHR);
+            })
+    });
+    $("#discount_product_input").on('keyup', function () {
+        var n = parseInt($(this).val().replace(/\D/g, ''), 10);
+        $(this).val(n.toLocaleString());
+    });
 })
 
 

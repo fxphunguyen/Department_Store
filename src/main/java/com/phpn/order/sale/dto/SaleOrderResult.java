@@ -57,7 +57,7 @@ public class SaleOrderResult {
 
     private Integer customerId;
 
-    private CustomerResult customer;
+    private CustomerSaleOrderResult customer;
 
     private BigDecimal total;
 

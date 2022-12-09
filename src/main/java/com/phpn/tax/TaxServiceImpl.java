@@ -22,7 +22,7 @@ public class TaxServiceImpl implements TaxService {
 
     @Override
     @Transactional
-    public List<TaxResult> findAllTax() {
+    public List<TaxResult> findAll() {
         return taxRepository.findAll()
                 .stream()
                 .map(taxMapper::toDTO)

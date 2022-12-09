@@ -11,7 +11,7 @@ public interface SaleOrderService {
 
     List<SaleOrderResult> findAll();
 
-    SaleOrderResult createOrderExport(SaleOrderParam orderParam);
+    SaleOrderResult create(SaleOrderParam orderParam);
 
     SaleOrderResult findById(int id);
 
