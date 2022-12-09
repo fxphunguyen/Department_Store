@@ -1,24 +1,21 @@
 package com.phpn.customer.controller;
 
+import com.phpn.customer.customerDebt.CustomerDebt;
+import com.phpn.customer.customerDebt.CustomerDebtImpl;
 import com.phpn.customer.dto.CustomerResult;
-import com.phpn.customer.UpdateCustomerParam;
+import com.phpn.customer.dto.UpdateCustomerParam;
 import com.phpn.customer.dto.CreateCustomerParam;
 import com.phpn.customer.service.CustomerService;
-import com.phpn.order.sale.dto.SaleOrderByCustomer;
 import com.phpn.order.sale.dto.SaleOrderResult;
 import com.phpn.util.AppUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import vn.fx.qh.sapo.entities.customer.CustomerGender;
 import vn.fx.qh.sapo.entities.customer.CustomerGroup;
 import vn.fx.qh.sapo.entities.customer.CustomerStatus;
-import vn.fx.qh.sapo.entities.customer.ICustomerOwerImpl;
-
-import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -105,6 +102,8 @@ public class CustomerAPI {
         return new ResponseEntity<>(saleOrderByCustomers, HttpStatus.OK);
     }
 
+
+
 //    @GetMapping("/customerDebt/{id}")
 //    public ResponseEntity<?> showListCustomerDebtById(@PathVariable Integer id) {
 //        List<ICustomerOwerImpl> iCustomerImpls = customerService.CustomerOwerById(id);
@@ -118,5 +117,13 @@ public class CustomerAPI {
 //        Integer iCustomerImpls = customerRepository.getQuantityOrderByCustomer(id);
 //        return new ResponseEntity<>(iCustomerImpls, HttpStatus.OK);
 //    }
+
+
+    @GetMapping("/customerDebt/{id}")
+    @Transactional(readOnly = true)
+    public ResponseEntity<?> findCustomerDebtById(@PathVariable Integer id) {
+        List<CustomerDebtImpl> customerDebtImpl = customerService.findCustomerDebtsByCustomerId(id);
+        return new ResponseEntity<>(customerDebtImpl, HttpStatus.OK);
+    }
 }
 

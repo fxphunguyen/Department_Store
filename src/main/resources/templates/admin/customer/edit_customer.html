@@ -62,27 +62,87 @@
                                 </div>
                                 <div class="MuiBox-root jss20480" style="padding: 16px 24px 24px;">
                                     <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2">
+
                                         <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
-                                            <div class="MuiFormControl-root jss20481 MuiFormControl-fullWidth"><label
-                                                    class="MuiFormLabel-root MuiInputLabel-root jss20482 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink Mui-required Mui-required"
-                                                    data-shrink="true" for="nameCreate">Tên
-                                                khách hàng<span
-                                                        class="MuiFormLabel-asterisk MuiInputLabel-asterisk"> *</span></label>
-                                                <div class="MuiFormControl-root MuiTextField-root jss20483 MuiFormControl-fullWidth">
-                                                    <div
-                                                            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl">
-                                                        <input aria-invalid="false"
-                                                               id="nameCreate" name="nameCreate"
-                                                               placeholder="Nhập tên khách hàng" required="" type="text"
-                                                               aria-label="Without label"
-                                                               class="MuiInputBase-input MuiOutlinedInput-input"
-                                                               value="" th:field="*{customer.name}">
-                                                        <fieldset aria-hidden="true"
-                                                                  class="jss20550 MuiOutlinedInput-notchedOutline"
-                                                                  style="padding-left: 8px;">
-                                                            <legend class="jss20551" style="width: 0.01px;">
-                                                                <span>​</span></legend>
-                                                        </fieldset>
+
+<!--                                            <div class="MuiFormControl-root jss20481 MuiFormControl-fullWidth"><label-->
+<!--                                                    class="MuiFormLabel-root MuiInputLabel-root jss20482 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink Mui-required Mui-required"-->
+<!--                                                    data-shrink="true" for="nameCreate">Tên-->
+<!--                                                khách hàng<span-->
+<!--                                                        class="MuiFormLabel-asterisk MuiInputLabel-asterisk"> *</span></label>-->
+<!--                                                <div class="MuiFormControl-root MuiTextField-root jss20483 MuiFormControl-fullWidth">-->
+<!--                                                    <div-->
+<!--                                                            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl">-->
+<!--                                                        <input aria-invalid="false"-->
+<!--                                                               id="nameCreate" name="nameCreate"-->
+<!--                                                               placeholder="Nhập tên khách hàng" required="" type="text"-->
+<!--                                                               aria-label="Without label"-->
+<!--                                                               class="MuiInputBase-input MuiOutlinedInput-input"-->
+<!--                                                               value="" th:field="*{customer.name}">-->
+<!--                                                        <fieldset aria-hidden="true"-->
+<!--                                                                  class="jss20550 MuiOutlinedInput-notchedOutline"-->
+<!--                                                                  style="padding-left: 8px;">-->
+<!--                                                            <legend class="jss20551" style="width: 0.01px;">-->
+<!--                                                                <span>​</span></legend>-->
+<!--                                                        </fieldset>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+
+                                            <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
+                                                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
+                                                    <div class="MuiFormControl-root jss20481 MuiFormControl-fullWidth">
+                                                        <label
+                                                                class="MuiFormLabel-root MuiInputLabel-root jss20482 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
+                                                                data-shrink="true"
+                                                                for="codeCreate">Tên khách hàng </label>
+                                                        <div class="MuiFormControl-root MuiTextField-root jss20483 MuiFormControl-fullWidth">
+                                                            <div
+                                                                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl">
+                                                                <input aria-invalid="false"
+                                                                       id="nameCreate"
+                                                                       name="codeCreate"
+                                                                       placeholder="Nhập mã khách hàng" type="text"
+                                                                       aria-label="Without label"
+                                                                       class="MuiInputBase-input MuiOutlinedInput-input"
+                                                                       value="" th:field="*{customer.name}">
+                                                                <fieldset aria-hidden="true"
+                                                                          class="jss20550 MuiOutlinedInput-notchedOutline"
+                                                                          style="padding-left: 8px;">
+                                                                    <legend class="jss20551" style="width: 0.01px;">
+                                                                        <span>​</span></legend>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
+                                                    <div class="MuiBox-root jss20639" style="width: 100%;">
+                                                        <div class="MuiFormControl-root jss20632 MuiFormControl-fullWidth"
+                                                             style="width: 100%;">
+                                                            <div class="MuiBox-root jss20640 jss20637"><label
+                                                                    class="MuiFormLabel-root MuiInputLabel-root jss20635 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                                                                    data-shrink="true" for="genderCreate">Giới
+                                                                tính</label></div>
+                                                            <div class="MuiInputBase-root MuiOutlinedInput-root jss20633 MuiInputBase-fullWidth MuiInputBase-formControl">
+                                                                <select class="jss87874 form-select" name="genderCreate"
+                                                                        id="genderCreate"></select>
+
+                                                                <input name="gender" type="hidden" value="other">
+                                                                <svg
+                                                                        class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+                                                                        focusable="false"
+                                                                        viewBox="0 0 24 24" aria-hidden="true">
+                                                                    <path d="M7 10l5 5 5-5z"></path>
+                                                                </svg>
+                                                                <fieldset aria-hidden="true"
+                                                                          class="jss20550 MuiOutlinedInput-notchedOutline"
+                                                                          style="padding-left: 8px;">
+                                                                    <legend class="jss20551" style="width: 0.01px;">
+                                                                        <span>​</span></legend>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -229,257 +289,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div id="Sapo-Popover-dcbc869c-8a04-4967-a99f-3a14a6250298"
-                                                         width="22.285714285714285rem"
-                                                         class="sc-iBkjds ifKctM"
-                                                         style="position: absolute; inset: auto 0px 0px auto; transform: translate(-1138px, 66px);"
-                                                         data-popper-reference-hidden="true" data-popper-escaped="false"
-                                                         data-popper-placement="top-end">
-                                                        <div class="sc-bZnhIo fWUnNV">
-                                                            <div class="sc-cOFTSb edgrXu">
-                                                                <div width="8.285714285714286rem"
-                                                                     class="sc-hAZoDl knhjvN">
-                                                                    <button
-                                                                            id="Sapo-Button-0315dced-f5de-4707-84f8-c79af23a0b6b"
-                                                                            class="sc-bjUoiL kiCheW">Tháng 11
-                                                                        <svg viewBox="0 0 24 24" fill="none"
-                                                                             xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" font-size="24"
-                                                                             active="false" class="sc-fEOsli iIFQGi">
-                                                                            <path d="m7 9.5 5 5 5-5H7Z"
-                                                                                  fill="currentColor"></path>
-                                                                        </svg>
-                                                                    </button>
-                                                                </div>
-
-                                                                <div width="6.571428571428571rem"
-                                                                     class="sc-hAZoDl aJRPf">
-                                                                    <button
-                                                                            id="Sapo-Button-aa40bf46-e9a0-4d87-ba3a-bda2f646d610"
-                                                                            class="sc-bjUoiL kiCheW">2004
-                                                                        <svg viewBox="0 0 24 24" fill="none"
-                                                                             xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" font-size="24"
-                                                                             active="false" class="sc-fEOsli iIFQGi">
-                                                                            <path d="m7 9.5 5 5 5-5H7Z"
-                                                                                  fill="currentColor"></path>
-                                                                        </svg>
-                                                                    </button>
-                                                                </div>
-                                                                <div id="Sapo-Popover-53f9eed5-941c-40d0-b829-6d3cc340719f"
-                                                                     data-list="b594901f-27d2-427e-bcc2-61dd7044a78e"
-                                                                     class="sc-iBkjds keoQDf"
-                                                                     style="position: absolute; inset: 0px auto auto 0px; transform: translate(175px, 48px);"
-                                                                     data-popper-reference-hidden="false"
-                                                                     data-popper-escaped="false"
-                                                                     data-popper-placement="bottom-start">
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sc-iTONeN kMeXsR">
-                                                            <table class="sc-iAvgwm ittoYJ">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th class="sc-efBctP evOKgu">T2</th>
-                                                                    <th class="sc-efBctP evOKgu">T3</th>
-                                                                    <th class="sc-efBctP evOKgu">T4</th>
-                                                                    <th class="sc-efBctP evOKgu">T5</th>
-                                                                    <th class="sc-efBctP evOKgu">T6</th>
-                                                                    <th class="sc-efBctP evOKgu">T7</th>
-                                                                    <th class="sc-efBctP evOKgu">CN</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody id="90c0983f-30d3-434b-bcdb-d616a0938f3d">
-                                                                <tr>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="01-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">1
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="02-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">2
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="03-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">3
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="04-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">4
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="05-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">5
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="06-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">6
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="07-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">7
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="08-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">8
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="09-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">9
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="10-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">10
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="11-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">11
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="12-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">12
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="13-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">13
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="14-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">14
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="15-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">15
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="16-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">16
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="17-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">17
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="18-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">18
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="19-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">19
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="20-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">20
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="21-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">21
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="22-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">22
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="23-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">23
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="24-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">24
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="25-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">25
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="26-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">26
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="27-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">27
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="28-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">28
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="29-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">29
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="30-11-2004" data-type="day"
-                                                                                class="sc-jOrMOR brTZaO">30
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="01-12-2004" data-type="day"
-                                                                                class="sc-jOrMOR jWBRwJ">1
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="02-12-2004" data-type="day"
-                                                                                class="sc-jOrMOR jWBRwJ">2
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="03-12-2004" data-type="day"
-                                                                                class="sc-jOrMOR jWBRwJ">3
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="04-12-2004" data-type="day"
-                                                                                class="sc-jOrMOR jWBRwJ">4
-                                                                        </button>
-                                                                    </td>
-                                                                    <td class="sc-cTQhss ifYRgQ">
-                                                                        <button data-value="05-12-2004" data-type="day"
-                                                                                class="sc-jOrMOR jWBRwJ">5
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
                                                     <div class="MuiBox-root jss20639" style="width: 100%;">
@@ -490,10 +299,10 @@
                                                                     data-shrink="true" for="genderCreate">Giới
                                                                 tính</label></div>
                                                             <div class="MuiInputBase-root MuiOutlinedInput-root jss20633 MuiInputBase-fullWidth MuiInputBase-formControl">
-                                                                <select class="jss87874 form-select" name="genderCreate"
-                                                                        id="genderCreate"></select>
+                                                                <select class="jss87874 form-select" name="customerStatus"
+                                                                        id="customerStatus"></select>
 
-                                                                <input name="gender" type="hidden" value="other">
+                                                                <input name="customerStatus" type="hidden" value="other">
                                                                 <svg
                                                                         class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
                                                                         focusable="false"
@@ -514,74 +323,74 @@
                                         </div>
 
 
-                                        <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
-                                            <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
-                                                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
-                                                    <div class="MuiBox-root jss20603 jss21087">
-                                                        <div class="MuiBox-root jss20604 jss21097">
-                                                            <label class="MuiTypography-root MuiTypography-body1"
-                                                                   style="color: rgb(70, 81, 95);"
-                                                                   for="provinceNameCreate">Tỉnh - Thành Phố </label>
-                                                        </div>
-                                                        <div tabindex="0">
-                                                            <select class="jss87874" name="provinceNameCreate"
-                                                                    id="provinceNameCreate"></select>
+<!--                                        <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">-->
+<!--                                            <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">-->
+<!--                                                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">-->
+<!--                                                    <div class="MuiBox-root jss20603 jss21087">-->
+<!--                                                        <div class="MuiBox-root jss20604 jss21097">-->
+<!--                                                            <label class="MuiTypography-root MuiTypography-body1"-->
+<!--                                                                   style="color: rgb(70, 81, 95);"-->
+<!--                                                                   for="provinceNameCreate">Tỉnh - Thành Phố </label>-->
+<!--                                                        </div>-->
+<!--                                                        <div tabindex="0">-->
+<!--                                                            <select class="jss87874" name="provinceNameCreate"-->
+<!--                                                                    id="provinceNameCreate"></select>-->
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
-                                                    <div class="MuiBox-root jss20621 jss21102">
-                                                        <div class="MuiBox-root jss20622 jss21112">
-                                                            <label class="MuiTypography-root MuiTypography-body1"
-                                                                   style="color: rgb(70, 81, 95);"
-                                                                   for="districtNameCreate">
-                                                                Huyện </label>
-                                                        </div>
-                                                        <select name="districtNameCreate" id="districtNameCreate"
-                                                                class="jss87874"></select>
-                                                    </div>
-                                                </div>
-                                                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">
-                                                    <div class="MuiBox-root jss20621 jss21102">
-                                                        <div class="MuiBox-root jss20622 jss21112">
-                                                            <label class="MuiTypography-root MuiTypography-body1"
-                                                                   style="color: rgb(70, 81, 95);" for="wardNameCreate">
-                                                                Xã </label>
-                                                        </div>
-                                                        <select name="wardNameCreate" id="wardNameCreate"
-                                                                class="form-select"></select>
-                                                    </div>
-                                                </div>
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">-->
+<!--                                                    <div class="MuiBox-root jss20621 jss21102">-->
+<!--                                                        <div class="MuiBox-root jss20622 jss21112">-->
+<!--                                                            <label class="MuiTypography-root MuiTypography-body1"-->
+<!--                                                                   style="color: rgb(70, 81, 95);"-->
+<!--                                                                   for="districtNameCreate">-->
+<!--                                                                Huyện </label>-->
+<!--                                                        </div>-->
+<!--                                                        <select name="districtNameCreate" id="districtNameCreate"-->
+<!--                                                                class="jss87874"></select>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6">-->
+<!--                                                    <div class="MuiBox-root jss20621 jss21102">-->
+<!--                                                        <div class="MuiBox-root jss20622 jss21112">-->
+<!--                                                            <label class="MuiTypography-root MuiTypography-body1"-->
+<!--                                                                   style="color: rgb(70, 81, 95);" for="wardNameCreate">-->
+<!--                                                                Xã </label>-->
+<!--                                                        </div>-->
+<!--                                                        <select name="wardNameCreate" id="wardNameCreate"-->
+<!--                                                                class="form-select"></select>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
 
 
-                                            </div>
-                                        </div>
-                                        <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
-                                            <div class="MuiFormControl-root jss20481 MuiFormControl-fullWidth"><label
-                                                    class="MuiFormLabel-root MuiInputLabel-root jss20482 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
-                                                    data-shrink="true" for="addressCreate">Địa
-                                                chỉ cụ thể</label>
-                                                <div class="MuiFormControl-root MuiTextField-root jss20483 jss20484 MuiFormControl-fullWidth">
-                                                    <div
-                                                            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline">
-                                                        <input th:field="*{customer.locationRegionResult.address}" type="text"
-                                                               aria-invalid="false" id="addressCreate"
-                                                               name="addressCreate"
-                                                               placeholder="Nhập địa chỉ" rows="2"
-                                                               aria-label="Without label"
-                                                               class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"/>
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">-->
+<!--                                            <div class="MuiFormControl-root jss20481 MuiFormControl-fullWidth"><label-->
+<!--                                                    class="MuiFormLabel-root MuiInputLabel-root jss20482 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"-->
+<!--                                                    data-shrink="true" for="addressCreate">Địa-->
+<!--                                                chỉ cụ thể</label>-->
+<!--                                                <div class="MuiFormControl-root MuiTextField-root jss20483 jss20484 MuiFormControl-fullWidth">-->
+<!--                                                    <div-->
+<!--                                                            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline">-->
+<!--                                                        <input th:field="*{customer.locationRegionResult.address}" type="text"-->
+<!--                                                               aria-invalid="false" id="addressCreate"-->
+<!--                                                               name="addressCreate"-->
+<!--                                                               placeholder="Nhập địa chỉ" rows="2"-->
+<!--                                                               aria-label="Without label"-->
+<!--                                                               class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"/>-->
 
-                                                        <fieldset aria-hidden="true"
-                                                                  class="jss20550 MuiOutlinedInput-notchedOutline"
-                                                                  style="padding-left: 8px;">
-                                                            <legend class="jss20551" style="width: 0.01px;">
-                                                                <span>​</span></legend>
-                                                        </fieldset>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+<!--                                                        <fieldset aria-hidden="true"-->
+<!--                                                                  class="jss20550 MuiOutlinedInput-notchedOutline"-->
+<!--                                                                  style="padding-left: 8px;">-->
+<!--                                                            <legend class="jss20551" style="width: 0.01px;">-->
+<!--                                                                <span>​</span></legend>-->
+<!--                                                        </fieldset>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                                     </div>
                                 </div>
                             </div>

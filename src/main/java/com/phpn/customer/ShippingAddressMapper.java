@@ -47,20 +47,20 @@ public class ShippingAddressMapper {
                 .setSupplierId(1);
     }
 
-    public ShippingAddressShowCustomerInfo toCustomerInfo(ShippingAddress shippingAddress) {
-        return new ShippingAddressShowCustomerInfo()
-                .setId(shippingAddress.getId())
-                .setAddress(shippingAddress.getLine1())
-                .setCustomerId(shippingAddress.getCustomerId())
-                .setWardId(shippingAddress.getWardId())
-                .setWardName(shippingAddress.getWardName())
-                .setDistrictId(shippingAddress.getDistrictId())
-                .setDistrictName(shippingAddress.getDistrictName())
-                .setProvinceId(shippingAddress.getProvinceId())
-                .setProvinceName(shippingAddress.getProvinceName())
-                .setZipCode(shippingAddress.getZipCode())
-                .setEmail(shippingAddress.getEmail())
-                .setMobile(shippingAddress.getMobile());
-
-    }
+//    public ShippingAddressShowCustomerInfo toCustomerInfo(ShippingAddress shippingAddress) {
+//        return new ShippingAddressShowCustomerInfo()
+//                .setId(shippingAddress.getId())
+//                .setAddress(shippingAddress.getLine1())
+//                .setCustomerId(shippingAddress.getCustomerId())
+//                .setWardId(shippingAddress.getWardId())
+//                .setWardName(shippingAddress.getWardName())
+//                .setDistrictId(shippingAddress.getDistrictId())
+//                .setDistrictName(shippingAddress.getDistrictName())
+//                .setProvinceId(shippingAddress.getProvinceId())
+//                .setProvinceName(shippingAddress.getProvinceName())
+//                .setZipCode(shippingAddress.getZipCode())
+//                .setEmail(shippingAddress.getEmail())
+//                .setMobile(shippingAddress.getMobile());
+//
+//    }
 }
