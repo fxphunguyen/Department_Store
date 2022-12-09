@@ -41,6 +41,7 @@ public class ProductResult {
     private BrandResult brand;
     private List<TaxResult> taxSaleList;
     private List<TaxResult> taxPurchaseList;
+    private Boolean applyTax;
     private int totalInventory;
     private int availableInventory;
 

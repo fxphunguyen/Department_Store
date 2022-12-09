@@ -1,4 +1,4 @@
-package com.phpn.product;
+package com.phpn.product.dto;
 
 import com.phpn.brand.dto.BrandMapper;
 import com.phpn.category.dto.CategoryMapper;
@@ -70,6 +70,7 @@ public class ProductMapper {
                 .setImportPrice(product.getImportPrice())
                 .setWholesalePrice(product.getWholesalePrice())
                 .setRetailPrice(product.getRetailPrice())
+                .setApplyTax(product.getApplyTax())
                 .setCreatedAt(product.getCreatedAt())
                 .setUpdatedAt(product.getUpdatedAt());
 

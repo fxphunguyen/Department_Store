@@ -1,7 +1,7 @@
 package com.phpn.order.sale.dto;
 
 import com.phpn.product.item.ItemMapper;
-import com.phpn.product.ProductMapper;
+import com.phpn.product.dto.ProductMapper;
 import vn.fx.qh.sapo.entities.order.sale.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
