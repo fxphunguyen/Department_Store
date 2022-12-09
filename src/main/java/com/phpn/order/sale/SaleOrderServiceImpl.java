@@ -202,7 +202,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
 
     @Override
     @Transactional(readOnly = true)
-    public BigDecimal getSpendTotal(Integer customerId) {
+    public BigDecimal getSpendTotalByCustomerId(Integer customerId) {
         return saleOrderRepository.getSpendTotalByCustomerId(customerId);
     }
 
@@ -212,8 +212,15 @@ public class SaleOrderServiceImpl implements SaleOrderService {
     }
 
     @Override
-    public List<SaleOrderResult> findAllSaleOrderByCustomer(Integer id) {
-        return  saleOrderRepository.findAllCustomerOrderHistory(id).stream().map(saleOrder -> orderMapper.toCustomerOrder(saleOrder)).collect(Collectors.toList());
+    @Transactional(readOnly = true)
+    public List<SaleOrderResult> findAllSaleOrderByCustomerId(Integer customerId) {
+        return  saleOrderRepository.findAllCustomerOrderHistory(customerId).stream().map(saleOrder -> orderMapper.toCustomerOrder(saleOrder)).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Instant getLastDayOrderByCustomerId(Integer customerId) {
+        return  saleOrderRepository.getLastDayOrderByCustomerId(customerId);
     }
 
 
