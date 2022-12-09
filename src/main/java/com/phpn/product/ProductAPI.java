@@ -4,21 +4,11 @@ import com.phpn.product.dto.ProductResult;
 import com.phpn.product.dto.ProductShortParam;
 import com.phpn.product.dto.CreateProductParam;
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import vn.fx.qh.sapo.entities.product.Product;
 
-import java.awt.print.Pageable;
-import java.util.ArrayList;
-import java.util.List;
-=======
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
->>>>>>> 1d57a36535c0ce751f3cecf483d6a78f282aeb63
+
 
 
 @RestController
@@ -44,7 +34,6 @@ public class ProductAPI {
 //    }
 
 
-<<<<<<< HEAD
    // C0522k1
 //    @GetMapping("")
 //    public ResponseEntity<?> getAllProduct(){
@@ -65,7 +54,6 @@ public class ProductAPI {
 //       }
 //        return new ResponseEntity<>(productItemResults, HttpStatus.OK);
 //    }
-=======
 // kien dang chinh
    @GetMapping("")
     public ResponseEntity<?> getAllProductPage(@RequestParam (defaultValue = "0") Integer pageNo,
@@ -73,8 +61,6 @@ public class ProductAPI {
    {
         return new ResponseEntity<>(productService.getAllProdcutItemPage(pageNo,pageSize), HttpStatus.OK);
     }
->>>>>>> 1d57a36535c0ce751f3cecf483d6a78f282aeb63
-
 
 
     @GetMapping("/{id}")
