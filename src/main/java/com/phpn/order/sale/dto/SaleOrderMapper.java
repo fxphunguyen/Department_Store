@@ -46,7 +46,7 @@ public class SaleOrderMapper {
                 .setCreatedAt(saleOrder.getCreatedAt())
                 .setUpdatedAt(saleOrder.getUpdatedAt())
                 .setCustomerId(saleOrder.getCustomerId())
-                .setCustomer(customerMapper.toDTO(saleOrder.getCustomer()))
+                .setCustomer(customerMapper.toDTOCustomerSaleOrder(saleOrder.getCustomer()))
                 .setTotal(saleOrder.getTotal())
                 .setSubTotal(saleOrder.getSubTotal())
                 .setGrandTotal(saleOrder.getGrandTotal());

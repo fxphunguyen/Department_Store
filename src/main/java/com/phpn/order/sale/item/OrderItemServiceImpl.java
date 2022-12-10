@@ -4,7 +4,7 @@ import com.phpn.order.sale.dto.SaleOrderItemResult;
 import com.phpn.product.item.ItemMapper;
 import com.phpn.order.sale.dto.SaleOrderMapper;
 import com.phpn.order.sale.dto.SaleOrderItemMapper;
-import com.phpn.product.ProductMapper;
+import com.phpn.product.dto.ProductMapper;
 import com.phpn.product.item.ItemRepository;
 import com.phpn.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,8 @@
-package com.phpn.product;
+package com.phpn.product.dto;
 
 import com.phpn.brand.dto.BrandMapper;
 import com.phpn.category.dto.CategoryMapper;
+import com.phpn.order.sale.dto.ProductSaleResult;
 import com.phpn.product.dto.*;
 import com.phpn.tax.dto.TaxMapper;
 import com.phpn.tax.dto.TaxResult;
@@ -65,20 +66,24 @@ public class ProductMapper {
                 .setSku(product.getSku())
                 .setBrandId(product.getBrandId())
                 .setCategoryId(product.getCategoryId())
+                .setCategory(categoryMapper.toDTO(product.getCategory()))
+                .setBrandId(product.getBrandId())
+                .setBrand(brandMapper.toDTO(product.getBrand()))
                 .setImage(product.getImage())
                 .setDescription(product.getDescription())
                 .setImportPrice(product.getImportPrice())
                 .setWholesalePrice(product.getWholesalePrice())
                 .setRetailPrice(product.getRetailPrice())
+                .setApplyTax(product.getApplyTax())
                 .setCreatedAt(product.getCreatedAt())
                 .setUpdatedAt(product.getUpdatedAt());
 
-        List<TaxResult> taxSaleList = product.getTaxSale().stream().map(taxMapper::toDTO).collect(Collectors.toList());
-        result.setTaxSaleList(taxSaleList);
-        List<TaxResult> taxPurchaseList = product.getTaxPurchase().stream().map(taxMapper::toDTO).collect(Collectors.toList());
-        result.setTaxPurchaseList(taxPurchaseList);
-        result.setBrand(brandMapper.toDTO(product.getBrand()))
-                .setCategory(categoryMapper.toDTO(product.getCategory()));
+//        List<TaxResult> taxSaleList = product.getTaxSale().stream().map(taxMapper::toDTO).collect(Collectors.toList());
+//        result.setTaxSaleList(taxSaleList);
+//        List<TaxResult> taxPurchaseList = product.getTaxPurchase().stream().map(taxMapper::toDTO).collect(Collectors.toList());
+//        result.setTaxPurchaseList(taxPurchaseList);
+//        result.setBrand(brandMapper.toDTO(product.getBrand()))
+//                .setCategory(categoryMapper.toDTO(product.getCategory()));
         return result;
     }
 
@@ -92,6 +97,15 @@ public class ProductMapper {
                 .setInventory(0)
                 .setCategory(categoryMapper.toDTO(product.getCategory()))
                 .setBrand(brandMapper.toDTO(product.getBrand()));
+    }
+
+    public ProductSaleResult toDTOProductSale(Product product) {
+        return new ProductSaleResult()
+                .setId(product.getId())
+                .setTitle(product.getTitle())
+                .setMainUrl(product.getImage())
+                .setSku(product.getSku());
+
     }
 
 

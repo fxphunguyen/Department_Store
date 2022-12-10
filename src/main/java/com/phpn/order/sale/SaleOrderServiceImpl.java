@@ -72,64 +72,60 @@ public class SaleOrderServiceImpl implements SaleOrderService {
 
     @Override
     @Transactional
-    public SaleOrderResult createOrderExport(SaleOrderParam orderParam) {
-        Random rand = new Random();
-        int ranNum = rand.nextInt(100000) + 1;
-
-//        Integer employeeId = orderParam.getEmployeeId();
+    public SaleOrderResult create(SaleOrderParam orderParam) {
         Integer customerId = orderParam.getCustomerId();
         if (customerId == null && !customerRepository.existsById(customerId))
             throw new NotFoundException("Không tìm thấy khách hàng");
 
 
-
         SaleOrder order = orderMapper.toModel(orderParam);
         order.setGrandTotal(new BigDecimal(0));
         order.setTotal(new BigDecimal(0));
-        order.setOrderCode("SON00" + String.valueOf(ranNum));
+
         order.setSubTotal(new BigDecimal(0));
         order.setLine1(order.getLine1());
         order.setLine2(order.getLine2());
         order.setCustomerId(customerId);
         order.setEmployeeId(1);
-        order.setOrderStatusCode(OrderStatusCode.CHECKOUT);
-        order.setOrderStatusCode(OrderStatusCode.UNPAID);
+        order.setOrderStatus(OrderStatusCode.CHECKOUT);
+        order.setPaymentStatus(OrderStatusCode.UNPAID);
         order = saleOrderRepository.save(order);
+        order.setOrderCode("SON" + order.getId());
         BigDecimal total = BigDecimal.valueOf(0);
         BigDecimal subTotal = BigDecimal.valueOf(0);
         BigDecimal grandTotal = BigDecimal.valueOf(0);
-        for (SaleOrderItemParam orderItemExport : orderParam.getSaleOrderItems()) {
+        for (SaleOrderItemParam saleOrderItemParam : orderParam.getSaleOrderItems()) {
 
-            Optional<Product> productOptional = productRepository.findById(orderItemExport.getProductId());
+            Optional<Product> productOptional = productRepository.findById(saleOrderItemParam.getProductId());
 
             if (!productOptional.isPresent()) {
-                throw new NotFoundException("Không tìm thấy Id sản phẩm " + orderItemExport.getProductId());
+                throw new NotFoundException("Không tìm thấy Id sản phẩm " + saleOrderItemParam.getProductId());
             }
             //lấy toàn bộ item theo productId
-            List<Item> items = itemRepository.findAllByProductIdAndAvailableGreaterThanOrderByCreatedAt(orderItemExport.getProductId(), 0);
+            List<Item> items = itemRepository.findAllByProductIdAndAvailableGreaterThanOrderByCreatedAt(saleOrderItemParam.getProductId(), 0);
             int totalAvailable = items.stream().mapToInt(Item::getAvailable).sum();
-            if (totalAvailable < orderItemExport.getQuantity()) {
+            if (totalAvailable < saleOrderItemParam.getQuantity()) {
                 throw new NotEnoughQuantityException("Không đủ số lượng cho đơn hàng, vui lòng kiểm tra lại !");
             }
             Product product = productOptional.get();
             Integer productId = product.getId();
             BigDecimal retailPrice = product.getRetailPrice();
 
-            int quantityCustomerOrder = orderItemExport.getQuantity();
+            int quantityCustomerOrder = saleOrderItemParam.getQuantity();
             BigDecimal orderItemTotal = retailPrice.multiply(new BigDecimal(quantityCustomerOrder));
 
-            SaleOrderItem orderItem = new SaleOrderItem();
+            SaleOrderItem saleOrderItem = new SaleOrderItem();
             if (product.getApplyTax()) {
                 List<ProductTax> productTaxList = productTaxRepository.findAllByProductIdAndTaxType(productId, TaxType.TAX_SALE);
                 float taxTotal = (float) productTaxList.stream()
-                        .mapToDouble(productTax -> productTax.getId().getTax().getTax()).sum();
-                orderItem.setTax(taxTotal);
+                        .mapToDouble(productTax -> productTax.getTax().getTax()).sum();
+                saleOrderItem.setTax(taxTotal);
                 BigDecimal amountTax = (orderItemTotal.multiply(BigDecimal.valueOf(taxTotal / 100)));
                 orderItemTotal = orderItemTotal.add(amountTax);
             }
 
 
-            if (orderItem.getDiscount() != null) {
+            if (saleOrderItem.getDiscount() != null) {
                 orderItemTotal = orderItemTotal.subtract(orderParam.getDiscount());
             }
 
@@ -156,13 +152,13 @@ public class SaleOrderServiceImpl implements SaleOrderService {
                     quantityCustomerOrder = 0;
                 }
 
-                orderItem.setQuantity(orderItemSold);
-                orderItem.setPrice(retailPrice);
-                orderItem.setProductId(productId);
-                orderItem.setItemId(item.getId());
-                orderItem.setOrderId(order.getId());
-
-                orderItemRepository.save(orderItem);
+                saleOrderItem.setQuantity(orderItemSold);
+                saleOrderItem.setPrice(retailPrice);
+                saleOrderItem.setProductId(productId);
+                saleOrderItem.setItemId(item.getId());
+                saleOrderItem.setOrderId(order.getId());
+                saleOrderItem.setDiscount(saleOrderItemParam.getDiscount());
+                orderItemRepository.save(saleOrderItem);
             }
         }
         order.setSubTotal(subTotal);
@@ -210,13 +206,17 @@ public class SaleOrderServiceImpl implements SaleOrderService {
     @Override
     @Transactional(readOnly = true)
     public List<SaleOrderResult> findAllSaleOrderByCustomerId(Integer customerId) {
+<<<<<<< HEAD
         return  saleOrderRepository.findAllCustomerOrderHistory(customerId).stream().map(orderMapper::toCustomerHistory).collect(Collectors.toList());
+=======
+        return saleOrderRepository.findAllCustomerOrderHistory(customerId).stream().map(orderMapper::toDTO).collect(Collectors.toList());
+>>>>>>> main
     }
 
     @Override
     @Transactional(readOnly = true)
     public Instant getLastDayOrderByCustomerId(Integer customerId) {
-        return  saleOrderRepository.getLastDayOrderByCustomerId(customerId);
+        return saleOrderRepository.getLastDayOrderByCustomerId(customerId);
     }
 
 

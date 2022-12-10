@@ -1,15 +1,12 @@
 package com.phpn.employee.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import lombok.experimental.Accessors;
-import lombok.Setter;
-import lombok.Getter;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)

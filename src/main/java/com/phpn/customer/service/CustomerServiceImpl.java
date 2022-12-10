@@ -28,7 +28,6 @@ import java.util.stream.Collectors;
 
 
 @Service
-@RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
@@ -125,27 +124,25 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public CustomerResult create(CreateCustomerParam customerCreate) {
         if (customerCreate.getName().equals("")) {
             throw new DataInputException("Tên khách hàng là bắt buộc");
         }
-        if (customerCreate.getCustomerCode().equals("")) {
-            throw new DataInputException("Mã khách hàng không được để trống");
-        }
+
         if (customerCreate.getEmployeeId() == null) {
             throw new DataInputException("Bạn chưa chọn nhân viên phụ trách");
         }
         try {
             Customer customer = customerRepository.save(customerMapper.toCustomer(customerCreate));
-
+            customer.setCustomerCode("CUZN" + customer.getId());
             CreateShippingAddressParam shippingAddressParam = customerCreate.getCreateShippingAddressParam();
 
-            try {
-                shippingAddressParam.setCustomerId(customer.getId());
-                shippingAddressService.create(customerCreate.getCreateShippingAddressParam());
-            } catch (Exception e) {
-                throw new AppNotFoundException("Địa chỉ của khách hàng không được lưu, lỗi không xác định");
-            }
+            shippingAddressParam.setCustomerId(customer.getId());
+            shippingAddressParam.setIsShipping(true);
+            shippingAddressParam.setIsReceiveBill(true);
+            shippingAddressService.create(customerCreate.getCreateShippingAddressParam());
+
             return customerMapper.toCustomerInfo(customer);
 
         } catch (Exception e) {
@@ -154,7 +151,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public CustomerResult update(UpdateCustomerParam updateCustomer) {
+<<<<<<< HEAD
         if (updateCustomer.getName().equals("")) {
             throw new DataInputException("Tên khách hàng là bắt buộc");
         }
@@ -172,6 +171,11 @@ public class CustomerServiceImpl implements CustomerService {
         } catch (Exception e) {
             throw new DataInputException("Lỗi không xác định");
         }
+=======
+        Customer customer = customerRepository.findById(updateCustomer.getId()).get();
+        Customer customer1 = customerMapper.toCustomer(updateCustomer, customer);
+        return customerMapper.toCustomerInfo(customer1);
+>>>>>>> main
     }
 
     @Override
@@ -182,20 +186,25 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<CustomerDebtImpl> findCustomerDebtsByCustomerId(Integer customerId) {
         List<CustomerDebt> customerDebts = customerRepository.findCustomerDebtsByCustomerId(customerId);
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
         List<CustomerDebtImpl> customerDebts1 = customerDebts.stream().map(customerDebt -> {
             CustomerDebtImpl customerDebtImpl = new CustomerDebtImpl();
             customerDebtImpl.setFromICustomerOwer(customerDebt);
             return customerDebtImpl;
         }).collect(Collectors.toList());
         BigDecimal tam = BigDecimal.valueOf(0);
-        for (CustomerDebtImpl customerDebtImpl : customerDebts1){
+        for (CustomerDebtImpl customerDebtImpl : customerDebts1) {
             tam = tam.add(customerDebtImpl.getTransaction());
-            customerDebtImpl.setTotalDebt(tam) ;
+            customerDebtImpl.setTotalDebt(tam);
             System.out.println(customerDebtImpl.getTransaction());
         }
-        return  customerDebts1;
+        return customerDebts1;
     }
 
     @Override

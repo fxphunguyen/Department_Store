@@ -9,10 +9,11 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Data
 @Accessors(chain = true)
-public class SaleOrderItemProductResult {
+public class ProductSaleResult {
     private Integer id;
     private String title;
     private String mainUrl;
+    private String sku;
 
 
 }

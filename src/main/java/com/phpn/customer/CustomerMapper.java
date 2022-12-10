@@ -5,6 +5,7 @@ import com.phpn.customer.dto.CreateCustomerParam;
 import com.phpn.customer.dto.CustomerOrderResult;
 import com.phpn.customer.dto.CustomerResult;
 import com.phpn.customer.dto.UpdateCustomerParam;
+import com.phpn.order.sale.dto.CustomerSaleOrderResult;
 import com.phpn.shipping_address.dto.ShippingAddressResult;
 import com.phpn.employee.dto.EmployeeMapper;
 import vn.fx.qh.sapo.entities.customer.*;
@@ -25,8 +26,6 @@ public class CustomerMapper {
     private ShippingAddressMapper shippingAddressMapper;
 
 
-
-
     public CustomerResult toDTO(Customer customer) {
         CustomerResult result = new CustomerResult()
                 .setId(customer.getId())
@@ -38,7 +37,6 @@ public class CustomerMapper {
                 .setEmail(customer.getEmail())
                 .setBirthday(customer.getBirthday())
                 .setCustomerStatus(customer.getCustomerStatus())
-
                 .setEmployeeId(customer.getEmployeeId())
                 .setCustomerStatus(customer.getCustomerStatus());
 
@@ -68,6 +66,11 @@ public class CustomerMapper {
                 .setEmployeeId(customer.getEmployeeId());
     }
 
+    public CustomerSaleOrderResult toDTOCustomerSaleOrder(Customer customer) {
+        return new CustomerSaleOrderResult()
+                .setId(customer.getId()).setFullName(customer.getName());
+    }
+
     public Customer toModel(CreateCustomerParam customerCreate) {
         return new Customer()
                 .setEmployeeId(customerCreate.getEmployeeId())
@@ -82,7 +85,6 @@ public class CustomerMapper {
 
     public Customer toCustomer(CreateCustomerParam customerCreate) {
         return new Customer()
-                .setCustomerCode(customerCreate.getCustomerCode())
                 .setName(customerCreate.getName())
                 .setPhone(customerCreate.getPhone())
                 .setCustomerGroup(customerCreate.getCustomerGroup())
@@ -109,7 +111,7 @@ public class CustomerMapper {
 
 
     public CustomerResult toCustomerInfo(Customer customer) {
-            return new  CustomerResult()
+        return new CustomerResult()
                 .setId(customer.getId())
                 .setCustomerCode(customer.getCustomerCode())
                 .setName(customer.getName())
@@ -120,7 +122,7 @@ public class CustomerMapper {
                 .setBirthday(customer.getBirthday())
                 .setCustomerStatus(customer.getCustomerStatus())
                 .setEmployeeId(customer.getEmployeeId())
-                 .setEmployeeResult(employeeMapper.toDTO(customer.getEmployee()))
+                .setEmployeeResult(employeeMapper.toDTO(customer.getEmployee()))
                 .setCustomerStatus(customer.getCustomerStatus());
 
     }

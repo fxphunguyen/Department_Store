@@ -47,11 +47,11 @@ class App {
                 <td class="align-middle">${item.title}</td>
                 <td class="align-middle">${item.category.name}</td>
                 <td class="align-middle">${item.brand.name}</td>
-                <td class="align-middle">${item.available}</td>
-                <td class="align-middle">${item.inventory}</td>
+                <td class="align-middle">${item.availableInventory}</td>
+                <td class="align-middle">${item.totalInventory}</td>
                 <td class="align-middle">${item.status}</td>
-                <td class="align-middle">${item.createAt}</td>
-                <td class="align-middle">${item.updateAt}</td>
+                <td class="align-middle">${moment(item.createdAt).format("DD/MM/yyyy")}</td>
+                <td class="align-middle">${moment(item.updatedAt).format("DD/MM/yyyy")}</td>
             </tr>
         `;
         return str;
