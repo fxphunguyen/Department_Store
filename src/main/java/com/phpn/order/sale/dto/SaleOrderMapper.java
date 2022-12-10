@@ -79,7 +79,6 @@ public class SaleOrderMapper {
                 .setPaymentStatus(orderStatusMapper.toDTO(saleOrder.getPaymentStatus()))
                 .setDescription(saleOrder.getDescription())
                 .setCreatedAt(saleOrder.getCreatedAt())
-                .setCustomer(customerMapper.toDTO(saleOrder.getCustomer()))
                 .setTotal(saleOrder.getTotal())
                 .setSubTotal(saleOrder.getSubTotal())
                 .setGrandTotal(saleOrder.getGrandTotal());

@@ -153,7 +153,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public CustomerResult update(UpdateCustomerParam updateCustomer) {
-<<<<<<< HEAD
         if (updateCustomer.getName().equals("")) {
             throw new DataInputException("Tên khách hàng là bắt buộc");
         }
@@ -171,11 +170,6 @@ public class CustomerServiceImpl implements CustomerService {
         } catch (Exception e) {
             throw new DataInputException("Lỗi không xác định");
         }
-=======
-        Customer customer = customerRepository.findById(updateCustomer.getId()).get();
-        Customer customer1 = customerMapper.toCustomer(updateCustomer, customer);
-        return customerMapper.toCustomerInfo(customer1);
->>>>>>> main
     }
 
     @Override
@@ -189,10 +183,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional(readOnly = true)
     public List<CustomerDebtImpl> findCustomerDebtsByCustomerId(Integer customerId) {
         List<CustomerDebt> customerDebts = customerRepository.findCustomerDebtsByCustomerId(customerId);
-<<<<<<< HEAD
-=======
 
->>>>>>> main
         List<CustomerDebtImpl> customerDebts1 = customerDebts.stream().map(customerDebt -> {
             CustomerDebtImpl customerDebtImpl = new CustomerDebtImpl();
             customerDebtImpl.setFromICustomerOwer(customerDebt);
