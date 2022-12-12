@@ -72,10 +72,16 @@ class Image {
 }
 
 class Product {
-    constructor(id, title, status, description, unit, sku, barCode, quantity, retailPrice, importPrice, wholesalePrice, categoryId, brandId, applyTax, image) {
+    constructor(id, title, enableSell,
+                description, unit,
+                sku, barCode, quantity,
+                retailPrice, importPrice,
+                wholesalePrice, categoryId,
+                brandId, applyTax, image,
+                isTaxInclusive, taxList) {
         this.id = id;
         this.title = title;
-        this.status = status;
+        this.enableSell = enableSell;
         this.description = description;
         this.unit = unit;
         this.sku = sku;
@@ -87,7 +93,9 @@ class Product {
         this.categoryId = categoryId;
         this.brandId = brandId;
         this.applyTax = applyTax;
-        this.productImageParams = image;
+        this.isTaxInclusive = isTaxInclusive;
+        this.taxList = taxList;
+        this.mediaList = image;
     }
 }
 
@@ -103,6 +111,13 @@ class ProductItemPage {
         this.status = status;
         this.createAt = createAt;
         this.updateAt = updateAt;
+    }
+}
+
+class ProductTaxParam {
+    constructor(taxId, taxType) {
+        this.taxId = taxId;
+        this.taxType = taxType;
     }
 }
 

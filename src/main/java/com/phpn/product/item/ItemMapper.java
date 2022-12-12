@@ -1,7 +1,13 @@
 package com.phpn.product.item;
 
+import com.phpn.employee.dto.EmployeeResult;
+import com.phpn.product.dto.CreateProductParam;
+import com.phpn.product.dto.ProductCreate;
+import com.phpn.product.dto.ProductResult;
 import org.springframework.stereotype.Component;
 import vn.fx.qh.sapo.entities.product.*;
+
+import java.math.BigDecimal;
 
 @Component
 public class ItemMapper {
@@ -17,16 +23,34 @@ public class ItemMapper {
                 .setQuantity(itemParam.getQuantity());
     }
 
+    public Item toModel(CreateItemParam createItemParam) {
+        return new Item()
+                .setQuantity(createItemParam.getQuantity())
+                .setEmployeeId(createItemParam.getEmployeeId())
+                .setProductId(createItemParam.getProductId())
+                .setPrice(createItemParam.getPrice());
+    }
+
+    public CreateItemParam toDTO(CreateProductParam createProductParam, ProductResult productResult) {
+        return new CreateItemParam()
+                .setQuantity(createProductParam.getQuantity())
+                .setProductId(productResult.getId())
+                .setEmployeeId(1)
+                .setPrice(createProductParam.getImportPrice());
+    }
+
     public ItemResult toDTO(Item item) {
         return new ItemResult()
                 .setId(item.getId())
-                .setEmployeeId(item.getEmployeeId())
-                .setPurchaseOrderId(item.getPurchaseOrderId())
                 .setProductId(item.getProductId())
+                .setEmployeeId(item.getEmployeeId())
                 .setSupplierId(item.getSupplierId())
+                .setPurchaseOrderId(item.getPurchaseOrderId())
                 .setQuantity(item.getQuantity())
-                .setSku(item.getProduct().getSku())
-                .setAvailable(item.getAvailable());
+                .setPrice(item.getPrice())
+                .setAvailable(item.getAvailable())
+                .setTrading(item.getTrading());
+
     }
 //    public  ItemResult toItemInfo(Item item){
 //        return  new ItemResult()

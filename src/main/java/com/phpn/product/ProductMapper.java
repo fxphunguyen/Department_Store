@@ -61,7 +61,7 @@ public class ProductMapper {
     }
 
     public ProductResult toDTO(Product product) {
-        ProductResult result = new ProductResult()
+        return new ProductResult()
                 .setId(product.getId())
                 .setTitle(product.getTitle())
                 .setStatus(product.getStatus())
@@ -69,7 +69,6 @@ public class ProductMapper {
                 .setSku(product.getSku())
                 .setBrandId(product.getBrandId())
                 .setCategoryId(product.getCategoryId())
-                .setImage(product.getImage())
                 .setDescription(product.getDescription())
                 .setUnit(product.getUnit())
                 .setCreateAt(product.getCreatedAt())
@@ -77,13 +76,12 @@ public class ProductMapper {
                 .setImportPrice(product.getImportPrice())
                 .setWholesalePrice(product.getWholesalePrice())
                 .setRetailPrice(product.getRetailPrice());
-        List<TaxResult> taxSaleList = product.getTaxSale().stream().map(taxMapper::toDTO).collect(Collectors.toList());
-        result.setTaxSaleList(taxSaleList);
-        List<TaxResult> taxPurchaseList = product.getTaxPurchase().stream().map(taxMapper::toDTO).collect(Collectors.toList());
-        result.setTaxPurchaseList(taxPurchaseList);
-        result.setBrand(brandMapper.toDTO(product.getBrand()))
-                .setCategory(categoryMapper.toDTO(product.getCategory()));
-        return result;
+//        List<TaxResult> taxSaleList = product.getTaxSale().stream().map(taxMapper::toDTO).collect(Collectors.toList());
+//        result.setTaxSaleList(taxSaleList);
+//        List<TaxResult> taxPurchaseList = product.getTaxPurchase().stream().map(taxMapper::toDTO).collect(Collectors.toList());
+//        result.setTaxPurchaseList(taxPurchaseList);
+//        result.setBrand(brandMapper.toDTO(product.getBrand()))
+//                .setCategory(categoryMapper.toDTO(product.getCategory()));
     }
 
     public ProductItemResult toDTOPage(Product product) {
