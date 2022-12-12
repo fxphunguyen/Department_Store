@@ -15,7 +15,7 @@ function showAllTaxes(selectedTax) {
             taxes.forEach(item => {
                 //nhat-dev select item and get it value
                 let isSelected = item === selectedTax ? "selected" : "";
-                let str = `<li id="${item.id}" data-id="${item.id}" onclick="updateNameCat(${item.id})" class="${isSelected} catItem dropdown-item">${item.title}</li>`;
+                let str = `<li id="${item.id}" data-id="${item.id}" onclick="updateNameTax(${item.id})" class="${isSelected} catItem dropdown-item">${item.title}</li>`;
                 // options.insertAdjacentHTML("beforeend", li);
                 $(".showAllTax").append(str);
 
@@ -27,9 +27,9 @@ function showAllTaxes(selectedTax) {
         })
 }
 //nhat-dev update name cat after selected
-function updateNameCat(id ) {
+function updateNameTax(id ) {
     const  arrayTax = taxes.filter(item => item.id === id)
-    const val = arrayTax[0].name;
+    const val = arrayTax[0].title;
 
     console.log("is", id , val)
 
