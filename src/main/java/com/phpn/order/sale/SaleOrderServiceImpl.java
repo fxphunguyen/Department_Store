@@ -195,7 +195,6 @@ public class SaleOrderServiceImpl implements SaleOrderService {
                 .map(orderItemMapper::toDTO)
                 .collect(Collectors.toList());
         result.setOrderItems(orderItems);
-
         return result;
     }
 
