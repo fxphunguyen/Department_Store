@@ -22,6 +22,7 @@
     <th:block th:replace="/layout/menu :: menu"/>
     <th:block th:replace="/layout/createBrandModal :: createBrandModal"/>
     <th:block th:replace="/layout/createCategoryModal :: createCatModal"/>
+    <th:block th:replace="/layout/modalCreateTax :: createTaxModal"/>
 
     <div class="col-right MuiBox-root jss64 jss40">
         <div class="MuiBox-root jss26581">
@@ -695,7 +696,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="MuiCollapse-wrapper">
+                                        <div class="MuiCollapse-wrapper" id="showTaxModal" style="display: none">
                                             <div class="MuiCollapse-wrapperInner">
                                                 <div class="MuiBox-root jss21906" style="padding-top: 24px;">
                                                     <div class="MuiBox-root jss21907" style="width: 100%;">
@@ -705,7 +706,7 @@
                                                                     class="MuiFormLabel-root MuiInputLabel-root jss21759 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
                                                                     data-shrink="true" style="font-size: 14px; color: rgb(70, 81, 95);">Giá sản
                                                                 phẩm</label></div>
-                                                            <select class="form-select" aria-label="Default select example">
+                                                            <select class="form-select" aria-label="Default select example" id="priceDepsTax">
                                                                 <option selected value="1">Giá chưa bao gồm thuế</option>
                                                                 <option value="2">Giá đã bao gồm thuế</option>
                                                             </select>
@@ -726,34 +727,47 @@
                                                                 display: flex;
                                                                 justify-content: space-between;
                                                                 align-items: center; ">
-                                                                <span id="taxProType">Chọn loại sản phẩm</span>
+                                                                <span id="taxProType">Chọn thuế đầu vào</span>
                                                             </div>
                                                             <ul class="dropdown-menu w-100  showAllTax">
                                                                 <li class="text-primary dropdown-item">
-                                                                    <button id="btnCreateTax" style="border: none; color: #2d9dff;padding: 10px;text-align: start;
+                                                                    <button id="" style="border: none; color: #2d9dff;padding: 10px;text-align: start;
                                                                      font-weight: 500;
-                                                                     font-size: 14px" class="bg-white w-100">
+                                                                     font-size: 14px" class="bg-white w-100 btnCreateTax">
                                                                         <i class="fa-solid fa-circle-plus"
-                                                                           style="margin: 0 9px"></i>Thêm mới
-                                                                        loại sản phẩm
+                                                                           style="margin: 0 9px"></i>Thêm mới thuế đầu vào
                                                                     </button>
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="MuiBox-root jss21928" style="padding-top: 16px;">
-                                                    <div class="MuiBox-root jss21944 jss40002">
-                                                        <div class="MuiBox-root jss21945 jss40012"><p
-                                                                class="MuiTypography-root MuiTypography-body1"
-                                                                style="color: rgb(70, 81, 95);">Thuế đầu ra</p></div>
-                                                        <div class="MuiBox-root jss21946 jss40011" tabindex="0"><p
-                                                                class="MuiTypography-root label-select MuiTypography-body1 MuiTypography-colorTextPrimary">
-                                                            Thuế suất 10% - 10%</p>
-                                                            <svg class="MuiSvgIcon-root" focusable="false"
-                                                                 viewBox="0 0 24 24" aria-hidden="true">
-                                                                <path d="M7 10l5 5 5-5z"></path>
-                                                            </svg>
+                                                <div class="MuiBox-root jss21909" style="padding-top: 16px;">
+                                                    <div class="MuiBox-root jss21925 jss39987">
+                                                        <div class="MuiBox-root jss21926 jss39997">
+                                                            <p
+                                                                    class="MuiTypography-root MuiTypography-body1"
+                                                                    style="color: rgb(70, 81, 95);">Thuế đầu ra</p></div>
+                                                        <div class="dropdown">
+                                                            <!--                                                <input id="getIdValueCat" type="hidden"/>-->
+                                                            <div class="btn bg-secondary dropdown-toggle select-btn-tax-out"
+                                                                 type="button" data-bs-toggle="dropdown"
+                                                                 aria-expanded="false" style=" border: solid 1px #D3D5D7;border: solid 1px #D3D5D7;
+                                                                display: flex;
+                                                                justify-content: space-between;
+                                                                align-items: center; ">
+                                                                <span id="taxProTypeOut">Chọn thuế đầu ra </span>
+                                                            </div>
+                                                            <ul class="dropdown-menu w-100  showAllTaxOut">
+                                                                <li class="text-primary dropdown-item">
+                                                                    <button id="" style="border: none; color: #2d9dff;padding: 10px;text-align: start;
+                                                                     font-weight: 500;
+                                                                     font-size: 14px" class="bg-white w-100 btnCreateTax">
+                                                                        <i class="fa-solid fa-circle-plus"
+                                                                           style="margin: 0 9px"></i>Thêm mới thuế đầu ra
+                                                                    </button>
+                                                                </li>
+                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -988,48 +1002,6 @@
         }
     }
 
-    // //Click to create product
-    // $('#btnCreateProduct').on('click', () => {
-    //     product.id = 0;
-    //     product.title = $('.titleCreate').val();
-    //     product.image = 'ok cậu';
-    //     // product.status = $('.statusCreate').attr('checked') ? 1 : 0;
-    //
-    //     product.status = $(".statusCreate").is(":checked") ? "AVAILABLE" : "UNAVAILABLE";
-    //
-    //     product.description = $('.descriptionCreate').val();
-    //     product.unit = $('.unitCreate').val();
-    //     product.sku = $('.skuCreate').val();
-    //     product.barCode = $('.barCodeCreate').val();
-    //     product.quantity = $('.quantityCreate').val();
-    //     product.retailPrice = $('.retailPriceCreate').val();
-    //     product.importPrice = $('.importPriceCreate').val();
-    //     product.wholesalePrice = $('.wholesalePriceCreate').val();
-    //
-    //     //nhat-dev get value cat and brand to create product
-    //     product.categoryId = $("#catProType").data("id");
-    //     product.brandId = $('#brandProType').data("id");
-    //     product.deleted = true;
-    //
-    //     console.log(product)
-    //     $.ajax({
-    //         "headers": {
-    //             "accept": "application/json",
-    //             "content-type": "application/json"
-    //         },
-    //         "type": "POST",
-    //         "url": "http://localhost:8080/api/products/create",
-    //         "data": JSON.stringify(product)
-    //     })
-    //         .done((data) => {
-    //             console.log(": Tạo sản phẩm thành công")
-    //
-    //         })
-    //         .fail((jqXHR) => {
-    //             console.log("Loi nha may ba")
-    //         })
-    // })
-
     //----->>>Nhat-dev OnClick button to create Category
     $('#btnAddCategory').on('click', () => {
         category.id = 0;
@@ -1047,7 +1019,7 @@
             .done((data) => {
                 console.log(": Tạo sản phẩm thành công")
                 showAllCategories();
-                searchCat(id);
+                searchCat();
                 updateNameCat();
                 $('#modalAddCategory').modal('hide');
                 $('#frmCreateCat')[0].reset();
@@ -1086,6 +1058,46 @@
             })
     })
     //<<<--------nhat-dev end onclick create brand
+    //----->>>Nhat-dev OnClick button to create tax
+    $('#btnAddTax').on('click', () => {
+        tax.id = 0;
+        tax.title = $('#inputTaxTitle').val();
+        tax.code = $('#inputTaxCode').val();
+        tax.tax = $('#inputTax').val();
+
+        console.log(tax)
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": "http://localhost:8080/api/taxes/create",
+            "data": JSON.stringify(tax)
+        })
+            .done((data) => {
+                console.log(": Tạo thuế thành công")
+                showAllTaxes()
+                $('#modalAddTax').modal('hide');
+                $('#frmCreateTax')[0].reset();
+
+            })
+            .fail((jqXHR) => {
+                console.log("Loi nha may ba")
+            })
+    })
+    //<<<--------nhat-dev end onclick create brand
+    //checkbox event apply tax
+    $('#applyTax').click(function() {
+        if ($("#applyTax").is(':checked')) {
+            $("#showTaxModal").css("display","block");
+        }
+        else{
+            $("#showTaxModal").css("display","none");
+        }
+    });
+
+    
 
     //nhat_dev called function categories and brands
     showAllCategories();
