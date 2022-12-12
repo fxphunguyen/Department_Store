@@ -51,7 +51,12 @@ public class ProductServiceImpl implements ProductService {
     @Transactional(readOnly = true)
     public ProductResult findById(Integer id) {
         Optional<Product> productOptional = productRepository.findById(id);
-        return productMapper.toDTO(productOptional.get());
+        if (productOptional.isPresent()) {
+            return productMapper.toDTO(productOptional.get());
+        }
+        else {
+            return null;
+        }
     }
 
     @Override
