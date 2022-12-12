@@ -36,7 +36,12 @@ public class ProductController {
     @GetMapping("/product/{id}")
     public ModelAndView showDetailProduct(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("product", productService.findById(id));
+        ProductResult product = productService.findById(id);
+        if (product == null) {
+            modelAndView.addObject("errors", "errors");
+        } else {
+            modelAndView.addObject("product", productService.findById(id));
+        }
         modelAndView.setViewName("/admin/product/product_detail");
         return modelAndView;
     }
