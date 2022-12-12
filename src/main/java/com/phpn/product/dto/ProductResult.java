@@ -25,7 +25,6 @@ public class ProductResult {
 
     private Integer id;
     private String title;
-    private String image;
     private ProductStatus status;
     private Instant createAt;
     private Instant updateAt;

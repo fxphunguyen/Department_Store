@@ -5,14 +5,18 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.phpn.exceptions.AppNotFoundException;
+import com.phpn.media.MediaMapper;
+import com.phpn.media.MediaResult;
+import com.phpn.media.MediaService;
 import com.phpn.product.dto.*;
 
-import com.phpn.product.item.ItemService;
+import com.phpn.product.item.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import vn.fx.qh.sapo.entities.media.Media;
 import vn.fx.qh.sapo.entities.product.*;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +29,19 @@ public class ProductServiceImpl implements ProductService {
     ProductMapper productMapper;
 
     @Autowired
+    MediaMapper mediaMapper;
+
+    @Autowired
+    ItemMapper itemMapper;
+
+    @Autowired
     ProductRepository productRepository;
 
     @Autowired
     ItemService itemService;
+
+    @Autowired
+    MediaService mediaService;
 
     @Override
     @Transactional(readOnly = true)
@@ -73,9 +86,22 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public ProductResult create(CreateProductParam productWithImageParam) {
         Product product = productMapper.toModel(productWithImageParam);
+        product.setId(0);
+        if (productWithImageParam.getEnableSell() == true) {
+            product.setStatus(ProductStatus.parseProductStatus("AVAILABLE"));
+        }
+        else {
+            product.setStatus(ProductStatus.parseProductStatus("UNAVAILABLE"));
+        }
         System.out.println(product);
-//        Product product = productRepository.save(productMapper.toModel(productWithImageParam));
-        return productMapper.toDTO(product);
+        ProductResult productResult = productMapper.toDTO(productRepository.save(product));
+        ItemResult itemResult = itemService.create(itemMapper.toDTO(productWithImageParam, productResult));
+        System.out.println(productResult);
+        System.out.println(itemResult);
+        List<MediaResult> mediaResults = mediaService.save(productWithImageParam.getMediaList(), productResult.getId());
+
+        System.out.println(mediaResults);
+        return productResult;
     }
 
 

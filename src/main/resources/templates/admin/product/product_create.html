@@ -752,7 +752,7 @@
                                                             <!--                                                <input id="getIdValueCat" type="hidden"/>-->
                                                             <div class="btn bg-secondary dropdown-toggle select-btn-tax-out"
                                                                  type="button" data-bs-toggle="dropdown"
-                                                                 aria-expanded="false" style=" border: solid 1px #D3D5D7;border: solid 1px #D3D5D7;
+                                                                 aria-expanded="false" style=" border: solid 1px #D3D5D7; border: solid 1px #D3D5D7;
                                                                 display: flex;
                                                                 justify-content: space-between;
                                                                 align-items: center; ">
@@ -760,7 +760,7 @@
                                                             </div>
                                                             <ul class="dropdown-menu w-100  showAllTaxOut">
                                                                 <li class="text-primary dropdown-item">
-                                                                    <button id="" style="border: none; color: #2d9dff;padding: 10px;text-align: start;
+                                                                    <button style="border: none; color: #2d9dff;padding: 10px;text-align: start;
                                                                      font-weight: 500;
                                                                      font-size: 14px" class="bg-white w-100 btnCreateTax">
                                                                         <i class="fa-solid fa-circle-plus"
@@ -849,6 +849,9 @@
     let  brand = new Brand();
     let tax = new Tax();
     let imgs = [];
+    let taxs = [];
+    let taxIn = new ProductTaxParam();
+    let taxOut = new ProductTaxParam();
 
     //QHuy
     page.cloudinary.api_key = 142768397813839;
@@ -884,11 +887,15 @@
 
     //Thêm sản phẩm
     page.elements.btnCreateProduct.on("click", () => {
+        taxIn.taxId = $("#taxProType").data("id");
+        taxIn.taxType = "TAX_PURCHASE";
+        taxOut.taxId = $("#taxProTypeOut").data("id");
+        taxOut.taxType = "TAX_SALE";
+        taxs.push(taxIn);
+        taxs.push(taxOut);
         product.id = 0;
         product.title = page.dialogs.elements.titleCreate.val();
-        product.image = $("#image").val();
-        product.status = page.dialogs.elements.statusCreate.is(":checked") ? "AVAILABLE" : "UNAVAILABLE";
-
+        product.enableSell = page.dialogs.elements.statusCreate.is(":checked") ? true : false;
         product.description = page.dialogs.elements.descriptionCreate.val();
         product.unit = page.dialogs.elements.unitCreate.val();
         product.sku = page.dialogs.elements.skuCreate.val();
@@ -897,11 +904,12 @@
         product.retailPrice = page.dialogs.elements.retailPriceCreate.val();
         product.importPrice = page.dialogs.elements.importPriceCreate.val();
         product.wholesalePrice = page.dialogs.elements.wholesalePriceCreate.val();
-        product.categoryId = page.dialogs.elements.categoryIdCreate.val();
-        product.brandId = page.dialogs.elements.brandIdCreate.val();
         product.categoryId = $("#catProType").data("id");
         product.brandId = $('#brandProType').data("id");
-        product.productImageParams = imgs
+        product.applyTax = $("#applyTax").is(":checked") ? true : false;
+        product.isTaxInclusive = $("#priceDepsTax").val() === 2 ? true : false;
+        product.taxList = taxs;
+        product.mediaList = imgs
 
         console.log(product)
         $.ajax({
