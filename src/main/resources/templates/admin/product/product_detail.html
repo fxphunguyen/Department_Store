@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi-VN" class="sapo-menu-toggle-active sapo-menu-expand" xmlns:th="http://www.thymeleaf.org">
+<html lang="vi-VN" class="sapo-menu-toggle-active sapo-menu-expand" xmlns:th="http://www.thymeleaf.org" th:object="${product}">
 
 <head>
     <link rel="stylesheet" href="../../../static/assets/admin/css/product/product_detail.css"/>
@@ -43,7 +43,7 @@
         <div class="MuiBox-root jss4514 jss4501">
             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
                 <div class="MuiGrid-root title MuiGrid-item MuiGrid-grid-xs-12">
-                    <h4 id="titleProdut" class="MuiTypography-root MuiTypography-h4"></h4>
+                    <h4 class="MuiTypography-root MuiTypography-h4" th:value="*{id}" th:text="*{title}"></h4>
                 </div>
             </div>
             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
@@ -67,8 +67,8 @@
                                             <div class="MuiBox-root jss4687 jss4674">: <p
                                                     class="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap"
                                                     itemid="display_product_variant_sku"
-                                                    style="line-height: 16px; margin-left: 5px;">
-                                                PVN05</p>
+                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{sku}">
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -81,9 +81,8 @@
                                             <div class="MuiBox-root jss4688 jss4674">: <p
                                                     class="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap"
                                                     itemid="display_product_variant_barcode"
-                                                    style="line-height: 16px; margin-left: 5px;">
-                                                TH-
-                                                Custas-276</p>
+                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{barCode}">
+                                               </p>
                                             </div>
                                         </div>
                                     </div>
@@ -110,8 +109,8 @@
                                             <div class="MuiBox-root jss4690 jss4674">: <p
                                                     class="MuiTypography-root MuiTypography-body2"
                                                     itemid="display_product_variant_unit"
-                                                    style="line-height: 16px; margin-left: 5px;">
-                                                hộp</p>
+                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{unit}">
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -151,7 +150,7 @@
                                             <div class="MuiBox-root jss4692 jss4674">: <p
                                                     class="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap"
                                                     itemid="display_product_variant_category" title="Bánh kẹo"
-                                                    style="line-height: 16px; margin-left: 5px;">Bánh kẹo</p>
+                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{category.name}"></p>
                                             </div>
                                         </div>
                                     </div>
@@ -164,9 +163,8 @@
                                             <div class="MuiBox-root jss4693 jss4674">: <p
                                                     class="MuiTypography-root MuiTypography-body2"
                                                     itemid="display_product_variant_brand"
-                                                    style="line-height: 16px; margin-left: 5px;">
-                                                Orion
-                                                Custas</p>
+                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{brand.name}">
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -191,8 +189,8 @@
                                             <div class="MuiBox-root jss4695 jss4674">: <p
                                                     class="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap"
                                                     itemid="display_product_variant_createOn"
-                                                    style="line-height: 16px; margin-left: 5px;">
-                                                06/10/2022 20:49</p>
+                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{createAt}">
+                                               </p>
                                             </div>
                                         </div>
                                     </div>
@@ -205,8 +203,8 @@
                                             <div class="MuiBox-root jss4696 jss4674">: <p
                                                     class="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap"
                                                     itemid="display_product_variant_modified_on"
-                                                    style="line-height: 16px; margin-left: 5px;">
-                                                07/11/2022 10:00</p>
+                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{updateAt}">
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -219,7 +217,7 @@
                                                 <div class="MuiBox-root jss4700 jss4621"
                                                      style="margin: 0px; width: 150px; height: 150px;">
                                                     <img class="image-item"
-                                                         src="https://sapo.dktcdn.net/100/673/040/variants/7530f13a-191f-46df-8314-24966c92be1b-1667656228225.jpg"
+                                                         src="https://product.hstatic.net/200000467221/product/21-6.4_a10cab0fbb19443fb20f9b72b22d0443_grande.jpg"
                                                          alt=""></div>
                                             </div>
                                         </div>
@@ -249,7 +247,7 @@
                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4">
                                     <p class="MuiTypography-root MuiTypography-body2"
                                        itemid="variant_detail_price_sell_1_value"
-                                       style="line-height: 16px;">: 0</p>
+                                       style="line-height: 16px;" th:text="': ' + *{retailPrice}"></p>
                                 </div>
                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2">
                                     <div class="MuiBox-root jss5053" style="display: flex;">
@@ -261,7 +259,7 @@
                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4">
                                     <p class="MuiTypography-root MuiTypography-body2"
                                        itemid="variant_detail_price_sell_2_value"
-                                       style="line-height: 16px;">: 0</p>
+                                       style="line-height: 16px;" th:text="': ' + *{wholesalePrice}"></p>
                                 </div>
                             </div>
                             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1"
@@ -276,7 +274,7 @@
                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4">
                                     <p class="MuiTypography-root MuiTypography-body2"
                                        itemid="variant_detail_price_import_1_value"
-                                       style="line-height: 16px;">: 0</p>
+                                       style="line-height: 16px;" th:text="': ' + *{retailPrice}"></p>
                                 </div>
                             </div>
                         </div>
