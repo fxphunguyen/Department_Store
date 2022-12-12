@@ -41,7 +41,6 @@ class App {
     static renderRowProduct(item) {
         let str = `
              <tr id="tr_${item.id}" >
-                <td class="align-middle"></td>
                 <td class="align-middle"><input type="checkbox" value=""></td>
                 <td class="align-middle"><img width="50px" height="40px" src=${item.image} alt="image"></td>
                 <td class="align-middle"><a href="/admin/product/${item.id}" style="text-decoration: none">${item.title}</a></td>

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import com.phpn.category.CategoryRepository;
 import com.phpn.exceptions.AppNotFoundException;
 import com.phpn.product.dto.*;
 
@@ -11,6 +12,7 @@ import com.phpn.product.item.ItemService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.expression.spel.ast.Literal;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import vn.fx.qh.sapo.entities.product.*;
@@ -26,6 +28,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     @Autowired
     ItemService itemService;
@@ -45,7 +50,6 @@ public class ProductServiceImpl implements ProductService {
                 .collect(Collectors.toList());
 
     }
-
 
     @Override
     @Transactional(readOnly = true)
@@ -168,6 +172,39 @@ public class ProductServiceImpl implements ProductService {
         } else {
             products = productRepository.findAll(pageable);
         }
+        if(products.hasContent()){
+            List<Product> productList = products.getContent();
+            List<ProductItemResult> productItemResults = new ArrayList<>();
+            for(Product product : productList){
+                ProductItemResult productItemResult = productMapper.toDTOPage(product);
+                productItemResult.setInventory(itemService.getTotalInventoryQuantityByProductId(product.getId()));
+                productItemResult.setAvailable(itemService.getAvailableInventoryQuantityByProductId(product.getId()));
+                productItemResults.add(productItemResult);
+            }
+            Map<String, Object> response = new HashMap<>();
+            response.put("products", productItemResults);
+            response.put("totalItem", products.getTotalElements());
+            response.put("totalPage", products.getTotalPages());
+            return response;
+        } else {
+            return new HashMap<>();
+        }
+    }
+
+    //dang chỉnh
+
+    @Override
+    @Transactional
+    public Map<String, Object> getAllProductItemPageByCategoryContaining(Integer pageNo, Integer pageSize, Integer categoryId) {
+        pageNo = pageNo - 1;
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        Category category = categoryRepository.findById(categoryId).get();
+        Page<Product> products = productRepository.findAllByCategoryContainingAndTitleContaining(1,"ao", pageable);
+//        if(!title.equals("0") ){
+//            products = productRepository.findAllByTitleContaining(title, pageable);
+//        } else {
+//            products = productRepository.findAll(pageable);
+//        }
         if(products.hasContent()){
             List<Product> productList = products.getContent();
             List<ProductItemResult> productItemResults = new ArrayList<>();

@@ -231,79 +231,18 @@
                     </div>
                     <div role="group"
                          class="MuiButtonGroup-root jss6803">
-                        <button class="MuiButtonBase-root MuiButton-root jss6828 MuiButton-text MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal"
-                                tabindex="0"
-                                type="button">
-                            <span class="MuiButton-label">Loại sản phẩm
-                                <span class="MuiButton-endIcon MuiButton-iconSizeMedium">
-                                    <svg class="MuiSvgIcon-root"
-                                         focusable="false"
-                                         viewBox="0 0 24 24"
-                                         aria-hidden="true">
-                                        <path d="M7 10l5 5 5-5z"></path>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="MuiTouchRipple-root"></span>
-                        </button>
-                        <button class="MuiButtonBase-root MuiButton-root jss6828 MuiButton-text MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal"
-                                tabindex="0"
-                                type="button">
-                            <span class="MuiButton-label">Ngày tạo
-                                <span class="MuiButton-endIcon MuiButton-iconSizeMedium">
-                                    <svg class="MuiSvgIcon-root"
-                                         focusable="false"
-                                         viewBox="0 0 24 24"
-                                         aria-hidden="true">
-                                        <path d="M7 10l5 5 5-5z"></path>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="MuiTouchRipple-root"></span>
-                        </button>
-                        <button class="MuiButtonBase-root MuiButton-root jss6828 MuiButton-text MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal"
-                                tabindex="0"
-                                type="button">
-                            <span class="MuiButton-label">Nhãn hiệu
-                                <span class="MuiButton-endIcon MuiButton-iconSizeMedium">
-                                    <svg class="MuiSvgIcon-root"
-                                         focusable="false"
-                                         viewBox="0 0 24 24"
-                                         aria-hidden="true">
-                                        <path d="M7 10l5 5 5-5z"></path>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="MuiTouchRipple-root"></span>
-                        </button>
-                        <button class="MuiButtonBase-root MuiButton-root jss6828 MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal"
-                                tabindex="0"
-                                type="button">
-                            <span class="MuiButton-label">Bộ lọc khác
-                                <span class="MuiButton-endIcon MuiButton-iconSizeMedium">
-                                    <svg class="MuiSvgIcon-root"
-                                         focusable="false"
-                                         viewBox="0 0 24 24"
-                                         aria-hidden="true"
-                                         fill="none"
-                                         style="color: rgb(163, 168, 175);">
-                                        <path d="M21.6625 2H3V3.55518H21.6625V2Z"
-                                              fill="currentColor">
-                                        </path>
-                                        <path d="M3.37329 4.48828L10.5584 11.7667C10.6517 11.8599 10.7761 11.9844 10.7761 12.1088V21.9999L13.8865 20.3203V12.1088C13.8865 11.9844 14.0109 11.8599 14.1042 11.7667L21.2893 4.48828H3.37329Z"
-                                              fill="currentColor">
-                                        </path>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="MuiTouchRipple-root"></span>
-                        </button>
+                        <select id="category" class="form-select" aria-label="Default select example" style="width: 180px">
+                            <option selected>Loại sản phẩm</option>
+                        </select>
+                        <select id="brand" class="form-select" aria-label="Default select example" style="width: 180px">
+                            <option selected>Nhãn hiệu</option>
+                        </select>
+                        <select id="status" class="form-select" aria-label="Default select example" style="width: 180px">
+                            <option selected>Trạng thái</option>
+                            <option>AVAILABLE</option>
+                            <option>UNAVAILABLE</option>
+                        </select>
                     </div>
-                    <button disabled=""
-                            id="btn-save-search"
-                            class="sc-jqUVSM PGFzi">
-                        <span class="sc-papXJ jcEYKF">Lưu bộ lọc</span>
-                    </button>
                 </div>
                     <div class="MuiBox-root jss6842"></div>
                 </div>
@@ -312,7 +251,6 @@
                     <table id="tbProduct" class="table table-hover">
                         <thead>
                             <tr>
-                                <th><button class="rounded-circle border-0"><i class="fa-solid fa-gear"></i></button></th>
                                 <th><input type="checkbox" value=""></th>
                                 <th scope="col">Ảnh</th>
                                 <th scope="col">Sản phẩm</th>
@@ -380,7 +318,11 @@
         let page = {
             urls: {
                 getAllProducts: App.BASE_URL_PRODUCT,
-                getProductById: App.BASE_URL_PRODUCT
+                getProductById: App.BASE_URL_PRODUCT,
+                getAllCategory: App.BASE_URL_PRODUCT + "/categories",
+                getAllBrand: App.BASE_URL_PRODUCT + "/brands",
+                getAllStatus: App.BASE_URL_PRODUCT + "/status"
+
             },
             elements: {},
             loadData: {},
@@ -394,6 +336,8 @@
         }
 
         let product = new ProductItemPage();
+        let category = new Category();
+        let brand = new Brand();
         let totalPage;
 
         page.elements.tbProduct = $("#tbProduct tbody");
@@ -401,6 +345,10 @@
         page.elements.pageNo = $("#pageNo");
         page.elements.pageSize = $("#pageSize");
         page.elements.search = $("#Sapo-TextField-1de6d6a6-f13f-4275-b1b2-a8487207509a");
+
+        page.dialogs.elements.category = $("#category");
+        page.dialogs.elements.brand = $("#brand");
+        page.dialogs.elements.status = $("#status");
 
         page.dialogs.elements.nextPage = $("#nextPage");
         page.dialogs.elements.previousPage = $("#previousPage");
@@ -435,7 +383,6 @@
                     page.elements.totalPage.append(
                         `<span class="me-2">Tổng sản phẩm ${data.totalItem} - Tổng số trang ${data.totalPage}</span>`
                     )
-                    page.commands.handleSelectTr();
                 })
                 .fail((jqXHR) => {
                     App.IziToast.showErrorAlert(App.AlertMessageVi.ERROR_404)
@@ -472,27 +419,53 @@
             page.commands.getAllProducts();
         })
 
-        // page.commands.getProductById = (productId) => {
-        //     $.ajax({
-        //         header: {
-        //             "accept": "application/json",
-        //             "content-type": "application/json"
-        //         },
-        //         type: "GET",
-        //         url: page.urls.getProductById + "/" + productId
-        //     })
-        //
-        // }
-        page.commands.handleSelectTr = () => {
-            $("#tbProduct tbody tr").on("click", function () {
-                let productId = $(this).attr("id").replace("tr_","");
-                console.log(productId);
+        page.commands.getAllCategory = () => {
+            $.ajax({
+                headers: {
+                    "accept": "application/json",
+                    "content-type": "application/json"
+                },
+                type: "GET",
+                url: page.urls.getAllCategory
             })
+                .done((data) => {
+                    data.map(item => {
+                        let str = `<option value="${item.id}">${item.name}</option>`;
+                        page.dialogs.elements.category.append(str);
+                    })
+                })
+                .fail((jqXHR) => {
+                    App.IziToast.showErrorAlert(App.AlertMessageVi.ERROR_404)
+                })
+
         }
 
+        page.commands.getAllBrand = () => {
+            $.ajax({
+                headers: {
+                    "accept": "application/json",
+                    "content-type": "application/json"
+                },
+                type: "GET",
+                url: page.urls.getAllBrand
+            })
+                .done((data) => {
+                    data.map(item => {
+                        let str = `<option value="${item.id}">${item.name}</option>`;
+                        page.dialogs.elements.brand.append(str);
+                    })
+                })
+                .fail((jqXHR) => {
+                    App.IziToast.showErrorAlert(App.AlertMessageVi.ERROR_404)
+                })
+
+        }
 
         page.loadData = () => {
-            page.commands.getAllProducts()
+            page.commands.getAllProducts();
+            page.commands.getAllCategory();
+            page.commands.getAllBrand();
+            page.commands.getAllStatus();
         }
 
         $(() => {
