@@ -1,6 +1,8 @@
 package com.phpn.product;
 
 import com.phpn.product.dto.ProductResult;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import vn.fx.qh.sapo.entities.product.*;
 
 import org.springframework.data.jpa.repository.Query;
@@ -14,5 +16,5 @@ import java.util.List;
 @EnableJpaRepositories
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-
+    Page<Product> findAllByTitleContaining(String title, Pageable pageable);
 }

@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/products")
@@ -33,12 +35,13 @@ public class ProductAPI {
 //    }
 
 
-// kien dang chinh
-    @GetMapping("")
-    public ResponseEntity<?> getAllProductPage(@RequestParam (defaultValue = "0") Integer pageNo,
-                                           @RequestParam (defaultValue = "10") Integer pageSize)
-   {
-        return new ResponseEntity<>(productService.getAllProductItemPage(pageNo,pageSize), HttpStatus.OK);
+
+    @GetMapping("/{pageNo}/{pageSize}/{search}")
+    public ResponseEntity<?> getAllProductPageNo(@PathVariable Integer pageNo,
+                                                 @PathVariable Integer pageSize,
+                                                 @PathVariable String search)
+    {
+        return new ResponseEntity<>(productService.getAllProductItemPage(pageNo, pageSize, search), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

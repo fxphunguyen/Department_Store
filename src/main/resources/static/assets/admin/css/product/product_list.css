@@ -2,6 +2,12 @@
     padding-right: 36px;
 }
 
+.pageNumber {
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+}
+
 .jss6879 {
     color: #A3A8AF;
     right: 0;

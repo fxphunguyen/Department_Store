@@ -9,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import vn.fx.qh.sapo.entities.product.Product;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public interface ProductService {
 
@@ -33,6 +35,9 @@ public interface ProductService {
 
     Page<Product> findAll(Pageable pageable);
 
-    List<?> getAllProductItemPage(Integer pageNo, Integer pageSize);
+    Page<Product> findAllByTitleContaining(String title, Pageable pageable);
+
+    Map<String, Object> getAllProductItemPage(Integer pageNo, Integer pageSize, String title);
+
 
 }
