@@ -96,7 +96,6 @@ public class ProductServiceImpl implements ProductService {
         Product p = productRepository.save(product);
 
         Item item = new Item();
-//        item.setProduct(product);
         item.setProductId(p.getId());
         item.setQuantity(Integer.parseInt(productShortParam.getQuantity()));
         item.setAvailable(Integer.parseInt(productShortParam.getQuantity()));
@@ -119,6 +118,7 @@ public class ProductServiceImpl implements ProductService {
 //        return product;
 //        return  null;
     }
+
 
 
     @Override

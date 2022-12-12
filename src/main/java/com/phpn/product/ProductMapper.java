@@ -71,6 +71,9 @@ public class ProductMapper {
                 .setCategoryId(product.getCategoryId())
                 .setImage(product.getImage())
                 .setDescription(product.getDescription())
+                .setUnit(product.getUnit())
+                .setCreateAt(product.getCreatedAt())
+                .setUpdateAt(product.getUpdatedAt())
                 .setImportPrice(product.getImportPrice())
                 .setWholesalePrice(product.getWholesalePrice())
                 .setRetailPrice(product.getRetailPrice());
