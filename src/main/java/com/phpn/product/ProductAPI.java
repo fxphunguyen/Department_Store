@@ -1,5 +1,7 @@
 package com.phpn.product;
 
+import com.phpn.brand.BrandService;
+import com.phpn.category.CategoryService;
 import com.phpn.product.dto.ProductResult;
 import com.phpn.product.dto.ProductShortParam;
 import com.phpn.product.dto.CreateProductParam;
@@ -9,8 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 
 @RestController
 @RequestMapping("/api/products")
@@ -19,7 +19,9 @@ public class ProductAPI {
     @Autowired
     private ProductService productService;
     @Autowired
-    private ProductMapper productMapper;
+    private CategoryService categoryService;
+    @Autowired
+    private BrandService brandService;
 
 //    @GetMapping
     public ResponseEntity<?> findAll() {
@@ -44,6 +46,27 @@ public class ProductAPI {
         return new ResponseEntity<>(productService.getAllProductItemPage(pageNo, pageSize, search), HttpStatus.OK);
     }
 
+//    dang chỉnh
+    @GetMapping("/{pageNo}/{pageSize}/{categoryId}/{title}")
+    public ResponseEntity<?>getAllProductPageNoCategory(@PathVariable Integer pageNo,
+                                                        @PathVariable Integer pageSize,
+                                                        @PathVariable Integer categoryId,
+                                                        @PathVariable String title
+    )
+    {
+        return new ResponseEntity<>(productService.getAllProductItemPageByCategoryContaining(pageNo, pageSize, categoryId), HttpStatus.OK);
+    }
+
+    @GetMapping("/categories")
+    public ResponseEntity<?> getAllCategories() {
+        return new ResponseEntity<>(categoryService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/brands")
+    public ResponseEntity<?> getAllBrands(){
+        return new ResponseEntity<>(brandService.findAll(), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
         ProductResult productResult = productService.findById(id);
@@ -60,6 +83,5 @@ public class ProductAPI {
         productService.createShortProduct(productShortParam);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 
 }

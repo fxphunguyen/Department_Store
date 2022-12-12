@@ -6,6 +6,8 @@ import com.phpn.product.dto.ProductShortParam;
 import com.phpn.product.dto.CreateProductParam;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.expression.spel.ast.Literal;
+import vn.fx.qh.sapo.entities.product.Category;
 import vn.fx.qh.sapo.entities.product.Product;
 
 import java.util.List;
@@ -39,5 +41,6 @@ public interface ProductService {
 
     Map<String, Object> getAllProductItemPage(Integer pageNo, Integer pageSize, String title);
 
+    Map<String, Object> getAllProductItemPageByCategoryContaining(Integer pageNo, Integer pageSize, Integer catagoryId);
 
 }
