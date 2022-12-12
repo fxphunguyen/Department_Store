@@ -43,19 +43,21 @@ class App {
              <tr id="tr_${item.id}" >
                 <td class="align-middle"></td>
                 <td class="align-middle"><input type="checkbox" value=""></td>
-                <td class="align-middle"><img width="50px" height="40px" src=${item.image} alt=""></td>
-                <td class="align-middle">${item.title}</td>
+                <td class="align-middle"><img width="50px" height="40px" src=${item.image} alt="image"></td>
+                <td class="align-middle"><a href="#" style="text-decoration: none">${item.title}</a></td>
                 <td class="align-middle">${item.category.name}</td>
                 <td class="align-middle">${item.brand.name}</td>
                 <td class="align-middle">${item.available}</td>
                 <td class="align-middle">${item.inventory}</td>
                 <td class="align-middle">${item.status}</td>
-                <td class="align-middle">${item.createAt}</td>
-                <td class="align-middle">${item.updateAt}</td>
+                <td class="align-middle">${item.createAt || ""}</td>
+                <td class="align-middle">${item.updateAt || ""}</td>
             </tr>
         `;
         return str;
     }
+
+
 
 }
 

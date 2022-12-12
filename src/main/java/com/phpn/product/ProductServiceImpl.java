@@ -1,9 +1,7 @@
 package com.phpn.product;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.phpn.exceptions.AppNotFoundException;
@@ -150,14 +148,23 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Page<Product> findAllByTitleContaining(String title, Pageable pageable) {
+        return productRepository.findAllByTitleContaining(title, pageable);
+    }
+
+    @Override
     @Transactional
-    public List<?> getAllProductItemPage(Integer pageNo, Integer pageSize) {
+    public Map<String, Object> getAllProductItemPage(Integer pageNo, Integer pageSize, String title) {
+        pageNo = pageNo - 1;
         Pageable pageable = PageRequest.of(pageNo, pageSize);
-        Page<Product> products = productRepository.findAll(pageable);
+        Page<Product> products;
+        if(!title.equals("0") ){
+            products = productRepository.findAllByTitleContaining(title, pageable);
+        } else {
+            products = productRepository.findAll(pageable);
+        }
         if(products.hasContent()){
             List<Product> productList = products.getContent();
-            Long totalItem = products.getTotalElements();
-            int totalPage = products.getTotalPages();
             List<ProductItemResult> productItemResults = new ArrayList<>();
             for(Product product : productList){
                 ProductItemResult productItemResult = productMapper.toDTOPage(product);
@@ -165,9 +172,14 @@ public class ProductServiceImpl implements ProductService {
                 productItemResult.setAvailable(itemService.getAvailableInventoryQuantityByProductId(product.getId()));
                 productItemResults.add(productItemResult);
             }
-            return productItemResults;
+            Map<String, Object> response = new HashMap<>();
+            response.put("products", productItemResults);
+            response.put("totalItem", products.getTotalElements());
+            response.put("totalPage", products.getTotalPages());
+            return response;
         } else {
-            return new ArrayList<ProductItemResult>();
+            return new HashMap<>();
         }
     }
+
 }
