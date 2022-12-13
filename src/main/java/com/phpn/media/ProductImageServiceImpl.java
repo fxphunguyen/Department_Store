@@ -50,4 +50,14 @@ public class ProductImageServiceImpl implements MediaService {
         }
         return mediaResults;
     }
+
+    @Override
+    public List<MediaResult> save(List<MediaParam> mediaParam, Integer idProduct) {
+        return null;
+    }
+
+    @Override
+    public String getLinkMediaByProductIdIsMain(Integer productId) {
+        return mediaRepository.getLinkMediaByProductIdIsMain(productId).orElse("");
+    }
 }

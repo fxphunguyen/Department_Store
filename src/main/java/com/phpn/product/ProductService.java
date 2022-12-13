@@ -1,15 +1,14 @@
 package com.phpn.product;
 
-import com.phpn.product.dto.*;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.expression.spel.ast.Literal;
-import vn.fx.qh.sapo.entities.product.Category;
-import vn.fx.qh.sapo.entities.product.Product;
 
+import com.phpn.product.dto.*;
+import com.phpn.product.dto.ProductCreate;
+import com.phpn.product.dto.ProductResult;
+import com.phpn.product.dto.ProductShortParam;
+import com.phpn.product.dto.CreateProductParam;
+import vn.fx.qh.sapo.entities.product.Product;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public interface ProductService {
 
@@ -32,13 +31,5 @@ public interface ProductService {
 
     ProductResult createShortProduct(ProductShortParam productShortParam);
 
-
-    Page<Product> findAll(Pageable pageable);
-
-    Page<Product> findAllByTitleContaining(String title, Pageable pageable);
-
-    Map<String, Object> getAllProductItemPage(Integer pageNo, Integer pageSize, String title);
-
-    Map<String, Object> getAllProductItemPageByCategoryContaining(Integer pageNo, Integer pageSize, Integer catagoryId);
-
+    Map<String, Object> getAllProductItemPage(Integer pageNo, Integer pageSize, String title, Integer categoryId, Integer brandId, String status);
 }

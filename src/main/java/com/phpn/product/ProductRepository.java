@@ -3,6 +3,7 @@ package com.phpn.product;
 import com.phpn.product.dto.ProductResult;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.expression.spel.ast.Literal;
 import vn.fx.qh.sapo.entities.product.*;
 
@@ -19,12 +20,12 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     Page<Product> findAllByTitleContaining(String title, Pageable pageable);
-    @Query("SELECT p FROM Product AS p WHERE p.categoryId = 1 AND p.title like 'ao'")
-    Page<Product> findAllByCategoryContainingAndTitleContaining(Integer category, String title, Pageable pageable);
-    @Query("SELECT p FROM Product AS p WHERE p.categoryId = 1")
-    Page<Product> findAllByCategoryContaining(Integer category, Pageable pageable);
 
-//    Page<Product> findAllByBrandContainingAndTitleContaining(Brand brand, String title, Pageable pageable);
-//
-//    Page<Product> findAllByStatusContainingAndTitleContaining(String status, String title, Pageable pageable);
+    @Query("SELECT p FROM Product AS p WHERE p.categoryId = :categoryId AND p.title LIKE %:title%")
+    Page<Product> findAllByTitleContainingAndCategoryId(@Param("categoryId") Integer categoryId, @Param("title") String title, Pageable pageable);
+    @Query("SELECT p FROM Product AS p WHERE p.brandId = :brandId AND p.title LIKE %:title%")
+    Page<Product> findAllByTitleContainingAndBrandId(@Param("brandId") Integer brandId, @Param("title") String title, Pageable pageable);
+    @Query("SELECT p FROM Product AS p WHERE p.status = :status AND p.title LIKE %:title%")
+    Page<Product> findAllByTitleContainingAndStatus(@Param("status") ProductStatus status, @Param("title") String title, Pageable pageable);
+
 }

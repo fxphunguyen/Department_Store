@@ -36,25 +36,16 @@ public class ProductAPI {
 //        return new ResponseEntity<>(productResults, HttpStatus.OK);
 //    }
 
-
-
-    @GetMapping("/{pageNo}/{pageSize}/{search}")
-    public ResponseEntity<?> getAllProductPageNo(@PathVariable Integer pageNo,
-                                                 @PathVariable Integer pageSize,
-                                                 @PathVariable String search)
-    {
-        return new ResponseEntity<>(productService.getAllProductItemPage(pageNo, pageSize, search), HttpStatus.OK);
-    }
-
-//    dang chỉnh
-    @GetMapping("/{pageNo}/{pageSize}/{categoryId}/{title}")
+    @GetMapping("/{pageNo}/{pageSize}/{search}/{categoryId}/{brandId}/{status}")
     public ResponseEntity<?>getAllProductPageNoCategory(@PathVariable Integer pageNo,
                                                         @PathVariable Integer pageSize,
+                                                        @PathVariable String search,
                                                         @PathVariable Integer categoryId,
-                                                        @PathVariable String title
+                                                        @PathVariable Integer brandId,
+                                                        @PathVariable String status
     )
     {
-        return new ResponseEntity<>(productService.getAllProductItemPageByCategoryContaining(pageNo, pageSize, categoryId), HttpStatus.OK);
+        return new ResponseEntity<>(productService.getAllProductItemPage(pageNo, pageSize,search, categoryId, brandId, status), HttpStatus.OK);
     }
 
     @GetMapping("/categories")

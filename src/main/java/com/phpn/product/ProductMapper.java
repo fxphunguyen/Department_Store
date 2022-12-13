@@ -30,6 +30,7 @@ public class ProductMapper {
     @Autowired
     CategoryMapper categoryMapper;
 
+
     public Product toModel(ProductParam productParam) {
         return new Product(productParam.getCategoryId(), productParam.getBrandId())
                 .setTitle(productParam.getTitle())
@@ -109,10 +110,12 @@ public class ProductMapper {
         return new ProductItemResult()
                 .setId(product.getId())
                 .setTitle(product.getTitle())
-                .setImage(product.getImage())
+                .setImage("")
                 .setStatus(product.getStatus())
                 .setAvailable(0)
                 .setInventory(0)
+                .setCreateAt(product.getCreatedAt())
+                .setUpdateAt(product.getUpdatedAt())
                 .setCategory(categoryMapper.toDTO(product.getCategory()))
                 .setBrand(brandMapper.toDTO(product.getBrand()));
     }
