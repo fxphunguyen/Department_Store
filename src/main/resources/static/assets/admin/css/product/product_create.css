@@ -1,3 +1,11 @@
+.jss644 {
+    width: 100%;
+    box-shadow: 0px 2px 4px rgb(168 168 168 / 25%);
+    margin-bottom: 24px;
+}
+.jss790.borderBottom {
+    border-bottom: 1px solid #E8EAEB;
+}
 .MuiCollapse-wrapper {
     display: flex;
 }
