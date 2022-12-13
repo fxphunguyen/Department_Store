@@ -38,19 +38,21 @@ class App {
         }
     }
 
-    static renderRowProduct(item) {
+    static renderRowProduct(item, showStatus) {
         let str = `
              <tr id="tr_${item.id}" >
-                <td class="align-middle"><input type="checkbox" value=""></td>
+                <td class="align-middle"><input type="checkbox" value="${item.id}"></td>
                 <td class="align-middle"><img width="50px" height="40px" src=${item.image} alt="image"></td>
                 <td class="align-middle"><a href="/admin/product/${item.id}" style="text-decoration: none">${item.title}</a></td>
                 <td class="align-middle">${item.category.name}</td>
                 <td class="align-middle">${item.brand.name}</td>
-                <td class="align-middle">${item.available}</td>
-                <td class="align-middle">${item.inventory}</td>
-                <td class="align-middle">${item.status}</td>
-                <td class="align-middle">${item.createAt || ""}</td>
-                <td class="align-middle">${item.updateAt || ""}</td>
+                <td class="align-middle text-end ">${item.available}</td>
+                <td class="align-middle text-end">${item.inventory}</td>
+                <td class="align-middle">
+                    <span id="showStatus" class="${showStatus}">${item.status === "AVAILABLE" ? "Đang giao dịch" : "Ngừng giao dịch"}</span> 
+                </td>
+                <td class="align-middle">${ item.createAt === null ? "" : new Date(item.createAt).toLocaleDateString('en-GB')}</td>
+                <td class="align-middle">${item.updateAt === null ? "" : new Date(item.updateAt).toLocaleDateString('en-GB')}</td>
             </tr>
         `;
         return str;

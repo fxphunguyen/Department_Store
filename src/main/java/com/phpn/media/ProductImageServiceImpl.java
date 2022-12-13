@@ -35,4 +35,9 @@ public class ProductImageServiceImpl implements MediaService {
         }
         return mediaResults;
     }
+
+    @Override
+    public String getLinkMediaByProductIdIsMain(Integer productId) {
+        return mediaRepository.getLinkMediaByProductIdIsMain(productId).orElse("");
+    }
 }

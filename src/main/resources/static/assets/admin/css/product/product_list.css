@@ -8,6 +8,27 @@
     width: 28px;
 }
 
+.available {
+    border: groove;
+    border-color: #0a58ca;
+    border-width: 1px;
+    background-color: #fff7e7;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+    color: #0a58ca;
+}
+.unavailable {
+    border: groove;
+    border-color: red;
+    border-width: 1px;
+    background-color: #fff7e7;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+    color: red;
+}
+
 .jss6879 {
     color: #A3A8AF;
     right: 0;
@@ -4576,4 +4597,11 @@ html {
     align-items: center;
     border-radius: 50%;
     justify-content: center;
+}
+#Sapo-TextField-1de6d6a6-f13f-4275-b1b2-a8487207509a {
+    border: solid;
+    height: 34px;
+    border-color: lightgrey;
+    border-width: thin;
+    border-radius: 5px
 }

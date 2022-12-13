@@ -155,87 +155,39 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(ProductCreate productCreate) {
         return null;
     }
-
-//    @Override
-//    @Transactional(readOnly = true)
-//    public List<ProductResult> getAllProductListResult() {
-////        List<ProductResult> products=new ArrayList<>();
-//        List<Product> entities = productRepository.findAll();
-////        for (Product product : entities) {
-////            products.add(  productMapper.toDTO(product));
-////        }
-////        return products;
-//
-//        return entities.stream().map(
-//                entity -> {
-//                    ProductResult dto = productMapper.toDTO(entity);
-//                    // int ton = itemRepository.store();
-//                    //   dto.setTon(ton);
-//                    return dto;
-//                }).collect(Collectors.toList());
-//
-//    }
-
-
-    @Override
-    public Page<Product> findAll(Pageable pageable) {
-        return productRepository.findAll(pageable);
-    }
-
-    @Override
-    public Page<Product> findAllByTitleContaining(String title, Pageable pageable) {
-        return productRepository.findAllByTitleContaining(title, pageable);
-    }
-
     @Override
     @Transactional
-    public Map<String, Object> getAllProductItemPage(Integer pageNo, Integer pageSize, String title) {
+    public Map<String, Object> getAllProductItemPage(Integer pageNo, Integer pageSize, String title, Integer categoryId, Integer brandId, String status) {
         pageNo = pageNo - 1;
         Pageable pageable = PageRequest.of(pageNo, pageSize);
         Page<Product> products;
-        if(!title.equals("0") ){
-            products = productRepository.findAllByTitleContaining(title, pageable);
-        } else {
+        if(title.equals("-1") && categoryId == -1 && brandId == -1 && status.equals("-1")){
             products = productRepository.findAll(pageable);
-        }
-        if(products.hasContent()){
-            List<Product> productList = products.getContent();
-            List<ProductItemResult> productItemResults = new ArrayList<>();
-            for(Product product : productList){
-                ProductItemResult productItemResult = productMapper.toDTOPage(product);
-                productItemResult.setInventory(itemService.getTotalInventoryQuantityByProductId(product.getId()));
-                productItemResult.setAvailable(itemService.getAvailableInventoryQuantityByProductId(product.getId()));
-                productItemResults.add(productItemResult);
+
+        } else if(categoryId == -1 && brandId == -1 && status.equals("-1")) {
+            products = productRepository.findAllByTitleContaining(title, pageable);
+        } else if (brandId == -1 && status.equals("-1")) {
+            if(title.equals("-1")){
+                title = "";
             }
-            Map<String, Object> response = new HashMap<>();
-            response.put("products", productItemResults);
-            response.put("totalItem", products.getTotalElements());
-            response.put("totalPage", products.getTotalPages());
-            return response;
+            products = productRepository.findAllByTitleContainingAndCategoryId(categoryId, title, pageable);
+        } else if (status.equals("-1")) {
+            if(title.equals("-1")){
+                title = "";
+            }
+            products = productRepository.findAllByTitleContainingAndBrandId(brandId, title, pageable);
         } else {
-            return new HashMap<>();
+            if(title.equals("-1")){
+                title = "";
+            }
+            products = productRepository.findAllByTitleContainingAndStatus(ProductStatus.parseProductStatus(status), title, pageable);
         }
-    }
-
-    //dang chỉnh
-
-    @Override
-    @Transactional
-    public Map<String, Object> getAllProductItemPageByCategoryContaining(Integer pageNo, Integer pageSize, Integer categoryId) {
-        pageNo = pageNo - 1;
-        Pageable pageable = PageRequest.of(pageNo, pageSize);
-        Category category = categoryRepository.findById(categoryId).get();
-        Page<Product> products = productRepository.findAllByCategoryContainingAndTitleContaining(1,"ao", pageable);
-//        if(!title.equals("0") ){
-//            products = productRepository.findAllByTitleContaining(title, pageable);
-//        } else {
-//            products = productRepository.findAll(pageable);
-//        }
         if(products.hasContent()){
             List<Product> productList = products.getContent();
             List<ProductItemResult> productItemResults = new ArrayList<>();
             for(Product product : productList){
                 ProductItemResult productItemResult = productMapper.toDTOPage(product);
+                productItemResult.setImage(mediaService.getLinkMediaByProductIdIsMain(product.getId()));
                 productItemResult.setInventory(itemService.getTotalInventoryQuantityByProductId(product.getId()));
                 productItemResult.setAvailable(itemService.getAvailableInventoryQuantityByProductId(product.getId()));
                 productItemResults.add(productItemResult);
