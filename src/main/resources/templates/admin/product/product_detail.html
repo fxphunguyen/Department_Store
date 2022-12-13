@@ -295,7 +295,7 @@
                                             class="MuiButtonBase-root MuiIconButton-root jss922 MuiCheckbox-root MuiCheckbox-colorPrimary jss912 jss923 Mui-checked jss924 Mui-disabled MuiIconButton-colorPrimary Mui-disabled Mui-disabled"
                                             tabindex="-1" aria-disabled="true"><span class="MuiIconButton-label"><input
                                             class="jss925" disabled="" type="checkbox" data-indeterminate="false"
-                                            value="" checked=""><span class="jss913 jss914"
+                                            value="" th:checked="*{status == status.AVAILABLE} ? true : false" ><span class="jss913 jss914"
                                                                       font-size="small"></span></span></span>Cho phép
                                         bán<span class="MuiTypography-root MuiTypography-caption"
                                                  title="Cho phép tìm kiếm sản phẩm và tạo đơn hàng"><svg
@@ -310,9 +310,10 @@
                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
                                     <div class="MuiBox-root jss931"><span
                                             class="MuiButtonBase-root MuiIconButton-root jss922 MuiCheckbox-root MuiCheckbox-colorPrimary jss912 jss924 Mui-disabled MuiIconButton-colorPrimary Mui-disabled Mui-disabled"
-                                            tabindex="-1" aria-disabled="true"><span class="MuiIconButton-label"><input
-                                            class="jss925" disabled="" type="checkbox" data-indeterminate="false"
-                                            value=""><span class="jss913" font-size="small"></span></span></span>
+                                            tabindex="-1" aria-disabled="true"><span class="MuiIconButton-label">
+
+                                        <input class="jss925" disabled="" type="checkbox" data-indeterminate="false"
+                                            value="" th:checked="*{applyTax}"><span class="jss913" font-size="small"></span></span></span>
                                         <div class="MuiBox-root jss932" style="width: 100%;">
                                             <p class="MuiTypography-root MuiTypography-body1">Áp dụng thuế<span
                                                     class="MuiTypography-root MuiTypography-caption"
