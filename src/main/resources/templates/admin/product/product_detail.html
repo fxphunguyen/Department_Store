@@ -52,7 +52,9 @@
                         <div class="MuiBox-root jss4666 jss4637 borderBottom">
                             <div class="MuiBox-root jss5093 jss4618">
                                 <h6 class="MuiTypography-root MuiTypography-subtitle1">Thông tin sản phẩm</h6>
-                                <div class="sc-jSMfEi PGrDd"><span class="sc-eCYdqJ gIZkwA">Đang giao dịch</span></div>
+                                <div class="sc-jSMfEi PGrDd">
+                                    <span class="sc-eCYdqJ gIZkwA">Đang giao dịch</span>
+                                </div>
                             </div>
                         </div>
                         <div class="MuiBox-root jss4668 jss4619">
@@ -81,7 +83,7 @@
                                             <div class="MuiBox-root jss4688 jss4674">: <p
                                                     class="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap"
                                                     itemid="display_product_variant_barcode"
-                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{barCode}">
+                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{barCode}?: '---'">
                                                </p>
                                             </div>
                                         </div>
@@ -109,7 +111,7 @@
                                             <div class="MuiBox-root jss4690 jss4674">: <p
                                                     class="MuiTypography-root MuiTypography-body2"
                                                     itemid="display_product_variant_unit"
-                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{unit}">
+                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{unit}?: '---'">
                                                 </p>
                                             </div>
                                         </div>
@@ -189,7 +191,7 @@
                                             <div class="MuiBox-root jss4695 jss4674">: <p
                                                     class="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap"
                                                     itemid="display_product_variant_createOn"
-                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{createAt}">
+                                                    style="line-height: 16px; margin-left: 5px;" th:text="${#dates.format(product.createAt, 'dd-mm-yyyy HH:mm')}">
                                                </p>
                                             </div>
                                         </div>
@@ -203,7 +205,7 @@
                                             <div class="MuiBox-root jss4696 jss4674">: <p
                                                     class="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap"
                                                     itemid="display_product_variant_modified_on"
-                                                    style="line-height: 16px; margin-left: 5px;" th:text="*{updateAt}">
+                                                    style="line-height: 16px; margin-left: 5px;" th:text="${#dates.format(product.updateAt, 'dd-mm-yyyy HH:mm')}?: '---'">
                                                 </p>
                                             </div>
                                         </div>
@@ -217,7 +219,7 @@
                                                 <div class="MuiBox-root jss4700 jss4621"
                                                      style="margin: 0px; width: 150px; height: 150px;">
                                                     <img class="image-item"
-                                                         src="https://product.hstatic.net/200000467221/product/21-6.4_a10cab0fbb19443fb20f9b72b22d0443_grande.jpg"
+                                                         src="https://kekhaigiattbyt.moh.gov.vn/Common/Images/no-image.jpg"
                                                          alt=""></div>
                                             </div>
                                         </div>
@@ -247,7 +249,7 @@
                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4">
                                     <p class="MuiTypography-root MuiTypography-body2"
                                        itemid="variant_detail_price_sell_1_value"
-                                       style="line-height: 16px;" th:text="': ' + *{retailPrice}"></p>
+                                       style="line-height: 16px;" th:text="': ' + ${#numbers.formatDecimal(product.retailPrice, 0, 'COMMA',0 , 'POINT')}"></p>
                                 </div>
                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2">
                                     <div class="MuiBox-root jss5053" style="display: flex;">
@@ -259,7 +261,7 @@
                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4">
                                     <p class="MuiTypography-root MuiTypography-body2"
                                        itemid="variant_detail_price_sell_2_value"
-                                       style="line-height: 16px;" th:text="': ' + *{wholesalePrice}"></p>
+                                       style="line-height: 16px;" th:text="': ' + ${#numbers.formatDecimal(product.wholesalePrice, 0, 'COMMA',0 , 'POINT')}"></p>
                                 </div>
                             </div>
                             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1"
@@ -274,7 +276,7 @@
                                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4">
                                     <p class="MuiTypography-root MuiTypography-body2"
                                        itemid="variant_detail_price_import_1_value"
-                                       style="line-height: 16px;" th:text="': ' + *{retailPrice}"></p>
+                                       style="line-height: 16px;" th:text="': ' + ${#numbers.formatDecimal(product.importPrice, 0, 'COMMA',0 , 'POINT')}"></p>
                                 </div>
                             </div>
                         </div>

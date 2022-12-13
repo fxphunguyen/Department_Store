@@ -3,6 +3,7 @@ package com.phpn.product;
 import com.phpn.brand.dto.BrandMapper;
 import com.phpn.product.dto.*;
 import com.phpn.category.dto.CategoryMapper;
+import com.phpn.product.item.ItemMapper;
 import com.phpn.tax.dto.TaxMapper;
 import com.phpn.tax.dto.TaxResult;
 import vn.fx.qh.sapo.entities.product.*;
@@ -75,7 +76,9 @@ public class ProductMapper {
                 .setUpdateAt(product.getUpdatedAt())
                 .setImportPrice(product.getImportPrice())
                 .setWholesalePrice(product.getWholesalePrice())
-                .setRetailPrice(product.getRetailPrice());
+                .setRetailPrice(product.getRetailPrice())
+                .setCategory(categoryMapper.toDTO(product.getCategory()))
+                .setBrand(brandMapper.toDTO(product.getBrand()));
 //        List<TaxResult> taxSaleList = product.getTaxSale().stream().map(taxMapper::toDTO).collect(Collectors.toList());
 //        result.setTaxSaleList(taxSaleList);
 //        List<TaxResult> taxPurchaseList = product.getTaxPurchase().stream().map(taxMapper::toDTO).collect(Collectors.toList());
