@@ -24,5 +24,5 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
     @Query(value = "call sp_getAvailableInventoryQuantityByProductId(:productId)", nativeQuery = true)
     Optional<Integer> getAvailableInventoryQuantityByProductId(@Param("productId") Integer productId);
 
-    List<Item> findAllByProductId(Integer productId);
+    Item findAllByProductId(Integer productId);
 }

@@ -15,6 +15,6 @@ public interface ItemService {
 
     ItemResult create(CreateItemParam CreateItemParam);
 
-    List<ItemResult> findAllByProductId(Integer productId);
+    ItemResult findAllByProductId(Integer productId);
 
 }

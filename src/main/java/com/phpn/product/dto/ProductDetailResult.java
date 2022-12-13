@@ -47,6 +47,6 @@ public class ProductDetailResult {
     private Boolean isTaxInclusive;
 //    private List<ProductTaxResult> taxList;
     private List<MediaResult> mediaResults;
-    private List<ItemResult> itemResults;
+    private ItemResult itemResult;
     private List<TaxResult> taxResults;
 }

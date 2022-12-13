@@ -2,6 +2,7 @@ package com.phpn.product.item;
 
 import com.phpn.employee.dto.EmployeeMapper;
 import com.phpn.product.ProductMapper;
+import com.phpn.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,9 +57,9 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ItemResult> findAllByProductId(Integer productId) {
-        List<ItemResult> itemResults = itemRepository.findAllByProductId(productId).stream().map(itemMapper :: toDTO).collect(Collectors.toList());
-        return itemResults;
+    public ItemResult findAllByProductId(Integer productId) {
+//        Chưa xong cần sửa
+        return itemMapper.toDTO(itemRepository.findAllByProductId(productId));
     }
 
 }
