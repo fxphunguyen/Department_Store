@@ -1,7 +1,7 @@
 package com.phpn.product.dto;
 
 import com.phpn.media.MediaParam;
-import com.phpn.tax.dto.ProductTaxParam;
+import com.phpn.tax.product_tax.ProductTaxParam;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;

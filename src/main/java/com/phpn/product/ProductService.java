@@ -1,9 +1,6 @@
 package com.phpn.product;
 
-import com.phpn.product.dto.ProductCreate;
-import com.phpn.product.dto.ProductResult;
-import com.phpn.product.dto.ProductShortParam;
-import com.phpn.product.dto.CreateProductParam;
+import com.phpn.product.dto.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.expression.spel.ast.Literal;
@@ -20,6 +17,7 @@ public interface ProductService {
 
     ProductResult findById(Integer id);
 
+    ProductDetailResult findDetailById(Integer id);
 
     List<ProductResult> findAllProductByDeleted(boolean deleted);
 

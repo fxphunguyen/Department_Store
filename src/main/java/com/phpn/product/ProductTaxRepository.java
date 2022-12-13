@@ -10,4 +10,6 @@ import java.util.List;
 public interface ProductTaxRepository extends JpaRepository<ProductTax, ProductTaxId> {
     List<ProductTax> findAllByProductIdAndTaxType(Integer productId, TaxType taxType);
 
+    List<ProductTax> findAllByProductId(Integer productId);
+
 }

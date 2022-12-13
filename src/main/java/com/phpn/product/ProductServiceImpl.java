@@ -4,7 +4,10 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import com.phpn.brand.BrandRepository;
+import com.phpn.brand.dto.BrandMapper;
 import com.phpn.category.CategoryRepository;
+import com.phpn.category.dto.CategoryMapper;
 import com.phpn.exceptions.AppNotFoundException;
 import com.phpn.media.MediaMapper;
 import com.phpn.media.MediaResult;
@@ -12,6 +15,11 @@ import com.phpn.media.MediaService;
 import com.phpn.product.dto.*;
 
 import com.phpn.product.item.*;
+import com.phpn.tax.TaxService;
+import com.phpn.tax.dto.TaxResult;
+import com.phpn.tax.product_tax.ProductTaxParam;
+import com.phpn.tax.product_tax.ProductTaxResult;
+import com.phpn.tax.product_tax.ProductTaxService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -37,16 +45,31 @@ public class ProductServiceImpl implements ProductService {
     ItemMapper itemMapper;
 
     @Autowired
+    BrandMapper brandMapper;
+
+    @Autowired
+    CategoryMapper categoryMapper;
+
+    @Autowired
     ProductRepository productRepository;
 
     @Autowired
     CategoryRepository categoryRepository;
 
     @Autowired
+    BrandRepository brandRepository;
+
+    @Autowired
     ItemService itemService;
 
     @Autowired
     MediaService mediaService;
+
+    @Autowired
+    TaxService taxService;
+
+    @Autowired
+    ProductTaxService productTaxService;
 
     @Override
     @Transactional(readOnly = true)
@@ -77,6 +100,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public ProductDetailResult findDetailById(Integer id) {
+        Product product = productRepository.findById(id).get();
+        ProductDetailResult productDetailResult = productMapper.toDTODetail(product);
+        productDetailResult.setCategory(categoryMapper.toDTO(categoryRepository.findById(product.getCategoryId()).get()));
+        productDetailResult.setBrand(brandMapper.toDTO(brandRepository.findById(product.getBrandId()).get()));
+        productDetailResult.setMediaResults(mediaService.findAllById(product.getId()));
+        productDetailResult.setItemResults(itemService.findAllByProductId(product.getId()));
+        List<ProductTaxResult> productTaxResults = productTaxService.findAllByProductId(product.getId());
+        productDetailResult.setTaxResults(taxService.findAllByProductId(productTaxResults));
+        return productDetailResult;
+    }
+
+    @Override
     public List<ProductResult> findAllProductByDeleted(boolean deleted) {
         return null;
     }
@@ -89,23 +125,26 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public ProductResult create(CreateProductParam productWithImageParam) {
-        Product product = productMapper.toModel(productWithImageParam);
-        product.setId(0);
-        if (productWithImageParam.getEnableSell() == true) {
-            product.setStatus(ProductStatus.parseProductStatus("AVAILABLE"));
+        try {
+            Product product = productMapper.toModel(productWithImageParam);
+            product.setId(0);
+            if (productWithImageParam.getEnableSell() == true) {
+                product.setStatus(ProductStatus.parseProductStatus("AVAILABLE"));
+            }
+            else {
+                product.setStatus(ProductStatus.parseProductStatus("UNAVAILABLE"));
+            }
+            Product productSaved = productRepository.save(product);
+            ProductResult productResult = productMapper.toDTO(productSaved);
+            ItemResult itemResult = itemService.create(itemMapper.toDTO(productWithImageParam, productResult));
+            List<MediaResult> mediaResults = mediaService.save(productWithImageParam.getMediaList(), productSaved);
+            List<ProductTaxResult> productTaxResult = productTaxService.create(productWithImageParam.getTaxList(), productSaved);
+            System.out.println(productTaxResult);
+            return productResult;
+        } catch (Exception e) {
+            return null;
         }
-        else {
-            product.setStatus(ProductStatus.parseProductStatus("UNAVAILABLE"));
-        }
-        System.out.println(product);
-        ProductResult productResult = productMapper.toDTO(productRepository.save(product));
-        ItemResult itemResult = itemService.create(itemMapper.toDTO(productWithImageParam, productResult));
-        System.out.println(productResult);
-        System.out.println(itemResult);
-        List<MediaResult> mediaResults = mediaService.save(productWithImageParam.getMediaList(), productResult.getId());
 
-        System.out.println(mediaResults);
-        return productResult;
     }
 
 

@@ -84,6 +84,24 @@ public class ProductMapper {
 //                .setCategory(categoryMapper.toDTO(product.getCategory()));
     }
 
+    public ProductDetailResult toDTODetail(Product product) {
+        return new ProductDetailResult()
+                .setId(product.getId())
+                .setTitle(product.getTitle())
+                .setStatus(product.getStatus())
+                .setBarCode(product.getBarCode())
+                .setSku(product.getSku())
+                .setDescription(product.getDescription())
+                .setUnit(product.getUnit())
+                .setCreateAt(product.getCreatedAt())
+                .setUpdateAt(product.getUpdatedAt())
+                .setImportPrice(product.getImportPrice())
+                .setWholesalePrice(product.getWholesalePrice())
+                .setRetailPrice(product.getRetailPrice())
+                .setApplyTax(product.getApplyTax())
+                .setIsTaxInclusive(product.getIsTaxInclusive());
+    }
+
     public ProductItemResult toDTOPage(Product product) {
         return new ProductItemResult()
                 .setId(product.getId())

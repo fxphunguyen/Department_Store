@@ -40,7 +40,7 @@ public class ProductController {
         if (product == null) {
             modelAndView.addObject("errors", "errors");
         } else {
-            modelAndView.addObject("product", productService.findById(id));
+            modelAndView.addObject("product", productService.findDetailById(product.getId()));
         }
         modelAndView.setViewName("/admin/product/product_detail");
         return modelAndView;

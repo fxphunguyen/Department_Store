@@ -5,6 +5,7 @@ import com.phpn.product.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vn.fx.qh.sapo.entities.product.Item;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,6 +53,12 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public ItemResult create(CreateItemParam createItemParam) {
         return itemMapper.toDTO(itemRepository.save(itemMapper.toModel(createItemParam)));
+    }
+
+    @Override
+    public List<ItemResult> findAllByProductId(Integer productId) {
+        List<ItemResult> itemResults = itemRepository.findAllByProductId(productId).stream().map(itemMapper :: toDTO).collect(Collectors.toList());
+        return itemResults;
     }
 
 }

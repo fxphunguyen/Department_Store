@@ -862,7 +862,7 @@
 
     // Thêm sản phẩm
     page.dialogs.elements.titleCreate = $('.titleCreate');
-    page.dialogs.elements.statusCreate = $(".statusCreate");
+    page.dialogs.elements.enableSell = $("#enableSell");
     page.dialogs.elements.descriptionCreate = $('.descriptionCreate');
     page.dialogs.elements.unitCreate = $('.unitCreate');
     page.dialogs.elements.skuCreate = $('.skuCreate');
@@ -893,7 +893,7 @@
         taxs.push(taxOut);
         product.id = 0;
         product.title = page.dialogs.elements.titleCreate.val();
-        product.enableSell = page.dialogs.elements.statusCreate.is(":checked") ? true : false;
+        product.enableSell = page.dialogs.elements.enableSell.is(":checked") ? true : false;
         product.description = page.dialogs.elements.descriptionCreate.val();
         product.unit = page.dialogs.elements.unitCreate.val();
         product.sku = page.dialogs.elements.skuCreate.val();

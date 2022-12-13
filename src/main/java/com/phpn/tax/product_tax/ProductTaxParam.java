@@ -1,4 +1,4 @@
-package com.phpn.tax.dto;
+package com.phpn.tax.product_tax;
 
 import lombok.Getter;
 import lombok.Setter;
