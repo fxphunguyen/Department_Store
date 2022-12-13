@@ -493,35 +493,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="container bg-white">
-                                    <div style="width: 100%; border-bottom: 1px solid #dadada">
-                                        <div class="d-flex align-items-center mb-4">
-                                            <span style="font-size: 14px;font-weight: 500">Khởi tạo kho hàng</span>
-                                            <div class="form-check form-switch ms-3">
-                                                <input class="form-check-input" type="checkbox" role="switch" id="enableVariant">
-                                            </div>
-                                        </div>
-                                        <p>Ghi nhận số lượng Tồn kho ban đầu và Giá vốn của sản phẩm tại các Chi nhánh</p>
-                                    </div>
-                                    <div style="width: 100%; margin-top: 12px;padding-bottom: 24px; display: none" id="showCreateVariant">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <p style="font-weight: 500">Chi nhánh</p>
-                                                <div class="mt-4">
-                                                    <span>Chi nhánh  mặc định</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <span style="font-weight: 500">Tồn kho ban đầu</span>
-                                                <input id="initialInventory" class="form-control mt-4" type="number" style="text-align: right" min="0" value="0"/>
-                                            </div>
-                                            <div class="col-4">
-                                                <span style="font-weight: 500">Giá vốn</span>
-                                                <input id="costPrice" class="form-control mt-4" type="number" style="text-align: right" min="0" value="0"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
                                  style="padding: 0 0 0 24px;">
@@ -627,7 +598,7 @@
                                                             </path>
                                                         </svg>
                                                     </span>
-                                                                                    </label>
+                                                </label>
                                                 <div class="MuiFormControl-root MuiTextField-root jss26865 MuiFormControl-fullWidth">
                                                     <div
                                                             class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd">
@@ -746,8 +717,8 @@
                                                     <div class="MuiBox-root jss21925 jss39987">
                                                         <div class="MuiBox-root jss21926 jss39997">
                                                             <p
-                                                                class="MuiTypography-root MuiTypography-body1"
-                                                                style="color: rgb(70, 81, 95);">Thuế đầu vào</p></div>
+                                                                    class="MuiTypography-root MuiTypography-body1"
+                                                                    style="color: rgb(70, 81, 95);">Thuế đầu vào</p></div>
                                                         <div class="dropdown">
                                                             <!--                                                <input id="getIdValueCat" type="hidden"/>-->
                                                             <div class="btn bg-secondary dropdown-toggle select-btn-tax"
@@ -1129,14 +1100,6 @@
         }
         else{
             $("#showTaxModal").css("display","none");
-        }
-    });
-    $('#enableVariant').click(function() {
-        if ($("#enableVariant").is(':checked')) {
-            $("#showCreateVariant").css("display","block");
-        }
-        else{
-            $("#showCreateVariant").css("display","none");
         }
     });
 
