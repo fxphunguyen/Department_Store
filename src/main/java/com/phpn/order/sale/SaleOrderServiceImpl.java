@@ -206,7 +206,10 @@ public class SaleOrderServiceImpl implements SaleOrderService {
     @Override
     @Transactional(readOnly = true)
     public List<SaleOrderResult> findAllSaleOrderByCustomerId(Integer customerId) {
-        return saleOrderRepository.findAllCustomerOrderHistory(customerId).stream().map(orderMapper::toDTO).collect(Collectors.toList());
+
+        return  saleOrderRepository.findAllCustomerOrderHistory(customerId).stream().map(orderMapper::toCustomerHistory).collect(Collectors.toList());
+
+
     }
 
     @Override
