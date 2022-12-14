@@ -29,7 +29,10 @@ public class ItemMapper {
                 .setEmployeeId(createItemParam.getEmployeeId())
                 .setProductId(createItemParam.getProductId())
                 .setPrice(createItemParam.getPrice())
-                .setAvailable(createItemParam.getAvailable());
+                .setAvailable(createItemParam.getAvailable())
+                .setSold(0)
+                .setDefective(0)
+                .setTrading(0);
     }
 
     public CreateItemParam toDTO(CreateProductParam createProductParam, ProductResult productResult) {

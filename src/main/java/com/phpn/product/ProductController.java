@@ -27,10 +27,17 @@ public class ProductController {
         return new ModelAndView("/admin/product/product_create");
     }
 
-    @GetMapping("/products/edit")
-    public ModelAndView showProductDetailPage() {
-
-        return new ModelAndView("/admin/product/product_detail");
+    @GetMapping("/product/edit/{id}")
+    public ModelAndView showProductEditPage(@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView();
+        ProductResult product = productService.findById(id);
+        if (product == null) {
+            modelAndView.addObject("errors", "errors");
+        } else {
+            modelAndView.addObject("product", productService.findDetailById(product.getId()));
+        }
+        modelAndView.setViewName("/admin/product/product_edit");
+        return modelAndView;
     }
 
     @GetMapping("/product/{id}")
