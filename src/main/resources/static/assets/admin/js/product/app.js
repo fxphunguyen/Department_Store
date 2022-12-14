@@ -75,12 +75,13 @@ class Image {
 
 class Product {
     constructor(id, title, enableSell,
-                description, unit,
+                description, unit, mass,
                 sku, barCode, quantity,
                 retailPrice, importPrice,
                 wholesalePrice, categoryId,
                 brandId, applyTax, image,
-                isTaxInclusive, taxList) {
+                isTaxInclusive, taxList,
+                costPrice) {
         this.id = id;
         this.title = title;
         this.enableSell = enableSell;
@@ -88,7 +89,7 @@ class Product {
         this.unit = unit;
         this.sku = sku;
         this.barCode = barCode;
-        this.quantity = quantity;
+        this.mass = mass;
         this.retailPrice = retailPrice;
         this.importPrice = importPrice;
         this.wholesalePrice = wholesalePrice;
@@ -98,6 +99,8 @@ class Product {
         this.isTaxInclusive = isTaxInclusive;
         this.taxList = taxList;
         this.mediaList = image;
+        this.quantity = quantity;
+        this.costPrice = costPrice;
     }
 }
 

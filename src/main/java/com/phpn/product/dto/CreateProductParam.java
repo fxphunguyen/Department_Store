@@ -22,6 +22,8 @@ public class CreateProductParam implements Serializable {
     private String sku;
     private String barCode;
     private Integer quantity;
+    private Float mass;
+    private BigDecimal costPrice;
     private BigDecimal retailPrice;
     private BigDecimal importPrice;
     private BigDecimal wholesalePrice;

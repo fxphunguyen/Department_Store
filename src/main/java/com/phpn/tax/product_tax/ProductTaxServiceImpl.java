@@ -37,8 +37,8 @@ public class ProductTaxServiceImpl implements ProductTaxService{
             productTaxId.setTax(tax);
             productTax.setId(productTaxId);
             productTaxResults.add(productTaxMapper.toDTO(productTaxRepository.save(productTax)));
-            System.out.println();
         }
+        System.out.println(productTaxResults);
         return productTaxResults;
     }
 

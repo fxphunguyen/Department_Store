@@ -21,4 +21,6 @@ public class CreateItemParam {
 
     private BigDecimal price;
 
+    private Integer available;
+
 }
