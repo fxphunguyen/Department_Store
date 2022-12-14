@@ -41,7 +41,7 @@ class App {
     static renderRowProduct(item, showStatus) {
         let str = `
              <tr id="tr_${item.id}" >
-                <td class="align-middle"><input type="checkbox" value="${item.id}"></td>
+                <td class="align-middle"><input class="checkCourseItem" name="courseId[]" type="checkbox" value="${item.id}"></td>
                 <td class="align-middle"><img width="50px" height="40px" src=${item.image} alt="image"></td>
                 <td class="align-middle"><a href="/admin/product/${item.id}" style="text-decoration: none">${item.title}</a></td>
                 <td class="align-middle">${item.category.name}</td>

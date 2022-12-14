@@ -250,7 +250,7 @@
                     <table id="tbProduct" class="table table-hover">
                         <thead style="background-color: #f4f6f8; height: 55px">
                             <tr>
-                                <th class="align-middle"><input type="checkbox" value=""></th>
+                                <th class="align-middle"><input id="checkAll" type="checkbox" value=""></th>
                                 <th class="align-middle" scope="col">Ảnh</th>
                                 <th class="align-middle" scope="col">Sản phẩm</th>
                                 <th class="align-middle" scope="col">Loại</th>
@@ -344,7 +344,7 @@
         page.elements.pageNo = $("#pageNo");
         page.elements.pageSize = $("#pageSize");
         page.elements.search = $("#Sapo-TextField-1de6d6a6-f13f-4275-b1b2-a8487207509a");
-        page.elements.tableCheckbox =
+
 
         page.dialogs.elements.category = $("#category");
         page.dialogs.elements.brand = $("#brand");
@@ -396,7 +396,6 @@
                         } else {
                             page.elements.tbProduct.append(App.renderRowProduct(item, 'unavailable'))
                         }
-
                     });
                     page.elements.totalPage.append(
                         `<span class="me-2">Tổng sản phẩm ${data.totalItem} - Tổng số trang ${data.totalPage}</span>`
@@ -498,10 +497,7 @@
                 .fail((jqXHR) => {
                     App.IziToast.showErrorAlert(App.AlertMessageVi.ERROR_404)
                 })
-
         }
-
-
 
         page.loadData = () => {
             page.commands.getAllProducts();
@@ -511,6 +507,7 @@
 
         $(() => {
             page.loadData()
+
         })
     </script>
 </body>
