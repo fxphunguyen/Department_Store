@@ -250,7 +250,7 @@
                     <table id="tbProduct" class="table table-hover">
                         <thead style="background-color: #f4f6f8; height: 55px">
                             <tr>
-                                <th class="align-middle"><input type="checkbox" value=""></th>
+                                <th class="align-middle"><input id="selectAllCheckboxes" type="checkbox" value=""></th>
                                 <th class="align-middle" scope="col">Ảnh</th>
                                 <th class="align-middle" scope="col">Sản phẩm</th>
                                 <th class="align-middle" scope="col">Loại</th>
@@ -344,7 +344,8 @@
         page.elements.pageNo = $("#pageNo");
         page.elements.pageSize = $("#pageSize");
         page.elements.search = $("#Sapo-TextField-1de6d6a6-f13f-4275-b1b2-a8487207509a");
-        page.elements.tableCheckbox =
+        page.elements.selectAllCheckboxes =$("#selectAllCheckboxes");
+        // page.elements.selectCheckbox = $(".selectCheckbox");
 
         page.dialogs.elements.category = $("#category");
         page.dialogs.elements.brand = $("#brand");
@@ -501,7 +502,29 @@
 
         }
 
+        //nhat-dev check box
+        page.elements.selectAllCheckboxes.click(function(){
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
 
+        let checked = []
+        $("input[name='options[]']:checked").each(function ()
+        {
+            checked.push(parseInt($(this).val()));
+        });
+        console.log(checked)
+
+        // let checkboxes = document.querySelectorAll(".selectCheckbox");
+        // for (let checkbox of  checkboxes){
+        //    checkbox.click(function(){
+        //        if (checkbox.is(":checked")){
+        //            console.log("con heo")
+        //        }
+        //        else {
+        //            console.log("con ga")
+        //        }
+        //    });
+        // }
 
         page.loadData = () => {
             page.commands.getAllProducts();
