@@ -36,4 +36,9 @@ public class ShippingAddressImpl implements ShippingAddressService {
         ShippingAddress shippingAddressResult =  shippingAddressRepository.save(shippingAddressMapper.toModel(createShippingAddressParam));
         return shippingAddressMapper.toDTO(shippingAddressResult);
     }
+
+    @Override
+    public void delete(Integer id) {
+        shippingAddressRepository.deleteById(id);
+    }
 }

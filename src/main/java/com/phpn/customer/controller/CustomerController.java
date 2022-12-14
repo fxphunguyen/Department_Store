@@ -43,8 +43,6 @@ public class CustomerController {
 
     @GetMapping("/customerInfo/{id}")
     public ModelAndView showCustomerInfoPage(@PathVariable Integer id) {
-        System.out.println(id);
-        System.out.println("___________________________" + id);
         ModelAndView modelAndView = new ModelAndView();
         CustomerResult iCustomer = customerService.findById(id);
         modelAndView.addObject("customer", iCustomer);
