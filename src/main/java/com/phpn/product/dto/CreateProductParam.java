@@ -1,19 +1,19 @@
 package com.phpn.product.dto;
 
 import com.phpn.media.MediaParam;
-import com.phpn.tax.dto.ProductTaxParam;
-import vn.fx.qh.sapo.entities.product.*;
-import lombok.Data;
+import com.phpn.tax.product_tax.ProductTaxParam;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Accessors(chain = true)
 public class CreateProductParam implements Serializable {
-
     private Integer id;
     private String title;
     private Boolean enableSell;
@@ -22,6 +22,8 @@ public class CreateProductParam implements Serializable {
     private String sku;
     private String barCode;
     private Integer quantity;
+    private Float mass;
+    private BigDecimal costPrice;
     private BigDecimal retailPrice;
     private BigDecimal importPrice;
     private BigDecimal wholesalePrice;
@@ -31,7 +33,4 @@ public class CreateProductParam implements Serializable {
     private Boolean isTaxInclusive;
     private List<ProductTaxParam> taxList;
     private List<MediaParam> mediaList;
-
-
-
 }

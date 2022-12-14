@@ -31,15 +31,10 @@ public class ItemResult {
 
     private BigDecimal price;
 
-    private String sku;
-
-    private Float discount;
-
     private Integer available;
 
     private Integer trading;
 
     private ProductResult productResult;
-
 
 }

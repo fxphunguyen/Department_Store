@@ -21,7 +21,7 @@ class App {
     static IziToast = class {
         static showSuccessAlert(m) {
             iziToast.success({
-                title: 'OK',
+                title: 'Thành công: ',
                 position: 'topRight',
                 timeout: 2500,
                 message: m
@@ -30,7 +30,7 @@ class App {
 
         static showErrorAlert(m) {
             iziToast.error({
-                title: 'Error',
+                title: 'Lỗi: ',
                 position: 'topRight',
                 timeout: 2500,
                 message: m
@@ -38,24 +38,35 @@ class App {
         }
     }
 
-    static renderRowProduct(item) {
+    static renderRowProduct(item, showStatus) {
         let str = `
              <tr id="tr_${item.id}" >
-                <td class="align-middle"></td>
-                <td class="align-middle"><input type="checkbox" value=""></td>
-                <td class="align-middle"><img width="50px" height="40px" src=${item.image} alt=""></td>
-                <td class="align-middle">${item.title}</td>
+                <td class="align-middle"><input class="selectCheckbox"  name="options[]" type="checkbox" value="${item.id}"></td>
+                <td class="align-middle"><img width="50px" height="40px" src=${item.image} alt="image"></td>
+                <td class="align-middle"><a href="/admin/product/${item.id}" style="text-decoration: none">${item.title}</a></td>
                 <td class="align-middle">${item.category.name}</td>
                 <td class="align-middle">${item.brand.name}</td>
+<<<<<<< HEAD
                 <td class="align-middle">${item.availableInventory}</td>
                 <td class="align-middle">${item.totalInventory}</td>
                 <td class="align-middle">${item.status}</td>
                 <td class="align-middle">${moment(item.createdAt).format("DD/MM/yyyy")}</td>
                 <td class="align-middle">${moment(item.updatedAt).format("DD/MM/yyyy")}</td>
+=======
+                <td class="align-middle text-end ">${item.available}</td>
+                <td class="align-middle text-end">${item.inventory}</td>
+                <td class="align-middle">
+                    <span id="showStatus" class="${showStatus}">${item.status === "AVAILABLE" ? "Đang giao dịch" : "Ngừng giao dịch"}</span> 
+                </td>
+                <td class="align-middle">${ item.createAt === null ? "" : new Date(item.createAt).toLocaleDateString('en-GB')}</td>
+                <td class="align-middle">${item.updateAt === null ? "" : new Date(item.updateAt).toLocaleDateString('en-GB')}</td>
+>>>>>>> dev_c5
             </tr>
         `;
         return str;
     }
+
+
 
 }
 
@@ -71,22 +82,33 @@ class Image {
 }
 
 class Product {
-    constructor(id, title, status, description, unit, sku, barCode, quantity, retailPrice, importPrice, wholesalePrice, categoryId, brandId, applyTax, image) {
+    constructor(id, title, enableSell,
+                description, unit, mass,
+                sku, barCode, quantity,
+                retailPrice, importPrice,
+                wholesalePrice, categoryId,
+                brandId, applyTax, image,
+                isTaxInclusive, taxList,
+                costPrice) {
         this.id = id;
         this.title = title;
-        this.status = status;
+        this.enableSell = enableSell;
         this.description = description;
         this.unit = unit;
         this.sku = sku;
         this.barCode = barCode;
-        this.quantity = quantity;
+        this.mass = mass;
         this.retailPrice = retailPrice;
         this.importPrice = importPrice;
         this.wholesalePrice = wholesalePrice;
         this.categoryId = categoryId;
         this.brandId = brandId;
         this.applyTax = applyTax;
-        this.productImageParams = image;
+        this.isTaxInclusive = isTaxInclusive;
+        this.taxList = taxList;
+        this.mediaList = image;
+        this.quantity = quantity;
+        this.costPrice = costPrice;
     }
 }
 
@@ -102,6 +124,13 @@ class ProductItemPage {
         this.status = status;
         this.createAt = createAt;
         this.updateAt = updateAt;
+    }
+}
+
+class ProductTaxParam {
+    constructor(taxId, taxType) {
+        this.taxId = taxId;
+        this.taxType = taxType;
     }
 }
 

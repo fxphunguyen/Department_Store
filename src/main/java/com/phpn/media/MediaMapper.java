@@ -1,6 +1,8 @@
 package com.phpn.media;
 
 import org.springframework.stereotype.Component;
+import vn.fx.qh.sapo.entities.media.Media;
+import vn.fx.qh.sapo.entities.product.Product;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -16,5 +18,18 @@ public class MediaMapper {
                 .setFileFolder(productImageParam.getFileFolder())
                 .setFileUrl(productImageParam.getFileUrl())
                 .setFileType(productImageParam.getFileType());
+    }
+
+    public MediaResult toDTO(Media media) {
+        return new MediaResult()
+                .setCloudId(media.getCloudId())
+                .setFileName(media.getFileName())
+                .setFileFolder(media.getFileFolder())
+                .setFileUrl(media.getFileUrl())
+                .setFileType(media.getFileType())
+                .setIsMain(media.getIsMain())
+                .setProductId(media.getProductId())
+                .setCreatedAt(media.getCreatedAt())
+                .setUpdatedAt(media.getUpdatedAt());
     }
 }

@@ -174,8 +174,43 @@
     vertical-align: middle;
     padding: 0.285714rem;
     border-radius: 1.14286rem;
-    height: 1.71429rem;
+    height: 25px;
     border: 1px solid rgb(255, 223, 155);
+    background-color: rgb(255, 247, 231);
+    margin-left: 16px;
+}
+.PGrDd {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-flex;
+    white-space: nowrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 0.285714rem;
+    border-radius: 1.14286rem;
+    height: 25px;
+    border: 1px solid rgb(255, 223, 155);
+    background-color: rgb(255, 247, 231);
+    margin-left: 16px;
+}
+
+.PGrDf {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-flex;
+    white-space: nowrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 0.285714rem;
+    border-radius: 1.14286rem;
+    height: 25px;
+    border: 1px solid #dc3535;
     background-color: rgb(255, 247, 231);
     margin-left: 16px;
 }
@@ -188,10 +223,24 @@
     overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-weight: 400;
-    font-size: 0.928571rem;
-    line-height: 1.14286rem;
+    /*font-size: 0.928571rem;*/
+    /*line-height: 1.14286rem;*/
     margin: 0px;
     color: rgb(228, 156, 6);
+}
+
+.gIZkwB {
+    padding: 0px 0.571429rem;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    /*font-size: 0.928571rem;*/
+    /*line-height: 1.14286rem;*/
+    margin: 0px;
+    color: rgb(228 6 6);
 }
 
 .MuiPaper-rounded {
@@ -431,7 +480,6 @@ input:disabled ~ .jss4798 {
 .jss925 {
     top: 0;
     left: 0;
-    width: 100%;
     cursor: inherit;
     height: 100%;
     margin: 0;
@@ -659,5 +707,14 @@ thead {
 
 .MuiTypography-root {
     font-size: 14px !important;
+}
+
+.jss25683 {
+    width: 70px;
+    height: 70px;
+}
+
+.jss25683 .image-item {
+    height: 70px;
 }
 
