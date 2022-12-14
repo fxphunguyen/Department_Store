@@ -183,7 +183,8 @@
                                                                        name="weightValue"
                                                                        type="number"
                                                                        aria-label="Without label"
-                                                                       class="quantityCreate MuiInputBase-input MuiOutlinedInput-input"
+                                                                       id="massCreate"
+                                                                       class="MuiInputBase-input MuiOutlinedInput-input"
                                                                        style="width: 100%; text-align: right;">
                                                                 <fieldset aria-hidden="true"
                                                                           class="jss26952 MuiOutlinedInput-notchedOutline"
@@ -876,9 +877,7 @@
     let  brand = new Brand();
     let tax = new Tax();
     let imgs = [];
-    let taxs = [];
-    let taxIn = new ProductTaxParam();
-    let taxOut = new ProductTaxParam();
+
 
     //QHuy
     page.cloudinary.api_key = 142768397813839;
@@ -896,7 +895,7 @@
     page.dialogs.elements.unitCreate = $('.unitCreate');
     page.dialogs.elements.skuCreate = $('.skuCreate');
     page.dialogs.elements.barCodeCreate = $('.barCodeCreate');
-    page.dialogs.elements.quantityCreate = $('.quantityCreate');
+    page.dialogs.elements.massCreate = $('#massCreate');
     page.dialogs.elements.retailPriceCreate = $('.retailPriceCreate');
     page.dialogs.elements.importPriceCreate = $('.importPriceCreate');
     page.dialogs.elements.wholesalePriceCreate = $('.wholesalePriceCreate');
@@ -914,6 +913,9 @@
 
     //Thêm sản phẩm
     page.elements.btnCreateProduct.on("click", () => {
+        let taxs = [];
+        let taxIn = new ProductTaxParam();
+        let taxOut = new ProductTaxParam();
         taxIn.taxId = $("#taxProType").data("id");
         taxIn.taxType = "TAX_PURCHASE";
         taxOut.taxId = $("#taxProTypeOut").data("id");
@@ -927,7 +929,7 @@
         product.unit = page.dialogs.elements.unitCreate.val();
         product.sku = page.dialogs.elements.skuCreate.val();
         product.barCode = page.dialogs.elements.barCodeCreate.val();
-        product.quantity = page.dialogs.elements.quantityCreate.val();
+        product.mass = page.dialogs.elements.massCreate.val();
         product.retailPrice = page.dialogs.elements.retailPriceCreate.val();
         product.importPrice = page.dialogs.elements.importPriceCreate.val();
         product.wholesalePrice = page.dialogs.elements.wholesalePriceCreate.val();
@@ -935,8 +937,10 @@
         product.brandId = $('#brandProType').data("id");
         product.applyTax = $("#applyTax").is(":checked") ? true : false;
         product.isTaxInclusive = $("#priceDepsTax").val() === 2 ? true : false;
+        product.costPrice = $("#costPrice").val();
+        product.quantity = $("#initialInventory").val();
         product.taxList = taxs;
-        product.mediaList = imgs
+        product.mediaList = imgs;
 
         console.log(product)
         $.ajax({
