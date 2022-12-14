@@ -2,6 +2,68 @@
     padding-right: 36px;
 }
 
+.pageNumber {
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+}
+
+.available {
+    border-width: 1px;
+    background-color: rgb(255, 247, 231);
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+    color: rgb(228, 156, 6);
+    border: 1px solid rgb(255, 223, 155);
+}
+.unavailable {
+    border-width: 1px;
+    background-color: rgb(255, 246, 246);
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+    color: rgb(238, 71, 71);
+    border: 1px solid rgb(255, 184, 184);
+}
+.jss1211 {
+    color: inherit;
+    height: 52px;
+    overflow: hidden;
+    font-size: inherit;
+    border-top: 1px solid #E8EAEB;
+    line-height: 1.5715;
+    padding-top: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-bottom: 0;
+}
+.jss1218 {
+    display: flex;
+    flex-direction: row;
+}
+.jss3835 {
+}
+.jss1211 {
+    color: inherit;
+    height: 52px;
+    overflow: hidden;
+    font-size: inherit;
+    border-top: 1px solid #E8EAEB;
+    line-height: 1.5715;
+    padding-top: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-bottom: 0;
+}
+.MuiTypography-colorSecondary {
+    color: #747C87;
+}
+.jss1217 {
+    display: flex;
+    margin-left: 16px;
+}
+
 .jss6879 {
     color: #A3A8AF;
     right: 0;
@@ -4570,4 +4632,11 @@ html {
     align-items: center;
     border-radius: 50%;
     justify-content: center;
+}
+#Sapo-TextField-1de6d6a6-f13f-4275-b1b2-a8487207509a {
+    border: solid;
+    height: 34px;
+    border-color: lightgrey;
+    border-width: thin;
+    border-radius: 5px
 }

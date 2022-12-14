@@ -1,5 +1,9 @@
 package com.phpn.product.item;
 
+import com.phpn.product.dto.CreateProductParam;
+import com.phpn.product.dto.ProductResult;
+import vn.fx.qh.sapo.entities.product.Item;
+
 import java.util.List;
 
 public interface ItemService {
@@ -8,4 +12,9 @@ public interface ItemService {
     int getTotalInventoryQuantityByProductId(Integer productId);
 
     int getAvailableInventoryQuantityByProductId(Integer productId);
+
+    ItemResult create(CreateItemParam CreateItemParam);
+
+    ItemResult findAllByProductId(Integer productId);
+
 }

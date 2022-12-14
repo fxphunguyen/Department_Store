@@ -49,4 +49,15 @@ public class ItemServiceImpl implements ItemService {
         return itemRepository.getAvailableInventoryQuantityByProductId(productId).orElse(0);
     }
 
+    @Override
+    public ItemResult create(CreateItemParam createItemParam) {
+        return itemMapper.toDTO(itemRepository.save(itemMapper.toModel(createItemParam)));
+    }
+
+    @Override
+    public ItemResult findAllByProductId(Integer productId) {
+//        Chưa xong cần sửa
+        return itemMapper.toDTO(itemRepository.findAllByProductId(productId));
+    }
+
 }

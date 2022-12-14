@@ -2,11 +2,13 @@ package com.phpn.category;
 
 import com.phpn.category.dto.CategoryMapper;
 import com.phpn.category.dto.CategoryParam;
+import com.phpn.category.dto.CategoryResult;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import vn.fx.qh.sapo.entities.product.Category;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,8 +22,13 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
 
     @Override
-    public List<Category> findAll() {
-        return categoryRepository.findAll();
+    public List<CategoryResult> findAll() {
+        List<Category> categories = categoryRepository.findAll();
+        List<CategoryResult> categoryResults = new ArrayList<>();
+        for(Category category : categories){
+            categoryResults.add(categoryMapper.toDTO(category));
+        }
+        return categoryResults;
     }
 
     @Override

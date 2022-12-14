@@ -2,17 +2,14 @@ package com.phpn.product.dto;
 
 import com.phpn.brand.dto.BrandMapper;
 import com.phpn.category.dto.CategoryMapper;
+import com.phpn.media.MediaMapper;
 import com.phpn.order.sale.dto.ProductSaleResult;
-import com.phpn.product.dto.*;
 import com.phpn.tax.dto.TaxMapper;
-import com.phpn.tax.dto.TaxResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import vn.fx.qh.sapo.entities.product.Product;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class ProductMapper {
@@ -26,6 +23,10 @@ public class ProductMapper {
 
     @Autowired
     CategoryMapper categoryMapper;
+
+    @Autowired
+    MediaMapper mediaMapper;
+
 
     public Product toModel(ProductParam productParam) {
         return new Product(productParam.getCategoryId(), productParam.getBrandId())
@@ -58,7 +59,7 @@ public class ProductMapper {
     }
 
     public ProductResult toDTO(Product product) {
-        ProductResult result = new ProductResult()
+        return new ProductResult()
                 .setId(product.getId())
                 .setTitle(product.getTitle())
                 .setStatus(product.getStatus())
@@ -69,32 +70,51 @@ public class ProductMapper {
                 .setCategory(categoryMapper.toDTO(product.getCategory()))
                 .setBrandId(product.getBrandId())
                 .setBrand(brandMapper.toDTO(product.getBrand()))
-                .setImage(product.getImage())
                 .setDescription(product.getDescription())
+                .setUnit(product.getUnit())
                 .setImportPrice(product.getImportPrice())
                 .setWholesalePrice(product.getWholesalePrice())
                 .setRetailPrice(product.getRetailPrice())
                 .setApplyTax(product.getApplyTax())
-                .setCreatedAt(product.getCreatedAt())
-                .setUpdatedAt(product.getUpdatedAt());
-
+                .setCategory(categoryMapper.toDTO(product.getCategory()))
+                .setBrand(brandMapper.toDTO(product.getBrand()));
 //        List<TaxResult> taxSaleList = product.getTaxSale().stream().map(taxMapper::toDTO).collect(Collectors.toList());
 //        result.setTaxSaleList(taxSaleList);
 //        List<TaxResult> taxPurchaseList = product.getTaxPurchase().stream().map(taxMapper::toDTO).collect(Collectors.toList());
 //        result.setTaxPurchaseList(taxPurchaseList);
 //        result.setBrand(brandMapper.toDTO(product.getBrand()))
 //                .setCategory(categoryMapper.toDTO(product.getCategory()));
-        return result;
+//        return result;
+    }
+
+    public ProductDetailResult toDTODetail(Product product) {
+        return new ProductDetailResult()
+                .setId(product.getId())
+                .setTitle(product.getTitle())
+                .setStatus(product.getStatus())
+                .setBarCode(product.getBarCode())
+                .setSku(product.getSku())
+                .setDescription(product.getDescription())
+                .setUnit(product.getUnit())
+                .setCreateAt(product.getCreatedAt())
+                .setUpdateAt(product.getUpdatedAt())
+                .setImportPrice(product.getImportPrice())
+                .setWholesalePrice(product.getWholesalePrice())
+                .setRetailPrice(product.getRetailPrice())
+                .setApplyTax(product.getApplyTax())
+                .setIsTaxInclusive(product.getIsTaxInclusive());
     }
 
     public ProductItemResult toDTOPage(Product product) {
         return new ProductItemResult()
                 .setId(product.getId())
                 .setTitle(product.getTitle())
-                .setImage(product.getImage())
+                .setImage("")
                 .setStatus(product.getStatus())
                 .setAvailable(0)
                 .setInventory(0)
+                .setCreateAt(product.getCreatedAt())
+                .setUpdateAt(product.getUpdatedAt())
                 .setCategory(categoryMapper.toDTO(product.getCategory()))
                 .setBrand(brandMapper.toDTO(product.getBrand()));
     }

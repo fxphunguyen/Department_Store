@@ -1,14 +1,14 @@
 package com.phpn.product;
 
+
+import com.phpn.product.dto.*;
 import com.phpn.product.dto.ProductCreate;
 import com.phpn.product.dto.ProductResult;
 import com.phpn.product.dto.ProductShortParam;
 import com.phpn.product.dto.CreateProductParam;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import vn.fx.qh.sapo.entities.product.Product;
-
 import java.util.List;
+import java.util.Map;
 
 public interface ProductService {
 
@@ -16,6 +16,7 @@ public interface ProductService {
 
     ProductResult findById(Integer id);
 
+    ProductDetailResult findDetailById(Integer id);
 
     List<ProductResult> findAllProductByDeleted(boolean deleted);
 
@@ -30,9 +31,5 @@ public interface ProductService {
 
     ProductResult createShortProduct(ProductShortParam productShortParam);
 
-
-    Page<Product> findAll(Pageable pageable);
-
-    List<?> getAllProductItemPage(Integer pageNo, Integer pageSize);
-
+    Map<String, Object> getAllProductItemPage(Integer pageNo, Integer pageSize, String title, Integer categoryId, Integer brandId, String status);
 }
