@@ -1,6 +1,7 @@
 package com.phpn.product;
 
 import com.phpn.brand.dto.BrandMapper;
+import com.phpn.media.MediaMapper;
 import com.phpn.product.dto.*;
 import com.phpn.category.dto.CategoryMapper;
 import com.phpn.product.item.ItemMapper;
@@ -29,6 +30,9 @@ public class ProductMapper {
 
     @Autowired
     CategoryMapper categoryMapper;
+
+    @Autowired
+    MediaMapper mediaMapper;
 
 
     public Product toModel(ProductParam productParam) {

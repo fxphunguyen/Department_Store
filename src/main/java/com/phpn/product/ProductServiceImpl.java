@@ -103,6 +103,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductDetailResult findDetailById(Integer id) {
         Product product = productRepository.findById(id).get();
         ProductDetailResult productDetailResult = productMapper.toDTODetail(product);
+
         productDetailResult.setCategory(categoryMapper.toDTO(categoryRepository.findById(product.getCategoryId()).get()));
         productDetailResult.setBrand(brandMapper.toDTO(brandRepository.findById(product.getBrandId()).get()));
         productDetailResult.setMediaResults(mediaService.findAllById(product.getId()));
