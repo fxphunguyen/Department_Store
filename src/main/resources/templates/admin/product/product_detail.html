@@ -52,8 +52,11 @@
                         <div class="MuiBox-root jss4666 jss4637 borderBottom">
                             <div class="MuiBox-root jss5093 jss4618">
                                 <h6 class="MuiTypography-root MuiTypography-subtitle1">Thông tin sản phẩm</h6>
-                                <div class="sc-jSMfEi PGrDd">
-                                    <span class="sc-eCYdqJ gIZkwA">Đang giao dịch</span>
+<!--                                <div class="sc-jSMfEi PGrDd">-->
+<!--                                    <span class="sc-eCYdqJ gIZkwA">Đang giao dịch</span>-->
+<!--                                </div>-->
+                                <div th:class="*{status == status.AVAILABLE} ? 'PGrDd' : 'PGrDf'">
+                                    <span th:text="*{status == status.AVAILABLE} ? 'Đang giao dịch' : 'Ngừng giao dịch'" th:class="*{status == status.AVAILABLE} ? 'gIZkwA' : 'gIZkwB'"></span>
                                 </div>
                             </div>
                         </div>
