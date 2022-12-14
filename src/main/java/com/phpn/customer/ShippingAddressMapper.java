@@ -46,6 +46,7 @@ public class ShippingAddressMapper {
                 .setSupplierId(createParam.getSupplierId())
                 .setShippingAddress(createParam.getIsShipping())
                 .setReceiveBill(createParam.getIsReceiveBill());
+
     }
 
     public ShippingAddressShowCustomerInfo toCustomerInfo(ShippingAddress shippingAddress) {

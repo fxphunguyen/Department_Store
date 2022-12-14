@@ -22,13 +22,12 @@ let saleOrder = {
     discount: undefined,
     saleOrderItems: saleOrderItems
 }
-let product = new Product();
+
 let customer = new Customer();
 let shippingAddress = new ShippingAddress();
 let products;
 let customers;
 let taxMap;
-let items;
 const taxSaleOrderMap = new Map();
 
 
@@ -102,12 +101,10 @@ const searchProduct = () => {
         let search = $(this).val();
         let results = [];
         products.forEach((item) => {
-            console.log(item)
             if (((item.title).toLowerCase()).includes(search.toLowerCase()) || ((item.sku).toLowerCase()).includes(search.toLowerCase())
-                || ((item.barCode).toLowerCase()).includes(search.toLowerCase())) {
+                || ((item.bar_code).toLowerCase()).includes(search.toLowerCase()) || ((item.description).toLowerCase()).includes(search.toLowerCase())) {
                 results.push(item);
-            }    searchProduct();
-
+            }
         })
         $(".searchProduct").removeClass('d-none');
         $(".contentProduct div").remove();
@@ -119,7 +116,7 @@ const searchProduct = () => {
                         <img class="jss1260" src="${product.image}" alt="">
                             <div class="MuiBox-root jss3946">
                                 <div class="MuiBox-root jss3947">
-                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title} - ${product.barCode} - ${product.description} </p>
+                                    <p class="MuiTypography-root MuiTypography-body1" style="white-space: break-spaces;">${product.title} - ${product.bar_code} - ${product.description} </p>
                                         <p class="MuiTypography-root MuiTypography-body2" style="line-height: 16px; display: flex;">
                                         <span class="MuiTypography-root MuiTypography-body2" style="color: rgb(163, 168, 175); line-height: 16px;"> ${product.sku} </span>
                                         <span class="MuiTypography-root jss1258 MuiTypography-body2 MuiTypography-colorPrimary" title="Mặc định">${product.description}</span>
@@ -623,6 +620,7 @@ function doCreateCustomer() {
 
 doCreateCustomer();
 
+
 function handleRemove() {
     let str = `<div class="MuiPaper-root  jss18028 MuiPaper-elevation1 MuiPaper-rounded">
                 <div class="MuiBox-root jss18075 customer-info">
@@ -740,6 +738,7 @@ function showProductInfo(productId) {
     renderSaleOrder();
 }
 
+
 function removeProduct(id) {
     if (id === undefined) {
         $("#divNoInfo").removeClass('hide').addClass('show');
@@ -828,7 +827,6 @@ const switchDiscountOrder = (value) => {
     $(`[value=${value === "PERCENT" ? "VALUE" : "PERCENT"}]`).removeClass("Mui-selected")
 
 }
-
 const switchDiscountOrderItem = (event) => {
     const classList = [...event.target.parentElement.classList] || [];
     const muiSelecteds = event.target.parentElement.parentElement.children;
@@ -1139,6 +1137,7 @@ function renderSaleOrder() {
     $("#totalPaid").text(grandTotal.formatVND());
 }
 
+
 function getProductList() {
     if (products !== undefined && products.length > 0) {
         return;
@@ -1196,88 +1195,6 @@ function numberOnly() {
     });
 }
 
-function showAllCategory() {
-    return $.ajax({
-        headers: {
-            "accept": "application/json",
-            "content-type": "application/json"
-        },
-        type: "GET",
-        url: "http://localhost:8080/api/categories"
-    })
-        .done((data) => {
-            $("#categoryCreate").empty();
-
-            $.each(data, (i, item) => {
-                let str = `<option value="${item.id}">${item.name}</option>`;
-                $(".showAllCategory").append(str);
-            });
-
-        })
-        .fail((jqXHR) => {
-            console.log("Error");
-        })
-}
-
-function doCreateProductShort() {
-    product.id = 0;
-    product.title = $('#titleCreate').val();
-    product.sku = $('#skuCreate').val();
-    product.quantity = $('#inventoryCreate').val();
-    product.retailPrice = $('#retailPriceCreate').val();
-    product.importPrice = $('#importPriceCreate').val();
-    product.categoryId = $('#categoryCreate').val();
-    product.mass = $('#massCreate').val();
-
-    $.ajax({
-        headers: {
-            "accept": "application/json",
-            "content-type": "application/json",
-        },
-        type: "POST",
-        url: "http://localhost:8080/api/products/create-short",
-        data: JSON.stringify(product),
-    })
-        .done((data) => {
-            // getProductList();
-            $('#create_order_product').modal("hide");
-            $('#modalProductShort')[0].reset();
-            App.SweetAlert.showSuccessAlert("Thêm thành công sản phẩm!");
-        })
-        .fail((jqXHR) => {
-            console.log(jqXHR.message)
-            App.SweetAlert.showErrorAlert("Thêm không được");
-        })
-
-}
-
-$("#btnCreateProductShort").on("click", function () {
-    doCreateProductShort();
-})
-
-$(".btn_create_order").on("click", () => {
-    $.ajax({
-        "headers": {
-            "content-type": "application/json"
-        },
-        "type": "POST",
-        "url": `${location.origin}/api/orders`,
-        "data": JSON.stringify(saleOrder)
-    })
-        .done((data) => {
-            App.IziToast.showSuccessAlert("Tạo đơn hàng thành công!");
-            location.href = `${location.origin}/admin/orders/${data.id}`;
-        })
-        .fail((jqXHR) => {
-            App.IziToast.showErrorAlert("Không đủ số lượng cho đơn hàng, vui lòng kiểm tra lại");
-        })
-});
-
-$("#discount_product_input").on('keyup', function () {
-    var n = parseInt($(this).val().replace(/\D/g, ''), 10);
-    $(this).val(n.toLocaleString());
-});
-
 $(() => {
     getCustomerList();
     getTaxList();
@@ -1285,10 +1202,33 @@ $(() => {
     getAllItem();
     getAllEmployees();
     searchCustomer();
+    searchProduct();
     handleCloseListCustomers()
     handleCloseListProducts();
     searchProduct();
-    showAllCategory();
+
+    $(".btn_create_order").on("click", () => {
+        $.ajax({
+            "headers": {
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": `${location.origin}/api/orders`,
+            "data": JSON.stringify(saleOrder)
+        })
+            .done((data) => {
+                App.IziToast.showSuccessAlert("Tạo đơn hàng thành công!");
+                location.href = `${location.origin}/admin/orders/${data.id}`;
+            })
+            .fail((jqXHR) => {
+               App.IziToast.showErrorAlert("Không đủ số lượng cho đơn hàng, vui lòng kiểm tra lại");
+               
+            })
+    });
+    $("#discount_product_input").on('keyup', function () {
+        var n = parseInt($(this).val().replace(/\D/g, ''), 10);
+        $(this).val(n.toLocaleString());
+    });
 })
 
 
