@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <title>Thêm mới sản phẩm</title>
+    <title>Sửa sản phẩm</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
@@ -40,15 +40,15 @@
                                       fill="currentColor">
                                 </path>
                             </svg>
-                            <h6 class="MuiTypography-root MuiTypography-subtitle1">Quay lại danh sách sản phẩm</h6>
+                            <h6 class="MuiTypography-root MuiTypography-subtitle1">Quay lại chi tiết sản phẩm</h6>
                         </a>
                     </div>
                     <div class="MuiBox-root jss26590">
                         <div class="MuiBox-root jss26591 jss26558" style="align-items: center;">
                             <a id="Sapo-Button-086af533-fa8f-465a-a170-65223a6254cb"
                                class="sc-jqUVSM dgJIMY"
-                               href="/admin/products">
-                                    <span class="sc-papXJ jcEYKF">Thoát
+                               href="/admin/product/{id}">
+                                    <span class="sc-papXJ jcEYKF">Hủy
                                     </span>
                             </a>
                             <button id="btnCreateProduct"
@@ -64,6 +64,12 @@
             <div class="MuiBox-root jss26592 jss26547">
                 <div class="MuiBox-root jss26593 jss26549">
                     <div class="MuiBox-root jss26594 jss26550">
+                        <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3">
+                            <div class="MuiGrid-root title MuiGrid-item MuiGrid-grid-xs-12"><h4
+                                    class="MuiTypography-h4">Whoopi Logan</h4>
+                                <p class="MuiTypography-root MuiTypography-body1"
+                                   style="color: rgb(70, 81, 95); margin-top: 8px;">Sản phẩm thường</p></div>
+                        </div>
                         <div class="MuiGrid-root MuiGrid-container">
                             <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8"
                                  style="padding: 0;">
@@ -183,7 +189,8 @@
                                                                        name="weightValue"
                                                                        type="number"
                                                                        aria-label="Without label"
-                                                                       class="quantityCreate MuiInputBase-input MuiOutlinedInput-input"
+                                                                       id="massCreate"
+                                                                       class="MuiInputBase-input MuiOutlinedInput-input"
                                                                        style="width: 100%; text-align: right;">
                                                                 <fieldset aria-hidden="true"
                                                                           class="jss26952 MuiOutlinedInput-notchedOutline"
@@ -493,6 +500,40 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="container bg-white">
+                                    <div style="width: 100%; border-bottom: 1px solid #dadada">
+                                        <div class="d-flex align-items-center mb-4">
+                                            <span style="font-size: 14px;font-weight: 500">Khởi tạo kho hàng</span>
+                                            <div class="form-check form-switch ms-3">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                       id="enableVariant">
+                                            </div>
+                                        </div>
+                                        <p>Ghi nhận số lượng Tồn kho ban đầu và Giá vốn của sản phẩm tại các Chi
+                                            nhánh</p>
+                                    </div>
+                                    <div style="width: 100%; margin-top: 12px;padding-bottom: 24px; display: none"
+                                         id="showCreateVariant">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p style="font-weight: 500">Chi nhánh</p>
+                                                <div class="mt-4">
+                                                    <span>Chi nhánh  mặc định</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <span style="font-weight: 500">Tồn kho ban đầu</span>
+                                                <input id="initialInventory" class="form-control mt-4" type="number"
+                                                       style="text-align: right" min="0" value="0"/>
+                                            </div>
+                                            <div class="col-4">
+                                                <span style="font-weight: 500">Giá vốn</span>
+                                                <input id="costPrice" class="form-control mt-4" type="number"
+                                                       style="text-align: right" min="0" value="0"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
                                  style="padding: 0 0 0 24px;">
@@ -586,11 +627,14 @@
                                                     <span class="MuiTypography-root MuiTypography-caption"
                                                           title="Chọn hoặc thêm các thẻ cho sản phẩm, thẻ này phục vụ cho việc lọc các sản phẩm"
                                                           style="order: 1;">
-                                                        <svg class="MuiSvgIcon-root MuiSvgIcon-colorPrimary" focusable="false" viewBox="0 0 12 12"
-                                                             aria-hidden="true" style="width: 12px; height: 12px; margin-left: 6px; cursor: pointer;">
+                                                        <svg class="MuiSvgIcon-root MuiSvgIcon-colorPrimary"
+                                                             focusable="false" viewBox="0 0 12 12"
+                                                             aria-hidden="true"
+                                                             style="width: 12px; height: 12px; margin-left: 6px; cursor: pointer;">
                                                             <path d="M5.4 3V4.2H6.6V3H5.4Z" fill="currenColor">
                                                             </path>
-                                                            <path d="M5.4 6.6V9H7.2V7.8H6.6V5.4H4.8V6.6H5.4Z" fill="currenColor">
+                                                            <path d="M5.4 6.6V9H7.2V7.8H6.6V5.4H4.8V6.6H5.4Z"
+                                                                  fill="currenColor">
                                                             </path>
                                                             <path fill-rule="evenodd" clip-rule="evenodd"
                                                                   d="M6 0C2.688 0 0 2.688 0 6C0 9.312 2.688 12 6 12C9.312 12 12 9.312 12 6C12 2.688 9.312 0 6 0ZM1.2 6C1.2 8.646 3.354 10.8 6 10.8C8.646 10.8 10.8 8.646 10.8 6C10.8 3.354 8.646 1.2 6 1.2C3.354 1.2 1.2 3.354 1.2 6Z"
@@ -704,10 +748,15 @@
                                                              style="width: 100%;">
                                                             <div class="MuiBox-root jss21908 jss21761"><label
                                                                     class="MuiFormLabel-root MuiInputLabel-root jss21759 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
-                                                                    data-shrink="true" style="font-size: 14px; color: rgb(70, 81, 95);">Giá sản
+                                                                    data-shrink="true"
+                                                                    style="font-size: 14px; color: rgb(70, 81, 95);">Giá
+                                                                sản
                                                                 phẩm</label></div>
-                                                            <select class="form-select" aria-label="Default select example" id="priceDepsTax">
-                                                                <option selected value="1">Giá chưa bao gồm thuế</option>
+                                                            <select class="form-select"
+                                                                    aria-label="Default select example"
+                                                                    id="priceDepsTax">
+                                                                <option selected value="1">Giá chưa bao gồm thuế
+                                                                </option>
                                                                 <option value="2">Giá đã bao gồm thuế</option>
                                                             </select>
                                                         </div>
@@ -718,7 +767,8 @@
                                                         <div class="MuiBox-root jss21926 jss39997">
                                                             <p
                                                                     class="MuiTypography-root MuiTypography-body1"
-                                                                    style="color: rgb(70, 81, 95);">Thuế đầu vào</p></div>
+                                                                    style="color: rgb(70, 81, 95);">Thuế đầu vào</p>
+                                                        </div>
                                                         <div class="dropdown">
                                                             <!--                                                <input id="getIdValueCat" type="hidden"/>-->
                                                             <div class="btn bg-secondary dropdown-toggle select-btn-tax"
@@ -733,9 +783,11 @@
                                                                 <li class="text-primary dropdown-item">
                                                                     <button style="border: none; color: #2d9dff;padding: 10px;text-align: start;
                                                                      font-weight: 500;
-                                                                     font-size: 14px" class="bg-white w-100 btnCreateTax">
+                                                                     font-size: 14px"
+                                                                            class="bg-white w-100 btnCreateTax">
                                                                         <i class="fa-solid fa-circle-plus"
-                                                                           style="margin: 0 9px"></i>Thêm mới thuế đầu vào
+                                                                           style="margin: 0 9px"></i>Thêm mới thuế đầu
+                                                                        vào
                                                                     </button>
                                                                 </li>
                                                             </ul>
@@ -747,7 +799,8 @@
                                                         <div class="MuiBox-root jss21926 jss39997">
                                                             <p
                                                                     class="MuiTypography-root MuiTypography-body1"
-                                                                    style="color: rgb(70, 81, 95);">Thuế đầu ra</p></div>
+                                                                    style="color: rgb(70, 81, 95);">Thuế đầu ra</p>
+                                                        </div>
                                                         <div class="dropdown">
                                                             <!--                                                <input id="getIdValueCat" type="hidden"/>-->
                                                             <div class="btn bg-secondary dropdown-toggle select-btn-tax-out"
@@ -762,9 +815,11 @@
                                                                 <li class="text-primary dropdown-item">
                                                                     <button style="border: none; color: #2d9dff;padding: 10px;text-align: start;
                                                                      font-weight: 500;
-                                                                     font-size: 14px" class="bg-white w-100 btnCreateTax">
+                                                                     font-size: 14px"
+                                                                            class="bg-white w-100 btnCreateTax">
                                                                         <i class="fa-solid fa-circle-plus"
-                                                                           style="margin: 0 9px"></i>Thêm mới thuế đầu ra
+                                                                           style="margin: 0 9px"></i>Thêm mới thuế đầu
+                                                                        ra
                                                                     </button>
                                                                 </li>
                                                             </ul>
@@ -828,7 +883,7 @@
         urls: {
             url_category: App.BASE_URL_Categories,
             url_brand: App.BASE_URL_Brands,
-            url_product_create: App.BASE_URL_Product + "/create"
+            url_product_create: App.BASE_URL_Product + "/update"
         },
         elements: {},
         loadData: {},
@@ -844,12 +899,10 @@
     let product = new Product();
     let image = new Image();
     let category = new Category();
-    let  brand = new Brand();
+    let brand = new Brand();
     let tax = new Tax();
     let imgs = [];
-    let taxs = [];
-    let taxIn = new ProductTaxParam();
-    let taxOut = new ProductTaxParam();
+
 
     //QHuy
     page.cloudinary.api_key = 142768397813839;
@@ -862,12 +915,12 @@
 
     // Thêm sản phẩm
     page.dialogs.elements.titleCreate = $('.titleCreate');
-    page.dialogs.elements.statusCreate = $(".statusCreate");
+    page.dialogs.elements.enableSell = $("#enableSell");
     page.dialogs.elements.descriptionCreate = $('.descriptionCreate');
     page.dialogs.elements.unitCreate = $('.unitCreate');
     page.dialogs.elements.skuCreate = $('.skuCreate');
     page.dialogs.elements.barCodeCreate = $('.barCodeCreate');
-    page.dialogs.elements.quantityCreate = $('.quantityCreate');
+    page.dialogs.elements.massCreate = $('#massCreate');
     page.dialogs.elements.retailPriceCreate = $('.retailPriceCreate');
     page.dialogs.elements.importPriceCreate = $('.importPriceCreate');
     page.dialogs.elements.wholesalePriceCreate = $('.wholesalePriceCreate');
@@ -885,6 +938,9 @@
 
     //Thêm sản phẩm
     page.elements.btnCreateProduct.on("click", () => {
+        let taxs = [];
+        let taxIn = new ProductTaxParam();
+        let taxOut = new ProductTaxParam();
         taxIn.taxId = $("#taxProType").data("id");
         taxIn.taxType = "TAX_PURCHASE";
         taxOut.taxId = $("#taxProTypeOut").data("id");
@@ -893,12 +949,12 @@
         taxs.push(taxOut);
         product.id = 0;
         product.title = page.dialogs.elements.titleCreate.val();
-        product.enableSell = page.dialogs.elements.statusCreate.is(":checked") ? true : false;
+        product.enableSell = page.dialogs.elements.enableSell.is(":checked") ? true : false;
         product.description = page.dialogs.elements.descriptionCreate.val();
         product.unit = page.dialogs.elements.unitCreate.val();
         product.sku = page.dialogs.elements.skuCreate.val();
         product.barCode = page.dialogs.elements.barCodeCreate.val();
-        product.quantity = page.dialogs.elements.quantityCreate.val();
+        product.mass = page.dialogs.elements.massCreate.val();
         product.retailPrice = page.dialogs.elements.retailPriceCreate.val();
         product.importPrice = page.dialogs.elements.importPriceCreate.val();
         product.wholesalePrice = page.dialogs.elements.wholesalePriceCreate.val();
@@ -906,8 +962,10 @@
         product.brandId = $('#brandProType').data("id");
         product.applyTax = $("#applyTax").is(":checked") ? true : false;
         product.isTaxInclusive = $("#priceDepsTax").val() === 2 ? true : false;
+        product.costPrice = $("#costPrice").val();
+        product.quantity = $("#initialInventory").val();
         product.taxList = taxs;
-        product.mediaList = imgs
+        product.mediaList = imgs;
 
         console.log(product)
         $.ajax({
@@ -1094,15 +1152,20 @@
     })
     //<<<--------nhat-dev end onclick create brand
     //checkbox event apply tax
-    $('#applyTax').click(function() {
+    $('#applyTax').click(function () {
         if ($("#applyTax").is(':checked')) {
-            $("#showTaxModal").css("display","block");
-        }
-        else{
-            $("#showTaxModal").css("display","none");
+            $("#showTaxModal").css("display", "block");
+        } else {
+            $("#showTaxModal").css("display", "none");
         }
     });
-
+    $('#enableVariant').click(function () {
+        if ($("#enableVariant").is(':checked')) {
+            $("#showCreateVariant").css("display", "block");
+        } else {
+            $("#showCreateVariant").css("display", "none");
+        }
+    });
 
 
     //nhat_dev called function categories and brands

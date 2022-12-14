@@ -52,8 +52,11 @@
                         <div class="MuiBox-root jss4666 jss4637 borderBottom">
                             <div class="MuiBox-root jss5093 jss4618">
                                 <h6 class="MuiTypography-root MuiTypography-subtitle1">Thông tin sản phẩm</h6>
-                                <div class="sc-jSMfEi PGrDd">
-                                    <span class="sc-eCYdqJ gIZkwA">Đang giao dịch</span>
+<!--                                <div class="sc-jSMfEi PGrDd">-->
+<!--                                    <span class="sc-eCYdqJ gIZkwA">Đang giao dịch</span>-->
+<!--                                </div>-->
+                                <div th:class="*{status == status.AVAILABLE} ? 'PGrDd' : 'PGrDf'">
+                                    <span th:text="*{status == status.AVAILABLE} ? 'Đang giao dịch' : 'Ngừng giao dịch'" th:class="*{status == status.AVAILABLE} ? 'gIZkwA' : 'gIZkwB'"></span>
                                 </div>
                             </div>
                         </div>
@@ -216,11 +219,13 @@
                                         <div class="MuiBox-root jss4698">
                                             <div class="MuiBox-root jss4699"
                                                  style="width: 100%; display: flex; justify-content: center;">
-                                                <div class="MuiBox-root jss4700 jss4621"
-                                                     style="margin: 0px; width: 150px; height: 150px;">
-                                                    <img class="image-item"
-                                                         src="https://kekhaigiattbyt.moh.gov.vn/Common/Images/no-image.jpg"
-                                                         alt=""></div>
+                                                <div class="MuiGrid-container">
+                                                    <th:block th:each="media : *{mediaResults}">
+                                                        <div class="MuiGrid-item">
+                                                            <img class="image-item" style="width: 90px; height: 90px; margin: 5px" th:src="${media.fileUrl}">
+                                                        </div>
+                                                    </th:block>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
