@@ -1140,6 +1140,13 @@
         }
     });
 
+    //onchange input import price and cost price
+    $('.wholesalePriceCreate ').change(function(){
+        $('.wholesalePriceCreate').val($('#costPrice').val());
+    });
+    ('#costPrice').change(function(){
+        $("#costPrice").val($('.wholesalePriceCreate').val());
+    });
 
 
     //nhat_dev called function categories and brands
