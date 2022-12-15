@@ -248,4 +248,30 @@ public class ProductServiceImpl implements ProductService {
             return new HashMap<>();
         }
     }
+
+    @Override
+    @Transactional
+    public void saveChangeStatusToAvailable(List<String> list) {
+        for(String item : list){
+           Optional<Product> product = productRepository.findById(Integer.valueOf(item));
+           if(product.isPresent()){
+               Product newProduct = product.get();
+               newProduct.setStatus(ProductStatus.parseProductStatus("AVAILABLE"));
+               productRepository.save(newProduct);
+           }
+        }
+    }
+
+    @Override
+    @Transactional
+    public void saveChangeStatusToUnavailable(List<String> list) {
+        for(String item : list){
+            Optional<Product> product = productRepository.findById(Integer.valueOf(item));
+            if(product.isPresent()){
+                Product newProduct = product.get();
+                newProduct.setStatus(ProductStatus.parseProductStatus("UNAVAILABLE"));
+                productRepository.save(newProduct);
+            }
+        }
+    }
 }

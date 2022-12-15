@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -86,4 +87,15 @@ ProductAPI {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PutMapping("/updateStatusAvailable")
+    public ResponseEntity<?> updateStatusAvailable(@RequestBody List<String> arrayIdProduct) {
+        productService.saveChangeStatusToAvailable(arrayIdProduct);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/updateStatusUnavailable")
+    public ResponseEntity<?> updateStatusUnavailable(@RequestBody List<String> arrayIdProduct) {
+        productService.saveChangeStatusToUnavailable(arrayIdProduct);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

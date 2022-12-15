@@ -220,7 +220,7 @@
                                     <input id="Sapo-TextField-1de6d6a6-f13f-4275-b1b2-a8487207509a"
                                            placeholder="Tìm kiếm theo tên sản phẩm"
                                            type="text"
-                                           class="sc-ikZpkk iYDwCJ form-control "
+                                           class="sc-ikZpkk iYDwCJ form-control searchTitle "
                                            value=""
                                            >
                                 </label>
@@ -249,7 +249,7 @@
                 <div style="font-size:small" id="tableCheckbox">
                     <table id="tbProduct" class="table table-hover">
                         <thead style="background-color: #f4f6f8; height: 55px">
-                            <tr >
+                            <tr id="theadList" class="show" >
                                 <th class="align-middle"><input id="checkAll" type="checkbox" value="" ></th>
                                 <th class="align-middle" scope="col">Ảnh</th>
                                 <th class="align-middle" scope="col">Sản phẩm</th>
@@ -261,22 +261,27 @@
                                 <th class="align-middle" scope="col">Ngày khởi tạo</th>
                                 <th class="align-middle" scope="col">Cập nhập cuối</th>
                             </tr>
-                            <tr class="hidden">
+                            <tr class="hide" id="selectActionThead" style="border: snow">
                                 <td class="align-middle">
-                                    <input type="checkbox" value="" >
+                                    <input id="selectAction" type="checkbox" value="" >
                                 </td>
-                                <td colspan="2" class="align-middle">
-                                    <span>Đã chọn 7 sản phẩm trên trang này</span>
+                                <td colspan="2" class="align-middle" id="numberSelectProductList">
                                 </td>
                                 <td colspan="7" class="align-middle">
                                     <div class="btn-group">
-                                        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button class="btn dropdown-toggle btnDropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Chọn thao tác
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                            <li><a class="dropdown-item" href="#">Đang giao dịch</a></li>
-                                            <li><a class="dropdown-item" href="#">Ngừng giao dịch</a></li>
-                                            <li><a class="dropdown-item" href="#">Xóa sản phẩm</a></li>
+                                            <li>
+                                                <button class="dropdown-item btnDropdown" id="btnAvailable">Đang giao dịch</button>
+                                            </li>
+                                            <li>
+                                                <button class="dropdown-item btnDropdown" id="btnUnavailable">Ngừng giao dịch</button>
+                                            </li>
+                                            <li>
+                                                <button class="dropdown-item btnDropdown" id="btnDelete">Xóa sản phẩm</button>
+                                            </li>
                                         </ul>
                                     </div>
                                 </td>
@@ -329,6 +334,24 @@
     </div>
  </div>
 
+    <div class="modal fade" id="modalAvailable" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: max-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="staticBackdropLabel">Cập nhật trạng thái</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="statusChange">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-warning btn-exit" type="button"  data-bs-dismiss="modal" >Thoát</button>
+                    <button class="btn btn-primary btn-save" id="btnAvailableSave" type="button">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 <th:block th:replace="/layout/script :: script"/>
     <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="/static/assets/admin/js/product/app.js"></script>
@@ -340,7 +363,8 @@
                 getProductById: App.BASE_URL_PRODUCT,
                 getAllCategory: App.BASE_URL_PRODUCT + "/categories",
                 getAllBrand: App.BASE_URL_PRODUCT + "/brands",
-                getAllStatus: App.BASE_URL_PRODUCT + "/status"
+                getAllStatus: App.BASE_URL_PRODUCT + "/status",
+                updateStatus: App.BASE_URL_PRODUCT
 
             },
             elements: {},
@@ -360,11 +384,25 @@
         let totalPage;
 
         page.elements.tbProduct = $("#tbProduct tbody");
+        page.elements.btnAvailable = $("#btnAvailable");
+        page.elements.btnUnavailable = $("#btnUnavailable");
+        page.elements.btnDelete = $("#btnDelete");
+        page.elements.btnAvailableSave = $("#btnAvailableSave");
+
         page.elements.totalPage = $("#totalPage");
         page.elements.pageNo = $("#pageNo");
         page.elements.pageSize = $("#pageSize");
-        page.elements.search = $("#Sapo-TextField-1de6d6a6-f13f-4275-b1b2-a8487207509a");
+        page.elements.search = $(".searchTitle");
+
         page.elements.checkAll =$("#checkAll");
+        page.elements.selectAction = $("#selectAction");
+
+        page.elements.selectActionThead = $("#selectActionThead");
+        page.elements.theadList = $("#theadList");
+        page.elements.numberSelectProductList = $("#numberSelectProductList");
+        page.elements.statusChangeForNumberProductList = $("#statusChange");
+
+        page.elements.modalAvailable = $("#modalAvailable");
 
         page.dialogs.elements.category = $("#category");
         page.dialogs.elements.brand = $("#brand");
@@ -520,46 +558,145 @@
                 })
         }
 
-        let selected = [];
-
+        let arrayIdProduct = [];
         page.elements.checkAll.on("change", function (){
-            selected = [];
+            page.elements.selectAction.prop("checked", true);
+            arrayIdProduct = [];
             if(this.checked){
                 $("#tbProduct > tbody input").each(function (){
                     $(this).prop("checked", true);
-                    selected.push($(this).val());
+                    arrayIdProduct.push($(this).val());
                 })
             } else {
                 $("#tbProduct > tbody input").each(function (){
                     $(this).prop("checked", false);
                 })
             }
+            page.commands.showAction();
         })
 
         page.commands.isCheckbox = () =>{
             $(".selectCheckbox").on("change", function (){
                 if(this.checked){
                     $(this).prop("checked", true);
-                    selected.push($(this).val());
+                    arrayIdProduct.push($(this).val());
                 } else {
                     $(this).prop("checked", false);
-                   selected = page.commands.deleteArrayId($(this).val());
+                    arrayIdProduct = page.commands.deleteArrayId($(this).val());
+                }
+                page.commands.showAction();
+                let pageSize = page.elements.pageSize.val()
+                if(arrayIdProduct.length == pageSize){
+                    page.elements.checkAll.prop("checked", true);
+                    page.elements.selectAction.prop("checked", true);
+                } else {
+                    page.elements.checkAll.prop("checked", false);
+                    page.elements.selectAction.prop("checked", false);
                 }
             })
-
         }
 
         page.commands.deleteArrayId = (item) =>{
-            if(selected.length <= 0){
+            if(arrayIdProduct.length <= 0){
                 return [];
             } else {
-                for(let i=0; i< selected.length; i++){
-                    if(selected[i] === item ){
-                       selected.splice(i,1);
+                for(let i=0; i < arrayIdProduct.length; i++){
+                    if(arrayIdProduct[i] === item ){
+                        arrayIdProduct.splice(i,1);
                     }
                 }
-                return selected;
+                return arrayIdProduct;
             }
+        }
+
+        page.commands.showAction = () => {
+            page.elements.numberSelectProductList.empty();
+            page.elements.statusChangeForNumberProductList.empty();
+            if(arrayIdProduct.length > 0){
+                page.elements.theadList.removeClass("show").addClass("hide");
+                page.elements.numberSelectProductList.append(`<span>Đã chọn ${arrayIdProduct.length} sản phẩm trên trang này</span>`)
+                page.elements.statusChangeForNumberProductList.append(`<span style="font-size: medium">Thao tác này sẽ cập nhật trạng thái giao dịch cho ${arrayIdProduct.length} sản phẩm bạn đã chọn.</span>`);
+                page.elements.selectActionThead.removeClass("hide").addClass("show");
+            } else {
+                page.elements.theadList.removeClass("hide").addClass("show");
+                page.elements.selectActionThead.removeClass("show").addClass("hide");
+            }
+        }
+
+        page.elements.selectAction.on("change", function () {
+            page.elements.checkAll.prop("checked", false);
+            arrayIdProduct = [];
+            if(this.checked){
+                $("#tbProduct > tbody input").each(function (){
+                    $(this).prop("checked", true);
+                    arrayIdProduct.push($(this).val());
+                })
+            } else {
+                $("#tbProduct > tbody input").each(function (){
+                    $(this).prop("checked", false);
+                })
+            }
+            page.commands.showAction();
+        })
+
+        page.elements.btnAvailable.on("click", () => {
+            page.elements.modalAvailable.modal("show");
+        })
+
+        page.commands.updateStatusToAvailable = () => {
+            $.ajax({
+                headers: {
+                    "accept": "application/json",
+                    "content-type": "application/json"
+                },
+                type: "PUT",
+                url: page.urls.updateStatus + "/updateStatusAvailable",
+                data: JSON.stringify(arrayIdProduct)
+            })
+                .done(() => {
+                    App.IziToast.showSuccessAlert(App.AlertMessageVi.SUCCESS_UPDATED)
+                })
+                .fail((jqXHR) => {
+                    App.IziToast.showErrorAlert(App.AlertMessageVi.ERROR_403)
+                })
+        }
+
+        page.commands.updateStatusToUnavailable = () => {
+            $.ajax({
+                headers: {
+                    "accept": "application/json",
+                    "content-type": "application/json"
+                },
+                type: "PUT",
+                url: page.urls.updateStatus + "/updateStatusUnavailable",
+                data: JSON.stringify(arrayIdProduct)
+            })
+                .done(() => {
+                    App.IziToast.showSuccessAlert(App.AlertMessageVi.SUCCESS_UPDATED)
+                })
+                .fail((jqXHR) => {
+                    App.IziToast.showErrorAlert(App.AlertMessageVi.ERROR_403)
+                })
+        }
+
+        page.elements.btnAvailableSave.on("click", () => {
+            page.commands.updateStatusToAvailable();
+            page.elements.modalAvailable.modal("hide");
+            page.commands.getAllProducts();
+            page.commands.resetInputCheckBox();
+        })
+        page.elements.btnUnavailable.on("click", () =>{
+            page.commands.updateStatusToUnavailable();
+            page.commands.getAllProducts();
+            page.commands.resetInputCheckBox();
+        })
+
+        page.commands.resetInputCheckBox = () =>{
+            $("#tbProduct input").each(function (){
+                $(this).prop("checked", false);
+            })
+            arrayIdProduct = [];
+            page.commands.showAction();
         }
 
         page.loadData = () => {
