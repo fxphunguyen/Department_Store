@@ -20,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.fx.qh.sapo.entities.product.Item;
@@ -205,12 +207,19 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public Map<String, Object> getAllProductItemPage(Integer pageNo, Integer pageSize, String title, Integer categoryId, Integer brandId, String status) {
         pageNo = pageNo - 1;
-        Pageable pageable = PageRequest.of(pageNo, pageSize);
-        Page<Product> products = productRepository.findAll(pageable);
-        if (products.hasContent()) {
-            if (title.equals("-1") && categoryId == -1 && brandId == -1 && status.equals("-1")) {
-                products = productRepository.findAll(pageable);
+//<<<<<<< HEAD
+//        Pageable pageable = PageRequest.of(pageNo, pageSize);
+//        Page<Product> products = productRepository.findAll(pageable);
+//        if (products.hasContent()) {
+//            if (title.equals("-1") && categoryId == -1 && brandId == -1 && status.equals("-1")) {
+//                products = productRepository.findAll(pageable);
+//=======
+        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by("id").descending());
+        Page<Product> products;
 
+        if(title.equals("-1") && categoryId == -1 && brandId == -1 && status.equals("-1")){
+            products = productRepository.findAll(pageable);
+            if (products.hasContent()) {
             } else if (categoryId == -1 && brandId == -1 && status.equals("-1")) {
                 products = productRepository.findAllByTitleContaining(title, pageable);
             } else if (brandId == -1 && status.equals("-1")) {
