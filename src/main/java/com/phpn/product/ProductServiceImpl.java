@@ -11,6 +11,7 @@ import com.phpn.product.dto.*;
 import com.phpn.product.item.ItemMapper;
 import com.phpn.product.item.ItemResult;
 import com.phpn.product.item.ItemService;
+import com.phpn.tax.TaxRepository;
 import com.phpn.tax.TaxService;
 import com.phpn.tax.dto.TaxMapper;
 import com.phpn.tax.dto.TaxResult;
@@ -54,6 +55,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductRepository productRepository;
+
     @Autowired
     ProductTaxRepository productTaxRepository;
 
@@ -62,6 +64,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     BrandRepository brandRepository;
+
+    @Autowired
+    TaxRepository taxRepository;
 
     @Autowired
     ItemService itemService;
@@ -114,10 +119,10 @@ public class ProductServiceImpl implements ProductService {
 
         productDetailResult.setCategory(categoryMapper.toDTO(categoryRepository.findById(product.getCategoryId()).get()));
         productDetailResult.setBrand(brandMapper.toDTO(brandRepository.findById(product.getBrandId()).get()));
-        productDetailResult.setMediaResults(mediaService.findAllById(product.getId()));
+//        productDetailResult.setMediaResults(mediaService.findAllById(product.getId()));
         productDetailResult.setItemResult(itemService.findAllByProductId(product.getId()));
         List<ProductTaxResult> productTaxResults = productTaxService.findAllByProductId(product.getId());
-        productDetailResult.setTaxResults(taxService.findAllByProductId(productTaxResults));
+        productDetailResult.setTaxResultList(taxService.findAllByProductId(productTaxResults));
         return productDetailResult;
     }
 

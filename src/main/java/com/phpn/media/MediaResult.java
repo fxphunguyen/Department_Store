@@ -19,7 +19,5 @@ public class MediaResult {
     private String fileUrl;
     private String fileType;
     private Boolean isMain;
-    private Instant createdAt;
-    private Instant updatedAt;
     private Integer productId;
 }

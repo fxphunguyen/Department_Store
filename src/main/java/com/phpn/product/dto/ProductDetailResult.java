@@ -45,8 +45,9 @@ public class ProductDetailResult {
     private BrandResult brand;
     private Boolean applyTax;
     private Boolean isTaxInclusive;
-//    private List<ProductTaxResult> taxList;
-    private List<MediaResult> mediaResults;
+    private List<ProductTaxResult> productTaxResultList;
+//    private ProductTaxResult productTaxResult;
+//    private List<MediaResult> mediaResults;
     private ItemResult itemResult;
-    private List<TaxResult> taxResults;
+    private List<TaxResult> taxResultList;
 }
