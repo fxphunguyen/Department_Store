@@ -23,6 +23,7 @@ import com.phpn.tax.product_tax.ProductTaxService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.expression.spel.ast.Literal;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -199,7 +200,7 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public Map<String, Object> getAllProductItemPage(Integer pageNo, Integer pageSize, String title, Integer categoryId, Integer brandId, String status) {
         pageNo = pageNo - 1;
-        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        Pageable pageable = PageRequest.of(pageNo, pageSize,Sort.by("id").descending());
         Page<Product> products;
         if(title.equals("-1") && categoryId == -1 && brandId == -1 && status.equals("-1")){
             products = productRepository.findAll(pageable);
