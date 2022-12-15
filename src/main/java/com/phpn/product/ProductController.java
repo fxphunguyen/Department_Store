@@ -27,7 +27,8 @@ public class ProductController {
     public ModelAndView showProductCreatePage() {
         return new ModelAndView("/admin/product/product_create");
     }
-    
+
+
     @GetMapping("/product/edit/{id}")
     public ModelAndView showProductEditPage(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView();
