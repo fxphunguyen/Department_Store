@@ -28,8 +28,6 @@ public class MediaMapper {
                 .setFileUrl(media.getFileUrl())
                 .setFileType(media.getFileType())
                 .setIsMain(media.getIsMain())
-                .setProductId(media.getProductId())
-                .setCreatedAt(media.getCreatedAt())
-                .setUpdatedAt(media.getUpdatedAt());
+                .setProductId(media.getProductId());
     }
 }
