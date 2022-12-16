@@ -5,11 +5,18 @@ import com.phpn.exceptions.AppNotFoundException;
 import com.phpn.product.dto.ProductDetailResult;
 import com.phpn.product.dto.ProductResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import vn.fx.qh.sapo.entities.product.Product;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
@@ -81,6 +88,39 @@ public class ProductController {
         modelAndView.setViewName("/admin/product/inventory_management");
         return modelAndView;
     }
+
+    //export excel file
+    @GetMapping("/products/export/excel")
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+        response.setContentType("application/octet-stream");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=products_" + currentDateTime + ".xlsx";
+        response.setHeader(headerKey, headerValue);
+
+        List<ProductResult> listProducts = productService.findAll();
+
+        ProductExcelExporter excelExporter = new ProductExcelExporter(listProducts);
+
+        excelExporter.export(response);
+    }
+//    @PostMapping("/uploadFile")
+//    public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+//
+//        fileService.uploadFile(file);
+//
+//        redirectAttributes.addFlashAttribute("message",
+//                "You have successfully uploaded '"+ file.getOriginalFilename()+"' !");
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//        return "redirect:/";
+//    }
 
 }
 

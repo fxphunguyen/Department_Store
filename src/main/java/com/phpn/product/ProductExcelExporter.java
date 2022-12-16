@@ -6,25 +6,22 @@ import java.util.List;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-import com.phpn.product.item.ItemService;
+
+import com.phpn.product.dto.ProductResult;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
-import vn.fx.qh.sapo.entities.product.Item;
-import vn.fx.qh.sapo.entities.product.Product;
+
 
 public class ProductExcelExporter {
-    @Autowired
-    ItemService itemService;
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
-    private List<Item> productList;
+    private List<ProductResult> productList;
 
-    public ProductExcelExporter(List<Item> productList) {
+    public ProductExcelExporter(List<ProductResult> productList) {
         this.productList = productList;
         workbook = new XSSFWorkbook();
     }
@@ -42,15 +39,10 @@ public class ProductExcelExporter {
         style.setFont(font);
 
         createCell(row, 0, "ID", style);
-        createCell(row, 1, "Ảnh",style);
-        createCell(row, 2, "Tên sản phẩm", style);
-        createCell(row, 3, " Loại", style);
-        createCell(row, 4, "Nhãn hiệu", style);
-        createCell(row, 5, "Có thể bán", style);
-        createCell(row, 6, "Tồn kho", style);
-        createCell(row, 7, "Trạng thái", style);
-        createCell(row, 8, "Ngày khởi tạo", style);
-        createCell(row, 9, "Cập nhật cuối", style);
+        createCell(row, 1, "Tên sản phẩm", style);
+        createCell(row, 2, " Loại", style);
+        createCell(row, 3, "Nhãn hiệu", style);
+        createCell(row, 4, "Trạng thái", style);
 
 
     }
@@ -79,18 +71,15 @@ public class ProductExcelExporter {
         font.setFontHeight(14);
         style.setFont(font);
 
-        for (Item product : productList) {
+        for (ProductResult product : productList) {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
 
             createCell(row, columnCount++, product.getId(), style);
-//            createCell(row, columnCount++, product.get, style);
-//            createCell(row, columnCount++, product.getTitle(), style);
-//            createCell(row, columnCount++, product.getCategory().toString(), style);
-//            createCell(row, columnCount++, product.getBrand().toString(), style);
-
-
-
+            createCell(row, columnCount++, product.getTitle(), style);
+            createCell(row, columnCount++, product.getCategory().toString(), style);
+            createCell(row, columnCount++, product.getBrand().toString(), style);
+            createCell(row, columnCount++, product.getStatus().toString(), style);
         }
     }
 
