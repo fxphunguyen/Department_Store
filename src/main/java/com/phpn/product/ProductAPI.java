@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -36,7 +37,6 @@ ProductAPI {
     }
 
 
-    // kien dang chinh
     @GetMapping("getAllProductPage")
     public ResponseEntity<?> getAllProductPage(@RequestParam(defaultValue = "0") Integer pageNo,
                                                @RequestParam(defaultValue = "10") Integer pageSize) {
@@ -45,17 +45,18 @@ ProductAPI {
         return null;
     }
 
-
-    //TODO:ANh Doi Path thanh parameter dum em
-    @GetMapping("/{pageNo}/{pageSize}/{search}/{categoryId}/{brandId}/{status}")
-    public ResponseEntity<?> getAllProductPageNoCategory(@PathVariable Integer pageNo,
-                                                         @PathVariable Integer pageSize,
-                                                         @PathVariable String search,
-                                                         @PathVariable Integer categoryId,
-                                                         @PathVariable Integer brandId,
-                                                         @PathVariable String status
-    ) {
-        return new ResponseEntity<>(productService.getAllProductItemPage(pageNo, pageSize, search, categoryId, brandId, status), HttpStatus.OK);
+    @GetMapping("/page")
+    public ResponseEntity<?> getAllProductPageNoCategory(@RequestParam HashMap<String, String> hashMap)
+    {
+       return new ResponseEntity<>(productService.getAllProductItemPage(
+               Integer.valueOf(hashMap.get("pageNo")),
+               Integer.valueOf(hashMap.get("pageSize")),
+               hashMap.get("search"),
+               Integer.valueOf(hashMap.get("categoryId")),
+               Integer.valueOf(hashMap.get("brandId")),
+               hashMap.get("status")),
+               HttpStatus.OK
+       );
     }
 
     @GetMapping("/categories")

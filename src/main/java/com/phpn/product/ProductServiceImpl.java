@@ -208,25 +208,15 @@ public class ProductServiceImpl implements ProductService {
         pageNo = pageNo - 1;
         Pageable pageable = PageRequest.of(pageNo, pageSize,Sort.by("id").descending());
         Page<Product> products;
-        if(title.equals("-1") && categoryId == -1 && brandId == -1 && status.equals("-1")){
+        if(title.equals("") && categoryId == -1 && brandId == -1 && status.equals("")){
             products = productRepository.findAll(pageable);
-
-        } else if(categoryId == -1 && brandId == -1 && status.equals("-1")) {
+        } else if(categoryId == -1 && brandId == -1 && status.equals("")) {
             products = productRepository.findAllByTitleContaining(title, pageable);
-        } else if (brandId == -1 && status.equals("-1")) {
-            if(title.equals("-1")){
-                title = "";
-            }
+        } else if (brandId == -1 && status.equals("")) {
             products = productRepository.findAllByTitleContainingAndCategoryId(categoryId, title, pageable);
-        } else if (status.equals("-1")) {
-            if(title.equals("-1")){
-                title = "";
-            }
+        } else if (status.equals("")) {
             products = productRepository.findAllByTitleContainingAndBrandId(brandId, title, pageable);
         } else {
-            if(title.equals("-1")){
-                title = "";
-            }
             products = productRepository.findAllByTitleContainingAndStatus(ProductStatus.parseProductStatus(status), title, pageable);
         }
         if(products.hasContent()){
