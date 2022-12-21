@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-
-import com.phpn.product.dto.ProductResult;
 import com.phpn.product.item.ItemService;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -16,6 +14,7 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import vn.fx.qh.sapo.entities.product.Item;
 import vn.fx.qh.sapo.entities.product.Product;
 
 public class ProductExcelExporter {
@@ -23,9 +22,9 @@ public class ProductExcelExporter {
     ItemService itemService;
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
-    private List<Product> productList;
+    private List<Item> productList;
 
-    public ProductExcelExporter(List<Product> productList) {
+    public ProductExcelExporter(List<Item> productList) {
         this.productList = productList;
         workbook = new XSSFWorkbook();
     }
@@ -80,15 +79,15 @@ public class ProductExcelExporter {
         font.setFontHeight(14);
         style.setFont(font);
 
-        for (Product product : productList) {
+        for (Item product : productList) {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
 
             createCell(row, columnCount++, product.getId(), style);
-            createCell(row, columnCount++, product.getImage(), style);
-            createCell(row, columnCount++, product.getTitle(), style);
-            createCell(row, columnCount++, product.getCategory().toString(), style);
-            createCell(row, columnCount++, product.getBrand().toString(), style);
+//            createCell(row, columnCount++, product.get, style);
+//            createCell(row, columnCount++, product.getTitle(), style);
+//            createCell(row, columnCount++, product.getCategory().toString(), style);
+//            createCell(row, columnCount++, product.getBrand().toString(), style);
 
 
 
